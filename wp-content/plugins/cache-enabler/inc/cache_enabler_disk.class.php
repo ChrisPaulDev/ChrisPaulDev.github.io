@@ -319,7 +319,7 @@ final class Cache_Enabler_Disk {
 
         // write
         $data = str_replace("wordpress.chrispaul.dev","chrispaul.dev",$data);
-        
+        $data = str_replace("chrispaul.dev", "wordpress.chrispaul.dev", $data);
         @fwrite($handle, $data);
         fclose($handle);
         clearstatcache();
