@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="google-site-verification" content="We9gRQmlTIjMkOPPjPWDQTXd15nWA6tBEYlxQ2cMpEg" />
+
+  <title>
+    JavaScript fundamentals before learning React - CPaul
+  </title>
+
+  <meta name="author" content="" />
+
+  
+    <meta name="description" content="All the fundamentals in JavaScript for React applications. Often React beginners realize that most of the learnings are JavaScript, because React has only a small API ...">
+  
+
+  <meta name="theme-color" content="#38bb6c"/>
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  
+  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../img/favicon/manifest.json">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+
+  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+
+  
+  
+<meta itemprop="name" content="JavaScript fundamentals before learning React">
+<meta itemprop="description" content="All the fundamentals in JavaScript for React applications. Often React beginners realize that most of the learnings are JavaScript, because React has only a small API ...">
+
+
+
+    <meta itemprop="image" content="https://chrispaul.dev/img/posts/javascript-fundamentals-react-requirements/banner_640.jpg">
+
+
+
+<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+
+
+<meta itemprop="wordCount" content="5167">
+
+
+  
+  <meta name="keywords" content="react javascript, javascript fundamentals react, react js requirements, learn react">
+
+  <meta property="og:title" content="JavaScript fundamentals before learning React - CPaul">
+
+
+  <meta property="og:description" content="All the fundamentals in JavaScript for React applications. Often React beginners realize that most of the learnings are JavaScript, because React has only a small API ..." />
+
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrispaul.dev/javascript-fundamentals-react-requirements/" />
+<meta property="og:image" content="https://chrispaul.dev/img/posts/javascript-fundamentals-react-requirements/banner_640.jpg" />
+
+  
+
+    <meta name="news_keywords" content="react javascript,javascript fundamentals react,react js requirements,learn react" />
+
+  
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/javascript-fundamentals-react-requirements/banner_640.jpg"/>
+
+
+
+<meta name="twitter:title" content="JavaScript fundamentals before learning React"/>
+<meta name="twitter:description" content="All the fundamentals in JavaScript for React applications. Often React beginners realize that most of the learnings are JavaScript, because React has only a small API ..."/>
+<meta name="twitter:site" content="@rwieruch"/>
+<meta name="twitter:domain" content="rwieruch"/>
+
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="../index.html">
+                    <img src="../img/page/logo.svg" alt="JavaScript fundamentals before learning React logo" class="img-lazy">
+                    <span class="sr-only">JavaScript fundamentals before learning React - go to homepage</span>
+                </a>
+
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../index.html">Blog</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../work-with-me/index.html">Work with me</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../about/index.html">About</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fjavascript-fundamentals-react-requirements%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=JavaScript%20fundamentals%20before%20learning%20React%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fjavascript-fundamentals-react-requirements%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=JavaScript%20fundamentals%20before%20learning%20React&amp;url=https%3a%2f%2fchrispaul.dev%2fjavascript-fundamentals-react-requirements%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+</div>
+
+<div class="visible-xs visible-sm text-center">
+    <div class="post-share post-share-fixed post-share-mobile">
+        
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fjavascript-fundamentals-react-requirements%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=JavaScript%20fundamentals%20before%20learning%20React%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fjavascript-fundamentals-react-requirements%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=JavaScript%20fundamentals%20before%20learning%20React&amp;url=https%3a%2f%2fchrispaul.dev%2fjavascript-fundamentals-react-requirements%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+    </div>
+</div>
+
+        
+
+        <div class="hidden-xs">
+            
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase newsletter">Take Part</h2>
+            </div>
+
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    <article
+                        class="col-md-8 col-md-offset-2"
+                        id="blog-post"
+                        itemprop="blogPosts"
+                        itemscope itemtype="http://schema.org/BlogPosting">
+
+                        <div id="post-content" itemprop="articleBody">
+
+                            <header>
+                                <h1 itemprop="name headline">JavaScript fundamentals before learning React</h1>
+                            </header>
+
+                            <div class="text-center">
+                                
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
+         <i class="fa fa-facebook"></i>Follow
+    </a>
+
+
+                                &nbsp;
+                                
+
+                                &nbsp;
+                                
+  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
+    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
+  </a>
+
+
+                                &nbsp;
+                                
+                            </div>
+
+                            <p class="text-muted text-uppercase mb-small text-center">
+    <span itemprop="author publisher">
+        
+    </span>
+
+    
+        <time datetime="2018-07-18" itemprop="datePublished">
+            July 18, 2018
+        </time>
+    
+
+    
+        <span class="hidden-xs hidden-sm"> - <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/javascript-fundamentals-react-requirements.md">
+                Edit this Post on GitHub
+            </a>
+        </span>
+    
+</p>
+
+                            <div>
+  
+
+</div>
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fjavascript-fundamentals-react-requirements%2f&amp;media=https://chrispaul.dev/img%2fposts%2fjavascript-fundamentals-react-requirements%2fbanner.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/javascript-fundamentals-react-requirements/banner.jpg"
+            data-is-src-set="is-src-set"
+            alt="react js requirements"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<p>After all my teachings about React, be it online for a larger audience or on-site for companies transitioning to web development and React, I always come to the conclusion that React is all about JavaScript. Newcomers to React but also myself see it as an <a target="_blank" rel="noopener noreferrer" href="https://www.quora.com/Why-choose-React/answer/Chris-Paul">advantage</a>, because you carry your JavaScript knowledge for a longer time around compared to your React skills.</p>
+
+<p>During my workshops a greater part of the material is about JavaScript and not React. Most of it boils down to JavaScript ES6 and beyond features and syntax, but also ternary operators, shorthand versions in the language, the <code>this</code> object, JavaScript built-in functions (<a href="../javascript-map-array/index.html">map</a>, reduce, filter) or more general concepts such as <a href="../react-component-composition/index.html">composability</a>, reusability, immutability or higher-order functions. These are the fundamentals, which you don&rsquo;t need necessarily to master before starting with React, but which will definitely come up while learning or practicing it.</p>
+
+<p>The following walkthrough is my attempt giving you an almost extensive yet concise list about all the different JavaScript functionalities to complement your React application. If you have any other things which are not in the list, just leave a comment for this article and I will keep it up to date.</p>
+
+<h2 class="chapter-header" id="toc">Table of Contents</h2>
+
+<ul>
+<li><a href="#react-javascript">Entering React after learning JavaScript</a></li>
+<li><a href="#react-javascript-classes">React and JavaScript Classes</a></li>
+<li><a href="#react-arrow-functions">Arrow Functions in React</a></li>
+<li><a href="#react-javascript-functional-components">Functions as Components in React</a></li>
+<li><a href="#react-class-component-syntax">React Class Component Syntax</a></li>
+<li><a href="#react-javascript-map-reduce-filter">Map, Reduce and Filter in React</a></li>
+<li><a href="#react-javascript-variables">var, let, and const in React</a></li>
+<li><a href="#react-ternary-operator">Ternary Operator in React</a></li>
+<li><a href="#react-import-export-statements">Import and Export Statements in React</a></li>
+<li><a href="#react-libraries">Libraries in React</a></li>
+<li><a href="#react-higher-order-functions">Higher-Order Functions in React</a></li>
+<li><a href="#react-destructuring-spread-operator">Destructuring and Spread Operators in React</a></li>
+<li><a href="#react-javascript-learn">There is more JavaScript than React</a></li>
+</ul>
+
+<div class="box-inline col-md-12">
+    <div class="col-md-12 text-center">
+        <h2 class="newsletter">The Road to learn React</h2>
+        <div class="col-md-4">
+            <img
+                class="img-lazy img-responsive"
+                data-lazy-src="//img/page/cover.png"
+                alt="package"
+            >
+        </div>
+        <p class="lead">
+            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Pay what you want like <strong>50.000+ readers</strong>.
+        </p>
+        <a
+            class="btn btn-template-main"
+            href="https://roadtoreact.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Get the Book <i class="fa fa-chevron-right"></i>
+        </a>
+    </div>
+</div>
+
+
+<h2 class="chapter-header" id="react-javascript">Entering React after learning JavaScript</h2>
+
+<p>When you enter the world of React, the usual suspect is <a target="_blank" rel="noopener noreferrer" href="https://github.com/facebook/create-react-app">create-react-app</a> for starting a React project. After you have set up your project, you are confronted with the following <strong>React class component</strong>:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">logo</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./logo.svg&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;./App.css&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;App&quot;</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">header</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;App-header&quot;</span><span style="color: #5bc4bf">&gt;</span>
+          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">img</span> <span style="color: #06b6ef">src</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">logo</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;App-logo&quot;</span> <span style="color: #06b6ef">alt</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;logo&quot;</span> <span style="color: #5bc4bf">/&gt;</span>
+          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">p</span><span style="color: #5bc4bf">&gt;</span>
+            <span style="color: #06b6ef">Edit</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">code</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">src</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">App</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/code&gt; and save to reload.</span>
+          <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/p&gt;</span>
+          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">a</span>
+            <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;App-link&quot;</span>
+            <span style="color: #06b6ef">href</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;https://reactjs.org&quot;</span>
+            <span style="color: #06b6ef">target</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;_blank&quot;</span>
+            <span style="color: #06b6ef">rel</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;noopener noreferrer&quot;</span>
+          <span style="color: #5bc4bf">&gt;</span>
+            <span style="color: #06b6ef">Learn</span> <span style="color: #06b6ef">React</span>
+          <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/a&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/header&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Arguably, a React class component may not be the best starting point. There are lots of things to digest for beginners which are not necessarily React: class statements, class methods and inheritance. Also the import statements are only adding complexity when learning React. Even though the main focus point should be JSX (React&rsquo;s syntax) in the very beginning, often all the things around demand explanations as well. This article is supposed to shed some light into all the things around, most of it JavaScript, without worrying too much about React.</p>
+
+<h2 class="chapter-header" id="react-javascript-classes">React and JavaScript Classes</h2>
+
+<p>Being confronted with a React class component in the beginning, requires the prior knowledge about JavaScript classes. One would assume that this is given knowledge, but it isn&rsquo;t, because JavaScript classes are fairly new in the language. Previously, there was only <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain">JavaScript&rsquo;s prototype chain</a> which could be used for inheritance too. JavaScript classes build up on top of the prototypical inheritance giving the whole thing a simpler representation.</p>
+
+<p>One way to define a React component is using a JavaScript class. In order to understand JavaScript classes, you can take some time learning about them without React.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">Developer</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">firstname</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">lastname</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firstname</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">firstname</span><span style="color: #e7e9db">;</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">lastname</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">lastname</span><span style="color: #e7e9db">;</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">getName</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">return</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firstname</span> <span style="color: #5bc4bf">+</span> <span style="color: #48b685">&#39; &#39;</span> <span style="color: #5bc4bf">+</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">lastname</span><span style="color: #e7e9db">;</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">var</span> <span style="color: #06b6ef">me</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">Developer</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Chris&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">&#39;Paul&#39;</span><span style="color: #e7e9db">);</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">me</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">getName</span><span style="color: #e7e9db">());</span>
+</code></pre></div>
+
+
+<p>A class describes an <strong>entity</strong> which is used as a blueprint to create an <strong>instance</strong> of this entity. Once an instance of the class gets created with the <code>new</code> statement, the constructor of the class is called which instantiates the instance of the class. Therefore, a class can have properties which are usually located in its constructor. In addition, class methods (e.g. <code>getName()</code>) are used to read (or write) data of the instance. The instance of the class is represented as the <code>this</code> object within the class, but outside the instance is just assigned to a JavaScript variable.</p>
+
+<p>Usually classes are used for inheritance in object-oriented programming. They are used for the same in JavaScript whereas the <code>extends</code> statement can be used to inherit with one class from another class. The more specialized class inherits all the abilities from the more general class with the <code>extends</code> statement, and can add its specialized abilities to it.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">Developer</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">firstname</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">lastname</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firstname</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">firstname</span><span style="color: #e7e9db">;</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">lastname</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">lastname</span><span style="color: #e7e9db">;</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">getName</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">return</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firstname</span> <span style="color: #5bc4bf">+</span> <span style="color: #48b685">&#39; &#39;</span> <span style="color: #5bc4bf">+</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">lastname</span><span style="color: #e7e9db">;</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ReactDeveloper</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Developer</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">getJob</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">return</span> <span style="color: #48b685">&#39;React Developer&#39;</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">}</span>
+</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">var</span> <span style="color: #06b6ef">me</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">ReactDeveloper</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Chris&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">&#39;Paul&#39;</span><span style="color: #e7e9db">);</span>
+</span>
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">me</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">getName</span><span style="color: #e7e9db">());</span>
+<span style="background-color: #4f424c"><span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">me</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">getJob</span><span style="color: #e7e9db">());</span>
+</span></code></pre></div>
+
+
+<p>Basically that&rsquo;s all it needs to fully understand React class components. A JavaScript class is used for defining a React component, but as you can see, the React component is only a React component because it inherits all the abilities from the React Component class which is imported from the React package:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">h1</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Welcome</span> <span style="color: #06b6ef">to</span> <span style="color: #06b6ef">React</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/h1&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>That&rsquo;s why the <code>render()</code> method is mandatory in React class components: The React Component from the imported React package instructs you to use it for displaying something in the browser. Furthermore, without extending from the React Component, you wouldn&rsquo;t be able to use other <a target="_blank" rel="noopener noreferrer" href="https://reactjs.org/docs/react-component.html">lifecycle methods</a> (including the <code>render()</code> method). For instance, there wouldn&rsquo;t be a <code>componentDidMount()</code> lifecycle method, because the component would be an instance of a vanilla JavaScript class. And not only the lifecycle methods would go away, React&rsquo;s API methods such as <code>this.setState()</code> for local state management wouldn&rsquo;t be available as well.</p>
+
+<p>However, as you have seen, using a JavaScript class is beneficial for extending the general class with your specialized behavior. Thus you can introduce your own class methods or properties.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">getGreeting</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">return</span> <span style="color: #48b685">&#39;Welcome to React&#39;</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">}</span>
+</span>
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+<span style="background-color: #4f424c">        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">h1</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">getGreeting</span><span style="color: #e7e9db">()}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/h1&gt;</span>
+</span>      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Now you know why React uses JavaScript classes for defining React class components. They are used when you need access to React&rsquo;s API (lifecycle methods, <code>this.state</code> and <code>this.setState()</code>). In the following, you will see how React components can be defined in a different way without using a JavaScript class.</p>
+
+<p>After all, JavaScript classes welcome one using inheritance in React, which isn&rsquo;t a desired outcome for React, <a target="_blank" rel="noopener noreferrer" href="https://reactjs.org/docs/composition-vs-inheritance.html">because React favors composition over inheritance</a>. So the only class you should extend from your React components should be the official React Component.</p>
+
+<h2 class="chapter-header" id="react-arrow-functions">Arrow Functions in React</h2>
+
+<p>When teaching someone about React, I explain <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">JavaScript arrow functions</a> pretty early. They are one of JavaScript&rsquo;s language additions in ES6 which pushed JavaScript forward in functional programming.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// JavaScript ES5 function</span>
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">getGreeting</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #48b685">&#39;Welcome to JavaScript&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #776e71">// JavaScript ES6 arrow function with body</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">getGreeting</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #48b685">&#39;Welcome to JavaScript&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #776e71">// JavaScript ES6 arrow function without body and implicit return</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">getGreeting</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #48b685">&#39;Welcome to JavaScript&#39;</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>JavaScript arrow functions are often used in React applications for keeping the code concise and readable. I love them, teach them early, but always try to refactor my functions from JavaScript ES5 to ES6 functions along the way. At some point, when the differences between JavaScript ES5 functions and JavaScript ES6 functions are clear, I stick to the JavaScript ES6 way of doing it with arrow functions. However, I always see that too many different syntaxes can be overwhelming for React beginners. So I try to make the different characteristics of JavaScript functions clear before going all-in using them in React. In the following sections, you will see how JavaScript arrow functions are commonly used in React.</p>
+
+<h2 class="chapter-header" id="react-javascript-functional-components">Functions as Components in React</h2>
+
+<p>React uses the best of different programming paradigms. That&rsquo;s only possible because JavaScript is a many-sided programming language. On the object-oriented programming side, React&rsquo;s class components are a great way of leveraging the abilities of JavaScript classes (inheritance for the React component API, class methods and class properties such as <code>this.state</code>). On the other side, there are lots of concepts from functional programming used in React (and its ecosystem) too. For instance, <strong>React&rsquo;s function components</strong> are <a href="../react-component-types/index.html">another way of defining components in React</a>. The question which led to <a href="../react-function-component/index.html">function components in React</a>: What if components could be used like functions?</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">view</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>It&rsquo;s a function which receives an input (e.g. <a href="../react-pass-props-to-component/index.html">props</a>) and returns the displayed HTML elements (view). Under the hood, the function only needs to use the rendering mechanism of the <code>render()</code> method from React components:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">Greeting</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">h1</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">greeting</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/h1&gt;;</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>Function components are the preferred way of defining components in React. They have less boilerplate, add less complexity, and are simpler to maintain than React class components. You can easily <a href="../react-hooks-migration/index.html">migrate your class components to function components</a> with <a href="../react-hooks/index.html">React Hooks</a>. Previously, the article mentioned JavaScript arrow functions and how they improve your React code. Let&rsquo;s apply these kind of functions to your function components. The previous Greeting component has two different looks with JavaScript ES5 and ES6:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// JavaScript ES5 function</span>
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">Greeting</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">h1</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">greeting</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/h1&gt;;</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #776e71">// JavaScript ES6 arrow function</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">Greeting</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">h1</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">greeting</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/h1&gt;;</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #776e71">// JavaScript ES6 arrow function without body and implicit return</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">Greeting</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">h1</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">greeting</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/h1&gt;</span>
+</code></pre></div>
+
+
+<p>JavaScript arrow functions are a great way of keeping your function components in React concise. Even more when there is no computation in between and thus the function body and return statement can be left out.</p>
+
+<h2 class="chapter-header" id="react-class-component-syntax">React Class Component Syntax</h2>
+
+<p>React&rsquo;s way of defining components evolved over time. In its early stages, the <code>React.createClass()</code> method was the default way of creating a React class component. Nowadays, it isn&rsquo;t used anymore, because with the rise of JavaScript ES6, the previously used React class component syntax became the default.</p>
+
+<p>However, JavaScript is evolving constantly and thus JavaScript enthusiast pick up new ways of doing things all the time. That&rsquo;s why you will find often different syntaxes for React class components. One way of defining a React class component, with state and class methods, is the following:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">Counter</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>
+
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #06b6ef">counter</span><span style="color: #5bc4bf">:</span> <span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span>
+    <span style="color: #e7e9db">};</span>
+
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onIncrement</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onIncrement</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">bind</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">);</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onDecrement</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onDecrement</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">bind</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">onIncrement</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">counter</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">counter</span> <span style="color: #5bc4bf">+</span> <span style="color: #f99b15">1</span> <span style="color: #e7e9db">}));</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">onDecrement</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">counter</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">counter</span> <span style="color: #5bc4bf">-</span> <span style="color: #f99b15">1</span> <span style="color: #e7e9db">}));</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">p</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">counter</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/p&gt;</span>
+
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onIncrement</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Increment</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onDecrement</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Decrement</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>However, when implementing lots of React class components, the <a target="_blank" rel="noopener noreferrer" href="https://medium.freecodecamp.org/react-binding-patterns-5-approaches-for-handling-this-92c651b5af56">binding of class methods</a> in the constructor and having a constructor in the first place becomes a tedious implementation detail. Fortunately, there is a shorthand syntax for getting rid of both annoyances:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">Counter</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">counter</span><span style="color: #5bc4bf">:</span> <span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">};</span>
+</span>
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">onIncrement</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">counter</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">counter</span> <span style="color: #5bc4bf">+</span> <span style="color: #f99b15">1</span> <span style="color: #e7e9db">}));</span>
+  <span style="color: #e7e9db">}</span>
+
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">onDecrement</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">counter</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">counter</span> <span style="color: #5bc4bf">-</span> <span style="color: #f99b15">1</span> <span style="color: #e7e9db">}));</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">p</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">counter</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/p&gt;</span>
+
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onIncrement</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Increment</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onDecrement</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Decrement</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>By using JavaScript arrow functions, you can auto-bind class methods without having to bind them in the constructor. Also the constructor can be left out, when not using the props, by defining the state directly as a class property. (Note: Be aware that <a target="_blank" rel="noopener noreferrer" href="https://babeljs.io/docs/en/babel-plugin-transform-class-properties/">class properties</a> are not in the JavaScript language yet.) Therefore you can say that this way of defining a React class component is way more concise than the other version.</p>
+
+<h2 class="chapter-header" id="react-javascript-template-literals">Template Literals in React</h2>
+
+<p><a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">Template literals</a> are another JavaScript language specific feature that came with JavaScript ES6. It is worth to mention it shortly, because when people new to JavaScript and React see them, they can be confusing as well. What you are growing up with is the following syntax for concatenating a string:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">getGreeting</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">what</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #48b685">&#39;Welcome to &#39;</span> <span style="color: #5bc4bf">+</span> <span style="color: #06b6ef">what</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">greeting</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">getGreeting</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;JavaScript&#39;</span><span style="color: #e7e9db">);</span>
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">greeting</span><span style="color: #e7e9db">);</span>
+<span style="color: #776e71">// Welcome to JavaScript</span>
+</code></pre></div>
+
+
+<p>Template literals can be used for the same which is called string interpolation:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">getGreeting</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">what</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #48b685">`Welcome to </span><span style="color: #f99b15">${</span><span style="color: #06b6ef">what</span><span style="color: #f99b15">}</span><span style="color: #48b685">`</span><span style="color: #e7e9db">;</span>
+</span><span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>You only have to use backticks and the <code>${}</code> notation for inserting JavaScript primitives. However, string literals are not only used for string interpolation, but also for multiline strings in JavaScript:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">getGreeting</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">what</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #48b685">`</span>
+<span style="color: #48b685">    Welcome</span>
+<span style="color: #48b685">    to</span>
+<span style="color: #48b685">    </span><span style="color: #f99b15">${</span><span style="color: #06b6ef">what</span><span style="color: #f99b15">}</span><span style="color: #48b685"></span>
+<span style="color: #48b685">  `</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>Basically that&rsquo;s how larger text blocks can be formatted on multiple lines. For instance, it can be seen with the <a href="../react-with-graphql-tutorial/index.html">recent introduction of GraphQL in JavaScript</a>, because GraphQL queries are composed with template literals.</p>
+
+<h2 class="chapter-header" id="react-javascript-map-reduce-filter">Map, Reduce and Filter in React</h2>
+
+<p>What&rsquo;s the best approach teaching the JSX syntax for React beginners? Usually I start out with defining a variable in the <code>render()</code> method and using it as JavaScript in HTML in the return block.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">    <span style="color: #815ba4">var</span> <span style="color: #06b6ef">greeting</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;Welcome to React&#39;</span><span style="color: #e7e9db">;</span>
+</span>    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+<span style="background-color: #4f424c">        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">h1</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">greeting</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/h1&gt;</span>
+</span>      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>You only have to use the curly braces to get your JavaScript in HTML. Going from rendering a string to a complex object isn&rsquo;t any different.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">    <span style="color: #815ba4">var</span> <span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Chris&#39;</span> <span style="color: #e7e9db">};</span>
+</span>    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+<span style="background-color: #4f424c">        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">h1</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">name</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/h1&gt;</span>
+</span>      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Usually the next question then is: <a href="../react-list-component.html">How to render a list of items?</a> That&rsquo;s one of the best parts about explaining React in my opinion. There is no React specific API such as a custom attribute on a HTML tag which enables you to render multiple items in React. You can use plain JavaScript for iterating over the list of items and returning HTML for each item.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">    <span style="color: #815ba4">var</span> <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span>
+</span><span style="background-color: #4f424c">      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Chris&#39;</span> <span style="color: #e7e9db">},</span>
+</span><span style="background-color: #4f424c">      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Markus&#39;</span> <span style="color: #e7e9db">},</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">];</span>
+</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ul</span><span style="color: #5bc4bf">&gt;</span>
+<span style="background-color: #4f424c">        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">function</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">          <span style="color: #815ba4">return</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">name</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;;</span>
+</span><span style="background-color: #4f424c">        <span style="color: #e7e9db">})}</span>
+</span>      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ul&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Having used the JavaScript arrow function before, you can get rid of the arrow function body and the return statement which leaves your rendered output way more concise.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">    <span style="color: #815ba4">var</span> <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span>
+</span><span style="background-color: #4f424c">      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Chris&#39;</span> <span style="color: #e7e9db">},</span>
+</span><span style="background-color: #4f424c">      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Markus&#39;</span> <span style="color: #e7e9db">},</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">];</span>
+</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ul</span><span style="color: #5bc4bf">&gt;</span>
+<span style="background-color: #4f424c">        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">name</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;)}</span>
+</span>      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ul&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Pretty soon, every React developer becomes used to the built-in JavaScript <code>map()</code> methods for arrays. It just makes so much sense to map over an array and return the rendered output for each item. The same can be applied for custom tailored cases where <code>filter()</code> or <code>reduce()</code> make more sense rather than rendering an output for each mapped item.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">    <span style="color: #815ba4">var</span> <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span>
+</span><span style="background-color: #4f424c">      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Chris&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isDeveloper</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span> <span style="color: #e7e9db">},</span>
+</span><span style="background-color: #4f424c">      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Markus&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isDeveloper</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span> <span style="color: #e7e9db">},</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">];</span>
+</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ul</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">users</span>
+<span style="background-color: #4f424c">          <span style="color: #e7e9db">.</span><span style="color: #06b6ef">filter</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">isDeveloper</span><span style="color: #e7e9db">)</span>
+</span>          <span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">name</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;)</span>
+        <span style="color: #e7e9db">}</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ul&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>In general, that&rsquo;s how React developers are getting used to these JavaScript built-in functions without having to use a React specific API for it. It is just JavaScript in HTML.</p>
+
+<h2 class="chapter-header" id="react-javascript-variables">var, let, and const in React</h2>
+
+<p>Also the different variable declarations with <code>var</code>, <code>let</code> and <code>const</code> can be confusing for beginners to React even though they are not React specific. Maybe it is because JavaScript ES6 was introduced when React became popular. In general, I try to introduce <code>let</code> and <code>const</code> very early in my workshops. It simply starts with exchanging var with const in a React component:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span>
+</span>      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Chris&#39;</span> <span style="color: #e7e9db">},</span>
+      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Markus&#39;</span> <span style="color: #e7e9db">},</span>
+    <span style="color: #e7e9db">];</span>
+
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ul</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">name</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;)}</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ul&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Then I give the rules of thumb when to use which variable declaration:</p>
+
+<ul>
+<li>(1) don&rsquo;t use <code>var</code>, because <code>let</code> and <code>const</code> are more specific</li>
+<li>(2) default to <code>const</code>, because it cannot be re-assigned or re-declared</li>
+<li>(3) use <code>let</code> when re-assigning the variable</li>
+</ul>
+
+<p>While <code>let</code> is usually used in a for loop for incrementing the iterator, <code>const</code> is normally used for keeping JavaScript variables unchanged. Even though it is possible to change the inner properties of objects and arrays when using <code>const</code>, the variable declaration shows the intent of keeping the variable unchanged though.</p>
+
+<h2 class="chapter-header" id="react-ternary-operator">Ternary Operator in React</h2>
+
+<p>But it doesn&rsquo;t end with displaying JavaScript strings, objects, and arrays in React. What about an if-else statement for enabling conditional rendering? You cannot use an if-else statement directly in JSX, but you can return early from the rendering function. Returning null is valid in React when displaying nothing.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span>
+      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Chris&#39;</span> <span style="color: #e7e9db">},</span>
+      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Markus&#39;</span> <span style="color: #e7e9db">},</span>
+    <span style="color: #e7e9db">];</span>
+
+<span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">showUsers</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">;</span>
+</span>
+<span style="background-color: #4f424c">    <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #5bc4bf">!</span><span style="color: #06b6ef">showUsers</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">      <span style="color: #815ba4">return</span> <span style="color: #815ba4">null</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">}</span>
+</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ul</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">name</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;)}</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ul&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>However, if you want to use an if-else statement within the returned JSX, you can do it by using a <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator">JavaScripts ternary operator</a>:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span>
+      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Chris&#39;</span> <span style="color: #e7e9db">},</span>
+      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Markus&#39;</span> <span style="color: #e7e9db">},</span>
+    <span style="color: #e7e9db">];</span>
+
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">showUsers</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">;</span>
+
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">          <span style="color: #06b6ef">showUsers</span> <span style="color: #5bc4bf">?</span> <span style="color: #e7e9db">(</span>
+</span><span style="background-color: #4f424c">            <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ul</span><span style="color: #5bc4bf">&gt;</span>
+</span><span style="background-color: #4f424c">              <span style="color: #e7e9db">{</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">name</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;)}</span>
+</span><span style="background-color: #4f424c">            <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ul&gt;</span>
+</span><span style="background-color: #4f424c">          <span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">(</span>
+</span><span style="background-color: #4f424c">            <span style="color: #815ba4">null</span>
+</span><span style="background-color: #4f424c">          <span style="color: #e7e9db">)</span>
+</span>        <span style="color: #e7e9db">}</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Another way of doing it, if you only return one side of the conditional rendering anyway, is using the <code>&amp;&amp;</code> operator:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span>
+      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Chris&#39;</span> <span style="color: #e7e9db">},</span>
+      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Markus&#39;</span> <span style="color: #e7e9db">},</span>
+    <span style="color: #e7e9db">];</span>
+
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">showUsers</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">;</span>
+
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">          <span style="color: #06b6ef">showUsers</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #e7e9db">(</span>
+</span>            <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ul</span><span style="color: #5bc4bf">&gt;</span>
+              <span style="color: #e7e9db">{</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">name</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;)}</span>
+            <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ul&gt;</span>
+<span style="background-color: #4f424c">          <span style="color: #e7e9db">)</span>
+</span>        <span style="color: #e7e9db">}</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>I will not go into detail why this works, but if you are curious, you can learn about it and other techniques for conditional rendering over here: <a href="../conditional-rendering-react/index.html">All the conditional renderings in React</a>. After all, the conditional rendering in React only shows again that most of React is JavaScript and not anything React specific.</p>
+
+<h2 class="chapter-header" id="react-import-export-statements">Import and Export Statements in React</h2>
+
+<p>Fortunately, the JavaScript community settled on one way to import and export functionalities from files with JavaScript ES6 with <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">import</a> and <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export">export</a> statements.</p>
+
+<p>However, being new to React and JavaScript ES6, these import and export statements are just another topic which requires explanation when getting started with your first React application. Pretty early you will have your first imports for CSS, SVG or other JavaScript files. The create-react-app project already starts with those import statements:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">logo</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./logo.svg&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;./App.css&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;App&quot;</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">header</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;App-header&quot;</span><span style="color: #5bc4bf">&gt;</span>
+          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">img</span> <span style="color: #06b6ef">src</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">logo</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;App-logo&quot;</span> <span style="color: #06b6ef">alt</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;logo&quot;</span> <span style="color: #5bc4bf">/&gt;</span>
+          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">h1</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;App-title&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Welcome</span> <span style="color: #06b6ef">to</span> <span style="color: #06b6ef">React</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/h1&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/header&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">p</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;App-intro&quot;</span><span style="color: #5bc4bf">&gt;</span>
+          <span style="color: #06b6ef">To</span> <span style="color: #06b6ef">get</span> <span style="color: #06b6ef">started</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">edit</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">code</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">src</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">App</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/code&gt; and save to reload.</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/p&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>It&rsquo;s great for the starter project, because it offers you a well-rounded experience how other files can be imported and (exported). Also the App component gets imported in the <em>src/index.js</em> file. However, when doing your first steps in React, I try to avoid those imports in the beginning. Instead, I try to focus on JSX and React components. Only later the import and export statements are introduced when separating the first React component or JavaScript function in another file.</p>
+
+<p>So how do these import and export statements work? Let&rsquo;s say in one file you want to export the following variables:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">firstname</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;Chris&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">lastname</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;Paul&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">firstname</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">lastname</span> <span style="color: #e7e9db">};</span>
+</code></pre></div>
+
+
+<p>Then you can import them in another file with a relative path to the first file:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">firstname</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">lastname</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./file1.js&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">firstname</span><span style="color: #e7e9db">);</span>
+<span style="color: #776e71">// output: Chris</span>
+</code></pre></div>
+
+
+<p>So it&rsquo;s not necessarily about importing/exporting components or functions, it&rsquo;s about sharing everything that is assignable to a variable (leaving out CSS or SVG imports/exports, but speaking only about JS). You can also import all exported variables from another file as one object:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #5bc4bf">*</span> <span style="color: #06b6ef">as</span> <span style="color: #06b6ef">person</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./file1.js&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">person</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firstname</span><span style="color: #e7e9db">);</span>
+<span style="color: #776e71">// output: Chris</span>
+</code></pre></div>
+
+
+<p>Imports can have an alias. It can happen that you import functionalities from multiple files that have the same named export. That&rsquo;s why you can use an alias:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">firstname</span> <span style="color: #06b6ef">as</span> <span style="color: #06b6ef">username</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./file1.js&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">);</span>
+<span style="color: #776e71">// output: Chris</span>
+</code></pre></div>
+
+
+<p>All the previous cases are named imports and exports. But there exists the default statement too. It can be used for a few use cases:</p>
+
+<ul>
+<li>to export and import a single functionality</li>
+<li>to highlight the main functionality of the exported API of a module</li>
+<li>to have a fallback import functionality</li>
+</ul>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">chris</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">firstname</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Chris&#39;</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">lastname</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Paul&#39;</span><span style="color: #e7e9db">,</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">chris</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>You can leave out the curly braces for the import to import the default export:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">developer</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./file1.js&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">developer</span><span style="color: #e7e9db">);</span>
+<span style="color: #776e71">// output: { firstname: &#39;Chris&#39;, lastname: &#39;Paul&#39; }</span>
+</code></pre></div>
+
+
+<p>Furthermore, the import name can differ from the exported default name. You can also use it in conjunction with the named export and import statements:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">firstname</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;Chris&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">lastname</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;Paul&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">person</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">firstname</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">lastname</span><span style="color: #e7e9db">,</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">firstname</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">lastname</span><span style="color: #e7e9db">,</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">person</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>And import the default or the named exports in another file:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">developer</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">firstname</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">lastname</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./file1.js&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">developer</span><span style="color: #e7e9db">);</span>
+<span style="color: #776e71">// output: { firstname: &#39;Chris&#39;, lastname: &#39;Paul&#39; }</span>
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">firstname</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">lastname</span><span style="color: #e7e9db">);</span>
+<span style="color: #776e71">// output: Chris Paul</span>
+</code></pre></div>
+
+
+<p>You can also spare additional lines and export the variables directly for named exports:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">export</span> <span style="color: #815ba4">const</span> <span style="color: #06b6ef">firstname</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;Chris&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">const</span> <span style="color: #06b6ef">lastname</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;Paul&#39;</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>These are the main functionalities for ES6 modules. They help you to organize your code, to maintain your code and to design reusable module APIs. You can also export and import functionalities to test them.</p>
+
+<h2 class="chapter-header" id="react-libraries">Libraries in React</h2>
+
+<p>React is only the view layer for your application. There is some internal state management offered by React, but apart from this, it is only a component library which renders HTML for your browser. Everything else can be added from APIs (e.g. browser API, DOM API), JavaScript functionalities or external libraries. It&rsquo;s not always simple to choose the right library for complementing your React application, but <a href="../essential-react-libraries-framework/index.html">once you have a good overview of the different options</a>, you can pick the one which fits best to your tech stack.</p>
+
+<p>For instance, <a href="../react-fetching-data/index.html">fetching data in React</a> can be done with the native fetch API:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">data</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">null</span><span style="color: #e7e9db">,</span>
+  <span style="color: #e7e9db">};</span>
+
+  <span style="color: #06b6ef">componentDidMount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">fetch</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;https://api.mydomain.com&#39;</span><span style="color: #e7e9db">)</span>
+      <span style="color: #e7e9db">.</span><span style="color: #06b6ef">then</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">response</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">response</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">json</span><span style="color: #e7e9db">())</span>
+      <span style="color: #e7e9db">.</span><span style="color: #06b6ef">then</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">data</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">data</span> <span style="color: #e7e9db">}));</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #e7e9db">...</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>But it is up to you to use another library to fetch data in React. <a target="_blank" rel="noopener noreferrer" href="https://github.com/axios/axios">Axios</a> is one popular choice for React applications:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #06b6ef">axios</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;axios&#39;</span><span style="color: #e7e9db">;</span>
+</span>
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">data</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">null</span><span style="color: #e7e9db">,</span>
+  <span style="color: #e7e9db">};</span>
+
+  <span style="color: #06b6ef">componentDidMount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">    <span style="color: #06b6ef">axios</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;https://api.mydomain.com&#39;</span><span style="color: #e7e9db">)</span>
+</span>      <span style="color: #e7e9db">.</span><span style="color: #06b6ef">then</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">data</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">data</span> <span style="color: #e7e9db">}));</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #e7e9db">...</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>So once you know about your problem which need to be solved, <a href="../reasons-why-i-moved-from-angular-to-react/index.html">React&rsquo;s extensive and innovative ecosystem</a> should give you plenty of options solving it. There again it&rsquo;s not about React, but knowing about all the different JavaScript libraries which can be used to complement your application.</p>
+
+<h2 class="chapter-header" id="react-higher-order-functions">Higher-Order Functions in React</h2>
+
+<p>Higher-order functions are a great programming concept especially when moving towards functional programming. In React, it makes total sense to know about these kind of functions, because at some point you have to deal with higher-order components which can be explained best when knowing about higher-order functions in the first place.</p>
+
+<p>Higher-order functions can be showcased in React early on without introducing higher-order components. For instance, let&rsquo;s say a rendered list of users can be filtered based on the value of an input field.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">query</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">};</span>
+</span>
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">onChange</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">query</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">target</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">value</span> <span style="color: #e7e9db">});</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">}</span>
+</span>
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span>
+      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Chris&#39;</span> <span style="color: #e7e9db">},</span>
+      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Markus&#39;</span> <span style="color: #e7e9db">},</span>
+    <span style="color: #e7e9db">];</span>
+
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ul</span><span style="color: #5bc4bf">&gt;</span>
+          <span style="color: #e7e9db">{</span><span style="color: #06b6ef">users</span>
+<span style="background-color: #4f424c">            <span style="color: #e7e9db">.</span><span style="color: #06b6ef">filter</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">query</span> <span style="color: #5bc4bf">===</span> <span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">name</span><span style="color: #e7e9db">)</span>
+</span>            <span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">name</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;)</span>
+          <span style="color: #e7e9db">}</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ul&gt;</span>
+
+<span style="background-color: #4f424c">        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">input</span>
+</span><span style="background-color: #4f424c">          <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;text&quot;</span>
+</span><span style="background-color: #4f424c">          <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onChange</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">        <span style="color: #5bc4bf">/&gt;</span>
+</span>      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>It&rsquo;s not always desired to extract functions, because it can add unecessary complexity, but on the other side, it can have beneficial learning effects for JavaScript. In addition, <a href="../react-testing-tutorial/index.html">by extracting a function you make it testable in isolation from the React component</a>. So let&rsquo;s showcase it with the function which is provided to the built-in filter function.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">function</span> <span style="color: #06b6ef">doFilter</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">query</span> <span style="color: #5bc4bf">===</span> <span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">name</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">}</span>
+</span>
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">...</span>
+
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span>
+      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Chris&#39;</span> <span style="color: #e7e9db">},</span>
+      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Markus&#39;</span> <span style="color: #e7e9db">},</span>
+    <span style="color: #e7e9db">];</span>
+
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ul</span><span style="color: #5bc4bf">&gt;</span>
+          <span style="color: #e7e9db">{</span><span style="color: #06b6ef">users</span>
+<span style="background-color: #4f424c">            <span style="color: #e7e9db">.</span><span style="color: #06b6ef">filter</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">doFilter</span><span style="color: #e7e9db">)</span>
+</span>            <span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">name</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;)</span>
+          <span style="color: #e7e9db">}</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ul&gt;</span>
+
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">input</span>
+          <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;text&quot;</span>
+          <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onChange</span><span style="color: #e7e9db">}</span>
+        <span style="color: #5bc4bf">/&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>The previous implementation doesn&rsquo;t work because the <code>doFilter()</code> function needs to know about the <code>query</code> property from the state. So you can pass it to the function by wrapping it with another function which leads to a higher-order function.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">function</span> <span style="color: #06b6ef">doFilter</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">query</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #815ba4">function</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">return</span> <span style="color: #06b6ef">query</span> <span style="color: #5bc4bf">===</span> <span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">name</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">}</span>
+</span>
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">...</span>
+
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span>
+      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Chris&#39;</span> <span style="color: #e7e9db">},</span>
+      <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Markus&#39;</span> <span style="color: #e7e9db">},</span>
+    <span style="color: #e7e9db">];</span>
+
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ul</span><span style="color: #5bc4bf">&gt;</span>
+          <span style="color: #e7e9db">{</span><span style="color: #06b6ef">users</span>
+<span style="background-color: #4f424c">            <span style="color: #e7e9db">.</span><span style="color: #06b6ef">filter</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">doFilter</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">query</span><span style="color: #e7e9db">))</span>
+</span>            <span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">name</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;)</span>
+          <span style="color: #e7e9db">}</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ul&gt;</span>
+
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">input</span>
+          <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;text&quot;</span>
+          <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onChange</span><span style="color: #e7e9db">}</span>
+        <span style="color: #5bc4bf">/&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Basically a higher-order function is a function which returns a function. By using JavaScript ES6 arrow functions, you can make a higher-order function more concise. Furthermore, this shorthand version makes it more attractive composing functions into functions.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">doFilter</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">query</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #06b6ef">query</span> <span style="color: #5bc4bf">===</span> <span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">name</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Now the <code>doFilter()</code> function can be exported from the file and tested in isolation as pure (higher-order) function. After learning about higher-order functions, all the fundamental knowledge is established to learn more about <a href="../gentle-introduction-higher-order-components/index.html">React&rsquo;s higher-order components</a>.</p>
+
+<p>Extracting these functions into (higher-order) functions outside of a React component can be beneficial for testing React&rsquo;s local state management in isolation as well.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">export</span> <span style="color: #815ba4">const</span> <span style="color: #06b6ef">doIncrement</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=&gt;</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">counter</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">counter</span> <span style="color: #5bc4bf">+</span> <span style="color: #f99b15">1</span> <span style="color: #e7e9db">});</span>
+</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">export</span> <span style="color: #815ba4">const</span> <span style="color: #06b6ef">doDecrement</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=&gt;</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">counter</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">counter</span> <span style="color: #5bc4bf">-</span> <span style="color: #f99b15">1</span> <span style="color: #e7e9db">});</span>
+</span>
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">Counter</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">counter</span><span style="color: #5bc4bf">:</span> <span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span>
+  <span style="color: #e7e9db">};</span>
+
+  <span style="color: #06b6ef">onIncrement</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">doIncrement</span><span style="color: #e7e9db">);</span>
+</span>  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">onDecrement</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">doDecrement</span><span style="color: #e7e9db">);</span>
+</span>  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">p</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">counter</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/p&gt;</span>
+
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onIncrement</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Increment</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onDecrement</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Decrement</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>Moving functions around your code base is a great way to learn about the benefits of having functions as first class citizens in JavaScript. It&rsquo;s powerful when moving your code towards functional programming.</p>
+
+<h2 class="chapter-header" id="react-destructuring-spread-operator">Destructuring and Spread Operators in React</h2>
+
+<p>Another language feature introduced in JavaScript is called <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">destructuring</a>. It&rsquo;s often the case that you have to access plenty of properties from your state or props in your component. Rather than assigning them to a variable one by one, you can use destructuring assignment in JavaScript.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// no destructuring</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">counter</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">counter</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #776e71">// destructuring</span>
+<span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">users</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">counter</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>That&rsquo;s especially beneficial for functional stateless components, because they always receive the <code>props</code> object in their function signature. Often you will not use the props but its content, so you can destructure the content already in the function signature.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// no destructuring</span>
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">Greeting</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">h1</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">greeting</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/h1&gt;;</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #776e71">// destructuring</span>
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">Greeting</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">greeting</span> <span style="color: #e7e9db">})</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">h1</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">greeting</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/h1&gt;;</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>The destructuring works for JavaScript arrays too. Another great feature is the <strong>rest destructuring</strong>. It is often used for splitting out a part of an object, but keeping the remaining properties in another object.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// rest destructuring</span>
+<span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">users</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">rest</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Afterward, the users can be used to be rendered, for instance in a React component, whereas the remaining state is used somewhere else. That&rsquo;s where the <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax">JavaScript spread operator</a> comes into play to forward the rest object to the next component. In the next section, you will see this operator in action.</p>
+
+<h2 class="chapter-header" id="react-javascript-learn">There is more JavaScript than React</h2>
+
+<p>In conclusion, there is lots of JavaScript which can be harnessed in React. Whereas React has only a slim API surface area, developers have to get used to all the functionalities JavaScript has to offer. The saying is not without any reason: <em>&ldquo;being a React developer makes you a better JavaScript developer&rdquo;</em>. Let&rsquo;s recap some of the learned aspects of JavaScript in React by refactoring a higher-order component.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">withLoading</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">Component</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #815ba4">class</span> <span style="color: #06b6ef">WithLoading</span> <span style="color: #815ba4">extends</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">      <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">isLoading</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">props</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">;</span>
+</span>
+      <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">isLoading</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #815ba4">return</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">p</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Loading</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/p&gt;;</span>
+      <span style="color: #e7e9db">}</span>
+
+<span style="background-color: #4f424c">      <span style="color: #815ba4">return</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">props</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span><span style="color: #e7e9db">;</span>
+</span>    <span style="color: #e7e9db">}</span>
+  <span style="color: #e7e9db">}</span>
+  <span style="color: #e7e9db">};</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>This higher-order component is only used for showing a conditional loading indicator when the <code>isLoading</code> prop is set to true. Otherwise it renders the input component. You can already see the (rest) destructuring and the spread operator in action. The latter can be seen for the rendered Component, because all the remaining properties from the <code>props</code> object are passed to the Component.</p>
+
+<p>The first step for making the higher-order component more concise is refactoring the returned React class component to a functional stateless component:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">withLoading</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">Component</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #815ba4">function</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">isLoading</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">props</span> <span style="color: #e7e9db">})</span> <span style="color: #e7e9db">{</span>
+</span>    <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">isLoading</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #815ba4">return</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">p</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Loading</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/p&gt;;</span>
+    <span style="color: #e7e9db">}</span>
+
+    <span style="color: #815ba4">return</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">props</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c">  <span style="color: #e7e9db">};</span>
+</span><span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>You can see that the rest destructuring can be used in the function&rsquo;s signature too. Next, using JavaScript ES6 arrow functions makes the higher-order component more concise again:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">withLoading</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">Component</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">isLoading</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">props</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span>  <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">isLoading</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">return</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">p</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Loading</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/p&gt;;</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #815ba4">return</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">props</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c"><span style="color: #e7e9db">}</span>
+</span></code></pre></div>
+
+
+<p>And adding the ternary operator shortens the function body into one line of code. Thus the function body can be left out and the return statement can be omitted.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">withLoading</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">Component</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">isLoading</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">props</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span>
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">isLoading</span>
+</span><span style="background-color: #4f424c">    <span style="color: #5bc4bf">?</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">p</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Loading</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/p&gt;</span>
+</span><span style="background-color: #4f424c">    <span style="color: #5bc4bf">:</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">props</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>
+</span></code></pre></div>
+
+
+<p>As you can see, the higher-order component uses various JavaScript and not React relevant techniques: arrow functions, higher-order functions, a ternary operator, destructuring and the spread operator. That&rsquo;s how JavaScript&rsquo;s functionalities can be used in React applications.</p>
+
+<hr class="section-divider">
+
+<p>Often people say that learning React has a steep learning curve. But it hasn&rsquo;t when only leaving React in the equation and leaving all the JavaScript out of it. React doesn&rsquo;t add any foreign abstraction layer on top as other web frameworks are doing it. Instead you have to use JavaScript. So hone your JavaScript skills and you will become a great React developer.</p>
+
+
+                            
+<div class="feedback-and-share text-center">
+    <hr>
+    
+    <p class="lead">
+        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
+    </p>
+    
+    
+        <p class="lead">
+            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+        </p>
+    
+</div>
+
+
+                            
+                                <div class="box-inline col-md-12">
+    <div class="col-md-12 text-center">
+        <h2 class="newsletter">The Road to learn React</h2>
+        
+            <div class="col-md-4">
+                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+            </div>
+        
+        <p class="lead">
+            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
+        </p>
+        <a
+            class="btn btn-template-main"
+            href="https://roadtoreact.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Get the Book for free <i class="fa fa-chevron-right"></i>
+        </a>
+        
+            <div>
+                <a
+                    href="https://amzn.to/2QY2ONp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get it from Amazon
+                </a>
+            </div>
+        
+    </div>
+</div>
+                            
+                        </div>
+
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'rwieruch';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </article>
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase">Take Part</h2>
+            </div>
+
+            <div class="col-md-12 text-center">
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+                
+            </div>
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+        <footer id="subfooter">
+    <div class="container">
+
+        <div class="col-md-5 col-sm-6">
+
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../redux-vs-usereducer/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="React&#39;s useReducer vs Redux"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../publish-npm-package-node/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to publish a npm package?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../react-scroll-to-item/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to Scroll to Item in React?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+
+        
+        <div class="col-md-5 col-md-offset-2 col-sm-6">
+
+            <h4>About Me</h4>
+
+            <div class="blog-entries">
+                <div class="item same-height-row clearfix">
+                    <div class="profile same-height-always">
+                        <img
+                            class="img-lazy img-responsive"
+                            data-lazy-src="//img/page/profile.jpg"
+                            alt="profile"
+                        >
+                    </div>
+                    <div class="name same-height-always">
+                        <p>
+                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+        <footer id="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-left">
+          
+            <li>© Chris Paul</li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline footer-social-buttons text-center">
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-right">
+          
+            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+
+    
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-65599459-2', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="../js/script.js"></script>
+
+
+
+  </body>
+</html>

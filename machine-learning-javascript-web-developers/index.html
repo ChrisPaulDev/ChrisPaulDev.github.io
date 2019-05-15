@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="google-site-verification" content="We9gRQmlTIjMkOPPjPWDQTXd15nWA6tBEYlxQ2cMpEg" />
+
+  <title>
+    A Web Developer&#39;s Guide to Machine Learning in JavaScript - CPaul
+  </title>
+
+  <meta name="author" content="" />
+
+  
+    <meta name="description" content="An extensive walkthrough for machine learning in JavaScript. The machine learning libraries in JavaScript are striving. As I started to learn about AI, deep learning (DL) and machine learning (ML) ...">
+  
+
+  <meta name="theme-color" content="#38bb6c"/>
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  
+  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../img/favicon/manifest.json">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+
+  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+
+  
+  
+<meta itemprop="name" content="A Web Developer&#39;s Guide to Machine Learning in JavaScript">
+<meta itemprop="description" content="An extensive walkthrough for machine learning in JavaScript. The machine learning libraries in JavaScript are striving. As I started to learn about AI, deep learning (DL) and machine learning (ML) ...">
+
+
+
+    <meta itemprop="image" content="https://chrispaul.dev/img/posts/machine-learning-javascript-web-developers/banner_640.jpg">
+
+
+
+<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+
+
+<meta itemprop="wordCount" content="5957">
+
+
+  
+  <meta name="keywords" content="machine learning javascript, ai javascript, deep learning javascript">
+
+  <meta property="og:title" content="A Web Developer&#39;s Guide to Machine Learning in JavaScript - CPaul">
+
+
+  <meta property="og:description" content="An extensive walkthrough for machine learning in JavaScript. The machine learning libraries in JavaScript are striving. As I started to learn about AI, deep learning (DL) and machine learning (ML) ..." />
+
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrispaul.dev/machine-learning-javascript-web-developers/" />
+<meta property="og:image" content="https://chrispaul.dev/img/posts/machine-learning-javascript-web-developers/banner_640.jpg" />
+
+  
+
+    <meta name="news_keywords" content="machine learning javascript" />
+
+  
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/machine-learning-javascript-web-developers/banner_640.jpg"/>
+
+
+
+<meta name="twitter:title" content="A Web Developer&#39;s Guide to Machine Learning in JavaScript"/>
+<meta name="twitter:description" content="An extensive walkthrough for machine learning in JavaScript. The machine learning libraries in JavaScript are striving. As I started to learn about AI, deep learning (DL) and machine learning (ML) ..."/>
+<meta name="twitter:site" content="@rwieruch"/>
+<meta name="twitter:domain" content="rwieruch"/>
+
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="../index.html">
+                    <img src="../img/page/logo.svg" alt="A Web Developer&#39;s Guide to Machine Learning in JavaScript logo" class="img-lazy">
+                    <span class="sr-only">A Web Developer&#39;s Guide to Machine Learning in JavaScript - go to homepage</span>
+                </a>
+
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../index.html">Blog</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../work-with-me/index.html">Work with me</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../about/index.html">About</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fmachine-learning-javascript-web-developers%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=A%20Web%20Developer%27s%20Guide%20to%20Machine%20Learning%20in%20JavaScript%20by%20%40rwieruch%20%23JavaScript%20%23MachineLearning&amp;url=https%3a%2f%2fchrispaul.dev%2fmachine-learning-javascript-web-developers%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=A%20Web%20Developer%27s%20Guide%20to%20Machine%20Learning%20in%20JavaScript&amp;url=https%3a%2f%2fchrispaul.dev%2fmachine-learning-javascript-web-developers%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+</div>
+
+<div class="visible-xs visible-sm text-center">
+    <div class="post-share post-share-fixed post-share-mobile">
+        
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fmachine-learning-javascript-web-developers%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=A%20Web%20Developer%27s%20Guide%20to%20Machine%20Learning%20in%20JavaScript%20by%20%40rwieruch%20%23JavaScript%20%23MachineLearning&amp;url=https%3a%2f%2fchrispaul.dev%2fmachine-learning-javascript-web-developers%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=A%20Web%20Developer%27s%20Guide%20to%20Machine%20Learning%20in%20JavaScript&amp;url=https%3a%2f%2fchrispaul.dev%2fmachine-learning-javascript-web-developers%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+    </div>
+</div>
+
+        
+
+        <div class="hidden-xs">
+            
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase newsletter">Take Part</h2>
+            </div>
+
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    <article
+                        class="col-md-8 col-md-offset-2"
+                        id="blog-post"
+                        itemprop="blogPosts"
+                        itemscope itemtype="http://schema.org/BlogPosting">
+
+                        <div id="post-content" itemprop="articleBody">
+
+                            <header>
+                                <h1 itemprop="name headline">A Web Developer&#39;s Guide to Machine Learning in JavaScript</h1>
+                            </header>
+
+                            <div class="text-center">
+                                
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
+         <i class="fa fa-facebook"></i>Follow
+    </a>
+
+
+                                &nbsp;
+                                
+
+                                &nbsp;
+                                
+  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
+    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
+  </a>
+
+
+                                &nbsp;
+                                
+                            </div>
+
+                            <p class="text-muted text-uppercase mb-small text-center">
+    <span itemprop="author publisher">
+        
+    </span>
+
+    
+        <time datetime="2018-01-10" itemprop="datePublished">
+            January 10, 2018
+        </time>
+    
+
+    
+        <span class="hidden-xs hidden-sm"> - <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/machine-learning-javascript-web-developers.md">
+                Edit this Post on GitHub
+            </a>
+        </span>
+    
+</p>
+
+                            <div>
+  
+
+</div>
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fmachine-learning-javascript-web-developers%2f&amp;media=https://chrispaul.dev/img%2fposts%2fmachine-learning-javascript-web-developers%2fbanner.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/machine-learning-javascript-web-developers/banner.jpg"
+            data-is-src-set="is-src-set"
+            alt="learn machine learning"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<p>Recently, I was wondering how I could escape the web development bubble for a while. 2017 was full of React, Redux and MobX in JavaScript where I have written actively about those topics on my blog, developed small (<a href="https://github.com/rwieruch/favesound-redux">1</a>, <a href="../how-to-build-your-own-course-platform/index.html">2</a>, <a href="https://github.com/rwieruch/open-crowd-fund">3</a>, &hellip;) and <a target="_blank" rel="noopener noreferrer" href="https://www.small-improvements.com/features/?ref=chrispaul.dev">large scale applications</a> based on them, <a target="_blank" rel="noopener noreferrer" href="https://leanpub.com/u/rwieruch">self-published two educational ebooks</a>, and implemented a <a target="_blank" rel="noopener noreferrer" href="https://roadtoreact.com/">course platform</a> with those technologies to teach others about them. The last year was all about those subjects, so I needed a side project to escape it for a while and to get into a zen mode of learning again.</p>
+
+<p><strong>How did I get to machine learning?</strong> A couple of months ago, I started to listen to the <a target="_blank" rel="noopener noreferrer" href="http://ocdevel.com/podcasts/machine-learning">Machine Learning Guide podcast</a>. I found out about it by chance and highly recommend it to get you an introduction for machine learning. Tyler Renelle is doing an amazing job to get you excited about the topic. I almost feel like I am following him on the same path to learn about machine learning now. Even though I didn&rsquo;t actively plan about learning ML, it was interesting to hear about all those foreign concepts. There it was again; this excitement when everything is unexplored. I felt like a whole new world opened up in front of me. It was the same feeling when <a href="../what-is-an-api-javascript/index.html">I finally got the foot into web development</a>.</p>
+
+<p>As I read about a couple of machine learning articles, the course on <a target="_blank" rel="nofollow noopener noreferrer" href="https://click.linksynergy.com/link?id=yL1MQRWYyXQ&amp;offerid=467035.1560515719&amp;type=2&amp;murl=https%3A%2F%2Fwww.coursera.org%2Flearn%2Fmachine-learning">Machine Learning by Andrew Ng</a> was the by far most recommended to get started in machine learning. I have never taken an online course from start to end before, even though I actively give these online courses myself, but I decided to give it a shot this time. Fortunately, the course had started one week ago. So I enrolled in it and by now finished it. It&rsquo;s a blast and I recommend everyone who wants to get into ML to take it. Even though it&rsquo;s a big commitment in the first place to enroll in the course for 12 weeks. But more about it later.</p>
+
+<p>After university, I immediately took a job to work on a large scale application in JavaScript. So I never had the chance to apply most of my technical and mathematical learnings that I learned at university. Yet it was great to grow in web development and JavaScript over the last years and I don&rsquo;t want to miss that time. But when I started to learn about machine learning, it was a pleasure to cram out all the learnings in math. Suddenly I had a use case where it would make sense to take the derivative of a function: gradient descent. Why aren&rsquo;t schools and universities showing these real world use cases in a simplified version to motivate their students with hands-on problems? Learning all the theoretical things is fine, but when you finally apply the derivative for an optimization problem, it actually becomes exciting. It was always difficult for me to pick up a book about plain math. But as I started to relearn the math for machine learning again, I had an applicable domain for it. So I started to relearn all those things from university which obviously go beyond taking the derivative.</p>
+
+<p><strong>So why is this article about machine learning in JavaScript?</strong> If you are coming from web development as I do, you might know how difficult it can be to make the leap over to another domain such as machine learning. It comes with its own constraints. Not only the whole domain with its algorithms is different, but also its programming languages suited for machine learning paired with mathematical concepts from linear algebra, calculus and statistics. Personally, I found it an interesting strategy to boil down the different learning parts in machine learning: algorithms, programming languages (e.g. Python) and mathematical concepts. When I looked at those, I knew that I would definitely have to learn about the machine learning algorithms themselves and the underlying mathematical concepts. But I could strip out the best suited machine learning programming language and replace it with a language where I felt most efficient: JavaScript.</p>
+
+<p>The following article should give you a <strong>gentle introduction to machine learning from a web developer&rsquo;s perspective</strong>. It should show you the opportunities in the field of machine learning and why it could be an advantage to learn about those things with JavaScript as a web developer now. Furthermore, it should give you guidance on how to approach the topic without learning everything from scratch. You can leverage the implementation details in JavaScript and focus on the theoretical parts: algorithms and mathematics. If you are familiar with the topic and have improvements for the article, please don&rsquo;t hesitate to reach out to me. I am still learning about the topic myself and I would be grateful for any nudges in the right direction. After all, the guidance I give only describes my learning path, but I hope that others can make use of it.</p>
+
+<h2 class="chapter-header" id="machine-learning-javascript">Machine Learning in JavaScript? What&#39;s wrong with you?</h2>
+
+<p>By now I can hear the crowd yelling: JavaScript is not suited for machine learning. You may be right. But there are a couple of things why JavaScript could actually make sense to learn about machine learning as a web developer. And maybe not only as a web developer. Personally I think it has huge potential. That&rsquo;s why I attempt to make the topic more accessible for web developers.</p>
+
+<p>As mentioned before, you might be already proficient in JavaScript. You don&rsquo;t have to learn another programming language from scratch. You can apply the theoretical parts of machine learning in any language. So why not JavaScript? Then you only have to learn about the theoretical parts in ML by applying the implementation details in JavaScript in the early stages. Afterward, you can always switch to another language for machine learning. Nobody takes that away from you. But you decide how to break down the learning paths for deploying your own learning curve and experience. You keep the overwhelming amount of things to learn to a minimum and thus might be better off to stay in a <a href="../lessons-learned-deep-work-flow/index.html">state of flow</a> by keeping challenges ahead and your level of skill in balance.</p>
+
+<div class="row">
+  <div class="col-xs-6 col-centered">
+    <div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fmachine-learning-javascript-web-developers%2f&amp;media=https://chrispaul.dev/img%2fposts%2fmachine-learning-javascript-web-developers%2fstate-of-flow.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/machine-learning-javascript-web-developers/state-of-flow.jpg"
+            data-is-src-set=""
+            alt="state of flow"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+  </div>
+</div>
+
+<p>JavaScript is evolving with a rapid speed. It is applied in several domains by now where nobody would have seen it a couple of years ago. You can see it on <a target="_blank" rel="noopener noreferrer" href="https://facebook.github.io/react-native/">mobile devices</a>, <a target="_blank" rel="noopener noreferrer" href="https://electronjs.org/">desktop applications</a>, <a target="_blank" rel="noopener noreferrer" href="https://tessel.io/">embedded systems</a> and of course <a target="_blank" rel="noopener noreferrer" href="https://nodejs.org/en/">backend applications</a>. It&rsquo;s not all about web development anymore. So why not machine learning? Maybe it becomes computational and implementation-wise efficient to write machine learning algorithms in JavaScript eventually. Recently a couple of libraries emerged which give us a framework around algorithms and neural networks. Those libraries make machine learning computational efficient by using WebGL in the browser. Perhaps it&rsquo;s not the best idea to train machine learning models in the browser, but using pre-trained models in the browser might be a promising field in the future. Last but not least, maybe it is just used as <strong>a bridge for web developer entering the field of machine learning</strong> but using a better suited programming language afterward. Nobody knows, but I want you to think about these possibilities.</p>
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fmachine-learning-javascript-web-developers%2f&amp;media=https://chrispaul.dev/img%2fposts%2fmachine-learning-javascript-web-developers%2fjavascript-domains.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/machine-learning-javascript-web-developers/javascript-domains.jpg"
+            data-is-src-set=""
+            alt="javascript domains"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<p><strong>But what about the performance?</strong> Machine learning algorithms are highly dependent on performance. Often they are using so called vectorized implementations to stay computational efficient. Graphical computations performed by the GPU are similarly used (see image; taken from webgltutorials.org). That&rsquo;s what makes C++ as a programming language so interesting for machine learning. Therefore, one would assume that JavaScript itself is not the best suited programming language. However, with <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">WebGL</a> becoming popular for GPU accelerates executions in the browser, it is utilized for recent machine learning libraries in JavaScript too.</p>
+
+<div class="row">
+  <div class="col-xs-8 col-centered">
+    <div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fmachine-learning-javascript-web-developers%2f&amp;media=https://chrispaul.dev/img%2fposts%2fmachine-learning-javascript-web-developers%2fwebgl-pipeline.png&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/machine-learning-javascript-web-developers/webgl-pipeline.png"
+            data-is-src-set=""
+            alt="vectorization implementation"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+  </div>
+</div>
+
+<p>Another concern exists regarding the training phase. Why should it happen in the browser at all even though it is supported by the GPU? In highly efficient machine learning architectures the computation is offloaded to distributed systems. But there again, recent machine learning libraries for JavaScript are used with pre-trained models (inference phase) and not the training phase in the browser. The model comes from a server and is only used for further predictions and visualizations in the browser. So why shouldn&rsquo;t it be possible to offer a framework around this interplay of training phase backend and inference phase frontend? As mentioned before, using pre-trained models in the browser could be a common practice in the future. People are working eagerly on making those models smaller in size. So it&rsquo;s not as difficult anymore as it was in the past to transfer them via a remote API.</p>
+
+<p>One big argument against machine learning in JavaScript is its lack of libraries. But that&rsquo;s not so true anymore. There are a bunch of libraries helping you out. For instance, consider a couple of programming languages in machine learning and the areas where they are primarily used:</p>
+
+<ul>
+<li><strong>Math / Data Analysis</strong>: Matlab, Octave, Julia, R</li>
+<li><strong>Data Mining</strong>: Scala, Java (e.g. Hadoop, Spark, Deeplearning4j)</li>
+<li><strong>Performance</strong>: C/C++ (e.g. GPU accelerated)</li>
+</ul>
+
+<p>Next, you can see why Python makes so much sense in machine learning. It has a suitable set of libraries for the different tasks assigned to the programming languages from above and even more good fitting solutions:</p>
+
+<ul>
+<li><strong>Math</strong>: numpy</li>
+<li><strong>Data Analysis</strong>: Pandas</li>
+<li><strong>Data Mining</strong>: PySpark</li>
+<li><strong>Server</strong>: Flask, Django</li>
+<li><strong>Performance</strong>:
+
+<ul>
+<li>TensorFlow (because it is written with a Python API over a C/C++ engine)</li>
+<li>Keras (sits on top of TensorFlow)</li>
+</ul></li>
+</ul>
+
+<p>So yeah, it seems like that it just makes sense to use Python for machine learning. But the JavaScript ecosystem offers a rich set of libraries suited for most of the tasks too. Because most of them are not only used in machine learning, the JavaScript ecosystem developed a couple of sophisticated solutions beforehand:</p>
+
+<ul>
+<li><strong>Math</strong>: math.js</li>
+<li><strong>Data Analysis</strong>: d3.js</li>
+<li><strong>Server</strong>: node.js (express, koa, hapi)</li>
+<li><strong>Performance</strong>:
+
+<ul>
+<li>Tensorflow.js (e.g. GPU accelerated via WebGL API in the browser)</li>
+<li>Keras.js</li>
+</ul></li>
+</ul>
+
+<p>Even though a library such as math.js is not running on the GPU for expensive computations, I guess one could use utility libraries such as <a target="_blank" rel="noopener noreferrer" href="https://github.com/gpujs/gpu.js">gpu.js</a> to accelerate its performance. Furthermore, the recent high level machine learning libraries such as Tensoflow.js come with their own set of mathematical functions which are indeed accelerated by the GPU. In the future you would either use one of those dedicated machine learning libraries for JavaScript which are GPU accelerated or math.js gets its own GPU accelerated wrapper eventually.</p>
+
+<p>Except for the last libraries (Tensorflow.js and Keras.js) on the previous list, none of the other libraries is strictly related to machine learning. They were developed independently and thus have a strong community on their own. So JavaScript isn&rsquo;t so much behind other programming languages when it comes to the toolset. But for sure, the sky is the limit. There are endless of improvements which could be made or libraries which are needed. That&rsquo;s just another opportunity for open source developers to implement the necessary tools around it. And I assume in the future, there will evolve sophisticated libraries for machine learning in JavaScript. Just in the recent time, there were a couple of interesting libraries released or announced for machine learning in JavaScript.</p>
+
+<ul>
+<li><p><a href="https://js.tensorflow.org/">Tensorflow.js</a> (previously <a href="https://deeplearnjs.org">Deeplearn.js</a>): The library by Google is GPU accelerated via WebGL API and used for predictions by using pre-trained models in inference mode in the browser but also for the training mode itself. It mirrors the API of the popular <a target="_blank" rel="noopener noreferrer" href="https://www.tensorflow.org/">TensorFlow</a> library.</p></li>
+
+<li><p><a href="https://tenso.rs/">TensorFire</a> and <a href="https://github.com/transcranial/keras-js">Keras.js</a>: Yet another pair of two GPU accelerated libraries which are used for pre-trained models in inference mode. They allow you to write your models in <a target="_blank" rel="noopener noreferrer" href="https://keras.io/">Keras</a> or TensorFlow with Python. Afterward you can deploy them to the web by using TensorFire or Keras.js.</p></li>
+</ul>
+
+<p>Only 2017 brought up those exciting and promising libraries. So I am curious what 2018 will offer us.</p>
+
+<p>As you can see, so far the article pointed out a couple of concerns using  JavaScript as your programming language to get started in machine learning. However, most of these reasons are not as much valid anymore as they were a couple of years ago. JavaScript is evolving and thus its capabilities of applying machine learning with it. Even though it may be only the bridge for you to learn about machine learning in the first place. Afterward, learn a more suited programming language for it. But then you have only to learn the programming language without worrying too much about the machine learning part anymore. Even though learning machine learning is an ongoing process and you will always learn something new in this fast paced domain. But it&rsquo;s exciting, because it has so many facets.</p>
+
+<h2 class="chapter-header" id="machine-learning-javascript">Machine Learning as an Opportunity for Web Developer</h2>
+
+<p>I made my own motivation clear in the beginning of this article. However, that&rsquo;s not all to the story. There are plenty of reasons and opportunities to dive into machine learning as a web developer.</p>
+
+<p>First of all, it is always an opportunity to broaden ones horizon. It doesn&rsquo;t only apply to machine learning. But whenever you feel you are getting too comfortable, take it as opportunity to learn something new. You don&rsquo;t need to take the practical way of implementing machine learning algorithms in JavaScript, maybe only learning about the math and the algorithms on a theoretical level suffices for you. After all, you keep your mind sharp by learning.</p>
+
+<p>Second, there are plenty of job opportunities out there in the domain of machine learning. Sure, it is a overly hyped topic in the recent years, but not without any reason. Students and researcher in the field are hired straight away from university. There seems to be a huge demand in the general fields of AI, data analysis and machine learning. <a target="_blank" rel="noopener noreferrer" href="https://www.switchup.org/research/best-data-science-bootcamps">Bootcamps are popping up or shift their focus to data science</a>. JavaScript can be the entry point into machine learning for web developers. See it as opportunity to take one step beyond web development and maybe to a wider range of job opportunities. Perhaps the market in web development paired with machine learning grows in the next years. But even if it doesn&rsquo;t, you can learn a programming language suited for machine learning to apply all your theoretical learnings in it. After all, <a target="_blank" rel="noopener noreferrer" href="https://medium.com/@TebbaVonMathenstien/are-programmers-headed-toward-another-bursting-bubble-528e30c59a0e">maybe there comes the time when web developers have to make an important decision</a> to get into a different domain than web development. Maybe their own works becomes redundant due to machine learning. So why not learning ML?</p>
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fmachine-learning-javascript-web-developers%2f&amp;media=https://chrispaul.dev/img%2fposts%2fmachine-learning-javascript-web-developers%2fmachine-learning-trend.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/machine-learning-javascript-web-developers/machine-learning-trend.jpg"
+            data-is-src-set=""
+            alt="javascript domains"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<p>Third, even though JavaScript facilitates a lot of utility libraries for machine learning, there is plenty of space for improvements in the domain. Just thinking briefly about it, I am able to come up with a few things. For instance, speaking about computational efficiency, most of the libraries are not GPU accelerated yet. They would benefit a lot from these to be computational efficient for machine learning in the browser. In terms of visualizations, there are a couple of charting libraries, such as d3.js as low level visualization library, but there aren&rsquo;t any suitable abstractions for those visualizations applicable for machine learning related problems. It should be simpler to <a target="_blank" rel="noopener noreferrer" href="http://cs.stanford.edu/people/karpathy/svmjs/demo/">plot the result of a support vector machine</a> or to visualize a performing neural network explicitly and not <a target="_blank" rel="noopener noreferrer" href="https://github.com/javascript-machine-learning/mnist-neural-network-deeplearnjs">not implicitly based on the used domain problem</a>. There is enough space for open source combining machine learning and JavaScript. You could contribute to widen the bridge for web developers entering the field of machine learning.</p>
+
+<div class="row">
+  <div class="col-xs-8 col-centered">
+    <div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fmachine-learning-javascript-web-developers%2f&amp;media=https://chrispaul.dev/img%2fposts%2fmachine-learning-javascript-web-developers%2fneural-network-training.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/machine-learning-javascript-web-developers/neural-network-training.jpg"
+            data-is-src-set=""
+            alt="neural network training"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+  </div>
+</div>
+
+<p>Last but not least, there is great effort involved on the side of ML open source contributors (e.g. Tensorflow.js, TensorFire, Keras.js, Brain.js) to enable machine learning in the browser. However, most often the documentation is suited for machine learners entering the browser domain and not the other way around as I described it in this article. Thus these solutions come with a lot of fundamental machine learning knowledge which isn&rsquo;t taught along the way. In return, it makes it difficult for web developers to enter the machine learning domain. Thus there is a great opportunity to pave the way for web developers into the domain of machine learning by making those fundamental topics and ported libraries accessible in an educational way. That&rsquo;s the point where I try to tie in my knowledge in teaching about those things. In the future, I want to give you the guidance if you are keen to enter the field of machine learning as web developer. Read more about this in the final paragraphs of this article.</p>
+
+<h2 class="chapter-header" id="machine-learning-introduction">Introduction to Machine Learning</h2>
+
+<p>If you are familiar with machine learning, feel free to skip this section. Entering the field of machine learning as a beginner can be a buzzword heavy experience. Where should you start? There is so much terminology to clarify in the beginning. Is it <strong>AI or machine learning</strong>? What&rsquo;s all the hype about <strong>deep learning</strong>? And how fits <strong>data science</strong> in this area?</p>
+
+<div class="row">
+  <div class="col-xs-8 col-centered">
+    <div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fmachine-learning-javascript-web-developers%2f&amp;media=https://chrispaul.dev/img%2fposts%2fmachine-learning-javascript-web-developers%2fmachine-learning-buzz.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/machine-learning-javascript-web-developers/machine-learning-buzz.jpg"
+            data-is-src-set=""
+            alt="machine learning buzzwords"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+  </div>
+</div>
+
+<p>Let&rsquo;s start our journey with <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Artificial_general_intelligence">AI (artificial intelligence)</a>. <em>&ldquo;It is the intelligence of a machine that could successfully perform any intellectual task that a human being can.&rdquo;</em> There is a great analogy in the <em>Machine Learning Guide</em> podcast to convey the information of AI: Whereas the goal of the industrial revolution was the simulation of the physical body through machines, it is the goal of AI to simulate the brain for mental tasks through algorithms. So how does machine learning relate to AI? Let&rsquo;s have a look at the a couple of subfields of AI:</p>
+
+<ul>
+<li>searching and planning (e.g. playing a game with possible actions)</li>
+<li>reasoning and knowledge representation (structuring knowledge to come to conclusions)</li>
+<li>perception (vision, touch, hearing)</li>
+<li>ability to move and manipulate objects (goes into robotics)</li>
+<li>natural language processing (NLP)</li>
+<li>learning</li>
+</ul>
+
+<p>The last one represents machine learning. As you can see, it is only a subfield of AI. However, it might be the only essential core fragment of AI because it reaches into the other subfields of AI too. It reaches into them even more over the recent time. For instance, vision as subfield becomes more of a part of <a target="_blank" rel="noopener noreferrer" href="http://www.themtank.org/a-year-in-computer-vision">applied machine learning</a>. Where other techniques, e.g. domain specific algorithms, dominated the domain in the past, machine learning enters the field now. Now deep neural networks are often used for the domain. So what are applicable domains of AI and therefore most often machine learning? A bunch of domains and examples:</p>
+
+<ul>
+<li>Image Recognition (see referenced linked above)</li>
+<li>Web (e.g. Search Engines, Spam Filters)</li>
+<li>Art (e.g. <a target="_blank" rel="noopener noreferrer" href="https://github.com/jcjohnson/neural-style">Painting</a>)</li>
+<li>Autonomous Vehicles (e.g. <a target="_blank" rel="noopener noreferrer" href="https://www.tesla.com/autopilot">Tesla Autopilot</a>, awareness comes up for <a target="_blank" rel="noopener noreferrer" href="https://www.theguardian.com/technology/2017/aug/20/elon-musk-killer-robots-experts-outright-ban-lethal-autonomous-weapons-war">Robots in Warfare</a>)</li>
+<li>Medical Diagnosis</li>
+<li>Playing Games (e.g. <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=9xlSy9F5WtE">Go</a>, <a target="_blank" rel="noopener noreferrer" href="https://deepmind.com/blog/deepmind-and-blizzard-open-starcraft-ii-ai-research-environment/">StarCraft</a>)</li>
+</ul>
+
+<p>So machine learning is a subfield of AI. Let&rsquo;s dive into the subject itself. There are a couple of great definitions for machine learning, yet when I started out with the subject, I found the one by Arthur Samuel (1959) most memorable: <em>&ldquo;The field of study that gives computers the ability to learn without being explicitly programmed.&rdquo;</em> How does it work? Basically machine learning can be grouped into three categories: <strong>supervised learning, unsupervised learning and reinforcement learning</strong>. It&rsquo;s quite an evolution from the former to the latter. Whereas the former is more concrete, the latter becomes more abstract (yet exciting and unexplored). The former, supervised learning, gives the best entry point to machine learning and is used therefore in several educational machine learning courses to get you into the field. In supervised learning, an algorithm is trained to recognize a pattern in a given data set. The data set is split up into input (x) and output (y). The algorithm is trained to map input to output by learning with the given data set (<strong>training phase</strong>) the underlying pattern. Afterward, when the algorithm is trained, it can be used to make predictions for future input data points to come up with output data points (<strong>inference phase</strong>). During the training phase, a <strong>cost function</strong> estimates the performance of the current algorithm and adjusts the parameters of the algorithm based on those outcomes (penalization). The algorithm itself can be simplified into a simple function to map an input x to an output y. It&rsquo;s called <strong>hypothesis</strong> or <strong>model</strong>.</p>
+
+<p>Predicting housing prices in Portland is one popular machine learning problem for supervised learning. Given a data set of houses whereas each house has a size in square meter (x), the price (y) of the house should be predicted. Thus the data set consists a list of sizes and prices for houses. It is called a <strong>training set</strong>. Each row in the training set represents a house. The input x, in this case the size of the house, is called a <strong>feature</strong> of the house. Since there is only one feature for the houses in the training set, it is called a <strong>univariate</strong> training set. If there are more features for a house, such as number of bedrooms and size, it becomes a <strong>multivariate</strong> training set. Increasing the size of the training size (m) and the size of features (n) can lead to an improved prediction of y whereas y is called a <strong>label</strong>, <strong>target</strong> or simply the output. In a nutshell: A model is trained with a penalizing cost function to predict labels from data points and their features.</p>
+
+<p>Tom Mitchell (1998): <em>&ldquo;A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.&rdquo;</em></p>
+
+<p>The previous use case of predicting housing prices in Portland is called a <strong>regression problem</strong>. A <strong>linear regression</strong>, as explained before, can be used to train the hypothesis to output <strong>continuous values</strong> (e.g. housing prices). Another problem in the area of supervised learning to be solved is called <strong>classification problem</strong> where a <strong>logistic regression</strong> is used to output <strong>categorical values</strong>. For instance, imagine you have a training set of T-Shirts. The features, such as width and height, can be used to make predictions for the categorical sizes X, M and L.</p>
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fmachine-learning-javascript-web-developers%2f&amp;media=https://chrispaul.dev/img%2fposts%2fmachine-learning-javascript-web-developers%2fregression-vs-classification-problem.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/machine-learning-javascript-web-developers/regression-vs-classification-problem.jpg"
+            data-is-src-set=""
+            alt="machine learning classification problem vs regression problem"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<p>The previous paragraphs were a first glimpse on supervised learning in machine learning. How does unsupervised learning work? Basically there is a given training set with features but no labels y. The algorithm is trained without any given output data in the training set. In a classification problem the algorithm has to figure out on its own to classify the data points into clusters.</p>
+
+<p>And last but not least, what about reinforcement learning? In reinforcement learning the algorithm is trained without any given data. It learns from experience by repeating a learning process. For instance, take this <a target="_blank" rel="noopener noreferrer" href="https://github.com/xviniette/FlappyLearning">flappy bird</a> which learns to win the game by using neural networks in reinforcement learning. The algorithm is learning by trial and error. The underlying mechanism is a combination of rewards and penalizations to train the bird to fly. Similar as a real bird would learn how to fly.</p>
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fmachine-learning-javascript-web-developers%2f&amp;media=https://chrispaul.dev/img%2fposts%2fmachine-learning-javascript-web-developers%2fmachine-learning-hierarchy.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/machine-learning-javascript-web-developers/machine-learning-hierarchy.jpg"
+            data-is-src-set=""
+            alt="machine learning hierarchy"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<p>Last but not least, there might be another question popping up in your head: <strong>What&rsquo;s the relationship of data science to machine learning?</strong> Data science is often associated with machine learning. So one could argue that machine learning bleeds into both domains: data science and artificial intelligence. However, data science has its own subfields such as data mining and data analysis. It can often be used coupled to machine learning, because data mining enables an algorithm to learn from mined data and data analysis enables researchers to study the outcomes of algorithms.</p>
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fmachine-learning-javascript-web-developers%2f&amp;media=https://chrispaul.dev/img%2fposts%2fmachine-learning-javascript-web-developers%2fmachine-learning-venn.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/machine-learning-javascript-web-developers/machine-learning-venn.jpg"
+            data-is-src-set=""
+            alt="machine learning venn diagram"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<p>That was a broad introduction to the field of machine learning. If you are interested in those topics related to JavaScript, keep an eye on my website over the next months. I hope to cover a few topics to give people guidance entering the field as web developers. As I said, I am learning about the topic myself and try to internalize these learnings by writing them down.</p>
+
+<h2 class="chapter-header" id="machine-learning-resources">How to learn Machine Learning as Web Developer</h2>
+
+<p>There are a bunch of resources that I want to recommend for web developers entering the field of machine learning. As for myself, I wanted to stimulate my senses for at least 12 weeks. That&rsquo;s how long it is said to complete Andrew Ng&rsquo;s machine learning course. Keep in mind that it&rsquo;s my personal roadmap and it might not be suited for everyone. But it helped me a lot following a strict routine and having enough learning material along the way. So it might help other web developers too.</p>
+
+<p>If you just want to get a feeling for the topic, start to listen to the <a target="_blank" rel="noopener noreferrer" href="http://ocdevel.com/podcasts/machine-learning">Machine Learning Guide</a> up to episode 11. Tyler Renelle has done an amazing job giving an introduction to the topic. Since it is a podcast, just give it a shot while you exercise in a gym. That&rsquo;s how I entered the field of ML.</p>
+
+<p>If you start to get excited, the next step would be to enroll in the <a target="_blank" rel="nofollow noopener noreferrer" href="https://click.linksynergy.com/link?id=yL1MQRWYyXQ&amp;offerid=467035.1560515719&amp;type=2&amp;murl=https%3A%2F%2Fwww.coursera.org%2Flearn%2Fmachine-learning">Machine Learning course</a> by Andrew Ng which takes 12 weeks for completion. It takes you on a long journey from shallow machine learning algorithms to neural networks, from regression problems to clustering problems and from theoretical knowledge in the field to applied implementations in Octave or Matlab. It is intense and challenging, but you can do it by dedicating a couple of hours each week to the course and the exercises.</p>
+
+<p>The machine learning course goes from linear regression to neural networks in 5 weeks. In the end of week 5, I was left with an overwhelming feeling. It was a combination of &ldquo;Can week 6 become even more complex?&rdquo; and &ldquo;Wow, this course taught me all the building blocks to implement a neural network from scratch&rdquo;. Andrew gives a perfect walkthrough to learn about all these concepts which build up on one another. After all, machine learning has a lot in common with the composition of functions from functional programming. But you will learn about this yourself. I can only say that it was an overwhelming feeling to see an own implementation of a neural network performing in the browser for the first time.</p>
+
+<p>Along the way, I did all the weekly assignments and solved them in Octave. In addition, I implemented most of the algorithms in JavaScript as well as as exercise for myself and as estimation how feasible it is to implement these algorithms in a different language not suited for machine learning but suited for web developers. It worked and I published all of them in a open <a target="_blank" rel="noopener noreferrer" href="https://github.com/javascript-machine-learning">GitHub organization</a>. It&rsquo;s open for everyone to contribute. But that&rsquo;s not everything to the story. I wrote about a couple of topic as well to internalize my own learnings, to get guidance from others, but also to help web developers entering the field. So if you are doing the course, check out the JavaScript implementations and walkthroughs along the way. These walkthroughs are dedicated machine learning tutorials for Node.js and the browser.</p>
+
+<ul>
+<li><a href="../linear-regression-gradient-descent-javascript/index.html">Linear Regression with Gradient Descent in JavaScript</a></li>
+<li><a href="../improving-gradient-descent-javascript/index.html">Improving Gradient Descent in JavaScript</a></li>
+<li><a href="../linear-regression-gradient-descent-vectorization-javascript/index.html">Gradient Descent with Vectorization in JavaScript</a></li>
+<li><a href="../multivariate-linear-regression-gradient-descent-javascript/index.html">Multivariate Linear Regression, Gradient Descent in JavaScript</a></li>
+<li><a href="../multivariate-linear-regression-normal-equation-javascript/index.html">Linear Regression with Normal Equation in JavaScript</a></li>
+<li><a href="../logistic-regression-gradient-descent-classification-javascript/index.html">Logistic Regression with Gradient Descent in JavaScript</a></li>
+<li><a href="../neural-networks-deeplearnjs-javascript/index.html">Neural Networks in JavaScript with deeplearn.js</a></li>
+</ul>
+
+<p>It&rsquo;s not comprehensive yet, for instance a neural network implementation with vanilla JavaScript is missing, but I hope to complete all the bare bones algorithms in JavaScript at some point. The neural network implementation is done with a recently released library called deeplearn.js by Google which got rebranded to Tensorflow.js. I was pretty excited to use it for the first time, and it was my personal reward, after doing the course for 5 weeks, to use a library instead of implementing neural networks in JavaScript from scratch. Have a look at the <a target="_blank" rel="noopener noreferrer" href="https://github.com/javascript-machine-learning/color-accessibility-neural-network-deeplearnjs">neural network in action to improve web accessibility</a>. Another one <a target="_blank" rel="noopener noreferrer" href="https://github.com/javascript-machine-learning/mnist-neural-network-deeplearnjs">is learning digets using the MNIST databse and visualizes its outcome</a>. Maybe you see it as opportunity as well to contribute to the GitHub organization. Next on the agenda are K-Means, Support Vector Machines (SVM) and principal component analysis (PCA) from scratch in JavaScript!</p>
+
+<p>After you have completed week 5 of the machine learning course, you should have a good feeling about what&rsquo;s machine learning and how to solve problems with it. Afterward, the course continues with shallow algorithms for supervised learning and unsupervised learning. It gives elaborated guidance of how to improve your implemented machine learning algorithms and how to scale them for large data sets. When you have completed week 5, you should continue as well with the Machine Learning Guide podcast to learn more about shallow algorithms and neural networks. I listened to it until episode 17, because afterward it goes heavily into natural language processing.</p>
+
+<p>In addition, over the course of those weeks, I read <a target="_blank" rel="nofollow noopener noreferrer" href="http://amzn.to/2AthAGm">The Master Algorithm</a> by Brilliance Audio to get an overview about the topic, its different perspectives and stakeholders, and its history. After that, I started to read the open source ebook <a target="_blank" rel="noopener noreferrer" href="http://www.deeplearningbook.org/">Deep Learning</a> (by Ian Goodfellow and Yoshua Bengio and Aaron Courville). It happened after week 5 of the course and fitted perfectly to all the foundational knowledge I learned so far. Even though I found it quite a challenging book so far, I can recommend both books to give you even more guidance along the way. Once I finish the second book, I want to read the free ebooks <a target="_blank" rel="noopener noreferrer" href="http://neuralnetworksanddeeplearning.com/">Neural Networks and Deep Learning by Michael Nielsen</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.safaribooksonline.com/library/view/deep-learning/9781491924570/">Deep Learning by Adam Gibson, Josh Patterson</a>. Do you have any other book or podcast recommendations? You can leave a comment below!</p>
+
+<p>What else is out there to learn machine learning? Now after I completed the course by Andrew Ng, I will take some rest to internalize all those learnings. Likely I will write more about them for my blog. You can subscribe to the Newsletter if you are interested in hearing about them. However, there a bunch of other courses out there which I want to check out.</p>
+
+<ul>
+<li><a target="_blank" rel="nofollow noopener noreferrer" href="https://www.udacity.com/course/machine-learning-engineer-nanodegree--nd009">Machine Learning Engineer Nanodegree</a> on Udacity</li>
+<li><a target="_blank" rel="nofollow noopener noreferrer" href="https://click.linksynergy.com/link?id=yL1MQRWYyXQ&amp;offerid=467035.11421701896&amp;type=2&amp;murl=https%3A%2F%2Fwww.coursera.org%2Fspecializations%2Fdeep-learning">Deep Learning Specialization</a> on Coursera</li>
+<li><a target="_blank" rel="nofollow noopener noreferrer" href="http://course.fast.ai/">Practical Deep Learning for Coders</a> on Fast.ai</li>
+</ul>
+
+<p>These are all courses recommended along with the Machien Learning course by Andrew Ng. Fast.ai has a course on <a target="_blank" rel="nofollow noopener noreferrer" href="http://www.fast.ai/2017/07/17/num-lin-alg/">computational linear algebra</a> for the underlying math in ML too. In general, machine learning involves lots of math. If you need a refresher on certain topics, I can highly recommend Khan Academy.</p>
+
+<ul>
+<li><a target="_blank" rel="nofollow noopener noreferrer" href="https://www.khanacademy.org/math/linear-algebra">Linear Algebra</a></li>
+<li><a target="_blank" rel="nofollow noopener noreferrer" href="https://www.khanacademy.org/math/statistics-probability">Statistics</a></li>
+<li><a target="_blank" rel="nofollow noopener noreferrer" href="https://www.khanacademy.org/math/calculus-home">Calculus</a></li>
+</ul>
+
+<p>Getting back to topic: Machine Learning in JavaScript. What kind of libraries are out there to support you for machine learning in JavaScript? If you attempt to go the puristic way of implementing math operations from scratch, there is no way around <a target="_blank" rel="noopener noreferrer" href="http://mathjs.org/">math.js</a> (e.g. <a href="../linear-algebra-matrix-javascript/index.html">matrix operations</a>). However, if you are using high level libraries such as Keras.js or Tensorflow.js, you will have the most important mathematical methods integrated by using their NDArrays, Tensors and mathematical operations. Otherwise, there are a couple of other libraries, not mentioning the mentioned again, which I didn&rsquo;t try yet. Keep in mind that not all of them are GPU accelerated, but I guess when it comes to computational efficiency, a couple of them will offer it in the future.</p>
+
+<ul>
+<li><a target="_blank" rel="noopener noreferrer" href="https://github.com/NathanEpstein/Pavlov.js">Pavlov.js</a> (Markov Decision Processes)</li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://github.com/karpathy/svmjs">SVM.js</a> (Support Vector Machines)</li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://github.com/harthur/brain">Brain.js</a> (Neural Networks)</li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://github.com/cazala/synaptic">Synaptic</a> (Neural Networks)</li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://github.com/wagenaartje/neataptic">Neataptic</a> (Neural Networks, Neuroevolution)</li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://github.com/mil-tokyo/webdnn">WebDNN</a> (Neural Networks, Inference Mode)</li>
+</ul>
+
+<p>There are even more machine learning related libraries in JavaScript for the other subfields of AI.</p>
+
+<ul>
+<li><a target="_blank" rel="noopener noreferrer" href="https://github.com/NaturalNode/natural">Natural</a> (<a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Natural_language_processing">Natural Language Processing</a>)</li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://github.com/thisandagain/sentiment">Sentiment</a> (<a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Sentiment_analysis">Sentiment Analysis</a>)</li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://github.com/ucisysarch/opencvjs">OpenCV.js</a> (<a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Computer_vision">Computer Vision</a> with OpenCV for the Browser)</li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://github.com/justadudewhohacks/opencv4nodejs">opencv4nodejs</a> (Computer Vision with OpenCV for Node.js)</li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://github.com/justadudewhohacks/face-recognition.js">face-recognition.js</a> (Face Recognition)</li>
+<li><a target="_blank" rel="noopener noreferrer" href="https://github.com/justadudewhohacks/face-api.js">face-api.js</a> (Face Recognition based on Tensorflow.js)</li>
+</ul>
+
+<p>Another library didn&rsquo;t make it in the list, because it is is not actively maintained: <a target="_blank" rel="noopener noreferrer" href="https://github.com/karpathy/convnetjs">ConvNetJS</a>. In addition, there are two more libraries implementing shallow machine learning algorithms in JavaScript: <a target="_blank" rel="noopener noreferrer" href="https://github.com/junku901/machine_learning">machine_learning</a> and <a target="_blank" rel="noopener noreferrer" href="https://github.com/mljs/ml">ml</a>. In those libraries you can find logistic regression, k-means clustering, decisions trees, k-nearest neighbours, principal component analysis and naive bayes for JavaScript.</p>
+
+<p>Many of those libraries are only for machine learning in Node.js. Thus they are not using the computational efficient WebGL in the browser.</p>
+
+<p>If you have any other recommendations, please leave a comment below. If you know whether certain libraries are active or not maintained anymore, please reach out as well. I would love to keep this article updated for the future.</p>
+
+<h2 class="chapter-header" id="machine-learning-programming-languages">More Programming Languages for Machine Learning</h2>
+
+<p>After learning and applying all the theoretical concepts in a programming languages of your choice (e.g. JavaScript), you can always come back to learn a programming languages best suited for machine learning. It can be a great learning experience in itself to experience how much more efficient something can be implemented in a different language. I had the same feeling when solving mathematical equations in Octave when doing them in JavaScript before.</p>
+
+<p>A previous paragraph has shown a couple of machine learning languages (Python, C/C++, R, Scala, Java, Matlab, Octave, Julia) and their fields of expertise. The one outlier facilitating everything with its libraries seems to be Python. I cannot give any profound recommendation here, because I didn&rsquo;t use any of those languages in relation to machine learning, but personally I would choose Python if I would continue to learn about the topic after applying it in JavaScript. The one most recommended resource regarding learning Python was <a target="_blank" rel="noopener noreferrer" href="https://learnpythonthehardway.org/">Learn Python the Hard Way</a>. Andrew Ng mentions in his machine learning course that often machine learning algorithms are developed as prototype in Octave or Matlab but implemented in Python afterward. Therefore I am still figuring out a pragmatic learning roadmap as a combination of video, text and audio material for Python as I did for machine learning itself. If you have any recommendations, please leave a comment below.</p>
+
+<hr class="section-divider">
+
+<p>In the end, I am curious about your feedback regarding machine learning in JavaScript for web developers. As said, I am learning on a daily basis about the topic myself at the moment. Most likely I will invest more time in this field in 2018, but I would love to hear your thoughts about it too. Are you staying with me on this journey?</p>
+
+<p>Furthermore, I am curious if you have any opportunities for me to get more into machine learning in a professional way. At the moment, I am actively freelancing and consulting in JavaScript and web development and building my own projects on the side, but I would love to <strong>take the leap into machine learning for a professional position</strong>. I am eager to learn and would look up to mentors who are keen to teach someone new to the field of machine learning. So please take a moment to think about it and reach out to me in case there is anything where you can help me out :)</p>
+
+<p>Last but not least, I want to announce <a target="_blank" rel="noopener noreferrer" href="https://bri.im">BRIIM as a movement for machine learning in JavaScript</a>. I hope I don&rsquo;t go out on a limb with it, but I am looking forward seeing JavaScript becoming more accessible for machine learning in the next years. That&rsquo;s why I started the BRIIM movement as a place for everyone to come together. <strong>It&rsquo;s an opportunity to act in concert as a community and not as individuals.</strong> Instead of library communities being isolated from each other, it should give an entry point for machine learning in JavaScript to work under a collective movement. Instead of finding articles about machine learning all over the web, it would be great to have one well maintained resource for it. Instead of scraping together all the pieces to learn about machine learning in JavaScript, there should be one high qualitative resource to pave the way for beginners. It&rsquo;s a movement to contribute together towards widening the bridge for JavaScript enthusiast entering the field of machine learning. So I hope to see you on the other side to join me on this journey.</p>
+
+<p>If you have made it so far in this article, thank you so much for reading it!</p>
+
+
+                            
+<div class="feedback-and-share text-center">
+    <hr>
+    
+    <p class="lead">
+        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
+    </p>
+    
+    
+        <p class="lead">
+            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+        </p>
+    
+</div>
+
+
+                            
+                                <div class="box-inline col-md-12">
+    <div class="col-md-12 text-center">
+        <h2 class="newsletter">The Road to learn React</h2>
+        
+            <div class="col-md-4">
+                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+            </div>
+        
+        <p class="lead">
+            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
+        </p>
+        <a
+            class="btn btn-template-main"
+            href="https://roadtoreact.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Get the Book for free <i class="fa fa-chevron-right"></i>
+        </a>
+        
+            <div>
+                <a
+                    href="https://amzn.to/2QY2ONp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get it from Amazon
+                </a>
+            </div>
+        
+    </div>
+</div>
+                            
+                        </div>
+
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'rwieruch';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </article>
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase">Take Part</h2>
+            </div>
+
+            <div class="col-md-12 text-center">
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+                
+            </div>
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+        <footer id="subfooter">
+    <div class="container">
+
+        <div class="col-md-5 col-sm-6">
+
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../redux-vs-usereducer/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="React&#39;s useReducer vs Redux"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../publish-npm-package-node/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to publish a npm package?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../react-scroll-to-item/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to Scroll to Item in React?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+
+        
+        <div class="col-md-5 col-md-offset-2 col-sm-6">
+
+            <h4>About Me</h4>
+
+            <div class="blog-entries">
+                <div class="item same-height-row clearfix">
+                    <div class="profile same-height-always">
+                        <img
+                            class="img-lazy img-responsive"
+                            data-lazy-src="//img/page/profile.jpg"
+                            alt="profile"
+                        >
+                    </div>
+                    <div class="name same-height-always">
+                        <p>
+                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+        <footer id="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-left">
+          
+            <li>© Chris Paul</li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline footer-social-buttons text-center">
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-right">
+          
+            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+
+    
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-65599459-2', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="../js/script.js"></script>
+
+
+
+  </body>
+</html>

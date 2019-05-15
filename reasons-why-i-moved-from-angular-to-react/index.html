@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="google-site-verification" content="We9gRQmlTIjMkOPPjPWDQTXd15nWA6tBEYlxQ2cMpEg" />
+
+  <title>
+    10 Reasons why I moved from Angular to React - CPaul
+  </title>
+
+  <meta name="author" content="" />
+
+  
+    <meta name="description" content="The article should help people to understand the benefits of React and Angular for making an educated decision to choose between Angular or React. It tells my story why I moved from Angular to React after using both libraries for years. It&#39;s not just another click-bait article, but an article with lots of experiences ...">
+  
+
+  <meta name="theme-color" content="#38bb6c"/>
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  
+  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../img/favicon/manifest.json">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+
+  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+
+  
+  
+<meta itemprop="name" content="10 Reasons why I moved from Angular to React">
+<meta itemprop="description" content="The article should help people to understand the benefits of React and Angular for making an educated decision to choose between Angular or React. It tells my story why I moved from Angular to React after using both libraries for years. It&#39;s not just another click-bait article, but an article with lots of experiences ...">
+
+
+
+    <meta itemprop="image" content="https://chrispaul.dev/img/posts/reasons-why-i-moved-from-angular-to-react/banner_640.jpg">
+
+
+
+<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+
+
+<meta itemprop="wordCount" content="2907">
+
+
+  
+  <meta name="keywords" content="angular or react">
+
+  <meta property="og:title" content="10 Reasons why I moved from Angular to React - CPaul">
+
+
+  <meta property="og:description" content="The article should help people to understand the benefits of React and Angular for making an educated decision to choose between Angular or React. It tells my story why I moved from Angular to React after using both libraries for years. It&#39;s not just another click-bait article, but an article with lots of experiences ..." />
+
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrispaul.dev/reasons-why-i-moved-from-angular-to-react/" />
+<meta property="og:image" content="https://chrispaul.dev/img/posts/reasons-why-i-moved-from-angular-to-react/banner_640.jpg" />
+
+  
+
+    <meta name="news_keywords" content="angular or react" />
+
+  
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/reasons-why-i-moved-from-angular-to-react/banner_640.jpg"/>
+
+
+
+<meta name="twitter:title" content="10 Reasons why I moved from Angular to React"/>
+<meta name="twitter:description" content="The article should help people to understand the benefits of React and Angular for making an educated decision to choose between Angular or React. It tells my story why I moved from Angular to React after using both libraries for years. It&#39;s not just another click-bait article, but an article with lots of experiences ..."/>
+<meta name="twitter:site" content="@rwieruch"/>
+<meta name="twitter:domain" content="rwieruch"/>
+
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="../index.html">
+                    <img src="../img/page/logo.svg" alt="10 Reasons why I moved from Angular to React logo" class="img-lazy">
+                    <span class="sr-only">10 Reasons why I moved from Angular to React - go to homepage</span>
+                </a>
+
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../index.html">Blog</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../work-with-me/index.html">Work with me</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../about/index.html">About</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freasons-why-i-moved-from-angular-to-react%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=10%20Reasons%20why%20I%20moved%20from%20Angular%20to%20React%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2freasons-why-i-moved-from-angular-to-react%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=10%20Reasons%20why%20I%20moved%20from%20Angular%20to%20React&amp;url=https%3a%2f%2fchrispaul.dev%2freasons-why-i-moved-from-angular-to-react%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+</div>
+
+<div class="visible-xs visible-sm text-center">
+    <div class="post-share post-share-fixed post-share-mobile">
+        
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freasons-why-i-moved-from-angular-to-react%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=10%20Reasons%20why%20I%20moved%20from%20Angular%20to%20React%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2freasons-why-i-moved-from-angular-to-react%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=10%20Reasons%20why%20I%20moved%20from%20Angular%20to%20React&amp;url=https%3a%2f%2fchrispaul.dev%2freasons-why-i-moved-from-angular-to-react%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+    </div>
+</div>
+
+        
+
+        <div class="hidden-xs">
+            
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase newsletter">Take Part</h2>
+            </div>
+
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    <article
+                        class="col-md-8 col-md-offset-2"
+                        id="blog-post"
+                        itemprop="blogPosts"
+                        itemscope itemtype="http://schema.org/BlogPosting">
+
+                        <div id="post-content" itemprop="articleBody">
+
+                            <header>
+                                <h1 itemprop="name headline">10 Reasons why I moved from Angular to React</h1>
+                            </header>
+
+                            <div class="text-center">
+                                
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
+         <i class="fa fa-facebook"></i>Follow
+    </a>
+
+
+                                &nbsp;
+                                
+
+                                &nbsp;
+                                
+  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
+    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
+  </a>
+
+
+                                &nbsp;
+                                
+                            </div>
+
+                            <p class="text-muted text-uppercase mb-small text-center">
+    <span itemprop="author publisher">
+        
+    </span>
+
+    
+        <time datetime="2017-01-31" itemprop="datePublished">
+            January 31, 2017
+        </time>
+    
+
+    
+        <span class="hidden-xs hidden-sm"> - <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/reasons-why-i-moved-from-angular-to-react.md">
+                Edit this Post on GitHub
+            </a>
+        </span>
+    
+</p>
+
+                            <div>
+  
+
+</div>
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2freasons-why-i-moved-from-angular-to-react%2f&amp;media=https://chrispaul.dev/img%2fposts%2freasons-why-i-moved-from-angular-to-react%2fbanner.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/reasons-why-i-moved-from-angular-to-react/banner.jpg"
+            data-is-src-set="is-src-set"
+            alt="angular js or react js"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<p>I did a lot of Angular 1.x back in the days until I started to use React. I can say that I used both solutions extensively. But there were and are several reasons why I moved to React. These reasons were not clear from the beginning, but retrospectively I think I can summarize these very well.</p>
+
+<p>In the following I want to give you 10 reasons why I moved from Angular to React. I liked Angular in all its facets back in the days, but it was about time to move on. Perhaps the article helps people to understand the benefits of React, but also the benefits of Angular, to make a decision between Angular or React - or even React or Angular 2.</p>
+
+<p>The article is not intended to blame Angular. Angular, for myself, was a great single page app experience for a long time. I enjoyed the framework, because it gives you everything you need. I only used Angular 1.x extensively, so I cannot speak for Angular 2, but I think most of the philosophy behind the framework is still the same and adaptable for the article. In the end it is only my experience that I made with both solutions.</p>
+
+<p>The article is no comparison between two solutions per se. It is a reflection about why you could consider to use React as your solution. It makes no sense to compare apples and oranges. But it makes sense to reflect why you can use or why you have chosen a specific tool at hand.</p>
+
+<p>Nevertheless, let&rsquo;s dive into the 10 reasons why I enjoy to use React now.</p>
+
+<h2 class="chapter-header" id="viewLibrary">React is only a view library</h2>
+
+<p>Single page applications (SPA) follow the common sense of component based user interfaces. A component gets an input and returns an instance of the component as output. For instance, the output can be a simple button element. You have to define your components with its input and ouput and internal behaviour only once. Afterwards you can use it everywhere in your DOM hierarchy to create instances of the component. In a best case scenario the defined component is easy to reuse and to compose into other components.</p>
+
+<p>React is an ideal fit for a component based user interface. It is only a view library and solves all the described component requirements. It is a library dedicated to solve one problem: It gives you all the tools to build effectively a component based user interface.</p>
+
+<p>You can see React as one building block for your SPA. Once you need to solve other problems, you need other building blocks. Your application needs routing? Take a look at the routing solutions suited for React. Your application needs scaleable state management? Take a look at <a href="../redux-mobx-confusion/index.html">different state management solutions</a>. You need to execute asynchronous requests? Take a look at one of the solutions like <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en/docs/Web/API/Fetch_API">fetch</a>, <a target="_blank" rel="noopener noreferrer" href="https://github.com/mzabriskie/axios">axios</a> or <a target="_blank" rel="noopener noreferrer" href="https://github.com/visionmedia/superagent">superagent</a>.</p>
+
+<p>Nevertheless it is possible to build your application solely with React. It might be no mature application with routing and sophisticated state management, but it can work out for small applications. In <a href="../the-road-to-learn-react/index.html">The Road to learn React</a> you can build one of these applications to learn plain React.</p>
+
+<p>React itself is only a building block in your application. It offers you a solution to build component based user interfaces. Like every other building block it stays exchangeable. You can use another solution to build component based user interfaces but still can couple them with other building blocks.</p>
+
+<p>In that perspective Angular is different. It isn&rsquo;t a library, but a framework. It offers you more than one building block. It is a more rigid solution. The ReactJs ecosystem, with all its building blocks, can be seen as a framework as well. But compared to AngularJs it offers exchangeable building blocks. In Angular you get everything out of the box. It is a paradox that on one hand it can be easier to learn it, because it is opinionated about its building blocks. But on the other hand you learn every building block at once which can be overwhelming. The latter applies for React too when you start to learn everything at once.</p>
+
+<h2 class="chapter-header" id="innovativePlace">React is an innovative place</h2>
+
+<p>React is only the core of the ecosystem and everything around it consists of building blocks. You are flexible to choose your building blocks to solve different problems. But it remains simple to exchange them. The simpleness to exchange them makes it possible for novel approaches to thrive. You can take <a target="_blank" rel="noopener noreferrer" href="http://redux.js.org/">Redux</a> and <a target="_blank" rel="noopener noreferrer" href="https://mobx.js.org/">MobX</a> for state management as an example. Redux got great momentum in the early days yet MobX has a small community of advocates, because it is <a href="../mobx-react/index.html">possible to exchange both solutions</a>.</p>
+
+<p>Even the core building block React is exchangeable. Recent libraries like <a target="_blank" rel="noopener noreferrer" href="https://infernojs.org/">Inferno</a> and <a target="_blank" rel="noopener noreferrer" href="https://preactjs.com/">Preact</a> compete with React and can be used to replace React. I cannot remember that someone used these libraries in another context. It makes no sense to use these approaches in Angular, because Angular comes with its own solutions.</p>
+
+<p>The exchangeable building blocks in React make it possible to experiment with novel approaches. It gives these approaches room to get adopted by the community. It makes the React ecosystem such an innovative place.</p>
+
+<h2 class="chapter-header" id="jsxMixup">JSX - Mix up HTML and JavaScript</h2>
+
+<p>React comes with its own syntax to build components called JSX. In JSX you can mix up HTML and JavaScript. Additionally people often use inline styles in their elements. It is like adding CSS into the mix. It can be confusing in the beginning, but it feels natural eventually. You can use JavaScript to compose and manipulate your DOM, but it is inlined in your HTML. You can use built-in JavaScript functionalities like map and filter to display multiple (filtered) DOM nodes. But you can also use <a href="../conditional-rendering-react/index.html">ternaries to make conditional renderings</a> happen. You can use the full power of JavaScript in your HTML.</p>
+
+<p>In the range of SPA solutions it was a novel approach to define your components with mixed up HTML and JavaScript. In older server side rendering solutions (e.g. <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/JavaServer_Pages">JSP</a>) that approach was already present.</p>
+
+<p>In contrast, in Angular you have a clear separation of concerns between logic and view. There are built-in expressions like <code>ng-repeat</code> (Angular 1.x) or <code>ngFor</code> (Angular 2) in your HTML to accomplish the same thing like a native JavaScript <code>map()</code> in JSX.</p>
+
+<h2 class="chapter-header" id="reactApi">React has a simple API</h2>
+
+<p>React is only a view library. It solves one problem and it solves it well. Thus it comes only with a handful methods to learn and understand.</p>
+
+<p>A React component comes with lifecycle methods. In React ES6 class components you can use these methods to hook into the lifecycle of a component. Usually you only need the mandatory <code>render()</code> lifecycle method to render your elements as a new instance of the component. The render block runs one time when your component is initialized and every time when your component updates. That&rsquo;s it. But you can opt-in more lifecycle methods to add advanced component behaviour. For instance, you can use the <code>constructor()</code> to initialize a stateful component and add class methods to manipulate the state. Every time the state changes the render lifecycle method runs again to update your view.</p>
+
+<p>Overall there are only 9 lifecycle methods to control your component. But in most cases you need only half of them - even in mature React applications.</p>
+
+<p>After that you only need to know two more React ES6 class component methods: <code>setState()</code> and <code>forceUpdate()</code>. You will barely touch the latter one which updates a component forcefully and programmatically. But <code>setState()</code> is used to update your internal component state that you have initialized in your <code>constructor()</code> lifecycle method. Imagine you have a list of items in your component. As next step you want to be able to add and remove items from the list. You can do so by storing the list in your internal component state <code>this.state</code> and by using <code>setState()</code> to update the list.</p>
+
+<p>You can read more in depth about the React component API in the <a target="_blank" rel="noopener noreferrer" href="https://facebook.github.io/react/docs/react-component.html">official React documentation</a>. If you are not familiar with APIs in general, I can recommend to read <a href="../what-is-an-api-javascript/index.html">this article</a>.</p>
+
+<p>After that you know all the essential component methods. Still there are more concepts in React, like props and state, the children property or different component declarations. But you can learn all of them step by step.</p>
+
+<p>In conclusion React itself has no steep learning curve. It is only the view layer with a handful of methods to understand. If you start to learn React as first building block, I would recommend to learn only React and no other building block. The book <a href="../the-road-to-learn-react/index.html">The Road to learn React</a> follows that learning concept. It covers all the mentioned topics which you would have to learn in order to understand React.</p>
+
+<h2 class="chapter-header" id="lightweightComponents">Lightweight Components =&gt; Best Practices</h2>
+
+<p>Components in React can be defined in two ways: ES6 class components and functional stateless components. The latter are only functions that get an input and return elements as output. Still they are components. They are components without any boilerplate because you only have to define a regular JavaScript function. I cannot say that Angular made it that easy to define components.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">Button</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">onClick</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">children</span> <span style="color: #e7e9db">})</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onClick</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span><span style="color: #5bc4bf">&gt;</span>
+            <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+    <span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>It is a good practice to use functional stateless components whenever you can. That means whenever you don&rsquo;t need access to the component state or lifecycle methods. It embraces a best practices around components where you keep them lightweight and small yet reusable, composeable and functional without any side effects. By having such a small boilerplate you are encouraged to follow these best practices.</p>
+
+<h2 class="chapter-header" id="unidirectionalDataFlow">Unidirectional Data Flow</h2>
+
+<p>There is no two-way data binding in React like in Angular 1.x. In Angular state management in components got messy eventually. It was less predictable and there was no best practice how to deal with it. The digest loop that updated your components in Angular 1.x was not easy to tame.</p>
+
+<p>In React you follow the rule of an unidirectional data flow. A component updates the internal component state explicitly with <code>setState()</code>. It has to be captured in the state object (<code>this.state</code>) of a component and the component renders again with an updated version of the state. The same applies for the input (props) of a component. When an updated input comes in, the component updates with its render lifecycle method. Never will you modify your input (props) or your internal component state (state) directly. It always has to follow the unidirectional data flow that makes state management in React so much more predictable.</p>
+
+<p>Additionally you have full control over your native HTML elements. For instance, an input field in HTML has its own state. The text you type into an input field is captured in the value attribute. In React you want to have full control over the state of an input field. Thus, once you changed the value of the input field, you can use the element callback <code>onChange()</code> to update the value in the internal component state with <code>setState()</code>. After that you can use the updated value in your input field. Now the internal component state is the single source of truth. The input field does not manage its own state anymore.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">input</span>
+    <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">}</span>
+    <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{(</span><span style="color: #06b6ef">event</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">target</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">value</span> <span style="color: #e7e9db">})}</span>
+    <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;text&quot;</span>
+<span style="color: #ef6155">/&gt;</span>
+</code></pre></div>
+
+
+<p>The unidirectional data flow makes React state management predictable and maintainable.</p>
+
+<h2 class="chapter-header" id="redux">Redux</h2>
+
+<p>Redux is not strictly coupled to React. Still both are a perfect match, because Redux is only a building block and the React ecosystem embraces building blocks.</p>
+
+<p>Redux brought predictable state management to the masses. The flux philosophy was already around when Dan Abramov introduced Redux in 2015. Redux is the successor of the flux libraries and used widely in different scenarios. In React it feels most natural to use Redux. React itself embraces the unidirectional data flow and therefore was the perfect match for Redux.</p>
+
+<p>Back in the Angular days developers struggled in a mature scaling application with state management. At some point you had to implement your own flux alike solution even before flux was a thing. Eventually everyone envied the React folks for adopting the flux pattern and for integrating it seamless in their ecosystem.</p>
+
+<p>Redux created a whole ecosystem around itself. It is a building block like React that embraces such innovation. Especially in the area of asynchronism it supports different ways. For instance, you can choose between JavaScript promises, generators or observables. It is a place to experiment, to find your way of doing things and to innovate.</p>
+
+<h2 class="chapter-header" id="closeTo">Close to JavaScript</h2>
+
+<p>I must say when I came from Angular to React I learned a lot of new concepts about the language JavaScript itself. Now when I return to Angular, it is always difficult to remember the syntax, expressions in HTML or declarations. I would be lost without my snippets that I came up back in the time of using Angular. I don&rsquo;t know in fact, but I think it would be different the other way around, when I would come from Angular back to React. React is much closer to JavaScript and only one building block. Once you learned it, there is not that much to forget.</p>
+
+<p>React is close to JavaScript. But not only React, it is the ecosystem that embraces closeness to JavaScript. For instance, Redux itself, with its actions and reducers, is plain JavaScript. Additionally the whole Redux ecosystem embraces to use native and upcoming native JavaScript functionalities like generators and observables. There is nothing that covers it up in non native JavaScript helper functions from a library perspective.</p>
+
+<p>Another aspect is JavaScript ES6. Perhaps it is only a coincidence that React embraces ES6, because ES6 came up during the same time. But still React moves forward and adopts all the benefits and best practices of ES6. People adopt ES6 very well. Remember the functional stateless button component we defined before? It looks different when you would use an ES6 arrow function:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Button</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">onClick</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">children</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onClick</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+</code></pre></div>
+
+
+<p>In React and its ecosystem you can express things concise and elegant yet readable and simple with ES6. It feels natural to use it.</p>
+
+<h2 class="chapter-header" id="functionalProgramming">Functional Programming</h2>
+
+<p>Functional programming weaves itself naturally into React and its ecosystem. Perhaps it is because of the closeness to JavaScript that makes it possible to adopt the paradigm. As a React developer you are encouraged to define functions without side-effects - pure functions. These functions are composeable in a predictable way. First because they are pure and always return the same output with the same input (predictable). Second because you can use higher order functions to compose them into each other (composeable).</p>
+
+<p>The same advantages of predictability and composability apply for the functional components in React. That&rsquo;s why it is possible to embrace predictable and composeable (higher order) components in React.</p>
+
+<p>Every now and then the programming paradigms shift. Functional programming is not new, but it is the first time it gets truthfully adopted in JavaScript. React is one of the thought leaders among other libraries in the JavaScript ecosystem regarding functional programming. It is a great personal accomplishment to learn new principles, to get to know their advantages and disadvantages and to use them hands on. React and its ecosystem gives you the possibility to learn and to apply functional programming.</p>
+
+<h2 class="chapter-header" id="community">Community</h2>
+
+<p>I would lie if I would say that most of the following reasons don&rsquo;t apply to other communities around different libraries, frameworks or ecosystems. But still I feel that it is worth to mention that the community behind the React environment is great.</p>
+
+<p>The people behind the ecosystem experiment each day from anew. It goes back to the constant innovation around React because of its building blocks. New solutions have a chance to thrive in the ecosystem. The building blocks are exchangeable and can get adopted by developers.</p>
+
+<p>The people behind React encourage each other. It doesn&rsquo;t matter if people contribute with an innovation, an additional library or written articles. Everyone thumbs up each other and motivates you to continue. I experienced the same when I started to write articles about React. People encourage you.</p>
+
+<p>The people are not stuck in the ecosystem. If there is a problem, there will be a solution. Someone will come up with a library to solve the problem or explain best practices for a specific problem in an article. People help each other and think forward. Since the place stays innovative, there will be always multiple and novel solutions to a problem.</p>
+
+<p>As I said, these community thoughts of mine are more general thoughts. I think all communities around different solutions are doing great, are innovative and encourage each other. That&rsquo;s what makes it great to be involved in such an environment.</p>
+
+<hr class="section-divider">
+
+<p>In conclusion I hope these reasons help you to have a better understanding of the React ecosystem. Maybe they help you to make a personal decision if you want to hop on the React train in 2017. Personally it helped me to reflect about my decision to start to learn React. Apart from that it was an upside that my company <a target="_blank" rel="noopener noreferrer" href="https://careers.small-improvements.com/?ref=chrispaul.dev">Small Improvements</a> did this step as well in the mid of last year. But we have plenty of Angular leftovers and are keen to hire people who know both solutions.</p>
+
+<div class="read-before">
+  Read more: <a href="../tips-to-learn-react-redux/index.html" itemprop="url">Tips to learn React + Redux</a>
+</div>
+
+<div class="read-before">
+  Read more: <a href="../the-soundcloud-client-in-react-redux/index.html" itemprop="url">The SoundCloud Client in React + Redux</a>
+</div>
+
+
+                            
+<div class="feedback-and-share text-center">
+    <hr>
+    
+    <p class="lead">
+        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
+    </p>
+    
+    
+        <p class="lead">
+            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+        </p>
+    
+</div>
+
+
+                            
+                                <div class="box-inline col-md-12">
+    <div class="col-md-12 text-center">
+        <h2 class="newsletter">The Road to learn React</h2>
+        
+            <div class="col-md-4">
+                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+            </div>
+        
+        <p class="lead">
+            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
+        </p>
+        <a
+            class="btn btn-template-main"
+            href="https://roadtoreact.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Get the Book for free <i class="fa fa-chevron-right"></i>
+        </a>
+        
+            <div>
+                <a
+                    href="https://amzn.to/2QY2ONp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get it from Amazon
+                </a>
+            </div>
+        
+    </div>
+</div>
+                            
+                        </div>
+
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'rwieruch';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </article>
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase">Take Part</h2>
+            </div>
+
+            <div class="col-md-12 text-center">
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+                
+            </div>
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+        <footer id="subfooter">
+    <div class="container">
+
+        <div class="col-md-5 col-sm-6">
+
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../redux-vs-usereducer/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="React&#39;s useReducer vs Redux"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../publish-npm-package-node/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to publish a npm package?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../react-scroll-to-item/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to Scroll to Item in React?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+
+        
+        <div class="col-md-5 col-md-offset-2 col-sm-6">
+
+            <h4>About Me</h4>
+
+            <div class="blog-entries">
+                <div class="item same-height-row clearfix">
+                    <div class="profile same-height-always">
+                        <img
+                            class="img-lazy img-responsive"
+                            data-lazy-src="//img/page/profile.jpg"
+                            alt="profile"
+                        >
+                    </div>
+                    <div class="name same-height-always">
+                        <p>
+                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+        <footer id="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-left">
+          
+            <li>© Chris Paul</li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline footer-social-buttons text-center">
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-right">
+          
+            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+
+    
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-65599459-2', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="../js/script.js"></script>
+
+
+
+  </body>
+</html>

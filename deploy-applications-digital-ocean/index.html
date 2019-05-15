@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="google-site-verification" content="We9gRQmlTIjMkOPPjPWDQTXd15nWA6tBEYlxQ2cMpEg" />
+
+  <title>
+    Host a single or multiple applications on Digital Ocean - CPaul
+  </title>
+
+  <meta name="author" content="" />
+
+  
+    <meta name="description" content="An extensive walkthrough on how to host your application on Digital Ocean. It showcases how multiple static websites can be hosted in one Droplet by using server blocks and how to deploy multiple APIs or node.js applications side by side in one Droplet with Dokku ...">
+  
+
+  <meta name="theme-color" content="#38bb6c"/>
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  
+  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../img/favicon/manifest.json">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+
+  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+
+  
+  
+<meta itemprop="name" content="Host a single or multiple applications on Digital Ocean">
+<meta itemprop="description" content="An extensive walkthrough on how to host your application on Digital Ocean. It showcases how multiple static websites can be hosted in one Droplet by using server blocks and how to deploy multiple APIs or node.js applications side by side in one Droplet with Dokku ...">
+
+
+
+    <meta itemprop="image" content="https://chrispaul.dev/img/posts/deploy-applications-digital-ocean/banner_640.jpg">
+
+
+
+<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+
+
+<meta itemprop="wordCount" content="3845">
+
+
+  
+  <meta name="keywords" content="single multiple applications digital ocean">
+
+  <meta property="og:title" content="Host a single or multiple applications on Digital Ocean - CPaul">
+
+
+  <meta property="og:description" content="An extensive walkthrough on how to host your application on Digital Ocean. It showcases how multiple static websites can be hosted in one Droplet by using server blocks and how to deploy multiple APIs or node.js applications side by side in one Droplet with Dokku ..." />
+
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrispaul.dev/deploy-applications-digital-ocean/" />
+<meta property="og:image" content="https://chrispaul.dev/img/posts/deploy-applications-digital-ocean/banner_640.jpg" />
+
+  
+
+    <meta name="news_keywords" content="single multiple applications digital ocean" />
+
+  
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/deploy-applications-digital-ocean/banner_640.jpg"/>
+
+
+
+<meta name="twitter:title" content="Host a single or multiple applications on Digital Ocean"/>
+<meta name="twitter:description" content="An extensive walkthrough on how to host your application on Digital Ocean. It showcases how multiple static websites can be hosted in one Droplet by using server blocks and how to deploy multiple APIs or node.js applications side by side in one Droplet with Dokku ..."/>
+<meta name="twitter:site" content="@rwieruch"/>
+<meta name="twitter:domain" content="rwieruch"/>
+
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="../index.html">
+                    <img src="../img/page/logo.svg" alt="Host a single or multiple applications on Digital Ocean logo" class="img-lazy">
+                    <span class="sr-only">Host a single or multiple applications on Digital Ocean - go to homepage</span>
+                </a>
+
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../index.html">Blog</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../work-with-me/index.html">Work with me</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../about/index.html">About</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fdeploy-applications-digital-ocean%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=Host%20a%20single%20or%20multiple%20applications%20on%20Digital%20Ocean%20by%20%40rwieruch%20%23DigitalOcean&amp;url=https%3a%2f%2fchrispaul.dev%2fdeploy-applications-digital-ocean%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Host%20a%20single%20or%20multiple%20applications%20on%20Digital%20Ocean&amp;url=https%3a%2f%2fchrispaul.dev%2fdeploy-applications-digital-ocean%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+</div>
+
+<div class="visible-xs visible-sm text-center">
+    <div class="post-share post-share-fixed post-share-mobile">
+        
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fdeploy-applications-digital-ocean%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=Host%20a%20single%20or%20multiple%20applications%20on%20Digital%20Ocean%20by%20%40rwieruch%20%23DigitalOcean&amp;url=https%3a%2f%2fchrispaul.dev%2fdeploy-applications-digital-ocean%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Host%20a%20single%20or%20multiple%20applications%20on%20Digital%20Ocean&amp;url=https%3a%2f%2fchrispaul.dev%2fdeploy-applications-digital-ocean%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+    </div>
+</div>
+
+        
+
+        <div class="hidden-xs">
+            
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase newsletter">Take Part</h2>
+            </div>
+
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    <article
+                        class="col-md-8 col-md-offset-2"
+                        id="blog-post"
+                        itemprop="blogPosts"
+                        itemscope itemtype="http://schema.org/BlogPosting">
+
+                        <div id="post-content" itemprop="articleBody">
+
+                            <header>
+                                <h1 itemprop="name headline">Host a single or multiple applications on Digital Ocean</h1>
+                            </header>
+
+                            <div class="text-center">
+                                
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
+         <i class="fa fa-facebook"></i>Follow
+    </a>
+
+
+                                &nbsp;
+                                
+
+                                &nbsp;
+                                
+  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
+    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
+  </a>
+
+
+                                &nbsp;
+                                
+                            </div>
+
+                            <p class="text-muted text-uppercase mb-small text-center">
+    <span itemprop="author publisher">
+        
+    </span>
+
+    
+        <time datetime="2017-10-31" itemprop="datePublished">
+            October 31, 2017
+        </time>
+    
+
+    
+        <span class="hidden-xs hidden-sm"> - <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/deploy-applications-digital-ocean.md">
+                Edit this Post on GitHub
+            </a>
+        </span>
+    
+</p>
+
+                            <div>
+  
+
+</div>
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fdeploy-applications-digital-ocean%2f&amp;media=https://chrispaul.dev/img%2fposts%2fdeploy-applications-digital-ocean%2fbanner.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/deploy-applications-digital-ocean/banner.jpg"
+            data-is-src-set="is-src-set"
+            alt="single multiple applications digital ocean"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<p>There a various tutorials showing you how to host your web applications with a couple of lines on any hosting solution. But that&rsquo;s it. You are able to host your application somewhere, but there are a lot of open questions. What about using an own domain? What about securing it with SSL? What about hosting multiple applications side by side yet keeping it cost efficient by not taking up to much ressources? This article should fill the void and provide you a solution on how to host multiple applications on Digital Ocean. Disclaimer: I am not payed by Digital Ocean to write the article, but I enjoy using their product and I hope to give you guidance to setup your applications on their platform as well.</p>
+
+<p>So what is the definition of an &ldquo;application&rdquo; for this article? In my cases, I host static websites, node.js applications with server-side rendered applications and node.js applications as pure APIs on Digital Ocean. It might be something different for you, but if you know the basic steps to setup a static website or node application on your hosting provider&rsquo;s platform, I believe that you can host any type of &ldquo;application&rdquo; on it.</p>
+
+<p>All of my static websites, node applications and standalone APIs are hosted on Digital Ocean&rsquo;s Droplets. In the end of this article, you should be able to do the same for your applications. It should be horizontally scalable and you should be able to take ownership of it. Digital Ocean gave me a perfect start in the world of hosting and taking control of it, because it is a pleasant experience to use their platform. They have a handful of out of the box solutions to bootstrap your virtual machine and there are plenty of high quality tutorials guiding you through the most common scenarios. Most of the time, you can just copy and paste their instructions to the command line of your local machine or remote server, but if you need elaborated explanations for these commands, you will surely find them in their tutorials. Furthermore, I find it is a cost efficient way to host applications on their platform. For instance, I host a bunch of websites side by side on a single 5$ Droplet and you can do the same with your applications.</p>
+
+<p>The article is a checklist, because it doesn&rsquo;t explain every step from scratch, but refers to all the necessary tutorials written by Digital Ocean for the whole setup. Furthermore, the article describes the whole process for macOS users, because I use it myself. However, I believe you can substitute most of the things for Windows and Linux.</p>
+
+<p>If you find any mistakes, pitfalls or potential improvements for the article, please write it in the comments. The article may not be 100% complete, but I hope to give you the foundations to setup everthing yourself. If there is something missing, please write it down in the commtents as well.</p>
+
+<p>The following walkthrough will guide you through the setup process of hosting a single or multiple applications on one Digital Ocean Droplet. The setup between (1) static websites and (2) node applications differs, so depending on your use case, keep an eye open for these numbers. A chapter without any numbering should be applied to both use cases, a chapter with an (1) should be applied for a single or multiple static websites on one Droplet and a chapter with a (2) should be applied for a single or multiple node applications on one Droplet. So if you are only here for the node applications, you can skip all the (1) parts. If you are only here for the static websites, you can skip all the (2) parts.</p>
+
+<p>In the end, there will be a couple of dedicated articles, following up after this article, about</p>
+
+<ul>
+<li><a href="../own-website-in-five-days/index.html">Hosting Hugo on Digital Ocean</a> (1)</li>
+<li>(Soon) Hosting create-react-app on Digital Ocean (1)</li>
+<li>(Soon) Hosting gatsby.js on Digital Ocean (1)</li>
+<li>(Soon) Hosting next.js on Digital Ocean (2)</li>
+<li>(Soon) Hosting a Sripe Payment Server on Digital Ocean (2)</li>
+</ul>
+
+<p>whereas the (1)s could share a Digital Ocean Droplet and the (2)s could share another Digital Ocean Droplet. After all, this article should be sufficient to understand the fundamentals of how it works.</p>
+
+<p>Note that the approach for (2) is opinionated. There are many ways to host your node applications. This article will use <a target="_blank" rel="noopener noreferrer" href="https://github.com/dokku/dokku">Dokku</a> as platform as a service to manage effortless your node applications on one Droplet. They will be accessible side by side, but share the same domain. You can access them independently by using subdomains. Dokku might not be the newest and coolest kid on the block, but it comes with all the neccessary building blocks. There are other alternatives (e.g. Flynn) as well that are not covered in this article.</p>
+
+<p>If I didn&rsquo;t loose your attention by now, let&rsquo;s start with the walkthrough. Before you start, check if you have <a href="../developer-setup/index.html">most of the essential developer tools</a> which are needed in the following article.</p>
+
+<h2 class="chapter-header" id="droplet-setup-setup">Sign Up, Droplet Creation and Initial Setup</h2>
+
+<p>Sign up at <a target="_blank" rel="nofollow noopener noreferrer" href="https://m.do.co/c/fb27c90322f3">Digital Ocean</a> and earn a $10 referral bonus. It would allow you to try a Droplet to host all of your applications on their platform for 2 months. If you like it, stay with them and I earn a little bonus as well. If you don&rsquo;t like it, you can always try a different hosting solution.</p>
+
+<p>Next you are going to create a Droplet on their platform. It is basically a server that is hosted somewhere else for you. When creating the Droplet, you can make decisions for a couple of properties: image, size and datacenter region. All the other properties aren&rsquo;t that important in the beginning and you can keep their default settings. You don&rsquo;t need to add anything for the SSH properties as well, because you will do it from scratch later on.</p>
+
+<ul>
+<li><p><strong>Image:</strong> The image can either be a Linux distribution or a pre-configured Linux distribution by using a one-click app. I recommend to use Ubuntu as Linux distribution to get you started from scratch for (1). By going this path, you will understand every step that you take along the way and learn about hosting your own application(s). If you want to setup your node applications for (2), choose the Dokku one-click app instead of a plain Linux Distribution.</p></li>
+
+<li><p><strong>Size:</strong> The smallest Droplet size should be everything you need to get you started in hosting your own applications. Later on, you can always resize your Droplet. It makes sense if you need the performance and storage benefits comming with it. Personally I never ran into problems using 5$ or $10 Droplets even though more than 100 visitors are simultanously on your website.</p></li>
+
+<li><p><strong>Datacenter Region:</strong> The datacenter region should be located not far away from the greater part of your audience. If your application users will be from the US, choose a datacenter region that is closest to the US. But don&rsquo;t worry too much about it now, because there are solutions to serve your audience in every region well by using services such as Cloudfare later on.</p></li>
+</ul>
+
+<p>Here you will find everything in a detailed version: <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.digitalocean.com/community/tutorials/how-to-create-your-first-digitalocean-droplet">How To Create Your First DigitalOcean Droplet</a>. After your Droplet has been created, you can access your Droplet dashboard on Digital Ocean where you can find your Droplet and its IP address. By having the IP address, you can access it on the command line by using <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Secure_Shell">SSH</a>.</p>
+
+<p>What&rsquo;s SSH? SSH is a network protocol that allows you to access your server remotely. It can be used on the command line and you would access your remote server by using a username and password. In addition, you can secure it by setting up a SSH key which allows you to skip the part of providing your username and password every time when you log in to your remote server. No worries, you will do everything from scratch in this article.</p>
+
+<p>Fortunately, macOS comes with a pre-installed SSH client on the command line. When you open your terminal, you can access your Droplet (remote server) by using your IP address. On the command line type <code>ssh root@your_server_ip</code>. If you log in for the first time by using SSH, you need to provide your password that was emailed to you when you created your Droplet. Continue to follow the more detailed instructions from this article to access your Droplet for the first time: <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.digitalocean.com/community/tutorials/how-to-create-your-first-digitalocean-droplet">How To Create Your First DigitalOcean Droplet</a></p>
+
+<p>You created your Droplet and logged in to it with SSH successfully for the first time! Now you need to do a couple of initial configuration for your remote server. Follow this guide, <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04">Initial Server Setup with Ubuntu 16.04</a>, to setup a user with privileges, to secure your login with SSH by generating a SSH key (after that you can login to your remote server without providing username and password every time), to disable the default password authentication and to setup a basic firewall. When applying the SSH key part, refer to this article too as cross reference: <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2">How To Set Up SSH Keys</a>. In the end, you should be able to login to your Droplet by using <code>ssh username@your_server_ip</code> without providing a password.</p>
+
+<h2 class="chapter-header" id="server-block-digital-ocean">Server Blocks for multiple websites on Digital Ocean (1)</h2>
+
+<p>Now you can start to host your applications on the configured Droplet. Follow the next article provided by Digital Ocean, <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-16-04">How To Set Up Nginx Server Blocks (Virtual Hosts) on Ubuntu 16.04</a>, to setup two simple websites that are served by the nginx web server in your one Droplet side by side. Take your time to finish this step. Afterward, the foundation is laid out to serve multiple static websites.</p>
+
+<h2 class="chapter-header" id="domain-digital-ocean">Use your Domain on Digital Ocean</h2>
+
+<p>Before continuing serving your applications, you can buy and use your own domain. It will be mapped to your IP address of your Droplet. On Digital Ocean it&rsquo;s not possible to buy a domain, but there are several places where you can buy one and on of the two following tutorials will demonstrate you how to use different domain registrars. Follow the more in depth articles by Digital Ocean to map your own domain to your Droplet&rsquo;s IP address: <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.digitalocean.com/community/tutorials/how-to-point-to-digitalocean-nameservers-from-common-domain-registrars">How to Point to DigitalOcean Nameservers From Common Domain Registrars</a> and <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-host-name-with-digitalocean">How To Set Up a Host Name with DigitalOcean</a>.</p>
+
+<h2 class="chapter-header" id="git-github-setup">Git and GitHub to Synchronize your Applications (1)</h2>
+
+<p>You are ready to serve your own applications. Before you have created server blocks for two sample websites. Now you can reuse those for your applications or create new server blocks for them. The next question is: how do you get your application to your Digital Ocean server? The simplest way to transfer your application from your local machine to your remote server is using Git. If you are not familiar with Git and haven&rsquo;t installed it on your local machine yet, follow this <a href="../git-essential-commands/index.html">Git and GitHub essentials</a> article to setup Git on the command line and your own GitHub account. Next login to your remote server and check if Git is installed by typing: <code>git --version</code>. If there is no Git installed, follow this article to install it: <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-16-04">How To Install Git on Ubuntu 16.04</a>. Afterward, you are able to synchronize your local applications as repositories to your GitHub account and thus you are able to transfer your applications to your remote server.</p>
+
+<h2 class="chapter-header" id="static-websites-digital-ocean">Host your static website(s) on Digital Ocean (1)</h2>
+
+<p>Before you continue to read, checkout if you are using on the earlier mentioned dedicated solutions, such as Gatsby.js or create-react-app, and use the article to complement it with the following paragraphs.</p>
+
+<p>Various web application projects are using a build tool. That way, you are able to build your application on the command line and get all files to host it on a web server excluding the source code files. Often the command is simply <code>npm run build</code> and you will get a <em>public/</em> folder with all your build files. I will refer to the <em>public/</em> folder as build folder in the next parts of this post. Keep in mind, the name of the build folder can be something different in your case. The <code>npm run build</code> command will be used as well in the next part, even though it might differ for you too.</p>
+
+<p>Next you have to make a decision: You can either decide to build your application on your local machine and only synchronize the build folder with Git to your remote server or synchronize the whole application to your remote server and build it there. The article will use the former option. If you have only a $5 Droplet, you should do it as well, because the Droplet isn&rsquo;t powerful enough to build your application on the remote server. If you have a more powerful Droplet than 5$, you could take the latter option and build your application on your remote server. But keep in mind that you may have to install <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04">node and npm</a> on your remote server. Check if those are installed there by using <code>node -v</code> and <code>npm -v</code> on the remote sever&rsquo;s command line.</p>
+
+<p>So how to get the build folder to your remote server and serve it as website? First, make sure to run your build once on the command line with <code>npm run build</code> or the command that is used for your application type. Afterward, all the build files should be available in the build folder. On GitHub, create a new repository with your application name (e.g. my-foo-bar). Then follow the GitHub instructions to connect your application from your local machine with your new repository. Now you can push the whole application to your GitHub repository. Before you do so, make sure that the build folder shows up when you type <code>git status</code> on the command line. If it doesn&rsquo;t show up, remove it from your <code>.gitignore</code> file to be able to synchronize it. Afterward, push everything to your centralized GitHub account.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">git</span> <span style="color: #06b6ef">add</span> <span style="color: #e7e9db">.</span>
+<span style="color: #06b6ef">git</span> <span style="color: #06b6ef">commit</span> <span style="color: #5bc4bf">-</span><span style="color: #06b6ef">m</span> <span style="color: #48b685">&quot;some comment&quot;</span>
+<span style="color: #06b6ef">git</span> <span style="color: #06b6ef">push</span> <span style="color: #06b6ef">origin</span> <span style="color: #06b6ef">master</span>
+</code></pre></div>
+
+
+<p>That&rsquo;s it for the local machine part. Now login to your remote server by using SSH. Per default, you should end up in your home folder of your remote server. There you can git clone your previously synced application from GitHub.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">git</span> <span style="color: #06b6ef">clone</span> <span style="color: #06b6ef">git</span><span style="color: #ef6155">@</span><span style="color: #06b6ef">github</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">com</span><span style="color: #5bc4bf">:</span><span style="color: #06b6ef">username</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">my</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">application</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">foo</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">bar</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">git</span>
+</code></pre></div>
+
+
+<p>Previously, when you have set up your server blocks with your simple websites, you only had an <em>index.html</em> file in your <em>/var/www/mydomain.com/html</em> folder. Your build folder of your application should have an <em>index.html</em> file as entry point as well. You can check it on the command line coming from your home folder.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">cd</span> <span style="color: #06b6ef">my</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">application</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">foo</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">bar</span><span style="color: #5bc4bf">/</span><span style="color: #815ba4">public</span>
+<span style="color: #06b6ef">ls</span>
+</code></pre></div>
+
+
+<p>Now, you only need to put the build folder somehow in the <em>/var/www/mydomain.com/html</em> folder. Afterward, your website would already be served for your mapped domain or plain IP address. The naive way would be to copy the whole build folder into the <em>/var/www/mydomain.com/html</em> folder. However, if you want to keep an updated application that you can easily synchronized with GitHub, you would always have to move the build folder to the <em>html/</em> folder once you have pulled a new update from GitHub in your application folder. Therefore, it is more efficient to symlink your build folder with your <em>/var/www/mydomain.com/html</em> folder. A symbolic link is only a reference to this folder and thus both destinations stay updated once you pull an updated version from  GitHub. On the command line, on your remote server, it is only one command to symlink both folders:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">sudo</span> <span style="color: #06b6ef">ln</span> <span style="color: #5bc4bf">-</span><span style="color: #06b6ef">s</span> <span style="color: #5bc4bf">/</span><span style="color: #06b6ef">home</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">username</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">my</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">application</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">foo</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">bar</span><span style="color: #5bc4bf">/</span><span style="color: #815ba4">public</span> <span style="color: #5bc4bf">/</span><span style="color: #815ba4">var</span><span style="color: #ef6155">/www/mydomain.com/html</span>
+</code></pre></div>
+
+
+<p>Make sure to replace the placeholder username, mydomain.com, my-application-foo-bar and the public folder name (in case you have a different one). Now when you naviagte on the command line to your <em>/var/www/mydomain.com/html</em>, you should be able to see the <em>public/</em> folder in it with the <code>ls</code> command. Before your application can be seen online, you need to adjust one part in your server block. Open your server block file with <code>sudo nano /etc/nginx/sites-available/mydomain.com</code> and add the public folder to the extended path.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">server</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">listen</span> <span style="color: #f99b15">80</span><span style="color: #e7e9db">;</span>
+  <span style="color: #06b6ef">listen</span> <span style="color: #e7e9db">[</span><span style="color: #5bc4bf">::</span><span style="color: #e7e9db">]</span><span style="color: #5bc4bf">:</span><span style="color: #f99b15">80</span><span style="color: #e7e9db">;</span>
+
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">root</span> <span style="color: #5bc4bf">/</span><span style="color: #815ba4">var</span><span style="color: #ef6155">/www/mydomain.com/html/public;</span>
+</span>  <span style="color: #06b6ef">index</span> <span style="color: #06b6ef">index</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">html</span> <span style="color: #06b6ef">index</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">htm</span> <span style="color: #06b6ef">index</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">nginx</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">debian</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">html</span><span style="color: #e7e9db">;</span>
+
+  <span style="color: #06b6ef">server_name</span> <span style="color: #06b6ef">mydomain</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">com</span> <span style="color: #06b6ef">www</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">mydomain</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">com</span><span style="color: #e7e9db">;</span>
+
+  <span style="color: #06b6ef">location</span> <span style="color: #5bc4bf">/</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">try_files</span> <span style="color: #06b6ef">$uri</span> <span style="color: #06b6ef">$uri</span><span style="color: #5bc4bf">/</span> <span style="color: #5bc4bf">=</span><span style="color: #f99b15">404</span><span style="color: #e7e9db">;</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>Check again if your configuration is correct on the command line and restart your nginx web server.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">sudo</span> <span style="color: #06b6ef">nginx</span> <span style="color: #5bc4bf">-</span><span style="color: #06b6ef">t</span>
+<span style="color: #06b6ef">sudo</span> <span style="color: #06b6ef">systemctl</span> <span style="color: #06b6ef">restart</span> <span style="color: #06b6ef">nginx</span>
+</code></pre></div>
+
+
+<p>Now visit your domain and, if everything went flawless, you should see your application. Every time you need to deploy an updated version of your application from GitHub, make sure that you have built the application before. Afterward, pull it on your remote server in the application folder from GitHub: <code>git pull --rebase origin master</code>. Your application should be updated when visiting your domain afterward without restarting anything.</p>
+
+<p>That&rsquo;s it for the whole setup of one or multiple static websites on Digital Ocean. There are a couple of furhter improvements when you continue to read the article. But you should know about the basic idea now. If you take one of the application specific dedicated articles from the beginning of this article, you may find as well valuable information.</p>
+
+<h3 id="ssl-hhtps-static-websites-digital-ocean">Secure your applications with SSL (HTTPS) (Optional) (1)</h3>
+
+<p>If your applications goes into production, you should secure it with SSL. Thus you could make HTTPS your default URL by redirecting from http:// to https:// in your server block. Read up the follow article, <a target="_blank" rel="noopener noreferrer" href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04">How To Secure Nginx with Let&rsquo;s Encrypt on Ubuntu 16.04</a>, to create a free SSL certificate by using Let&rsquo;s Encrypt. If you do it for your first application on your Droplet, you have to apply all the intructions of the article. If you want to add SSL for another application but not the first application, it is sufficient to optain and apply the SSL certificate only. After all, don&rsquo;t forget to a the cron job for an auto renewal for your certificates.</p>
+
+<p>Afterward, your application should be accessible for HTTP and HTTPS. However, if you want to redirect all traffic from HTTP to HTTPS, you need to add the redirecting in your server block file. In case you need guidance for the redirecting server block, here is mine that I use for my websites. It redirects www.mydomain.com to mydomain.com as well.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">server</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">listen</span> <span style="color: #f99b15">80</span><span style="color: #e7e9db">;</span>
+  <span style="color: #06b6ef">listen</span> <span style="color: #e7e9db">[</span><span style="color: #5bc4bf">::</span><span style="color: #e7e9db">]</span><span style="color: #5bc4bf">:</span><span style="color: #f99b15">80</span><span style="color: #e7e9db">;</span>
+
+  <span style="color: #06b6ef">expires</span> <span style="color: #06b6ef">$expires</span><span style="color: #e7e9db">;</span>
+
+  <span style="color: #06b6ef">server_name</span> <span style="color: #06b6ef">mydomain</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">com</span> <span style="color: #06b6ef">www</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">mydomain</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">com</span><span style="color: #e7e9db">;</span>
+  <span style="color: #815ba4">return</span> <span style="color: #f99b15">301</span> <span style="color: #06b6ef">https</span><span style="color: #5bc4bf">:</span><span style="color: #776e71">//$server_name$request_uri;</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #06b6ef">server</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">listen</span> <span style="color: #f99b15">443</span> <span style="color: #06b6ef">ssl</span> <span style="color: #06b6ef">http2</span><span style="color: #e7e9db">;</span>
+  <span style="color: #06b6ef">listen</span> <span style="color: #e7e9db">[</span><span style="color: #5bc4bf">::</span><span style="color: #e7e9db">]</span><span style="color: #5bc4bf">:</span><span style="color: #f99b15">443</span> <span style="color: #06b6ef">ssl</span> <span style="color: #06b6ef">http2</span><span style="color: #e7e9db">;</span>
+  <span style="color: #06b6ef">include</span> <span style="color: #06b6ef">snippets</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">ssl</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">mydomain</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">com</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">conf</span><span style="color: #e7e9db">;</span>
+  <span style="color: #06b6ef">include</span> <span style="color: #06b6ef">snippets</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">ssl</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">params</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">conf</span><span style="color: #e7e9db">;</span>
+
+  <span style="color: #06b6ef">server_name</span> <span style="color: #06b6ef">mydomain</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">com</span><span style="color: #e7e9db">;</span>
+  <span style="color: #815ba4">return</span> <span style="color: #f99b15">301</span> <span style="color: #06b6ef">https</span><span style="color: #5bc4bf">:</span><span style="color: #776e71">//www.$server_name$request_uri;</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #06b6ef">server</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">listen</span> <span style="color: #f99b15">443</span> <span style="color: #06b6ef">ssl</span> <span style="color: #06b6ef">http2</span><span style="color: #e7e9db">;</span>
+  <span style="color: #06b6ef">listen</span> <span style="color: #e7e9db">[</span><span style="color: #5bc4bf">::</span><span style="color: #e7e9db">]</span><span style="color: #5bc4bf">:</span><span style="color: #f99b15">443</span> <span style="color: #06b6ef">ssl</span> <span style="color: #06b6ef">http2</span><span style="color: #e7e9db">;</span>
+  <span style="color: #06b6ef">include</span> <span style="color: #06b6ef">snippets</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">ssl</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">mydomain</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">com</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">conf</span><span style="color: #e7e9db">;</span>
+  <span style="color: #06b6ef">include</span> <span style="color: #06b6ef">snippets</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">ssl</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">params</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">conf</span><span style="color: #e7e9db">;</span>
+
+  <span style="color: #06b6ef">root</span> <span style="color: #5bc4bf">/</span><span style="color: #815ba4">var</span><span style="color: #ef6155">/www/mydomain.com/html/public;</span>
+
+  <span style="color: #06b6ef">index</span> <span style="color: #06b6ef">index</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">html</span> <span style="color: #06b6ef">index</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">htm</span> <span style="color: #06b6ef">index</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">nginx</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">debian</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">html</span><span style="color: #e7e9db">;</span>
+
+  <span style="color: #06b6ef">server_name</span> <span style="color: #06b6ef">www</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">mydomain</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">com</span><span style="color: #e7e9db">;</span>
+
+  <span style="color: #06b6ef">location</span> <span style="color: #5bc4bf">~</span> <span style="color: #ef6155">/.well-known {</span>
+    <span style="color: #06b6ef">allow</span> <span style="color: #06b6ef">all</span><span style="color: #e7e9db">;</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">location</span> <span style="color: #5bc4bf">/</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #ef6155">#</span> <span style="color: #06b6ef">First</span> <span style="color: #06b6ef">attempt</span> <span style="color: #06b6ef">to</span> <span style="color: #06b6ef">serve</span> <span style="color: #06b6ef">request</span> <span style="color: #06b6ef">as</span> <span style="color: #06b6ef">file</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">then</span>
+    <span style="color: #ef6155">#</span> <span style="color: #06b6ef">as</span> <span style="color: #06b6ef">directory</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">then</span> <span style="color: #06b6ef">fall</span> <span style="color: #06b6ef">back</span> <span style="color: #06b6ef">to</span> <span style="color: #06b6ef">displaying</span> <span style="color: #06b6ef">a</span> <span style="color: #f99b15">404</span><span style="color: #e7e9db">.</span>
+    <span style="color: #06b6ef">try_files</span> <span style="color: #06b6ef">$uri</span> <span style="color: #06b6ef">$uri</span><span style="color: #5bc4bf">/</span> <span style="color: #5bc4bf">=</span><span style="color: #f99b15">404</span><span style="color: #e7e9db">;</span>
+ <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">error_page</span>  <span style="color: #f99b15">404</span>  <span style="color: #5bc4bf">/</span><span style="color: #f99b15">404</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">html</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>Afterward, check if your configuration is alright and restart your nginx web server.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">sudo</span> <span style="color: #06b6ef">nginx</span> <span style="color: #5bc4bf">-</span><span style="color: #06b6ef">t</span>
+<span style="color: #06b6ef">sudo</span> <span style="color: #06b6ef">systemctl</span> <span style="color: #06b6ef">restart</span> <span style="color: #06b6ef">nginx</span>
+</code></pre></div>
+
+
+<h2 class="chapter-header" id="dokku-digital-ocean">Host your node applications on Digital Ocean (2)</h2>
+
+<p>If you have choosen Dokku as your image for your Droplet creation to host your node applications, you can continue to read here after you have finished the initial setup and perhaps your domain setup. Basically you only have to follow one guide, <a target="_blank" rel="noopener noreferrer" href="https://www.digitalocean.com/community/tutorials/how-to-use-the-digitalocean-dokku-application">How to Use the DigitalOcean Dokku Application</a>, which covers 3 essential steps (plus the deployment of your application).</p>
+
+<ul>
+<li>Browsing to your IP address</li>
+<li>Add your public SSH key that you created in a previous step</li>
+<li>Configure your domain, if you have obtained one, otherwise keep using the IP address</li>
+</ul>
+
+<p>Afterward, you are able to deploy your application directly form your local machine. You will need Git on the command line to synchronize your application from your local machine with your Droplet. If you haven&rsquo;t installed Git and GitHub yet, follow this article: <a href="../git-essential-commands/index.html">GitHub and Git essentials</a>.</p>
+
+<p>Now on the command line, you can add your remote Dokku instance to your Git project on your local machine.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">git</span> <span style="color: #06b6ef">remote</span> <span style="color: #06b6ef">add</span> <span style="color: #06b6ef">dokku</span> <span style="color: #06b6ef">dokku</span><span style="color: #ef6155">@</span><span style="color: #06b6ef">mydomain</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">com</span><span style="color: #5bc4bf">:</span><span style="color: #06b6ef">my</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">application</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">foo</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">bar</span>
+<span style="color: #06b6ef">git</span> <span style="color: #06b6ef">push</span> <span style="color: #06b6ef">dokku</span> <span style="color: #06b6ef">master</span>
+</code></pre></div>
+
+
+<p>Make sure to read the linked article which will step you through the whole process in more detail. After you have finished everything said in the article, you should be able to find your application with the used subdomain on your IP address and domain if you have used one. You can read more about Dokku in their <a target="_blank" rel="noopener noreferrer" href="http://dokku.viewdocs.io/dokku/getting-started/installation/">official documentation</a>.</p>
+
+<p>You can use subdomains to distribute your applications horizontally on your Dokku instance. Personally I use these to create various personal APIs (e.g. a <a href="../react-express-stripe-payment/index.html">Stripe payment server</a> or an authentication server with Passport.js) or to create one application with multiple instances (e.g. test, staging, production) in one Dokku Droplet.</p>
+
+<p>For instance, this way I could end up with the following applications distributed along multiple subdomains in one Dokku instance.</p>
+
+<ul>
+<li><strong>Stripe Payment Server as standalone API:</strong> stripe-payment.mydomain.com</li>
+<li><strong>Passport.js Authentication Server as standalone API:</strong> authentication-passport.mydomain.com</li>
+<li><strong>Email Server as standalone API:</strong> email.mydomain.com</li>
+<li><strong>Application (Test):</strong> 02-test.mydomain.com</li>
+<li><strong>Application (Staging):</strong> 01-staging.mydomain.com</li>
+<li><strong>User Facing Application (Production):</strong> 00-production.mydomain.com</li>
+</ul>
+
+<p>I could even add other public facing applications next to it, where the domain isn&rsquo;t crucial. I did it to <a target="_blank" rel="noopener noreferrer" href="https://slack-the-road-to-learn-react.wieruch.com/">automate the Slack invitation</a> for people learning React.js.</p>
+
+<p>Because the subdomains are ordered in an alphabetical order on Dokku, the first subdomain showing up, in this case 00-production, is used as default when browsing to the mydomain.com domain. Essentially I did the same when <a href="../how-to-build-your-own-course-platform/index.html">I have built my own course paltform</a> to teach about React. It uses one Dokku instance to host all the infrastructure in various microservices.</p>
+
+<h3 id="dokku-lets-encrypt-ssl-certificate">Secure Dokku applications with SSL (2)</h3>
+
+<p>Dokku has a great ecosystem of plugins. You can find the installation guidelines in <a target="_blank" rel="noopener noreferrer" href="https://github.com/dokku/dokku/blob/master/docs/advanced-usage/plugin-management.md">Dokku&rsquo;s official documentation</a>. For instance, you can easily add SSL for your applications on the command line by using <a target="_blank" rel="noopener noreferrer" href="https://github.com/dokku/dokku-letsencrypt">dokku-letsencrypt</a>. After you have installed the plugin, you can obtain a SSL certifacte for each application on the command line:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">dokku</span> <span style="color: #06b6ef">config</span><span style="color: #5bc4bf">:</span><span style="color: #06b6ef">set</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">no</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">restart</span> <span style="color: #06b6ef">myapp</span> <span style="color: #06b6ef">DOKKU_LETSENCRYPT_EMAIL</span><span style="color: #5bc4bf">=</span><span style="color: #06b6ef">your</span><span style="color: #ef6155">@</span><span style="color: #06b6ef">email</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">tld</span>
+<span style="color: #06b6ef">dokku</span> <span style="color: #06b6ef">letsencrypt</span> <span style="color: #06b6ef">myapp</span>
+</code></pre></div>
+
+
+<p>Dokku will automatically take care of the redirection to HTTPS only. Afterward, you shouldn&rsquo;t forget to setup once a recurring certificate renewal by using a cron task: <code>dokku letsencrypt:cron-job --add</code></p>
+
+<h3 id="dokku-plugins-database">Other Plugins for Dokku (2)</h3>
+
+<p>There are plenty of plugins available for Dokku. For insatnce, one <a target="_blank" rel="noopener noreferrer" href="https://github.com/dokku/dokku-mongo">plugin provides you a mongoDB</a>. This way you can use your own in-house database. If you are going to outsource your database, you could use solutions such as <a target="_blank" rel="nofollow noopener noreferrer" href="https://mlab.com/">mLab</a> or <a target="_blank" rel="nofollow noopener noreferrer" href="https://www.mongodb.com/cloud/atlas">MongoDB Atlas</a>.</p>
+
+<h2 class="chapter-header" id="swap-file-digital-ocean">Swap File (Optional)</h2>
+
+<p>If any of your Droplets runs into out of memory problems, but you don&rsquo;t want to upgrade the Droplet size, you could try to add a swap file which is used as in memory space. It is not recommended to use it, but sometimes it helps to improve your Droplets performance just a bit. Follow the intructions from this article: <a target="_blank" rel="noopener noreferrer" href="https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-16-04">How To Add Swap Space on Ubuntu 16.04</a>.</p>
+
+<hr class="section-divider">
+
+<p>Is there a step missing? Did you run into any pitfalls? Or could the article be improved at some place? Please leave your feedback in the comments. Otherwise I hope the walkthrough gave you a couple of entry points and guidance on how to host your own static websites, node applications or APIs. The article doesn&rsquo;t attempt to be comprehensive, but at least it should have summarized all the crucial points.</p>
+
+
+                            
+<div class="feedback-and-share text-center">
+    <hr>
+    
+    <p class="lead">
+        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
+    </p>
+    
+    
+        <p class="lead">
+            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+        </p>
+    
+</div>
+
+
+                            
+                                <div class="box-inline col-md-12">
+    <div class="col-md-12 text-center">
+        <h2 class="newsletter">The Road to learn React</h2>
+        
+            <div class="col-md-4">
+                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+            </div>
+        
+        <p class="lead">
+            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
+        </p>
+        <a
+            class="btn btn-template-main"
+            href="https://roadtoreact.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Get the Book for free <i class="fa fa-chevron-right"></i>
+        </a>
+        
+            <div>
+                <a
+                    href="https://amzn.to/2QY2ONp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get it from Amazon
+                </a>
+            </div>
+        
+    </div>
+</div>
+                            
+                        </div>
+
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'rwieruch';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </article>
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase">Take Part</h2>
+            </div>
+
+            <div class="col-md-12 text-center">
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+                
+            </div>
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+        <footer id="subfooter">
+    <div class="container">
+
+        <div class="col-md-5 col-sm-6">
+
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../redux-vs-usereducer/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="React&#39;s useReducer vs Redux"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../publish-npm-package-node/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to publish a npm package?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../react-scroll-to-item/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to Scroll to Item in React?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+
+        
+        <div class="col-md-5 col-md-offset-2 col-sm-6">
+
+            <h4>About Me</h4>
+
+            <div class="blog-entries">
+                <div class="item same-height-row clearfix">
+                    <div class="profile same-height-always">
+                        <img
+                            class="img-lazy img-responsive"
+                            data-lazy-src="//img/page/profile.jpg"
+                            alt="profile"
+                        >
+                    </div>
+                    <div class="name same-height-always">
+                        <p>
+                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+        <footer id="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-left">
+          
+            <li>© Chris Paul</li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline footer-social-buttons text-center">
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-right">
+          
+            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+
+    
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-65599459-2', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="../js/script.js"></script>
+
+
+
+  </body>
+</html>

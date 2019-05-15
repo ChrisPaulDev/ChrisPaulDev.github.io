@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="google-site-verification" content="We9gRQmlTIjMkOPPjPWDQTXd15nWA6tBEYlxQ2cMpEg" />
+
+  <title>
+    Deep Dive into JavaScript&#39;s Array Map Method - CPaul
+  </title>
+
+  <meta name="author" content="" />
+
+  
+    <meta name="description" content="An extensive walkthrough for JavaScript developers who want to get to know the Array&#39;s Map Method to transform data. You will learn about the Callback Function&#39;s Arguments, usages of Map with other Array Methods, and ...">
+  
+
+  <meta name="theme-color" content="#38bb6c"/>
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  
+  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../img/favicon/manifest.json">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+
+  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+
+  
+  
+<meta itemprop="name" content="Deep Dive into JavaScript&#39;s Array Map Method">
+<meta itemprop="description" content="An extensive walkthrough for JavaScript developers who want to get to know the Array&#39;s Map Method to transform data. You will learn about the Callback Function&#39;s Arguments, usages of Map with other Array Methods, and ...">
+
+
+
+    <meta itemprop="image" content="https://chrispaul.dev/img/posts/javascript-map-array/banner_640.jpg">
+
+
+
+<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+
+
+<meta itemprop="wordCount" content="4893">
+
+
+  
+  <meta name="keywords" content="map javascript, array map javascript, array map method, array map function">
+
+  <meta property="og:title" content="Deep Dive into JavaScript&#39;s Array Map Method - CPaul">
+
+
+  <meta property="og:description" content="An extensive walkthrough for JavaScript developers who want to get to know the Array&#39;s Map Method to transform data. You will learn about the Callback Function&#39;s Arguments, usages of Map with other Array Methods, and ..." />
+
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrispaul.dev/javascript-map-array/" />
+<meta property="og:image" content="https://chrispaul.dev/img/posts/javascript-map-array/banner_640.jpg" />
+
+  
+
+    <meta name="news_keywords" content="map javascript,array map javascript,array map method,array map function" />
+
+  
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/javascript-map-array/banner_640.jpg"/>
+
+
+
+<meta name="twitter:title" content="Deep Dive into JavaScript&#39;s Array Map Method"/>
+<meta name="twitter:description" content="An extensive walkthrough for JavaScript developers who want to get to know the Array&#39;s Map Method to transform data. You will learn about the Callback Function&#39;s Arguments, usages of Map with other Array Methods, and ..."/>
+<meta name="twitter:site" content="@rwieruch"/>
+<meta name="twitter:domain" content="rwieruch"/>
+
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="../index.html">
+                    <img src="../img/page/logo.svg" alt="Deep Dive into JavaScript&#39;s Array Map Method logo" class="img-lazy">
+                    <span class="sr-only">Deep Dive into JavaScript&#39;s Array Map Method - go to homepage</span>
+                </a>
+
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../index.html">Blog</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../work-with-me/index.html">Work with me</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../about/index.html">About</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fjavascript-map-array%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=Deep%20Dive%20into%20JavaScript%27s%20Array%20Map%20Method%20by%20%40rwieruch%20%23JavaScript&amp;url=https%3a%2f%2fchrispaul.dev%2fjavascript-map-array%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Deep%20Dive%20into%20JavaScript%27s%20Array%20Map%20Method&amp;url=https%3a%2f%2fchrispaul.dev%2fjavascript-map-array%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+</div>
+
+<div class="visible-xs visible-sm text-center">
+    <div class="post-share post-share-fixed post-share-mobile">
+        
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fjavascript-map-array%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=Deep%20Dive%20into%20JavaScript%27s%20Array%20Map%20Method%20by%20%40rwieruch%20%23JavaScript&amp;url=https%3a%2f%2fchrispaul.dev%2fjavascript-map-array%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Deep%20Dive%20into%20JavaScript%27s%20Array%20Map%20Method&amp;url=https%3a%2f%2fchrispaul.dev%2fjavascript-map-array%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+    </div>
+</div>
+
+        
+
+        <div class="hidden-xs">
+            
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase newsletter">Take Part</h2>
+            </div>
+
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    <article
+                        class="col-md-8 col-md-offset-2"
+                        id="blog-post"
+                        itemprop="blogPosts"
+                        itemscope itemtype="http://schema.org/BlogPosting">
+
+                        <div id="post-content" itemprop="articleBody">
+
+                            <header>
+                                <h1 itemprop="name headline">Deep Dive into JavaScript&#39;s Array Map Method</h1>
+                            </header>
+
+                            <div class="text-center">
+                                
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
+         <i class="fa fa-facebook"></i>Follow
+    </a>
+
+
+                                &nbsp;
+                                
+
+                                &nbsp;
+                                
+  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
+    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
+  </a>
+
+
+                                &nbsp;
+                                
+                            </div>
+
+                            <p class="text-muted text-uppercase mb-small text-center">
+    <span itemprop="author publisher">
+        
+    </span>
+
+    
+        <time datetime="2019-03-06" itemprop="datePublished">
+            March 6, 2019
+        </time>
+    
+
+    
+        <span class="hidden-xs hidden-sm"> - <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/javascript-map-array.md">
+                Edit this Post on GitHub
+            </a>
+        </span>
+    
+</p>
+
+                            <div>
+  
+
+</div>
+
+<p>
+  <em>
+    Thank you <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/benjamminj">Benjamin Johnson</a> for submitting this guest blog post to teach others about your skills and learnings as a developer. If <strong>you</strong> want to submit a guest blog post too, <a href="../work-with-me/index.html">I am keen to get a message from you</a>. There is only one requirement: You must have written a quality technical article before.
+  </em>
+</p>
+
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fjavascript-map-array%2f&amp;media=https://chrispaul.dev/img%2fposts%2fjavascript-map-array%2fbanner.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/javascript-map-array/banner.jpg"
+            data-is-src-set="is-src-set"
+            alt="javascript map"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<p>The <strong>Map Function</strong> is one of the <strong>many Methods</strong> existing on the <strong>JavaScript Array prototype</strong>. If you want to do a deep dive on prototypical inheritance, here&rsquo;s a great read by Kyle Simpson on <a target="_blank" rel="noopener noreferrer" href="https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/ch5.md">how prototypes work under the hood</a>. For this article it will be sufficient to know that the methods on the Array prototype are available to every array that we declare in our code.</p>
+
+<p>Specifically, the Array Map Method operates on an array to run a transformation on every element of the array. It does so through use of a <em>callback function</em> which is called for each item of the array. After running the callback function on each item, the Map Method returns <em>the transformed array</em>, leaving the <em>original array</em> unchanged. Let&rsquo;s take a quick look at how that looks in practice:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">originalArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">5</span><span style="color: #e7e9db">];</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">addOne</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">number</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">+</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [1, 2, 3, 4, 5]</span>
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">newArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [2, 3, 4, 5, 6]</span>
+</code></pre></div>
+
+
+<p>The Map Method is called on our array of <code>[1, 2, 3, 4, 5]</code> as the original array. In the callback function, it then passes through every single item (value) in the array by calling the <code>addOne</code> function with the item. The first argument of the callback function is the currently iterated value of the array. Once it completes passing through the array it returns the new array of <code>[2, 3, 4, 5, 6]</code> back to us. For the sake of completeness, you can also pass an anonymous function as callback function to the map method:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">originalArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">5</span><span style="color: #e7e9db">];</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">function</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">number</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span>  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">+</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [1, 2, 3, 4, 5]</span>
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">newArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [2, 3, 4, 5, 6]</span>
+</code></pre></div>
+
+
+<p>However, if you decide to extract the callback function as standalone function declared as a variable, you have to name it again in order to pass it to the map method:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">originalArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">5</span><span style="color: #e7e9db">];</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">function</span> <span style="color: #06b6ef">addOne</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">number</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">+</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">}</span>
+</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">addOne</span><span style="color: #e7e9db">);</span>
+</span>
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [1, 2, 3, 4, 5]</span>
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">newArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [2, 3, 4, 5, 6]</span>
+</code></pre></div>
+
+
+<p>Now you might be asking, why don&rsquo;t we just use a <code>for</code> loop instead? After all, we&rsquo;re looping through the array and executing code on each item, we may as well, right? We could even push the transformed items to a new array in order to make sure we don&rsquo;t modify the original array. Why don&rsquo;t we just do this?</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">originalArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">5</span><span style="color: #e7e9db">];</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[];</span>
+
+<span style="color: #815ba4">for</span> <span style="color: #e7e9db">(</span><span style="color: #815ba4">let</span> <span style="color: #06b6ef">i</span> <span style="color: #5bc4bf">=</span> <span style="color: #f99b15">0</span><span style="color: #e7e9db">;</span> <span style="color: #06b6ef">i</span> <span style="color: #5bc4bf">&lt;</span> <span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">length</span><span style="color: #e7e9db">;</span> <span style="color: #06b6ef">i</span><span style="color: #5bc4bf">++</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">newArray</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">i</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">i</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">+</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [1, 2, 3, 4, 5]</span>
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">newArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [2, 3, 4, 5, 6]</span>
+</code></pre></div>
+
+
+<p>JavaScript includes these built-in Array methods &ndash; including the Map Method &ndash; for a reason. It&rsquo;s not a secret that when you&rsquo;re programming in JavaScript you&rsquo;ll probably be dealing with arrays a lot, and chances are you&rsquo;ll find yourself transforming those arrays quite often. Having utility methods like the Map Method that operates on Arrays not only help us to drastically cut down on the amount of typing that we need to do, they help our code become more readable (in many cases) by having us only describe the part of the loop that will actually change each time we&rsquo;re transforming array data: the transformation which is the business logic of the callback function passed to the map method.</p>
+
+<p><strong>A word about immutable data structures:</strong> The Array Map Method helps us keep our data pure as we go through encouraging <em>immutable data structures</em>. The Map Method never changes the original array, which helps us to predictably reason about what value each variable holds as we read through our code.</p>
+
+<p>However, this isn&rsquo;t an article about <code>map</code> versus <code>for</code> loops! There&rsquo;s plenty of stuff on the internet about that, and frankly, sometimes a &ldquo;for&rdquo;-loop will be a better choice than a Map Function. And if you&rsquo;re new to the Map Function but you&rsquo;re familiar with &ldquo;for&rdquo;-loops, it might be helpful to think of the Map Method as a &ldquo;for&rdquo;-loop internally. As we go on further in this tutorial, we&rsquo;ll dive into some more examples on how map works and look at some practical ways that we can leverage this method in our day-to-day use cases.</p>
+
+<h2 class="chapter-header" id="javascript-map-arrow-function">Array Map Method with Arrow Functions as Callback Function</h2>
+
+<p>In the first couple examples, we used the <code>function</code> keyword to define our callback function. However, you might also be familiar with the ES2015 (or ES6) <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow function</a>, also known as <em>lambda</em> in various programming languages, for anonymous functions. Using the arrow function syntax for the callback function in a Map Method is very common, mainly because it allows us to define all of the logic related to the Map Operation inline without becoming too syntactically burdensome. Here&rsquo;s an example of that same Map Method usage from earlier, but using an arrow function:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">originalArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">5</span><span style="color: #e7e9db">];</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">+</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">);</span>
+</span>
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [1, 2, 3, 4, 5]</span>
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">newArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [2, 3, 4, 5, 6]</span>
+</code></pre></div>
+
+
+<p>Granted, there are a few nuances that you want to be aware of in using an arrow function instead of the <code>function</code> keyword. For example, arrow functions will show up as anonymous function in a stack trace. Using the full function syntax allows us to give our callback function a name that will show in the stacktrace in our developer tools. However, the arrow function syntax is also more concise, which makes callbacks in a Map Method effortless to read.</p>
+
+<p><strong>A word about arrow functions</strong>: If you want to look at a more in-depth explanation of the nuance between arrow functions and the traditional function syntax, I&rsquo;d highly recommend <a target="_blank" rel="noopener noreferrer" href="https://medium.freecodecamp.org/when-and-why-you-should-use-es6-arrow-functions-and-when-you-shouldnt-3d851d7f0b26">this article</a> on FreeCodeCamp&rsquo;s blog. There&rsquo;s a lot of people on both sides of the &ldquo;use vs not use arrow functions&rdquo; debate, and both sides make a lot of great points. However, we&rsquo;re not gonna dive too far into that debate for now. For the rest of this article I&rsquo;m just gonna use the arrow syntax, as of right now it&rsquo;s my personal preference, especially for things like the <code>Array.map</code> Method Callback Functions.</p>
+
+<h2 class="chapter-header" id="javascript-map-method-callback-function">The Map Method&#39;s Callback Function</h2>
+
+<p>Understanding how the callback function in <code>map</code> works is crucial to using the Map Method effectively. In this section we&rsquo;ll take a look at the what arguments are passed to the callback function and some ways that we can use those arguments. The Map Method&rsquo;s callback takes three arguments, although you can write a callback only using one or two arguments as well. Here are the three arguments that it takes: <code>array.map((value, index, array) =&gt; { ... });</code>.</p>
+
+<h3 id="callback-function-value-argument">value</h3>
+
+<p>This is the current <em>value</em> being processed in the iteration while going through each item in the array. If we ran <code>[1, 2, 3].map(value =&gt; value + 1)</code>, our callback function would be run with a <code>value</code> of <code>1</code> the first time, and then it would be called again with <code>2</code> and <code>3</code> as we iterate through the array. Whereas <code>value</code> is the more general naming for this argument, people tend to specify the argument&rsquo;s name as well as we did before by calling it <code>number</code>.</p>
+
+<h3 id="callback-function-index-argument">index</h3>
+
+<p>The second argument to the callback function is the <em>index</em> of the item that we are currently processing. Taking our example array of <code>[1, 2, 3]</code>, if we run <code>[1, 2, 3].map((value, index) =&gt; index)</code> we&rsquo;ll see our callback get run with <code>0</code> the first time, <code>1</code> the second time, and <code>2</code> on the final time. This second argument is extremely useful if we&rsquo;re trying to use <code>map</code> to generate data or if we need to use the index to access a corresponding item in a <em>different</em> array. We&rsquo;ll look at some more practical ways we can use the <code>index</code> argument to do some cool things with <code>Array.map</code> later on.</p>
+
+<h3 id="callback-function-array-argument">array</h3>
+
+<p>The final argument to <code>map</code>&rsquo;s callback function is the <code>array</code> that <code>map</code> was originally called upon. Chances are you will not often need to use this argument. The reason is that if you&rsquo;ve already got the array tied to a variable, you&rsquo;ve already got a reference to the original array that <code>map</code> was called upon. For example:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">myArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">];</span>
+
+<span style="color: #776e71">// using the third argument to map</span>
+<span style="color: #06b6ef">myArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">index</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">array</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">array</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">index</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">+</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #776e71">// using the variable that holds the original array</span>
+<span style="color: #06b6ef">myArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">index</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">myArray</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">index</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">+</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #776e71">// just using map without accessing the array manually</span>
+<span style="color: #06b6ef">myArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">+</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">});</span>
+</code></pre></div>
+
+
+<p>Even though you might not often need the third argument to <code>map</code>, it&rsquo;s still god to know that it exists! Every once in a while you&rsquo;ll come across a situation where it comes in handy—for example, when chaining array methods or when you don&rsquo;t have the array bound to a variable.</p>
+
+<h2 class="chapter-header" id="how-to-use-map-along-with-other-array-methods">How to use the Map Method along with other Array Methods</h2>
+
+<p>JavaScript&rsquo;s <code>Array.map</code> method is just one of many methods for operating on arrays. In order to use it effectively we need to not only understand <em>how the Map Method works</em>, but how it can work in combination with other common array methods. After all, <code>map</code> is only one of the tools in our <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">array methods toolbelt</a>, and it&rsquo;s important that we use the right tool for each use case. In this section we&rsquo;re going to examine how the Map Method compares to some other commonly used array methods, and some use cases where another array method might be a better option.</p>
+
+<h3 id="map-vs-foreach">Using map vs forEach</h3>
+
+<p>Although <code>map</code> does iterate through the entire array and it does execute the callback function one time for each item in the array, there&rsquo;s also another method that does a very similar thing: the <code>forEach</code> Method.</p>
+
+<p>While <code>forEach</code> does iterate through the entire array and it does execute its callback function once for every item in the array, there&rsquo;s one major distinction: <code>forEach</code> doesn&rsquo;t return anything. In the case of <code>map</code>, the return value of the callback function is used as the transformed value in our new array. However, <code>forEach</code> doesn&rsquo;t return anything, and if the callback function returns a value, nothing is done with that value.</p>
+
+<p>We can use this characteristic of <code>map</code> and <code>forEach</code>&rsquo;s return values to inform us as to when we should use the map Method and when we should use the forEach Method. Since <code>forEach</code> doesn&rsquo;t do anything with the return values of its callback function, we can safely assume that whenever we&rsquo;re not using the return value of our callback function, this would be a better use case for <code>forEach</code> over <code>map</code>. For example, this usage of <code>map</code> would be better written with a <code>forEach</code>:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">myArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">];</span>
+
+<span style="color: #06b6ef">myArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">number</span><span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #776e71">// nothing changes except the method we used</span>
+<span style="color: #06b6ef">myArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">forEach</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">number</span><span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">});</span>
+</code></pre></div>
+
+
+<p>However, whenever we plan on <em>using the return value</em> from our callback function, this is likely the time that we&rsquo;re gonna reach for <code>map</code> instead of <code>forEach</code>. If we want to take our array and transform it to a new array, this is a better usage for <code>map</code>. For example, this usage of <code>forEach</code> would be better written as a <code>map</code>:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">originalArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">];</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[];</span>
+
+<span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">forEach</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">number</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">i</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">newArray</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">i</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">*</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">newArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [2, 4, 6, 8]</span>
+</code></pre></div>
+
+
+<p>Since we&rsquo;re pushing a value to a new array and transforming the value, we&rsquo;re essentially recreating all the things that <code>map</code> does automatically for us. So, to sum <code>map</code> and <code>forEach</code> up, if your callback returns a value, you&rsquo;re probably gonna be using <code>map</code>, and if it doesn&rsquo;t, <code>forEach</code> is probably the better choice.</p>
+
+<h3 id="using-map-along-with-filter">Using map and filter</h3>
+
+<p>The Filter Method differs from the Map Method in a few ways. While <code>filter</code> and <code>map</code> are both immutable operations, because they return a new array, they have different purposes. True to its name, <code>filter</code> produces a shorter array that has filtered <em>out</em> any items that didn&rsquo;t meet a condition. In contrast <code>map</code> doesn&rsquo;t ever change the array length—just the values of the items within.</p>
+
+<p>If you&rsquo;re looking to remove or delete an item from your array, <code>filter</code> is gonna be your friend. However, we can use the Filter Method in combination with the Map Method to do some cool things. For example, we can use <code>filter</code> to sanitize our array&rsquo;s values before we use <code>map</code> to transform them:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">originalArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #815ba4">undefined</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">];</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">originalArray</span>
+  <span style="color: #e7e9db">.</span><span style="color: #06b6ef">filter</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">Number.</span><span style="color: #06b6ef">isInteger</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}).</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">return</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">*</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">;</span>
+  <span style="color: #e7e9db">});</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">newArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [2, 4, 6]</span>
+</code></pre></div>
+
+
+<p>If we didn&rsquo;t include the <code>filter</code> step before the <code>map</code>, we&rsquo;d get <code>NaN</code> as the third element in the array, which could seriously trip us up later on in our usage of this new array. However, because we used <code>filter</code> to sanitize the array&rsquo;s values we can feel safer about using the transformed values.</p>
+
+<p>Believe it or not, some languages have a dedicated function for running this combination of <code>filter</code> and <code>map</code>, called <code>filterMap</code>. However, since we don&rsquo;t have an <code>Array.filterMap</code> function in JavaScript, it&rsquo;s useful to know that we can do this combination to sanitize our mapped data.</p>
+
+<h3 id="using-map-and-reduce">Using map and reduce</h3>
+
+<p>Another fairly similar method to <code>map</code> is the Reduce Method. However, <code>Array.reduce</code> is <em>far more flexible</em>.</p>
+
+<p>If you&rsquo;re unfamiliar with <code>reduce</code>, it mainly works like this: the <code>reduce</code> method also takes a callback as its first argument. This callback receives something called an <em>accumulator</em> as its first argument and a value in the array as its second argument (along with the index as its third and the original array as the fourth). What you do with the value is entirely up to you! However, <em>whatever you return from the callback function</em> will be used as the <em>accumulator</em> argument in the callback for the next iteration.</p>
+
+<p>The second argument to <code>reduce</code> is the original <em>accumulator</em> &ndash; think of it kind of as the seed. This second argument will be used as the <em>accumulator</em> for the <em>first time the callback is fired</em>.</p>
+
+<p>The <em>accumulator</em> can be anything—an array, an object, a string, or even a single number! This aspect of <code>reduce</code> makes it extremely versatile since we can iterate through the array once and transform it into <em>any data structure</em>. In fact, <code>reduce</code> is versatile enough that we can even use it to do the exact same thing that <code>map</code> does:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">originalArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">5</span><span style="color: #e7e9db">];</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">reduce</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">accumulator</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">value</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">index</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">accumulator</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">index</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">*</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">;</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">accumulator</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">},</span> <span style="color: #e7e9db">[]);</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">newArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [2, 4, 6, 8, 10]</span>
+</code></pre></div>
+
+
+<p>However, just because we can use <code>reduce</code> to do the same thing as <code>map</code> doesn&rsquo;t mean we should! In fact, because <code>map</code> only requires us to declare our transformation we&rsquo;ll find that it&rsquo;s much cleaner and more readable if we are only transforming values in an array. If we expect to get an array back of transformed values, <code>map</code> is likely a better choice than <code>reduce</code>.</p>
+
+<p>However, if we wanted to use <code>map</code> to transform our array into a new object, we couldn&rsquo;t do it. In this case <code>reduce</code> would be the best choice since we have much finer grained control over the shape of what it returns. For example, we can use <code>reduce</code> to turn an array of strings into object keys.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">myArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #48b685">&#39;a&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">&#39;b&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">&#39;c&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">&#39;d&#39;</span><span style="color: #e7e9db">];</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">myObject</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">myArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">reduce</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">accumulator</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">value</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">accumulator</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">true</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">},</span> <span style="color: #e7e9db">{});</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">myObject</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// { a: true, b: true, c: true, d: true }</span>
+</code></pre></div>
+
+
+<p>To sum it up, if you want to get an array of transformed values, use <code>map</code>. But if you need to return something other than an array, you&rsquo;ll likely want to reach for <code>reduce</code>.</p>
+
+<h3 id="using-map-and-reverse">Using map and reverse</h3>
+
+<p>Occasionally, you might need to map an array and reverse it as well. It&rsquo;s good to know in this case that although <code>map</code> is immutable, the Reverse Method isn&rsquo;t! Using <code>reverse</code> on an array will actually reverse <em>the original array</em>. So, if you need to map and reverse the array, make sure that you do <code>map</code> first, and <em>then</em> <code>reverse</code>. This way you create a new array with <code>map</code> before you <code>reverse</code> it:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// Don&#39;t do this!</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">originalArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">5</span><span style="color: #e7e9db">];</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">reverseNewArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">reverse</span><span style="color: #e7e9db">().</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">*</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">);</span>
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [10, 8, 6, 4, 2]</span>
+
+<span style="color: #776e71">// Instead, do this!</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">originalArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">5</span><span style="color: #e7e9db">];</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">reverseNewArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">*</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">).</span><span style="color: #06b6ef">reverse</span><span style="color: #e7e9db">();</span>
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [2, 4, 6, 8, 10]</span>
+</code></pre></div>
+
+
+<p>If all you need to do is <code>reverse</code> an array (you don&rsquo;t need to transform the values), you don&rsquo;t need to use <code>map</code> to clone the array! While you <em>could</em> produce an unaltered array clone with <code>map(value =&gt; value)</code>, you can also produce a cloned array with <code>.slice()</code>. This creates a new array for us to reverse so that we don&rsquo;t mutate the original:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">originalArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">5</span><span style="color: #e7e9db">]</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">slice</span><span style="color: #e7e9db">().</span><span style="color: #06b6ef">reverse</span><span style="color: #e7e9db">()</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">newArray</span><span style="color: #e7e9db">)</span> <span style="color: #776e71">// [5, 4, 3, 2, 1]</span>
+</code></pre></div>
+
+
+<h2 class="chapter-header" id="javascript-map-for-complex-data-operations">Map Method for complex Data Operations</h2>
+
+<p>While we can certainly use the Map Method for simple operations like adding 1 to every number in the array, it turns out that it&rsquo;s super flexible—we can do a ton of things armed with this simple method and our callback function. Let&rsquo;s dive into a few of them!</p>
+
+<h3 id="extracting-object-keys-with-map">Extracting object keys with map</h3>
+
+<p>For example, if we wanted to use map to extract a <em>single key</em> from <em>every item in an array of objects</em>, we could do it like this:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">originalArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span>
+  <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">a</span><span style="color: #5bc4bf">:</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">b</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;first&#39;</span> <span style="color: #e7e9db">},</span>
+  <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">a</span><span style="color: #5bc4bf">:</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">b</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;second&#39;</span> <span style="color: #e7e9db">},</span>
+  <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">a</span><span style="color: #5bc4bf">:</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">b</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;third&#39;</span> <span style="color: #e7e9db">},</span>
+<span style="color: #e7e9db">];</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">object</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">object</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">b</span><span style="color: #e7e9db">);</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">newArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [&#39;first&#39;, &#39;second&#39;, &#39;third&#39;]</span>
+</code></pre></div>
+
+
+<p>In this case, our callback function isn&rsquo;t doing much—it just takes each object and returns the value at the <code>b</code> key. As a result we end up transforming our array of objects into an array of strings.</p>
+
+<h3 id="using-map-to-iterate-through-an-object">Using map to iterate through an object</h3>
+
+<p>Sometimes you want to iterate through all of the items <em>in an object itself</em> as opposed to an array of objects. A common example might be if you have an object where each key represents a unique id, but all of the values might be a similar type (sort of like a <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">JavaScript Set</a>). While <code>map</code> won&rsquo;t work directly on objects, we can use <code>map</code> to transform all of the values of an object through combining <code>map</code> with <code>Object.entries</code>.</p>
+
+<p><code>Object.entries</code> was added to JavaScript in <a target="_blank" rel="noopener noreferrer" href="http://2ality.com/2016/02/ecmascript-2017.html">ES2017</a>, and has <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries#Browser_compatibility">decent browser support</a> today (that is, if you&rsquo;re not supporting IE11). What <code>Object.entries</code> does is it takes an object for its argument and spits out a <em>two dimensional array</em> (an array of arrays). Each item in the array is a array containing exactly two items: the first is the key, and the second is the value. <code>Object.entries</code>, similar to <code>map</code> creates a <em>new array</em> and does not mutate the original object.</p>
+
+<p>If we leverage <code>Object.entries</code> to transform our object into an array, <em>then</em> we can use map to run whatever transformations we want on our data:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">object</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">a</span><span style="color: #5bc4bf">:</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">b</span><span style="color: #5bc4bf">:</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">c</span><span style="color: #5bc4bf">:</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">,</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">array</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">Object.</span><span style="color: #06b6ef">entries</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">object</span><span style="color: #e7e9db">);</span>
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">array</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [[&#39;a&#39;, 1], [&#39;b&#39;, 2], [&#39;c&#39;, 3]]</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">array</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(([</span><span style="color: #06b6ef">key</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">value</span><span style="color: #e7e9db">])</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">[</span><span style="color: #06b6ef">key</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">*</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">]);</span>
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">newArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [[&#39;a&#39;, 2], [&#39;b&#39;, 4], [&#39;c&#39;, 6]]</span>
+</code></pre></div>
+
+
+<p>In line 10, we&rsquo;ve used <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">array destructuring</a> to make our callback function a little bit easier to read. Since we know that each value in the array is a two-item array, we can assume that the first item will always be the <code>key</code> and the second item will always be the <code>value</code>. We proceed to multiply each value by 2, leaving all of the keys unaltered.</p>
+
+<p>If you&rsquo;re cool with your transformed data being stored in an array of arrays, feel free to stop transforming it here. But perhaps you want your data to be back in its original object shape. In order to do this we&rsquo;ll need to combine our <code>map</code> with a <code>reduce</code> function to zip the array back up into an object:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newObject</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">newArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">reduce</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">accumulator</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">[</span><span style="color: #06b6ef">key</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">value</span><span style="color: #e7e9db">])</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">accumulator</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">key</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">value</span><span style="color: #e7e9db">;</span>
+    <span style="color: #815ba4">return</span> <span style="color: #06b6ef">accumulator</span><span style="color: #e7e9db">;</span>
+  <span style="color: #e7e9db">},</span> <span style="color: #e7e9db">{});</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">newObject</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// { a: 2, b: 4, c: 6 }</span>
+</code></pre></div>
+
+
+<p>By using <code>reduce</code> to turn our <code>mapped</code> array back into an object, we get a new object that has all of the transformed values <em>without mutating the original object</em>. However, you&rsquo;ll probably notice that we kind of had to jump through a few hoops in order to use <code>map</code> over our object. While it&rsquo;s useful to know how we can use <code>map</code> to iterate over object keys, I personally think that this specific case is a prime example of the <code>map</code> vs <code>reduce</code> scenario (or <code>map</code> vs <code>forEach</code>) from earlier. If we want to transform our object by multiplying each value by two, we can simply do so by combining <code>Object.entries</code> and <code>reduce</code>/<code>forEach</code> .</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">object</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">a</span><span style="color: #5bc4bf">:</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">b</span><span style="color: #5bc4bf">:</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">c</span><span style="color: #5bc4bf">:</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">,</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">entries</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">Object.</span><span style="color: #06b6ef">entries</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">object</span><span style="color: #e7e9db">);</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newObject</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">entries</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">reduce</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">accumulator</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">[</span><span style="color: #06b6ef">key</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">value</span><span style="color: #e7e9db">])</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">accumulator</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">key</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">*</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">;</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">accumulator</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">},</span> <span style="color: #e7e9db">{});</span>
+
+<span style="color: #776e71">// also works using forEach and mutating an object</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newObject</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{};</span>
+<span style="color: #06b6ef">entries</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">forEach</span><span style="color: #e7e9db">(([</span><span style="color: #06b6ef">key</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">value</span><span style="color: #e7e9db">])</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">newObject</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">key</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">*</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">newObject</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// { a: 2, b: 4, c: 6 }</span>
+</code></pre></div>
+
+
+<p>In conclusion, <code>map</code> <em>can</em> be used to iterate over object keys and values as long as you transform the object keys and values into an array (via <code>Object.entries</code> or <code>Object.keys</code>). However, <code>map</code> isn&rsquo;t going to be capable of turning your transformed array back into an object—you will need to rely on something else such as <code>reduce</code> if you need your transformed data in an object.</p>
+
+<h3 id="javascript-map-edit-item">Conditional Map: Changing Items in an Array</h3>
+
+<p>Another extremely useful way that we can use <code>map</code> is to only change a few items within the original array. For example, perhaps we only want to transform the numbers in an array that are 10 or above.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">originalArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">5</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">10</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">15</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">20</span><span style="color: #e7e9db">];</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">&gt;=</span> <span style="color: #f99b15">10</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">return</span> <span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">*</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">;</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">number</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">newArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [5, 20, 30, 40]</span>
+</code></pre></div>
+
+
+<p>In this example we include a conditional statement <em>inside of our callback function</em> in order to return the modified value only when the number is 10 or higher. However, we also need to make sure we return something when we <em>don&rsquo;t</em> want to transform the number. We can just return <code>number</code> unchanged at the bottom of our callback function and we&rsquo;ll make sure that all numbers 10 and above are changed, while all numbers below 10 aren&rsquo;t. However, we can make this callback function with the conditional a lot shorter if we use a ternary statement to declare our conditional logic.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">originalArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">5</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">10</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">15</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">20</span><span style="color: #e7e9db">];</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">&gt;=</span> <span style="color: #f99b15">10</span> <span style="color: #5bc4bf">?</span> <span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">*</span> <span style="color: #f99b15">2</span> <span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">number</span><span style="color: #e7e9db">,</span>
+<span style="color: #e7e9db">);</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">newArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [5, 20, 30, 40]</span>
+</code></pre></div>
+
+
+<p>The best thing about using <code>map</code> to conditionally update items in an array is that you can make that condition as strict or as loose as you&rsquo;d like: you can even use <code>map</code> to update a <em>single item</em>:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">originalArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">5</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">10</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">15</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">20</span><span style="color: #e7e9db">];</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">===</span> <span style="color: #f99b15">10</span> <span style="color: #5bc4bf">?</span> <span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">*</span> <span style="color: #f99b15">2</span> <span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">number</span><span style="color: #e7e9db">,</span>
+<span style="color: #e7e9db">);</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">newArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [5, 20, 15, 20]</span>
+</code></pre></div>
+
+
+<p>Although this does iterate through the entire array to find and update a single item, I think it&rsquo;s very elegant and quite readable. I&rsquo;d argue that unless you&rsquo;re operating on huge arrays with many, many items, you probably won&rsquo;t experience too much of a bottleneck using <code>map</code> and a conditional statement to update a single item.</p>
+
+<h3 id="javascript-map-two-dimensional-arrays">Map Method for 2-dimensional Arrays</h3>
+
+<p>Also called a map within a map: Sometimes you&rsquo;ll come across a <em>multidimensional array</em> &ndash; that is, an array with nested arrays inside of it. You&rsquo;ve probably seen these before, they looks like this:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">myArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">5</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">6</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">7</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">8</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">9</span><span style="color: #e7e9db">]];</span>
+</code></pre></div>
+
+
+<p>We can use <code>map</code> to operate on these arrays as well—although it will only operate on the <em>top-level array</em>. If we call <code>map</code> on our array, our callback will get called with the <code>[1, 2, 3]</code> array the first time, <code>[4, 5, 6]</code> the second, and finally <code>[7, 8, 9]</code>.</p>
+
+<p>If you&rsquo;d like to keep the array two-dimensional, then you can proceed as usual with your callback function. Just remember that the callback function receives an <em>array</em> as the first argument! If you wanted to transform the internal arrays, you&rsquo;ll have to do a <code>map</code> inside your <code>map</code>:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">myArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">5</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">6</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">7</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">8</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">9</span><span style="color: #e7e9db">]];</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">myArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">value</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">*</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">));</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">newArray</span><span style="color: #e7e9db">);</span> <span style="color: #776e71">// [[2, 4, 6], [8, 10, 12], [14, 16, 18]]</span>
+</code></pre></div>
+
+
+<p>However, if you&rsquo;d like to turn your two-dimensional array into a <em>one-dimensional array</em> of transformed values, <code>map</code> isn&rsquo;t gonna be nearly as useful. What you&rsquo;re looking for is a <code>flatMap</code> function—which was recently released in <a href="http://2ality.com/2017/04/flatmap.html">ES2019</a>. What <code>flatMap</code> does is take a multidimensional array and turns it into single-dimensional array of transformed values. If you&rsquo;re not able to use the latest and greatest JavaScript features in ES2019, you can recreate your own <code>flatMap</code> function <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap#Alternative">by using <code>reduce</code></a></p>
+
+<h2 class="chapter-header" id="debugging-map-method">Debugging the Map Method</h2>
+
+<p>There are a couple of common pitfalls you can run into when using JavaScript&rsquo;s Array Map Method. Let&rsquo;s dive into a few of them to give you an easier time getting started with it.</p>
+
+<h3 id="when-map-is-not-defined-as-a-function">When map is not defined as a function</h3>
+
+<p>Perhaps the most common bug that you might encounter is the following: <em>map is not a function</em>. The reason that you would come across this error is that <code>map</code> is only a method on JavaScript arrays. If you try to call <code>map</code> on an <code>object</code> or on <code>null</code> or anything else, you&rsquo;ll get this error.</p>
+
+<p>This can be pretty common when you&rsquo;re dealing with data that you can&rsquo;t fully trust. For example, think of a key in an API response that could be either an array <em>or</em> <code>null</code>. Later on, you want to operate on the data, but if you just confidently use <code>map</code> on the data you could end up with this &ldquo;map is not a function&rdquo;-exception. However, we can use a little bit of JavaScript logic to sanitize the data <em>before</em> we do our <code>map</code>:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// originalArray could either be [1, 2, 3, 4] or null</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">originalArray</span> <span style="color: #5bc4bf">||</span> <span style="color: #e7e9db">[]).</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">number</span> <span style="color: #5bc4bf">*</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>By adding <code>(originalArray || [])</code> before our <code>map</code> function, we guarantee that by the time we use <code>map</code> we&rsquo;re dealing with an array instead of <code>null</code>. This protects our program from raising an exception when the list is <code>null</code>. And because we&rsquo;re mapping over an empty array, we&rsquo;ll just get an empty array back in return.</p>
+
+<p>Although it&rsquo;s a good tool to have in your toolbelt, I wouldn&rsquo;t lean on this trick too heavily. First off, it won&rsquo;t work on an object or string or any non-falsy item, so it&rsquo;s not 100% safe. Furthermore, if you&rsquo;ve got data coming into your application that isn&rsquo;t reliable, you&rsquo;ll probably get more mileage out of normalizing data as it enters your app. That way, you can safely assume that you&rsquo;re dealing with an array instead of having to resort to <a target="_blank" rel="noopener noreferrer" href="https://medium.com/@vcarl/overly-defensive-programming-e7a1b3d234c2">overly defensive programming</a>.</p>
+
+<h3 id="logging-values-inside-of-map">Logging values inside of map</h3>
+
+<p>Sometimes, when you&rsquo;re doing a <code>map</code> function you need to debug some values in the callback function. And if you&rsquo;re using arrow functions for your callbacks, adding a console log inside the arrow function requires adding curly braces, an explicit <code>return</code>, and the logging statement:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// Before</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">*</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">);</span>
+
+<span style="color: #776e71">// After</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">);</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">*</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">});</span>
+</code></pre></div>
+
+
+<p>Over time this can begin to feel a little cumbersome, especially if you&rsquo;re deep into debugging some issue. However, we can leverage a little JavaScript logic to make debugging map a whole lot easier:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// Before</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">*</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">);</span>
+
+<span style="color: #776e71">// After</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">newArray</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">originalArray</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">||</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">*</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>All we have to do is add the <code>console.log(value)</code> with a <code>||</code> in front of our normal return value! Because <code>console.log</code> returns <code>undefined</code>, the <code>map</code> callback falls back to returning the <code>value * 2</code>. This nifty trick allows us to add logging statements to our <code>map</code> callbacks without having to convert the function syntax (and makes it a lot easier to clean up <code>console.log</code> statements when you&rsquo;re done).</p>
+
+<hr class="section-divider">
+
+<p>The JavaScript <code>Array.map</code> method is extremely useful for operating and transforming sets of data. I&rsquo;m a huge fan of using <code>map</code> all over the place—it&rsquo;s one of my favorite tools to have in my toolbelt. If you&rsquo;re interested in seeing more of my writing or want to hit me up with any questions about the <code>map</code> method, please feel free to contact me! You can reach me on <a target="_blank" rel="noopener noreferrer" href="https://mobile.twitter.com/benjamminj">Twitter</a> or follow my <a target="_blank" rel="noopener noreferrer" href="https://medium.com/@benjamin.d.johnson">Medium</a>.</p>
+
+
+                            
+<div class="feedback-and-share text-center">
+    <hr>
+    
+    <p class="lead">
+        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
+    </p>
+    
+    
+        <p class="lead">
+            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+        </p>
+    
+</div>
+
+
+                            
+                                <div class="box-inline col-md-12">
+    <div class="col-md-12 text-center">
+        <h2 class="newsletter">The Road to learn React</h2>
+        
+            <div class="col-md-4">
+                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+            </div>
+        
+        <p class="lead">
+            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
+        </p>
+        <a
+            class="btn btn-template-main"
+            href="https://roadtoreact.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Get the Book for free <i class="fa fa-chevron-right"></i>
+        </a>
+        
+            <div>
+                <a
+                    href="https://amzn.to/2QY2ONp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get it from Amazon
+                </a>
+            </div>
+        
+    </div>
+</div>
+                            
+                        </div>
+
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'rwieruch';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </article>
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase">Take Part</h2>
+            </div>
+
+            <div class="col-md-12 text-center">
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+                
+            </div>
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+        <footer id="subfooter">
+    <div class="container">
+
+        <div class="col-md-5 col-sm-6">
+
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../redux-vs-usereducer/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="React&#39;s useReducer vs Redux"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../publish-npm-package-node/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to publish a npm package?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../react-scroll-to-item/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to Scroll to Item in React?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+
+        
+        <div class="col-md-5 col-md-offset-2 col-sm-6">
+
+            <h4>About Me</h4>
+
+            <div class="blog-entries">
+                <div class="item same-height-row clearfix">
+                    <div class="profile same-height-always">
+                        <img
+                            class="img-lazy img-responsive"
+                            data-lazy-src="//img/page/profile.jpg"
+                            alt="profile"
+                        >
+                    </div>
+                    <div class="name same-height-always">
+                        <p>
+                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+        <footer id="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-left">
+          
+            <li>© Chris Paul</li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline footer-social-buttons text-center">
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-right">
+          
+            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+
+    
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-65599459-2', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="../js/script.js"></script>
+
+
+
+  </body>
+</html>

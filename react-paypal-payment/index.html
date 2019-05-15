@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="google-site-verification" content="We9gRQmlTIjMkOPPjPWDQTXd15nWA6tBEYlxQ2cMpEg" />
+
+  <title>
+    How to accept Paypal payments with React - CPaul
+  </title>
+
+  <meta name="author" content="" />
+
+  
+    <meta name="description" content="Ever wondered how to integrate Paypal in your React application? This tutorial guides you through the setup process from using a Paypal checkout form in your React application. Afterward you are ready to receive Paypal payments in your React.js application ...">
+  
+
+  <meta name="theme-color" content="#38bb6c"/>
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  
+  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../img/favicon/manifest.json">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+
+  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+
+  
+  
+<meta itemprop="name" content="How to accept Paypal payments with React">
+<meta itemprop="description" content="Ever wondered how to integrate Paypal in your React application? This tutorial guides you through the setup process from using a Paypal checkout form in your React application. Afterward you are ready to receive Paypal payments in your React.js application ...">
+
+
+
+    <meta itemprop="image" content="https://chrispaul.dev/img/posts/react-paypal-payment/banner_640.jpg">
+
+
+
+<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+
+
+<meta itemprop="wordCount" content="1408">
+
+
+  
+  <meta name="keywords" content="react paypal, react paypal integration">
+
+  <meta property="og:title" content="How to accept Paypal payments with React - CPaul">
+
+
+  <meta property="og:description" content="Ever wondered how to integrate Paypal in your React application? This tutorial guides you through the setup process from using a Paypal checkout form in your React application. Afterward you are ready to receive Paypal payments in your React.js application ..." />
+
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrispaul.dev/react-paypal-payment/" />
+<meta property="og:image" content="https://chrispaul.dev/img/posts/react-paypal-payment/banner_640.jpg" />
+
+  
+
+    <meta name="news_keywords" content="react paypal" />
+
+  
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/react-paypal-payment/banner_640.jpg"/>
+
+
+
+<meta name="twitter:title" content="How to accept Paypal payments with React"/>
+<meta name="twitter:description" content="Ever wondered how to integrate Paypal in your React application? This tutorial guides you through the setup process from using a Paypal checkout form in your React application. Afterward you are ready to receive Paypal payments in your React.js application ..."/>
+<meta name="twitter:site" content="@rwieruch"/>
+<meta name="twitter:domain" content="rwieruch"/>
+
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="../index.html">
+                    <img src="../img/page/logo.svg" alt="How to accept Paypal payments with React logo" class="img-lazy">
+                    <span class="sr-only">How to accept Paypal payments with React - go to homepage</span>
+                </a>
+
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../index.html">Blog</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../work-with-me/index.html">Work with me</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../about/index.html">About</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freact-paypal-payment%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=How%20to%20accept%20Paypal%20payments%20with%20React%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2freact-paypal-payment%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=How%20to%20accept%20Paypal%20payments%20with%20React&amp;url=https%3a%2f%2fchrispaul.dev%2freact-paypal-payment%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+</div>
+
+<div class="visible-xs visible-sm text-center">
+    <div class="post-share post-share-fixed post-share-mobile">
+        
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freact-paypal-payment%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=How%20to%20accept%20Paypal%20payments%20with%20React%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2freact-paypal-payment%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=How%20to%20accept%20Paypal%20payments%20with%20React&amp;url=https%3a%2f%2fchrispaul.dev%2freact-paypal-payment%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+    </div>
+</div>
+
+        
+
+        <div class="hidden-xs">
+            
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase newsletter">Take Part</h2>
+            </div>
+
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    <article
+                        class="col-md-8 col-md-offset-2"
+                        id="blog-post"
+                        itemprop="blogPosts"
+                        itemscope itemtype="http://schema.org/BlogPosting">
+
+                        <div id="post-content" itemprop="articleBody">
+
+                            <header>
+                                <h1 itemprop="name headline">How to accept Paypal payments with React</h1>
+                            </header>
+
+                            <div class="text-center">
+                                
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
+         <i class="fa fa-facebook"></i>Follow
+    </a>
+
+
+                                &nbsp;
+                                
+
+                                &nbsp;
+                                
+  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
+    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
+  </a>
+
+
+                                &nbsp;
+                                
+                            </div>
+
+                            <p class="text-muted text-uppercase mb-small text-center">
+    <span itemprop="author publisher">
+        
+    </span>
+
+    
+        <time datetime="2018-02-04" itemprop="datePublished">
+            February 4, 2018
+        </time>
+    
+
+    
+        <span class="hidden-xs hidden-sm"> - <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/react-paypal-payment.md">
+                Edit this Post on GitHub
+            </a>
+        </span>
+    
+</p>
+
+                            <div>
+  
+
+</div>
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2freact-paypal-payment%2f&amp;media=https://chrispaul.dev/img%2fposts%2freact-paypal-payment%2fbanner.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/react-paypal-payment/banner.jpg"
+            data-is-src-set="is-src-set"
+            alt="react paypal integration"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<p>This React tutorial should give you guidance on how to integrate PayPal in your React application. I came across this topic when I had to introduce a payment process for my <a href="../how-to-build-your-own-course-platform/index.html">own course platform</a>. As I went through the same decision process, I decided in favor of PayPal and Stripe.</p>
+
+<p>This tutorial shows you how to integrate PayPal in your React application. There are a couple of open source React + PayPal components out there. But I found out that it isn&rsquo;t too difficult to set it up on your own. Afterward, you have full control over the PayPal payments in your React applications.</p>
+
+<p>If you are interested in a full blown payment solution with PayPal and Stripe in React, you can also read <a href="../react-express-stripe-payment/index.html">about the Stripe in React setup</a> in my other article.</p>
+
+<h2 class="chapter-header" id="paypal-rest-api-app">Create a Paypal REST API app</h2>
+
+<p>Fortunately you don&rsquo;t need to setup an own payment server for PayPal. You can implement a React component with the PayPal business logic and reuse it everywhere in your application(s).</p>
+
+<p>Before you can implement the component, you need to <a target="_blank" rel="noopener noreferrer" href="https://developer.paypal.com">create a PayPal REST API application</a>. Your &ldquo;App Name&rdquo; can be any name. It&rsquo;s only for yourself to identify your application in case you have more than one PayPal REST API app.</p>
+
+<p>After you have created the app on the PayPal dashboard, you should find your Client IDs for your sandbox and live application. You will need both in order to test your PayPal payment in development mode but also to use it in production mode in your React application.</p>
+
+<h2 class="chapter-header" id="paypal-react-component">PayPal React Component</h2>
+
+<p>Now let&rsquo;s build the PayPal React component from scratch. It will be a class component, because we have to manage state in React&rsquo;s local state and use a couple of lifecycle methods.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">PaypalButton</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>
+
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #06b6ef">showButton</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
+    <span style="color: #e7e9db">};</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">componentDidMount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #776e71">// Todo</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">componentWillReceiveProps</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">nextProps</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #776e71">// Todo</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #776e71">// Todo</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">PaypalButton</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Why is it necessary to manage a local state? The PayPal API library can be loaded asynchronously in our component. After we have loaded everything, the <code>showButton</code> state can be used to render the button. Doing it like this, enables you also to use the PayPal button for server-side rendering.</p>
+
+<p>Let&rsquo;s load the PayPal script asynchronously in our React component. Additionally, make sure to bind React and ReactDOM to the window object, because its needed for the PayPal React Component which comes with the library.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #06b6ef">scriptLoader</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-async-script-loader&#39;</span><span style="color: #e7e9db">;</span>
+</span>
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">PaypalButton</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>
+
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #06b6ef">showButton</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
+    <span style="color: #e7e9db">};</span>
+
+<span style="background-color: #4f424c">    <span style="color: #e7e9db">window.</span><span style="color: #06b6ef">React</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">window.</span><span style="color: #06b6ef">ReactDOM</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">ReactDOM</span><span style="color: #e7e9db">;</span>
+</span>  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">componentDidMount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #776e71">// Todo</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">componentWillReceiveProps</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">nextProps</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #776e71">// Todo</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #776e71">// Todo</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">scriptLoader</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;https://www.paypalobjects.com/api/checkout.js&#39;</span><span style="color: #e7e9db">)(</span><span style="color: #06b6ef">PaypalButton</span><span style="color: #e7e9db">);</span>
+</span></code></pre></div>
+
+
+<p>If you haven&rsquo;t installed by now, you need to install the <a target="_blank" rel="noopener noreferrer" href="https://github.com/leozdgao/react-async-script-loader">react-async-script-loader</a> via npm. The <code>scriptLoader</code> is a <a href="../gentle-introduction-higher-order-components/index.html">higher order component</a> which can be used in React to lazy load scripts.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">react</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">async</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">script</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">loader</span>
+</code></pre></div>
+
+
+<p>Now, in the <code>componentDidMount()</code> lifecycle method, you can decide if the button should be rendered already. The <code>scriptLoader</code> gives you access to two properties in the props of the component, <code>isScriptLoaded</code> and <code>isScriptLoadSucceed</code>, to check if the script was loaded successfully. If that is the case, you could already render the PayPal button.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">scriptLoader</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-async-script-loader&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">PaypalButton</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>
+
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #06b6ef">showButton</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
+    <span style="color: #e7e9db">};</span>
+
+    <span style="color: #e7e9db">window.</span><span style="color: #06b6ef">React</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">;</span>
+    <span style="color: #e7e9db">window.</span><span style="color: #06b6ef">ReactDOM</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">ReactDOM</span><span style="color: #e7e9db">;</span>
+  <span style="color: #e7e9db">}</span>
+
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">componentDidMount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">isScriptLoaded</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">isScriptLoadSucceed</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">isScriptLoaded</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #06b6ef">isScriptLoadSucceed</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">      <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">showButton</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span> <span style="color: #e7e9db">});</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">}</span>
+</span>
+  <span style="color: #06b6ef">componentWillReceiveProps</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">nextProps</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #776e71">// Todo</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #776e71">// Todo</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">scriptLoader</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;https://www.paypalobjects.com/api/checkout.js&#39;</span><span style="color: #e7e9db">)(</span><span style="color: #06b6ef">PaypalButton</span><span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>In most cases the script isn&rsquo;t loaded in the <code>componentDidMount()</code> lifecycle method. This lifecycle method runs only once when the component is instantiated and it&rsquo;s not 100% certain to have the script loaded at this point in time. Therefore you still have the <code>componentWillReceiveProps()</code> lifecycle method to check for the loaded script.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">scriptLoader</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-async-script-loader&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">PaypalButton</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>
+
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #06b6ef">showButton</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
+    <span style="color: #e7e9db">};</span>
+
+    <span style="color: #e7e9db">window.</span><span style="color: #06b6ef">React</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">;</span>
+    <span style="color: #e7e9db">window.</span><span style="color: #06b6ef">ReactDOM</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">ReactDOM</span><span style="color: #e7e9db">;</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">componentDidMount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #06b6ef">isScriptLoaded</span><span style="color: #e7e9db">,</span>
+      <span style="color: #06b6ef">isScriptLoadSucceed</span>
+    <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">;</span>
+
+    <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">isScriptLoaded</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #06b6ef">isScriptLoadSucceed</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">showButton</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span> <span style="color: #e7e9db">});</span>
+    <span style="color: #e7e9db">}</span>
+  <span style="color: #e7e9db">}</span>
+
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">componentWillReceiveProps</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">nextProps</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">isScriptLoaded</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">isScriptLoadSucceed</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">nextProps</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">isLoadedButWasntLoadedBefore</span> <span style="color: #5bc4bf">=</span>
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">!</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">showButton</span> <span style="color: #5bc4bf">&amp;&amp;</span>
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">!</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">isScriptLoaded</span> <span style="color: #5bc4bf">&amp;&amp;</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">isScriptLoaded</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">isLoadedButWasntLoadedBefore</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">      <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">isScriptLoadSucceed</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">        <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">showButton</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span> <span style="color: #e7e9db">});</span>
+</span><span style="background-color: #4f424c">      <span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">}</span>
+</span>
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #776e71">// Todo</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">scriptLoader</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;https://www.paypalobjects.com/api/checkout.js&#39;</span><span style="color: #e7e9db">)(</span><span style="color: #06b6ef">PaypalButton</span><span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>Now the only lifecycle method missing is the <code>render()</code> method. Let&rsquo;s see what should be rendered in this method.</p>
+
+<p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">scriptLoader</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-async-script-loader&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">PaypalButton</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+
+  <span style="color: #e7e9db">...</span>
+
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">total</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">currency</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">env</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">commit</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">client</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">onSuccess</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">onError</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">onCancel</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">showButton</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">payment</span> <span style="color: #5bc4bf">=</span> <span style="color: #776e71">// Todo</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onAuthorize</span> <span style="color: #5bc4bf">=</span> <span style="color: #776e71">// Todo</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+</span><span style="background-color: #4f424c">        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">showButton</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">paypal</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Button</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">react</span>
+</span><span style="background-color: #4f424c">          <span style="color: #06b6ef">env</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">          <span style="color: #06b6ef">client</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">client</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">          <span style="color: #06b6ef">commit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">commit</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">          <span style="color: #06b6ef">payment</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">payment</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">          <span style="color: #06b6ef">onAuthorize</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onAuthorize</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">          <span style="color: #06b6ef">onCancel</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onCancel</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">          <span style="color: #06b6ef">onError</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onError</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">        <span style="color: #5bc4bf">/&gt;</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">}</span>
+</span>
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">scriptLoader</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;https://www.paypalobjects.com/api/checkout.js&#39;</span><span style="color: #e7e9db">)(</span><span style="color: #06b6ef">PaypalButton</span><span style="color: #e7e9db">);</span>
+</code></pre></div>
+</p>
+
+<p>There are many props which are passed to your PayPal component. Let&rsquo;s check what they stand for:</p>
+
+<ul>
+<li>currency: Your desired currency (e.g. USD) to charge a customer.</li>
+<li>total: The total amount of your desired currency (e.g. $1 would be a total amount of 100).</li>
+<li>commit: If set to true then the PayPal checkout flow will display a &lsquo;Pay Now&rsquo; button.</li>
+<li>client: An object which has your Client IDs for Sandbox and Production.</li>
+<li>env: Environment mode (development, production) to choose a Client ID from the <code>client</code> object.</li>
+<li>onSuccess: A handler to do something in case the payment was successful.</li>
+<li>onError: A handler to do something in case the payment was erroneous.</li>
+<li>onCancel: A handler to do something in case the payment was cancelled.</li>
+</ul>
+
+<p>You will see in a later step how these props are passed to the PayPal component from a parent component which uses the PayPal component. For now, let&rsquo;s focus on finishing the implementation. As you can see, the <code>showButton</code> boolean from React&rsquo;s local component state is used for a <a href="../conditional-rendering-react/index.html">conditional rendering</a> of the PayPal button.</p>
+
+<p>The only thing left is to implement the payment business logic in the <code>payment()</code> and <code>onAuthorize()</code> functions which follows PayPals REST API definition. First, you have to create a payment with the amount and currency grouped with your Client ID based on the environment. Second, you can execute the transaction.</p>
+
+<p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">scriptLoader</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-async-script-loader&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">PaypalButton</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+
+  <span style="color: #e7e9db">...</span>
+
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #06b6ef">total</span><span style="color: #e7e9db">,</span>
+      <span style="color: #06b6ef">currency</span><span style="color: #e7e9db">,</span>
+      <span style="color: #06b6ef">env</span><span style="color: #e7e9db">,</span>
+      <span style="color: #06b6ef">commit</span><span style="color: #e7e9db">,</span>
+      <span style="color: #06b6ef">client</span><span style="color: #e7e9db">,</span>
+      <span style="color: #06b6ef">onSuccess</span><span style="color: #e7e9db">,</span>
+      <span style="color: #06b6ef">onError</span><span style="color: #e7e9db">,</span>
+      <span style="color: #06b6ef">onCancel</span><span style="color: #e7e9db">,</span>
+    <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">;</span>
+
+    <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #06b6ef">showButton</span><span style="color: #e7e9db">,</span>
+    <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">;</span>
+
+<span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">payment</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">paypal</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">rest</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">payment</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">create</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">client</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">        <span style="color: #06b6ef">transactions</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[</span>
+</span><span style="background-color: #4f424c">          <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">            <span style="color: #06b6ef">amount</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">              <span style="color: #06b6ef">total</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">              <span style="color: #06b6ef">currency</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">            <span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">          <span style="color: #e7e9db">},</span>
+</span><span style="background-color: #4f424c">        <span style="color: #e7e9db">],</span>
+</span><span style="background-color: #4f424c">      <span style="color: #e7e9db">});</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onAuthorize</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">actions</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">actions</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">payment</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">execute</span><span style="color: #e7e9db">()</span>
+</span><span style="background-color: #4f424c">        <span style="color: #e7e9db">.</span><span style="color: #06b6ef">then</span><span style="color: #e7e9db">(()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">          <span style="color: #815ba4">const</span> <span style="color: #06b6ef">payment</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">            <span style="color: #06b6ef">paid</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">            <span style="color: #06b6ef">cancelled</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">            <span style="color: #06b6ef">payerID</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">data</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">payerID</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">            <span style="color: #06b6ef">paymentID</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">data</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">paymentID</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">            <span style="color: #06b6ef">paymentToken</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">data</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">paymentToken</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">            <span style="color: #06b6ef">returnUrl</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">data</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">returnUrl</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">          <span style="color: #e7e9db">};</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">          <span style="color: #06b6ef">onSuccess</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">payment</span><span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c">        <span style="color: #e7e9db">});</span>
+</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">showButton</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">paypal</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Button</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">react</span>
+          <span style="color: #06b6ef">env</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">}</span>
+          <span style="color: #06b6ef">client</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">client</span><span style="color: #e7e9db">}</span>
+          <span style="color: #06b6ef">commit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">commit</span><span style="color: #e7e9db">}</span>
+          <span style="color: #06b6ef">payment</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">payment</span><span style="color: #e7e9db">}</span>
+          <span style="color: #06b6ef">onAuthorize</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onAuthorize</span><span style="color: #e7e9db">}</span>
+          <span style="color: #06b6ef">onCancel</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onCancel</span><span style="color: #e7e9db">}</span>
+          <span style="color: #06b6ef">onError</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onError</span><span style="color: #e7e9db">}</span>
+        <span style="color: #5bc4bf">/&gt;</span><span style="color: #e7e9db">}</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">scriptLoader</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;https://www.paypalobjects.com/api/checkout.js&#39;</span><span style="color: #e7e9db">)(</span><span style="color: #06b6ef">PaypalButton</span><span style="color: #e7e9db">);</span>
+</code></pre></div>
+</p>
+
+<p>That&rsquo;s it for the PayPal button implementation. Now, how would you finally make use of it in another component?</p>
+
+<p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">PaypalButton</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./PaypalButton&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">CLIENT</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">sandbox</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;xxxXXX&#39;</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">production</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;xxxXXX&#39;</span><span style="color: #e7e9db">,</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">ENV</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">NODE_ENV</span> <span style="color: #5bc4bf">===</span> <span style="color: #48b685">&#39;production&#39;</span>
+  <span style="color: #5bc4bf">?</span> <span style="color: #48b685">&#39;production&#39;</span>
+  <span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;sandbox&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onSuccess</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">payment</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
+      <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Successful payment!&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">payment</span><span style="color: #e7e9db">);</span>
+
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onError</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">error</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
+      <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Erroneous payment OR failed to load script!&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">error</span><span style="color: #e7e9db">);</span>
+
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onCancel</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
+      <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Cancelled payment!&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">data</span><span style="color: #e7e9db">);</span>
+
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">PaypalButton</span>
+          <span style="color: #06b6ef">client</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">CLIENT</span><span style="color: #e7e9db">}</span>
+          <span style="color: #06b6ef">env</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">ENV</span><span style="color: #e7e9db">}</span>
+          <span style="color: #06b6ef">commit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">true</span><span style="color: #e7e9db">}</span>
+          <span style="color: #06b6ef">currency</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #48b685">&#39;USD&#39;</span><span style="color: #e7e9db">}</span>
+          <span style="color: #06b6ef">total</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #f99b15">100</span><span style="color: #e7e9db">}</span>
+          <span style="color: #06b6ef">onSuccess</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onSuccess</span><span style="color: #e7e9db">}</span>
+          <span style="color: #06b6ef">onError</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onError</span><span style="color: #e7e9db">}</span>
+          <span style="color: #06b6ef">onCancel</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onCancel</span><span style="color: #e7e9db">}</span>
+        <span style="color: #5bc4bf">/&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+</p>
+
+<p>It&rsquo;s a security risk to keep the Client IDs in your source code. It&rsquo;s better to include them in a .env file. That way, you prevent to make them publicly available. Don&rsquo;t forget to add the .env file to your .gitignore file if you are using GitHub.</p>
+
+<p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">PaypalButton</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./PaypalButton&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">CLIENT</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">sandbox</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">PAYPAL_CLIENT_ID_SANDBOX</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">production</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">PAYPAL_CLIENT_ID_PRODUCTION</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">};</span>
+</span>
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">...</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+</p>
+
+<p>That&rsquo;s basically the whole implementation of the PayPal component in React with the official PayPal libraries. Now you can use it in various applications. Hopefully, the tutorial helped you to setup PayPal in React on your own.</p>
+
+
+                            
+<div class="feedback-and-share text-center">
+    <hr>
+    
+    <p class="lead">
+        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
+    </p>
+    
+    
+        <p class="lead">
+            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+        </p>
+    
+</div>
+
+
+                            
+                                <div class="box-inline col-md-12">
+    <div class="col-md-12 text-center">
+        <h2 class="newsletter">The Road to learn React</h2>
+        
+            <div class="col-md-4">
+                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+            </div>
+        
+        <p class="lead">
+            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
+        </p>
+        <a
+            class="btn btn-template-main"
+            href="https://roadtoreact.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Get the Book for free <i class="fa fa-chevron-right"></i>
+        </a>
+        
+            <div>
+                <a
+                    href="https://amzn.to/2QY2ONp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get it from Amazon
+                </a>
+            </div>
+        
+    </div>
+</div>
+                            
+                        </div>
+
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'rwieruch';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </article>
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase">Take Part</h2>
+            </div>
+
+            <div class="col-md-12 text-center">
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+                
+            </div>
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+        <footer id="subfooter">
+    <div class="container">
+
+        <div class="col-md-5 col-sm-6">
+
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../redux-vs-usereducer/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="React&#39;s useReducer vs Redux"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../publish-npm-package-node/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to publish a npm package?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../react-scroll-to-item/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to Scroll to Item in React?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+
+        
+        <div class="col-md-5 col-md-offset-2 col-sm-6">
+
+            <h4>About Me</h4>
+
+            <div class="blog-entries">
+                <div class="item same-height-row clearfix">
+                    <div class="profile same-height-always">
+                        <img
+                            class="img-lazy img-responsive"
+                            data-lazy-src="//img/page/profile.jpg"
+                            alt="profile"
+                        >
+                    </div>
+                    <div class="name same-height-always">
+                        <p>
+                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+        <footer id="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-left">
+          
+            <li>© Chris Paul</li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline footer-social-buttons text-center">
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-right">
+          
+            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+
+    
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-65599459-2', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="../js/script.js"></script>
+
+
+
+  </body>
+</html>

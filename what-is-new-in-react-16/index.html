@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="google-site-verification" content="We9gRQmlTIjMkOPPjPWDQTXd15nWA6tBEYlxQ2cMpEg" />
+
+  <title>
+    What&#39;s new in React 16? - CPaul
+  </title>
+
+  <meta name="author" content="" />
+
+  
+    <meta name="description" content="All React 16 changes in one article. It tells you about the new return types with fragments and strings, portals in React, componentDidCatch and error boundaries for a robust error handling in React, setState with returning null and custom DOM attributes in React.js ...">
+  
+
+  <meta name="theme-color" content="#38bb6c"/>
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  
+  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../img/favicon/manifest.json">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+
+  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+
+  
+  
+<meta itemprop="name" content="What&#39;s new in React 16?">
+<meta itemprop="description" content="All React 16 changes in one article. It tells you about the new return types with fragments and strings, portals in React, componentDidCatch and error boundaries for a robust error handling in React, setState with returning null and custom DOM attributes in React.js ...">
+
+
+
+    <meta itemprop="image" content="https://chrispaul.dev/img/posts/what-is-new-in-react-16/banner_640.jpg">
+
+
+
+<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+
+
+<meta itemprop="wordCount" content="1808">
+
+
+  
+  <meta name="keywords" content="react 16 changes">
+
+  <meta property="og:title" content="What&#39;s new in React 16? - CPaul">
+
+
+  <meta property="og:description" content="All React 16 changes in one article. It tells you about the new return types with fragments and strings, portals in React, componentDidCatch and error boundaries for a robust error handling in React, setState with returning null and custom DOM attributes in React.js ..." />
+
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrispaul.dev/what-is-new-in-react-16/" />
+<meta property="og:image" content="https://chrispaul.dev/img/posts/what-is-new-in-react-16/banner_640.jpg" />
+
+  
+
+    <meta name="news_keywords" content="react 16 changes" />
+
+  
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/what-is-new-in-react-16/banner_640.jpg"/>
+
+
+
+<meta name="twitter:title" content="What&#39;s new in React 16?"/>
+<meta name="twitter:description" content="All React 16 changes in one article. It tells you about the new return types with fragments and strings, portals in React, componentDidCatch and error boundaries for a robust error handling in React, setState with returning null and custom DOM attributes in React.js ..."/>
+<meta name="twitter:site" content="@rwieruch"/>
+<meta name="twitter:domain" content="rwieruch"/>
+
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="../index.html">
+                    <img src="../img/page/logo.svg" alt="What&#39;s new in React 16? logo" class="img-lazy">
+                    <span class="sr-only">What&#39;s new in React 16? - go to homepage</span>
+                </a>
+
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../index.html">Blog</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../work-with-me/index.html">Work with me</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../about/index.html">About</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fwhat-is-new-in-react-16%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=What%27s%20new%20in%20React%2016%3f%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fwhat-is-new-in-react-16%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=What%27s%20new%20in%20React%2016%3f&amp;url=https%3a%2f%2fchrispaul.dev%2fwhat-is-new-in-react-16%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+</div>
+
+<div class="visible-xs visible-sm text-center">
+    <div class="post-share post-share-fixed post-share-mobile">
+        
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fwhat-is-new-in-react-16%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=What%27s%20new%20in%20React%2016%3f%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fwhat-is-new-in-react-16%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=What%27s%20new%20in%20React%2016%3f&amp;url=https%3a%2f%2fchrispaul.dev%2fwhat-is-new-in-react-16%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+    </div>
+</div>
+
+        
+
+        <div class="hidden-xs">
+            
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase newsletter">Take Part</h2>
+            </div>
+
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    <article
+                        class="col-md-8 col-md-offset-2"
+                        id="blog-post"
+                        itemprop="blogPosts"
+                        itemscope itemtype="http://schema.org/BlogPosting">
+
+                        <div id="post-content" itemprop="articleBody">
+
+                            <header>
+                                <h1 itemprop="name headline">What&#39;s new in React 16?</h1>
+                            </header>
+
+                            <div class="text-center">
+                                
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
+         <i class="fa fa-facebook"></i>Follow
+    </a>
+
+
+                                &nbsp;
+                                
+
+                                &nbsp;
+                                
+  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
+    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
+  </a>
+
+
+                                &nbsp;
+                                
+                            </div>
+
+                            <p class="text-muted text-uppercase mb-small text-center">
+    <span itemprop="author publisher">
+        
+    </span>
+
+    
+        <time datetime="2017-10-05" itemprop="datePublished">
+            October 5, 2017
+        </time>
+    
+
+    
+        <span class="hidden-xs hidden-sm"> - <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/what-is-new-in-react-16.md">
+                Edit this Post on GitHub
+            </a>
+        </span>
+    
+</p>
+
+                            <div>
+  
+
+</div>
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fwhat-is-new-in-react-16%2f&amp;media=https://chrispaul.dev/img%2fposts%2fwhat-is-new-in-react-16%2fbanner.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/what-is-new-in-react-16/banner.jpg"
+            data-is-src-set="is-src-set"
+            alt="react 16 changes"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<p>There is a high likelihood that there are already a multitude of articles about the new React.js 16 release. But for learning about the changes of the library myself, I wanted to read up all the new React 16 features and improvements too. I thought it would be useful if I would share briefly what I have learned along the way. In the next days, I hope to find the time to update my articles and books accordingly to the React 16 changes.</p>
+
+<p>React 16, to many people known as project Fiber, <a target="_blank" rel="noopener noreferrer" href="https://code.facebook.com/posts/1716776591680069/react-16-a-look-inside-an-api-compatible-rewrite-of-our-frontend-ui-library/">was a whole rewrite of the React library</a>. That&rsquo;s a huge undertaking if you consider that the library didn&rsquo;t change its legacy external API at all. Only internal implementations were changed. <a target="_blank" rel="noopener noreferrer" href="https://news.ycombinator.com/item?id=15339983">People already migrated to it and it just worked for them with improved results.</a> If you don&rsquo;t have any errors or warnings in your applications showing up, it should just work for you as well.</p>
+
+<p>One of the greatest news for the React community was the announcement about <a target="_blank" rel="noopener noreferrer" href="https://code.facebook.com/posts/300798627056246/relicensing-react-jest-flow-and-immutable-js/">the relicensing of the React library under the MIT license</a>. It affected not only React, but also Jest, Flow and ImmutableJs. A couple of days later, <a target="_blank" rel="noopener noreferrer" href="https://medium.com/@leeb/relicensing-the-graphql-specification-e7d07a52301b">GraphQL and Relay followed the new licensing model</a>. Now <a target="_blank" rel="noopener noreferrer" href="https://medium.com/@raulk/if-youre-a-startup-you-should-not-use-react-reflecting-on-the-bsd-patents-license-b049d4a67dd2">there shouldn&rsquo;t be any concerns left</a> to use and <a target="_blank" rel="noopener noreferrer" href="https://roadtoreact.com/">learn React</a>.</p>
+
+<p>Apart from these <a target="_blank" rel="noopener noreferrer" href="https://facebook.github.io/react/blog/2017/09/26/react-v16.0.html">huge improvements for React&rsquo;s performance</a>, including <a target="_blank" rel="noopener noreferrer" href="https://hackernoon.com/whats-new-with-server-side-rendering-in-react-16-9b0d78585d67">server-side rendering</a> and package size, and the relicensing, there are a couple of new features for us React developers. The article intents to summarize these briefly for you.</p>
+
+<h2 class="chapter-header" id="react-return-types">Less DOM Nodes, because of Fragments and Strings</h2>
+
+<p>React 16 supports new render return types. Now you are able to return fragments and strings. What are fragments in React? Before you had to wrap sibling elements into one group of elements by wrapping them into one parent element in order to return them in a component:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">CurrySoup</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ul</span><span style="color: #5bc4bf">&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;a&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #f99b15">2</span> <span style="color: #06b6ef">tablespoons</span> <span style="color: #06b6ef">vegetable</span> <span style="color: #06b6ef">oil</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;,</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;b&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #f99b15">2</span> <span style="color: #06b6ef">large</span> <span style="color: #06b6ef">onions</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">finely</span> <span style="color: #06b6ef">chopped</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;,</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;c&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #f99b15">3</span> <span style="color: #06b6ef">garlic</span> <span style="color: #06b6ef">cloves</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">finely</span> <span style="color: #06b6ef">chopped</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;,</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;d&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #f99b15">2</span> <span style="color: #06b6ef">tablespoons</span> <span style="color: #06b6ef">curry</span> <span style="color: #06b6ef">powder</span> <span style="color: #06b6ef">or</span> <span style="color: #06b6ef">paste</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;,</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;e&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #f99b15">500</span><span style="color: #06b6ef">ml</span> <span style="color: #06b6ef">vegetable</span> <span style="color: #06b6ef">stock</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;,</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ul&gt;</span>
+</code></pre></div>
+
+
+<p>Now you can return a list of elements instead of wrapping them into one parent element:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">CurrySoup</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #e7e9db">[</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;a&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #f99b15">2</span> <span style="color: #06b6ef">tablespoons</span> <span style="color: #06b6ef">vegetable</span> <span style="color: #06b6ef">oil</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;,</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;b&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #f99b15">2</span> <span style="color: #06b6ef">large</span> <span style="color: #06b6ef">onions</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">finely</span> <span style="color: #06b6ef">chopped</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;,</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;c&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #f99b15">3</span> <span style="color: #06b6ef">garlic</span> <span style="color: #06b6ef">cloves</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">finely</span> <span style="color: #06b6ef">chopped</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;,</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;d&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #f99b15">2</span> <span style="color: #06b6ef">tablespoons</span> <span style="color: #06b6ef">curry</span> <span style="color: #06b6ef">powder</span> <span style="color: #06b6ef">or</span> <span style="color: #06b6ef">paste</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;,</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;e&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #f99b15">500</span><span style="color: #06b6ef">ml</span> <span style="color: #06b6ef">vegetable</span> <span style="color: #06b6ef">stock</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;,</span>
+  <span style="color: #e7e9db">]</span>
+</code></pre></div>
+
+
+<p>Still you would have to use the <a target="_blank" rel="noopener noreferrer" href="https://reactjs.org/docs/lists-and-keys.html">key attribute</a> to make it easier for React to identify your elements in a list of elements. Although the maintainers behind React already <a target="_blank" rel="noopener noreferrer" href="https://github.com/facebook/jsx/issues/84">discuss to remove the keys for static content</a>. By returning those fragments, it becomes simple to place a group of elements next to each other without the need to add intermediate parent elements:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">CurrySoup</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #e7e9db">[</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;a&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #f99b15">2</span> <span style="color: #06b6ef">tablespoons</span> <span style="color: #06b6ef">vegetable</span> <span style="color: #06b6ef">oil</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;,</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;b&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #f99b15">2</span> <span style="color: #06b6ef">large</span> <span style="color: #06b6ef">onions</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">finely</span> <span style="color: #06b6ef">chopped</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;,</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;c&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #f99b15">3</span> <span style="color: #06b6ef">garlic</span> <span style="color: #06b6ef">cloves</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">finely</span> <span style="color: #06b6ef">chopped</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;,</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;d&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #f99b15">2</span> <span style="color: #06b6ef">tablespoons</span> <span style="color: #06b6ef">curry</span> <span style="color: #06b6ef">powder</span> <span style="color: #06b6ef">or</span> <span style="color: #06b6ef">paste</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;,</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;e&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #f99b15">500</span><span style="color: #06b6ef">ml</span> <span style="color: #06b6ef">vegetable</span> <span style="color: #06b6ef">stock</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;,</span>
+  <span style="color: #e7e9db">]</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">Chicken</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #e7e9db">[</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;f&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #f99b15">1</span> <span style="color: #06b6ef">chicken</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">about</span> <span style="color: #f99b15">1.5</span><span style="color: #06b6ef">kg</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">jointed</span> <span style="color: #06b6ef">into</span> <span style="color: #f99b15">6</span> <span style="color: #06b6ef">pieces</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;,</span>
+  <span style="color: #e7e9db">]</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">ChickenCurrySoup</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #e7e9db">[</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Chicken</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;chicken&quot;</span> <span style="color: #5bc4bf">/&gt;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">CurrySoup</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;curry-soup&quot;</span> <span style="color: #5bc4bf">/&gt;</span><span style="color: #e7e9db">,</span>
+  <span style="color: #e7e9db">]</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">CookBook</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #e7e9db">[</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ul</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;recipe-curry-soup&quot;</span><span style="color: #5bc4bf">&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">CurrySoup</span> <span style="color: #5bc4bf">/&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ul&gt;,</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ul</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;recipe-chicken-curry-soup&quot;</span><span style="color: #5bc4bf">&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ChickenCurrySoup</span> <span style="color: #5bc4bf">/&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ul&gt;,</span>
+  <span style="color: #e7e9db">]</span>
+</code></pre></div>
+
+
+<p>The other new return type is the string. Now it is valid to return a string value in a component without wrapping it into a span or div tag.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Greeting</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">username</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #48b685">`Hello </span><span style="color: #f99b15">${</span><span style="color: #06b6ef">username</span><span style="color: #f99b15">}</span><span style="color: #48b685">`</span>
+</code></pre></div>
+
+
+<p>Both new return types reduce the size of intermediate DOM nodes we were used to use before.</p>
+
+<h2 class="chapter-header" id="react-portals">There are Portals in React!</h2>
+
+<p>React 16 has <a target="_blank" rel="noopener noreferrer" href="https://reactjs.org/docs/portals.html">portals</a> now. They are a way to render elements outside of the component where the portal is created. The portal only needs to know about a DOM node in your application where it should render the given elements.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
+</span>
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;App&quot;</span><span style="color: #5bc4bf">&gt;</span>
+<span style="background-color: #4f424c">        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">ReactDOM</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">createPortal</span><span style="color: #e7e9db">(</span>
+</span><span style="background-color: #4f424c">          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Modal</span> <span style="color: #5bc4bf">/&gt;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">          <span style="color: #e7e9db">document.</span><span style="color: #06b6ef">getElementById</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;modal&#39;</span><span style="color: #e7e9db">)</span>
+</span><span style="background-color: #4f424c">        <span style="color: #e7e9db">)}</span>
+</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;content&quot;</span><span style="color: #5bc4bf">&gt;</span>
+          <span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>In your application, you would only need a DOM element with the id attribute &ldquo;modal&rdquo;. Afterward, the Modal component would be rendered outside of the App component. Portals give you a hook into the outside HTML.</p>
+
+<p>What are the use cases for Portals? One pain point prior React 16 was it to render modals. Often a modal was deeply nested in the component tree, because it was opened and closed in one of these components, even though, from a hierarchical DOM node point of view, the modal should be at a top level of your component tree. Because of this constraint, developers often had to apply CSS styles to make the modal float above the remaining application even though it was deeply nested in the component tree. Thus portals came along in React 16 to enable developers to render elements, in this case a modal, somewhere else, in this case up at a top layer component level. Still, it would be possible to control the model from a deeply nested component by passing the proper props to it and by opening and closing it.</p>
+
+<h2 class="chapter-header" id="react-error-boundaries">React&#39;s new Error Boundaries</h2>
+
+<p>There is a new lifecycle method in React: <a target="_blank" rel="noopener noreferrer" href="https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html">componentDidCatch</a>. It allows you to perform error handling for your React components. In the lifecycle method you get access to the info and error object: <code>componentDidCatch(error, info)</code>.</p>
+
+<p>Let&rsquo;s see it in action. Imagine a component that shows and updates your user account:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">updateUsername</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">username</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #e7e9db">({</span>
+    <span style="color: #06b6ef">user</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #06b6ef">username</span><span style="color: #e7e9db">,</span>
+    <span style="color: #e7e9db">},</span>
+  <span style="color: #e7e9db">});</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">Account</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>
+
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #06b6ef">user</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #06b6ef">username</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Chris&#39;</span><span style="color: #e7e9db">,</span>
+      <span style="color: #e7e9db">}</span>
+    <span style="color: #e7e9db">};</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">username</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">;</span>
+
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">input</span>
+          <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;text&quot;</span>
+          <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">updateUsername</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">target</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">))}</span>
+          <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">}</span>
+        <span style="color: #5bc4bf">/&gt;</span>
+
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">p</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Username</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/p&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>What happens when you would reset the user object? Consider a case where you would want to update your user object in your backend by doing an <a href="../react-fetching-data/index.html">API request</a> but by accident you set the whole user object to null in the local state of your React component. You can simulate it by using a button that resets your user object in React&rsquo;s local state to null.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">updateUsername</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">username</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #e7e9db">({</span>
+    <span style="color: #06b6ef">user</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #06b6ef">username</span><span style="color: #e7e9db">,</span>
+    <span style="color: #e7e9db">},</span>
+  <span style="color: #e7e9db">});</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">Account</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>
+
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #06b6ef">user</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #06b6ef">username</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Chris&#39;</span><span style="color: #e7e9db">,</span>
+      <span style="color: #e7e9db">}</span>
+    <span style="color: #e7e9db">};</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">username</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">;</span>
+
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">input</span>
+          <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;text&quot;</span>
+          <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">updateUsername</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">target</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">))}</span>
+          <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">}</span>
+        <span style="color: #5bc4bf">/&gt;</span>
+
+<span style="background-color: #4f424c">        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span>
+</span><span style="background-color: #4f424c">          <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span>
+</span><span style="background-color: #4f424c">          <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">user</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">null</span> <span style="color: #e7e9db">})}</span>
+</span><span style="background-color: #4f424c">        <span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Reset</span> <span style="color: #06b6ef">User</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">p</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Username</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/p&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>You would get an error message saying: <em>&ldquo;Cannot read property &lsquo;username&rsquo; of null&rdquo;</em>. The whole application crashes because the <code>username</code> property is destructured from the <code>user</code> object. By using <code>componentDidCatch</code> you can prevent it and display a proper error message when an error is caught in your render method. You can use the <code>componentDidCatch</code> lifecycle method directly in your Account component. However, a nicer way to keep it reusable and maintainable in your application would be to introduce a so called error boundary.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">MyErrorBoundary</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">error</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">null</span> <span style="color: #e7e9db">};</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">componentDidCatch</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">error</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">info</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">error</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">info</span> <span style="color: #e7e9db">});</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">return</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">error</span>
+      <span style="color: #5bc4bf">?</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">h1</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Uuuups</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">something</span> <span style="color: #06b6ef">went</span> <span style="color: #06b6ef">wrong</span><span style="color: #e7e9db">.</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/h1&gt;</span>
+      <span style="color: #5bc4bf">:</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">;</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>That way, you can use it for your Account component but for every other component too:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">App</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">MyErrorBoundary</span><span style="color: #5bc4bf">&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Account</span> <span style="color: #5bc4bf">/&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/MyErrorBoundary&gt;</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+</code></pre></div>
+
+
+<p>When you reset your user object by accident now, the error message should be visible instead of the Account component and instead of crashing your whole application. By using error boundaries, you can keep your component error handling in React at strategic places. Don&rsquo;t clutter your whole component tree with error boundaries, but place them at important places where it would make sense to replace a component or a subset of components with an error message.</p>
+
+<p>When you are in development mode, the error boundary is only visible for a couple of seconds. Afterward, you will see the real error for developing purposes. In production mode, it will keep showing the rendered output of the error boundary though. In order to mimic a production build with create-react-app, you can install <a target="_blank" rel="noopener noreferrer" href="https://github.com/scottcorgan/pushstate-server">pushstate-server</a> on the command line, build your application and serve it with pushstate-server on localhost:9000:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #5bc4bf">-</span><span style="color: #06b6ef">g</span> <span style="color: #06b6ef">pushstate</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">server</span>
+<span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">run</span> <span style="color: #06b6ef">build</span>
+<span style="color: #06b6ef">pushstate</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">server</span> <span style="color: #06b6ef">build</span>
+</code></pre></div>
+
+
+<p>There is one more important fact for error handling in React components. The new lifecycle method <code>componentDidCatch</code> gives you a great way to send your error reports to your favorite error tracking API. Personally, I use <a target="_blank" rel="noopener noreferrer" href="https://sentry.io/">Sentry</a> to push all my occurring errors to one centralized service.</p>
+
+<h2 class="chapter-header" id="react-setstate-null">Return null in React&#39;s setState</h2>
+
+<p>There are two ways in React&rsquo;s local state to update the state with <code>this.setState</code>. The first way of doing it is using an object:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">counter</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">counter</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">counter</span> <span style="color: #5bc4bf">+</span> <span style="color: #f99b15">1</span> <span style="color: #e7e9db">});</span>
+</code></pre></div>
+
+
+<p>Due to <code>this.setState</code> being <a href="../learn-react-before-using-redux/index.html">executed asynchronously</a>, you would want to update your local state with the second way by using a function instead of an object:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">prevState</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span>
+  <span style="color: #06b6ef">counter</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">prevState</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">counter</span> <span style="color: #5bc4bf">+</span> <span style="color: #f99b15">1</span>
+<span style="color: #e7e9db">}));</span>
+</code></pre></div>
+
+
+<p>Now you wouldn&rsquo;t run into any stale state in between when computing your new state. But that&rsquo;s not the change for React 16. In React 16, you can return null in your <code>this.setState</code> function to prevent updates. Before you had to check a condition outside of your <code>this.setState</code> block:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">isFoo</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">prevState</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span>
+    <span style="color: #06b6ef">counter</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">prevState</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">counter</span> <span style="color: #5bc4bf">+</span> <span style="color: #f99b15">1</span>
+  <span style="color: #e7e9db">}));</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>Now you can return null instead of an object:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">prevState</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">prevState</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">isFoo</span>
+    <span style="color: #5bc4bf">?</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">counter</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">prevState</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">counter</span> <span style="color: #5bc4bf">+</span> <span style="color: #f99b15">1</span> <span style="color: #e7e9db">}</span>
+    <span style="color: #5bc4bf">:</span> <span style="color: #815ba4">null</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">});</span>
+</code></pre></div>
+
+
+<p>That way, you operate again on the current state at the time of the execution, because <code>this.setState</code> is executed asynchronously. If your condition depends on the current state, it can become important to have access to it in <code>this.setState</code> and to be able to abort the update.</p>
+
+<h2 class="chapter-header" id="react-custom-dom-attributes">Custom DOM attributes</h2>
+
+<p>Unrecognized HTML and SVG attributes are not longer ignored by React. Instead you are allowed to give your DOM nodes any attributes now. Still you should camelCase your attributes to follow React&rsquo;s conventions of using attributes in HTML. My open question for this would be now: <a target="_blank" rel="noopener noreferrer" href="https://github.com/facebook/react/issues/7848#issuecomment-270536693">Am I able to use the deprecated webkitallowfullscreen and mozallowfullscreen attributes in React for my Vimeo component now?</a> Yes, I can! I only need to specify &ldquo;true&rdquo; explicitly for those attributes.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">VideoPlayer</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">id</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">iframe</span>
+      <span style="color: #06b6ef">src</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #48b685">`https://player.vimeo.com/video/</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">id</span><span style="color: #f99b15">}</span><span style="color: #48b685">`</span><span style="color: #e7e9db">}</span>
+      <span style="color: #06b6ef">allowFullScreen</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;true&quot;</span>
+      <span style="color: #06b6ef">webkitallowfullscreen</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;true&quot;</span>
+      <span style="color: #06b6ef">mozallowfullscreen</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;true&quot;</span>
+    <span style="color: #5bc4bf">/&gt;</span>
+  <span style="color: #e7e9db">)</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<hr class="section-divider">
+
+<p>I <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/favesound-redux">upgraded</a> <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/favesound-mobx">my</a> <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/react-express-stripe">projects</a> to React 16 already. You should try the same. It is effortless if you didn&rsquo;t had any warnings before. In my projects, I only <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/the-road-to-learn-react/issues/73">had to adjust the Enzyme setup to React 16</a> by using <a target="_blank" rel="noopener noreferrer" href="https://github.com/airbnb/enzyme/tree/master/packages/enzyme-adapter-react-16">enzyme-adapter-react-16</a>. Thanks to all React contributors for your efforts to improve the library yet keeping it with a backward compatibility.</p>
+
+
+                            
+<div class="feedback-and-share text-center">
+    <hr>
+    
+    <p class="lead">
+        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
+    </p>
+    
+    
+        <p class="lead">
+            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+        </p>
+    
+</div>
+
+
+                            
+                                <div class="box-inline col-md-12">
+    <div class="col-md-12 text-center">
+        <h2 class="newsletter">The Road to learn React</h2>
+        
+            <div class="col-md-4">
+                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+            </div>
+        
+        <p class="lead">
+            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
+        </p>
+        <a
+            class="btn btn-template-main"
+            href="https://roadtoreact.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Get the Book for free <i class="fa fa-chevron-right"></i>
+        </a>
+        
+            <div>
+                <a
+                    href="https://amzn.to/2QY2ONp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get it from Amazon
+                </a>
+            </div>
+        
+    </div>
+</div>
+                            
+                        </div>
+
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'rwieruch';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </article>
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase">Take Part</h2>
+            </div>
+
+            <div class="col-md-12 text-center">
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+                
+            </div>
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+        <footer id="subfooter">
+    <div class="container">
+
+        <div class="col-md-5 col-sm-6">
+
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../redux-vs-usereducer/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="React&#39;s useReducer vs Redux"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../publish-npm-package-node/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to publish a npm package?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../react-scroll-to-item/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to Scroll to Item in React?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+
+        
+        <div class="col-md-5 col-md-offset-2 col-sm-6">
+
+            <h4>About Me</h4>
+
+            <div class="blog-entries">
+                <div class="item same-height-row clearfix">
+                    <div class="profile same-height-always">
+                        <img
+                            class="img-lazy img-responsive"
+                            data-lazy-src="//img/page/profile.jpg"
+                            alt="profile"
+                        >
+                    </div>
+                    <div class="name same-height-always">
+                        <p>
+                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+        <footer id="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-left">
+          
+            <li>© Chris Paul</li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline footer-social-buttons text-center">
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-right">
+          
+            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+
+    
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-65599459-2', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="../js/script.js"></script>
+
+
+
+  </body>
+</html>

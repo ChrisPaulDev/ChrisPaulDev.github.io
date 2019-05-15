@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="google-site-verification" content="We9gRQmlTIjMkOPPjPWDQTXd15nWA6tBEYlxQ2cMpEg" />
+
+  <title>
+    Linear Algebra in JavaScript with Matrix Operations - CPaul
+  </title>
+
+  <meta name="author" content="" />
+
+  
+    <meta name="description" content="How to use matrix operations from linear algebra in JavaScript. What are inverse, transpose and identity matrices and how can they help in machine learning ...">
+  
+
+  <meta name="theme-color" content="#38bb6c"/>
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  
+  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../img/favicon/manifest.json">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+
+  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+
+  
+  
+<meta itemprop="name" content="Linear Algebra in JavaScript with Matrix Operations">
+<meta itemprop="description" content="How to use matrix operations from linear algebra in JavaScript. What are inverse, transpose and identity matrices and how can they help in machine learning ...">
+
+
+
+    <meta itemprop="image" content="https://chrispaul.dev/img/posts/linear-algebra-matrix-javascript/banner_640.jpg">
+
+
+
+<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+
+
+<meta itemprop="wordCount" content="1848">
+
+
+  
+  <meta name="keywords" content="machine learning javascript, matrix javascript, matrix math.js">
+
+  <meta property="og:title" content="Linear Algebra in JavaScript with Matrix Operations - CPaul">
+
+
+  <meta property="og:description" content="How to use matrix operations from linear algebra in JavaScript. What are inverse, transpose and identity matrices and how can they help in machine learning ..." />
+
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrispaul.dev/linear-algebra-matrix-javascript/" />
+<meta property="og:image" content="https://chrispaul.dev/img/posts/linear-algebra-matrix-javascript/banner_640.jpg" />
+
+  
+
+    <meta name="news_keywords" content="matrix javascript" />
+
+  
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/linear-algebra-matrix-javascript/banner_640.jpg"/>
+
+
+
+<meta name="twitter:title" content="Linear Algebra in JavaScript with Matrix Operations"/>
+<meta name="twitter:description" content="How to use matrix operations from linear algebra in JavaScript. What are inverse, transpose and identity matrices and how can they help in machine learning ..."/>
+<meta name="twitter:site" content="@rwieruch"/>
+<meta name="twitter:domain" content="rwieruch"/>
+
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="../index.html">
+                    <img src="../img/page/logo.svg" alt="Linear Algebra in JavaScript with Matrix Operations logo" class="img-lazy">
+                    <span class="sr-only">Linear Algebra in JavaScript with Matrix Operations - go to homepage</span>
+                </a>
+
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../index.html">Blog</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../work-with-me/index.html">Work with me</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../about/index.html">About</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2flinear-algebra-matrix-javascript%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=Linear%20Algebra%20in%20JavaScript%20with%20Matrix%20Operations%20by%20%40rwieruch%20%23JavaScript%20%23MachineLearning&amp;url=https%3a%2f%2fchrispaul.dev%2flinear-algebra-matrix-javascript%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Linear%20Algebra%20in%20JavaScript%20with%20Matrix%20Operations&amp;url=https%3a%2f%2fchrispaul.dev%2flinear-algebra-matrix-javascript%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+</div>
+
+<div class="visible-xs visible-sm text-center">
+    <div class="post-share post-share-fixed post-share-mobile">
+        
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2flinear-algebra-matrix-javascript%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=Linear%20Algebra%20in%20JavaScript%20with%20Matrix%20Operations%20by%20%40rwieruch%20%23JavaScript%20%23MachineLearning&amp;url=https%3a%2f%2fchrispaul.dev%2flinear-algebra-matrix-javascript%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Linear%20Algebra%20in%20JavaScript%20with%20Matrix%20Operations&amp;url=https%3a%2f%2fchrispaul.dev%2flinear-algebra-matrix-javascript%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+    </div>
+</div>
+
+        
+
+        <div class="hidden-xs">
+            
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase newsletter">Take Part</h2>
+            </div>
+
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    <article
+                        class="col-md-8 col-md-offset-2"
+                        id="blog-post"
+                        itemprop="blogPosts"
+                        itemscope itemtype="http://schema.org/BlogPosting">
+
+                        <div id="post-content" itemprop="articleBody">
+
+                            <header>
+                                <h1 itemprop="name headline">Linear Algebra in JavaScript with Matrix Operations</h1>
+                            </header>
+
+                            <div class="text-center">
+                                
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
+         <i class="fa fa-facebook"></i>Follow
+    </a>
+
+
+                                &nbsp;
+                                
+
+                                &nbsp;
+                                
+  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
+    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
+  </a>
+
+
+                                &nbsp;
+                                
+                            </div>
+
+                            <p class="text-muted text-uppercase mb-small text-center">
+    <span itemprop="author publisher">
+        
+    </span>
+
+    
+        <time datetime="2017-10-23" itemprop="datePublished">
+            October 23, 2017
+        </time>
+    
+
+    
+        <span class="hidden-xs hidden-sm"> - <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/linear-algebra-matrix-javascript.md">
+                Edit this Post on GitHub
+            </a>
+        </span>
+    
+</p>
+
+                            <div>
+  
+
+</div>
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2flinear-algebra-matrix-javascript%2f&amp;media=https://chrispaul.dev/img%2fposts%2flinear-algebra-matrix-javascript%2fbanner.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/linear-algebra-matrix-javascript/banner.jpg"
+            data-is-src-set="is-src-set"
+            alt="matrix javascript"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<p>When I recently started to dive into the topic of machine learning, I had to relearn all the things I have studied about linear algebra, stochastic and calculus at school and university. I took a little refresher on matrix operations (addition, subtraction, multiplication and division) in linear algebra and learned about the different types of matrices (inverse matrix, transpose matrix, identity matrix) again. The article is a refresher about those things and applies them in JavaScript. Furthermore, in the end of the article, there will be a little example to demonstrate why matrices are beneficial for computations in machine learning. In addition, you will find a couple of tips on how to express mathematical equations in JavaScript similar to Octave or Matlab.</p>
+
+<h2 class="chapter-header" id="linear-algebra-javascript">Linear Algebra in JavaScript</h2>
+
+<p>A matrix is just an array in an array when programming with them. In JavaScript, they can be simply expressed as:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrix</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span>
+  <span style="color: #e7e9db">[</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">],</span>
+  <span style="color: #e7e9db">[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">],</span>
+  <span style="color: #e7e9db">[</span><span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">5</span><span style="color: #e7e9db">],</span>
+<span style="color: #e7e9db">];</span>
+</code></pre></div>
+
+
+<p>whereas m equals the row and n equals the column of a matrix[m][n]. A vector is a specific kind of a matrix whereas the matrix has only one column.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">vector</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span>
+  <span style="color: #e7e9db">[</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">],</span>
+  <span style="color: #e7e9db">[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">],</span>
+  <span style="color: #e7e9db">[</span><span style="color: #f99b15">4</span><span style="color: #e7e9db">],</span>
+<span style="color: #e7e9db">];</span>
+</code></pre></div>
+
+
+<p>The most simple mathematical object in linear algebra is a scalar. It is just a single number.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">scalar</span> <span style="color: #5bc4bf">=</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Matrices and vectors can be expressed with arrays in programming. But what about matrices with more than two dimensions? They need more than two axes. In general, these arrays of numbers with a variable number of axes are called tensors.</p>
+
+<h2 class="chapter-header" id="matrix-javascript">Matrix Operations in JavaScript</h2>
+
+<p>You should be able to apply matrix operations all by yourself, but it can become ugly when using plain JavaScript with loops. Fortunately, there exists a library in JavaScript for mathematics called <a target="_blank" rel="noopener noreferrer" href="https://github.com/josdejong/mathjs">math.js</a>. Defining a matrix becomes as simple as:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrix</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">5</span><span style="color: #e7e9db">]]);</span>
+</code></pre></div>
+
+
+<p>You can get its dimension by using the <code>size()</code> method and its value as array with the <code>valueOf()</code> method. Furthermore, you can apply matrix operations such as addition, subtraction, multiplication and division:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixA</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #5bc4bf">-</span><span style="color: #f99b15">5</span><span style="color: #e7e9db">]]);</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixB</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #5bc4bf">-</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #5bc4bf">-</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #5bc4bf">-</span><span style="color: #f99b15">7</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">]]);</span>
+
+<span style="color: #776e71">// addition</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixAdditionAB</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">add</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">matrixA</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">matrixB</span><span style="color: #e7e9db">);</span>
+<span style="color: #776e71">// [ [ 1, 0 ], [ 0, 7 ], [ -3, -1 ] ]</span>
+
+<span style="color: #776e71">// subtraction</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixAdditionAB</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">subtract</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">matrixA</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">matrixB</span><span style="color: #e7e9db">);</span>
+<span style="color: #776e71">// [ [ -1, 2 ], [ 4, -1 ], [ 11, -9 ] ]</span>
+
+<span style="color: #776e71">// multiplication</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixK</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">5</span><span style="color: #e7e9db">]]);</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixL</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">6</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">]]);</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixKL</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">multiply</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">matrixK</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">matrixL</span><span style="color: #e7e9db">);</span>
+<span style="color: #776e71">// [ [ 6, 2 ], [ 22, 14 ], [ 38, 26 ] ]</span>
+
+<span style="color: #776e71">// division</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixY</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">6</span><span style="color: #e7e9db">]]);</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixZ</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">]]);</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixYZ</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">divide</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">matrixY</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">matrixZ</span><span style="color: #e7e9db">);</span>
+<span style="color: #776e71">// [ [ -2, 2 ], [ -2, 3 ], [ -2, 4 ] ]</span>
+</code></pre></div>
+
+
+<p>Note that for instance the product of a matrix in the case of math.js is not just a new matrix containing the product of the individual matrices. This would be called an <strong>element-wise product</strong> (or <strong>Hardamard product</strong>). Instead it is a matrix product operation.</p>
+
+<p>In addition, you can perform matrix scalar multiplication and division as well. It&rsquo;s performed element-wise.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// matrix scalar multiplication</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixG</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #5bc4bf">-</span><span style="color: #f99b15">5</span><span style="color: #e7e9db">]]);</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixG3</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">multiply</span><span style="color: #e7e9db">(</span><span style="color: #f99b15">3</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">matrixG</span><span style="color: #e7e9db">);</span>
+<span style="color: #776e71">// [ [ 0, 3 ], [ 6, 9 ], [ 12, -15 ] ]</span>
+
+<span style="color: #776e71">// matrix scalar division</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixH</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">6</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #5bc4bf">-</span><span style="color: #f99b15">4</span><span style="color: #e7e9db">]]);</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixH2</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">divide</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">matrixH</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">);</span>
+<span style="color: #776e71">// [ [ 1, 2 ], [ 3, 1 ], [ 2, -2 ] ]</span>
+</code></pre></div>
+
+
+<p>Since a vector is only a specific form of a matrix, you can perform matrix-vector multiplication too.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixI</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">5</span><span style="color: #e7e9db">]]);</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">vectorJ</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">]]);</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">vectorIJ</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">multiply</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">matrixI</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">vectorJ</span><span style="color: #e7e9db">);</span>
+<span style="color: #776e71">// [ [ 1 ], [ 7 ], [ 13 ] ]</span>
+</code></pre></div>
+
+
+<p>In case you want to have an element-wise multiplication or division in JavaScript, you can use <code>math.dotMultiply(matrixI, vectorJ);</code> or <code>math.dotDivide(matrixY, matrixZ)</code>. Otherwise, when using the default operators on matrices with math.js, you will apply the default matrix operations.</p>
+
+<p>After all, dealing with matrices in math.js isn&rsquo;t that difficult anymore. But you have to know the dimensions of each matrix in your operation, because not every matrix operates on another matrix. Another good thing to know are the associative and commutative matrix operations.</p>
+
+<h2 class="chapter-header" id="matrix-associative-commutative-javascript">Is matrix multiplication associative and commutative?</h2>
+
+<p>There are two important properties for matrix multiplication. First, matrix multiplication is not commutative: A x B != B x A.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixN</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">]]);</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixO</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">6</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">]]);</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixNO</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">multiply</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">matrixN</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">matrixO</span><span style="color: #e7e9db">);</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixON</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">multiply</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">matrixO</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">matrixN</span><span style="color: #e7e9db">);</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Is matrix multiplication commutative?&#39;</span><span style="color: #e7e9db">);</span>
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">equal</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">matrixNO</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">valueOf</span><span style="color: #e7e9db">(),</span> <span style="color: #06b6ef">matrixON</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">valueOf</span><span style="color: #e7e9db">()));</span>
+<span style="color: #776e71">// false</span>
+</code></pre></div>
+
+
+<p>Second, matrix multiplication is associative: A x (B x C) == (A x B) x C.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixP</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">4</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">5</span><span style="color: #e7e9db">]]);</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixQ</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">4</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">6</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">]]);</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixR</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">5</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #5bc4bf">-</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">]]);</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixPQ_R</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">multiply</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">multiply</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">matrixP</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">matrixQ</span><span style="color: #e7e9db">),</span> <span style="color: #06b6ef">matrixR</span><span style="color: #e7e9db">);</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixP_QR</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">multiply</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">matrixP</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">multiply</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">matrixQ</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">matrixR</span><span style="color: #e7e9db">));</span>
+
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Is matrix multiplication associative?&#39;</span><span style="color: #e7e9db">);</span>
+<span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">equal</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">matrixPQ_R</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">valueOf</span><span style="color: #e7e9db">(),</span> <span style="color: #06b6ef">matrixP_QR</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">valueOf</span><span style="color: #e7e9db">()));</span>
+<span style="color: #776e71">// true</span>
+</code></pre></div>
+
+
+<p>These matrix multiplication properties should be internalized before making any further more complex operations on matrices.</p>
+
+<h2 class="chapter-header" id="matrix-transpose-inverse-identity-javascript">Transpose and Inverse and the Identity Matrix in JavaScript</h2>
+
+<p>There are a couple of other matrix operations and matrix types in linear algebra. First, the Identity (I) Matrix with the dimension i * j is defined as i-dimensional matrix whereas i == j. The following matrix is an identity matrix.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrix</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span>
+  <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">0</span><span style="color: #e7e9db">],</span>
+  <span style="color: #e7e9db">[</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">0</span><span style="color: #e7e9db">],</span>
+  <span style="color: #e7e9db">[</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">],</span>
+<span style="color: #e7e9db">];</span>
+</code></pre></div>
+
+
+<p>In math.js you can use the <code>eye(i)</code> method to generate those with the dimension of i.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixI3</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">eye</span><span style="color: #e7e9db">(</span><span style="color: #f99b15">3</span><span style="color: #e7e9db">);</span>
+<span style="color: #776e71">// [ [ 1, 0, 0 ], [ 0, 1, 0 ], [ 0, 0, 1 ] ]</span>
+</code></pre></div>
+
+
+<p>Identity matrices are used later on for more sophisticated matrix operations. Used with another matrix in a matrix operation, identity matrices are a special case because they are commutative: A x I == I x A.</p>
+
+<p>Another type of matrix is the transposed matrix. It is a matrix where the dimensions are flipped. Basically the rows become columns and the columns become rows. In the following example, the vector becomes a so called row vector.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixV</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">]]);</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixV_T</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">transpose</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">matrixV</span><span style="color: #e7e9db">);</span>
+<span style="color: #776e71">// [ [ 0, 1, 2 ] ]</span>
+</code></pre></div>
+
+
+<p>Last but not least, matrices can have an inverse A&rsquo; but not all matrices (called singular or degenerate) have one. You can find the inverse of a matrix by using the identity matrix: A(A&rsquo;) = (A&rsquo;)A = I.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixT</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">]]);</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixU</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">eye</span><span style="color: #e7e9db">(</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">);</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixT_I</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">divide</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">matrixU</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">matrixT</span><span style="color: #e7e9db">);</span>
+<span style="color: #776e71">// [ [ -1.5, 0.5 ], [ 1, -0 ] ]</span>
+</code></pre></div>
+
+
+<p>Math.js gives you the inverse operation for free. You can use the same matrix from the previous example and call the <code>inv()</code> method on it.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixS</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([[</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">],</span> <span style="color: #e7e9db">[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">3</span><span style="color: #e7e9db">]]);</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">matrixS_I</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">inv</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">matrixS</span><span style="color: #e7e9db">);</span>
+<span style="color: #776e71">// [ [ -1.5, 0.5 ], [ 1, -0 ] ]</span>
+</code></pre></div>
+
+
+<p>In the end, regardless of the programming language you are using, you will find one powerful math library such as math.js to apply all of these operations.</p>
+
+<h2 class="chapter-header" id="matrix-machine-learning-javascript">How to apply those learnings in Machine learning?</h2>
+
+<p>The previous learnings gave a basic understanding of linear algebra with matrices used in JavaScript. How does it help us in machine learning? You can take the example of <a href="../linear-regression-gradient-descent-javascript/index.html">linear regression</a>. Matrix operations can be used to make linear regression simpler to execute and computational efficient. But also other machine learning algorithms in the future. For instance, when having three (trained) <strong>competing hypotheses</strong> functions for a linear regression, it becomes simple with matrices to calculate their results.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// Predicting Housing Prices with 3 competing Hypotheses</span>
+
+<span style="color: #776e71">// const HOUSE_SIZES = [2104, 1416, 1534, 852];</span>
+
+<span style="color: #776e71">// const h1 = x =&gt; -40 + 0.25 * x;</span>
+<span style="color: #776e71">// const h2 = x =&gt; 200 + 0.1 * x;</span>
+<span style="color: #776e71">// const h3 = x =&gt; -150 + 0.4 * x;</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">houseSizeMatrix</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([</span>
+  <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">2104</span><span style="color: #e7e9db">],</span>
+  <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">1416</span><span style="color: #e7e9db">],</span>
+  <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">1534</span><span style="color: #e7e9db">],</span>
+  <span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">852</span><span style="color: #e7e9db">],</span>
+<span style="color: #e7e9db">]);</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">hypothesesMatrix</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">matrix</span><span style="color: #e7e9db">([</span>
+  <span style="color: #e7e9db">[</span><span style="color: #5bc4bf">-</span><span style="color: #f99b15">40</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">200</span><span style="color: #e7e9db">,</span> <span style="color: #5bc4bf">-</span><span style="color: #f99b15">150</span><span style="color: #e7e9db">],</span>
+  <span style="color: #e7e9db">[</span><span style="color: #f99b15">0.25</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">0.1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">0.4</span><span style="color: #e7e9db">],</span>
+<span style="color: #e7e9db">]);</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">competingResults</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">multiply</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">houseSizeMatrix</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">hypothesesMatrix</span><span style="color: #e7e9db">);</span>
+
+<span style="color: #776e71">// Column: Result for each Hypothesis</span>
+<span style="color: #776e71">// Row: Result for each House Size</span>
+
+<span style="color: #776e71">// [</span>
+<span style="color: #776e71">//  [ 486, 410.4, 691.6 ],</span>
+<span style="color: #776e71">//  [ 314, 341.6, 416.4 ],</span>
+<span style="color: #776e71">//  [ 343.5, 353.4, 463.6 ],</span>
+<span style="color: #776e71">//  [ 173, 285.2, 190.8 ],</span>
+<span style="color: #776e71">// ]</span>
+</code></pre></div>
+
+
+<p>You can put these computations in matrices now, rather than executing every function on its own. A loop becomes one matrix operation. On a higher level you can say that a <a href="../linear-regression-gradient-descent-vectorization-javascript/index.html">unvectorized implementation becomes a vectorized implementation</a>. Thus it becomes computational efficient when performing machine learning algorithms and simpler as well. Furthermore, these matrix operations are used in a <a href="../multivariate-linear-regression-normal-equation-javascript/index.html">normal equation</a> by default which is used as an alternative to gradient descent.</p>
+
+<h2 class="chapter-header" id="octave-javascript">Octave / Matlab alike operations in JavaScript</h2>
+
+<p>At some point, using math.js the proposed way doesn&rsquo;t scale anymore. You will do more than one matrix operation in complex mathematical expressions. What about the following expressions?</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">theta</span> <span style="color: #5bc4bf">-</span> <span style="color: #06b6ef">ALPHA</span> <span style="color: #5bc4bf">/</span> <span style="color: #06b6ef">m</span> <span style="color: #5bc4bf">*</span> <span style="color: #e7e9db">((</span><span style="color: #06b6ef">X</span> <span style="color: #5bc4bf">*</span> <span style="color: #06b6ef">theta</span> <span style="color: #5bc4bf">-</span> <span style="color: #06b6ef">y</span><span style="color: #e7e9db">)</span><span style="color: #48b685">&#39; * X)&#39;</span>
+</code></pre></div>
+
+
+<p>Yes, it is taken from a <a href="../multivariate-linear-regression-gradient-descent-javascript/index.html">multivariate linear regression with gradient descent</a>. It can be easily expressed in mathematical programming languages such as Matlab or Octave. In math.js it wouldn&rsquo;t scale when using the standard methods.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// Octave:</span>
+<span style="color: #776e71">// theta = theta - ALPHA / m * ((X * theta - y)&#39; * X)&#39;;</span>
+
+<span style="color: #776e71">// Math.js in JavaScript</span>
+<span style="color: #06b6ef">theta</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">subtract</span><span style="color: #e7e9db">(</span>
+  <span style="color: #06b6ef">theta</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">multiply</span><span style="color: #e7e9db">(</span>
+    <span style="color: #e7e9db">(</span><span style="color: #06b6ef">ALPHA</span> <span style="color: #5bc4bf">/</span> <span style="color: #06b6ef">m</span><span style="color: #e7e9db">),</span>
+    <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">transpose</span><span style="color: #e7e9db">(</span>
+      <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">multiply</span><span style="color: #e7e9db">(</span>
+        <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">transpose</span><span style="color: #e7e9db">(</span>
+          <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">subtract</span><span style="color: #e7e9db">(</span>
+            <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">multiply</span><span style="color: #e7e9db">(</span>
+              <span style="color: #06b6ef">X</span><span style="color: #e7e9db">,</span>
+              <span style="color: #06b6ef">theta</span>
+            <span style="color: #e7e9db">),</span>
+            <span style="color: #06b6ef">y</span>
+          <span style="color: #e7e9db">)</span>
+        <span style="color: #e7e9db">),</span>
+        <span style="color: #06b6ef">X</span>
+      <span style="color: #e7e9db">)</span>
+    <span style="color: #e7e9db">)</span>
+  <span style="color: #e7e9db">)</span>
+<span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>That&rsquo;s a mess. However, fortunately you can do it concise by using the eval functionality that takes a mathematical expression and the scoped values to apply those in the expression.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// Octave:</span>
+<span style="color: #776e71">// theta = theta - ALPHA / m * ((X * theta - y)&#39; * X)&#39;;</span>
+
+<span style="color: #776e71">// Math.js in JavaScript</span>
+<span style="color: #06b6ef">theta</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.eval(</span><span style="color: #48b685">`theta - ALPHA / m * ((X * theta - y)&#39; * X)&#39;`</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">theta</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">ALPHA</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">m</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">X</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">y</span><span style="color: #e7e9db">,</span>
+<span style="color: #e7e9db">});</span>
+</code></pre></div>
+
+
+<p>Still not as concise as using Octave or Matlab, but you can evaluate complex mathematical expression now. It helps you in other scenarios too. For instance, it can be used to extract a subset of a Matrix by range indices:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// Octave:</span>
+<span style="color: #776e71">// matrixAsub = matrixA(:, 1:2);</span>
+
+<span style="color: #776e71">// Math.js in JavaScript</span>
+<span style="color: #815ba4">let</span> <span style="color: #06b6ef">matrixAsub</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">math</span><span style="color: #e7e9db">.eval(</span><span style="color: #48b685">&#39;matrixA[:, 1:2]&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">matrixA</span><span style="color: #e7e9db">,</span>
+<span style="color: #e7e9db">});</span>
+</code></pre></div>
+
+
+<p>It returns the first and second column (indices start with 1) with all their rows as two vectors in a new matrix. It goes even further by assigning columns in a matrix a new vector.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// Octave:</span>
+<span style="color: #776e71">// matrixA(:, 1) = vectorB;</span>
+
+<span style="color: #776e71">// Math.js in JavaScript</span>
+<span style="color: #06b6ef">math</span><span style="color: #e7e9db">.eval(</span><span style="color: #48b685">`matrixA[:, 1] = vectorB`</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">matrixA</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">vectorB</span><span style="color: #e7e9db">,</span>
+<span style="color: #e7e9db">});</span>
+</code></pre></div>
+
+
+<hr class="section-divider">
+
+<p>In conclusion, I hope the walkthrough about matrices applied in JavaScript was helpful to get started in the linear algebra in JavaScript or as foundation for machine learning in JavaScript. You can checkout the <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/linear-algebra-matrix">GitHub repository</a> with executable matrix operations on the command line. If you like it, make sure to star it.</p>
+
+
+                            
+<div class="feedback-and-share text-center">
+    <hr>
+    
+    <p class="lead">
+        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
+    </p>
+    
+    
+        <p class="lead">
+            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+        </p>
+    
+</div>
+
+
+                            
+                                <div class="box-inline col-md-12">
+    <div class="col-md-12 text-center">
+        <h2 class="newsletter">The Road to learn React</h2>
+        
+            <div class="col-md-4">
+                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+            </div>
+        
+        <p class="lead">
+            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
+        </p>
+        <a
+            class="btn btn-template-main"
+            href="https://roadtoreact.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Get the Book for free <i class="fa fa-chevron-right"></i>
+        </a>
+        
+            <div>
+                <a
+                    href="https://amzn.to/2QY2ONp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get it from Amazon
+                </a>
+            </div>
+        
+    </div>
+</div>
+                            
+                        </div>
+
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'rwieruch';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </article>
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase">Take Part</h2>
+            </div>
+
+            <div class="col-md-12 text-center">
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+                
+            </div>
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+        <footer id="subfooter">
+    <div class="container">
+
+        <div class="col-md-5 col-sm-6">
+
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../redux-vs-usereducer/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="React&#39;s useReducer vs Redux"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../publish-npm-package-node/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to publish a npm package?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../react-scroll-to-item/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to Scroll to Item in React?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+
+        
+        <div class="col-md-5 col-md-offset-2 col-sm-6">
+
+            <h4>About Me</h4>
+
+            <div class="blog-entries">
+                <div class="item same-height-row clearfix">
+                    <div class="profile same-height-always">
+                        <img
+                            class="img-lazy img-responsive"
+                            data-lazy-src="//img/page/profile.jpg"
+                            alt="profile"
+                        >
+                    </div>
+                    <div class="name same-height-always">
+                        <p>
+                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+        <footer id="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-left">
+          
+            <li>© Chris Paul</li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline footer-social-buttons text-center">
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-right">
+          
+            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+
+    
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-65599459-2', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="../js/script.js"></script>
+
+
+
+  </body>
+</html>

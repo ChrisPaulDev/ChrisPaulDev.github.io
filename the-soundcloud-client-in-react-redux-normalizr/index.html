@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="google-site-verification" content="We9gRQmlTIjMkOPPjPWDQTXd15nWA6tBEYlxQ2cMpEg" />
+
+  <title>
+    Redux Normalizr: Improve your State Management - CPaul
+  </title>
+
+  <meta name="author" content="" />
+
+  
+    <meta name="description" content="The Redux Normalizr: Improve your State Management tutorial will teach you how to use normalizr. Avoid deep nested data structures ...">
+  
+
+  <meta name="theme-color" content="#38bb6c"/>
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  
+  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../img/favicon/manifest.json">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+
+  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+
+  
+  
+<meta itemprop="name" content="Redux Normalizr: Improve your State Management">
+<meta itemprop="description" content="The Redux Normalizr: Improve your State Management tutorial will teach you how to use normalizr. Avoid deep nested data structures ...">
+
+
+
+    <meta itemprop="image" content="https://chrispaul.dev/img/posts/the-soundcloud-client-in-react-redux-normalizr/banner_640.jpg">
+
+
+
+<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+
+
+<meta itemprop="wordCount" content="2827">
+
+
+  
+  <meta name="keywords" content="redux normalizr">
+
+  <meta property="og:title" content="Redux Normalizr: Improve your State Management - CPaul">
+
+
+  <meta property="og:description" content="The Redux Normalizr: Improve your State Management tutorial will teach you how to use normalizr. Avoid deep nested data structures ..." />
+
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrispaul.dev/the-soundcloud-client-in-react-redux-normalizr/" />
+<meta property="og:image" content="https://chrispaul.dev/img/posts/the-soundcloud-client-in-react-redux-normalizr/banner_640.jpg" />
+
+  
+
+    <meta name="news_keywords" content="redux normalizr" />
+
+  
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/the-soundcloud-client-in-react-redux-normalizr/banner_640.jpg"/>
+
+
+
+<meta name="twitter:title" content="Redux Normalizr: Improve your State Management"/>
+<meta name="twitter:description" content="The Redux Normalizr: Improve your State Management tutorial will teach you how to use normalizr. Avoid deep nested data structures ..."/>
+<meta name="twitter:site" content="@rwieruch"/>
+<meta name="twitter:domain" content="rwieruch"/>
+
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="../index.html">
+                    <img src="../img/page/logo.svg" alt="Redux Normalizr: Improve your State Management logo" class="img-lazy">
+                    <span class="sr-only">Redux Normalizr: Improve your State Management - go to homepage</span>
+                </a>
+
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../index.html">Blog</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../work-with-me/index.html">Work with me</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../about/index.html">About</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fthe-soundcloud-client-in-react-redux-normalizr%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=Redux%20Normalizr%3a%20Improve%20your%20State%20Management%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fthe-soundcloud-client-in-react-redux-normalizr%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Redux%20Normalizr%3a%20Improve%20your%20State%20Management&amp;url=https%3a%2f%2fchrispaul.dev%2fthe-soundcloud-client-in-react-redux-normalizr%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+</div>
+
+<div class="visible-xs visible-sm text-center">
+    <div class="post-share post-share-fixed post-share-mobile">
+        
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fthe-soundcloud-client-in-react-redux-normalizr%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=Redux%20Normalizr%3a%20Improve%20your%20State%20Management%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fthe-soundcloud-client-in-react-redux-normalizr%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Redux%20Normalizr%3a%20Improve%20your%20State%20Management&amp;url=https%3a%2f%2fchrispaul.dev%2fthe-soundcloud-client-in-react-redux-normalizr%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+    </div>
+</div>
+
+        
+
+        <div class="hidden-xs">
+            
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase newsletter">Take Part</h2>
+            </div>
+
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    <article
+                        class="col-md-8 col-md-offset-2"
+                        id="blog-post"
+                        itemprop="blogPosts"
+                        itemscope itemtype="http://schema.org/BlogPosting">
+
+                        <div id="post-content" itemprop="articleBody">
+
+                            <header>
+                                <h1 itemprop="name headline">Redux Normalizr: Improve your State Management</h1>
+                            </header>
+
+                            <div class="text-center">
+                                
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
+         <i class="fa fa-facebook"></i>Follow
+    </a>
+
+
+                                &nbsp;
+                                
+
+                                &nbsp;
+                                
+  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
+    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
+  </a>
+
+
+                                &nbsp;
+                                
+                            </div>
+
+                            <p class="text-muted text-uppercase mb-small text-center">
+    <span itemprop="author publisher">
+        
+    </span>
+
+    
+        <time datetime="2016-07-09" itemprop="datePublished">
+            July 9, 2016
+        </time>
+    
+
+    
+        <span class="hidden-xs hidden-sm"> - <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/the-soundcloud-client-in-react-redux-normalizr.md">
+                Edit this Post on GitHub
+            </a>
+        </span>
+    
+</p>
+
+                            
+
+<div>
+  
+
+</div>
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fthe-soundcloud-client-in-react-redux-normalizr%2f&amp;media=https://chrispaul.dev/img%2fposts%2fthe-soundcloud-client-in-react-redux-normalizr%2fbanner.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/the-soundcloud-client-in-react-redux-normalizr/banner.jpg"
+            data-is-src-set="is-src-set"
+            alt="redux normalizr"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<div class="read-before">
+    <p>This tutorial is part 2 of 2 in the series.</p>
+    <div>Part 1: <a href="../the-soundcloud-client-in-react-redux/index.html" itemprop="url">The SoundCloud Client in React &#43; Redux</a></div>
+</div>
+
+<p>The Normalizr in Redux tutorial will teach you how to use <a target="_blank" rel="noopener noreferrer" href="https://github.com/paularmstrong/normalizr">normalizr</a> for an improved data management in your Redux store. The library itself will help you to avoid deep nested data structures although the returned data from a server is deeply nested. Additionally it comes for free to enable a manageable single source of truth for data entities in your global store.</p>
+
+<h2 class="chapter-header">Seed Project?</h2>
+
+<p>
+    If you don’t have the outcome of <a href="../the-soundcloud-client-in-react-redux/index.html">The SoundCloud Client in React + Redux</a>, checkout this <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/react-redux-soundcloud">repository</a>. Clone the repository and use the Base folder named base-init/ as seed project. The seed project is the same which you would implement when you would step through the <a href="../the-soundcloud-client-in-react-redux/index.html">initial tutorial</a>. Next to the Base folder you will find several Extension folders, which will show the outcome of each tutorial which builds up on The SoundCloud Client in React + Redux.
+</p>
+
+<p>
+    When you have your own <a href="../the-soundcloud-client-in-react-redux/index.html">The SoundCloud Client in React + Redux</a> project, you can continue with the <a href="#toc">Table of Contents</a> and ignore the following instructions.
+</p>
+
+<p>
+    When you want to use the seed project, make sure to clone the <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/react-redux-soundcloud">repository</a>. Use the base-init/ folder as your project folder. Make sure that your project starts with <code>npm install && npm start</code>.
+</p>
+
+
+<h2 class="chapter-header" id="toc">Table of Contents</h2>
+
+<ul>
+<li><a href="#favoriteTrack">Your Favorite Track</a></li>
+<li><a href="#normalizr">Normalizr</a></li>
+<li><a href="#exercise">Exercise</a></li>
+<li><a href="#troubleshoot">Troubleshoot</a></li>
+<li><a href="#finalThoughts">Final Thoughts</a></li>
+</ul>
+
+<h2 class="chapter-header" id="favoriteTrack">Your Favorite Track</h2>
+
+<p>In the beginning we will not add the normalizr module. First we want to add a new feature: to like or unlike a track in our SoundCloud client. That feature allows me to demonstrate a common problem in Redux and how normalizr can be used to solve it.</p>
+
+<p>Let&rsquo;s start by displaying the playing track once the user hits a Play button.</p>
+
+<p><em>src/components/Stream/presenter.js</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #e7e9db">{</span>
+          <span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">?</span>
+            <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt; :</span>
+            <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onAuth</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Login</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+        <span style="color: #e7e9db">}</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">br</span><span style="color: #5bc4bf">/&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+      <span style="color: #e7e9db">{</span>
+        <span style="color: #06b6ef">tracks</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">key</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+            <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+              <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;track&quot;</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">key</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+                <span style="color: #e7e9db">{</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">origin</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">title</span><span style="color: #e7e9db">}</span>
+                <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">onPlay</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">)}</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Play</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+              <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+            <span style="color: #e7e9db">);</span>
+        <span style="color: #e7e9db">})</span>
+      <span style="color: #e7e9db">}</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+<span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">br</span><span style="color: #5bc4bf">/&gt;</span>
+</span>      <span style="color: #e7e9db">{</span>
+        <span style="color: #06b6ef">activeTrack</span> <span style="color: #5bc4bf">?</span>
+<span style="background-color: #4f424c">          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+</span><span style="background-color: #4f424c">            <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Playing</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span><span style="color: #06b6ef">activeTrack</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">origin</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">title</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+</span><span style="background-color: #4f424c">            <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">audio</span> <span style="color: #06b6ef">id</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;audio&quot;</span> <span style="color: #06b6ef">ref</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;audio&quot;</span> <span style="color: #06b6ef">src</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #48b685">`</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">activeTrack</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">origin</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">stream_url</span><span style="color: #f99b15">}</span><span style="color: #48b685">?client_id=</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">CLIENT_ID</span><span style="color: #f99b15">}</span><span style="color: #48b685">`</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;&lt;</span><span style="color: #ef6155">/audio&gt;</span>
+</span><span style="background-color: #4f424c">          <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt; :</span>
+</span>          <span style="color: #815ba4">null</span>
+      <span style="color: #e7e9db">}</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+  <span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>Now we can introduce a new child component - the LikeButton. We will use the button in the list of tracks but also for the currently playing track. The user should be able to like tracks from both places.</p>
+
+<p><em>src/components/Stream/presenter.js</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">CLIENT_ID</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../../constants/auth&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">function</span> <span style="color: #06b6ef">LikeButton</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">track</span> <span style="color: #e7e9db">})</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+</span><span style="background-color: #4f424c">    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">span</span><span style="color: #5bc4bf">&gt;</span>
+</span><span style="background-color: #4f424c">      <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">        <span style="color: #06b6ef">track</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">origin</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">user_favorite</span> <span style="color: #5bc4bf">?</span>
+</span><span style="background-color: #4f424c">          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Unlike</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt; :</span>
+</span><span style="background-color: #4f424c">          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Like</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+</span><span style="background-color: #4f424c">      <span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/span&gt;</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">}</span>
+</span>
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">Stream</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+
+  <span style="color: #e7e9db">...</span>
+
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">user</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">tracks</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[],</span> <span style="color: #06b6ef">activeTrack</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">onAuth</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">onPlay</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">;</span>
+
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+          <span style="color: #e7e9db">{</span>
+            <span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">?</span>
+              <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt; :</span>
+              <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onAuth</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Login</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+          <span style="color: #e7e9db">}</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">br</span><span style="color: #5bc4bf">/&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #e7e9db">{</span>
+          <span style="color: #06b6ef">tracks</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">key</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+              <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+                <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;track&quot;</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">key</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+                  <span style="color: #e7e9db">{</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">origin</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">title</span><span style="color: #e7e9db">}</span>
+                  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">onPlay</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">)}</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Play</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+<span style="background-color: #4f424c">                  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">LikeButton</span> <span style="color: #06b6ef">track</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>
+</span>                <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+              <span style="color: #e7e9db">);</span>
+          <span style="color: #e7e9db">})</span>
+        <span style="color: #e7e9db">}</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">br</span><span style="color: #5bc4bf">/&gt;</span>
+        <span style="color: #e7e9db">{</span>
+          <span style="color: #06b6ef">activeTrack</span> <span style="color: #5bc4bf">?</span>
+            <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+              <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+                <span style="color: #06b6ef">Playing</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span><span style="color: #06b6ef">activeTrack</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">origin</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">title</span><span style="color: #e7e9db">}</span>
+<span style="background-color: #4f424c">                <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">LikeButton</span> <span style="color: #06b6ef">track</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">activeTrack</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>
+</span>              <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+              <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">audio</span> <span style="color: #06b6ef">id</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;audio&quot;</span> <span style="color: #06b6ef">ref</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;audio&quot;</span> <span style="color: #06b6ef">src</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #48b685">`</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">activeTrack</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">origin</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">stream_url</span><span style="color: #f99b15">}</span><span style="color: #48b685">?client_id=</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">CLIENT_ID</span><span style="color: #f99b15">}</span><span style="color: #48b685">`</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;&lt;</span><span style="color: #ef6155">/audio&gt;</span>
+            <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;:</span>
+            <span style="color: #815ba4">null</span>
+        <span style="color: #e7e9db">}</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #e7e9db">...</span>
+
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>The LikeButton gets a track and decides based on the user_favorite flag to show a Like or Unlike label. There is no functionality behind the button yet.</p>
+
+<p>Let&rsquo;s implement the like functionality, but without having a real request to the SoundCloud server. We can fake it for the beginning by toggling the user_favorite flag on the track. First we need to pass in the new onLike function to our component and use it in the LikeButton.</p>
+
+<p><em>src/components/Stream/presenter.js</em></p>
+
+<p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">CLIENT_ID</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../../constants/auth&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">function</span> <span style="color: #06b6ef">LikeButton</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">track</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">onLike</span> <span style="color: #e7e9db">})</span> <span style="color: #e7e9db">{</span>
+</span>  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">span</span><span style="color: #5bc4bf">&gt;</span>
+      <span style="color: #e7e9db">{</span>
+        <span style="color: #06b6ef">track</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">origin</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">user_favorite</span> <span style="color: #5bc4bf">?</span>
+<span style="background-color: #4f424c">          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">onLike</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">)}</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Unlike</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt; :</span>
+</span><span style="background-color: #4f424c">          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">onLike</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">)}</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Like</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+</span>      <span style="color: #e7e9db">}</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/span&gt;</span>
+  <span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">Stream</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">...</span>
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">user</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">tracks</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[],</span> <span style="color: #06b6ef">activeTrack</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">onAuth</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">onPlay</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">onLike</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">;</span>
+</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+          <span style="color: #e7e9db">{</span>
+            <span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">?</span>
+              <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt; :</span>
+              <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onAuth</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Login</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+          <span style="color: #e7e9db">}</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">br</span><span style="color: #5bc4bf">/&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #e7e9db">{</span>
+          <span style="color: #06b6ef">tracks</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">key</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+              <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+                <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;track&quot;</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">key</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+                  <span style="color: #e7e9db">{</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">origin</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">title</span><span style="color: #e7e9db">}</span>
+                  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">onPlay</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">)}</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Play</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+<span style="background-color: #4f424c">                  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">LikeButton</span> <span style="color: #06b6ef">track</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onLike</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onLike</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>
+</span>                <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+              <span style="color: #e7e9db">);</span>
+          <span style="color: #e7e9db">})</span>
+        <span style="color: #e7e9db">}</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">br</span><span style="color: #5bc4bf">/&gt;</span>
+        <span style="color: #e7e9db">{</span>
+          <span style="color: #06b6ef">activeTrack</span> <span style="color: #5bc4bf">?</span>
+            <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+              <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+                <span style="color: #06b6ef">Playing</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span><span style="color: #06b6ef">activeTrack</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">origin</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">title</span><span style="color: #e7e9db">}</span>
+<span style="background-color: #4f424c">                <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">LikeButton</span> <span style="color: #06b6ef">track</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">activeTrack</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onLike</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onLike</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>
+</span>              <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+              <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">audio</span> <span style="color: #06b6ef">id</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;audio&quot;</span> <span style="color: #06b6ef">ref</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;audio&quot;</span> <span style="color: #06b6ef">src</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #48b685">`</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">activeTrack</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">origin</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">stream_url</span><span style="color: #f99b15">}</span><span style="color: #48b685">?client_id=</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">CLIENT_ID</span><span style="color: #f99b15">}</span><span style="color: #48b685">`</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;&lt;</span><span style="color: #ef6155">/audio&gt;</span>
+            <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;:</span>
+            <span style="color: #815ba4">null</span>
+        <span style="color: #e7e9db">}</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+  <span style="color: #e7e9db">...</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+</p>
+
+<p>The function gets the track to like/unlike as parameter.</p>
+
+<p>In the container component we need to map the new unimplemented functionality.</p>
+
+<p><em>src/components/Stream/index.js</em></p>
+
+<p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">bindActionCreators</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;redux&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">connect</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-redux&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #5bc4bf">*</span> <span style="color: #06b6ef">as</span> <span style="color: #06b6ef">actions</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../../actions&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">Stream</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./presenter&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">mapStateToProps</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">user</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">;</span>
+  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">tracks</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">activeTrack</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">;</span>
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">user</span><span style="color: #e7e9db">,</span>
+    <span style="color: #06b6ef">tracks</span><span style="color: #e7e9db">,</span>
+    <span style="color: #06b6ef">activeTrack</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">mapDispatchToProps</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">dispatch</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">onPlay</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">bindActionCreators</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">actions</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">playTrack</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">dispatch</span><span style="color: #e7e9db">),</span>
+    <span style="color: #06b6ef">onAuth</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">bindActionCreators</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">actions</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">dispatch</span><span style="color: #e7e9db">),</span>
+<span style="background-color: #4f424c">    <span style="color: #06b6ef">onLike</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">bindActionCreators</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">actions</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">likeTrack</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">dispatch</span><span style="color: #e7e9db">),</span>
+</span>  <span style="color: #e7e9db">};</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">connect</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">mapStateToProps</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">mapDispatchToProps</span><span style="color: #e7e9db">)(</span><span style="color: #06b6ef">Stream</span><span style="color: #e7e9db">);</span>
+</code></pre></div>
+</p>
+
+<p>Now let&rsquo;s implement the action + reducer functionality to fulfil the roundtrip. We begin this by declaring a new action type.</p>
+
+<p><em>src/constants/actionTypes.js</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">export</span> <span style="color: #815ba4">const</span> <span style="color: #06b6ef">ME_SET</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;ME_SET&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">const</span> <span style="color: #06b6ef">TRACKS_SET</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;TRACKS_SET&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">const</span> <span style="color: #06b6ef">TRACK_PLAY</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;TRACK_PLAY&#39;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">export</span> <span style="color: #815ba4">const</span> <span style="color: #06b6ef">TRACK_LIKE</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;TRACK_LIKE&#39;</span><span style="color: #e7e9db">;</span>
+</span></code></pre></div>
+
+
+<p>Moreover we need a new action creator.</p>
+
+<p><em>src/actions/track.js</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #5bc4bf">*</span> <span style="color: #06b6ef">as</span> <span style="color: #06b6ef">actionTypes</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../constants/actionTypes&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">function</span> <span style="color: #06b6ef">setTracks</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">tracks</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">actionTypes</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">TRACKS_SET</span><span style="color: #e7e9db">,</span>
+    <span style="color: #06b6ef">tracks</span>
+  <span style="color: #e7e9db">};</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">function</span> <span style="color: #06b6ef">playTrack</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">actionTypes</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">TRACK_PLAY</span><span style="color: #e7e9db">,</span>
+    <span style="color: #06b6ef">track</span>
+  <span style="color: #e7e9db">};</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">export</span> <span style="color: #815ba4">function</span> <span style="color: #06b6ef">likeTrack</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">actionTypes</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">TRACK_LIKE</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">track</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">};</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">}</span>
+</span></code></pre></div>
+
+
+<p>And make it accessible in the entry point file for actions.</p>
+
+<p><em>src/actions/index.js</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">auth</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./auth&#39;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">setTracks</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">playTrack</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">likeTrack</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./track&#39;</span><span style="color: #e7e9db">;</span>
+</span>
+<span style="color: #815ba4">export</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">auth</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">setTracks</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">playTrack</span><span style="color: #e7e9db">,</span>
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">likeTrack</span><span style="color: #e7e9db">,</span>
+</span><span style="color: #e7e9db">};</span>
+</code></pre></div>
+
+
+<p>The last step of the roundtrip is to catch the new action type in the reducer.</p>
+
+<p><em>src/reducers/track.js</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #5bc4bf">*</span> <span style="color: #06b6ef">as</span> <span style="color: #06b6ef">actionTypes</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../constants/actionTypes&#39;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">findIndex</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;lodash&#39;</span><span style="color: #e7e9db">;</span>
+</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">initialState</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">tracks</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[],</span>
+    <span style="color: #06b6ef">activeTrack</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">null</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #815ba4">function</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">initialState</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">switch</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">action</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">type</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">case</span> <span style="color: #06b6ef">actionTypes</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">TRACKS_SET</span><span style="color: #5bc4bf">:</span>
+      <span style="color: #815ba4">return</span> <span style="color: #06b6ef">setTracks</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">);</span>
+    <span style="color: #815ba4">case</span> <span style="color: #06b6ef">actionTypes</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">TRACK_PLAY</span><span style="color: #5bc4bf">:</span>
+      <span style="color: #815ba4">return</span> <span style="color: #06b6ef">setPlay</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">);</span>
+<span style="background-color: #4f424c">    <span style="color: #815ba4">case</span> <span style="color: #06b6ef">actionTypes</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">TRACK_LIKE</span><span style="color: #5bc4bf">:</span>
+</span><span style="background-color: #4f424c">      <span style="color: #815ba4">return</span> <span style="color: #06b6ef">setLike</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">);</span>
+</span>  <span style="color: #e7e9db">}</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">setTracks</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">tracks</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">;</span>
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">tracks</span> <span style="color: #e7e9db">};</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">setPlay</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">track</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">;</span>
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">activeTrack</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">track</span> <span style="color: #e7e9db">};</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">function</span> <span style="color: #06b6ef">setLike</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">track</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">index</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">findIndex</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">tracks</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">t</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">t</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">origin</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span> <span style="color: #5bc4bf">===</span> <span style="color: #06b6ef">track</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">origin</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">newTrack</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">origin</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">origin</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">user_favorite</span><span style="color: #5bc4bf">:</span> <span style="color: #5bc4bf">!</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">tracks</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">index</span><span style="color: #e7e9db">].</span><span style="color: #06b6ef">origin</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">user_favorite</span> <span style="color: #e7e9db">}</span> <span style="color: #e7e9db">};</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">tracks</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">...</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">tracks</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">slice</span><span style="color: #e7e9db">(</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">index</span><span style="color: #e7e9db">),</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">newTrack</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">...</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">tracks</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">slice</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">index</span> <span style="color: #5bc4bf">+</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">)</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">];</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">tracks</span> <span style="color: #e7e9db">};</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">}</span>
+</span></code></pre></div>
+
+
+<p>Basically we construct a new tracks array based on the old tracks plus a newTrack with a toggled user_favorite flag. We don&rsquo;t mutate anything here, because we use the spread operator to create a copy of the track. Moreover we make sure that the list has still the same order.</p>
+
+<p>Additionally we have to install <a target="_blank" rel="noopener noreferrer" href="https://lodash.com/">Lodash</a>, a utility library, to get access to a functionality like <code>findIndex</code>.</p>
+
+<p><em>From root folder:</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span> <span style="color: #06b6ef">lodash</span>
+</code></pre></div>
+
+
+<p>We can try the new like functionality by starting our app.</p>
+
+<p><em>From root folder:</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">start</span>
+</code></pre></div>
+
+
+<p>We are now able to like a track from the list or like the playing track. But we can also see that it seems buggy, since whenever we like the playing track, only the track in the list gets updated. This happens because the tracks don&rsquo;t share the same reference. They are immutable objects and thus whenever one is updated the other one doesn&rsquo;t get the change. The activeTrack is a copy of one of our tracks from the list.</p>
+
+<p>Moreover imagine when we login we would fetch all of our favorite tracks next to the stream list of tracks. Maybe we would have duplications in there and once we update one of the entities the other one wouldn&rsquo;t get an update. We would have to sync them all the time and that doesn&rsquo;t scale at all.</p>
+
+<p>All of this sums up to a common problem users are facing today. In the past mutable objects allowed us to change references everywhere. That&rsquo;s how everyone learned JavaScript, because it doesn&rsquo;t come with an immutable data structure. In scaling applications it caused a lot of undesired side effects though. The rise of functional programming and immutability, especially with libraries like React, Redux and Immutable, allow us to avoid side effects. Now we need to learn how to manage the entities in the global store to avoid duplication and sync annoyance.</p>
+
+<h2 class="chapter-header" id="normalizr">Normalizr</h2>
+
+<p>Now <a target="_blank" rel="noopener noreferrer" href="https://github.com/paularmstrong/normalizr">normalizr</a> comes into play. The library helps us to keep the tracks in sync by giving us the ability to have only one source of truth for the tracks. The source of truth is a map of track entities. Everything else, like the activeTrack or the list of stream tracks, are only an id to reference an entity in the track entities map.</p>
+
+<p>First we have to install the module.</p>
+
+<p><em>From root folder:</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span> <span style="color: #06b6ef">normalizr</span>
+</code></pre></div>
+
+
+<p>Normalizr comes with schemas. A schema defines a type of entity. In our case an entity could be a track or an user (either the login user or the user within the track object). We can start by defining our first schema.</p>
+
+<p><em>From src folder:</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">mkdir</span> <span style="color: #06b6ef">schemas</span>
+<span style="color: #06b6ef">cd</span> <span style="color: #06b6ef">schemas</span>
+<span style="color: #06b6ef">touch</span> <span style="color: #06b6ef">track</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span>
+</code></pre></div>
+
+
+<p><em>src/schemas/track.js</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Schema</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;normalizr&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">trackSchema</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">Schema</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;tracks&#39;</span><span style="color: #e7e9db">);</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">trackSchema</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Now we can use that schema in the fetchStream SoundCloud request.</p>
+
+<p><em>src/actions/auth.js</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">SC</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;soundcloud&#39;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">map</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;lodash&#39;</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">arrayOf</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">normalize</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;normalizr&#39;</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #06b6ef">trackSchema</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../schemas/track&#39;</span><span style="color: #e7e9db">;</span>
+</span><span style="color: #815ba4">import</span> <span style="color: #5bc4bf">*</span> <span style="color: #06b6ef">as</span> <span style="color: #06b6ef">actionTypes</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../constants/actionTypes&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">setTracks</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../actions/track&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #e7e9db">...</span>
+
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">fetchStream</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">session</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #815ba4">function</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">dispatch</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">fetch</span><span style="color: #e7e9db">(</span><span style="color: #48b685">`//api.soundcloud.com/me/activities?limit=20&amp;offset=0&amp;oauth_token=</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">session</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">oauth_token</span><span style="color: #f99b15">}</span><span style="color: #48b685">`</span><span style="color: #e7e9db">)</span>
+      <span style="color: #e7e9db">.</span><span style="color: #06b6ef">then</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">response</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">response</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">json</span><span style="color: #e7e9db">())</span>
+      <span style="color: #e7e9db">.</span><span style="color: #06b6ef">then</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">        <span style="color: #815ba4">const</span> <span style="color: #06b6ef">normalized</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">normalize</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">collection</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">&#39;origin&#39;</span><span style="color: #e7e9db">),</span> <span style="color: #06b6ef">arrayOf</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">trackSchema</span><span style="color: #e7e9db">));</span>
+</span><span style="background-color: #4f424c">        <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">normalized</span><span style="color: #e7e9db">);</span>
+</span>        <span style="color: #06b6ef">dispatch</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">setTracks</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">collection</span><span style="color: #e7e9db">));</span>
+      <span style="color: #e7e9db">});</span>
+  <span style="color: #e7e9db">};</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>The normalize function takes a list of objects and the schema as arguments. Moreover the schema can get wrapped into an arrayOf function to specify that the input objects are an array. Additionally we need to map the returned tracks, because the exposed object in the list has no id, but the underlying origin object has the track id.</p>
+
+<p>We don&rsquo;t use the normalized data yet, but you can see it as console output. Once you start the app, the output shows the normalized data: a list of ids (track ids) and a map on entities (track entities).</p>
+
+<p>One can even go one step further to demonstrate the mapping of nested data. We are not using user entities yet, but for later usage, you could already define an user schema.</p>
+
+<p><em>From schemas folder:</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">touch</span> <span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span>
+</code></pre></div>
+
+
+<p><em>src/schemas/user.js</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Schema</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;normalizr&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">userSchema</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">Schema</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;users&#39;</span><span style="color: #e7e9db">);</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">userSchema</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>And use it as nested data in the track schema.</p>
+
+<p><em>src/schemas/track.js</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Schema</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;normalizr&#39;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #06b6ef">userSchema</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./user&#39;</span><span style="color: #e7e9db">;</span>
+</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">trackSchema</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">Schema</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;tracks&#39;</span><span style="color: #e7e9db">);</span>
+
+<span style="background-color: #4f424c"><span style="color: #06b6ef">trackSchema</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">define</span><span style="color: #e7e9db">({</span>
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">user</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">userSchema</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
+</span>
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">trackSchema</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Start again the app to see the console output. Now the normalized data should contain a list of ids (track ids) and two maps of entities (track and user entities). Moreover when you have a look at a track entity, you will find out that the user object in there is only referenced by an id rather than having the whole user object.</p>
+
+<p>Now let&rsquo;s refactor first actions and reducer and second the component itself.</p>
+
+<p><em>src/actions/auth.js</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">fetchStream</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">me</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">session</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #815ba4">function</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">dispatch</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">fetch</span><span style="color: #e7e9db">(</span><span style="color: #48b685">`//api.soundcloud.com/me/activities?limit=20&amp;offset=0&amp;oauth_token=</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">session</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">oauth_token</span><span style="color: #f99b15">}</span><span style="color: #48b685">`</span><span style="color: #e7e9db">)</span>
+      <span style="color: #e7e9db">.</span><span style="color: #06b6ef">then</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">response</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">response</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">json</span><span style="color: #e7e9db">())</span>
+      <span style="color: #e7e9db">.</span><span style="color: #06b6ef">then</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #815ba4">const</span> <span style="color: #06b6ef">normalized</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">normalize</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">collection</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">&#39;origin&#39;</span><span style="color: #e7e9db">),</span> <span style="color: #06b6ef">arrayOf</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">trackSchema</span><span style="color: #e7e9db">));</span>
+<span style="background-color: #4f424c">        <span style="color: #06b6ef">dispatch</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">setTracks</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">normalized</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">entities</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">tracks</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">normalized</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">result</span><span style="color: #e7e9db">));</span>
+</span>      <span style="color: #e7e9db">});</span>
+  <span style="color: #e7e9db">};</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>The normalized data gets dispatched rather than the plain data. Moreover we already split it up into entities and ids.</p>
+
+<p>The action creators will deal with ids rather than a whole object. This helps us to reference only to one source of truth later on.</p>
+
+<p><em>src/actions/track.js</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #5bc4bf">*</span> <span style="color: #06b6ef">as</span> <span style="color: #06b6ef">actionTypes</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../constants/actionTypes&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">export</span> <span style="color: #815ba4">function</span> <span style="color: #06b6ef">setTracks</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">trackEntities</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">trackIds</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span>  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">actionTypes</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">TRACKS_SET</span><span style="color: #e7e9db">,</span>
+<span style="background-color: #4f424c">    <span style="color: #06b6ef">trackEntities</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">trackIds</span>
+</span>  <span style="color: #e7e9db">};</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">export</span> <span style="color: #815ba4">function</span> <span style="color: #06b6ef">playTrack</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">trackId</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span>  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">actionTypes</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">TRACK_PLAY</span><span style="color: #e7e9db">,</span>
+<span style="background-color: #4f424c">    <span style="color: #06b6ef">trackId</span>
+</span>  <span style="color: #e7e9db">};</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">export</span> <span style="color: #815ba4">function</span> <span style="color: #06b6ef">likeTrack</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">trackId</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span>  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">actionTypes</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">TRACK_LIKE</span><span style="color: #e7e9db">,</span>
+<span style="background-color: #4f424c">    <span style="color: #06b6ef">trackId</span>
+</span>  <span style="color: #e7e9db">};</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>The initialState of the reducer will change as well. Rather than having one list of track entities, you will end up with a map of entities and a list of track ids.</p>
+
+<p><em>src/reducers/track.js</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #5bc4bf">*</span> <span style="color: #06b6ef">as</span> <span style="color: #06b6ef">actionTypes</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../constants/actionTypes&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">findIndex</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;lodash&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">initialState</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">    <span style="color: #06b6ef">trackEntities</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{},</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">trackIds</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[],</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">activeTrackId</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">null</span>
+</span><span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #815ba4">function</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">initialState</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">switch</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">action</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">type</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">case</span> <span style="color: #06b6ef">actionTypes</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">TRACKS_SET</span><span style="color: #5bc4bf">:</span>
+      <span style="color: #815ba4">return</span> <span style="color: #06b6ef">setTracks</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">);</span>
+    <span style="color: #815ba4">case</span> <span style="color: #06b6ef">actionTypes</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">TRACK_PLAY</span><span style="color: #5bc4bf">:</span>
+      <span style="color: #815ba4">return</span> <span style="color: #06b6ef">setPlay</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">);</span>
+    <span style="color: #815ba4">case</span> <span style="color: #06b6ef">actionTypes</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">TRACK_LIKE</span><span style="color: #5bc4bf">:</span>
+      <span style="color: #815ba4">return</span> <span style="color: #06b6ef">setLike</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">setTracks</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">trackEntities</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">trackIds</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">trackEntities</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">trackIds</span> <span style="color: #e7e9db">};</span>
+</span><span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">setPlay</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">trackId</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">activeTrackId</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">trackId</span> <span style="color: #e7e9db">};</span>
+</span><span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">setLike</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">trackId</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">newTrack</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">trackEntities</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">trackId</span><span style="color: #e7e9db">],</span> <span style="color: #06b6ef">user_favorite</span><span style="color: #5bc4bf">:</span> <span style="color: #5bc4bf">!</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">trackEntities</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">trackId</span><span style="color: #e7e9db">].</span><span style="color: #06b6ef">user_favorite</span> <span style="color: #e7e9db">};</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">trackEntities</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">trackEntities</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">[</span><span style="color: #06b6ef">trackId</span><span style="color: #e7e9db">]</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">newTrack</span> <span style="color: #e7e9db">}</span> <span style="color: #e7e9db">};</span>
+</span><span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>Now comes the crucial point: Remember when we liked a track and the list of tracks and the playing track like states went out of sync? Now we have a list of ids for the list of tracks and a track id for the active track. Both point to one source of truth: the track entities. Therefore we had to refactor the setPlay and setLike functionality to make use of the new ids and entities. The code gets much more readable now.</p>
+
+<p>The last step is to respect the new state structure in the Stream component. The container component gets the new list of ids and map of entities.</p>
+
+<p><em>src/components/Stream/index.js</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">bindActionCreators</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;redux&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">connect</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-redux&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #5bc4bf">*</span> <span style="color: #06b6ef">as</span> <span style="color: #06b6ef">actions</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../../actions&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">Stream</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./presenter&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">mapStateToProps</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">user</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">trackIds</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">trackEntities</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">activeTrackId</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">;</span>
+</span>  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">user</span><span style="color: #e7e9db">,</span>
+<span style="background-color: #4f424c">    <span style="color: #06b6ef">trackIds</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">trackEntities</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">activeTrackId</span><span style="color: #e7e9db">,</span>
+</span>  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">mapDispatchToProps</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">dispatch</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">onPlay</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">bindActionCreators</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">actions</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">playTrack</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">dispatch</span><span style="color: #e7e9db">),</span>
+    <span style="color: #06b6ef">onAuth</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">bindActionCreators</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">actions</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">dispatch</span><span style="color: #e7e9db">),</span>
+    <span style="color: #06b6ef">onLike</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">bindActionCreators</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">actions</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">likeTrack</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">dispatch</span><span style="color: #e7e9db">),</span>
+  <span style="color: #e7e9db">};</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">connect</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">mapStateToProps</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">mapDispatchToProps</span><span style="color: #e7e9db">)(</span><span style="color: #06b6ef">Stream</span><span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>Now the presenter component can get refactored to make usage of both entities and ids to retrieve the proper track object.</p>
+
+<p><em>src/components/Stream/presenter.js</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">CLIENT_ID</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../../constants/auth&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">LikeButton</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">track</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">onLike</span> <span style="color: #e7e9db">})</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">span</span><span style="color: #5bc4bf">&gt;</span>
+      <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">        <span style="color: #06b6ef">track</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">user_favorite</span> <span style="color: #5bc4bf">?</span>
+</span><span style="background-color: #4f424c">          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">onLike</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">)}</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Unlike</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt; :</span>
+</span><span style="background-color: #4f424c">          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">onLike</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">track</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">)}</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Like</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+</span>      <span style="color: #e7e9db">}</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/span&gt;</span>
+  <span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">Stream</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+
+  <span style="color: #06b6ef">componentDidUpdate</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">audioElement</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">ReactDOM</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">findDOMNode</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">refs</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">audio</span><span style="color: #e7e9db">);</span>
+
+    <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #5bc4bf">!</span><span style="color: #06b6ef">audioElement</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span> <span style="color: #815ba4">return</span><span style="color: #e7e9db">;</span> <span style="color: #e7e9db">}</span>
+
+<span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">activeTrackId</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">;</span>
+</span>
+<span style="background-color: #4f424c">    <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">activeTrackId</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span>      <span style="color: #06b6ef">audioElement</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">play</span><span style="color: #e7e9db">();</span>
+    <span style="color: #e7e9db">}</span> <span style="color: #815ba4">else</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #06b6ef">audioElement</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">pause</span><span style="color: #e7e9db">();</span>
+    <span style="color: #e7e9db">}</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">user</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">trackIds</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[],</span> <span style="color: #06b6ef">trackEntities</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{},</span> <span style="color: #06b6ef">activeTrackId</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">onAuth</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">onPlay</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">onLike</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">;</span>
+</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+          <span style="color: #e7e9db">{</span>
+            <span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">?</span>
+              <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt; :</span>
+              <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onAuth</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Login</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+          <span style="color: #e7e9db">}</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">br</span><span style="color: #5bc4bf">/&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">          <span style="color: #06b6ef">trackIds</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">key</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span>              <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+                <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;track&quot;</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">key</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+<span style="background-color: #4f424c">                  <span style="color: #e7e9db">{</span><span style="color: #06b6ef">trackEntities</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">].</span><span style="color: #06b6ef">title</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">                  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">onPlay</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">)}</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Play</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+</span><span style="background-color: #4f424c">                  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">LikeButton</span> <span style="color: #06b6ef">track</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">trackEntities</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">]}</span> <span style="color: #06b6ef">onLike</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onLike</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>
+</span>                <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+              <span style="color: #e7e9db">);</span>
+          <span style="color: #e7e9db">})</span>
+        <span style="color: #e7e9db">}</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">br</span><span style="color: #5bc4bf">/&gt;</span>
+        <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">          <span style="color: #06b6ef">activeTrackId</span> <span style="color: #5bc4bf">?</span>
+</span>            <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+              <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+<span style="background-color: #4f424c">                <span style="color: #06b6ef">Playing</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span><span style="color: #06b6ef">trackEntities</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">activeTrackId</span><span style="color: #e7e9db">].</span><span style="color: #06b6ef">title</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">                <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">LikeButton</span> <span style="color: #06b6ef">track</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">trackEntities</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">activeTrackId</span><span style="color: #e7e9db">]}</span> <span style="color: #06b6ef">onLike</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onLike</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>
+</span>              <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+<span style="background-color: #4f424c">              <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">audio</span> <span style="color: #06b6ef">id</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;audio&quot;</span> <span style="color: #06b6ef">ref</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;audio&quot;</span> <span style="color: #06b6ef">src</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #48b685">`</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">trackEntities</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">activeTrackId</span><span style="color: #e7e9db">].</span><span style="color: #06b6ef">stream_url</span><span style="color: #f99b15">}</span><span style="color: #48b685">?client_id=</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">CLIENT_ID</span><span style="color: #f99b15">}</span><span style="color: #48b685">`</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;&lt;</span><span style="color: #ef6155">/audio&gt;</span>
+</span>            <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt; :</span>
+            <span style="color: #815ba4">null</span>
+        <span style="color: #e7e9db">}</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">Stream</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>When you start again the app, the like of both track in list and active track should be in sync. Both are only ids and point to the map of track entities.</p>
+
+<p><em>From root folder:</em></p>
+
+<p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">start</span>
+</code></pre></div>
+</p>
+
+<p>Last but not least we can fix the broken test by respecting the new data structure as input for the Stream component.</p>
+
+<p><em>src/components/Stream/spec.js</em></p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">props</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">    <span style="color: #06b6ef">trackIds</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[</span><span style="color: #48b685">&#39;x&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">&#39;y&#39;</span><span style="color: #e7e9db">],</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">trackEntities</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">x</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">title</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;x&#39;</span> <span style="color: #e7e9db">},</span> <span style="color: #06b6ef">y</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">title</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;y&#39;</span> <span style="color: #e7e9db">}</span> <span style="color: #e7e9db">}</span>
+</span>  <span style="color: #e7e9db">};</span>
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>Finally we are done using normalizr for our React + Redux app. Normalizr helps to organize deeply nested data structures. You can see how it already manages track and user entities even though SoundCloud returns that data in a nested structure. Moreover the normalized data structure allows us to manage our global state in an improved way. We can use one single source of truth to apply changes.</p>
+
+<h2 class="chapter-header" id="exercise">Exercise</h2>
+
+<p>You can use the SoundCloud API (<a href="../what-is-an-api-javascript/index.html">What&rsquo;s an API?</a>) to like the track for real without faking it. Look into the <a target="_blank" rel="noopener noreferrer" href="https://developers.soundcloud.com/docs/api/guide">API Documentation</a> for more advice.</p>
+
+<h2 class="chapter-header" id="troubleshoot">Troubleshoot</h2>
+
+<p>You may encounter issues in that tutorial. Here you will find some references how to handle issues.</p>
+
+<h3 id="dependencies">Dependencies</h3>
+
+<p>In case you want to know which versions npm installed during that tutorial, here a list of all npm packages in my package.json.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span>  <span style="color: #48b685">&quot;devDependencies&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #48b685">&quot;babel-core&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^6.9.1&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;babel-loader&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^6.2.4&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;babel-preset-es2015&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^6.9.0&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;babel-preset-react&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^6.5.0&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;babel-preset-stage-2&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^6.5.0&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;chai&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^3.5.0&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;enzyme&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^2.3.0&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;exports-loader&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^0.6.3&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;imports-loader&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^0.6.5&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;jsdom&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^9.2.1&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;mocha&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^2.5.3&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;react-addons-test-utils&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^15.1.0&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;react-hot-loader&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^1.3.0&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;webpack&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^1.13.1&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;webpack-dev-server&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^1.14.1&quot;</span>
+  <span style="color: #e7e9db">},</span>
+  <span style="color: #48b685">&quot;dependencies&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #48b685">&quot;lodash&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^4.13.1&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;normalizr&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^2.1.0&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;react&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^15.1.0&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;react-dom&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^15.1.0&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;react-redux&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^4.4.5&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;react-router&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^2.4.1&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;react-router-redux&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^4.0.5&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;redux&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^3.5.2&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;redux-logger&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^2.6.1&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;redux-thunk&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^2.1.0&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;soundcloud&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^3.1.2&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;whatwg-fetch&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^1.0.0&quot;</span>
+  <span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<h2 class="chapter-header" id="finalThoughts">Final Thoughts</h2>
+
+
+<p>
+    Have a look again in <a href="../the-soundcloud-client-in-react-redux/index.html">The SoundCloud Client in React + Redux</a> tutorial for more smaller tutorials which build up on top of the SoundCloud project. All tutorials on top will get released in <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/react-redux-soundcloud">the repository</a> as well.
+</p>
+
+
+                            
+<div class="feedback-and-share text-center">
+    <hr>
+    
+    <p class="lead">
+        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
+    </p>
+    
+    
+        <p class="lead">
+            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+        </p>
+    
+</div>
+
+
+                            
+                                <div class="box-inline col-md-12">
+    <div class="col-md-12 text-center">
+        <h2 class="newsletter">The Road to learn React</h2>
+        
+            <div class="col-md-4">
+                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+            </div>
+        
+        <p class="lead">
+            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
+        </p>
+        <a
+            class="btn btn-template-main"
+            href="https://roadtoreact.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Get the Book for free <i class="fa fa-chevron-right"></i>
+        </a>
+        
+            <div>
+                <a
+                    href="https://amzn.to/2QY2ONp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get it from Amazon
+                </a>
+            </div>
+        
+    </div>
+</div>
+                            
+                        </div>
+
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'rwieruch';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </article>
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase">Take Part</h2>
+            </div>
+
+            <div class="col-md-12 text-center">
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+                
+            </div>
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+        <footer id="subfooter">
+    <div class="container">
+
+        <div class="col-md-5 col-sm-6">
+
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../redux-vs-usereducer/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="React&#39;s useReducer vs Redux"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../publish-npm-package-node/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to publish a npm package?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../react-scroll-to-item/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to Scroll to Item in React?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+
+        
+        <div class="col-md-5 col-md-offset-2 col-sm-6">
+
+            <h4>About Me</h4>
+
+            <div class="blog-entries">
+                <div class="item same-height-row clearfix">
+                    <div class="profile same-height-always">
+                        <img
+                            class="img-lazy img-responsive"
+                            data-lazy-src="//img/page/profile.jpg"
+                            alt="profile"
+                        >
+                    </div>
+                    <div class="name same-height-always">
+                        <p>
+                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+        <footer id="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-left">
+          
+            <li>© Chris Paul</li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline footer-social-buttons text-center">
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-right">
+          
+            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+
+    
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-65599459-2', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="../js/script.js"></script>
+
+
+
+  </body>
+</html>

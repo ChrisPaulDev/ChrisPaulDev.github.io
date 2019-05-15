@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="google-site-verification" content="We9gRQmlTIjMkOPPjPWDQTXd15nWA6tBEYlxQ2cMpEg" />
+
+  <title>
+    How to create a REST API with Express.js in Node.js - CPaul
+  </title>
+
+  <meta name="author" content="" />
+
+  
+    <meta name="description" content="A Node.js with Express tutorial to learn how to create a REST API for CRUD operations which can be consumed by a client application ...">
+  
+
+  <meta name="theme-color" content="#38bb6c"/>
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  
+  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../img/favicon/manifest.json">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+
+  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+
+  
+  
+<meta itemprop="name" content="How to create a REST API with Express.js in Node.js">
+<meta itemprop="description" content="A Node.js with Express tutorial to learn how to create a REST API for CRUD operations which can be consumed by a client application ...">
+
+
+
+    <meta itemprop="image" content="https://chrispaul.dev/img/posts/node-express-server-rest-api/banner_640.jpg">
+
+
+
+<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+
+
+<meta itemprop="wordCount" content="4504">
+
+
+  
+  <meta name="keywords" content="node express tutorial, express tutorial, express rest api">
+
+  <meta property="og:title" content="How to create a REST API with Express.js in Node.js - CPaul">
+
+
+  <meta property="og:description" content="A Node.js with Express tutorial to learn how to create a REST API for CRUD operations which can be consumed by a client application ..." />
+
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrispaul.dev/node-express-server-rest-api/" />
+<meta property="og:image" content="https://chrispaul.dev/img/posts/node-express-server-rest-api/banner_640.jpg" />
+
+  
+
+    <meta name="news_keywords" content="node express tutorial,express tutorial,express rest api" />
+
+  
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/node-express-server-rest-api/banner_640.jpg"/>
+
+
+
+<meta name="twitter:title" content="How to create a REST API with Express.js in Node.js"/>
+<meta name="twitter:description" content="A Node.js with Express tutorial to learn how to create a REST API for CRUD operations which can be consumed by a client application ..."/>
+<meta name="twitter:site" content="@rwieruch"/>
+<meta name="twitter:domain" content="rwieruch"/>
+
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="../index.html">
+                    <img src="../img/page/logo.svg" alt="How to create a REST API with Express.js in Node.js logo" class="img-lazy">
+                    <span class="sr-only">How to create a REST API with Express.js in Node.js - go to homepage</span>
+                </a>
+
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../index.html">Blog</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../work-with-me/index.html">Work with me</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../about/index.html">About</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fnode-express-server-rest-api%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=How%20to%20create%20a%20REST%20API%20with%20Express.js%20in%20Node.js%20by%20%40rwieruch%20%23NodeJs&amp;url=https%3a%2f%2fchrispaul.dev%2fnode-express-server-rest-api%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=How%20to%20create%20a%20REST%20API%20with%20Express.js%20in%20Node.js&amp;url=https%3a%2f%2fchrispaul.dev%2fnode-express-server-rest-api%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+</div>
+
+<div class="visible-xs visible-sm text-center">
+    <div class="post-share post-share-fixed post-share-mobile">
+        
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fnode-express-server-rest-api%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=How%20to%20create%20a%20REST%20API%20with%20Express.js%20in%20Node.js%20by%20%40rwieruch%20%23NodeJs&amp;url=https%3a%2f%2fchrispaul.dev%2fnode-express-server-rest-api%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=How%20to%20create%20a%20REST%20API%20with%20Express.js%20in%20Node.js&amp;url=https%3a%2f%2fchrispaul.dev%2fnode-express-server-rest-api%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+    </div>
+</div>
+
+        
+
+        <div class="hidden-xs">
+            
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase newsletter">Take Part</h2>
+            </div>
+
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    <article
+                        class="col-md-8 col-md-offset-2"
+                        id="blog-post"
+                        itemprop="blogPosts"
+                        itemscope itemtype="http://schema.org/BlogPosting">
+
+                        <div id="post-content" itemprop="articleBody">
+
+                            <header>
+                                <h1 itemprop="name headline">How to create a REST API with Express.js in Node.js</h1>
+                            </header>
+
+                            <div class="text-center">
+                                
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
+         <i class="fa fa-facebook"></i>Follow
+    </a>
+
+
+                                &nbsp;
+                                
+
+                                &nbsp;
+                                
+  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
+    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
+  </a>
+
+
+                                &nbsp;
+                                
+                            </div>
+
+                            <p class="text-muted text-uppercase mb-small text-center">
+    <span itemprop="author publisher">
+        
+    </span>
+
+    
+        <time datetime="2019-01-14" itemprop="datePublished">
+            January 14, 2019
+        </time>
+    
+
+    
+        <span class="hidden-xs hidden-sm"> - <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/node-express-server-rest-api.md">
+                Edit this Post on GitHub
+            </a>
+        </span>
+    
+</p>
+
+                            
+
+<div>
+  
+
+</div>
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fnode-express-server-rest-api%2f&amp;media=https://chrispaul.dev/img%2fposts%2fnode-express-server-rest-api%2fbanner.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/node-express-server-rest-api/banner.jpg"
+            data-is-src-set="is-src-set"
+            alt="express rest api"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<div class="read-before">
+    <p>This tutorial is part 3 of 3 in this series.</p>
+    <div>Part 1: <a href="../minimal-node-js-babel-setup/index.html" itemprop="url">The minimal Node.js with Babel Setup</a></div>
+    <div>Part 2: <a href="../node-js-express-tutorial/index.html" itemprop="url">How to setup Express.js in Node.js</a></div>
+</div>
+
+<p>An Express application is most often used as backend application in a client-server architecture whereas the client could be written in React.js or another popular frontend solution and the server could be written in Express. Both entities result in a client-server architecture (frontend and backend relationship) whereas the backend would be needed for (A) business logic that shouldn&rsquo;t be exposed as source code to the frontend application &ndash; otherwise it would be accessible in the browser &ndash; or for (B) establishing connections to third-party data sources (e.g. database(s)).</p>
+
+<p>However, don&rsquo;t mistake client application <em>always</em> for frontend and server application <em>always</em> for backend here. These terms cannot be exchanged that easily. Whereas a frontend application is usually something seen in the browser, a backend usually performs business logic that shouldn&rsquo;t be exposed in a browser and often connects to a database as well.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">Frontend</span> <span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">Backend</span> <span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">Database</span>
+</code></pre></div>
+
+
+<p>But, in contrast, the terms client and server are a matter of perspective. A backend application (Backend 1) which <em>consumes</em> another backend application (Backend 2) suddenly becomes a client application for the latter server application (Backend 2). However, the same backend application (Backend 1) is still the server for another client application which is the frontend application (Frontend).</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">Frontend</span> <span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">Backend</span> <span style="color: #f99b15">1</span> <span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">Backend</span> <span style="color: #f99b15">2</span> <span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">Database</span>
+
+<span style="color: #776e71">// Frontend: Client of Backend 1</span>
+<span style="color: #776e71">// Backend 1: Server for Frontend, also Client of Backend 2</span>
+<span style="color: #776e71">// Backend 2: Server for Backend 1</span>
+</code></pre></div>
+
+
+<p>If you want to answer the client-server question if someone asks you what role the entity plays in a client-server architecture, always ask yourself who (server) is serving whom (client) and who (client) consumes whom&rsquo;s (backend) functionalities?</p>
+
+<p>That&rsquo;s the theory behind client-server architectures and how to relate to them. Let&rsquo;s get more practical again. How do client and server applications communicate with each other? Over the years, there existed a few popular communication interfaces (<a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Application_programming_interface">APIs</a>) between both entities. However, the most popular one is called <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a> defined in 2000 by Roy Fielding. It&rsquo;s an architecture that leverages the <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP protocol</a> to enable communication between a client and a server application. A server application that offers a REST API is also called a RESTful server. Servers that don&rsquo;t follow the REST architecture a 100% are rather called RESTish than RESTful. In the following, we are going to implement such REST API for our Express server application, but first let&rsquo;s get to know the tooling that enables us to interact with a REST API.</p>
+
+<h2 class="chapter-header" id="curl-rest-api">cURL for REST APIs</h2>
+
+<p>If you haven&rsquo;t heard about cURL, this section gives you a short excursus about what&rsquo;s cURL and how to use it to interact with (REST) APIs. The definition taken from <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/CURL">Wikipedia</a> says: <em>&ldquo;cURL [&hellip;] is a computer software project providing a library and command-line tool for transferring data using various protocols.&rdquo;</em> Since REST is an architecture that uses HTTP, a server that exposes a RESTful API can be consumed with cURL, because HTTP is one of the various protocols.</p>
+
+<p>First, let&rsquo;s install it one the command line. For now, the installation guide is for MacOS users, but I guess by looking up &ldquo;curl for windows&rdquo; online, you will find the setup guide for your desired OS (e.g. Windows) too. In this guide, we will use Homebrew to install it. If you don&rsquo;t have Homebrew, install it with the following command on the command line:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #ef6155">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span>
+</code></pre></div>
+
+
+<p>If you haven&rsquo;t heard about Homebrew, read more about it over <a href="../developer-setup/index.html">here</a>. Next, install cURL with Homebrew:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">brew</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">curl</span>
+</code></pre></div>
+
+
+<p>Now, start your Express server from the previous sections. Once your application is started, execute <code>curl http://localhost:3000</code> in another command line window. Make sure the port matches your port and the Express server is running. After executing the command, you should see the &ldquo;Hello World!&rdquo; printed on the command line. Congratulations, you just have consumed your Express server as a client with something else than a browser.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">Browser</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">Client</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">Express</span> <span style="color: #06b6ef">Server</span>
+<span style="color: #06b6ef">Command</span> <span style="color: #06b6ef">Line</span> <span style="color: #06b6ef">Tool</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">Client</span> <span style="color: #815ba4">with</span> <span style="color: #06b6ef">cURL</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">Express</span> <span style="color: #06b6ef">Server</span>
+</code></pre></div>
+
+
+<p>Whether you access your Express application on <code>http://localhost:3000</code> in the browser or via the command line with cURL, you should see the same result. Both tools act as clients whereas the Express application is your server. You will see in the next sections how to use cURL to verify your Express application&rsquo;s REST API, that we are going to implement together, on the command line instead of in the browser.</p>
+
+<h2 class="chapter-header" id="express-routes-for-restful-operations">Express Routes: HTTP Methods and REST Operations</h2>
+
+<p>Express is a perfect choice for a server when it comes to creating and exposing APIs (e.g. REST API, GraphQL API) to communicate as a client with your server application. Previously you have already implemented one Express route, which sends a &ldquo;Hello World!&rdquo;, that you have accessed via the browser and cURL on the command line. Let&rsquo;s set up more routes to accommodate a RESTful API for your Express application eventually. Add the following routes to your Express application whereas the URI itself doesn&rsquo;t change, but the method used from your Express application:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;dotenv/config&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">...</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">express</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;express&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">app</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">express</span><span style="color: #e7e9db">();</span>
+
+<span style="color: #e7e9db">...</span>
+
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Received a GET HTTP method&#39;</span><span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
+</span>
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">post</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Received a POST HTTP method&#39;</span><span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
+</span>
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">put</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Received a PUT HTTP method&#39;</span><span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
+</span>
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #815ba4">delete</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Received a DELETE HTTP method&#39;</span><span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
+</span>
+<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">listen</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">PORT</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #48b685">`Example app listening on port </span><span style="color: #f99b15">${</span><span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">PORT</span><span style="color: #f99b15">}</span><span style="color: #48b685">!`</span><span style="color: #e7e9db">),</span>
+<span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>Now start your Express server on the command line again, if it isn&rsquo;t running already, and execute four cURL commands in another command line window. You should see the following output for the commands:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">curl</span> <span style="color: #06b6ef">http</span><span style="color: #5bc4bf">:</span><span style="color: #776e71">//localhost:3000</span>
+<span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">Received</span> <span style="color: #06b6ef">a</span> <span style="color: #06b6ef">GET</span> <span style="color: #06b6ef">HTTP</span> <span style="color: #06b6ef">method</span>
+
+<span style="color: #06b6ef">curl</span> <span style="color: #5bc4bf">-</span><span style="color: #06b6ef">X</span> <span style="color: #06b6ef">POST</span> <span style="color: #06b6ef">http</span><span style="color: #5bc4bf">:</span><span style="color: #776e71">//localhost:3000</span>
+<span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">Received</span> <span style="color: #06b6ef">a</span> <span style="color: #06b6ef">POST</span> <span style="color: #06b6ef">HTTP</span> <span style="color: #06b6ef">method</span>
+
+<span style="color: #06b6ef">curl</span> <span style="color: #5bc4bf">-</span><span style="color: #06b6ef">X</span> <span style="color: #06b6ef">PUT</span> <span style="color: #06b6ef">http</span><span style="color: #5bc4bf">:</span><span style="color: #776e71">//localhost:3000</span>
+<span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">Received</span> <span style="color: #06b6ef">a</span> <span style="color: #06b6ef">PUT</span> <span style="color: #06b6ef">HTTP</span> <span style="color: #06b6ef">method</span>
+
+<span style="color: #06b6ef">curl</span> <span style="color: #5bc4bf">-</span><span style="color: #06b6ef">X</span> <span style="color: #06b6ef">DELETE</span> <span style="color: #06b6ef">http</span><span style="color: #5bc4bf">:</span><span style="color: #776e71">//localhost:3000</span>
+<span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">Received</span> <span style="color: #06b6ef">a</span> <span style="color: #06b6ef">DELETE</span> <span style="color: #06b6ef">HTTP</span> <span style="color: #06b6ef">method</span>
+</code></pre></div>
+
+
+<p>By default cURL will use a HTTP GET method. However, you can specify the HTTP method with the <code>-X</code> flag (or <code>--request</code> flag). Depending on the HTTP method you are choosing, you will access different routes of your Express application &ndash; which here represent only a single API endpoint with an URI so far. You will see later other additions that you can add to your cURL requests.</p>
+
+<p>That&rsquo;s one of the key aspects of REST: It uses HTTP methods to perform operations on URI(s). Often these operations are referred to as <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD operations</a> for create, read, update, and delete operations. Next you will see on what these operations are used on the URIs (resources).</p>
+
+<h2 class="chapter-header" id="express-routes-for-restful-resources">Express Routes: URIs and Resources</h2>
+
+<p>Another important aspect of REST is that every URI acts as a resource. So far, you have only operated on the root URI with your CRUD operations. It&rsquo;s doesn&rsquo;t really represent a resource in REST. In contrast, a resource could be a user resource, for example:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/users&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;GET HTTP method on user resource&#39;</span><span style="color: #e7e9db">);</span>
+</span><span style="color: #e7e9db">});</span>
+
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">post</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/users&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;POST HTTP method on user resource&#39;</span><span style="color: #e7e9db">);</span>
+</span><span style="color: #e7e9db">});</span>
+
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">put</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/users&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;PUT HTTP method on user resource&#39;</span><span style="color: #e7e9db">);</span>
+</span><span style="color: #e7e9db">});</span>
+
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #815ba4">delete</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/users&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;DELETE HTTP method on user resource&#39;</span><span style="color: #e7e9db">);</span>
+</span><span style="color: #e7e9db">});</span>
+
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>With cURL on your command line, you can go through the resource represented by one URI with different operations by using the <code>http://localhost:3000/users</code> API endpoint again. You will see a similar output as before, but this time you are operating on a user resource. One piece is missing to make the PUT HTTP method (update operation) and DELETE HTTP method (delete operation) RESTful from a URI&rsquo;s point of view:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/users&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;GET HTTP method on user resource&#39;</span><span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">post</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/users&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;POST HTTP method on user resource&#39;</span><span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">put</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/users/:userId&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span>  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span>
+<span style="background-color: #4f424c">    <span style="color: #48b685">`PUT HTTP method on user/</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">params</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">userId</span><span style="color: #f99b15">}</span><span style="color: #48b685"> resource`</span><span style="color: #e7e9db">,</span>
+</span>  <span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #815ba4">delete</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/users/:userId&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span>  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span>
+<span style="background-color: #4f424c">    <span style="color: #48b685">`DELETE HTTP method on user/</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">params</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">userId</span><span style="color: #f99b15">}</span><span style="color: #48b685"> resource`</span><span style="color: #e7e9db">,</span>
+</span>  <span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>In order to delete or update a user resource, you would need to know the exact user. That&rsquo;s where unique identifiers are used in programming. In our Express routes, we can assign unique identifiers with parameters in the URI. Then the callback function holds the parameter in the request object&rsquo;s parameters. Try again a cURL operation  on <code>/users/1</code>, <code>/users/2</code> or another identifier with a DELETE or UPDATE HTTP method and verify that the identifier shows up in the command line as output.</p>
+
+<h2 class="chapter-header" id="rest-philosophy">Making sense of REST</h2>
+
+<p>You may be still wondering: <em>What value brings the combination of URIs and HTTP methods</em> &ndash; which make up the majority of the REST philosophy &ndash; <em>to my application?</em></p>
+
+<p>Let&rsquo;s imagine we wouldn&rsquo;t just return a result, as we do at the moment, but would act properly on the received operation instead. For instance, the Express server could be connected to a database that stores user entities in a user table. Now, when consuming the REST API as a client (e.g. cURL, browser, or also a <a href="../react-fetching-data/index.html">React.js application</a>), you could retrieve all users from the database with a HTTP GET method on the <code>/users</code> URI or, on the same resource, create a new user with a HTTP POST method.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// Making sense of the Naming</span>
+
+<span style="color: #06b6ef">Express</span> <span style="color: #06b6ef">Route</span><span style="color: #48b685">&#39;s Method &lt;=&gt; HTTP Method &lt;=&gt; REST Operation</span>
+<span style="color: #48b685">Express Route&#39;</span><span style="color: #06b6ef">s</span> <span style="color: #06b6ef">Path</span> <span style="color: #5bc4bf">&lt;=&gt;</span> <span style="color: #06b6ef">URI</span> <span style="color: #5bc4bf">&lt;=&gt;</span> <span style="color: #06b6ef">REST</span> <span style="color: #06b6ef">Resource</span>
+</code></pre></div>
+
+
+<p>Suddenly you would be able to read and write data from and to a database from a client application. Everything that makes it possible is a backend application which enables you to write a interface (e.g. REST API) for CRUD operations.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">Client</span> <span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">REST</span> <span style="color: #06b6ef">API</span> <span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">Server</span> <span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">Database</span>
+</code></pre></div>
+
+
+<p>Whereas it&rsquo;s important to notice that the REST API belongs to the server application. You can take this always one step further by having multiple server applications offering REST APIs. Often you they come with the name microservices or web services whereas each server application offers a well-encapsulated functionality. The servers even don&rsquo;t have to use the same programming language, because they are communicating over a programming language agnostic interface. Also the interfaces (APIs) doesn&rsquo;t have to be necessary REST API.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span>       <span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">REST</span> <span style="color: #06b6ef">API</span> <span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">Server</span> <span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">GraphQL</span> <span style="color: #06b6ef">API</span> <span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">Server</span> <span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">Database</span>
+<span style="color: #06b6ef">Client</span>
+       <span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">REST</span> <span style="color: #06b6ef">API</span> <span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">Server</span> <span style="color: #5bc4bf">-&gt;</span> <span style="color: #06b6ef">Database</span>
+</code></pre></div>
+
+
+<p>Let&rsquo;s take everything we learned in theory, so far, one step further towards a real application by sending real data across the wire. The data will be sample data, which will not come from a database yet, but will be hardcoded in the source code instead:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">let</span> <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #f99b15">1</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">id</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;1&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">username</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Chris Paul&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">},</span>
+</span><span style="background-color: #4f424c">  <span style="color: #f99b15">2</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">id</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;2&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">username</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Dave Davids&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">},</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">};</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c"><span style="color: #815ba4">let</span> <span style="color: #06b6ef">messages</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #f99b15">1</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">id</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;1&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">text</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Hello World&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">userId</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;1&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">},</span>
+</span><span style="background-color: #4f424c">  <span style="color: #f99b15">2</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">id</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;2&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">text</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;By World&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">userId</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;2&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">},</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">};</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">...</span>
+</span></code></pre></div>
+
+
+<p>Next to the user entities, we will have message entities too. Both entities are related to each other by providing the necessary information as identifiers (e.g. a message has a message creator). That&rsquo;s how a message is associated with a user and how you would retrieve the data from a database, too, whereas each entity (user, message) has a dedicated database table. Both are represented as objects that can be accessed by identifiers.</p>
+
+<p>Let&rsquo;s start by providing two routes for reading the whole list of users and a single user by identifier:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="color: #815ba4">let</span> <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span> <span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">let</span> <span style="color: #06b6ef">messages</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span> <span style="color: #e7e9db">};</span>
+
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/users&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(Object.</span><span style="color: #06b6ef">values</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">));</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
+</span>
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/users/:userId&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">params</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">userId</span><span style="color: #e7e9db">]);</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
+</span>
+<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">listen</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">PORT</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #48b685">`Example app listening on port </span><span style="color: #f99b15">${</span><span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">PORT</span><span style="color: #f99b15">}</span><span style="color: #48b685">!`</span><span style="color: #e7e9db">),</span>
+<span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>Whereas we pick a user from the object by identifier for the single users route, we transform the user object to a list of users for the all users route. The same should be possible for the message resource:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="color: #815ba4">let</span> <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span> <span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">let</span> <span style="color: #06b6ef">messages</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span> <span style="color: #e7e9db">};</span>
+
+<span style="color: #e7e9db">...</span>
+
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/messages&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(Object.</span><span style="color: #06b6ef">values</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">messages</span><span style="color: #e7e9db">));</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
+</span>
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/messages/:messageId&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">messages</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">params</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">messageId</span><span style="color: #e7e9db">]);</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
+</span>
+<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">listen</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">PORT</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #48b685">`Example app listening on port </span><span style="color: #f99b15">${</span><span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">PORT</span><span style="color: #f99b15">}</span><span style="color: #48b685">!`</span><span style="color: #e7e9db">),</span>
+<span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>Try out all four routes with cURL on the command line yourself. That&rsquo;s only about reading data. Next, we will discuss the other CRUD operations to create, update and delete resources to actually write data. However, we will not get around a custom Express middleware and a Express middleware provided by the Express ecosystem. That&rsquo;s why we will discuss the subject of the Express middleware next while implementing the missing CRUD operations.</p>
+
+<h2 class="chapter-header" id="express-middleware">Express Middleware</h2>
+
+<p>Let&rsquo;s see how a scenario for creating a message could be implemented in our Express application. Since we are creating a message without a database ourselves, we need a helper library to generate unique identifiers for us. Install this helper library on the command line:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">uuid</span>
+</code></pre></div>
+
+
+<p>Next import it at the top of your <em>src/index.js</em> file:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #06b6ef">uuidv4</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;uuid/v4&#39;</span><span style="color: #e7e9db">;</span>
+</span></code></pre></div>
+
+
+<p>Now, create a message with a new route that uses a HTTP POST method:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">post</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/messages&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">id</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">uuidv4</span><span style="color: #e7e9db">();</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">message</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">};</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">messages</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">message</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">message</span><span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
+</span>
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>We generate a unique identifier for the message with the new library, use it as property in a message object, assign the message by identifier in the messages object &ndash; which is our pseudo database &ndash;, and return the new message after it has been created.</p>
+
+<p>However, something is missing for the message. In order to create a message, a client has to provide the <code>text</code> string for the message. Fortunately a A HTTP POST method makes it possible to send data as payload in a body. That&rsquo;s why we can use the incoming request (<code>req</code>) to extract a payload from it.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">post</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/messages&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">id</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">uuidv4</span><span style="color: #e7e9db">();</span>
+  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">message</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span>
+<span style="background-color: #4f424c">    <span style="color: #06b6ef">text</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">body</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">text</span><span style="color: #e7e9db">,</span>
+</span>  <span style="color: #e7e9db">};</span>
+
+  <span style="color: #06b6ef">messages</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">message</span><span style="color: #e7e9db">;</span>
+
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">message</span><span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>However, accessing the payload of a HTTP POST request this way isn&rsquo;t provided by Express out of the box. Either you would have to transform the body payload yourself or use a dedicated middleware to make this transformation happen for you. Install and use a well-known middleware for this purpose:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">body</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">parser</span>
+</code></pre></div>
+
+
+<p>Next use it for your Express application as middleware:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #06b6ef">bodyParser</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;body-parser&#39;</span><span style="color: #e7e9db">;</span>
+</span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">express</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;express&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">app</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">express</span><span style="color: #e7e9db">();</span>
+
+<span style="color: #e7e9db">...</span>
+
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">use</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">bodyParser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">json</span><span style="color: #e7e9db">());</span>
+</span><span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">use</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">bodyParser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">urlencoded</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">extended</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span> <span style="color: #e7e9db">}));</span>
+</span>
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>The body-parser extracts the entire body portion of an incoming request stream and makes it accessible on <code>req.body</code> (<a target="_blank" rel="noopener noreferrer" href="https://www.quora.com/What-exactly-does-body-parser-do-with-express-js-and-why-do-I-need-it">Source</a>):</p>
+
+<ul>
+<li><p>bodyParser.json(): Parses the text as JSON and exposes the resulting object on req.body.</p></li>
+
+<li><p>bodyParser.urlencoded(): Parses the text as URL encoded data (which is how browsers tend to send form data from regular forms set to POST) and exposes the resulting object (containing the keys and values) on req.body.</p></li>
+</ul>
+
+<p>Now the body with the message&rsquo;s text is accessible in the request whether it is send by a regular POST request or a POST request from a HTML form. Both ways should work now. All data should be received and send as JSON payload now. That&rsquo;s another aspect of REST, which itself is no opinionated about the payload format (JSON, XML), but once you have chosen a format, you should stick to it for your entire API.</p>
+
+<p>In the last steps we have installed a new Express middleware and made it available on an application-level. Each request that arrives at one of our Express routes goes through the middleware. Therefore, all data send by a client to our server is available in the incoming request. Try it by creating a message yourself. In a cURL request you can specify HTTP headers with the <code>-H</code> flag &ndash; that&rsquo;s how we are saying we want to transfer JSON &ndash; and data as payload with the <code>-d</code> flag. You should be able to create messages this way:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">curl</span> <span style="color: #5bc4bf">-</span><span style="color: #06b6ef">X</span> <span style="color: #06b6ef">POST</span> <span style="color: #5bc4bf">-</span><span style="color: #06b6ef">H</span> <span style="color: #48b685">&quot;Content-Type:application/json&quot;</span> <span style="color: #06b6ef">http</span><span style="color: #5bc4bf">:</span><span style="color: #776e71">//localhost:3000/messages -d &#39;{&quot;text&quot;:&quot;Hi again, World&quot;}&#39;</span>
+</code></pre></div>
+
+
+<p>So far, we have only imported third-party Express middleware and have used it on an application-level. Now, let&rsquo;s build a custom Express middleware, which is used on an application-level, ourselves. The blueprint for a middleware is similar to the Express functions we have seen before:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">use</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">next</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #776e71">// do something</span>
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">next</span><span style="color: #e7e9db">();</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
+</span>
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>The next function, which is available as third argument, is called to signalize that the middleware has finished its job. This becomes more important when your middleware uses asynchronous functions. In between of the middleware function you could do anything now. We could simply <code>console.log()</code> the time or do something with the request (<code>req</code>) or response (<code>res</code>). In our case, for creating a message, we need somehow to know who is creating the message. Let&rsquo;s do a simple version of a middleware that determines a pseudo &ldquo;authenticated&rdquo; user that is sending the request. Then it&rsquo;s possible to append this user as message creator to the message:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">use</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">next</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">me</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">users</span><span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">];</span>
+</span>  <span style="color: #06b6ef">next</span><span style="color: #e7e9db">();</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #e7e9db">...</span>
+
+<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">post</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/messages&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">id</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">uuidv4</span><span style="color: #e7e9db">();</span>
+  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">message</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span>
+    <span style="color: #06b6ef">text</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">body</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">text</span><span style="color: #e7e9db">,</span>
+<span style="background-color: #4f424c">    <span style="color: #06b6ef">userId</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">me</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span>
+</span>  <span style="color: #e7e9db">};</span>
+
+  <span style="color: #06b6ef">messages</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">message</span><span style="color: #e7e9db">;</span>
+
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">message</span><span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>Suddenly we would have access to the <code>me</code> user in the request object, which is the authenticated user, in our routes. This user can be used then to be assigned as creator of the message. You can imagine how such middleware could be used later to intercept each incoming request to determine from the incoming HTTP headers whether the request comes from an authenticated user or not. If the request comes from an authenticated user, the user is propagated to every Express route to be used there. That&rsquo;s how the Express server can be stateless while a client always sends over the information of the currently authenticated user.</p>
+
+<p>Being a stateless is another characteristic of RESTful services. After all, it should be possible to create multiple server instances to balance the incoming traffic evenly between the servers. If you heard about the term load balancing before, that&rsquo;s exactly what&rsquo;s used when having multiple servers at your disposal. That&rsquo;s why a server cannot keep the state (e.g. authenticated user) and the client always has to send this information along with each request. Then a server can have a middleware which takes care of the authentication on an application-level and provides the session state (e.g. authenticated user) to every route in your Express application.</p>
+
+<p>Now that you have learned the essentials about application-level middleware in Express, let&rsquo;s implement the last routes to complete our  application&rsquo;s routes. What about the operation to delete a message:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #815ba4">delete</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/messages/:messageId&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">[</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">params</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">messageId</span><span style="color: #e7e9db">]</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">message</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">...</span><span style="color: #06b6ef">otherMessages</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">messages</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">messages</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">otherMessages</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">message</span><span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
+</span>
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>You can try it with the following cURL command:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">curl</span> <span style="color: #5bc4bf">-</span><span style="color: #06b6ef">X</span> <span style="color: #06b6ef">DELETE</span> <span style="color: #06b6ef">http</span><span style="color: #5bc4bf">:</span><span style="color: #776e71">//localhost:3000/messages/1</span>
+</code></pre></div>
+
+
+<p>The Update operation on a message resource is for you to implement yourself as an exercise. I will spare it for a later section, because it quickly raises a new topic: permissions. The question: Who is allowed to edit a message? It should only be possible for the authenticated user (<code>me</code>) who is the creator of the message, should it?</p>
+
+<p>Last, since you have already the pseudo authenticated user at your disposal due to the application-wide middleware, you can offer a dedicated route for this resource too:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/session&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">me</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">]);</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
+</span>
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>It&rsquo;s the first time you break the rules of being entirely RESTful, because you offer an API endpoint for a very specific feature. It will not be the first time you break the laws of REST, because most often REST is not fully implemented RESTful but rather RESTish. If you want to dive deeper into REST, you can do it by yourself. <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/HATEOAS">HATEOAS</a> and other REST related topics are not covered in detail and implemented here.</p>
+
+<h2 class="chapter-header" id="express-models">Modular Models in Express as Data Sources</h2>
+
+<p>At the moment, all of our implementation sits in the <em>src/index.js</em> file. However, at some point you may want to modularize your implementation details and put them into dedicated files and folders whereas the <em>src/index.js</em> file should only care about putting everything together and starting the application. Before we dive into modularizing the routing, let&rsquo;s see how we can modularize our sample data in so called models first. From your <em>src/</em> folder type the following commands to create a folder/file structure for the models.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">mkdir</span> <span style="color: #06b6ef">models</span>
+<span style="color: #06b6ef">cd</span> <span style="color: #06b6ef">models</span>
+<span style="color: #06b6ef">touch</span> <span style="color: #06b6ef">index</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span>
+</code></pre></div>
+
+
+<p>The models folder in an Express application is usually the place where you define your data sources. In our case, it&rsquo;s the sample data, but in other applications, for instance, it would be the interfaces to the database. In our case of refactoring this, let&rsquo;s move our sample data over to the new <em>src/models/index.js</em> file:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">let</span> <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #f99b15">1</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">id</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;1&#39;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #06b6ef">username</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Chris Paul&#39;</span><span style="color: #e7e9db">,</span>
+  <span style="color: #e7e9db">},</span>
+  <span style="color: #f99b15">2</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">id</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;2&#39;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #06b6ef">username</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Dave Davids&#39;</span><span style="color: #e7e9db">,</span>
+  <span style="color: #e7e9db">},</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">let</span> <span style="color: #06b6ef">messages</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #f99b15">1</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">id</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;1&#39;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #06b6ef">text</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Hello World&#39;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #06b6ef">userId</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;1&#39;</span><span style="color: #e7e9db">,</span>
+  <span style="color: #e7e9db">},</span>
+  <span style="color: #f99b15">2</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">id</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;2&#39;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #06b6ef">text</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;By World&#39;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #06b6ef">userId</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;2&#39;</span><span style="color: #e7e9db">,</span>
+  <span style="color: #e7e9db">},</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">users</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">messages</span><span style="color: #e7e9db">,</span>
+<span style="color: #e7e9db">};</span>
+</code></pre></div>
+
+
+<p>Remove the sample data afterward in the <em>src/index.js</em> file. Also import the models in the <em>src/index.js</em> file now and pass them in our custom application-level middleware to all routes via a dedicated context object. That&rsquo;s where the <code>me</code> user (authenticated) user can be placed as well. You don&rsquo;t need necessarily the context object as container, but I found it a good practice to keep everything that is passed to the routes at one place.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #06b6ef">models</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./models&#39;</span><span style="color: #e7e9db">;</span>
+</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">app</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">express</span><span style="color: #e7e9db">();</span>
+
+<span style="color: #e7e9db">...</span>
+
+<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">use</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">next</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">models</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">me</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">models</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">],</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">};</span>
+</span>  <span style="color: #06b6ef">next</span><span style="color: #e7e9db">();</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>Then, instead of having access to the sample data in all routes from outside variables as before &ndash; which is an unnecessary side-effect and doesn&rsquo;t keep the function pure &ndash;, we want to use the models (and authenticated user) from the function&rsquo;s arguments now.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/session&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">models</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">me</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">]);</span>
+</span><span style="color: #e7e9db">});</span>
+
+<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/users&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(Object.</span><span style="color: #06b6ef">values</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">models</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">));</span>
+</span><span style="color: #e7e9db">});</span>
+
+<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/users/:userId&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">models</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">params</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">userId</span><span style="color: #e7e9db">]);</span>
+</span><span style="color: #e7e9db">});</span>
+
+<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/messages&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(Object.</span><span style="color: #06b6ef">values</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">models</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">messages</span><span style="color: #e7e9db">));</span>
+</span><span style="color: #e7e9db">});</span>
+
+<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/messages/:messageId&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">models</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">messages</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">params</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">messageId</span><span style="color: #e7e9db">]);</span>
+</span><span style="color: #e7e9db">});</span>
+
+<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">post</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/messages&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">id</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">uuidv4</span><span style="color: #e7e9db">();</span>
+  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">message</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span>
+    <span style="color: #06b6ef">text</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">body</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">text</span><span style="color: #e7e9db">,</span>
+<span style="background-color: #4f424c">    <span style="color: #06b6ef">userId</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">me</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span>
+</span>  <span style="color: #e7e9db">};</span>
+
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">models</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">messages</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">message</span><span style="color: #e7e9db">;</span>
+</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">message</span><span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #815ba4">delete</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/messages/:messageId&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #e7e9db">[</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">params</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">messageId</span><span style="color: #e7e9db">]</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">message</span><span style="color: #e7e9db">,</span>
+    <span style="color: #e7e9db">...</span><span style="color: #06b6ef">otherMessages</span>
+<span style="background-color: #4f424c">  <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">models</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">messages</span><span style="color: #e7e9db">;</span>
+</span>
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">models</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">messages</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">otherMessages</span><span style="color: #e7e9db">;</span>
+</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">message</span><span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>We are using the application-wide middleware to pass the models to all our routes in a context object now. The models are living outside of the <em>src/index.js</em> file and can be refactored to actual database interfaces later. Next, since we made the routing independent from all side-effects and pass everything needed to them via the request object with the context object, we can move the routes to separated places too.</p>
+
+<h2 class="chapter-header" id="express-router-routing">Modular Routing with Express Router</h2>
+
+<p>So far, you have mounted routes directly on the Express application instance in the <em>src/index.js</em> file. This will become verbose eventually, because this file should only care about all the important topics to start our application. It shouldn&rsquo;t reveal implementation details of the routes. Now the best practice would be to move the routes into their dedicated folder/file structure. That&rsquo;s why we want to give each REST resource their own file in a dedicated folder. From your <em>src/</em> folder, type the following on the command line to create a folder/file structure for the modular routes:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">mkdir</span> <span style="color: #06b6ef">routes</span>
+<span style="color: #06b6ef">cd</span> <span style="color: #06b6ef">routes</span>
+<span style="color: #06b6ef">touch</span> <span style="color: #06b6ef">index</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span> <span style="color: #06b6ef">session</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span> <span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span> <span style="color: #06b6ef">message</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span>
+</code></pre></div>
+
+
+<p>Then, assumed the routes would be already defined, import the all the modular routes in the <em>src/index.js</em> file and <em>use</em> them to mount them as modular routes. Each modular route receives a URI which in REST is our resource.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #06b6ef">routes</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./routes&#39;</span><span style="color: #e7e9db">;</span>
+</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">app</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">express</span><span style="color: #e7e9db">();</span>
+
+<span style="color: #e7e9db">...</span>
+
+<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">use</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/session&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">routes</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">session</span><span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">use</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/users&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">routes</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">use</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/messages&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">routes</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">message</span><span style="color: #e7e9db">);</span>
+</span>
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>In our <em>src/routes/index.js</em> entry file to the routes module, import all routes form their dedicated files (that are not defined yet) and export them as an object. Afterward, they are available in the <em>src/index.js</em> file as we have already used them.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">session</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./session&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">user</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./user&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">message</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./message&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">session</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">user</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">message</span><span style="color: #e7e9db">,</span>
+<span style="color: #e7e9db">};</span>
+</code></pre></div>
+
+
+<p>Now let&rsquo;s implement each modular route. Start with the session route in the <em>src/routes/session.js</em> file which only returns the pseudo authenticated user. Express offers the Express Router to create such modular routes without mounting them directly to the Express application instance. That&rsquo;s how we can create modular routes at other places than the Express application, but import them later to be mounted on the Express application&rsquo;s instance as we already have done in a previous step.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Router</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;express&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">router</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">Router</span><span style="color: #e7e9db">();</span>
+
+<span style="color: #06b6ef">router</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">models</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">me</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">]);</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">router</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Next, the user route in the <em>src/routes/user.js</em> file. It&rsquo;s quite similar to the session route:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Router</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;express&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">router</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">Router</span><span style="color: #e7e9db">();</span>
+
+<span style="color: #06b6ef">router</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(Object.</span><span style="color: #06b6ef">values</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">models</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">));</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #06b6ef">router</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/:userId&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">models</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">params</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">userId</span><span style="color: #e7e9db">]);</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">router</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Notice how we don&rsquo;t need to define the <code>/users</code> URI (path) but only the subpaths, because we did this already in the mounting process of the route in the Express application (see <em>src/index.js</em> file). Next, implement the <em>src/routes/message.js</em> file to define the last of our modular routes:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">uuidv4</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;uuid/v4&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Router</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;express&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">router</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">Router</span><span style="color: #e7e9db">();</span>
+
+<span style="color: #06b6ef">router</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(Object.</span><span style="color: #06b6ef">values</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">models</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">messages</span><span style="color: #e7e9db">));</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #06b6ef">router</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/:messageId&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">models</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">messages</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">params</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">messageId</span><span style="color: #e7e9db">]);</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #06b6ef">router</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">post</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">id</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">uuidv4</span><span style="color: #e7e9db">();</span>
+  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">message</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span>
+    <span style="color: #06b6ef">text</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">body</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">text</span><span style="color: #e7e9db">,</span>
+    <span style="color: #06b6ef">userId</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">me</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span>
+  <span style="color: #e7e9db">};</span>
+
+  <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">models</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">messages</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">message</span><span style="color: #e7e9db">;</span>
+
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">message</span><span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #06b6ef">router</span><span style="color: #e7e9db">.</span><span style="color: #815ba4">delete</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/:messageId&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #e7e9db">[</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">params</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">messageId</span><span style="color: #e7e9db">]</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">message</span><span style="color: #e7e9db">,</span>
+    <span style="color: #e7e9db">...</span><span style="color: #06b6ef">otherMessages</span>
+  <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">models</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">messages</span><span style="color: #e7e9db">;</span>
+
+  <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">models</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">messages</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">otherMessages</span><span style="color: #e7e9db">;</span>
+
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">message</span><span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">});</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">router</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Every of our modular routes from Express Router is mounted to our Express application with a dedicated URI in the <em>src/index.js</em> file now. The modular routes in the <em>src/routes</em> folder only take care of their sub paths and their implementation details while the mounting in the <em>src/index.js</em> file takes care of the main path and the mounted modular route that is used there. In the end, don&rsquo;t forget to remove all the previously used routes that we moved over to the <em>src/routes/</em> folder in the <em>src/index.js</em> file.</p>
+
+<h3 id="exercises">Exercises:</h3>
+
+<ul>
+<li>What&rsquo;s a client-server architecture?</li>
+<li>Read more about <a href="../what-is-an-api-javascript/index.html">REST APIs and other APIs</a></li>
+<li>Read more about <a href="../why-graphql-advantages-disadvantages-alternatives/index.html">GraphQL as popular alternative to REST</a></li>
+<li>Read more about <a target="_blank" rel="noopener noreferrer" href="https://expressjs.com/en/starter/basic-routing.html">basic routing in Express</a></li>
+<li>Read more about <a target="_blank" rel="noopener noreferrer" href="https://expressjs.com/en/guide/routing.html">advanced routing in Express</a></li>
+<li>Read more about <a target="_blank" rel="noopener noreferrer" href="https://expressjs.com/en/guide/using-middleware.html">middleware in Express</a></li>
+</ul>
+
+<div class="read-before">
+    <p>This tutorial is part 3 of 4 in this series.</p>
+    <div>Part 1: <a href="../minimal-node-js-babel-setup/index.html" itemprop="url">The minimal Node.js with Babel Setup</a></div>
+    <div>Part 2: <a href="../node-js-express-tutorial/index.html" itemprop="url">How to setup Express.js in Node.js</a></div>
+    <div>Part 4: <a href="../postgres-express-setup-tutorial/index.html" itemprop="url">Setup PostgreSQL with Sequelize in Express Tutorial</a></div>
+</div>
+
+<div class="read-before">
+    <p>This tutorial is part 3 of 4 in this series.</p>
+    <div>Part 1: <a href="../minimal-node-js-babel-setup/index.html" itemprop="url">The minimal Node.js with Babel Setup</a></div>
+    <div>Part 2: <a href="../node-js-express-tutorial/index.html" itemprop="url">How to setup Express.js in Node.js</a></div>
+    <div>Part 4: <a href="../mongodb-express-setup-tutorial/index.html" itemprop="url">Setup MongoDB with Mongoose in Express Tutorial</a></div>
+</div>
+
+
+                            
+<div class="feedback-and-share text-center">
+    <hr>
+    
+    <p class="lead">
+        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
+    </p>
+    
+    
+        <p class="lead">
+            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+        </p>
+    
+</div>
+
+
+                            
+                                <div class="box-inline col-md-12">
+    <div class="col-md-12 text-center">
+        <h2 class="newsletter">The Road to learn React</h2>
+        
+            <div class="col-md-4">
+                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+            </div>
+        
+        <p class="lead">
+            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
+        </p>
+        <a
+            class="btn btn-template-main"
+            href="https://roadtoreact.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Get the Book for free <i class="fa fa-chevron-right"></i>
+        </a>
+        
+            <div>
+                <a
+                    href="https://amzn.to/2QY2ONp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get it from Amazon
+                </a>
+            </div>
+        
+    </div>
+</div>
+                            
+                        </div>
+
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'rwieruch';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </article>
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase">Take Part</h2>
+            </div>
+
+            <div class="col-md-12 text-center">
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+                
+            </div>
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+        <footer id="subfooter">
+    <div class="container">
+
+        <div class="col-md-5 col-sm-6">
+
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../redux-vs-usereducer/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="React&#39;s useReducer vs Redux"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../publish-npm-package-node/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to publish a npm package?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../react-scroll-to-item/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to Scroll to Item in React?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+
+        
+        <div class="col-md-5 col-md-offset-2 col-sm-6">
+
+            <h4>About Me</h4>
+
+            <div class="blog-entries">
+                <div class="item same-height-row clearfix">
+                    <div class="profile same-height-always">
+                        <img
+                            class="img-lazy img-responsive"
+                            data-lazy-src="//img/page/profile.jpg"
+                            alt="profile"
+                        >
+                    </div>
+                    <div class="name same-height-always">
+                        <p>
+                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+        <footer id="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-left">
+          
+            <li>© Chris Paul</li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline footer-social-buttons text-center">
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-right">
+          
+            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+
+    
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-65599459-2', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="../js/script.js"></script>
+
+
+
+  </body>
+</html>

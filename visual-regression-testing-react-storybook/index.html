@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="google-site-verification" content="We9gRQmlTIjMkOPPjPWDQTXd15nWA6tBEYlxQ2cMpEg" />
+
+  <title>
+    Visual Regression Testing and React Storybook - CPaul
+  </title>
+
+  <meta name="author" content="" />
+
+  
+    <meta name="description" content="The article gives advice on how to implement visual regression testing in React and UI components with React Storybook. You will get to know React Storybook and all its testing capabilities ...">
+  
+
+  <meta name="theme-color" content="#38bb6c"/>
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  
+  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../img/favicon/manifest.json">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+
+  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+
+  
+  
+<meta itemprop="name" content="Visual Regression Testing and React Storybook">
+<meta itemprop="description" content="The article gives advice on how to implement visual regression testing in React and UI components with React Storybook. You will get to know React Storybook and all its testing capabilities ...">
+
+
+
+    <meta itemprop="image" content="https://chrispaul.dev/img/posts/visual-regression-testing-react-storybook/banner_640.jpg">
+
+
+
+<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+
+
+<meta itemprop="wordCount" content="3220">
+
+
+  
+  <meta name="keywords" content="visual regression testing react, react storybook testing">
+
+  <meta property="og:title" content="Visual Regression Testing and React Storybook - CPaul">
+
+
+  <meta property="og:description" content="The article gives advice on how to implement visual regression testing in React and UI components with React Storybook. You will get to know React Storybook and all its testing capabilities ..." />
+
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrispaul.dev/visual-regression-testing-react-storybook/" />
+<meta property="og:image" content="https://chrispaul.dev/img/posts/visual-regression-testing-react-storybook/banner_640.jpg" />
+
+  
+
+    <meta name="news_keywords" content="visual regression testing react,react storybook testing" />
+
+  
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/visual-regression-testing-react-storybook/banner_640.jpg"/>
+
+
+
+<meta name="twitter:title" content="Visual Regression Testing and React Storybook"/>
+<meta name="twitter:description" content="The article gives advice on how to implement visual regression testing in React and UI components with React Storybook. You will get to know React Storybook and all its testing capabilities ..."/>
+<meta name="twitter:site" content="@rwieruch"/>
+<meta name="twitter:domain" content="rwieruch"/>
+
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="../index.html">
+                    <img src="../img/page/logo.svg" alt="Visual Regression Testing and React Storybook logo" class="img-lazy">
+                    <span class="sr-only">Visual Regression Testing and React Storybook - go to homepage</span>
+                </a>
+
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../index.html">Blog</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../work-with-me/index.html">Work with me</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../about/index.html">About</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fvisual-regression-testing-react-storybook%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=Visual%20Regression%20Testing%20and%20React%20Storybook%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fvisual-regression-testing-react-storybook%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Visual%20Regression%20Testing%20and%20React%20Storybook&amp;url=https%3a%2f%2fchrispaul.dev%2fvisual-regression-testing-react-storybook%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+</div>
+
+<div class="visible-xs visible-sm text-center">
+    <div class="post-share post-share-fixed post-share-mobile">
+        
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fvisual-regression-testing-react-storybook%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=Visual%20Regression%20Testing%20and%20React%20Storybook%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fvisual-regression-testing-react-storybook%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Visual%20Regression%20Testing%20and%20React%20Storybook&amp;url=https%3a%2f%2fchrispaul.dev%2fvisual-regression-testing-react-storybook%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+    </div>
+</div>
+
+        
+
+        <div class="hidden-xs">
+            
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase newsletter">Take Part</h2>
+            </div>
+
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    <article
+                        class="col-md-8 col-md-offset-2"
+                        id="blog-post"
+                        itemprop="blogPosts"
+                        itemscope itemtype="http://schema.org/BlogPosting">
+
+                        <div id="post-content" itemprop="articleBody">
+
+                            <header>
+                                <h1 itemprop="name headline">Visual Regression Testing and React Storybook</h1>
+                            </header>
+
+                            <div class="text-center">
+                                
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
+         <i class="fa fa-facebook"></i>Follow
+    </a>
+
+
+                                &nbsp;
+                                
+
+                                &nbsp;
+                                
+  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
+    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
+  </a>
+
+
+                                &nbsp;
+                                
+                            </div>
+
+                            <p class="text-muted text-uppercase mb-small text-center">
+    <span itemprop="author publisher">
+        
+    </span>
+
+    
+        <time datetime="2018-10-30" itemprop="datePublished">
+            October 30, 2018
+        </time>
+    
+
+    
+        <span class="hidden-xs hidden-sm"> - <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/visual-regression-testing-react-storybook.md">
+                Edit this Post on GitHub
+            </a>
+        </span>
+    
+</p>
+
+                            <div>
+  
+
+</div>
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fvisual-regression-testing-react-storybook%2f&amp;media=https://chrispaul.dev/img%2fposts%2fvisual-regression-testing-react-storybook%2fbanner.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/visual-regression-testing-react-storybook/banner.jpg"
+            data-is-src-set="is-src-set"
+            alt="visual regression testing react"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<p>As I worked with my recent client to develop their lay out the groundwork for their React application, I found out that testing was an important topic for them. They are shipping their React application into embedded systems only once or twice a year. As conclusion there must be a guarantee that everything is working as expected, because there are no deployments possible afterward to fix a bug. That&rsquo;s how I came to write an <a href="../react-testing-tutorial/index.html">extensive article about testing in React</a> that covers unit tests, integration tests and E2E tests. However, one part is missing in the article: <strong>visual regression tests in React</strong>. These kind of tests were super important for my client, because the embedded application should work on various device sizes and a small bug in the layout or styling could cost much money. Thus all the styling should work as expected for different consumer of their application.</p>
+
+<p>This article is all about visual regression testing in React. As I worked for my recent client, I had to look for tools which would enable this kind of testing in React applications. It didn&rsquo;t take long for me to stumbled upon <a target="_blank" rel="noopener noreferrer" href="https://github.com/storybooks/storybook">React Storybook</a>, which itself isn&rsquo;t used for testing but for having a living component style guide, but comes with a couple of add-ons which enable snapshot testing and visual regression testing by only writing stories for React components. At the end, there is one add-on called Storyshots which enables visual regression testing for the components rendered in React Storybook.</p>
+
+<p>The article will first go into React Storybook and how it can be used for a living component/UI style guide. Along the way, you will learn about a couple of add-ons which are useful for React Storybook. Finally, you will learn about testing in React Storybook by turning your stories first into snapshot tests and second into visual regression tests. Let&rsquo;s dive into the material.</p>
+
+<h2 class="chapter-header" id="react-storybook">React Storybook and the React UI component guide</h2>
+
+<p>Storybook can be used for different view layer libraries. One of them is React and thus most people are using React Storybook to document their UI components to give non developers a way to try out different components and to ensure a unified style guide for their UI components. It is a great tool for these kind of things and you can get around implementing your own living style guide by using Storybook instead.</p>
+
+<p>If you have no React application yet to try it, you can clone this <a target="_blank" rel="noopener noreferrer" href="repository.html">GitHub</a> and follow its installation instructions on GitHub. It comes with all the React testing setup from the previously mentioned testing article where I wrote about unit tests, integration tests and E2E tests in React. Otherwise, you can start out with <a target="_blank" rel="noopener noreferrer" href="https://github.com/facebook/create-react-app">create-react-app</a> or <a href="../minimal-react-webpack-babel-setup/index.html">this minimal React with Webpack setup</a> too. But then the following instructions may vary for you, because you haven&rsquo;t installed all the peer dependencies (e.g. Jest for the visual regression testing and snapshot testing part of this article) yet.</p>
+
+<p>First, you can install React Storybook on the command line:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #ef6155">@</span><span style="color: #06b6ef">storybook</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">react</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">dev</span>
+</code></pre></div>
+
+
+<p>Second, create a <em>.storybook/</em> folder in your project folder. It is the default place for all the Storybook configuration. Later, it is up to you to choose another place for it. In the folder, create a <em>.storybook/config.js</em> file. There you can put the following configuration:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">configure</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #776e71">// pick all stories.js files within the src/ folder</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">req</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">require</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;../src&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #815ba4">true</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">/stories\.js$/</span><span style="color: #e7e9db">);</span>
+
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">loadStories</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">keys</span><span style="color: #e7e9db">().</span><span style="color: #06b6ef">forEach</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">filename</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">req</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">filename</span><span style="color: #e7e9db">));</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #06b6ef">configure</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">loadStories</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">module</span><span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>The fourth line of the configuration is the most important one. It specifies the location and name of the stories which should end up in React Storybook. In this particular configuration, it says &ldquo;pick all stories that are located in the <em>src/</em> folder with the name <em>stories.js</em>&rdquo;. If you want to have a different name for your files, such as <em>MyComponent.stories.js</em>, use an appropriate regular expression for it such as:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">configure</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="background-color: #4f424c"><span style="color: #776e71">// pick all *.stories.js files within the src/ folder</span>
+</span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">req</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">require</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;../src&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #815ba4">true</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">/\.stories\.js$/</span><span style="color: #e7e9db">);</span>
+</span>
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">loadStories</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">keys</span><span style="color: #e7e9db">().</span><span style="color: #06b6ef">forEach</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">filename</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">req</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">filename</span><span style="color: #e7e9db">));</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #06b6ef">configure</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">loadStories</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">module</span><span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>Third, define a story for one of your components. Let&rsquo;s say we have a Checkbox component which is stateless and only communicates its value to the outside world by using a function as a prop. It could be in a <em>src/Checkbox/index.js</em> file:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">class</span> <span style="color: #06b6ef">Checkbox</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>
+
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">handleChange</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">handleChange</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">bind</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+
+  <span style="color: #06b6ef">handleChange</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">event</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onCheckboxChange</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">target</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">checked</span><span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">};</span>
+
+  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">value</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">children</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">;</span>
+
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">label</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">:</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">input</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;checkbox&quot;</span> <span style="color: #06b6ef">checked</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">handleChange</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/label&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">Checkbox</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Next to it, you can create your stories for it in a <em>src/Checkbox/stories.js</em> file:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">storiesOf</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">Checkbox</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #06b6ef">storiesOf</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Checkbox&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">module</span><span style="color: #e7e9db">)</span>
+  <span style="color: #e7e9db">.</span><span style="color: #06b6ef">add</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;with checked&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">true</span><span style="color: #e7e9db">;</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">children</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;My Checkbox Label&#39;</span><span style="color: #e7e9db">;</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onCheckboxChange</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{};</span>
+
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Checkbox</span> <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onCheckboxChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onCheckboxChange</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Checkbox&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">});</span>
+</code></pre></div>
+
+
+<p>It is important for a story to return the rendered component to make it appear in Storybook. The previous construct allows you to have multiple stories for one component by using the <code>add()</code> method. Each story for a component should be different when implementing multiple stories. Most often stories for a component differ because of the props that are passed to the component.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">storiesOf</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">Checkbox</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #06b6ef">storiesOf</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Checkbox&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">module</span><span style="color: #e7e9db">)</span>
+  <span style="color: #e7e9db">.</span><span style="color: #06b6ef">add</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;with checked&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">true</span><span style="color: #e7e9db">;</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">children</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;My Checkbox Label&#39;</span><span style="color: #e7e9db">;</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onCheckboxChange</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{};</span>
+
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Checkbox</span> <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onCheckboxChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onCheckboxChange</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Checkbox&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">})</span>
+<span style="background-color: #4f424c">  <span style="color: #e7e9db">.</span><span style="color: #06b6ef">add</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;with unchecked&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">children</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;My Checkbox Label&#39;</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onCheckboxChange</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{};</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Checkbox</span> <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onCheckboxChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onCheckboxChange</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+</span><span style="background-color: #4f424c">        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Checkbox&gt;</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">});</span>
+</span></code></pre></div>
+
+
+<p>That&rsquo;s how you can add multiple stories to a component resembling different component states. Last but not least, add a npm script to your <em>package.json</em> file to run React Storybook on the command line:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #48b685">&quot;scripts&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #e7e9db">...</span>
+<span style="background-color: #4f424c">    <span style="color: #48b685">&quot;storybook&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;start-storybook -p 9001 -c .storybook&quot;</span>
+</span><span style="color: #e7e9db">},</span>
+</code></pre></div>
+
+
+<p>Now you can run it on the command line with <code>npm run storybook</code> and visit your React Storybook with the specified port in the browser: <a href="http://localhost:9001">http://localhost:9001</a>. You should see both stories for your Checkbox component.</p>
+
+<p>Surprisingly nothing happens when clicking the checkbox, because it is a stateless component. In this case, the component is implemented in a way where the state is managed outside of the component. In order to make your non developers and designers happy, you can add a wrapping stateful component around your Checkbox component. It can happen in your <em>stories.js</em> file which is then only used for your stories but not for the actual application. After all, stories are implemented in JavaScript (and React), so you can add any helpful implementation to it.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">storiesOf</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">Checkbox</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">class</span> <span style="color: #06b6ef">CheckboxStateful</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">};</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onCheckboxChange</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onCheckboxChange</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">bind</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">onCheckboxChange</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">value</span> <span style="color: #e7e9db">});</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onCheckboxChange</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">};</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Checkbox</span>
+</span><span style="background-color: #4f424c">        <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">        <span style="color: #06b6ef">onCheckboxChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onCheckboxChange</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">&gt;</span>
+</span><span style="background-color: #4f424c">        <span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Checkbox&gt;</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">}</span>
+</span>
+<span style="color: #06b6ef">storiesOf</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Checkbox&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">module</span><span style="color: #e7e9db">)</span>
+  <span style="color: #e7e9db">.</span><span style="color: #06b6ef">add</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;with checked&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">true</span><span style="color: #e7e9db">;</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">children</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;My Checkbox Label&#39;</span><span style="color: #e7e9db">;</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onCheckboxChange</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{};</span>
+
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+<span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">CheckboxStateful</span> <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onCheckboxChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onCheckboxChange</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+</span>        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+<span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/CheckboxStateful&gt;</span>
+</span>    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">})</span>
+  <span style="color: #e7e9db">.</span><span style="color: #06b6ef">add</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;with unchecked&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">;</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">children</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;My Checkbox Label&#39;</span><span style="color: #e7e9db">;</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onCheckboxChange</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{};</span>
+
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+<span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">CheckboxStateful</span> <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onCheckboxChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onCheckboxChange</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+</span>        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+<span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/CheckboxStateful&gt;</span>
+</span>    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">});</span>
+</code></pre></div>
+
+
+<p>After starting Storybook again, you should see again both stories for your Checkbox component. But this time it is possible to check and uncheck the Checkbox state.</p>
+
+<h2 class="chapter-header" id="react-storybook-addons">React Storybook Addons</h2>
+
+<p>Before diving into testing with React Storybook, this section shows you how to add and use a couple of useful <strong>Storybook Addons</strong>. You can find most of them on the <a target="_blank" rel="noopener noreferrer" href="https://storybook.js.org">official Storybook website</a>. Addons can be helpful for enabling testing in React Storybook, but also for providing useful features for non developers in your team.</p>
+
+<h3 id="react-storybook-addons-knobs">React Storybook Addons: Knobs</h3>
+
+<p>First, we are going to introduce the <strong>Storybook Knobs</strong> addon. It is used for keeping variables which are used in the stories as props flexible so that non developers can adjust those variables in the rendered Storybook to see how the business logic or styling behaves.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #ef6155">@</span><span style="color: #06b6ef">storybook</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">addon</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">knobs</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">dev</span>
+</code></pre></div>
+
+
+<p>For instance, imagine a button which has a fixed width but renders any number of chars as text. Soon it should be clear, by adjusting the variables in Storybook, that most often the text will not fit in the button with a fixed width. That&rsquo;s one of the various use cases why Storybook Knobs makes sense.</p>
+
+<p>You have to create a <em>.storybook/addons.js</em> file in your Storybook configuring folder to register the addon in order to use it in your stories. In the file, you can import the newly installed addon.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;@storybook/addon-knobs/register&#39;</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Next, you can add the Knobs to all your stories globally (you could do it for each story individually too) by using a <strong>Storybook Decorator</strong> in your <em>.storybook/config.js</em> file.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">configure</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">addDecorator</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/react&#39;</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">withKnobs</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/addon-knobs&#39;</span><span style="color: #e7e9db">;</span>
+</span>
+<span style="color: #776e71">// pick all stories.js files within the src/ folder</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">req</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">require</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;../src&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #815ba4">true</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">/stories\.js$/</span><span style="color: #e7e9db">);</span>
+
+<span style="background-color: #4f424c"><span style="color: #06b6ef">addDecorator</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">withKnobs</span><span style="color: #e7e9db">);</span>
+</span>
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">loadStories</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">keys</span><span style="color: #e7e9db">().</span><span style="color: #06b6ef">forEach</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">filename</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">req</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">filename</span><span style="color: #e7e9db">));</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #06b6ef">configure</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">loadStories</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">module</span><span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>And last but not least, you can make use of the Knobs addon by specifying flexible variables with it in your Checkbox stories.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">storiesOf</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">text</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/addon-knobs&#39;</span><span style="color: #e7e9db">;</span>
+</span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">Checkbox</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #e7e9db">...</span>
+
+<span style="color: #06b6ef">storiesOf</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Checkbox&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">module</span><span style="color: #e7e9db">)</span>
+  <span style="color: #e7e9db">.</span><span style="color: #06b6ef">add</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;with checked&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">true</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">children</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">text</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;label&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">&#39;My Checkbox Label&#39;</span><span style="color: #e7e9db">);</span>
+</span>    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onCheckboxChange</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{};</span>
+
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">CheckboxStateful</span> <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onCheckboxChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onCheckboxChange</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/CheckboxStateful&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">})</span>
+  <span style="color: #e7e9db">.</span><span style="color: #06b6ef">add</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;with unchecked&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">children</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">text</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;label&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">&#39;My Checkbox Label&#39;</span><span style="color: #e7e9db">);</span>
+</span>    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onCheckboxChange</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{};</span>
+
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">CheckboxStateful</span> <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onCheckboxChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onCheckboxChange</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/CheckboxStateful&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">});</span>
+</code></pre></div>
+
+
+<p>After starting your React Storybook on the command line again, you should see a Knobs panel in your React Storybook in the browser where you are able to change the value for the &ldquo;label&rdquo; key. Storybook Knobs doesn&rsquo;t only come with the text knob, but also other primitives such as boolean, number, date, array or object. You can find out more about it in their <a target="_blank" rel="noopener noreferrer" href="https://github.com/storybooks/storybook/tree/master/addons/knobs">official documentation</a>.</p>
+
+<h3 id="react-storybook-addons-actions">React Storybook Addons: Actions</h3>
+
+<p><strong>Storybook Actions</strong> is another useful addon to capture the values which are coming through your handlers. Rather than passing in an empty function as prop to your component which is doing nothing, you can use the an action from the addon to output the value in a dedicated panel in the React Storybook. First, install the addon on the command line:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #ef6155">@</span><span style="color: #06b6ef">storybook</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">addon</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">actions</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">dev</span>
+</code></pre></div>
+
+
+<p>Next, register it to your list of addons:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;@storybook/addon-knobs/register&#39;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;@storybook/addon-actions/register&#39;</span><span style="color: #e7e9db">;</span>
+</span></code></pre></div>
+
+
+<p>And last but not least, import the <code>action()</code> function from the addon to your stories. Afterward, you can use it to generate a callback function, by passing in an identifier, and use it as prop for your Component rather than having an empty function for it.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">storiesOf</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">text</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/addon-knobs&#39;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">action</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/addon-actions&#39;</span><span style="color: #e7e9db">;</span>
+</span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">Checkbox</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #e7e9db">...</span>
+
+<span style="color: #06b6ef">storiesOf</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Checkbox&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">module</span><span style="color: #e7e9db">)</span>
+  <span style="color: #e7e9db">.</span><span style="color: #06b6ef">add</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;with checked&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">true</span><span style="color: #e7e9db">;</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">children</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">text</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;label&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">&#39;My Checkbox Label&#39;</span><span style="color: #e7e9db">);</span>
+<span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onCheckboxChange</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;toggle&#39;</span><span style="color: #e7e9db">);</span>
+</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">CheckboxStateful</span> <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onCheckboxChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onCheckboxChange</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/CheckboxStateful&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">})</span>
+  <span style="color: #e7e9db">.</span><span style="color: #06b6ef">add</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;with unchecked&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">;</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">children</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">text</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;label&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">&#39;My Checkbox Label&#39;</span><span style="color: #e7e9db">);</span>
+<span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onCheckboxChange</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;toggle&#39;</span><span style="color: #e7e9db">);</span>
+</span>
+    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">CheckboxStateful</span> <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onCheckboxChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onCheckboxChange</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/CheckboxStateful&gt;</span>
+    <span style="color: #e7e9db">);</span>
+  <span style="color: #e7e9db">});</span>
+</code></pre></div>
+
+
+<p>In the end, once you start React Storybook again, you should see the Actions panel in the rendered Storybook in your browser. Once you toggle a checkbox, the action with its value and your defined name should show up. Since the action is used as <code>onCheckboxChange()</code> handler in the CheckboxStateful component, it captures the boolean value of the Checkbox component for you.</p>
+
+<h2 class="chapter-header" id="react-testing-storybook">Testing in React with Storybook</h2>
+
+<p>Visual regression tests can be used as automated tests to verify styles and layouts of your application. The latter can be useful to validate layouts on different screen sizes (e.g. responsive design). By having visual regression tests implemented, they should make sure that nothing breaks (styles, layouts). It replaces the tedious manual checking of your layout for different screen sizes or general styles in your application.</p>
+
+<p>Before we enter visual regression tests with <strong>Storybook Storyshots</strong>, we will use the same addon to transform all of our previous stories automatically to snapshot tests first. Thus all of the components rendered in the stories will be snapshoted and diffed with their rendered DOM elements. Under the hood, the <a target="_blank" rel="noopener noreferrer" href="https://facebook.github.io/jest">Jest</a> library is used for the snapshot tests.</p>
+
+<p>If you have used the previously mentioned React testing repository, you should be able to execute the already written tests with the following commands for unit/integration tests and snapshot tests:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">run</span> <span style="color: #06b6ef">test</span><span style="color: #5bc4bf">:</span><span style="color: #06b6ef">unit</span>
+<span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">run</span> <span style="color: #06b6ef">test</span><span style="color: #5bc4bf">:</span><span style="color: #06b6ef">snapshot</span>
+</code></pre></div>
+
+
+<p>Otherwise, you need to make at least sure to have Jest up and running, because it is used for the Storybook Storyshot addon. You can read up every detail about the installation in the <a target="_blank" rel="noopener noreferrer" href="https://github.com/storybooks/storybook/tree/master/addons/storyshots">official documenation of Storyshots</a>. In order to get Storyshots running with Jest, you need to install the following package:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">babel</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">plugin</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">require</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">context</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">hook</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">register</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">dev</span>
+</code></pre></div>
+
+
+<p>Use it in your <em>.babelrc</em> file:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+  <span style="color: #48b685">&quot;presets&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[</span>
+    <span style="color: #48b685">&quot;@babel/preset-env&quot;</span><span style="color: #e7e9db">,</span>
+    <span style="color: #48b685">&quot;@babel/preset-react&quot;</span>
+  <span style="color: #e7e9db">],</span>
+<span style="background-color: #4f424c">  <span style="color: #48b685">&quot;env&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #48b685">&quot;test&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">      <span style="color: #48b685">&quot;plugins&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[</span><span style="color: #48b685">&quot;require-context-hook&quot;</span><span style="color: #e7e9db">]</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">}</span>
+</span><span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>And include it in a new <em>test/jest.setup</em> file:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">registerRequireContextHook</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;babel-plugin-require-context-hook/register&#39;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c"><span style="color: #06b6ef">registerRequireContextHook</span><span style="color: #e7e9db">();</span>
+</span></code></pre></div>
+
+
+<p>In order to run the setup file, which initializes and transforms the stories to snapshot tests before your actual snapshot tests are executed, you need to include the new file in the <em>test/jest.config.json</em> file.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+  <span style="color: #48b685">&quot;testRegex&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;((\\.|/*.)(snapshot))\\.js?$&quot;</span><span style="color: #e7e9db">,</span>
+  <span style="color: #48b685">&quot;rootDir&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;..&quot;</span><span style="color: #e7e9db">,</span>
+<span style="background-color: #4f424c">  <span style="color: #48b685">&quot;setupTestFrameworkScriptFile&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;&lt;rootDir&gt;/test/jest.setup.js&quot;</span>
+</span><span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>Finally you can install the Storybook Storyshots addon for your project on your command line:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #ef6155">@</span><span style="color: #06b6ef">storybook</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">addon</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">storyshots</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">dev</span>
+</code></pre></div>
+
+
+<p>In the next step, there needs to be a configurational part where Storybook and Jest are connected to transform the stories into automatic snapshot tests. In the <em>test/jest.setup.js</em> file for Jest you can initialize the Storyshots addon.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">registerRequireContextHook</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;babel-plugin-require-context-hook/register&#39;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #06b6ef">initStoryshots</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/addon-storyshots&#39;</span><span style="color: #e7e9db">;</span>
+</span>
+<span style="color: #06b6ef">registerRequireContextHook</span><span style="color: #e7e9db">();</span>
+<span style="background-color: #4f424c"><span style="color: #06b6ef">initStoryshots</span><span style="color: #e7e9db">();</span>
+</span></code></pre></div>
+
+
+<p>Now, when running your Jest snapshot tests on the command line with <code>npm run test:snapshot</code> or your own command, all your stories should be executed as snapshot tests next to your actual snapshot tests. They are grouped under the Storyshots test suite. In conclusion, Storybook not only helps you to document your UI components but also to test them automatically as snapshot tests. It&rsquo;s powerful, isn&rsquo;t it?</p>
+
+<h2 class="chapter-header" id="visual-regression-test-react">Visual Regression Testing in React with Storybook</h2>
+
+<p>Now you will learn how to transform those snapshot tests automatically into visual regression tests. Rather than diffing the rendered DOM elements, a visual regression test will capture a screenshot of your rendered component from the story and diffs this screenshot against another captured screenshot once you run your test again. There are two things to enable the automatic visual regression tests. First, install another addon for it:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #ef6155">@</span><span style="color: #06b6ef">storybook</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">addon</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">storyshots</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">puppeteer</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">dev</span>
+</code></pre></div>
+
+
+<p>And second, adjust the <em>test/jest.setup.js</em> file:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">registerRequireContextHook</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;babel-plugin-require-context-hook/register&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">initStoryshots</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/addon-storyshots&#39;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">imageSnapshot</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/addon-storyshots-puppeteer&#39;</span><span style="color: #e7e9db">;</span>
+</span>
+<span style="color: #06b6ef">registerRequireContextHook</span><span style="color: #e7e9db">();</span>
+<span style="background-color: #4f424c"><span style="color: #06b6ef">initStoryshots</span><span style="color: #e7e9db">({</span>
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">suite</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Storyshots&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">test</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">imageSnapshot</span><span style="color: #e7e9db">({</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">storybookUrl</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;http://localhost:9001&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">}),</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
+</span></code></pre></div>
+
+
+<p>The important part is defining where your Storybook can be found locally when running it. Before running again your snapshot tests on the command line in one tab, you need to make sure to run the Storybook script in another command line tab. Afterward, run the snapshot tests and verify the test output. The screenshot driven visual regression tests should work now.</p>
+
+<p>Also you should be able to find the captured screenshots somewhere in your project folder. They should show the rendered Checkbox components. You can try to alter the appearance of your Checkbox components which are used in your stories and run your tests again. Afterward, you should see the failing visual regression tests, because the new screenshots differ from the previous captured screenshots. You can even see the diff of both screenshots as an image in your project folder again.</p>
+
+<p>That&rsquo;s it already to transform snapshot tests to visual regression tests by using React Storybook. Let&rsquo;s take this one step further. What about visual regression testing the appearance of your component (or layout) regarding different device sizes? It would be great to have a way to automate this part as well.</p>
+
+<p>First, you can install the <a target="_blank" rel="noopener noreferrer" href="https://github.com/storybooks/storybook/tree/master/addons/viewport">Storybook Viewport</a> addon on the command line to enable this feature:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #ef6155">@</span><span style="color: #06b6ef">storybook</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">addon</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">viewport</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">dev</span>
+</code></pre></div>
+
+
+<p>Second, you need to register <strong>Storybook Viewport</strong> as addon again in your <em>.storybook/addons.js</em> file:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;@storybook/addon-knobs/register&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;@storybook/addon-actions/register&#39;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;@storybook/addon-viewport/register&#39;</span><span style="color: #e7e9db">;</span>
+</span></code></pre></div>
+
+
+<p>Third, you can optionally setup different viewport sizes in your <em>.storybook/config.js</em> file. But it isn&rsquo;t necessary, because by registering the addon you have already access to a handful of pre-defined viewports.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">configure</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">addDecorator</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">withKnobs</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/addon-knobs&#39;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">configureViewport</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/addon-viewport&#39;</span><span style="color: #e7e9db">;</span>
+</span>
+<span style="color: #776e71">// pick all stories.js files within the src/ folder</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">req</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">require</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">context</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;../src&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #815ba4">true</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">/stories\.js$/</span><span style="color: #e7e9db">);</span>
+
+<span style="color: #06b6ef">addDecorator</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">withKnobs</span><span style="color: #e7e9db">);</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">viewports</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">small</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;small&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">styles</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">width</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;320px&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">height</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;240px&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">},</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">},</span>
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">medium</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;medium&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">styles</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">width</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;800px&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">height</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;600px&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">},</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">},</span>
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">large</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;large&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">styles</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">width</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;1280px&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">height</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;1024px&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">},</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">},</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">};</span>
+</span>
+<span style="background-color: #4f424c"><span style="color: #06b6ef">configureViewport</span><span style="color: #e7e9db">({</span>
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">viewports</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
+</span>
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">loadStories</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">req</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">keys</span><span style="color: #e7e9db">().</span><span style="color: #06b6ef">forEach</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">filename</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">req</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">filename</span><span style="color: #e7e9db">));</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #06b6ef">configure</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">loadStories</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">module</span><span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>Last but not least, you can use the Viewport component from the Storybook Viewport addon to render your component as child in a specified viewport. The viewport can be defined in your previous custom viewports, but it can be also a viewport which comes already with the Viewport addon.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">storiesOf</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">text</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/addon-knobs&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">action</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/addon-actions&#39;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Viewport</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;@storybook/addon-viewport&#39;</span><span style="color: #e7e9db">;</span>
+</span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">Checkbox</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #e7e9db">...</span>
+
+<span style="color: #06b6ef">storiesOf</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Checkbox&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">module</span><span style="color: #e7e9db">)</span>
+<span style="background-color: #4f424c">  <span style="color: #e7e9db">.</span><span style="color: #06b6ef">add</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;with medium&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">true</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">children</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">text</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;label&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">&#39;My Checkbox Label&#39;</span><span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onCheckboxChange</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;toggle&#39;</span><span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Viewport</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;medium&quot;</span><span style="color: #5bc4bf">&gt;</span>
+</span><span style="background-color: #4f424c">        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">CheckboxStateful</span> <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onCheckboxChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onCheckboxChange</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+</span><span style="background-color: #4f424c">          <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/CheckboxStateful&gt;</span>
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Viewport&gt;</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">})</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">.</span><span style="color: #06b6ef">add</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;with iphone6 Plus&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">value</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">true</span><span style="color: #e7e9db">;</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">children</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">text</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;label&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">&#39;My Checkbox Label&#39;</span><span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onCheckboxChange</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;toggle&#39;</span><span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Viewport</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;iphone6p&quot;</span><span style="color: #5bc4bf">&gt;</span>
+</span><span style="background-color: #4f424c">        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">CheckboxStateful</span> <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onCheckboxChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onCheckboxChange</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+</span><span style="background-color: #4f424c">          <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/CheckboxStateful&gt;</span>
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Viewport&gt;</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c">  <span style="color: #e7e9db">})</span>
+</span>  <span style="color: #e7e9db">.</span><span style="color: #06b6ef">add</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;with checked&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #e7e9db">...</span>
+  <span style="color: #e7e9db">})</span>
+  <span style="color: #e7e9db">.</span><span style="color: #06b6ef">add</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;with unchecked&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #e7e9db">...</span>
+  <span style="color: #e7e9db">});</span>
+</code></pre></div>
+
+
+<p>The Storybook Viewport addon makes lots of sense when you have complex layouts due to CSS media queries and want to have a manual (Storybook) but also an automatic way (visual regression test) to validate and test them. Because after all, the visual regression tests are executed for these stories as well.</p>
+
+<hr class="section-divider">
+
+<p>The final application which implements all the previously shown React Storybook addons can be found in <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/visual-regression-testing-react-storybook">this GitHub repository</a>. In the end, I hope the article was helpful for you to deploy visual regression testing in your React applications. Keep in mind that Storybook should work with other view layer libraries too. In conclusion, visual regression testing can be a huge benefit ensuring that different layouts work for different device sizes and ensuring that stylings in your application are not breaking. Apart from the testing, React Storybook itself gives you a great tool to document your UI components of your application for non developers but also developers.</p>
+
+
+                            
+<div class="feedback-and-share text-center">
+    <hr>
+    
+    <p class="lead">
+        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
+    </p>
+    
+    
+        <p class="lead">
+            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+        </p>
+    
+</div>
+
+
+                            
+                                <div class="box-inline col-md-12">
+    <div class="col-md-12 text-center">
+        <h2 class="newsletter">The Road to learn React</h2>
+        
+            <div class="col-md-4">
+                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+            </div>
+        
+        <p class="lead">
+            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
+        </p>
+        <a
+            class="btn btn-template-main"
+            href="https://roadtoreact.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Get the Book for free <i class="fa fa-chevron-right"></i>
+        </a>
+        
+            <div>
+                <a
+                    href="https://amzn.to/2QY2ONp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get it from Amazon
+                </a>
+            </div>
+        
+    </div>
+</div>
+                            
+                        </div>
+
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'rwieruch';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </article>
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase">Take Part</h2>
+            </div>
+
+            <div class="col-md-12 text-center">
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+                
+            </div>
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+        <footer id="subfooter">
+    <div class="container">
+
+        <div class="col-md-5 col-sm-6">
+
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../redux-vs-usereducer/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="React&#39;s useReducer vs Redux"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../publish-npm-package-node/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to publish a npm package?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../react-scroll-to-item/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to Scroll to Item in React?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+
+        
+        <div class="col-md-5 col-md-offset-2 col-sm-6">
+
+            <h4>About Me</h4>
+
+            <div class="blog-entries">
+                <div class="item same-height-row clearfix">
+                    <div class="profile same-height-always">
+                        <img
+                            class="img-lazy img-responsive"
+                            data-lazy-src="//img/page/profile.jpg"
+                            alt="profile"
+                        >
+                    </div>
+                    <div class="name same-height-always">
+                        <p>
+                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+        <footer id="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-left">
+          
+            <li>© Chris Paul</li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline footer-social-buttons text-center">
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-right">
+          
+            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+
+    
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-65599459-2', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="../js/script.js"></script>
+
+
+
+  </body>
+</html>

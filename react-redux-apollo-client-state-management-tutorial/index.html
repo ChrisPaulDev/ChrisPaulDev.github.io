@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="google-site-verification" content="We9gRQmlTIjMkOPPjPWDQTXd15nWA6tBEYlxQ2cMpEg" />
+
+  <title>
+    How to use Redux with Apollo Client and GraphQL in React - CPaul
+  </title>
+
+  <meta name="author" content="" />
+
+  
+    <meta name="description" content="When having a GraphQL server, Apollo Client can be a valid option for your remote data. How fits Redux into the equation? This tutorial shows you an example on how Redux and Apollo Client can be used together in a React application. Whereas Redux is used for local data, Apollo Client is used for remote data ...">
+  
+
+  <meta name="theme-color" content="#38bb6c"/>
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  
+  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../img/favicon/manifest.json">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+
+  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+
+  
+  
+<meta itemprop="name" content="How to use Redux with Apollo Client and GraphQL in React">
+<meta itemprop="description" content="When having a GraphQL server, Apollo Client can be a valid option for your remote data. How fits Redux into the equation? This tutorial shows you an example on how Redux and Apollo Client can be used together in a React application. Whereas Redux is used for local data, Apollo Client is used for remote data ...">
+
+
+
+    <meta itemprop="image" content="https://chrispaul.dev/img/posts/react-redux-apollo-client-state-management-tutorial/banner_640.jpg">
+
+
+
+<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+
+
+<meta itemprop="wordCount" content="3262">
+
+
+  
+  <meta name="keywords" content="apollo client redux, react graphql redux, apollo redux store, apollo link state redux, apollo vs redux, apollo client vs redux, how to use redux with apollo, how to use apollo with redux, graphql react book">
+
+  <meta property="og:title" content="How to use Redux with Apollo Client and GraphQL in React - CPaul">
+
+
+  <meta property="og:description" content="When having a GraphQL server, Apollo Client can be a valid option for your remote data. How fits Redux into the equation? This tutorial shows you an example on how Redux and Apollo Client can be used together in a React application. Whereas Redux is used for local data, Apollo Client is used for remote data ..." />
+
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrispaul.dev/react-redux-apollo-client-state-management-tutorial/" />
+<meta property="og:image" content="https://chrispaul.dev/img/posts/react-redux-apollo-client-state-management-tutorial/banner_640.jpg" />
+
+  
+
+    <meta name="news_keywords" content="apollo client redux,react graphql redux,apollo redux store,apollo link state redux,apollo vs redux,apollo client vs redux,how to use redux with apollo,how to use apollo with redux,graphql react book" />
+
+  
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/react-redux-apollo-client-state-management-tutorial/banner_640.jpg"/>
+
+
+
+<meta name="twitter:title" content="How to use Redux with Apollo Client and GraphQL in React"/>
+<meta name="twitter:description" content="When having a GraphQL server, Apollo Client can be a valid option for your remote data. How fits Redux into the equation? This tutorial shows you an example on how Redux and Apollo Client can be used together in a React application. Whereas Redux is used for local data, Apollo Client is used for remote data ..."/>
+<meta name="twitter:site" content="@rwieruch"/>
+<meta name="twitter:domain" content="rwieruch"/>
+
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="../index.html">
+                    <img src="../img/page/logo.svg" alt="How to use Redux with Apollo Client and GraphQL in React logo" class="img-lazy">
+                    <span class="sr-only">How to use Redux with Apollo Client and GraphQL in React - go to homepage</span>
+                </a>
+
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../index.html">Blog</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../work-with-me/index.html">Work with me</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../about/index.html">About</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freact-redux-apollo-client-state-management-tutorial%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=How%20to%20use%20Redux%20with%20Apollo%20Client%20and%20GraphQL%20in%20React%20by%20%40rwieruch%20%23ReactJs%20%23GraphQL&amp;url=https%3a%2f%2fchrispaul.dev%2freact-redux-apollo-client-state-management-tutorial%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=How%20to%20use%20Redux%20with%20Apollo%20Client%20and%20GraphQL%20in%20React&amp;url=https%3a%2f%2fchrispaul.dev%2freact-redux-apollo-client-state-management-tutorial%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+</div>
+
+<div class="visible-xs visible-sm text-center">
+    <div class="post-share post-share-fixed post-share-mobile">
+        
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freact-redux-apollo-client-state-management-tutorial%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=How%20to%20use%20Redux%20with%20Apollo%20Client%20and%20GraphQL%20in%20React%20by%20%40rwieruch%20%23ReactJs%20%23GraphQL&amp;url=https%3a%2f%2fchrispaul.dev%2freact-redux-apollo-client-state-management-tutorial%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=How%20to%20use%20Redux%20with%20Apollo%20Client%20and%20GraphQL%20in%20React&amp;url=https%3a%2f%2fchrispaul.dev%2freact-redux-apollo-client-state-management-tutorial%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+    </div>
+</div>
+
+        
+
+        <div class="hidden-xs">
+            
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase newsletter">Take Part</h2>
+            </div>
+
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    <article
+                        class="col-md-8 col-md-offset-2"
+                        id="blog-post"
+                        itemprop="blogPosts"
+                        itemscope itemtype="http://schema.org/BlogPosting">
+
+                        <div id="post-content" itemprop="articleBody">
+
+                            <header>
+                                <h1 itemprop="name headline">How to use Redux with Apollo Client in React</h1>
+                            </header>
+
+                            <div class="text-center">
+                                
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
+         <i class="fa fa-facebook"></i>Follow
+    </a>
+
+
+                                &nbsp;
+                                
+
+                                &nbsp;
+                                
+  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
+    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
+  </a>
+
+
+                                &nbsp;
+                                
+                            </div>
+
+                            <p class="text-muted text-uppercase mb-small text-center">
+    <span itemprop="author publisher">
+        
+    </span>
+
+    
+        <time datetime="2018-06-26" itemprop="datePublished">
+            June 26, 2018
+        </time>
+    
+
+    
+        <span class="hidden-xs hidden-sm"> - <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/react-redux-apollo-client-state-management-tutorial.md">
+                Edit this Post on GitHub
+            </a>
+        </span>
+    
+</p>
+
+                            
+
+<div>
+  
+
+</div>
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2freact-redux-apollo-client-state-management-tutorial%2f&amp;media=https://chrispaul.dev/img%2fposts%2freact-redux-apollo-client-state-management-tutorial%2fbanner.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/react-redux-apollo-client-state-management-tutorial/banner.jpg"
+            data-is-src-set="is-src-set"
+            alt="apollo client redux"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<p>
+  <em>
+    Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire <a href="https://roadtoreact.com">The Road to GraphQL</a> book that teaches you to become a fullstack developer with JavaScript.
+  </em>
+</p>
+
+<div class="read-before">
+    <p>This tutorial is part 3 of 3 in this series.</p>
+    <div>Part 1: <a href="../react-apollo-client-example/index.html" itemprop="url">A minimal Apollo Client in React Application</a></div>
+    <div>Part 2: <a href="../react-apollo-link-state-tutorial/index.html" itemprop="url">A apollo-link-state Tutorial for Local State Management</a></div>
+</div>
+
+<p>In a previous application, you have used Apollo Link State to substitute React&rsquo;s local state management with it. Even though it wasn&rsquo;t necessary, because it is most often sufficient to manage local state with React only, it has shown you how it can be achieved with local queries and local mutations when using Apollo Link State. However, it needs to be clear that this only happens when you have the following three requirements for your application:</p>
+
+<ul>
+<li>you need a sophisticated state management layer (e.g. mobx, redux, apollo-link-state)</li>
+<li>you have a GraphQL server, because otherwise Apollo Client may makes no sense in the first place</li>
+<li>you embrace React&rsquo;s local state as still being useful for co-located component state</li>
+</ul>
+
+<p>Basically you have learned that Apollo Link State can be used as replacement for Redux or MobX to manage local data in a global store in your application. However, Redux is often already used in React applications for historical reasons, because it was the successor of the state management libraries for React applications, but also because people consciously decide to use it. It&rsquo;s not without reason that people use Redux as their powerful state management solution. So there is no real use for Apollo Link State in these applications.</p>
+
+<p>So even though the server-side application makes a transition to being GraphQL powered instead of being RESTful, it is not often requested to abandon Redux as state layer for the client-side application. The big question, which is asked by many developers who introduced GraphQL to their server-side and Apollo Client to their client-side application, is: <strong>How to use Redux and Apollo Client together?</strong> The application that you are going to build in the following section should show you only one approach of how Redux can be used together with Apollo Client in a React application. It gives you a implementation-wise scenario on how it can be done and is also followed by a couple of recommendations on how to use Redux and Apollo Client together in larger applications.</p>
+
+<p>I also want to point out that Redux may not be needed at all when introducing Apollo Client to your tech stack. Whereas Apollo Client would be used for your remote data, React&rsquo;s local state may be sufficient to manage local data. <a href="../learn-react-before-using-redux/index.html">Only if the state management for your local data becomes complex</a>, you want to introduce a sophisticated state management solution such as Redux.</p>
+
+<p>If you are not interested in Redux at all, it may be still valuable to read up the following approach and discussion for using other state management libraries in combination with Apollo Client. In general, if you are interested in using Redux with Apollo Client, but you have never learned Redux before, you should take the time to go through the <a target="_blank" rel="noopener noreferrer" href="https://roadtoreact.com/">Taming the State in React</a> course to get a high level yet pragmatic understanding about it.</p>
+
+<h2 class="chapter-header" id="apollo-client-redux-colocated">Redux for Local Data, Apollo Client for Remote Data</h2>
+
+<p>The requirement for this application is identical to the requirement for the previous application where you have introduced Apollo Link State as replacement for React&rsquo;s local state. In this application, you want to introduce Redux instead of Apollo Link State to manage the list of repository identifiers to power the selection feature.</p>
+
+<p>In order to get you started with the project, you can either clone this <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/react-apollo-client-example">starter repository from GitHub and follow its installation instructions</a> or follow the steps from the previous application where you have built a minimal Apollo Client with React application.</p>
+
+<p>Before you start to replace React&rsquo;s local state with Redux, take your time to try out the example application. You should be familiar with which part of the application is responsible for the local data and which part is responsible for the remote data. Afterward, you can introduce Redux by installing it on the command line:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">redux</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span>
+</code></pre></div>
+
+
+<p>The Redux store creation can happen in the same file as the Apollo Client creation for the sake of keeping everything at one place: the <em>src/index.js</em> file. Keep in mind that you may want to separate those things, setting up Apollo Client and Redux, in their own files when building a larger application with these libraries.</p>
+
+<p>Before you can create a Redux store instance, you need to have at least one reducer. Reducers are used to take an action and the current state from the Redux store, and use the action payload to derive the next state for the Redux store: <code>(state, action) =&gt; nextState</code>. In addition, an action comes with a mandatory <code>type</code> so that it can be identified by the reducer(s) to do something with it. Moreover, an action can have an optional payload. In your <em>src/index.js</em> file, next to the Apollo Client creation, you can define your reducer to manage the state of selected repositories.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">repositoryReducer</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">switch</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">action</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">type</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">case</span> <span style="color: #48b685">&#39;TOGGLE_SELECT_REPOSITORY&#39;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #815ba4">return</span> <span style="color: #06b6ef">applyToggleSelectRepository</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">);</span>
+    <span style="color: #e7e9db">}</span>
+    <span style="color: #815ba4">default</span><span style="color: #5bc4bf">:</span>
+      <span style="color: #815ba4">return</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">;</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="color: #815ba4">function</span> <span style="color: #06b6ef">applyToggleSelectRepository</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">;</span>
+
+  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">isSelected</span>
+    <span style="color: #5bc4bf">?</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">filter</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">itemId</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">itemId</span> <span style="color: #5bc4bf">!==</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">)</span>
+    <span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">concat</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">);</span>
+
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #e7e9db">};</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>Basically the Redux reducer does the same as the React local state, but only for this particular action which is identified by its type. It only merges the local data in a global state which is managed by the Redux store rather than React&rsquo;s local state managed co-located in a component.</p>
+
+<p>Next, you can setup the Redux store in the same file and give it the reducer and an initial state which has the identical structure as the local state in the Repositories component.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">createStore</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;redux&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #e7e9db">...</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">initialState</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[],</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">store</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">createStore</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">repositoryReducer</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">initialState</span><span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>Last but not least, the Redux store needs to be provided along with Apollo Client instance to the React view-layer. Therefore, you need to install the connecting <a target="_blank" rel="noopener noreferrer" href="https://github.com/reduxjs/react-redux">react-redux</a> package for it on the command line:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">react</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">redux</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span>
+</code></pre></div>
+
+
+<p>Afterward, you can import the Provider component and use it next to the ApolloProvider to provide the Redux store to the view-layer as its context. Afterward it can be used implicitly by React components the same as the Apollo Client instance.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Provider</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-redux&#39;</span><span style="color: #e7e9db">;</span>
+</span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">createStore</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;redux&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #e7e9db">...</span>
+
+<span style="color: #06b6ef">ReactDOM</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">render</span><span style="color: #e7e9db">(</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ApolloProvider</span> <span style="color: #06b6ef">client</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">client</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+<span style="background-color: #4f424c">    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Provider</span> <span style="color: #06b6ef">store</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">store</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+</span>      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">App</span> <span style="color: #5bc4bf">/&gt;</span>
+<span style="background-color: #4f424c">    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Provider&gt;</span>
+</span>  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ApolloProvider&gt;,</span>
+  <span style="color: #e7e9db">document.</span><span style="color: #06b6ef">getElementById</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;root&#39;</span><span style="color: #e7e9db">),</span>
+<span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>Now the Redux state-layer is paired with the React view-layer just as the Apollo Client state-layer was paired before. In the next steps, React&rsquo;s local state management for the selection feature needs to be replaced in the <em>src/App.js</em> file. You can remove the Repositories component, because you will create a connected Component by using the <code>connect()</code> higher-order component from the React Redux package. This HOC makes it possible to map state from the Redux store to your React component as props.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">gql</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;graphql-tag&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Query</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">Mutation</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-apollo&#39;</span><span style="color: #e7e9db">;</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">connect</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-redux&#39;</span><span style="color: #e7e9db">;</span>
+</span>
+<span style="color: #e7e9db">...</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">App</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Query</span> <span style="color: #06b6ef">query</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">GET_REPOSITORIES_OF_ORGANIZATION</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+    <span style="color: #e7e9db">{({</span> <span style="color: #06b6ef">data</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">organization</span> <span style="color: #e7e9db">},</span> <span style="color: #06b6ef">loading</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #e7e9db">...</span>
+
+      <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Repositories</span> <span style="color: #06b6ef">repositories</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">organization</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">repositories</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>
+      <span style="color: #e7e9db">);</span>
+    <span style="color: #e7e9db">}}</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Query&gt;</span>
+<span style="color: #e7e9db">);</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">RepositoryList</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">repositories</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ul</span><span style="color: #5bc4bf">&gt;</span>
+    <span style="color: #e7e9db">...</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ul&gt;</span>
+<span style="color: #e7e9db">);</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">mapStateToProps</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span>
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
+</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Repositories</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">connect</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">mapStateToProps</span><span style="color: #e7e9db">)(</span><span style="color: #06b6ef">RepositoryList</span><span style="color: #e7e9db">);</span>
+</span>
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>The previous part was for reading data from the Redux store in a React component by using the <code>connect()</code> higher-order component and mapping the state from the store to the component. The next part will implement the writing data to the Redux store from a React component by using the <code>connect()</code> higher-order component again, but this time for dispatching an action.</p>
+
+<p>First, you can remove the <code>toggleSelectRepository()</code> callback function from the RepositoryList component, but still keep it in the Select component for now.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">RepositoryList</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">repositories</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+</span>  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ul</span><span style="color: #5bc4bf">&gt;</span>
+    <span style="color: #e7e9db">{</span><span style="color: #06b6ef">repositories</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">edges</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(({</span> <span style="color: #06b6ef">node</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #815ba4">const</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">includes</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">node</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">);</span>
+
+      <span style="color: #815ba4">const</span> <span style="color: #06b6ef">rowClassName</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #48b685">&#39;row&#39;</span><span style="color: #e7e9db">];</span>
+
+      <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">isSelected</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #06b6ef">rowClassName</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">push</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;row_selected&#39;</span><span style="color: #e7e9db">);</span>
+      <span style="color: #e7e9db">}</span>
+
+      <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">rowClassName</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">join</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39; &#39;</span><span style="color: #e7e9db">)}</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">node</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+<span style="background-color: #4f424c">          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">SelectContainer</span> <span style="color: #06b6ef">id</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">node</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">isSelected</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">isSelected</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span><span style="color: #e7e9db">{</span><span style="color: #48b685">&#39; &#39;</span><span style="color: #e7e9db">}</span>
+</span>          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">a</span> <span style="color: #06b6ef">href</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">node</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">url</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">node</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">name</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/a&gt;{&#39; &#39;}</span>
+          <span style="color: #e7e9db">{</span><span style="color: #5bc4bf">!</span><span style="color: #06b6ef">node</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">viewerHasStarred</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Star</span> <span style="color: #06b6ef">id</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">node</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span><span style="color: #e7e9db">}</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;</span>
+      <span style="color: #e7e9db">);</span>
+    <span style="color: #e7e9db">})}</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ul&gt;</span>
+<span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>The callback function is not passed anymore from above as prop, but passed as prop from the <code>connect()</code> higher-order component which is this time used for the Select component.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Select</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">isSelected</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">toggleSelectRepository</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">toggleSelectRepository</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+    <span style="color: #e7e9db">{</span><span style="color: #06b6ef">isSelected</span> <span style="color: #5bc4bf">?</span> <span style="color: #48b685">&#39;Unselect&#39;</span> <span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Select&#39;</span><span style="color: #e7e9db">}</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+<span style="color: #e7e9db">);</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">mapDispatchToProps</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">dispatch</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span>
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">toggleSelectRepository</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+</span><span style="background-color: #4f424c">    <span style="color: #06b6ef">dispatch</span><span style="color: #e7e9db">({</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;TOGGLE_SELECT_REPOSITORY&#39;</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">isSelected</span><span style="color: #e7e9db">,</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">}),</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
+</span>
+<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">SelectContainer</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">connect</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">null</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">mapDispatchToProps</span><span style="color: #e7e9db">)(</span><span style="color: #06b6ef">Select</span><span style="color: #e7e9db">);</span>
+</span></code></pre></div>
+
+
+<p>Now the Select component is able to dispatch the action for the Redux store instead of using the React&rsquo;s local state. Once you start your application again, it should work as before, but this time with Redux instead of React&rsquo;s local state. As for now, Redux is responsible to manage the local data and Apollo Client is responsible to manage the remote data.</p>
+
+<h2 class="chapter-header" id="apollo-client-redux-interaction">Interaction between Redux and Apollo Client</h2>
+
+<p>In this section, I want to give a recommendation on how to use both state management layers, Apollo Client and Redux, together. However, you should take these as my personal opinion and not as best practice or whatsoever, because there are not many people out there which went down the road to use these state layers together in a large application. It may be too early to give any useful recommendation here. However, I want to give it a shot to giving advice for using both state layers in a growing React application. Therefore I want to introduce three different levels of togetherness for using both state layers. With every level of togetherness, the degree of separation of both state layers decreases and thus it is easier to use both together as a unit. However, <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=rI8tNMsozo0">easier doesn&rsquo;t mean simpler</a>. So by interweaving both state layers to a certain level, it will increase the complexity of dealing with both state layers. In conclusion, it comes with the cost of complexity to have a higher level of togetherness. A rule of thumb could be to keep the level of togetherness as low as possible.</p>
+
+<h3 id="togetherness-level-1-apollo-and-redux">Togetherness Level 1: Apollo and Redux</h3>
+
+<p>In the previous application, you have seen how both state management tools can exist side by side to manage local data and remote data. When using Apollo Client instead of Redux for remote data, you can 100% rely on its caching, normalization and request states. If you would use Redux for the remote data, by using an asynchronous action library such as <a target="_blank" rel="noopener noreferrer" href="https://github.com/gaearon/redux-thunk">Redux Thunk</a> or <a target="_blank" rel="noopener noreferrer" href="https://github.com/redux-saga/redux-saga">Redux Saga</a>, you would have to implement the caching and normalization (e.g. using <a target="_blank" rel="noopener noreferrer" href="https://github.com/paularmstrong/normalizr">normalizr</a>) features yourself. Furthermore, all the request states, such as loading state, error state and success state, are handled by Apollo Client for you. In Redux you would have to introduce a couple of actions to deal with those request states:</p>
+
+<ul>
+<li>GET_TODOS_LOADING</li>
+<li>GET_TODOS_ERROR</li>
+<li>GET_TODOS_SUCCESS</li>
+</ul>
+
+<p>Apollo Client takes away all this pain when dealing with remote data. It boils down to the mentioned requirements: If you have a GraphQL backend, you can introduce Apollo Client as GraphQL client library to deal with the remote data. If your state management for local data grows eventually, and you cannot deal with a larger part of it with React&rsquo;s local state only, you can introduce Redux for it. In order to meet all these requirements, your application should be fairly mature to justify having two state layers side by side. Otherwise, the common sense for your application should be to keep it simple with only one state layer (Redux or Apollo Client along with React&rsquo;s local state).</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span>  <span style="color: #5bc4bf">+---------------------+</span> <span style="color: #5bc4bf">+---------------------+</span>
+  <span style="color: #5bc4bf">|</span>        <span style="color: #06b6ef">Redux</span>        <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>    <span style="color: #06b6ef">Apollo</span> <span style="color: #06b6ef">Client</span>    <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">+-----------------+</span> <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">+-----------------+</span> <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>                 <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>                 <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>    <span style="color: #06b6ef">Local</span> <span style="color: #06b6ef">Data</span>   <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>   <span style="color: #06b6ef">Remote</span> <span style="color: #06b6ef">Data</span>   <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>                 <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>                 <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">+-----------------+</span> <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">+-----------------+</span> <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">|</span>                     <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>                     <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">+---------------------+</span> <span style="color: #5bc4bf">+---------------------+</span>
+</code></pre></div>
+
+
+<p>The tenor from the previous paragraph was mostly to take Redux and Apollo Client for separated areas of state management: local data and remote data. For instance, while a list of repositories coming from the remote GitHub GraphQL API is stored as normalized entities in Apollo Client&rsquo;s Cache, a selection of repositories which is purely based on user interaction is stored in the Redux store. If you keep up those clear constraints and boundaries for the two state layers, you might be alright managing two sources of truth instead of a single source of truth for the state in your React application. In the end, the most important rule should be to either store state in Apollo Client&rsquo;s Cache or the Redux store. There shouldn&rsquo;t be any duplications.</p>
+
+<h3 id="togetherness-level-2-apollo-with-redux-redux-with-apollo">Togetherness Level 2: Apollo with Redux, Redux with Apollo</h3>
+
+<p>However, at some point it may go beyond the basic example which was shown by implementing the last application. In the example, both state layers were clearly separated. But then comes the time where you have to implement a feature that needs to access state from Redux for a Apollo Client query/mutation or needs to access state from Apollo Client for a Redux mapStateToProps/mapDispatchToProps. In order to give a recommendation for it, you can see those as analogies for reading and writing state:</p>
+
+<ul>
+<li>read state:
+
+<ul>
+<li>local data: Redux mapStateToProps</li>
+<li>remote data: Apollo Client query (either from cache or network request)</li>
+</ul></li>
+<li>write state:
+
+<ul>
+<li>local data: Redux mapDispatchToProps</li>
+<li>remote data: Apollo Client mutation</li>
+</ul></li>
+</ul>
+
+<p>The key is to compose both state layers into each other when they have to interact. For instance, imagine you would want to perform a batch mutation with Apollo Client to star selected repositories that are stored in the Redux store. You would compose the Redux layer around the Apollo Client layer to pass the selected repositories from the React Redux mapStateToProps to your React component and ultimately to your React Apollo Mutation component to be used there as variables. The same would apply for using React Apollo Query component (e.g. fetching issues of all the selected repositories).</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span>  <span style="color: #5bc4bf">+---------------------+</span>
+  <span style="color: #5bc4bf">|</span>        <span style="color: #06b6ef">Redux</span>        <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">+-----------------+</span> <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>                 <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>  <span style="color: #06b6ef">Apollo</span> <span style="color: #06b6ef">Client</span>  <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>                 <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">+-----------------+</span> <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">|</span>                     <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">+---------------------+</span>
+</code></pre></div>
+
+
+<p>On the other side, if you need to pass state from the Apollo Client layer to your Redux layer, because you need the state for a Redux action, you can compose the Apollo Client layer around the Redux layer to access the state from a Query (or Mutation) component&rsquo;s result from the child function. The result could be passed down as props to a connected Redux component which would then have access to the result in mapDispatchToProps (or mapStateToProps) as props.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span>  <span style="color: #5bc4bf">+---------------------+</span>
+  <span style="color: #5bc4bf">|</span>     <span style="color: #06b6ef">Apollo</span> <span style="color: #06b6ef">Client</span>   <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">+-----------------+</span> <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>                 <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>      <span style="color: #06b6ef">Redux</span>      <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>                 <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">|</span> <span style="color: #5bc4bf">+-----------------+</span> <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">|</span>                     <span style="color: #5bc4bf">|</span>
+  <span style="color: #5bc4bf">+---------------------+</span>
+</code></pre></div>
+
+
+<p>In conclusion, following these constraints, you can always pass state from one to another state layer to either derive state (query, mapStateToProps) from the particular state or to alter state (mutation, mapDispatchToProps).</p>
+
+<h3 id="togetherness-level-3-apollo-in-redux-redux-in-apollo">Togetherness Level 3: Apollo in Redux, Redux in Apollo</h3>
+
+<p>So far, I introduced two levels of using Apollo Client and Redux together. The first level was a clear separation between both layers with almost no interaction. The remote data wasn&rsquo;t much used for the local data and vice versa. The second level is enabling an interaction by composing both state layers into each other. Then the remote and local data are used with another to derive local/remote data or to alter local/remote data of the other state layer. Now there could be also a third level which enables a state layer (Apollo Client or Redux) to be used within the control flow of the other state layer. I wouldn&rsquo;t recommend to go this far, but I have seen projects where it was implemented this way.</p>
+
+<p>For instance, imagine you reached a point where you have introduced Redux Saga for a fine-grained control flow for your business logic in your React and Redux powered application. By using the second level of togetherness, you would be only able to pass (remote) data from Apollo Client to the Redux Sagas. But what if you would need to be able to make a GraphQL query/mutation from within this control flow of Redux Saga? That&rsquo;s the point where people start to pass the Apollo Client instance (e.g. by using the ApolloConsumer component) to Redux Saga in order to execute imperative mutations or queries. This could be the case for prefetching data (query) or altering remote data (mutate) from within the Redux Saga control flow.</p>
+
+<p>However, by doing so the boundary between local data and remote data or Redux and Apollo Client becomes blurry. It adds another level of complexity, because someone has to untangle the code afterward. As mentioned before, going down the road by increasing the level of togetherness gives you more flexibility in using both state layers within each other, but adds lots of complexity which you might be able to avoid in the first place.</p>
+
+<p>The last paragraphs tried to give you advice on how to use React and Redux together to a certain degree. However, you need to note that it isn&rsquo;t common to reach this certain degree for many application out there. If you start out with an application, it doesn&rsquo;t happen too often that you have a GraphQL server to be consumed by Apollo Client in your React application. If it is the case, your client-side application needs to reach a certain point of unease of managing your local state with React itself. Not until then you would introduce Redux (or another sophisticated state management solution). Afterward, you have to decide whether you apply the first or second level of togetherness in your application. Then again there needs to be the need to introduce a library such as Redux Saga, because all of your asynchronous operations for the remote data are done with Apollo Client anyway. Only then, when introducing such a side-effect library for Redux for having an improved control flow, you can consider to increase the level of togetherness for the state layers to the third level. Last but least, I want to mention again that this area is very new to many people, so don&rsquo;t take all of this advice as best practice or anything. It is just my opinion for this topic.</p>
+
+<hr class="section-divider">
+
+<p>The last sections have shown you how to set up and use Apollo Client with Redux in a React application. The example application was only one approach of doing it. Furthermore, another section gave you advice on how to fit Redux and Apollo Client together in larger applications. Since there is not much experience in this area yet, everyone is waiting for people gathering more experience about this topic. Another neat way to set up Redux when having Apollo Client is using the <a target="_blank" rel="noopener noreferrer" href="https://github.com/rportugal/apollo-cache-redux">apollo-redux-cache</a> (<a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/react-apollo-client-apollo-cache-redux-example">example</a>) package instead of the apollo-cache-inmemory package to create Apollo Client&rsquo;s Cache. When using the Redux Cache instead, you get all the functionality around Redux and associated packages, such as <a target="_blank" rel="noopener noreferrer" href="https://github.com/rt2zz/redux-persist">redux-persist</a>, for free. However, it must be a conscious decision to exchange the Apollo Client Cache for it.</p>
+
+<p><div class="read-before">
+  Read more: <a href="../graphql-server-mock-apollo-client/index.html" itemprop="url">Mocking a GraphQL Server for Apollo Client</a>
+</div>
+<div class="read-before">
+  Read more: <a href="../react-graphql-client-library/index.html" itemprop="url">How to build a GraphQL client library for React</a>
+</div></p>
+
+
+                            
+<div class="feedback-and-share text-center">
+    <hr>
+    
+    <p class="lead">
+        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
+    </p>
+    
+    
+        <p class="lead">
+            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+        </p>
+    
+</div>
+
+
+                            
+                                <div class="box-inline col-md-12">
+    <div class="col-md-12 text-center">
+        <h2 class="newsletter">The Road to learn React</h2>
+        
+            <div class="col-md-4">
+                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+            </div>
+        
+        <p class="lead">
+            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
+        </p>
+        <a
+            class="btn btn-template-main"
+            href="https://roadtoreact.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Get the Book for free <i class="fa fa-chevron-right"></i>
+        </a>
+        
+            <div>
+                <a
+                    href="https://amzn.to/2QY2ONp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get it from Amazon
+                </a>
+            </div>
+        
+    </div>
+</div>
+                            
+                        </div>
+
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'rwieruch';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </article>
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase">Take Part</h2>
+            </div>
+
+            <div class="col-md-12 text-center">
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+                
+            </div>
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+        <footer id="subfooter">
+    <div class="container">
+
+        <div class="col-md-5 col-sm-6">
+
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../redux-vs-usereducer/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="React&#39;s useReducer vs Redux"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../publish-npm-package-node/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to publish a npm package?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../react-scroll-to-item/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to Scroll to Item in React?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+
+        
+        <div class="col-md-5 col-md-offset-2 col-sm-6">
+
+            <h4>About Me</h4>
+
+            <div class="blog-entries">
+                <div class="item same-height-row clearfix">
+                    <div class="profile same-height-always">
+                        <img
+                            class="img-lazy img-responsive"
+                            data-lazy-src="//img/page/profile.jpg"
+                            alt="profile"
+                        >
+                    </div>
+                    <div class="name same-height-always">
+                        <p>
+                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+        <footer id="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-left">
+          
+            <li>© Chris Paul</li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline footer-social-buttons text-center">
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-right">
+          
+            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+
+    
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-65599459-2', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="../js/script.js"></script>
+
+
+
+  </body>
+</html>

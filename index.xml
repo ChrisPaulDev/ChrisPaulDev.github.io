@@ -1,0 +1,1385 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CPaul</title>
+    <link>https://chrispaul.dev/</link>
+    <description>Recent content on CPaul</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 13 May 2019 07:52:46 +0200</lastBuildDate>
+    
+	<atom:link href="https://chrispaul.dev/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>React&#39;s useReducer vs Redux</title>
+      <link>https://chrispaul.dev/redux-vs-usereducer/</link>
+      <pubDate>Mon, 13 May 2019 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/redux-vs-usereducer/</guid>
+      <description>Since React Hooks have been released, function components can use state and side-effects. There are two hooks that are used for modern state management in React (useState and useReducer) and one hook called useContext to use React&amp;rsquo;s Context API to pass state or state updater functions down the component tree. Now, many people keep wondering: Does useContext and useReducer replace Redux? As of the time of writing this article, React Hooks don&amp;rsquo;t replace Redux.</description>
+    </item>
+    
+    <item>
+      <title>How to publish a npm package?</title>
+      <link>https://chrispaul.dev/publish-npm-package-node/</link>
+      <pubDate>Sun, 12 May 2019 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/publish-npm-package-node/</guid>
+      <description>This tutorial is part 2 of 2 in the series.
+Part 1: The minimal Node.js with Babel Setup  You may be already using npm (node package manager) for installing libraries (node packages) to your JavaScript projects. For instance, in Node.js you may be used to Express.js for creating REST APIs. In frontend development, you may be used to React.js to build component-based web applications.</description>
+    </item>
+    
+    <item>
+      <title>How to Scroll to Item in React?</title>
+      <link>https://chrispaul.dev/react-scroll-to-item/</link>
+      <pubDate>Tue, 07 May 2019 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-scroll-to-item/</guid>
+      <description>A brief tutorial which shows you two use cases on how to scroll to an item within a list of items in a React List Component. We will use the native browser API to scroll to our React element with a button click. It&amp;rsquo;s up to you how to trigger the event in the end. For both use cases, we will start with the same React list component that renders a list of items from an array of objects:</description>
+    </item>
+    
+    <item>
+      <title>Node Testing Setup with Mocha, Chai, Sinon</title>
+      <link>https://chrispaul.dev/node-js-testing-mocha-chai/</link>
+      <pubDate>Sun, 05 May 2019 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/node-js-testing-mocha-chai/</guid>
+      <description>This tutorial is part 2 of 2 in this series.
+Part 1: The minimal Node.js with Babel Setup  This tutorial demonstrates how to setup testing with Mocha, Chai, and Sinon in Node.js. Whereas the previous tutorial has already shown you how to setup your Node.js application, this tutorial sets up a testing environment for your Node.js project. Let&amp;rsquo;s dive into it by setting up Mocha with Chai and Sinon as testing framework.</description>
+    </item>
+    
+    <item>
+      <title>How to useReducer in React?</title>
+      <link>https://chrispaul.dev/react-usereducer-hook/</link>
+      <pubDate>Sun, 28 Apr 2019 03:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-usereducer-hook/</guid>
+      <description>This tutorial is part 2 of 2 in this series.
+Part 1: What is a reducer in JavaScript?  Since React Hooks have been released, function components can use state and side-effects. There are two hooks that are used for modern state management in React: useState and useReducer. This tutorial goes step by step through a useReducer example in React for getting you started with this React Hook for state management.</description>
+    </item>
+    
+    <item>
+      <title>How to use SVG Icons as React Components?</title>
+      <link>https://chrispaul.dev/react-svg-icon-components/</link>
+      <pubDate>Tue, 23 Apr 2019 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-svg-icon-components/</guid>
+      <description>I always struggled to use SVG in my React applications. Every time I searched about the topic online, I&amp;rsquo;ve found many ways on how to use SVG in React, but once I implemented the approaches, the success rates were very low. Today I want to give you a straightforward approach on how to use SVG icons as React components for your next React application.</description>
+    </item>
+    
+    <item>
+      <title>What is a reducer in JavaScript?</title>
+      <link>https://chrispaul.dev/javascript-reducer/</link>
+      <pubDate>Fri, 19 Apr 2019 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/javascript-reducer/</guid>
+      <description>The concept of a Reducer became popular in JavaScript with the rise of Redux as state management solution for React. But no worries, you don&amp;rsquo;t need to learn Redux to understand Reducers. Basically reducers are there to manage state in an application. For instance, if a user writes something in an HTML input field, the application has to manage this UI state (e.g. controlled components).</description>
+    </item>
+    
+    <item>
+      <title>useReducer vs useState in React</title>
+      <link>https://chrispaul.dev/react-usereducer-vs-usestate/</link>
+      <pubDate>Wed, 17 Apr 2019 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-usereducer-vs-usestate/</guid>
+      <description>Since React Hooks have been released, function components in React can use state and side-effects. There are two main hooks that are used for modern state management in React: useState and useReducer. This tutorial doesn&amp;rsquo;t explain both React hooks in detail, but explains their different use case scenarios. There are many people who ask me whether to use useState or useReducer; that&amp;rsquo;s why I thought getting together all my thoughts in one article is the best thing to deal with it.</description>
+    </item>
+    
+    <item>
+      <title>React List Components by Example</title>
+      <link>https://chrispaul.dev/react-list-components/</link>
+      <pubDate>Tue, 16 Apr 2019 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-list-components/</guid>
+      <description>If you are new to React, most likely you want to know how to display a list of items in React&amp;rsquo;s JSX syntax. This tutorial for List components in React gives you a step by step walkthrough on how to render a list of simple primitives, how to render a list of complex objects, and how to update the state of your list in React.</description>
+    </item>
+    
+    <item>
+      <title>What are Controlled Components in React?</title>
+      <link>https://chrispaul.dev/react-controlled-components/</link>
+      <pubDate>Wed, 10 Apr 2019 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-controlled-components/</guid>
+      <description>There are quite a lot of articles about React out there speaking about controlled and uncontrolled components without explaining them. It has been quite similar for my articles, whereas I always tried to add at least one or two sentences explaining them, but in the end, I thought it would be great to have a brief tutorial just showing a simple example for controlled components in React.</description>
+    </item>
+    
+    <item>
+      <title>React State with Hooks: useReducer, useState, useContext</title>
+      <link>https://chrispaul.dev/react-state-usereducer-usestate-usecontext/</link>
+      <pubDate>Sat, 06 Apr 2019 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-state-usereducer-usestate-usecontext/</guid>
+      <description>If you haven&amp;rsquo;t used state management excessively in React Function Components, this tutorial may help you to get a better understanding of how React Hooks &amp;ndash; such as useState, useReducer, and useContext &amp;ndash; can be used in combination for impressive state management in React applications. In this tutorial, we will almost reach the point where these hooks mimic sophisticated state management libraries like Redux for globally managed state.</description>
+    </item>
+    
+    <item>
+      <title>Session Storage and Local Storage in React</title>
+      <link>https://chrispaul.dev/local-storage-react/</link>
+      <pubDate>Wed, 03 Apr 2019 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/local-storage-react/</guid>
+      <description>After reading the Road to learn React, a few readers approached me with a question: How can I persist state in React? Obviously it would be possible by having a backend application to store it in a database. Once the frontend React application starts, it would make a request to the backend application to retrieve the data from the database. Afterward, the result could be stored in a component&amp;rsquo;s state.</description>
+    </item>
+    
+    <item>
+      <title>React Styled Components Tutorial</title>
+      <link>https://chrispaul.dev/react-styled-components/</link>
+      <pubDate>Sat, 30 Mar 2019 07:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-styled-components/</guid>
+      <description>Thank you Yomi Eluwande for submitting this guest blog post to teach others about your skills and learnings as a developer. If you want to submit a guest blog post too, I am keen to get a message from you. There is only one requirement: You must have written a quality technical article before.      So much has been said about the appropriate way to style modern web apps.</description>
+    </item>
+    
+    <item>
+      <title>React Hooks: Migration from Class to Function Components</title>
+      <link>https://chrispaul.dev/react-hooks-migration/</link>
+      <pubDate>Tue, 26 Mar 2019 07:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-hooks-migration/</guid>
+      <description>React Hooks were introduced to React to make state and side-effects available in React Function Components. Before it was only possible to have these in React Class Components; but since React&amp;rsquo;s way of implementing Components has changed over the years, we have the class component&amp;rsquo;s features available with React Hooks in React Function Components now.
+This tutorial shows a migration path on how to write React Class Components as React Function Components with React Hooks.</description>
+    </item>
+    
+    <item>
+      <title>React Function Components by Example</title>
+      <link>https://chrispaul.dev/react-function-component/</link>
+      <pubDate>Mon, 18 Mar 2019 07:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-function-component/</guid>
+      <description>React Function Components &amp;ndash; also known as React Functional Components &amp;ndash; are the status quo of writing modern React applications. In the past, there have been various React Component Types, but with the introduction of React Hooks it&amp;rsquo;s possible to write your entire application with just functions as React components.
+This in-depth guide shows you everything about React Function Components &amp;ndash; which are basically just JavaScript Functions being React Components which return JSX (React&amp;rsquo;s Syntax) &amp;ndash; so that after you have read this tutorial you should be well prepared to implement modern React applications with them.</description>
+    </item>
+    
+    <item>
+      <title>React Component Types: A complete Overview</title>
+      <link>https://chrispaul.dev/react-component-types/</link>
+      <pubDate>Tue, 12 Mar 2019 07:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-component-types/</guid>
+      <description>Even though React didn&amp;rsquo;t introduce a lot of breaking changes since it has been released 2013, different React Component Types emerged over time. A few of these component types and component patterns are still used nowadays &amp;ndash; they are the status quo of how React applications are built &amp;ndash; whereas several of them are only seen in older applications/tutorials.
+In this guide, I want to give React beginners an historical overview of different React Components and React Patterns.</description>
+    </item>
+    
+    <item>
+      <title>How to fetch data with React Hooks?</title>
+      <link>https://chrispaul.dev/react-hooks-fetch-data/</link>
+      <pubDate>Thu, 07 Mar 2019 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-hooks-fetch-data/</guid>
+      <description>In this tutorial, I want to show you how to fetch data in React with Hooks by using the state and effect hooks. We will use the widely known Hacker News API to fetch popular articles from the tech world. You will also implement your custom hook for the data fetching that can be reused anywhere in your application or published on npm as standalone node package.</description>
+    </item>
+    
+    <item>
+      <title>Deep Dive into JavaScript&#39;s Array Map Method</title>
+      <link>https://chrispaul.dev/javascript-map-array/</link>
+      <pubDate>Wed, 06 Mar 2019 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/javascript-map-array/</guid>
+      <description>Thank you Benjamin Johnson for submitting this guest blog post to teach others about your skills and learnings as a developer. If you want to submit a guest blog post too, I am keen to get a message from you. There is only one requirement: You must have written a quality technical article before.      The Map Function is one of the many Methods existing on the JavaScript Array prototype.</description>
+    </item>
+    
+    <item>
+      <title>Creating a REST API with Express.js and MongoDB</title>
+      <link>https://chrispaul.dev/mongodb-express-node-rest-api/</link>
+      <pubDate>Sun, 24 Feb 2019 07:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/mongodb-express-node-rest-api/</guid>
+      <description>This tutorial is part 5 of 5 in this series.
+Part 1: The minimal Node.js with Babel Setup Part 2: How to setup Express.js in Node.js Part 3: How to create a REST API with Express.js in Node.js Part 4: Setup MongoDB with Mongoose in Express  Node + Express + MongoDB is a powerful tech stack for backend applications to offer CRUD operations.</description>
+    </item>
+    
+    <item>
+      <title>Creating a REST API with Express.js and PostgreSQL</title>
+      <link>https://chrispaul.dev/postgresql-express-node-rest-api/</link>
+      <pubDate>Sun, 24 Feb 2019 07:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/postgresql-express-node-rest-api/</guid>
+      <description>This tutorial is part 5 of 5 in this series.
+Part 1: The minimal Node.js with Babel Setup Part 2: How to setup Express.js in Node.js Part 3: How to create a REST API with Express.js in Node.js Part 4: Setup PostgreSQL with Sequelize in Express  Node + Express + PostgreSQL is a powerful tech stack for backend applications to offer CRUD operations.</description>
+    </item>
+    
+    <item>
+      <title>Setup MongoDB with Mongoose in Express</title>
+      <link>https://chrispaul.dev/mongodb-express-setup-tutorial/</link>
+      <pubDate>Sat, 16 Feb 2019 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/mongodb-express-setup-tutorial/</guid>
+      <description>This tutorial is part 4 of 4 in this series.
+Part 1: The minimal Node.js with Babel Setup Part 2: How to setup Express.js in Node.js Part 3: How to create a REST API with Express.js in Node.js  Eventually every Node.js project running with Express.js as web application will need a database. Since most server applications are stateless, in order to scale them horizontally with multiple server instances, there is no way to persist data without another third-party (e.</description>
+    </item>
+    
+    <item>
+      <title>Setup PostgreSQL with Sequelize in Express</title>
+      <link>https://chrispaul.dev/postgres-express-setup-tutorial/</link>
+      <pubDate>Sun, 10 Feb 2019 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/postgres-express-setup-tutorial/</guid>
+      <description>This tutorial is part 4 of 4 in this series.
+Part 1: The minimal Node.js with Babel Setup Part 2: How to setup Express.js in Node.js Part 3: How to create a REST API with Express.js in Node.js  Eventually every Node.js project running with Express.js as web application will need a database. Since most server applications are stateless, in order to scale them horizontally with multiple server instances, there is no way to persist data without another third-party (e.</description>
+    </item>
+    
+    <item>
+      <title>How to use MobX in React Firebase</title>
+      <link>https://chrispaul.dev/react-firebase-mobx-tutorial/</link>
+      <pubDate>Sun, 10 Feb 2019 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-firebase-mobx-tutorial/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my advanced React with Firebase book? Checkout the entire The Road to React with Firebase book that teaches you to create business web applications without the need to create a backend application with a database yourself.  This tutorial is part 10 of 10 in this series.
+Part 1: A Firebase in React Tutorial for Beginners Part 2: React Firebase Authorization with Roles Part 3: React Firebase Auth Persistence with Local Storage Part 4: React Firebase Social Login: Google, Facebook, Twitter Part 5: React Firebase: Link Social Logins Part 6: React Firebase: Email Verification Part 7: How to use React Router with Firebase Part 8: How to use Firebase Realtime Database in React Part 9: How to deploy a React application to Firebase  So far, it was fine to rely only on React&amp;rsquo;s local state and React&amp;rsquo;s Context API.</description>
+    </item>
+    
+    <item>
+      <title>How to use Redux in React Firebase</title>
+      <link>https://chrispaul.dev/react-firebase-redux-tutorial/</link>
+      <pubDate>Sun, 10 Feb 2019 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-firebase-redux-tutorial/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my advanced React with Firebase book? Checkout the entire The Road to React with Firebase book that teaches you to create business web applications without the need to create a backend application with a database yourself.  This tutorial is part 10 of 10 in this series.
+Part 1: A Firebase in React Tutorial for Beginners Part 2: React Firebase Authorization with Roles Part 3: React Firebase Auth Persistence with Local Storage Part 4: React Firebase Social Login: Google, Facebook, Twitter Part 5: React Firebase: Link Social Logins Part 6: React Firebase: Email Verification Part 7: How to use React Router with Firebase Part 8: How to use Firebase Realtime Database in React Part 9: How to deploy a React application to Firebase  The previous tutorial series covered a lot of ground for Firebase in React.</description>
+    </item>
+    
+    <item>
+      <title>React Component Composition</title>
+      <link>https://chrispaul.dev/react-component-composition/</link>
+      <pubDate>Wed, 30 Jan 2019 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-component-composition/</guid>
+      <description>There are various advanced concepts and patterns in React to master on becoming a React developer. In this tutorial, I want to go through React&amp;rsquo;s Component Composition step by step by evolving one example around this React pattern. You can find more about the topic in the official React documentation as well.
+What&amp;#39;s Composition in Code? Let&amp;rsquo;s take on step backwards before tackling composition in React.</description>
+    </item>
+    
+    <item>
+      <title>The Road to React with Firebase [Book]</title>
+      <link>https://chrispaul.dev/the-road-to-react-with-firebase-book/</link>
+      <pubDate>Mon, 28 Jan 2019 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/the-road-to-react-with-firebase-book/</guid>
+      <description>Today, I am thrilled to announce The Road to React with Firebase, my book that started as a tutorial in 2017 and has evolved into course material. The tutorial has been one of the most-read and well-received articles on my website, and this gave me the idea to add enough content to make a complete volume.
+Perhaps the best thing about the book is that I release it for free.</description>
+    </item>
+    
+    <item>
+      <title>A Firestore in React Tutorial for Beginners [2019]</title>
+      <link>https://chrispaul.dev/react-firestore-tutorial/</link>
+      <pubDate>Sat, 26 Jan 2019 07:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-firestore-tutorial/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my advanced React with Firebase book? Checkout the entire The Road to React with Firebase book that teaches you to create business web applications without the need to create a backend application with a database yourself.  Those who follow my content know that I always use the good old Firebase Realtime Database in React applications.</description>
+    </item>
+    
+    <item>
+      <title>How to setup MongoDB on MacOS</title>
+      <link>https://chrispaul.dev/mongodb-macos-setup/</link>
+      <pubDate>Fri, 25 Jan 2019 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/mongodb-macos-setup/</guid>
+      <description>This is a tutorial for setting up MongoDB on MacOS. You might be wondering why there&amp;rsquo;s a need for another setup guide for MongoDB in the first place, since there are a few across the web. I found many tutorials and guides on how to set it up, but found most of them to be unclear and outdated, based on old MongoDB versions. The checklist is not comprehensive, though, as it is used for several tutorials on my website, I keep it updated with the recent versions of MongoDB.</description>
+    </item>
+    
+    <item>
+      <title>How to setup MongoDB on Windows</title>
+      <link>https://chrispaul.dev/mongodb-windows-setup/</link>
+      <pubDate>Fri, 25 Jan 2019 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/mongodb-windows-setup/</guid>
+      <description>This is a tutorial for setting up MongoDB on Windows. You might be wondering why there&amp;rsquo;s a need for another setup guide for MongoDB in the first place, since there are a few across the web. I found many tutorials and guides on how to set it up, but found most of them to be unclear and outdated, based on old MongoDB versions. The checklist is not comprehensive, though, as it is used for several tutorials on my website, I keep it updated with the recent versions of MongoDB.</description>
+    </item>
+    
+    <item>
+      <title>How to deploy a React application to Firebase</title>
+      <link>https://chrispaul.dev/firebase-deploy-react-js/</link>
+      <pubDate>Sun, 20 Jan 2019 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/firebase-deploy-react-js/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my advanced React with Firebase book? Checkout the entire The Road to React with Firebase book that teaches you to create business web applications without the need to create a backend application with a database yourself.  This tutorial is part 9 of 9 in this series.
+Part 1: A Firebase in React Tutorial for Beginners Part 2: React Firebase Authorization with Roles Part 3: React Firebase Auth Persistence with Local Storage Part 4: React Firebase Social Login: Google, Facebook, Twitter Part 5: React Firebase: Link Social Logins Part 6: React Firebase: Email Verification Part 7: How to use React Router with Firebase Part 8: How to use Firebase Realtime Database in React  After we built a full-fledged Firebase application in React, the final step is deployment, the tipping point of getting your ideas out into the world, from consuming tutorials to producing applications.</description>
+    </item>
+    
+    <item>
+      <title>How to use Firebase Realtime Database in React</title>
+      <link>https://chrispaul.dev/react-firebase-realtime-database/</link>
+      <pubDate>Wed, 16 Jan 2019 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-firebase-realtime-database/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my advanced React with Firebase book? Checkout the entire The Road to React with Firebase book that teaches you to create business web applications without the need to create a backend application with a database yourself.  This tutorial is part 8 of 8 in this series.
+Part 1: A Firebase in React Tutorial for Beginners Part 2: React Firebase Authorization with Roles Part 3: React Firebase Auth Persistence with Local Storage Part 4: React Firebase Social Login: Google, Facebook, Twitter Part 5: React Firebase: Link Social Logins Part 6: React Firebase: Email Verification Part 7: How to use React Router with Firebase  Now we&amp;rsquo;ve worked with a list of data and single entities with the Firebase&amp;rsquo;s realtime database to create an admin dashboard in the previous sections.</description>
+    </item>
+    
+    <item>
+      <title>How to create a REST API with Express.js in Node.js</title>
+      <link>https://chrispaul.dev/node-express-server-rest-api/</link>
+      <pubDate>Mon, 14 Jan 2019 07:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/node-express-server-rest-api/</guid>
+      <description>This tutorial is part 3 of 3 in this series.
+Part 1: The minimal Node.js with Babel Setup Part 2: How to setup Express.js in Node.js  An Express application is most often used as backend application in a client-server architecture whereas the client could be written in React.js or another popular frontend solution and the server could be written in Express. Both entities result in a client-server architecture (frontend and backend relationship) whereas the backend would be needed for (A) business logic that shouldn&amp;rsquo;t be exposed as source code to the frontend application &amp;ndash; otherwise it would be accessible in the browser &amp;ndash; or for (B) establishing connections to third-party data sources (e.</description>
+    </item>
+    
+    <item>
+      <title>How to setup Express.js in Node.js</title>
+      <link>https://chrispaul.dev/node-js-express-tutorial/</link>
+      <pubDate>Sun, 13 Jan 2019 07:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/node-js-express-tutorial/</guid>
+      <description>This tutorial is part 2 of 2 in this series.
+Part 1: The minimal Node.js with Babel Setup  Express.js is the most popular choice when it comes to building web applications with Node.js. However, when saying web applications, it&amp;rsquo;s often not for anything visible in the browser (excluding server-side rendering). Instead, Express.js, a web application framework for Node.js, enables you to build server applications in Node.</description>
+    </item>
+    
+    <item>
+      <title>How to setup PostgreSQL on MacOS</title>
+      <link>https://chrispaul.dev/postgres-sql-macos-setup/</link>
+      <pubDate>Tue, 08 Jan 2019 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/postgres-sql-macos-setup/</guid>
+      <description>This is a tutorial for setting up PostgreSQL 11 on MacOS. You might be wondering why there&amp;rsquo;s a need for another setup guide for Postgres in the first place, since there are a few across the web. I found many tutorials and guides on how to set it up, but found most of them to be unclear and outdated, based on old PostgreSQL versions. The checklist is not comprehensive, though, as it is used for several tutorials on my website, I keep it updated with the recent versions of PostgreSQL.</description>
+    </item>
+    
+    <item>
+      <title>How to setup PostgreSQL on Windows</title>
+      <link>https://chrispaul.dev/postgres-sql-windows-setup/</link>
+      <pubDate>Tue, 08 Jan 2019 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/postgres-sql-windows-setup/</guid>
+      <description>This is a tutorial for setting up PostgreSQL 11 on Windows. You might be wondering why there&amp;rsquo;s a need for another setup guide for Postgres in the first place, since there are a few across the web. I found many tutorials and guides on how to set it up, but found most of them to be unclear and outdated, based on old PostgreSQL versions. The checklist is not comprehensive, though, as it is used for several tutorials on my website, I keep it updated with the recent versions of PostgreSQL.</description>
+    </item>
+    
+    <item>
+      <title>React Semantic UI Tutorial for Beginners</title>
+      <link>https://chrispaul.dev/react-semantic-ui-tutorial/</link>
+      <pubDate>Sun, 06 Jan 2019 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-semantic-ui-tutorial/</guid>
+      <description>Thank you Yomi Eluwande for submitting this guest blog post to teach others about your skills and learnings as a developer. If you want to submit a guest blog post too, I am keen to get a message from you. There is only one requirement: You must have written a quality technical article before.      Semantic UI is a UI component framework for theming websites.</description>
+    </item>
+    
+    <item>
+      <title>How to learn React.js in 2019</title>
+      <link>https://chrispaul.dev/learn-react-js/</link>
+      <pubDate>Tue, 01 Jan 2019 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/learn-react-js/</guid>
+      <description>How to learn React is high on the agenda for plenty of JavaScript developers for this year. The recent State of JS survey has shown that many developers are content with React for creating modern web applications. However, due to its popularity and job demand, there are still many JavaScript developers who want to learn React. In this guide, I want to give beginners a comprehensive overview of how to approach learning React without getting distracted or overwhelmed by other topics along the way.</description>
+    </item>
+    
+    <item>
+      <title>How to use React Router with Firebase</title>
+      <link>https://chrispaul.dev/react-firebase-router/</link>
+      <pubDate>Tue, 01 Jan 2019 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-firebase-router/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my advanced React with Firebase book? Checkout the entire The Road to React with Firebase book that teaches you to create business web applications without the need to create a backend application with a database yourself.  This tutorial is part 7 of 7 in this series.
+Part 1: A Firebase in React Tutorial for Beginners Part 2: React Firebase Authorization with Roles Part 3: React Firebase Auth Persistence with Local Storage Part 4: React Firebase Social Login: Google, Facebook, Twitter Part 5: React Firebase: Link Social Logins Part 6: React Firebase: Email Verification  Before we dive deeper into Firebase&amp;rsquo;s realtime database and the domain-related business logic of our application, it makes sense to invest more time into React Router.</description>
+    </item>
+    
+    <item>
+      <title>Email Verification with Firebase in React</title>
+      <link>https://chrispaul.dev/react-firebase-email-verification/</link>
+      <pubDate>Thu, 20 Dec 2018 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-firebase-email-verification/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my advanced React with Firebase book? Checkout the entire The Road to React with Firebase book that teaches you to create business web applications without the need to create a backend application with a database yourself.  This tutorial is part 6 of 6 in this series.
+Part 1: A Firebase in React Tutorial for Beginners Part 2: React Firebase Authorization with Roles Part 3: React Firebase Auth Persistence with Local Storage Part 4: React Firebase Social Login: Google, Facebook, Twitter Part 5: React Firebase: Link Social Logins  In your application, users can employ an email/password combination, but also social logins to get access to your service or product.</description>
+    </item>
+    
+    <item>
+      <title>React Redux Tutorial for Beginners [2019]</title>
+      <link>https://chrispaul.dev/react-redux-tutorial/</link>
+      <pubDate>Thu, 13 Dec 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-redux-tutorial/</guid>
+      <description>Even though I have written a book about Redux in React, it may be too heavy on the subject for someone who wants only to try out a React Redux tutorial. That&amp;rsquo;s why I extracted this chapter from my book to be read as a tutorial for beginners on my website for free to learn the basics about Redux and Redux in React. And who knows, if you want to dig deeper into the topic, you can still try out my book about Redux in React called Taming the State in React to learn more advanced techniques, best practices and enhancing libraries for Redux.</description>
+    </item>
+    
+    <item>
+      <title>A visual Firebase Tutorial</title>
+      <link>https://chrispaul.dev/firebase-tutorial/</link>
+      <pubDate>Fri, 07 Dec 2018 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/firebase-tutorial/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my advanced React with Firebase book? Checkout the entire The Road to React with Firebase book that teaches you to create business web applications without the need to create a backend application with a database yourself.  This short visual Firebase tutorial should help you to create your first Firebase application that can be used with any web framework/library such as React, Angular or Vue.</description>
+    </item>
+    
+    <item>
+      <title>Firebase Login with Facebook</title>
+      <link>https://chrispaul.dev/firebase-facebook-login/</link>
+      <pubDate>Fri, 07 Dec 2018 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/firebase-facebook-login/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my advanced React with Firebase book? Checkout the entire The Road to React with Firebase book that teaches you to create business web applications without the need to create a backend application with a database yourself.  In this short visual guide, I want to show you how to activate the Facebook authentication for your Firebase or Firestore application.</description>
+    </item>
+    
+    <item>
+      <title>Firebase Login with Twitter</title>
+      <link>https://chrispaul.dev/firebase-twitter-login/</link>
+      <pubDate>Fri, 07 Dec 2018 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/firebase-twitter-login/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my advanced React with Firebase book? Checkout the entire The Road to React with Firebase book that teaches you to create business web applications without the need to create a backend application with a database yourself.  In this short visual guide, I want to show you how to activate the Twitter authentication for your Firebase or Firestore application.</description>
+    </item>
+    
+    <item>
+      <title>How to link Social Logins with Firebase in React</title>
+      <link>https://chrispaul.dev/react-firebase-link-social-logins/</link>
+      <pubDate>Thu, 06 Dec 2018 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-firebase-link-social-logins/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my advanced React with Firebase book? Checkout the entire The Road to React with Firebase book that teaches you to create business web applications without the need to create a backend application with a database yourself.  This tutorial is part 5 of 5 in this series.
+Part 1: A Firebase in React Tutorial for Beginners Part 2: React Firebase Authorization with Roles Part 3: React Firebase Auth Persistence with Local Storage Part 4: React Firebase Social Login: Google, Facebook, Twitter  The last section walked you through implementing social logins for Google, Facebook, and Twitter to being able to sign up/in with a email/password combination.</description>
+    </item>
+    
+    <item>
+      <title>Social Logins in Firebase React: Google, Facebook, Twitter</title>
+      <link>https://chrispaul.dev/react-firebase-social-login/</link>
+      <pubDate>Sun, 02 Dec 2018 07:51:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-firebase-social-login/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my advanced React with Firebase book? Checkout the entire The Road to React with Firebase book that teaches you to create business web applications without the need to create a backend application with a database yourself.  This tutorial is part 4 of 4 in this series.
+Part 1: A Firebase in React Tutorial for Beginners Part 2: React Firebase Authorization with Roles Part 3: React Firebase Auth Persistence with Local Storage  So far, you have used a email/password combination to authenticated with the application.</description>
+    </item>
+    
+    <item>
+      <title>A Reason React Tutorial for Beginners [2018]</title>
+      <link>https://chrispaul.dev/reason-react-tutorial/</link>
+      <pubDate>Sat, 01 Dec 2018 07:52:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/reason-react-tutorial/</guid>
+      <description>Thank you Benjamin Johnson for submitting this guest blog post to teach others about your skills and learnings as a developer. If you want to submit a guest blog post too, I am keen to get a message from you. There is only one requirement: You must have written a quality technical article before.      First off, this tutorial assumes that you have some knowledge of how React works.</description>
+    </item>
+    
+    <item>
+      <title>React Firebase Auth Persistence with Local Storage</title>
+      <link>https://chrispaul.dev/react-firebase-auth-persistence/</link>
+      <pubDate>Tue, 27 Nov 2018 07:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-firebase-auth-persistence/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my advanced React with Firebase book? Checkout the entire The Road to React with Firebase book that teaches you to create business web applications without the need to create a backend application with a database yourself.  This tutorial is part 3 of 3 in this series.
+Part 1: A Firebase in React Tutorial for Beginners Part 2: React Firebase Authorization with Roles  Previously, we implemented authentication for this Firebase in React application.</description>
+    </item>
+    
+    <item>
+      <title>React Firebase Authorization with Roles</title>
+      <link>https://chrispaul.dev/react-firebase-authorization-roles-permissions/</link>
+      <pubDate>Mon, 26 Nov 2018 07:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-firebase-authorization-roles-permissions/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my advanced React with Firebase book? Checkout the entire The Road to React with Firebase book that teaches you to create business web applications without the need to create a backend application with a database yourself.  This tutorial is part 2 of 2 in this series.
+Part 1: A Firebase in React Tutorial for Beginners  So far, you&amp;rsquo;ve used broad authorization rules that check user authentication, where the dedicated authorization higher-order component redirects them to the login page if the user is not authenticated.</description>
+    </item>
+    
+    <item>
+      <title>A Firebase in React Tutorial for Beginners [2019]</title>
+      <link>https://chrispaul.dev/complete-firebase-authentication-react-tutorial/</link>
+      <pubDate>Tue, 20 Nov 2018 07:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/complete-firebase-authentication-react-tutorial/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my advanced React with Firebase book? Checkout the entire The Road to React with Firebase book that teaches you to create business web applications without the need to create a backend application with a database yourself.  This comprehensive tutorial walks you through a real-world application using React and Firebase. React is used to display applications in web browsers and to store local state in components, while Firebase is used for authentication, authorization, and managing a realtime database.</description>
+    </item>
+    
+    <item>
+      <title>The Road to GraphQL [Book]</title>
+      <link>https://chrispaul.dev/the-road-to-graphql-book/</link>
+      <pubDate>Mon, 05 Nov 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/the-road-to-graphql-book/</guid>
+      <description>Today, I am super excited to announce the release of The Road to GraphQL - Your journey to master pragmatic GraphQL in JavaScript with React.js and Node.js. Writing this book proved to be a challenge with GraphQL technologies changing often, but I managed to get an updated version published in time to keep you ahead of the curve.
+Perhaps the best thing about the book is that I release it for free.</description>
+    </item>
+    
+    <item>
+      <title>A GraphQL Tutorial for Beginners</title>
+      <link>https://chrispaul.dev/graphql-tutorial/</link>
+      <pubDate>Thu, 01 Nov 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/graphql-tutorial/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire The Road to GraphQL book that teaches you to become a fullstack developer with JavaScript.  This tutorial is part 2 of 5 in this series.
+Part 1: Getting Started with GitHub&amp;#39;s GraphQL API Part 3: A complete React with GraphQL Tutorial Part 4: A Apollo Client Tutorial for Beginners Part 5: A complete React with Apollo and GraphQL Tutorial  Before we start to build full-fledged GraphQL applications, on the client- and server-side, let&amp;rsquo;s explore GraphQL with the tools we have installed in the previous sections.</description>
+    </item>
+    
+    <item>
+      <title>A Apollo Client Tutorial for Beginners</title>
+      <link>https://chrispaul.dev/graphql-apollo-client-tutorial/</link>
+      <pubDate>Thu, 01 Nov 2018 02:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/graphql-apollo-client-tutorial/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire The Road to GraphQL book that teaches you to become a fullstack developer with JavaScript.  This tutorial is part 4 of 5 in this series.
+Part 1: Getting Started with GitHub&amp;#39;s GraphQL API Part 2: A GraphQL Tutorial for Beginners Part 3: A complete React with GraphQL Tutorial Part 5: A complete React with Apollo and GraphQL Tutorial  Apollo is an entire ecosystem built by developers as an infrastructure for GraphQL applications.</description>
+    </item>
+    
+    <item>
+      <title>Visual Regression Testing and React Storybook</title>
+      <link>https://chrispaul.dev/visual-regression-testing-react-storybook/</link>
+      <pubDate>Tue, 30 Oct 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/visual-regression-testing-react-storybook/</guid>
+      <description>As I worked with my recent client to develop their lay out the groundwork for their React application, I found out that testing was an important topic for them. They are shipping their React application into embedded systems only once or twice a year. As conclusion there must be a guarantee that everything is working as expected, because there are no deployments possible afterward to fix a bug.</description>
+    </item>
+    
+    <item>
+      <title>What are React Hooks?</title>
+      <link>https://chrispaul.dev/react-hooks/</link>
+      <pubDate>Mon, 29 Oct 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-hooks/</guid>
+      <description>React Hooks were introduced at React Conf October 2018 as a way to use state and side-effects in React function components. Whereas function components have been called functional stateless components (FSC) before, they are finally able to use state with React Hooks. Therefore, many people refer to them as function components now.
+In this walkthrough, I want to explain the motivation behind hooks, what will change in React and why we shouldn&amp;rsquo;t panic, and how React hooks can be used in function components by showcasing common React Hooks such as the state and effect hooks by example.</description>
+    </item>
+    
+    <item>
+      <title>React with RxJS for State Management Tutorial</title>
+      <link>https://chrispaul.dev/react-rxjs-state-management-tutorial/</link>
+      <pubDate>Mon, 22 Oct 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-rxjs-state-management-tutorial/</guid>
+      <description>Recently a client of mine inspired me to learn RxJS for State Management in React. When I did a code audit for their application, they wanted to get my opinion about how to proceed with it after only using React&amp;rsquo;s local state. They reached a point where it wasn&amp;rsquo;t feasible to only rely on React. The initial discussion was about Redux or MobX for a more sophisticated state management.</description>
+    </item>
+    
+    <item>
+      <title>Prevent React setState on unmounted Component</title>
+      <link>https://chrispaul.dev/react-warning-cant-call-setstate-on-an-unmounted-component/</link>
+      <pubDate>Sun, 21 Oct 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-warning-cant-call-setstate-on-an-unmounted-component/</guid>
+      <description>There are too many people who encounter the following warnings. I have seen many GitHub issues regarding it and many people are asking me about it as well. That&amp;rsquo;s why I wanted to have this article to address it and reference to it.
+ Warning: Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted component.</description>
+    </item>
+    
+    <item>
+      <title>Writing Tests for Apollo Client in React</title>
+      <link>https://chrispaul.dev/react-apollo-client-testing/</link>
+      <pubDate>Fri, 19 Oct 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-apollo-client-testing/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire The Road to GraphQL book that teaches you to become a fullstack developer with JavaScript.  This tutorial is part 3 of 3 in this series.
+Part 1: A minimal Apollo Client in React Application Part 2: Mocking a GraphQL Server for Apollo Client  In a previous application, you have learned how to mock a GraphQL server in different ways when having Apollo Client as GraphQL client in your React application.</description>
+    </item>
+    
+    <item>
+      <title>React &#43; Webpack 4 &#43; Babel 7 Setup Tutorial</title>
+      <link>https://chrispaul.dev/minimal-react-webpack-babel-setup/</link>
+      <pubDate>Thu, 18 Oct 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/minimal-react-webpack-babel-setup/</guid>
+      <description>This tutorial is part 2 of 2 in the series.
+Part 1: My development setup as a JavaScript web developer  Personally I bootstrapped a lot of React projects in the recent time. I always had to setup the project from scratch. Eventually I have created my own boilerplate project on GitHub. As you might know, uncountable React boilerplate projects and repositories were created that way.</description>
+    </item>
+    
+    <item>
+      <title>React Code Style with ESLint &#43; Babel &#43; Webpack</title>
+      <link>https://chrispaul.dev/react-eslint-webpack-babel/</link>
+      <pubDate>Tue, 09 Oct 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-eslint-webpack-babel/</guid>
+      <description>Code style is an important topic for developers. When you code for yourself, it might be alright to violate best practices. However, in a team of developers you have to have a common code style. You should follow the same rules to make your code look alike. It helps others developers to read your code. It helps people to navigate in a new code base.</description>
+    </item>
+    
+    <item>
+      <title>How to manage React State with Arrays</title>
+      <link>https://chrispaul.dev/react-state-array-add-update-remove/</link>
+      <pubDate>Thu, 04 Oct 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-state-array-add-update-remove/</guid>
+      <description>After learning how to pass props in React, the next thing you will learn is often state in React. Managing JavaScript primitives such as strings, booleans, and integers in React state are the basics for state management in React. But what about more complex data structures such as JavaScript arrays? There are many questions popping up for React beginners on how to manage arrays in React state.</description>
+    </item>
+    
+    <item>
+      <title>create-react-app with CSS Modules</title>
+      <link>https://chrispaul.dev/create-react-app-css-modules/</link>
+      <pubDate>Wed, 03 Oct 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/create-react-app-css-modules/</guid>
+      <description>The article is a short how to use CSS Modules in your create-react-app application. It shows you how to setup CSS Modules, but also how to use them in your components.
+After you have setup your application with create-react-app (e.g. create-react-app my-app), you don&amp;rsquo;t need to install anything else to make CSS modules work. They come out of the box, but you have to give your CSS files the &amp;ldquo;module&amp;rdquo; prefix prior the extension: .</description>
+    </item>
+    
+    <item>
+      <title>create-react-app with Sass</title>
+      <link>https://chrispaul.dev/create-react-app-with-sass-support/</link>
+      <pubDate>Wed, 03 Oct 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/create-react-app-with-sass-support/</guid>
+      <description>The article is a short how to add Sass support to your create-react-app application. It shows you how to setup Sass, but also how to use it in your components. You will learn how to style a specific component with it and how to define global style, such as variables for your color schema, that can be used throughout your application.
+After you have setup your application with create-react-app (e.</description>
+    </item>
+    
+    <item>
+      <title>React Global State without Redux</title>
+      <link>https://chrispaul.dev/react-global-state-without-redux/</link>
+      <pubDate>Tue, 02 Oct 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-global-state-without-redux/</guid>
+      <description>The article is a short tutorial on how to achieve global state in React without Redux. Creating a global state in React is one of the first signs that you may need Redux (or another state management library such as MobX) in your application, because in React the local state is located on a component level. Hence you cannot have a real global state in React.</description>
+    </item>
+    
+    <item>
+      <title>React State without Constructor</title>
+      <link>https://chrispaul.dev/react-state-without-constructor/</link>
+      <pubDate>Tue, 02 Oct 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-state-without-constructor/</guid>
+      <description>The article is a short tutorial on how to have state in React without a constructor in a class component and how to have state in React without a class component at all. It may be a great refresher on topics such as higher-order components and render prop components in React too.
+React State without a Constructor In React, state is used in a React class component.</description>
+    </item>
+    
+    <item>
+      <title>All React Conditional Rendering Techniques</title>
+      <link>https://chrispaul.dev/conditional-rendering-react/</link>
+      <pubDate>Fri, 21 Sep 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/conditional-rendering-react/</guid>
+      <description>A conditional render in React is no witchcraft. In JSX - the syntax extension used for React - you can use pure JavaScript. In JavaScript you should be familiar with if-else or switch case statements, because they are the one of the fundamental pillars for learning React. You can use these in JSX as well, since JSX only mixes HTML and JavaScript.
+But what is conditional rendering in React?</description>
+    </item>
+    
+    <item>
+      <title>How to prevent a rerender in React</title>
+      <link>https://chrispaul.dev/react-prevent-rerender-component/</link>
+      <pubDate>Tue, 11 Sep 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-prevent-rerender-component/</guid>
+      <description>This tutorial is part 2 of 2 in this series.
+Part 1a: How to setup React.js on Windows Part 1b: How to setup React.js on MacOS  In this React performance optimization tutorial, you will learn about React&amp;rsquo;s shouldComponentUpdate lifecycle method and React&amp;rsquo;s PureComponent API to a prevent rerender for React components. Usually React components and their child components rerender if state or props change.</description>
+    </item>
+    
+    <item>
+      <title>Intersection Observer API in React</title>
+      <link>https://chrispaul.dev/react-intersection-observer-api/</link>
+      <pubDate>Wed, 05 Sep 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-intersection-observer-api/</guid>
+      <description>This tutorial is part 2 of 2 in this series.
+Part 1a: How to setup React.js on Windows Part 1b: How to setup React.js on MacOS  The Intersection Observer API is a browser API which can be used to track the position of HTML elements in context to the actual viewport of the browser. The official documentation says: &amp;ldquo;The Intersection Observer API provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document&amp;rsquo;s viewport.</description>
+    </item>
+    
+    <item>
+      <title>GraphQL Server Tutorial with Apollo Server and Express</title>
+      <link>https://chrispaul.dev/graphql-apollo-server-tutorial/</link>
+      <pubDate>Wed, 22 Aug 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/graphql-apollo-server-tutorial/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire The Road to GraphQL book that teaches you to become a fullstack developer with JavaScript.  This tutorial is part 4 of 4 in this series.
+Part 1: Why GraphQL: Advantages, Disadvantages &amp;amp; Alternatives Part 2: Why Apollo: Advantages, Disadvantages &amp;amp; Alternatives Part 3: The minimal Node.</description>
+    </item>
+    
+    <item>
+      <title>React&#39;s Render Props Pattern</title>
+      <link>https://chrispaul.dev/react-render-props-pattern/</link>
+      <pubDate>Wed, 08 Aug 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-render-props-pattern/</guid>
+      <description>The concept of children as a function or child as a function, also called render prop in general, is one of the advanced patterns in React (next to higher-order components). The components which implement this pattern could be called render prop components. In this tutorial, you will learn everything about React&amp;rsquo;s render prop pattern. Along the way, you will implement a currency converter in React, see how the render prop pattern can be compensated with alternative patterns in React too, but then how it can be solved with a render prop component.</description>
+    </item>
+    
+    <item>
+      <title>How to pass props to components in React</title>
+      <link>https://chrispaul.dev/react-pass-props-to-component/</link>
+      <pubDate>Sun, 29 Jul 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-pass-props-to-component/</guid>
+      <description>Everyone who is new to React is confused by these so called props, because they are never mentioned in any other web framework, and rarely explained on their own. They are one of the early things you will learn in React after initially grasping React&amp;rsquo;s JSX syntax. Basically props are used to pass data from component to component. In this guide, I want to explain React props in greater detail.</description>
+    </item>
+    
+    <item>
+      <title>JavaScript fundamentals before learning React</title>
+      <link>https://chrispaul.dev/javascript-fundamentals-react-requirements/</link>
+      <pubDate>Wed, 18 Jul 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/javascript-fundamentals-react-requirements/</guid>
+      <description>After all my teachings about React, be it online for a larger audience or on-site for companies transitioning to web development and React, I always come to the conclusion that React is all about JavaScript. Newcomers to React but also myself see it as an advantage, because you carry your JavaScript knowledge for a longer time around compared to your React skills.
+During my workshops a greater part of the material is about JavaScript and not React.</description>
+    </item>
+    
+    <item>
+      <title>How to fetch data in React</title>
+      <link>https://chrispaul.dev/react-fetching-data/</link>
+      <pubDate>Fri, 06 Jul 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-fetching-data/</guid>
+      <description>Newcomers to React often start with applications that don&amp;rsquo;t need data fetching at all. Usually they are confronted with Counter, Todo or TicTacToe applications. That&amp;rsquo;s good, because data fetching adds another layer of complexity to your application while taking the first steps in React.
+However, at some point you want to request real world data from an own or a third-party API. The article gives you a walkthrough on how to fetch data in React.</description>
+    </item>
+    
+    <item>
+      <title>Why Apollo: Advantages, Disadvantages &amp; Alternatives</title>
+      <link>https://chrispaul.dev/why-apollo-advantages-disadvantages-alternatives/</link>
+      <pubDate>Wed, 04 Jul 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/why-apollo-advantages-disadvantages-alternatives/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire The Road to GraphQL book that teaches you to become a fullstack developer with JavaScript.  This tutorial is part 2 of 2 in this series.
+Part 1: Why GraphQL: Advantages, Disadvantages &amp;amp; Alternatives  Finding the right solution for a given problem is not always simple, and web applications build with GraphQL are a good example of how changing times make for constantly evolving challenges.</description>
+    </item>
+    
+    <item>
+      <title>Why GraphQL: Advantages, Disadvantages &amp; Alternatives</title>
+      <link>https://chrispaul.dev/why-graphql-advantages-disadvantages-alternatives/</link>
+      <pubDate>Tue, 03 Jul 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/why-graphql-advantages-disadvantages-alternatives/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire The Road to GraphQL book that teaches you to become a fullstack developer with JavaScript.  This tutorial is part 1 of 2 in this series.
+Part 2: Why Apollo: Advantages, Disadvantages &amp;amp; Alternatives  When it comes to network requests between client and server applications, REST is one of the most popular choices to connect both worlds.</description>
+    </item>
+    
+    <item>
+      <title>How to use Redux with Apollo Client and GraphQL in React</title>
+      <link>https://chrispaul.dev/react-redux-apollo-client-state-management-tutorial/</link>
+      <pubDate>Tue, 26 Jun 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-redux-apollo-client-state-management-tutorial/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire The Road to GraphQL book that teaches you to become a fullstack developer with JavaScript.  This tutorial is part 3 of 3 in this series.
+Part 1: A minimal Apollo Client in React Application Part 2: A apollo-link-state Tutorial for Local State Management  In a previous application, you have used Apollo Link State to substitute React&amp;rsquo;s local state management with it.</description>
+    </item>
+    
+    <item>
+      <title>GitHub and Git Setup and Essentials</title>
+      <link>https://chrispaul.dev/git-essential-commands/</link>
+      <pubDate>Tue, 19 Jun 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/git-essential-commands/</guid>
+      <description>This tutorial is part 2 of 2 in the series.
+Part 1: My development setup as a JavaScript web developer  When you get started with Git, it can be quite overwhelming. First, the idea of a distributed version control system and the benefits of it are not clear for everyone. And second, there are plenty of commands with additional options in order to master Git on the command line.</description>
+    </item>
+    
+    <item>
+      <title>The minimal Node.js with Babel Setup</title>
+      <link>https://chrispaul.dev/minimal-node-js-babel-setup/</link>
+      <pubDate>Mon, 18 Jun 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/minimal-node-js-babel-setup/</guid>
+      <description>This tutorial is part 2 of 2 in the series.
+Part 1: My development setup as a JavaScript web developer  I have always been of the understanding there are no common sense rules about how to create a minimal Node.js application with Babel. In my search for these answers, it seemed that every tutorial I came across showed something different. As a result, I wanted to streamline this project setup for my readers and myself, so I developed a common approach for Node.</description>
+    </item>
+    
+    <item>
+      <title>How to build a GraphQL client library for React</title>
+      <link>https://chrispaul.dev/react-graphql-client-library/</link>
+      <pubDate>Wed, 13 Jun 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-graphql-client-library/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire The Road to GraphQL book that teaches you to become a fullstack developer with JavaScript.  This tutorial is part 3 of 3 in this series.
+Part 1: A complete React with GraphQL Tutorial Part 2: A complete React with Apollo and GraphQL Tutorial  You may have used a GraphQL client library that was view-layer agnostic and thus able to work with React or other solutions like Angular or Vue.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with GitHub&#39;s GraphQL API</title>
+      <link>https://chrispaul.dev/getting-started-github-graphql-api/</link>
+      <pubDate>Sat, 09 Jun 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/getting-started-github-graphql-api/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire The Road to GraphQL book that teaches you to become a fullstack developer with JavaScript.  This tutorial is part 1 of 5 in this series.
+Part 2: A GraphQL Tutorial for Beginners Part 3: A complete React with GraphQL Tutorial Part 4: A Apollo Client Tutorial for Beginners Part 5: A complete React with Apollo and GraphQL Tutorial  Step-by-step is often the easiest way to learn something new, so it&amp;rsquo;s fortunate that learning GraphQL in JavaScript teaches both the client and the server-side of an application.</description>
+    </item>
+    
+    <item>
+      <title>A minimal Apollo Client in React Example</title>
+      <link>https://chrispaul.dev/react-apollo-client-example/</link>
+      <pubDate>Tue, 05 Jun 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-apollo-client-example/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire The Road to GraphQL book that teaches you to become a fullstack developer with JavaScript.  This tutorial is part 3 of 3 in this series.
+Part 1: A complete React with GraphQL Tutorial Part 2: A complete React with Apollo and GraphQL Tutorial  It&amp;rsquo;s time to get you started with a minimal Apollo Client in React application that can be used as boilerplate project.</description>
+    </item>
+    
+    <item>
+      <title>Mocking a GraphQL Server for Apollo Client</title>
+      <link>https://chrispaul.dev/graphql-server-mock-apollo-client/</link>
+      <pubDate>Mon, 28 May 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/graphql-server-mock-apollo-client/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire The Road to GraphQL book that teaches you to become a fullstack developer with JavaScript.  This tutorial is part 2 of 3 in this series.
+Part 1: A minimal Apollo Client in React Application Part 3: Writing Tests for Apollo Client in React  Often you run into the case where you have to mock your GraphQL server for your GraphQL client application.</description>
+    </item>
+    
+    <item>
+      <title>Legal Notice, Terms and Privacy Policy</title>
+      <link>https://chrispaul.dev/legal/</link>
+      <pubDate>Sun, 20 May 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/legal/</guid>
+      <description>Legal Notice, Terms and Privacy Policy (English) Information in accordance with § 5 German Broadcast Media Act (TMG) and responsible for content according to § 55 paragraph 2 RStV:  Chris Paul Bornholmer Str. 20 10439 Berlin E-Mail: legal@rpaul.com  Exemption from Liability: Liability for Content While the contents of our pages have been created with utmost care and due diligence, we cannot assume liability for the completeness and timeliness of the contents.</description>
+    </item>
+    
+    <item>
+      <title>A apollo-link-state Tutorial for Local State in React</title>
+      <link>https://chrispaul.dev/react-apollo-link-state-tutorial/</link>
+      <pubDate>Sun, 13 May 2018 06:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-apollo-link-state-tutorial/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire The Road to GraphQL book that teaches you to become a fullstack developer with JavaScript.  This tutorial is part 2 of 3 in this series.
+Part 1: A minimal Apollo Client in React Application Part 3: How to use Redux with Apollo Client and GraphQL in React  There are many people out there questioning how to deal with local data in a React application when using Apollo Client for remote data with its queries and mutations.</description>
+    </item>
+    
+    <item>
+      <title>A complete React with Apollo and GraphQL Tutorial</title>
+      <link>https://chrispaul.dev/react-graphql-apollo-tutorial/</link>
+      <pubDate>Tue, 01 May 2018 02:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-graphql-apollo-tutorial/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire The Road to GraphQL book that teaches you to become a fullstack developer with JavaScript.  This tutorial is part 5 of 5 in this series.
+Part 1: Getting Started with GitHub&amp;#39;s GraphQL API Part 2: A GraphQL Tutorial for Beginners Part 3: A complete React with GraphQL Tutorial Part 4: A Apollo Client Tutorial for Beginners  In this tutorial, you will learn how to combine React with GraphQL in your application using Apollo.</description>
+    </item>
+    
+    <item>
+      <title>A complete React with GraphQL Tutorial</title>
+      <link>https://chrispaul.dev/react-with-graphql-tutorial/</link>
+      <pubDate>Mon, 09 Apr 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-with-graphql-tutorial/</guid>
+      <description>Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire The Road to GraphQL book that teaches you to become a fullstack developer with JavaScript.  This tutorial is part 3 of 5 in this series.
+Part 1: Getting Started with GitHub&amp;#39;s GraphQL API Part 2: A GraphQL Tutorial for Beginners Part 4: A Apollo Client Tutorial for Beginners Part 5: A complete React with Apollo and GraphQL Tutorial  In this client-sided GraphQL application we&amp;rsquo;ll build together, you will learn how to combine React with GraphQL.</description>
+    </item>
+    
+    <item>
+      <title>React&#39;s Context API explained: Provider and Consumer</title>
+      <link>https://chrispaul.dev/react-context-api/</link>
+      <pubDate>Sat, 31 Mar 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-context-api/</guid>
+      <description>Note: If you are using a React version 16.3 or above, this article is relevant to you. It explains how to use React&amp;rsquo;s context API version for React 16.3 and above for passing props down the component tree. Only components who are interested can consume these props. If you are using a React version prior 16.3, head over to this article to implement your own provider pattern in React with its old context API.</description>
+    </item>
+    
+    <item>
+      <title>React Testing Tutorial: Test Frameworks &amp; Component Tests</title>
+      <link>https://chrispaul.dev/react-testing-tutorial/</link>
+      <pubDate>Mon, 19 Mar 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-testing-tutorial/</guid>
+      <description>Writing tests is an essential part of software development to ensure a robust application. Tests enable us to automatically verify that our application is working on a certain level. The certain level depends on the quality, quantity (coverage) and type of your tests (unit tests, integration tests, end-to-end tests).
+The following article should guide you through the whole topic of testing React apps. Primarily, you will test React components but also pure business logic.</description>
+    </item>
+    
+    <item>
+      <title>How to setup React.js on MacOS</title>
+      <link>https://chrispaul.dev/react-js-macos-setup/</link>
+      <pubDate>Tue, 20 Feb 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-js-macos-setup/</guid>
+      <description>In this article, you will find a concise step by step guide on how to install React on MacOS. It follows the philosophy of having one IDE to manage most of your web development tasks. That&amp;rsquo;s how you can focus on your task at hand as a developer. However, if you like to compose your development environment with lightweight tools rather than with an full-blown IDE, checkout my personal recommendations for such a setup.</description>
+    </item>
+    
+    <item>
+      <title>How to setup React.js on Windows</title>
+      <link>https://chrispaul.dev/react-js-windows-setup/</link>
+      <pubDate>Tue, 20 Feb 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-js-windows-setup/</guid>
+      <description>In this article, you will find a concise step by step guide on how to install React on Windows. There are plenty of articles out there on how to setup your web development environment on MacOS, but very few on how to setup it on Windows. Especially when people want to enter the world of React.js in Windows, there is a missing starting point. I wanted to address this issue, since a lot of people reading The Road to learn React are coming from Windows too.</description>
+    </item>
+    
+    <item>
+      <title>The Road to learn React [React.js Book for 2019]</title>
+      <link>https://chrispaul.dev/the-road-to-learn-react/</link>
+      <pubDate>Tue, 20 Feb 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/the-road-to-learn-react/</guid>
+      <description>The Road to learn React teaches the fundamentals of React. You will build a real-world application in plain React without complicated tooling. Everything from project setup to deployment on a server will be explained for you. The book comes with additional referenced reading material and exercises with each chapter. After reading the book, you will be able to build your own applications in React. The material is kept up to date by myself and the community.</description>
+    </item>
+    
+    <item>
+      <title>Why Frameworks matter</title>
+      <link>https://chrispaul.dev/why-frameworks-matter/</link>
+      <pubDate>Sun, 11 Feb 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/why-frameworks-matter/</guid>
+      <description>There are many people entering the field of web development right now. It can be an overwhelming experience for beginners to get to know all the tools which are used in modern web development. The historical gap between running HTML in Netscape and today widens with each of these new tools which are put on top of the tech stack. At some point, it makes no sense anymore for beginners to learn jQuery.</description>
+    </item>
+    
+    <item>
+      <title>Getting started with React and Parcel</title>
+      <link>https://chrispaul.dev/parcel-react-setup/</link>
+      <pubDate>Sat, 10 Feb 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/parcel-react-setup/</guid>
+      <description>The following article is a short guide on how to setup Parcel with React. Parcel is a bundler that got popular because of its zero-configuration setup for JavaScript applications. That&amp;rsquo;s why this guide is kept fairly short yet it should give you all the essentials to setup your React project with Parcel. You can find the finished boilerplate project in this GitHub repository.
+It&amp;rsquo;s good to know that Parcel is used as alternative for Webpack.</description>
+    </item>
+    
+    <item>
+      <title>How to accept Paypal payments with React</title>
+      <link>https://chrispaul.dev/react-paypal-payment/</link>
+      <pubDate>Sun, 04 Feb 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-paypal-payment/</guid>
+      <description>This React tutorial should give you guidance on how to integrate PayPal in your React application. I came across this topic when I had to introduce a payment process for my own course platform. As I went through the same decision process, I decided in favor of PayPal and Stripe.
+This tutorial shows you how to integrate PayPal in your React application. There are a couple of open source React + PayPal components out there.</description>
+    </item>
+    
+    <item>
+      <title>How to learn React, Angular or Vue in 2019?</title>
+      <link>https://chrispaul.dev/how-to-learn-framework/</link>
+      <pubDate>Wed, 31 Jan 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/how-to-learn-framework/</guid>
+      <description>The JavaScript and web development community settled down on the major three: React, Angular and Vue. They are frameworks and libraries with full fledged ecosystems. Because of that, I call all of these candidates frameworks. These major three are backed by big companies and communities/individuals. It almost seems as if the JavaScript fatigue has settled down for a bit now. Many people believe that it will stay like that until the full adoption of WebAssembly (WASM).</description>
+    </item>
+    
+    <item>
+      <title>Essential React Libraries in 2019</title>
+      <link>https://chrispaul.dev/essential-react-libraries-framework/</link>
+      <pubDate>Thu, 11 Jan 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/essential-react-libraries-framework/</guid>
+      <description>React has been around for a while and since then a well-rounded, also perceived as overwhelming, ecosystem has evolved around the component driven library. It&amp;rsquo;s not always simple to pick a library that solves your problem in the React world, but once you get to know all the options, its ecosystem becomes very powerful. That&amp;rsquo;s why I want to give every year a new overview of the most popular libraries used to complement a React application.</description>
+    </item>
+    
+    <item>
+      <title>A Web Developer&#39;s Guide to Machine Learning in JavaScript</title>
+      <link>https://chrispaul.dev/machine-learning-javascript-web-developers/</link>
+      <pubDate>Wed, 10 Jan 2018 04:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/machine-learning-javascript-web-developers/</guid>
+      <description>Recently, I was wondering how I could escape the web development bubble for a while. 2017 was full of React, Redux and MobX in JavaScript where I have written actively about those topics on my blog, developed small (1, 2, 3, &amp;hellip;) and large scale applications based on them, self-published two educational ebooks, and implemented a course platform with those technologies to teach others about them.</description>
+    </item>
+    
+    <item>
+      <title>Tips to learn React &#43; Redux in 2019</title>
+      <link>https://chrispaul.dev/tips-to-learn-react-redux/</link>
+      <pubDate>Tue, 09 Jan 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/tips-to-learn-react-redux/</guid>
+      <description>For quite some time now, I have been implementing applications in React and Redux. Over the last few years, I have written two ebooks about it and released a course platform for learning React and its ecosystem. The course platform is even built in React and Redux. My personal learnings are subjective, but I thought they may help people to learn or advance in React and Redux as well.</description>
+    </item>
+    
+    <item>
+      <title>How to work with me?</title>
+      <link>https://chrispaul.dev/work-with-me/</link>
+      <pubDate>Mon, 01 Jan 2018 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/work-with-me/</guid>
+      <description>2017 I quit my job at Small Improvements. I made the decision to move on after being 2,5 years a software engineer at this great company. It was a tough decision to make, because the company had a huge impact on me from a personal and professional perspective. It is always hard to move on. But then again, I didn&amp;rsquo;t want to get too comfortable. And I don&amp;rsquo;t want to get stuck in one particular lifestyle either.</description>
+    </item>
+    
+    <item>
+      <title>Neural Networks in JavaScript with deeplearn.js</title>
+      <link>https://chrispaul.dev/neural-networks-deeplearnjs-javascript/</link>
+      <pubDate>Tue, 05 Dec 2017 09:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/neural-networks-deeplearnjs-javascript/</guid>
+      <description>A couple of my recent articles gave an introduction into a subfield of artificial intelligence by implementing foundational machine learning algorithms in JavaScript (e.g. linear regression with gradient descent, linear regression with normal equation or logistic regression with gradient descent). These machine learning algorithms were implemented from scratch in JavaScript by using the math.js node package for linear algebra (e.g. matrix operations) and calculus. You can find all of these machine learning algorithms grouped in a GitHub organization.</description>
+    </item>
+    
+    <item>
+      <title>Logistic Regression with Gradient Descent in JavaScript</title>
+      <link>https://chrispaul.dev/logistic-regression-gradient-descent-classification-javascript/</link>
+      <pubDate>Mon, 04 Dec 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/logistic-regression-gradient-descent-classification-javascript/</guid>
+      <description>A couple of my recent articles gave an introduction to machine learning in JavaScript by solving regression problems with linear regression using gradient descent or normal equation.
+In a regression problem, an algorithm is trained to predict continuous values. It can be housing prices in a specific area based on a feature set such as square meters or numbers of bedrooms. The algorithm is trained by using a training set.</description>
+    </item>
+    
+    <item>
+      <title>Linear Regression with Normal Equation in JavaScript</title>
+      <link>https://chrispaul.dev/multivariate-linear-regression-normal-equation-javascript/</link>
+      <pubDate>Sat, 02 Dec 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/multivariate-linear-regression-normal-equation-javascript/</guid>
+      <description>A recent article gave an introduction to the field of machine learning in JavaScript by predicting housing prices with gradient descent in a univariate regression problem. It used plain mathematical expressions and thus made use of the unvectorized implementation of gradient descent and the cost function. However, the unvectorized approach doesn&amp;rsquo;t scale when applying it for multiple parameters (e.g. polynomial regression) or having a multivariate training set with multiple features n.</description>
+    </item>
+    
+    <item>
+      <title>Multivariate Linear Regression, Gradient Descent in JavaScript</title>
+      <link>https://chrispaul.dev/multivariate-linear-regression-gradient-descent-javascript/</link>
+      <pubDate>Thu, 23 Nov 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/multivariate-linear-regression-gradient-descent-javascript/</guid>
+      <description>A recent article gave an introduction to the field of machine learning in JavaScript by predicting housing prices with gradient descent in a univariate regression problem. It used plain mathematical expressions and thus made use of the unvectorized implementation of gradient descent and the cost function. However, the unvectorized approach doesn&amp;rsquo;t scale when applying it for multiple parameters (e.g. polynomial regression) or having a multivariate training set with multiple features n.</description>
+    </item>
+    
+    <item>
+      <title>Gradient Descent with Vectorization in JavaScript</title>
+      <link>https://chrispaul.dev/linear-regression-gradient-descent-vectorization-javascript/</link>
+      <pubDate>Tue, 21 Nov 2017 09:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/linear-regression-gradient-descent-vectorization-javascript/</guid>
+      <description>A recent article gave an introduction to the field of machine learning in JavaScript by predicting housing prices with gradient descent in a univariate regression problem. It used plain mathematical expressions and thus made use of the unvectorized implementation of gradient descent and the cost function. This article takes it one step further by implementing a vectorized gradient descent in JavaScript. It will guide you through the process step by step.</description>
+    </item>
+    
+    <item>
+      <title>Improving Gradient Descent in JavaScript</title>
+      <link>https://chrispaul.dev/improving-gradient-descent-javascript/</link>
+      <pubDate>Thu, 16 Nov 2017 07:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/improving-gradient-descent-javascript/</guid>
+      <description>A recent article gave an introduction to the field of machine learning in JavaScript by predicting housing prices with gradient descent in a univariate regression problem. There are several improvements to optimize the gradient descent algorithm that should be collected in this article.
+In general, when dealing with a regression problem, the outcome can already be influenced by selecting a fitting model type. It is not often the case that data points correlate linear to each other.</description>
+    </item>
+    
+    <item>
+      <title>Programmatic Slack invite in JavaScript and React</title>
+      <link>https://chrispaul.dev/slack-invite-javascript-react/</link>
+      <pubDate>Sun, 05 Nov 2017 09:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/slack-invite-javascript-react/</guid>
+      <description>The article showcases how to setup an automated Slack invitation for a JavaScript and/or React application. Why would you want an automated Slack invitation in the first place? My personal motivation was it to create a like minded community of people learning React, but the idea about a Slack Channel started out on Twitter.
+Sometimes people approach people when they face problems implementing their application or seek for advice about it.</description>
+    </item>
+    
+    <item>
+      <title>Host a single or multiple applications on Digital Ocean</title>
+      <link>https://chrispaul.dev/deploy-applications-digital-ocean/</link>
+      <pubDate>Tue, 31 Oct 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/deploy-applications-digital-ocean/</guid>
+      <description>There a various tutorials showing you how to host your web applications with a couple of lines on any hosting solution. But that&amp;rsquo;s it. You are able to host your application somewhere, but there are a lot of open questions. What about using an own domain? What about securing it with SSL? What about hosting multiple applications side by side yet keeping it cost efficient by not taking up to much ressources?</description>
+    </item>
+    
+    <item>
+      <title>Polynomial Regression and Model Selection</title>
+      <link>https://chrispaul.dev/polynomial-regression-model-selection-javascript/</link>
+      <pubDate>Mon, 30 Oct 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/polynomial-regression-model-selection-javascript/</guid>
+      <description>After learning about gradient descent in a linear regression, I was curious about using different kinds of hypothesis functions to improve the result of the algorithm itself. So far, the hypothesis function was only a linear straight line. However, your training set may not have a linear correlation and by staying with a linear model it becomes difficult to reduce the cost returned from the cost function.</description>
+    </item>
+    
+    <item>
+      <title>How I built my own course platform</title>
+      <link>https://chrispaul.dev/how-to-build-your-own-course-platform/</link>
+      <pubDate>Wed, 25 Oct 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/how-to-build-your-own-course-platform/</guid>
+      <description>Recently, I built my own course platform to teach students and professionals about web development. The courses on the platform are teaching about React and its ecosystem, but I want to generalize the platform&amp;rsquo;s implementation in the future. It should be reusable for for other educational domains too. The platform launch came along with the release of my second course, Taming the State in React, and therefore was the perfect playground to experiment with it.</description>
+    </item>
+    
+    <item>
+      <title>Linear Algebra in JavaScript with Matrix Operations</title>
+      <link>https://chrispaul.dev/linear-algebra-matrix-javascript/</link>
+      <pubDate>Mon, 23 Oct 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/linear-algebra-matrix-javascript/</guid>
+      <description>When I recently started to dive into the topic of machine learning, I had to relearn all the things I have studied about linear algebra, stochastic and calculus at school and university. I took a little refresher on matrix operations (addition, subtraction, multiplication and division) in linear algebra and learned about the different types of matrices (inverse matrix, transpose matrix, identity matrix) again. The article is a refresher about those things and applies them in JavaScript.</description>
+    </item>
+    
+    <item>
+      <title>Linear Regression with Gradient Descent in JavaScript</title>
+      <link>https://chrispaul.dev/linear-regression-gradient-descent-javascript/</link>
+      <pubDate>Thu, 19 Oct 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/linear-regression-gradient-descent-javascript/</guid>
+      <description>Recently I started to take the Machine Learning course by Andrew Ng on Coursera. So far, it is a blast and I am so keen to apply all my learnings in math from university. Starting right into web development after university, I never had the opportunity to apply those learnings when implementing web applications. Now, it is refreshing to see use cases in machine learning where those learnings could be used.</description>
+    </item>
+    
+    <item>
+      <title>MobX (with Decorators) in create-react-app</title>
+      <link>https://chrispaul.dev/create-react-app-mobx-decorators/</link>
+      <pubDate>Tue, 10 Oct 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/create-react-app-mobx-decorators/</guid>
+      <description>MobX is used for state management in modern applications. Often it is applied in a React.js application, but it is not necessarily bound to React. In addition, it is a valuable alternative to Redux as state management solution. If you are using create-react-app as your application boilerplate, you most likely run into the questions of how to setup MobX and how to use decorators in create-react-app.</description>
+    </item>
+    
+    <item>
+      <title>What&#39;s new in React 16?</title>
+      <link>https://chrispaul.dev/what-is-new-in-react-16/</link>
+      <pubDate>Thu, 05 Oct 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/what-is-new-in-react-16/</guid>
+      <description>There is a high likelihood that there are already a multitude of articles about the new React.js 16 release. But for learning about the changes of the library myself, I wanted to read up all the new React 16 features and improvements too. I thought it would be useful if I would share briefly what I have learned along the way. In the next days, I hope to find the time to update my articles and books accordingly to the React 16 changes.</description>
+    </item>
+    
+    <item>
+      <title>Taming the State in React [MobX Redux Book]</title>
+      <link>https://chrispaul.dev/learn-react-redux-mobx-state-management/</link>
+      <pubDate>Tue, 26 Sep 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/learn-react-redux-mobx-state-management/</guid>
+      <description>I am excited to launch my course Taming the State in React. I worked on the course for the last 6 months and squeezed every of my free minutes during a workweek, weekends and holidays into it. For instance, when writing the book, I woke up two hours earlier before my 9 to 5 job to write ~750 qualitative words a day. It continued by building a platform around the course, by recording screencasts, by building exciting applications and boilerplate projects for course participants and by doing a bit of outreach with the of help my better half.</description>
+    </item>
+    
+    <item>
+      <title>How to use React SVG Patterns as Backgrounds</title>
+      <link>https://chrispaul.dev/react-svg-patterns/</link>
+      <pubDate>Wed, 30 Aug 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-svg-patterns/</guid>
+      <description>In my recent (yet not fully released) application, I was confronted with SVG in React. I had to use a logo and wanted to use playful SVG background patterns in React. By using SVG, I avoided to use other image formats which would add performance penalties to my application.
+The article will guide you through using SVG in React. It shows you how to use plain SVG for your application and how to add SVG patterns in React for your backgrounds.</description>
+    </item>
+    
+    <item>
+      <title>8 things to learn in React before using Redux</title>
+      <link>https://chrispaul.dev/learn-react-before-using-redux/</link>
+      <pubDate>Wed, 19 Jul 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/learn-react-before-using-redux/</guid>
+      <description>State management is difficult. A view library, such as React, enables you to manage local component state. But it only scales to a certain point. React is just a view layer library. Eventually you decide to move on to a more sophisticated state management solution such as Redux. Yet there are certain things, that I want to point out in this article, that you should know about React before you jump on the Redux train.</description>
+    </item>
+    
+    <item>
+      <title>How to use React&#39;s Provider Pattern with React&#39;s Context API</title>
+      <link>https://chrispaul.dev/react-provider-pattern-context/</link>
+      <pubDate>Tue, 11 Jul 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-provider-pattern-context/</guid>
+      <description>Note: If you are using a React version prior 16.3, this article might be relevant to you. It explains how to use React&amp;rsquo;s old context API to build your own provider and consumer pattern. If you are using React 16.3, head over to this article that explains the new context API.
+The provider pattern in React is a powerful feature. You will not often see it when using plain React, but might consider using it when your React application grows in size and depth from a component perspective.</description>
+    </item>
+    
+    <item>
+      <title>Redux and Redux Saga in Next.js</title>
+      <link>https://chrispaul.dev/nextjs-redux-saga/</link>
+      <pubDate>Wed, 28 Jun 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/nextjs-redux-saga/</guid>
+      <description>This article will show you the basic steps to use Redux Saga as side-effect library for asynchronous actions in NextJs. I am no expert in server-side rendering, so maybe you as a reader have more insights that you want to share in the comments.
+Recently I used Next.js for a server-rendered React.js application. It comes with its open source create-next-app project, which can be seen as pendant to create-react-app by Facebook, but only as a boilerplate for server-rendered React applications.</description>
+    </item>
+    
+    <item>
+      <title>Accept Stripe Payments with React and Express</title>
+      <link>https://chrispaul.dev/react-express-stripe-payment/</link>
+      <pubDate>Tue, 20 Jun 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-express-stripe-payment/</guid>
+      <description>Accepting payments on your own website can be an issue at some point. Often you&amp;rsquo;ll find yourself avoiding it, because you can easily outsource it to platforms such as Gumroad that deal with it. However, at some point you want to avoid these third-party platforms and introduce your own payment system.
+I dealt with the same issue in a React application. After researching the topic, I found out that using Stripe with React could be a solution, and an viable alternative to PayPal, to charge money.</description>
+    </item>
+    
+    <item>
+      <title>Advanced List in React - Build a powerful Component (Part III)</title>
+      <link>https://chrispaul.dev/react-advanced-list-component/</link>
+      <pubDate>Tue, 13 Jun 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-advanced-list-component/</guid>
+      <description>The last two parts of the tutorial series in React introduced two functionalities, a paginated list and an infinite scroll, by using higher order components. However, these functionalities were used exclusively. In one scenario you used a paginated list, where you manually fetched the data, then again in another scenario you used an infinite scroll, where the data was fetched automatically for you.
+Now you could use both features exclusively.</description>
+    </item>
+    
+    <item>
+      <title>Infinite Scroll in React - Build a powerful Component (Part II)</title>
+      <link>https://chrispaul.dev/react-infinite-scroll/</link>
+      <pubDate>Wed, 07 Jun 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-infinite-scroll/</guid>
+      <description>The following React tutorial builds up on Paginated List in React - Build a powerful Component (Part I). The series of tutorials goes beyond the basic React components that you encounter in other React tutorials.
+This part of the series will show you how to build an infinite scroll in React. So far, your List component is able to opt-in two functionalities: showing a loading indicator and fetching more list items by using a More button.</description>
+    </item>
+    
+    <item>
+      <title>Paginated List in React - Build a powerful Component (Part I)</title>
+      <link>https://chrispaul.dev/react-paginated-list/</link>
+      <pubDate>Mon, 29 May 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-paginated-list/</guid>
+      <description>There are a ton of tutorials about the implementation of applications in React. Most of the time, they use basic components to teach the fundamentals of React, because, to be fair, everything else is hard to cover in one tutorial. Only a handful of long written content will take you on the journey to build more powerful components. I want to take you on this journey, after you have learned the fundamentals in React, to build a powerful component in a series of three tutorials.</description>
+    </item>
+    
+    <item>
+      <title>Nobody introduced me to the API</title>
+      <link>https://chrispaul.dev/what-is-an-api-javascript/</link>
+      <pubDate>Wed, 10 May 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/what-is-an-api-javascript/</guid>
+      <description>It might be a common issue in teaching computer science at universities: While you learn about bubble sorts, lambda calculus and permutations, nobody mentors you about common developer subjects. In the early days at university, I often wondered: What is an API?
+Not everyone is fully aware of it, but APIs follow us through a multitude of programming contexts. They surround us. When I take you on the journey of how I got to know the API, you may get the idea what I mean by using APIs unconsciously most of the time.</description>
+    </item>
+    
+    <item>
+      <title>Lessons learned from Give and Take</title>
+      <link>https://chrispaul.dev/lessons-learned-give-and-take/</link>
+      <pubDate>Wed, 19 Apr 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/lessons-learned-give-and-take/</guid>
+      <description>Recently I have read Give and Take: A revolutionary approach to Success by Adam Grant. It is an inspiring book and I found myself taking too many notes while reading it. Now I want to summarize my learnings, to internalize them, but also to give others access to it.
+In his book, Adam Grant dives deep into the spectrum of altruistic to selfish personalities.</description>
+    </item>
+    
+    <item>
+      <title>Giving Back, By Learning React</title>
+      <link>https://chrispaul.dev/giving-back-by-learning-react/</link>
+      <pubDate>Tue, 11 Apr 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/giving-back-by-learning-react/</guid>
+      <description>At the time of writing this, I am travelling through South East Asia. On my quest to experience the countries in their most natural ways, I try to connect with locals often as possible. When travelling a country, it is not about seeing another cave or waterfall that drives me. Instead, I seek to connect with the local people. When speaking to them, I realize each time again how privileged I am.</description>
+    </item>
+    
+    <item>
+      <title>A gentle Introduction to React&#39;s Higher Order Components</title>
+      <link>https://chrispaul.dev/gentle-introduction-higher-order-components/</link>
+      <pubDate>Tue, 04 Apr 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/gentle-introduction-higher-order-components/</guid>
+      <description>Another fitting headline for the article could be: learn Higher Order Components with Conditional Rendering in React.
+Higher order components, or known under the abbreviation HOCs, are often a difficult to grasp pattern in React (next to the render props pattern). These components can be used for multiple use cases. I want to pick out one use case, the conditional rendering with higher-order components, to give you two outcomes from this article as a reader.</description>
+    </item>
+    
+    <item>
+      <title>Redux or MobX: An attempt to dissolve the Confusion</title>
+      <link>https://chrispaul.dev/redux-mobx-confusion/</link>
+      <pubDate>Tue, 28 Mar 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/redux-mobx-confusion/</guid>
+      <description>I used Redux excessively the last years, but spent the recent time with MobX as state management alternative. It seems that Redux alternatives evolve naturally into confusion in the community. People are uncertain which solution to pick. The issue isn&amp;rsquo;t necessarily Redux vs MobX. Whenever there exists an alternative, people are curious what&amp;rsquo;s the best way to solve their problem. I am writing these lines to dissolve the confusion around both state management solutions Redux and MobX.</description>
+    </item>
+    
+    <item>
+      <title>When to use React&#39;s Ref on a DOM node in React</title>
+      <link>https://chrispaul.dev/react-ref-attribute-dom-node/</link>
+      <pubDate>Wed, 22 Mar 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/react-ref-attribute-dom-node/</guid>
+      <description>In the past there has been a lot of confusion around the ref attribute in React. The attribute makes it possible to reference a DOM node in order to access it and to interact with it. This article should give some clarification around the ref attribute in React. It shows you how you can use it, when you should use it and where it can be used.</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>https://chrispaul.dev/about/</link>
+      <pubDate>Sun, 05 Mar 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/about/</guid>
+      <description>Hi, it&amp;rsquo;s Chris. I am a german software engineer from Berlin but working remotely most of the time. First of all, thank you for reading my blog. It&amp;rsquo;s such a pleasure to have you here! Just to make sure: I am the guy on the right-hand side of the picture :)
+A couple of words about my professional life: I graduated from university with a Master of Science in Computer Science in 2014.</description>
+    </item>
+    
+    <item>
+      <title>(Deep Work) =&gt; Flow - A proven Path to Satisfaction</title>
+      <link>https://chrispaul.dev/lessons-learned-deep-work-flow/</link>
+      <pubDate>Thu, 09 Feb 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/lessons-learned-deep-work-flow/</guid>
+      <description>&amp;ldquo;A state of flow can be achieved by deep work&amp;rdquo;. The subjects flow and deep work are covered in the books Deep Work by Cal Newport and Flow by Mihaly Csikszentmihalyi. I read both books, personally I can say that they are outstanding, and they can be well combined when it comes to satisfaction in a person&amp;rsquo;s life.
+The following article summarizes my lessons learned from both books.</description>
+    </item>
+    
+    <item>
+      <title>10 Reasons why I moved from Angular to React</title>
+      <link>https://chrispaul.dev/reasons-why-i-moved-from-angular-to-react/</link>
+      <pubDate>Tue, 31 Jan 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/reasons-why-i-moved-from-angular-to-react/</guid>
+      <description>I did a lot of Angular 1.x back in the days until I started to use React. I can say that I used both solutions extensively. But there were and are several reasons why I moved to React. These reasons were not clear from the beginning, but retrospectively I think I can summarize these very well.
+In the following I want to give you 10 reasons why I moved from Angular to React.</description>
+    </item>
+    
+    <item>
+      <title>Lessons learned from On Writing Well</title>
+      <link>https://chrispaul.dev/lessons-learned-on-writing-well/</link>
+      <pubDate>Wed, 25 Jan 2017 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/lessons-learned-on-writing-well/</guid>
+      <description>As a software engineer you will come to a point where writing matters. Perhaps you want to leave your fellow developers a note, you have to write an e-mail to a customer or you have to sum up the recent meeting notes. In my case, it went even further because I have my own website where I write about software development and where I started to write my first ebook.</description>
+    </item>
+    
+    <item>
+      <title>My development setup as a JavaScript web developer</title>
+      <link>https://chrispaul.dev/developer-setup/</link>
+      <pubDate>Wed, 09 Nov 2016 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/developer-setup/</guid>
+      <description>This concise cheatsheet will give you an overview on how to setup your development environment as a web developer. It was created for MacOS developers. However, you can substitute the instructions and tools for Windows and Linux as well. So don&amp;rsquo;t give up yet if you are not a MacOS user. After all, setting up your development environment all by yourself is your first challenge as a striving web developer these days.</description>
+    </item>
+    
+    <item>
+      <title>Technical Cheatsheet: 5 days to your own Website</title>
+      <link>https://chrispaul.dev/own-website-in-five-days/</link>
+      <pubDate>Wed, 09 Nov 2016 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/own-website-in-five-days/</guid>
+      <description>This tutorial is part 2 of a series.
+Part 1: Day One - Technical Cheatsheet: Setup your development environment  The following document is only a cheatsheet which summarises the steps you need to take to setup your own website. On purpose it&amp;rsquo;s called technical, because you will not use a content management system (CMS) like Wordpress. It doesn&amp;rsquo;t claim to be complete nor to guide you exhaustively through the whole process.</description>
+    </item>
+    
+    <item>
+      <title>Redux State Keys - A predictable yet dynamic substate</title>
+      <link>https://chrispaul.dev/redux-state-keys/</link>
+      <pubDate>Mon, 31 Oct 2016 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/redux-state-keys/</guid>
+      <description>Sometimes I feel it&amp;rsquo;s quite obvious, but I never saw it somewhere written down. The article is my attempt to show you a way to organize your state with state keys. I&amp;rsquo;m using it in my projects, others might already use a similar approach. But nobody advertised it so far.
+Table of Contents  Cluttered State Organized State State Keys  State Key Definition Reducer + Action Abstraction (Optional) Selectors &amp;amp; Static Types Usage  Primitives vs.</description>
+    </item>
+    
+    <item>
+      <title>Redux Observable RxJS: Going Epic with Reactive Programming</title>
+      <link>https://chrispaul.dev/redux-observable-rxjs/</link>
+      <pubDate>Sat, 13 Aug 2016 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/redux-observable-rxjs/</guid>
+      <description>This React tutorial is part 2 of 2 in the series.
+Part 1: The SoundCloud Client in React &amp;#43; Redux  The good thing about the Redux + React ecosystem is you can always have a shot at something novel in the JavaScript landscape. Especially when it comes to the middleware of Redux to handle asynchronous requests, one will find a great selection of paradigms and implementations to choose from.</description>
+    </item>
+    
+    <item>
+      <title>MobX React: Refactor your application from Redux to MobX</title>
+      <link>https://chrispaul.dev/mobx-react/</link>
+      <pubDate>Mon, 18 Jul 2016 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/mobx-react/</guid>
+      <description>This React tutorial is part 2 of 2 in the series.
+Part 1: The SoundCloud Client in React &amp;#43; Redux  MobX is a state management solution. It is a standalone pure technical solution without being opinionated about the architectural state management app design. The 4 pillars State, Actions, Reactions and Derivations make state management in MobX possible. First the State encapsulates all of your application state which can consist of primitives to complex objects.</description>
+    </item>
+    
+    <item>
+      <title>Redux Normalizr: Improve your State Management</title>
+      <link>https://chrispaul.dev/the-soundcloud-client-in-react-redux-normalizr/</link>
+      <pubDate>Sat, 09 Jul 2016 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/the-soundcloud-client-in-react-redux-normalizr/</guid>
+      <description>This tutorial is part 2 of 2 in the series.
+Part 1: The SoundCloud Client in React &amp;#43; Redux  The Normalizr in Redux tutorial will teach you how to use normalizr for an improved data management in your Redux store. The library itself will help you to avoid deep nested data structures although the returned data from a server is deeply nested. Additionally it comes for free to enable a manageable single source of truth for data entities in your global store.</description>
+    </item>
+    
+    <item>
+      <title>Redux Ducks: Restructure your Redux App with Ducks</title>
+      <link>https://chrispaul.dev/the-soundcloud-client-in-react-redux-ducks/</link>
+      <pubDate>Sun, 26 Jun 2016 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/the-soundcloud-client-in-react-redux-ducks/</guid>
+      <description>This tutorial is part 2 of 2 in the series.
+Part 1: The SoundCloud Client in React &amp;#43; Redux  The Redux Ducks: Restructure your Redux App with Ducks tutorial will teach you how to bundle action creators, action types and reducers side by side in your Redux app.
+Usually in the beginning of learning Redux you have a technical separation of concerns which gets reflected in the folder structure.</description>
+    </item>
+    
+    <item>
+      <title>Flow: Type Checking with Flow in React &#43; Redux</title>
+      <link>https://chrispaul.dev/the-soundcloud-client-in-react-redux-flow/</link>
+      <pubDate>Tue, 21 Jun 2016 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/the-soundcloud-client-in-react-redux-flow/</guid>
+      <description>This tutorial is part 2 of 2 in the series.
+Part 1: The SoundCloud Client in React &amp;#43; Redux  The Flow: Type Checking with Flow in React + Redux tutorial will teach you how to use Flow in a React + Redux environment. Since JavaScript itself is a dynamically typed language, you will end up with several bugs in your JavaScript career, which could have been prevented due type safety.</description>
+    </item>
+    
+    <item>
+      <title>The SoundCloud Client in React &#43; Redux</title>
+      <link>https://chrispaul.dev/the-soundcloud-client-in-react-redux/</link>
+      <pubDate>Sat, 11 Jun 2016 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/the-soundcloud-client-in-react-redux/</guid>
+      <description>In the beginning of 2016 it was time for me to deep dive into the ReactJs world. I read tons of articles about React and its environment, especially Redux, so far. Several of my colleagues used it in side projects and on a theoretical level I could participate in the discussions.
+In my company we relied heavily on Angular 1 at this point. Since we are using it in a quite large code base, we know a lot about its flaws.</description>
+    </item>
+    
+    <item>
+      <title>D3 on Angular: Reusable Components</title>
+      <link>https://chrispaul.dev/d3-on-angular-reusable-components/</link>
+      <pubDate>Fri, 03 Apr 2015 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/d3-on-angular-reusable-components/</guid>
+      <description>This Angular tutorial is part 2 of 2 in the series.
+Part 1: D3 on Angular: Small Multiples with Brushing  Components become more important these days. In the future you will get to hear more and more about Web Components, which get available in Angular 2.0 as well, to create different reusable components. While you already weave multiple angular directives into each other, there are only a few articles which describe this reusability with d3 directives.</description>
+    </item>
+    
+    <item>
+      <title>D3 on Angular: Small Multiples with Brushing</title>
+      <link>https://chrispaul.dev/d3-angular-small-multiples-brushing/</link>
+      <pubDate>Sun, 04 Jan 2015 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/d3-angular-small-multiples-brushing/</guid>
+      <description>This article shows how you can achieve Small Multiples with D3 using Angular.js. According to Edward Tufte (1983) Small Multiples are a concept to visualize multiple homogenous visualizations like maps, line graphs or scatterplots. We will use this visualization concept to draw multiple line graphs with D3 on Angular.
+    Here you can find an example + source code:
+ Gist for Source Code Example with Source Code + Visualization  Short explanation: Most of the line chart directive contains the D3 source code for a plain Line Chart with some interaction.</description>
+    </item>
+    
+    <item>
+      <title>Apple Health Chart on Angular and D3.js</title>
+      <link>https://chrispaul.dev/apple-health-chart-d3-js/</link>
+      <pubDate>Tue, 30 Dec 2014 13:50:46 +0200</pubDate>
+      
+      <guid>https://chrispaul.dev/apple-health-chart-d3-js/</guid>
+      <description>  Last year Apple released their new collection of iPhones. One innovation of Apple which caught my eyes is the new health app. The dashboard with its health charts is appealing and well designed. Therefore I had to remake one of its components with D3.js. This is what you are going to achieve.
+     Gist for Source Code Example with Source Code + Visualization       Gist for Source Code Example with Source Code + Visualization  </description>
+    </item>
+    
+  </channel>
+</rss>

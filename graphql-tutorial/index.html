@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="google-site-verification" content="We9gRQmlTIjMkOPPjPWDQTXd15nWA6tBEYlxQ2cMpEg" />
+
+  <title>
+    A GraphQL Tutorial for Beginners - CPaul
+  </title>
+
+  <meta name="author" content="" />
+
+  
+    <meta name="description" content="This GraphQL tutorial for beginners takes you on a journey to learn GraphQL. You will explore GraphQL with GitHub&#39;s GraphQL API and later learn how to build fullstack web applications with it ...">
+  
+
+  <meta name="theme-color" content="#38bb6c"/>
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  
+  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../img/favicon/manifest.json">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+
+  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+
+  
+  
+<meta itemprop="name" content="A GraphQL Tutorial for Beginners">
+<meta itemprop="description" content="This GraphQL tutorial for beginners takes you on a journey to learn GraphQL. You will explore GraphQL with GitHub&#39;s GraphQL API and later learn how to build fullstack web applications with it ...">
+
+
+
+    <meta itemprop="image" content="https://chrispaul.dev/img/posts/graphql-tutorial/banner_640.jpg">
+
+
+
+<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+
+
+<meta itemprop="wordCount" content="3608">
+
+
+  
+  <meta name="keywords" content="graphql tutorial">
+
+  <meta property="og:title" content="A GraphQL Tutorial for Beginners - CPaul">
+
+
+  <meta property="og:description" content="This GraphQL tutorial for beginners takes you on a journey to learn GraphQL. You will explore GraphQL with GitHub&#39;s GraphQL API and later learn how to build fullstack web applications with it ..." />
+
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrispaul.dev/graphql-tutorial/" />
+<meta property="og:image" content="https://chrispaul.dev/img/posts/graphql-tutorial/banner_640.jpg" />
+
+  
+
+    <meta name="news_keywords" content="graphql tutorial" />
+
+  
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/graphql-tutorial/banner_640.jpg"/>
+
+
+
+<meta name="twitter:title" content="A GraphQL Tutorial for Beginners"/>
+<meta name="twitter:description" content="This GraphQL tutorial for beginners takes you on a journey to learn GraphQL. You will explore GraphQL with GitHub&#39;s GraphQL API and later learn how to build fullstack web applications with it ..."/>
+<meta name="twitter:site" content="@rwieruch"/>
+<meta name="twitter:domain" content="rwieruch"/>
+
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="../index.html">
+                    <img src="../img/page/logo.svg" alt="A GraphQL Tutorial for Beginners logo" class="img-lazy">
+                    <span class="sr-only">A GraphQL Tutorial for Beginners - go to homepage</span>
+                </a>
+
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../index.html">Blog</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../work-with-me/index.html">Work with me</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../about/index.html">About</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fgraphql-tutorial%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=A%20GraphQL%20Tutorial%20for%20Beginners%20by%20%40rwieruch%20%23GraphQL&amp;url=https%3a%2f%2fchrispaul.dev%2fgraphql-tutorial%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=A%20GraphQL%20Tutorial%20for%20Beginners&amp;url=https%3a%2f%2fchrispaul.dev%2fgraphql-tutorial%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+</div>
+
+<div class="visible-xs visible-sm text-center">
+    <div class="post-share post-share-fixed post-share-mobile">
+        
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fgraphql-tutorial%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=A%20GraphQL%20Tutorial%20for%20Beginners%20by%20%40rwieruch%20%23GraphQL&amp;url=https%3a%2f%2fchrispaul.dev%2fgraphql-tutorial%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=A%20GraphQL%20Tutorial%20for%20Beginners&amp;url=https%3a%2f%2fchrispaul.dev%2fgraphql-tutorial%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+    </div>
+</div>
+
+        
+
+        <div class="hidden-xs">
+            
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase newsletter">Take Part</h2>
+            </div>
+
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    <article
+                        class="col-md-8 col-md-offset-2"
+                        id="blog-post"
+                        itemprop="blogPosts"
+                        itemscope itemtype="http://schema.org/BlogPosting">
+
+                        <div id="post-content" itemprop="articleBody">
+
+                            <header>
+                                <h1 itemprop="name headline">A GraphQL Tutorial for Beginners</h1>
+                            </header>
+
+                            <div class="text-center">
+                                
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
+         <i class="fa fa-facebook"></i>Follow
+    </a>
+
+
+                                &nbsp;
+                                
+
+                                &nbsp;
+                                
+  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
+    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
+  </a>
+
+
+                                &nbsp;
+                                
+                            </div>
+
+                            <p class="text-muted text-uppercase mb-small text-center">
+    <span itemprop="author publisher">
+        
+    </span>
+
+    
+        <time datetime="2018-11-01" itemprop="datePublished">
+            November 1, 2018
+        </time>
+    
+
+    
+        <span class="hidden-xs hidden-sm"> - <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/graphql-tutorial.md">
+                Edit this Post on GitHub
+            </a>
+        </span>
+    
+</p>
+
+                            
+
+<div>
+  
+
+</div>
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fgraphql-tutorial%2f&amp;media=https://chrispaul.dev/img%2fposts%2fgraphql-tutorial%2fbanner.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/graphql-tutorial/banner.jpg"
+            data-is-src-set="is-src-set"
+            alt="graphql tutorial"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<p>
+  <em>
+    Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire <a href="https://roadtoreact.com">The Road to GraphQL</a> book that teaches you to become a fullstack developer with JavaScript.
+  </em>
+</p>
+
+<div class="read-before">
+    <p>This tutorial is part 2 of 5 in this series.</p>
+    <div>Part 1: <a href="../getting-started-github-graphql-api/index.html" itemprop="url">Getting Started with GitHub&#39;s GraphQL API</a></div>
+    <div>Part 3: <a href="../react-with-graphql-tutorial/index.html" itemprop="url">A complete React with GraphQL Tutorial</a></div>
+    <div>Part 4: <a href="../graphql-apollo-client-tutorial/index.html" itemprop="url">A Apollo Client Tutorial for Beginners</a></div>
+    <div>Part 5: <a href="../react-graphql-apollo-tutorial/index.html" itemprop="url">A complete React with Apollo and GraphQL Tutorial</a></div>
+</div>
+
+<p>Before we start to build full-fledged GraphQL applications, on the client- and server-side, let&rsquo;s explore GraphQL with the tools we have installed in the previous sections. You can either use GraphiQL or the GitHub&rsquo;s GraphQL Explorer. In the following, you will learn about GraphQL&rsquo;s fundamentals by executing your first GraphQL queries, mutations and even by exploring features such as pagination, in the context of GitHub&rsquo;s GraphQL API.</p>
+
+<div class="box-inline col-md-12">
+    <div class="col-md-12 text-center">
+        <h2 class="newsletter">The Road to learn React</h2>
+        <div class="col-md-4">
+            <img
+                class="img-lazy img-responsive"
+                data-lazy-src="//img/page/cover.png"
+                alt="package"
+            >
+        </div>
+        <p class="lead">
+            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Pay what you want like <strong>50.000+ readers</strong>.
+        </p>
+        <a
+            class="btn btn-template-main"
+            href="https://roadtoreact.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Get the Book <i class="fa fa-chevron-right"></i>
+        </a>
+    </div>
+</div>
+
+
+<h2 class="chapter-header" id="graphql-query-github-api">GraphQL Query with GitHub&#39;s GraphQL API</h2>
+
+<p>In this section, you will interact with the GitHub API using queries and mutations without React, so you can use your GraphiQL application or GitHub&rsquo;s GraphQL Explorer to make GraphQL query requests to GitHub&rsquo;s API. Both tools should be authorized to make requests using a personal access token. On the left-hand side of your GraphiQL application, you can fill in GraphQL queries and mutations. Add the following query to request data about yourself.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">viewer</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">name</span>
+    <span style="color: #06b6ef">url</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>The <code>viewer</code> object can be used to request data about the currently authorized user. Since you are authorized by your personal access token, it should show data about your account. The <code>viewer</code> is an <strong>object</strong> in GraphQL terms. Objects hold data about an entity. This data is accessed using a so-called <strong>field</strong> in GraphQL. Fields are used to ask for specific properties in objects. For instance, the <code>viewer</code> object exposes a wide range of fields. Two fields for the object&ndash;<code>name</code> and <code>url</code>&ndash;were used in the query. In its most basic form, a query is just objects and fields, and objects can also be called fields.</p>
+
+<p>Once you run the query in GraphiQL, you should see output similar to the one below, where your name and URL are in the place of mine:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+  <span style="color: #48b685">&quot;data&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #48b685">&quot;viewer&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #48b685">&quot;name&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;Chris Paul&quot;</span><span style="color: #e7e9db">,</span>
+      <span style="color: #48b685">&quot;url&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;https://github.com/rwieruch&quot;</span>
+    <span style="color: #e7e9db">}</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>Congratulations, you have performed your first query to access fields from your own user data. Now, let&rsquo;s see how to request data from a source other than yourself, like a public GitHub organization. To specify a GitHub organization, you can pass an <strong>argument</strong> to fields:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;the-road-to-learn-react&quot;</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">name</span>
+    <span style="color: #06b6ef">url</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>When using GitHub&rsquo;s API, an organization is identified with a <code>login</code>. If you have used GitHub before, you might know this is a part of the organization URL:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">https</span><span style="color: #5bc4bf">:</span><span style="color: #776e71">//github.com/the-road-to-learn-react</span>
+</code></pre></div>
+
+
+<p>By providing a <code>login</code> to identify the organization, you can request data about it. In this example, you have specified two fields to access data about the organization&rsquo;s <code>name</code> and <code>url</code>. The request should return something similar to the following output:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+  <span style="color: #48b685">&quot;data&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #48b685">&quot;organization&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #48b685">&quot;name&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;The Road to learn React&quot;</span><span style="color: #e7e9db">,</span>
+      <span style="color: #48b685">&quot;url&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;https://github.com/the-road-to-learn-react&quot;</span>
+    <span style="color: #e7e9db">}</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>In the previous query you passed an argument to a field. As you can imagine, you can add arguments to various fields using GraphQL. It grants a great deal of flexibility for structuring queries, because you can make specifications to requests on a field level. Also, arguments can be of different types. With the organization above, you provided an argument with the type <code>String</code>, though you can also pass types like enumerations with a fixed set of options, integers, or booleans.</p>
+
+<p>If you ever wanted to request data about two identical objects, you would have to use <strong>aliases</strong> in GraphQL. The following query wouldn&rsquo;t be possible, because GraphQL wouldn&rsquo;t know how to resolve the two organization objects in a result:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;the-road-to-learn-react&quot;</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">name</span>
+    <span style="color: #06b6ef">url</span>
+  <span style="color: #e7e9db">}</span>
+  <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;facebook&quot;</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">name</span>
+    <span style="color: #06b6ef">url</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>You&rsquo;d see an error such as <code>Field 'organization' has an argument conflict</code>. Using aliases, you can resolve the result into two blocks:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">book</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;the-road-to-learn-react&quot;</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span>    <span style="color: #06b6ef">name</span>
+    <span style="color: #06b6ef">url</span>
+  <span style="color: #e7e9db">}</span>
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">company</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;facebook&quot;</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span>    <span style="color: #06b6ef">name</span>
+    <span style="color: #06b6ef">url</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>The result should be similar to the following:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+  <span style="color: #48b685">&quot;data&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #48b685">&quot;book&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #48b685">&quot;name&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;The Road to learn React&quot;</span><span style="color: #e7e9db">,</span>
+      <span style="color: #48b685">&quot;url&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;https://github.com/the-road-to-learn-react&quot;</span>
+    <span style="color: #e7e9db">},</span>
+    <span style="color: #48b685">&quot;company&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #48b685">&quot;name&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;Facebook&quot;</span><span style="color: #e7e9db">,</span>
+      <span style="color: #48b685">&quot;url&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;https://github.com/facebook&quot;</span>
+    <span style="color: #e7e9db">}</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>Next, imagine you want to request multiple fields for both organizations. Re-typing all the fields for each organization would make the query repetitive and verbose, so we&rsquo;ll use <strong>fragments</strong> to extract the query&rsquo;s reusable parts. Fragments are especially useful when your query becomes deeply nested and uses lots of shared fields.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">book</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;the-road-to-learn-react&quot;</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">    <span style="color: #e7e9db">...</span><span style="color: #06b6ef">sharedOrganizationFields</span>
+</span>  <span style="color: #e7e9db">}</span>
+  <span style="color: #06b6ef">company</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;facebook&quot;</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">    <span style="color: #e7e9db">...</span><span style="color: #06b6ef">sharedOrganizationFields</span>
+</span>  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+
+<span style="background-color: #4f424c"><span style="color: #06b6ef">fragment</span> <span style="color: #06b6ef">sharedOrganizationFields</span> <span style="color: #06b6ef">on</span> <span style="color: #06b6ef">Organization</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">name</span>
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">url</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">}</span>
+</span></code></pre></div>
+
+
+<p>As you can see, you have to specify on which <strong>type</strong> of object the fragment should be used. In this case, it is the type <code>Organization</code>, which is a custom type defined by GitHub&rsquo;s GraphQL API. This is how you use fragments to extract and reuse parts of your queries. At this point, you might want to open &ldquo;Docs&rdquo; on the right side of your GraphiQL application. The documentation gives you access to the GraphQL <strong>schema</strong>. A schema exposes the GraphQL API used by your GraphiQL application, which is Github&rsquo;s GraphQL API in this case. It defines the GraphQL <strong>graph</strong> that is accessible via the GraphQL API using queries and mutations. Since it is a graph, objects and fields can be deeply nested in it, which we&rsquo;ll certainly encounter as we move along.</p>
+
+<p>Since we&rsquo;re exploring queries and not mutations at the moment, select &ldquo;Query&rdquo; in the &ldquo;Docs&rdquo; sidebar. Afterward, traverse the objects and fields of the graph, explore their optional arguments. By clicking them, you can see the accessible fields within those objects in the graph. Some fields are common GraphQL types such as <code>String</code>, <code>Int</code> and <code>Boolean</code>, while some other types are <strong>custom types</strong> like the <code>Organization</code> type we used. In addition, you can see whether arguments are required when requesting fields on an object. It can be identified by the exclamation point. For instance, a field with a <code>String!</code> argument requires that you pass in a <code>String</code> argument whereas a field with a <code>String</code> argument doesn&rsquo;t require you to pass it.</p>
+
+<p>In the previous queries, you provided arguments that identified an organization to your fields; but you <strong>inlined these arguments</strong> in your query. Think about a query like a function, where it&rsquo;s important to provide dynamic arguments to it. That&rsquo;s where the <strong>variable</strong> in GraphQL comes in, as it allows arguments to be extracted as variables from queries. Here&rsquo;s how an organization&rsquo;s <code>login</code> argument can be extracted to a dynamic variable:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #06b6ef">query</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">$organization</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">String</span><span style="color: #5bc4bf">!</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">$organization</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span>    <span style="color: #06b6ef">name</span>
+    <span style="color: #06b6ef">url</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>It defines the <code>organization</code> argument as a variable using the <code>$</code> sign. Also, the argument&rsquo;s type is defined as a <code>String</code>. Since the argument is required to fulfil the query, the <code>String</code> type has an exclamation point.</p>
+
+<p>In the &ldquo;Query Variables&rdquo; panel, the variables would have the following content for providing the <code>organization</code> variable as argument for the query:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+  <span style="color: #48b685">&quot;organization&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;the-road-to-learn-react&quot;</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>Essentially, variables can be used to create dynamic queries. Following the best practices in GraphQL, we don&rsquo;t need manual string interpolation to structure a dynamic query later on. Instead, we provide a query that uses variables as arguments, which are available when the query is sent as a request to the GraphQL API. You will see both implementations later in your React application.</p>
+
+<p>Sidenote: You can also define a <strong>default variable</strong> in GraphQL. It has to be a non-required argument, or an error will occur about a <strong>nullable variable</strong> or <strong>non-null variable</strong>. For learning about default variables, we&rsquo;ll make the <code>organization</code> argument non-required by omitting the exclamation point. Afterwards, it can be passed as a default variable.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #06b6ef">query</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">$organization</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">String</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&quot;the-road-to-learn-react&quot;</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">$organization</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span>    <span style="color: #06b6ef">name</span>
+    <span style="color: #06b6ef">url</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>Try to execute the previous query with two sets of variables: once with the <code>organization</code> variable that&rsquo;s different from the default variable, and once without defining the <code>organization</code> variable.</p>
+
+<p>Now, let&rsquo;s take a step back to examine the structure of the GraphQL query. After you introduced variables, you encountered the <code>query</code> statement in your query structure for the first time. Before, you used the <strong>shorthand version of a query</strong> by omitting the <code>query</code> statement, but the <code>query</code> statement has to be there now that it&rsquo;s using variables. Try the following query without variables, but with the <code>query</code> statement, to verify that the long version of a query works.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #06b6ef">query</span> <span style="color: #e7e9db">{</span>
+</span>  <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;the-road-to-learn-react&quot;</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">name</span>
+    <span style="color: #06b6ef">url</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>While it&rsquo;s not the shorthand version of the query, it still returns the same data as before, which is the desired outcome. The query statement is also called <strong>operation type</strong> in GraphQL lingua. For instance, it can also be a <code>mutation</code> statement. In addition to the operation type, you can also define an <strong>operation name</strong>.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #06b6ef">query</span> <span style="color: #06b6ef">OrganizationForLearningReact</span> <span style="color: #e7e9db">{</span>
+</span>  <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;the-road-to-learn-react&quot;</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">name</span>
+    <span style="color: #06b6ef">url</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>Compare it to anonymous and named functions in your code. A <strong>named query</strong> provides a certain level of clarity about what you want to achieve with the query in a declarative way, and it helps with debugging multiple queries, so it should be used when you want to implement an application. Your final query, without showing the variables panel again, could look like the following:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">query</span> <span style="color: #06b6ef">OrganizationForLearningReact</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">$organization</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">String</span><span style="color: #5bc4bf">!</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">$organization</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">name</span>
+    <span style="color: #06b6ef">url</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>So far you&rsquo;ve only accessed one object, an organization with a couple of its fields. The GraphQL schema implements a whole graph, so let&rsquo;s see how to access a <strong>nested object</strong> from within the graph with a query. It&rsquo;s not much different from before:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">query</span> <span style="color: #06b6ef">OrganizationForLearningReact</span><span style="color: #e7e9db">(</span>
+  <span style="color: #06b6ef">$organization</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">String</span><span style="color: #5bc4bf">!</span><span style="color: #e7e9db">,</span>
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">$repository</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">String</span><span style="color: #5bc4bf">!</span>
+</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">$organization</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">name</span>
+    <span style="color: #06b6ef">url</span>
+<span style="background-color: #4f424c">    <span style="color: #06b6ef">repository</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">$repository</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">name</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">}</span>
+</span>  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>Provide a second variable to request a specific repository of the organization:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+  <span style="color: #48b685">&quot;organization&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;the-road-to-learn-react&quot;</span><span style="color: #e7e9db">,</span>
+<span style="background-color: #4f424c">  <span style="color: #48b685">&quot;repository&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;the-road-to-learn-react-chinese&quot;</span>
+</span><span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>The organization that teaches about React has translated versions of its content, and one of its repositories teaches students about React in simplified Chinese. Fields in GraphQL can be nested objects again, and you have queried two associated objects from the graph. The requests are made on a graph that can have a deeply nested structure. While exploring the &ldquo;Docs&rdquo; sidebar in GraphiQL before, you might have seen that you can jump from object to object in the graph.</p>
+
+<p>A <strong>directive</strong> can be used to query data from your GraphQL API in a more powerful way, and they can be applied to fields and objects. Below, we use two types of directives: an <strong>include directive</strong>, which includes the field when the Boolean type is set to true; and the <strong>skip directive</strong>, which excludes it instead. With these directives, you can apply conditional structures to your shape of query. The following query showcases the include directive, but you can substitute it with the skip directive to achieve the opposite effect:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">query</span> <span style="color: #06b6ef">OrganizationForLearningReact</span><span style="color: #e7e9db">(</span>
+  <span style="color: #06b6ef">$organization</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">String</span><span style="color: #5bc4bf">!</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">$repository</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">String</span><span style="color: #5bc4bf">!</span><span style="color: #e7e9db">,</span>
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">$withFork</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">Boolean</span><span style="color: #5bc4bf">!</span>
+</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">$organization</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">name</span>
+    <span style="color: #06b6ef">url</span>
+    <span style="color: #06b6ef">repository</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">$repository</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #06b6ef">name</span>
+<span style="background-color: #4f424c">      <span style="color: #06b6ef">forkCount</span> <span style="color: #ef6155">@</span><span style="color: #06b6ef">include</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">if</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">$withFork</span><span style="color: #e7e9db">)</span>
+</span>    <span style="color: #e7e9db">}</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>Now you can decide whether to include the information for the <code>forkCount</code> field based on provided variables.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+  <span style="color: #48b685">&quot;organization&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;the-road-to-learn-react&quot;</span><span style="color: #e7e9db">,</span>
+  <span style="color: #48b685">&quot;repository&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;the-road-to-learn-react-chinese&quot;</span><span style="color: #e7e9db">,</span>
+<span style="background-color: #4f424c">  <span style="color: #48b685">&quot;withFork&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span>
+</span><span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>The query in GraphQL gives you all you need to read data from a GraphQL API. The last section may have felt like a whirlwind of information, so these exercises provide additional practice until you feel comfortable.</p>
+
+<h3 id="exercises">Exercises:</h3>
+
+<ul>
+<li>Read more about <a target="_blank" rel="noopener noreferrer" href="http://graphql.org/learn/queries">the Query in GraphQL</a>.</li>
+<li>Explore GitHub&rsquo;s query schema by using the &ldquo;Docs&rdquo; sidebar in GraphiQL.</li>
+<li>Create several queries to request data from GitHub&rsquo;s GraphQL API using the following features:
+
+<ul>
+<li>objects and fields</li>
+<li>nested objects</li>
+<li>fragments</li>
+<li>arguments and variables</li>
+<li>operation names</li>
+<li>directives</li>
+</ul></li>
+</ul>
+
+<h2 class="chapter-header" id="graphql-mutation-github-api">GraphQL Mutation with GitHub&#39;s GraphQL API</h2>
+
+<p>This section introduces the GraphQL mutation. It complements the GraphQL query because it is used for writing data instead of reading it. The mutation shares the same principles as the query: it has fields and objects, arguments and variables, fragments and operation names, as well as directives and nested objects for the returned result. With mutations you can specify data as fields and objects that should be returned after it &lsquo;mutates&rsquo; into something acceptable. Before you start making your first mutation, be aware that you are using live GitHub data, so if you follow a person on GitHub using your experimental mutation, you will follow this person for real. Fortunately this sort of behavior is encouraged on GitHub.</p>
+
+<p>In this section, you will star a repository on GitHub, the same one you used a query to request before, using a mutation <a target="_blank" rel="noopener noreferrer" href="https://developer.github.com/v4/mutation/addstar">from GitHub&rsquo;s API</a>. You can find the <code>addStar</code> mutation in the &ldquo;Docs&rdquo; sidebar. The repository is a project for teaching developers about the fundamentals of React, so starring it should prove useful.</p>
+
+<p>You can visit <a target="_blank" rel="noopener noreferrer" href="https://github.com/the-road-to-learn-react/the-road-to-learn-react">the repository</a> to see if you&rsquo;ve given a star to the repository already. We want an unstarred repository so we can star it using a mutation. Before you can star a repository, you need to know its identifier, which can be retrieved by a query:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">query</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;the-road-to-learn-react&quot;</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">name</span>
+    <span style="color: #06b6ef">url</span>
+<span style="background-color: #4f424c">    <span style="color: #06b6ef">repository</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;the-road-to-learn-react&quot;</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span>      <span style="color: #06b6ef">id</span>
+      <span style="color: #06b6ef">name</span>
+    <span style="color: #e7e9db">}</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>In the results for the query in GraphiQL, you should see the identifier for the repository:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">MDEwOlJlcG9zaXRvcnk2MzM1MjkwNw</span><span style="color: #5bc4bf">==</span>
+</code></pre></div>
+
+
+<p>Before using the identifier as a variable, you can structure your mutation in GraphiQL the following way:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">mutation</span> <span style="color: #06b6ef">AddStar</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">$repositoryId</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">ID</span><span style="color: #5bc4bf">!</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">addStar</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">input</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">starrableId</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">$repositoryId</span> <span style="color: #e7e9db">})</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">starrable</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #06b6ef">id</span>
+      <span style="color: #06b6ef">viewerHasStarred</span>
+    <span style="color: #e7e9db">}</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>The mutation&rsquo;s name is given by GitHub&rsquo;s API: <code>addStar</code>. You are required to pass it the <code>starrableId</code> as <code>input</code> to identify the repository; otherwise, the GitHub server won&rsquo;t know which repository to star with the mutation. In addition, the mutation is a named mutation: <code>AddStar</code>. It&rsquo;s up to you to give it any name. Last but not least, you can define the return values of the mutation by using objects and fields again. It&rsquo;s identical to a query. Finally, the variables tab provides the variable for the mutation you retrieved with the last query:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+  <span style="color: #48b685">&quot;repositoryId&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;MDEwOlJlcG9zaXRvcnk2MzM1MjkwNw==&quot;</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>Once you execute the mutation, the result should look like the following. Since you specified the return values of your mutation using the <code>id</code> and <code>viewerHasStarred</code> fields, you should see them in the result.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+  <span style="color: #48b685">&quot;data&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #48b685">&quot;addStar&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #48b685">&quot;starrable&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #48b685">&quot;id&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;MDEwOlJlcG9zaXRvcnk2MzM1MjkwNw==&quot;</span><span style="color: #e7e9db">,</span>
+        <span style="color: #48b685">&quot;viewerHasStarred&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span>
+      <span style="color: #e7e9db">}</span>
+    <span style="color: #e7e9db">}</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>The repository is starred now. It&rsquo;s visible in the result, but you can verify it in the <a target="_blank" rel="noopener noreferrer" href="https://github.com/the-road-to-learn-react/the-road-to-learn-react">repository on GitHub</a>. Congratulations, you made your first mutation.</p>
+
+<h3 id="exercises-1">Exercises:</h3>
+
+<ul>
+<li>Read more about <a target="_blank" rel="noopener noreferrer" href="http://graphql.org/learn/queries/#mutations">the Mutation in GraphQL</a></li>
+<li>Explore GitHub&rsquo;s mutations by using the &ldquo;Docs&rdquo; sidebar in GraphiQL</li>
+<li>Find GitHub&rsquo;s <code>addStar</code> mutation in the &ldquo;Docs&rdquo; sidebar in GraphiQL
+
+<ul>
+<li>Check its possible fields for returning a response</li>
+</ul></li>
+<li>Create a few other mutations for this or another repository such as:
+
+<ul>
+<li>Unstar repository</li>
+<li>Watch repository</li>
+</ul></li>
+<li>Create two named mutations side by side in the GraphiQL panel and execute them</li>
+<li>Read more about <a target="_blank" rel="noopener noreferrer" href="http://graphql.org/learn/schema">the schema and types</a>
+
+<ul>
+<li>Make yourself a picture of it, but don&rsquo;t worry if you don&rsquo;t understand everything yet</li>
+</ul></li>
+</ul>
+
+<h2 class="chapter-header" id="graphql-pagination">GraphQL Pagination</h2>
+
+<p>This is where we return to the concept of <strong>pagination</strong> mentioned in the first chapter. Imagine you have a list of repositories in your GitHub organization, but you only want to retrieve a few of them to display in your UI. It could take ages to fetch a list of repositories from a large organization. In GraphQL, you can request paginated data by providing arguments to a <strong>list field</strong>, such as an argument that says how many items you are expecting from the list.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">query</span> <span style="color: #06b6ef">OrganizationForLearningReact</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;the-road-to-learn-react&quot;</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">name</span>
+    <span style="color: #06b6ef">url</span>
+<span style="background-color: #4f424c">    <span style="color: #06b6ef">repositories</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">first</span><span style="color: #5bc4bf">:</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">edges</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">        <span style="color: #06b6ef">node</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">          <span style="color: #06b6ef">name</span>
+</span><span style="background-color: #4f424c">        <span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">      <span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">}</span>
+</span>  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>A <code>first</code> argument is passed to the <code>repositories</code> list field that specifies how many items from the list are expected in the result. The query shape doesn&rsquo;t need to follow the <code>edges</code> and <code>node</code> structure, but it&rsquo;s one of a few solutions to define paginated data structures and lists with GraphQL. Actually, it follows the interface description of Facebook&rsquo;s GraphQL client called Relay. GitHub followed this approach and adopted it for their own GraphQL pagination API. Later, you will learn in the exercises about other strategies to implement pagination with GraphQL.</p>
+
+<p>After executing the query, you should see two items from the list in the repositories field. We still need to figure out how to fetch the next two repositories in the list, however. The first result of the query is the first <strong>page</strong> of the paginated list, the second query result should be the second page. In the following, you will see how the query structure for paginated data allows us to retrieve meta information to execute successive queries. For instance, each edge comes with its own cursor field to identify its position in the list.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">query</span> <span style="color: #06b6ef">OrganizationForLearningReact</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;the-road-to-learn-react&quot;</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">name</span>
+    <span style="color: #06b6ef">url</span>
+    <span style="color: #06b6ef">repositories</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">first</span><span style="color: #5bc4bf">:</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #06b6ef">edges</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #06b6ef">node</span> <span style="color: #e7e9db">{</span>
+          <span style="color: #06b6ef">name</span>
+        <span style="color: #e7e9db">}</span>
+<span style="background-color: #4f424c">        <span style="color: #06b6ef">cursor</span>
+</span>      <span style="color: #e7e9db">}</span>
+    <span style="color: #e7e9db">}</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>The result should be similar to the following:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+  <span style="color: #48b685">&quot;data&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #48b685">&quot;organization&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #48b685">&quot;name&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;The Road to learn React&quot;</span><span style="color: #e7e9db">,</span>
+      <span style="color: #48b685">&quot;url&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;https://github.com/the-road-to-learn-react&quot;</span><span style="color: #e7e9db">,</span>
+      <span style="color: #48b685">&quot;repositories&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #48b685">&quot;edges&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[</span>
+          <span style="color: #e7e9db">{</span>
+            <span style="color: #48b685">&quot;node&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+              <span style="color: #48b685">&quot;name&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;the-road-to-learn-react&quot;</span>
+            <span style="color: #e7e9db">},</span>
+            <span style="color: #48b685">&quot;cursor&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;Y3Vyc29yOnYyOpHOA8awSw==&quot;</span>
+          <span style="color: #e7e9db">},</span>
+          <span style="color: #e7e9db">{</span>
+            <span style="color: #48b685">&quot;node&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+              <span style="color: #48b685">&quot;name&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;hackernews-client&quot;</span>
+            <span style="color: #e7e9db">},</span>
+            <span style="color: #48b685">&quot;cursor&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;Y3Vyc29yOnYyOpHOBGhimw==&quot;</span>
+          <span style="color: #e7e9db">}</span>
+        <span style="color: #e7e9db">]</span>
+      <span style="color: #e7e9db">}</span>
+    <span style="color: #e7e9db">}</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>Now, you can use the cursor of the first repository in the list to execute a second query. By using the <code>after</code> argument for the <code>repositories</code> list field, you can specify an entry point to retrieve your next page of paginated data. What would the result look like when executing the following query?</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">query</span> <span style="color: #06b6ef">OrganizationForLearningReact</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;the-road-to-learn-react&quot;</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">name</span>
+    <span style="color: #06b6ef">url</span>
+<span style="background-color: #4f424c">    <span style="color: #06b6ef">repositories</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">first</span><span style="color: #5bc4bf">:</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">after</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;Y3Vyc29yOnYyOpHOA8awSw==&quot;</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+</span>      <span style="color: #06b6ef">edges</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #06b6ef">node</span> <span style="color: #e7e9db">{</span>
+          <span style="color: #06b6ef">name</span>
+        <span style="color: #e7e9db">}</span>
+        <span style="color: #06b6ef">cursor</span>
+      <span style="color: #e7e9db">}</span>
+    <span style="color: #e7e9db">}</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>In the previous result, only the second item is retrieved, as well as a new third item. The first item isn&rsquo;t retrieved because you have used its cursor as <code>after</code> argument to retrieve all items after it. Now you can imagine how to make successive queries for paginated lists:</p>
+
+<ul>
+<li>Execute the initial query without a cursor argument</li>
+<li>Execute every following query with the cursor of the <strong>last</strong> item&rsquo;s cursor from the previous query result</li>
+</ul>
+
+<p>To keep the query dynamic, we extract its arguments as variables. Afterward, you can use the query with a dynamic <code>cursor</code> argument by providing a variable for it. The <code>after</code> argument can be <code>undefined</code> to retrieve the first page. In conclusion, that would be everything you need to fetch pages of lists from one large list by using a feature called pagination. You need a mandatory argument specifying how many items should be retrieved and an optional argument, in this case the <code>after</code> argument, specifying the starting point for the list.</p>
+
+<p>There are also a couple helpful ways to use meta information for your paginated list. Retrieving the <code>cursor</code> field for every repository may be verbose when using only the <code>cursor</code> of the last repository, so you can remove the <code>cursor</code> field for an individual edge, but add the <code>pageInfo</code> object with its <code>endCursor</code> and <code>hasNextPage</code> fields. You can also request the <code>totalCount</code> of the list.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">query</span> <span style="color: #06b6ef">OrganizationForLearningReact</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">login</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;the-road-to-learn-react&quot;</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #06b6ef">name</span>
+    <span style="color: #06b6ef">url</span>
+    <span style="color: #06b6ef">repositories</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">first</span><span style="color: #5bc4bf">:</span> <span style="color: #f99b15">2</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">after</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;Y3Vyc29yOnYyOpHOA8awSw==&quot;</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">      <span style="color: #06b6ef">totalCount</span>
+</span>      <span style="color: #06b6ef">edges</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #06b6ef">node</span> <span style="color: #e7e9db">{</span>
+          <span style="color: #06b6ef">name</span>
+        <span style="color: #e7e9db">}</span>
+      <span style="color: #e7e9db">}</span>
+<span style="background-color: #4f424c">      <span style="color: #06b6ef">pageInfo</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">        <span style="color: #06b6ef">endCursor</span>
+</span><span style="background-color: #4f424c">        <span style="color: #06b6ef">hasNextPage</span>
+</span><span style="background-color: #4f424c">      <span style="color: #e7e9db">}</span>
+</span>    <span style="color: #e7e9db">}</span>
+  <span style="color: #e7e9db">}</span>
+<span style="color: #e7e9db">}</span>
+</code></pre></div>
+
+
+<p>The <code>totalCount</code> field discloses the total number of items in the list, while the <code>pageInfo</code> field gives you information about two things:</p>
+
+<ul>
+<li><p><strong><code>endCursor</code></strong> can be used to retrieve the successive list, which we did with the <code>cursor</code> field, except this time we only need one meta field to perform it. The cursor of the last list item is sufficient to request the next page of list.</p></li>
+
+<li><p><strong><code>hasNextPage</code></strong> gives you information about whether or not there is a next page to retrieve from the GraphQL API. Sometimes you&rsquo;ve already fetched the last page from your server. For applications that use infinite scrolling to load more pages when scrolling lists, you can stop fetching pages when there are no more available.</p></li>
+</ul>
+
+<p>This meta information completes the pagination implementation. Information is made accessible using the GraphQL API to implement <a href="../react-paginated-list/index.html">paginated lists</a> and <a href="../react-infinite-scroll/index.html">infinite scroll</a>. Note, this covers GitHub&rsquo;s GraphQL API; a different GraphQL API for pagination might use different naming conventions for the fields, exclude meta information, or employ different mechanisms altogether.</p>
+
+<h3 id="exercises-2">Exercises:</h3>
+
+<ul>
+<li>Extract the <code>login</code> and the <code>cursor</code> from your pagination query as variables.</li>
+<li>Exchange the <code>first</code> argument with a <code>last</code> argument.</li>
+<li>Search for the <code>repositories</code> field in the GraphiQL &ldquo;Docs&rdquo; sidebar which says: &ldquo;A list of repositories that the &hellip; owns.&rdquo;
+
+<ul>
+<li>Explore the other arguments that can be passed to this list field.</li>
+<li>Use the <code>orderBy</code> argument to retrieve an ascending or descending list.</li>
+</ul></li>
+<li>Read more about <a target="_blank" rel="noopener noreferrer" href="http://graphql.org/learn/pagination">pagination in GraphQL</a>.
+
+<ul>
+<li>The cursor approach is only one solution which is used by GitHub.</li>
+<li>Make sure to understand the other solutions, too.</li>
+</ul></li>
+</ul>
+
+<hr class="section-divider">
+
+<p>Interacting with GitHub&rsquo;s GraphQL API via GraphiQL or GitHub&rsquo;s GraphQL Explorer is only the beginning. You should be familiar with the fundamental GraphQL concepts now. But there are a lot more exciting concepts to explore. In the next chapters, you will implement a fully working GraphQL client application with React that interacts with GitHub&rsquo;s API.</p>
+
+<div class="read-before">
+    <p>This tutorial is part 2 of 5 in this series.</p>
+    <div>Part 1: <a href="../getting-started-github-graphql-api/index.html" itemprop="url">Getting Started with GitHub&#39;s GraphQL API</a></div>
+    <div>Part 3: <a href="../react-with-graphql-tutorial/index.html" itemprop="url">A complete React with GraphQL Tutorial</a></div>
+    <div>Part 4: <a href="../graphql-apollo-client-tutorial/index.html" itemprop="url">A Apollo Client Tutorial for Beginners</a></div>
+    <div>Part 5: <a href="../react-graphql-apollo-tutorial/index.html" itemprop="url">A complete React with Apollo and GraphQL Tutorial</a></div>
+</div>
+
+
+                            
+<div class="feedback-and-share text-center">
+    <hr>
+    
+    <p class="lead">
+        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
+    </p>
+    
+    
+        <p class="lead">
+            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+        </p>
+    
+</div>
+
+
+                            
+                                <div class="box-inline col-md-12">
+    <div class="col-md-12 text-center">
+        <h2 class="newsletter">The Road to learn React</h2>
+        
+            <div class="col-md-4">
+                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+            </div>
+        
+        <p class="lead">
+            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
+        </p>
+        <a
+            class="btn btn-template-main"
+            href="https://roadtoreact.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Get the Book for free <i class="fa fa-chevron-right"></i>
+        </a>
+        
+            <div>
+                <a
+                    href="https://amzn.to/2QY2ONp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get it from Amazon
+                </a>
+            </div>
+        
+    </div>
+</div>
+                            
+                        </div>
+
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'rwieruch';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </article>
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase">Take Part</h2>
+            </div>
+
+            <div class="col-md-12 text-center">
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+                
+            </div>
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+        <footer id="subfooter">
+    <div class="container">
+
+        <div class="col-md-5 col-sm-6">
+
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../redux-vs-usereducer/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="React&#39;s useReducer vs Redux"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../publish-npm-package-node/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to publish a npm package?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../react-scroll-to-item/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to Scroll to Item in React?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+
+        
+        <div class="col-md-5 col-md-offset-2 col-sm-6">
+
+            <h4>About Me</h4>
+
+            <div class="blog-entries">
+                <div class="item same-height-row clearfix">
+                    <div class="profile same-height-always">
+                        <img
+                            class="img-lazy img-responsive"
+                            data-lazy-src="//img/page/profile.jpg"
+                            alt="profile"
+                        >
+                    </div>
+                    <div class="name same-height-always">
+                        <p>
+                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+        <footer id="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-left">
+          
+            <li>© Chris Paul</li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline footer-social-buttons text-center">
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-right">
+          
+            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+
+    
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-65599459-2', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="../js/script.js"></script>
+
+
+
+  </body>
+</html>

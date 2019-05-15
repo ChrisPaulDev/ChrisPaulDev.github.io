@@ -1,0 +1,23 @@
+{
+	"lang": "en",
+	"dir": "ltr",
+	"name": "A learning, teaching and writing software engineer",
+	"short_name": "CPaul",
+	"icons": [
+		{
+			"src": "\/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image\/png"
+		},
+		{
+			"src": "\/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image\/png"
+		}
+	],
+	"theme_color": "#38bb6c",
+  	"background_color": "#ffffff",
+	"start_url": "/",
+    "display": "standalone",
+    "orientation": "natural"
+}

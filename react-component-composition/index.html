@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="google-site-verification" content="We9gRQmlTIjMkOPPjPWDQTXd15nWA6tBEYlxQ2cMpEg" />
+
+  <title>
+    React Component Composition - CPaul
+  </title>
+
+  <meta name="author" content="" />
+
+  
+    <meta name="description" content="A guide that explains React Component Composition step by step. Learn the React Composition Pattern by example which helps you to render components within each other ...">
+  
+
+  <meta name="theme-color" content="#38bb6c"/>
+
+  <meta name="generator" content="Hugo 0.41" />
+
+  
+  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+  
+  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="../img/favicon/manifest.json">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+
+  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+
+  
+  
+<meta itemprop="name" content="React Component Composition">
+<meta itemprop="description" content="A guide that explains React Component Composition step by step. Learn the React Composition Pattern by example which helps you to render components within each other ...">
+
+
+
+    <meta itemprop="image" content="https://chrispaul.dev/img/posts/react-component-composition/banner_640.jpg">
+
+
+
+<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+
+
+<meta itemprop="wordCount" content="2844">
+
+
+  
+  <meta name="keywords" content="react component composition, react component composition example, react dynamic component composition, react component composition pattern">
+
+  <meta property="og:title" content="React Component Composition - CPaul">
+
+
+  <meta property="og:description" content="A guide that explains React Component Composition step by step. Learn the React Composition Pattern by example which helps you to render components within each other ..." />
+
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrispaul.dev/react-component-composition/" />
+<meta property="og:image" content="https://chrispaul.dev/img/posts/react-component-composition/banner_640.jpg" />
+
+  
+
+    <meta name="news_keywords" content="react component composition,react component composition example,react dynamic component composition,react component composition pattern" />
+
+  
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/react-component-composition/banner_640.jpg"/>
+
+
+
+<meta name="twitter:title" content="React Component Composition"/>
+<meta name="twitter:description" content="A guide that explains React Component Composition step by step. Learn the React Composition Pattern by example which helps you to render components within each other ..."/>
+<meta name="twitter:site" content="@rwieruch"/>
+<meta name="twitter:domain" content="rwieruch"/>
+
+  
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="../index.html">
+                    <img src="../img/page/logo.svg" alt="React Component Composition logo" class="img-lazy">
+                    <span class="sr-only">React Component Composition - go to homepage</span>
+                </a>
+
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../index.html">Blog</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../work-with-me/index.html">Work with me</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a href="../about/index.html">About</a>
+                        
+                    </li>
+                    
+                    <li class="dropdown">
+                        
+                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+                        
+                    </li>
+                    
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freact-component-composition%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=React%20Component%20Composition%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2freact-component-composition%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=React%20Component%20Composition&amp;url=https%3a%2f%2fchrispaul.dev%2freact-component-composition%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+</div>
+
+<div class="visible-xs visible-sm text-center">
+    <div class="post-share post-share-fixed post-share-mobile">
+        
+
+<a
+    aria-label="icon-facebook"
+    class="icon-facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freact-component-composition%2f"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook"></i>
+</a>
+
+
+<a
+    aria-label="icon-twitter"
+    class="icon-twitter"
+    href="https://twitter.com/share?text=React%20Component%20Composition%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2freact-component-composition%2f"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter"></i>
+</a>
+
+
+
+
+
+<a
+    aria-label="icon-linkedin"
+    class="icon-linkedin"
+    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=React%20Component%20Composition&amp;url=https%3a%2f%2fchrispaul.dev%2freact-component-composition%2f">
+    <i class="fa fa-linkedin"></i>
+</a>
+
+    </div>
+</div>
+
+        
+
+        <div class="hidden-xs">
+            
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase newsletter">Take Part</h2>
+            </div>
+
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+        </div>
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    <article
+                        class="col-md-8 col-md-offset-2"
+                        id="blog-post"
+                        itemprop="blogPosts"
+                        itemscope itemtype="http://schema.org/BlogPosting">
+
+                        <div id="post-content" itemprop="articleBody">
+
+                            <header>
+                                <h1 itemprop="name headline">React Component Composition</h1>
+                            </header>
+
+                            <div class="text-center">
+                                
+    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
+         <i class="fa fa-facebook"></i>Follow
+    </a>
+
+
+                                &nbsp;
+                                
+
+                                &nbsp;
+                                
+  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
+    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
+  </a>
+
+
+                                &nbsp;
+                                
+                            </div>
+
+                            <p class="text-muted text-uppercase mb-small text-center">
+    <span itemprop="author publisher">
+        
+    </span>
+
+    
+        <time datetime="2019-01-30" itemprop="datePublished">
+            January 30, 2019
+        </time>
+    
+
+    
+        <span class="hidden-xs hidden-sm"> - <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/react-component-composition.md">
+                Edit this Post on GitHub
+            </a>
+        </span>
+    
+</p>
+
+                            <div>
+  
+
+</div>
+
+<div class="post-image-primary">
+    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="pinterest-pinner">
+            <a
+                data-pin-do="buttonPin"
+                data-pin-save="true"
+                data-pin-tall="true"
+                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2freact-component-composition%2f&amp;media=https://chrispaul.dev/img%2fposts%2freact-component-composition%2fbanner.jpg&amp;description=">
+            </a>
+        </div>
+
+        <img
+            class="img-lazy img-responsive"
+            data-lazy-src="/src="/img/posts/react-component-composition/banner.jpg"
+            data-is-src-set="is-src-set"
+            alt="react component composition"
+            itemprop="image"
+        />
+    </div>
+</div>
+
+
+<p>There are various advanced concepts and patterns in React to master on becoming a React developer. In this tutorial, I want to go through React&rsquo;s Component Composition step by step by evolving one example around this React pattern. You can find more about the topic in the <a target="_blank" rel="noopener noreferrer" href="https://reactjs.org/docs/composition-vs-inheritance.html">official React documentation</a> as well.</p>
+
+<h2 class="chapter-header" id="composition-code">What&#39;s Composition in Code?</h2>
+
+<p>Let&rsquo;s take on step backwards before tackling composition in React. What&rsquo;s composition in general? It&rsquo;s the ingredients and the arrangement of these ingredients to create something bigger out of it. It&rsquo;s the samples in a piece of music that make up a track. It&rsquo;s the fruits that are used for the perfect smoothie. It&rsquo;s the choreography of dancers in a musical. And it&rsquo;s the internals of a function in programming that need to be arranged in a way to get the desired output:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">convertCurrency</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">amount</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">fromCurrency</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">toCurrency</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">conversionRate</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">getConversionRate</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">fromCurrency</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">toCurrency</span><span style="color: #e7e9db">);</span>
+  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">newAmount</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">applyConversionRate</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">amount</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">conversionRate</span><span style="color: #e7e9db">);</span>
+
+  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">newAmount</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">};</span>
+</code></pre></div>
+
+
+<p>In functional programming, the composition of functions is ubiquitous:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">convertCurrency</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">amount</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">fromCurrency</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">toCurrency</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">compose</span><span style="color: #e7e9db">(</span>
+    <span style="color: #06b6ef">applyConversionRate</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">amount</span><span style="color: #e7e9db">),</span>
+    <span style="color: #06b6ef">getConversionRate</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">fromCurrency</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">toCurrency</span><span style="color: #e7e9db">),</span>
+  <span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>And suddenly we are in the domain of programming, code and functions. As you can see, everything you do within a function is a composition of ingredients and their arrangement as well. This becomes even more true when a function is made up of functions. Then it&rsquo;s the composition of functions within a function.</p>
+
+<h2 class="chapter-header" id="why-react-component-composition">Why React Component Composition?</h2>
+
+<p>You have seen how multiple functions can be composed together to achieve something bigger. The same applies to HTML elements and beyond to React components too. Let&rsquo;s encounter both, HTML element composition and React component composition, with a form that submits data. In HTML that form element could look like the following:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-html" data-lang="html"><span></span><span style="color: #e7e9db">&lt;</span><span style="color: #5bc4bf">form</span> <span style="color: #06b6ef">action</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;javascript:onSubmit();&quot;</span><span style="color: #e7e9db">&gt;</span>
+  <span style="color: #e7e9db">&lt;</span><span style="color: #5bc4bf">label</span><span style="color: #e7e9db">&gt;</span>
+    Your name: <span style="color: #e7e9db">&lt;</span><span style="color: #5bc4bf">input</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;text&quot;</span> <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;&quot;</span><span style="color: #e7e9db">&gt;</span>
+  <span style="color: #e7e9db">&lt;/</span><span style="color: #5bc4bf">label</span><span style="color: #e7e9db">&gt;</span>
+
+  <span style="color: #e7e9db">&lt;</span><span style="color: #5bc4bf">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;submit&quot;</span><span style="color: #e7e9db">&gt;</span>Send<span style="color: #e7e9db">&lt;/</span><span style="color: #5bc4bf">button</span><span style="color: #e7e9db">&gt;</span>
+<span style="color: #e7e9db">&lt;/</span><span style="color: #5bc4bf">form</span><span style="color: #e7e9db">&gt;</span>
+</code></pre></div>
+
+
+<p>However, it&rsquo;s not only the form element but all of its other ingredients and their arrangement as well. It&rsquo;s the input field, the button, and the form that contribute to a greater goal: submit data. The example is taken a bit out of context, because the JavaScript function is missing, but not so the following React example. In React, a Form as React component which is rendered within a App component could look like the following:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">useState</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">App</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onSubmit</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">username</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">);</span>
+
+  <span style="color: #815ba4">return</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Form</span> <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">Form</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">onSubmit</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">[</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">useState</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;&#39;</span><span style="color: #e7e9db">);</span>
+
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">form</span>
+      <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">);</span>
+
+        <span style="color: #776e71">// prevents browser from reloading</span>
+        <span style="color: #776e71">// which is the native browser behavior</span>
+        <span style="color: #776e71">// for a form submit</span>
+        <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">preventDefault</span><span style="color: #e7e9db">();</span>
+      <span style="color: #e7e9db">}}</span>
+    <span style="color: #5bc4bf">&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">label</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #06b6ef">Your</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">input</span>
+          <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;text&quot;</span>
+          <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">}</span>
+          <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">target</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">)}</span>
+        <span style="color: #5bc4bf">/&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/label&gt;</span>
+
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;submit&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Send</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/form&gt;</span>
+  <span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p><em>Note: The Form component uses React Hooks that are not released yet. If you want, you can learn more about <a href="../react-hooks/index.html">React Hooks</a>. Essentially they enable you to have function components with state and side-effects.</em></p>
+
+<p>Now, wherever we use the Form component, we can capture the username of a user. It&rsquo;s identical to the HTML form from before, isn&rsquo;t it? Not really. At the moment, the Form is only capable of doing one thing. We did loose all the benefits from the HTML element composition from before, because we ended up with a specialized Form component. It can be reused anywhere in our React application, but it handles only one case. To make it effortless to see the difference, we would have to rename the Form component:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">useState</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">App</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onSubmit</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">username</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">);</span>
+
+<span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">UsernameForm</span> <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span><span style="color: #e7e9db">;</span>
+</span><span style="color: #e7e9db">};</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">UsernameForm</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">onSubmit</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span>  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">[</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">useState</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;&#39;</span><span style="color: #e7e9db">);</span>
+
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">form</span>
+      <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">);</span>
+        <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">preventDefault</span><span style="color: #e7e9db">();</span>
+      <span style="color: #e7e9db">}}</span>
+    <span style="color: #5bc4bf">&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">label</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #06b6ef">Your</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">input</span>
+          <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;text&quot;</span>
+          <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">}</span>
+          <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">target</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">)}</span>
+        <span style="color: #5bc4bf">/&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/label&gt;</span>
+
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;submit&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Send</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/form&gt;</span>
+  <span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Since we encapsulated everything in one React component, it&rsquo;s difficult to tear everything apart to serve another purpose than capturing the name of a user. How do we get back what we had with the HTML form? After all, we don&rsquo;t want to have one specialized form, but a more general applicable form that can be reused for different scenarios.</p>
+
+<h2 class="chapter-header" id="react-component-composition">Entering React Component Composition?</h2>
+
+<p>There is one property (<a href="../react-pass-props-to-component/index.html">React prop</a>) that helps us out with this dilemma for our React component: <strong>the React children prop</strong>. It&rsquo;s one special prop provided by React to render something within a component whereas the component isn&rsquo;t aware ahead of time what it will be. A basic example may be the following:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Button</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">onClick</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">type</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;button&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">children</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">type</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onClick</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+    <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+<span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>The button element becomes a reusable Button component whereas the Button component doesn&rsquo;t know what it renders except for the button. Let&rsquo;s use the children prop for our previous example to substitute our HTML form element with a Form component that renders all its inner content with React&rsquo;s children prop:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">UsernameForm</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">onSubmit</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">[</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">useState</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;&#39;</span><span style="color: #e7e9db">);</span>
+
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+<span style="background-color: #4f424c">    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Form</span>
+</span>      <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">);</span>
+        <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">preventDefault</span><span style="color: #e7e9db">();</span>
+      <span style="color: #e7e9db">}}</span>
+    <span style="color: #5bc4bf">&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">label</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #06b6ef">Your</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">input</span>
+          <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;text&quot;</span>
+          <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">}</span>
+          <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">target</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">)}</span>
+        <span style="color: #5bc4bf">/&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/label&gt;</span>
+
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;submit&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Send</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+<span style="background-color: #4f424c">    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Form&gt;</span>
+</span>  <span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Form</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">children</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+</span><span style="background-color: #4f424c">  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">form</span> <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/form&gt;</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">);</span>
+</span>
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>Let&rsquo;s continue with this substitution for the other React elements before we can reap the fruits of having a composable React Form component. The Button component that has been shown before can be used to render our button element:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">UsernameForm</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">onSubmit</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">[</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">useState</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;&#39;</span><span style="color: #e7e9db">);</span>
+
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Form</span>
+      <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">);</span>
+        <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">preventDefault</span><span style="color: #e7e9db">();</span>
+      <span style="color: #e7e9db">}}</span>
+    <span style="color: #5bc4bf">&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">label</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #06b6ef">Your</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">input</span>
+          <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;text&quot;</span>
+          <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">}</span>
+          <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">target</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">)}</span>
+        <span style="color: #5bc4bf">/&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/label&gt;</span>
+
+<span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;submit&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Send</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Button&gt;</span>
+</span>    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Form&gt;</span>
+  <span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">Form</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">children</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">form</span> <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/form&gt;</span>
+<span style="color: #e7e9db">);</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Button</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">onClick</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">type</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;button&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">children</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+</span><span style="background-color: #4f424c">  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">type</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onClick</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">);</span>
+</span>
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>Last but not least, the input field HTML element and its label. Let&rsquo;s extract it to another reusable React component:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">UsernameForm</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">onSubmit</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">[</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">useState</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;&#39;</span><span style="color: #e7e9db">);</span>
+
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Form</span>
+      <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">);</span>
+        <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">preventDefault</span><span style="color: #e7e9db">();</span>
+      <span style="color: #e7e9db">}}</span>
+    <span style="color: #5bc4bf">&gt;</span>
+<span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">InputField</span> <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+</span><span style="background-color: #4f424c">        <span style="color: #06b6ef">Your</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span>
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/InputField&gt;</span>
+</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;submit&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Send</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Button&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Form&gt;</span>
+  <span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">Form</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">children</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">form</span> <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/form&gt;</span>
+<span style="color: #e7e9db">);</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">Button</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">onClick</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">type</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;button&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">children</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">type</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onClick</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+    <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+<span style="color: #e7e9db">);</span>
+
+<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">InputField</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">value</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">onChange</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">children</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+</span><span style="background-color: #4f424c">  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">label</span><span style="color: #5bc4bf">&gt;</span>
+</span><span style="background-color: #4f424c">    <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">input</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;text&quot;</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">onChange</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">target</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">)}</span>
+</span><span style="background-color: #4f424c">    <span style="color: #5bc4bf">/&gt;</span>
+</span><span style="background-color: #4f424c">  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/label&gt;</span>
+</span><span style="background-color: #4f424c"><span style="color: #e7e9db">);</span>
+</span>
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>As you can see, the InputField component becomes generic/abstract while all props are passed to the component to specialize it. In addition, the component takes it one step further than the Form and Button components, because it offers a new kind of &ldquo;HTML element&rdquo; composition that encapsulates a label with an input field into one component. It can be reused as such in our Form component but anywhere else too.</p>
+
+<p>All three steps from before made our Form a composable React component. The Form renders the HTML form element, but everything within is rendered with React&rsquo;s children. The same applies to the components within the Form component, which follow the same principle of composition in themselves, by just rendering anything that&rsquo;s passed to them with the children property.</p>
+
+<h2 class="chapter-header" id="react-composition-specialization">Generalization vs. Specialization for React Components</h2>
+
+<p>In our case, we have one specialized Form component (UsernameForm) to capture the username information from a user. However, you could also use the Form component directly in the App component. The App component then makes it a specialized Form component by passing all the displayed information as children and other props to it:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">useState</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">App</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onSubmit</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">username</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">);</span>
+
+<span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">[</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">useState</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;&#39;</span><span style="color: #e7e9db">);</span>
+</span>
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+<span style="background-color: #4f424c">    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Form</span>
+</span><span style="background-color: #4f424c">      <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">        <span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">);</span>
+</span><span style="background-color: #4f424c">        <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">preventDefault</span><span style="color: #e7e9db">();</span>
+</span><span style="background-color: #4f424c">      <span style="color: #e7e9db">}}</span>
+</span><span style="background-color: #4f424c">    <span style="color: #5bc4bf">&gt;</span>
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">InputField</span> <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+</span><span style="background-color: #4f424c">        <span style="color: #06b6ef">Your</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span>
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/InputField&gt;</span>
+</span><span style="background-color: #4f424c">
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;submit&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Send</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Button&gt;</span>
+</span><span style="background-color: #4f424c">    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Form&gt;</span>
+</span>  <span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>The UsernameForm component disappears. In the App component, you take all the ingredients (e.g. Form, InputField, Button), give them your specialized flavor (e.g. onSubmit, username, setUsername), and arrange them however you want them to appear within the Form component. What you get is a composed Form component that is specialized from the outside (App component). Anyway, you can also keep the UsernameForm, if this kind of specialized Form is used more than once in your application:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">App</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+<span style="background-color: #4f424c">    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">UsernameForm</span> <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">username</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">)}</span> <span style="color: #5bc4bf">/&gt;</span>
+</span><span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">UsernameForm</span> <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">username</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">)}</span> <span style="color: #5bc4bf">/&gt;</span>
+</span><span style="background-color: #4f424c">    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+</span>  <span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">UsernameForm</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">onSubmit</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">[</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">useState</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;&#39;</span><span style="color: #e7e9db">);</span>
+
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Form</span>
+      <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">);</span>
+        <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">preventDefault</span><span style="color: #e7e9db">();</span>
+      <span style="color: #e7e9db">}}</span>
+    <span style="color: #5bc4bf">&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">InputField</span> <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #06b6ef">Your</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/InputField&gt;</span>
+
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;submit&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Send</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Button&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Form&gt;</span>
+  <span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>From there it really depends on your React application on whether you want to use the generic Form component (e.g. Form) or specialize it as standalone Form component with a special use case (e.g. UsernameForm). My recommendation: Do the latter only if you catch yourself copying and pasting the same generic Form component from A to B to reuse it somewhere else. Then I would advice to implement this specialized Form component which encapsulates all the logic and can be reused anywhere in your application. In addition, it&rsquo;s beneficial for <a href="../react-testing-tutorial/index.html">testing your React component</a> in isolation.</p>
+
+<h2 class="chapter-header" id="react-props-control">Fine-grained Props Control</h2>
+
+<p>So far, we have only discussed the composable Form component. However, the InputField and Button components are composable components in themselves too. Both of them render something by using the children prop; they are not aware ahead of time what it will be.</p>
+
+<p>Also the generalizaton and specialization applies to these components. The Button component, in our case, is already a specialized case, because it doesn&rsquo;t use the default &ldquo;button&rdquo; type, but a &ldquo;submit&rdquo; type to make it working in our submit form. Then we don&rsquo;t need to pass the onClick function to the button and therefore the onSubmit from the form element is used instead.</p>
+
+<p>If you would want to add more props to the Button component, you can do so without bothering the other components in the component composition of the Form component. Let&rsquo;s say you want to give your Button component a colored background from the outside:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">App</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onSubmit</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">username</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">);</span>
+
+  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">[</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">useState</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;&#39;</span><span style="color: #e7e9db">);</span>
+
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Form</span>
+      <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">);</span>
+        <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">preventDefault</span><span style="color: #e7e9db">();</span>
+      <span style="color: #e7e9db">}}</span>
+    <span style="color: #5bc4bf">&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">InputField</span> <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #06b6ef">Your</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/InputField&gt;</span>
+
+<span style="background-color: #4f424c">      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Button</span> <span style="color: #06b6ef">color</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;violet&quot;</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;submit&quot;</span><span style="color: #5bc4bf">&gt;</span>
+</span>        <span style="color: #06b6ef">Send</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Button&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Form&gt;</span>
+  <span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #e7e9db">...</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">Button</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span>
+<span style="background-color: #4f424c">  <span style="color: #06b6ef">color</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;white&#39;</span><span style="color: #e7e9db">,</span>
+</span>  <span style="color: #06b6ef">onClick</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">type</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;button&#39;</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">children</span><span style="color: #e7e9db">,</span>
+<span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span>
+<span style="background-color: #4f424c">    <span style="color: #06b6ef">style</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{{</span> <span style="color: #06b6ef">backgroundColor</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">color</span> <span style="color: #e7e9db">}}</span>
+</span>    <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">type</span><span style="color: #e7e9db">}</span>
+    <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onClick</span><span style="color: #e7e9db">}</span>
+  <span style="color: #5bc4bf">&gt;</span>
+    <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+<span style="color: #e7e9db">);</span>
+
+<span style="color: #e7e9db">...</span>
+</code></pre></div>
+
+
+<p>You can change the Button component&rsquo;s API (arguments = props) at one place, and can use it anywhere in your application. In contrast, imagine how implicit this component API would become without the composition. Let&rsquo;s take the component from the beginning of this walkthrough. You would have to pass the color to the Form component &ndash; not caring about the generalization/specialization of the Form component here &ndash; to colorize another component within the Form component:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Form</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">buttonColor</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">onSubmit</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span>  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">[</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">useState</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;&#39;</span><span style="color: #e7e9db">);</span>
+
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">form</span>
+      <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">);</span>
+        <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">preventDefault</span><span style="color: #e7e9db">();</span>
+      <span style="color: #e7e9db">}}</span>
+    <span style="color: #5bc4bf">&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">label</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #06b6ef">Your</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">input</span>
+          <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;text&quot;</span>
+          <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">}</span>
+          <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">target</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">)}</span>
+        <span style="color: #5bc4bf">/&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/label&gt;</span>
+
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span>
+<span style="background-color: #4f424c">        <span style="color: #06b6ef">style</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{{</span> <span style="color: #06b6ef">backgroundColor</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">buttonColor</span> <span style="color: #e7e9db">}}</span>
+</span>        <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;submit&quot;</span>
+      <span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #06b6ef">Send</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/form&gt;</span>
+  <span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">};</span>
+</code></pre></div>
+
+
+<p>However, the Form component shouldn&rsquo;t care about any props for the button element. In order to generalize the shown non composed Form component even more, it would also have to take other props as arguments (e.g. &ldquo;Your name&rdquo;-label, &ldquo;Send&rdquo;-button label):</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Form</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">label</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">buttonLabel</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">buttonColor</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">onSubmit</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</span><span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">[</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">setValue</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">useState</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;&#39;</span><span style="color: #e7e9db">);</span>
+</span>
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">form</span>
+      <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<span style="background-color: #4f424c">        <span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">);</span>
+</span>        <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">preventDefault</span><span style="color: #e7e9db">();</span>
+      <span style="color: #e7e9db">}}</span>
+    <span style="color: #5bc4bf">&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">label</span><span style="color: #5bc4bf">&gt;</span>
+<span style="background-color: #4f424c">        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">label</span><span style="color: #e7e9db">}</span>
+</span>        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">input</span>
+          <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;text&quot;</span>
+<span style="background-color: #4f424c">          <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">}</span>
+</span><span style="background-color: #4f424c">          <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">setValue</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">target</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">)}</span>
+</span>        <span style="color: #5bc4bf">/&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/label&gt;</span>
+
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span>
+        <span style="color: #06b6ef">style</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{{</span> <span style="color: #06b6ef">backgroundColor</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">buttonColor</span> <span style="color: #e7e9db">}}</span>
+        <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;submit&quot;</span>
+      <span style="color: #5bc4bf">&gt;</span>
+<span style="background-color: #4f424c">        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">buttonLabel</span><span style="color: #e7e9db">}</span>
+</span>      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/form&gt;</span>
+  <span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">};</span>
+</code></pre></div>
+
+
+<p>Suddenly you would end up with a cluttered component API for the Form component whereas the Form component takes care of everything rendered within itself. That can be avoided and that&rsquo;s why component compositions are such powerful pattern in React. Every component takes care about itself yet contributes to a greater goal in the component hierarchy of a React application.</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">useState</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">App</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">onSubmit</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">username</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">);</span>
+
+  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">[</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">useState</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;&#39;</span><span style="color: #e7e9db">);</span>
+
+  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Form</span>
+      <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">);</span>
+        <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">preventDefault</span><span style="color: #e7e9db">();</span>
+      <span style="color: #e7e9db">}}</span>
+    <span style="color: #5bc4bf">&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">InputField</span> <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">username</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">setUsername</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #06b6ef">Your</span> <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/InputField&gt;</span>
+
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Button</span> <span style="color: #06b6ef">color</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;violet&quot;</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;submit&quot;</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #06b6ef">Send</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Button&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Form&gt;</span>
+  <span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">};</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">Form</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">children</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">form</span> <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/form&gt;</span>
+<span style="color: #e7e9db">);</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">Button</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span>
+  <span style="color: #06b6ef">color</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;white&#39;</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">onClick</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">type</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;button&#39;</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">children</span><span style="color: #e7e9db">,</span>
+<span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span>
+    <span style="color: #06b6ef">style</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{{</span> <span style="color: #06b6ef">backgroundColor</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">color</span> <span style="color: #e7e9db">}}</span>
+    <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">type</span><span style="color: #e7e9db">}</span>
+    <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">onClick</span><span style="color: #e7e9db">}</span>
+  <span style="color: #5bc4bf">&gt;</span>
+    <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
+<span style="color: #e7e9db">);</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">InputField</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">value</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">onChange</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">children</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">label</span><span style="color: #5bc4bf">&gt;</span>
+    <span style="color: #e7e9db">{</span><span style="color: #06b6ef">children</span><span style="color: #e7e9db">}</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">input</span>
+      <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;text&quot;</span>
+      <span style="color: #06b6ef">value</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">}</span>
+      <span style="color: #06b6ef">onChange</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">onChange</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">target</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">)}</span>
+    <span style="color: #5bc4bf">/&gt;</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/label&gt;</span>
+<span style="color: #e7e9db">);</span>
+
+<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
+</code></pre></div>
+
+
+<p>Let&rsquo;s continue with an often seen component composition pattern for React components.</p>
+
+<h2 class="chapter-header" id="react-component-composition-example">React Component Composition by Example</h2>
+
+<p>You have seen how component composition is mainly used for reusable React components that require a well-designed API. Often you will find this kind of component composition just to layout your application as well. For instance, a SplitPane component, where you want to show something at the left and the right as the inner content of the component, could make use of React props to render more than one child component:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">SplitPane</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">left</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">right</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;left-pane&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">left</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;right-pane&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">right</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+<span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>Then it could be used the following way in another React component whereas you decide what you render as children in which of both slots:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">SplitPane</span>
+  <span style="color: #06b6ef">left</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ul</span><span style="color: #5bc4bf">&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span><span style="color: #5bc4bf">&gt;</span>
+          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">a</span> <span style="color: #06b6ef">href</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;#&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Link</span> <span style="color: #f99b15">1</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/a&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span><span style="color: #5bc4bf">&gt;</span>
+          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">a</span> <span style="color: #06b6ef">href</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;#&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Link</span> <span style="color: #f99b15">2</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/a&gt;</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/li&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ul&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+  <span style="color: #e7e9db">}</span>
+  <span style="color: #06b6ef">right</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Copyright</span> <span style="color: #06b6ef">label</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;Chris&quot;</span> <span style="color: #5bc4bf">/&gt;</span><span style="color: #e7e9db">}</span>
+<span style="color: #ef6155">/&gt;</span>
+</code></pre></div>
+
+
+<p>Whereas the Copyright component is just another React component:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Copyright</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">label</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Copyright</span> <span style="color: #06b6ef">by</span> <span style="color: #e7e9db">{</span><span style="color: #06b6ef">label</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;;</span>
+</code></pre></div>
+
+
+<p>This pattern, not widely known under the synonym <a href="../react-pass-props-to-component/index.html">slot pattern</a>, is used when you have more than one children that you want to compose into another component. Again the component, in this case the SplitPane component, doesn&rsquo;t know ahead of time what will be rendered in there. It just receives something as props to render in these slots. In the example, two slots are used. But it scales up to any number of props you want to pass to the component to render something.</p>
+
+<h2 class="chapter-header" id="react-dynamic-component-composition">Dynamic Component Compositions in React</h2>
+
+<p>Often you see something like the following App component whereas React Router is used to compose dynamic components, depending on the selected route (URL), into the Route components:</p>
+
+<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #06b6ef">BrowserRouter</span> <span style="color: #06b6ef">as</span> <span style="color: #06b6ef">Router</span><span style="color: #e7e9db">,</span>
+  <span style="color: #06b6ef">Route</span><span style="color: #e7e9db">,</span>
+<span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-router-dom&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">Navigation</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./Navigation&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">LandingPage</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./Landing&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">SignUpPage</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./SignUp&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">SignInPage</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./SignIn&#39;</span><span style="color: #e7e9db">;</span>
+
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">App</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Router</span><span style="color: #5bc4bf">&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Navigation</span> <span style="color: #5bc4bf">/&gt;</span>
+
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">hr</span> <span style="color: #5bc4bf">/&gt;</span>
+
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Route</span> <span style="color: #06b6ef">exact</span> <span style="color: #06b6ef">path</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&#39;/&#39;</span> <span style="color: #06b6ef">component</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">LandingPage</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Route</span> <span style="color: #06b6ef">path</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&#39;/register&#39;</span> <span style="color: #06b6ef">component</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">SignUpPage</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Route</span> <span style="color: #06b6ef">path</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&#39;/login&#39;</span> <span style="color: #06b6ef">component</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">SignInPage</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>
+
+      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Footer</span> <span style="color: #5bc4bf">/&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Router&gt;</span>
+<span style="color: #e7e9db">);</span>
+</code></pre></div>
+
+
+<p>Whereas the Footer component and the Navigation component, which enables navigation from route to route (URL to URL, path to path), stay always the same, the rendered component for the Route components will adjust depending on which URL is currently visited by the user. Basically the App component displays a static frame of components that will be always visible (e.g. Navigation, Footer) whereas the inner content changes depending on the URL. React Router and its Route components take care of it. Keeping it simple, each Route component uses the component prop, to render its content, but only shows it when the matching route is selected.</p>
+
+<hr class="section-divider">
+
+<p>In the end, React Component composition is possible foremost due to React&rsquo;s children prop. However, as you have seen you can create your own children prop, or have multiple children props, by defining the props yourself. You can find the example from this tutorial in this <a target="_blank" rel="noopener noreferrer" href="https://github.com/the-road-to-learn-react/react-component-composition-example">GitHub repository</a>.</p>
+
+<p>Composing React Components doesn&rsquo;t end here. There are two other advanced React patterns that are used for component compositions as well:</p>
+
+<ul>
+<li>Render Prop Components</li>
+<li>Higher-Order Components</li>
+</ul>
+
+<p><a href="../react-render-props-pattern/index.html">React&rsquo;s Render Prop Components</a> can be seen as extension of the shown slot pattern. However, in these slots you wouldn&rsquo;t pass directly what you want to render like in the slot pattern, but rather a function that returns the thing you want to render. By having this function at your disposal, you are able to pass information from the inner component that uses the slot pattern to the components that are used within these slots.</p>
+
+<p><a href="../gentle-introduction-higher-order-components/index.html">React&rsquo;s Higher-Order Components</a> can be used for Component Compositions too. Basically a Higher-Order Component receives a React component as input and outputs an enhanced version of this component. If you take this one step further, you can also have more than one Higher-Order Component enhancing one component which leads us to a component composition again. Remember the function composition from the beginning? It can be done for React components too.</p>
+
+
+                            
+<div class="feedback-and-share text-center">
+    <hr>
+    
+    <p class="lead">
+        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
+    </p>
+    
+    
+        <p class="lead">
+            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+        </p>
+    
+</div>
+
+
+                            
+                                <div class="box-inline col-md-12">
+    <div class="col-md-12 text-center">
+        <h2 class="newsletter">The Road to learn React</h2>
+        
+            <div class="col-md-4">
+                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+            </div>
+        
+        <p class="lead">
+            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
+        </p>
+        <a
+            class="btn btn-template-main"
+            href="https://roadtoreact.com"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Get the Book for free <i class="fa fa-chevron-right"></i>
+        </a>
+        
+            <div>
+                <a
+                    href="https://amzn.to/2QY2ONp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get it from Amazon
+                </a>
+            </div>
+        
+    </div>
+</div>
+                            
+                        </div>
+
+                        
+                        
+                        <div id="comments">
+                            <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'rwieruch';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                        </div>
+                        
+
+                    </article>
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        
+
+<section class="bar background-image-fixed-2 no-mb color-white text-center">
+    <div class="dark-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                <h2 class="text-uppercase">Take Part</h2>
+            </div>
+
+            <div class="col-md-12 text-center">
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+                
+                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+                
+            </div>
+            <div class="col-md-12">
+                <p class="text-center">
+                    
+
+
+
+<div id="mc_embed_signup">
+    <form
+        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
+        method="post"
+        id="revue-form"
+        name="revue-form"
+        target="_blank">
+        <div id="mc_embed_signup_scroll">
+            <input
+                class="email"
+                placeholder="email address"
+                type="email"
+                name="member[email]"
+                id="member_email"
+            >
+            <div>
+                <button
+                    type="submit"
+                    value="Subscribe"
+                    name="member[subscribe]"
+                    id="member_submit"
+                    class="btn btn-template-transparent-black btn-lg"
+                >
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+        <footer id="subfooter">
+    <div class="container">
+
+        <div class="col-md-5 col-sm-6">
+
+            <h4>Recent posts</h4>
+
+            <div class="blog-entries">
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../redux-vs-usereducer/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="React&#39;s useReducer vs Redux"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../publish-npm-package-node/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to publish a npm package?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
+                    </div>
+                </div>
+                
+                <div class="item same-height-row clearfix">
+                    <div class="article same-height-always">
+                        <a href="../react-scroll-to-item/index.html">
+                          
+                            <img
+                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                data-is-thumb="is-thumb"
+                                class="img-lazy img-responsive"
+                                alt="How to Scroll to Item in React?"
+                            >
+                          
+                        </a>
+                    </div>
+                    <div class="name same-height-always">
+                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
+                    </div>
+                </div>
+                
+            </div>
+
+            <hr class="hidden-md hidden-lg hidden-sm">
+
+        </div>
+        
+
+        
+        <div class="col-md-5 col-md-offset-2 col-sm-6">
+
+            <h4>About Me</h4>
+
+            <div class="blog-entries">
+                <div class="item same-height-row clearfix">
+                    <div class="profile same-height-always">
+                        <img
+                            class="img-lazy img-responsive"
+                            data-lazy-src="//img/page/profile.jpg"
+                            alt="profile"
+                        >
+                    </div>
+                    <div class="name same-height-always">
+                        <p>
+                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+        <footer id="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-left">
+          
+            <li>© Chris Paul</li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline footer-social-buttons text-center">
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+          
+            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="info list-inline quicklinks pull-right">
+          
+            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+
+    
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-65599459-2', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+<script src="../js/script.js"></script>
+
+
+
+  </body>
+</html>
