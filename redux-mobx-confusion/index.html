@@ -1,281 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-  <meta charset="utf-8">
-  <meta name="robots" content="all,follow">
-  <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  
 
-  <title>
-    Redux or MobX: An attempt to dissolve the Confusion - CPaul
-  </title>
 
-  <meta name="author" content="" />
-  <meta name="description" content="Using Redux or MobX in your React application? The article shows you all the differences between both state management libraries that can be used in React. It gives you guidance to learn MobX vs Redux in React.js applications, their strengths and weaknesses and when to use them ...">
-  
+    <title>
+        Redux or MobX: An attempt to dissolve the Confusion - CPaul
+    </title>
 
-  <meta name="theme-color" content="#38bb6c"/>
+    <meta name="author" content="" />
+    <meta name="description"
+        content="Using Redux or MobX in your React application? The article shows you all the differences between both state management libraries that can be used in React. It gives you guidance to learn MobX vs Redux in React.js applications, their strengths and weaknesses and when to use them ...">
 
-  <meta name="generator" content="Hugo 0.41" />
-<link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
-  <link href="../css/customizations.css" rel="stylesheet">
+    <meta name="theme-color" content="#38bb6c" />
+
+    <meta name="generator" content="Hugo 0.41" />
+    <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+    <link href="../css/customizations.css" rel="stylesheet">
 
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  
-<link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="../img/favicon/manifest.json">
-  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
 
-  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+    <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="../img/favicon/manifest.json">
+    <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
 
-<meta itemprop="name" content="Redux or MobX: An attempt to dissolve the Confusion">
-<meta itemprop="description" content="Using Redux or MobX in your React application? The article shows you all the differences between both state management libraries that can be used in React. It gives you guidance to learn MobX vs Redux in React.js applications, their strengths and weaknesses and when to use them ...">    <meta itemprop="image" content="https://chrispaul.dev/img/posts/redux-mobx-confusion/banner_640.jpg"><meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+    <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
 
-
-<meta itemprop="wordCount" content="3757">
-
-<meta name="keywords" content="redux mobx, redux or mobx, redux vs mobx, redux alternative">
-
-  <meta property="og:title" content="Redux or MobX: An attempt to dissolve the Confusion - CPaul">
+    <meta itemprop="name" content="Redux or MobX: An attempt to dissolve the Confusion">
+    <meta itemprop="description"
+        content="Using Redux or MobX in your React application? The article shows you all the differences between both state management libraries that can be used in React. It gives you guidance to learn MobX vs Redux in React.js applications, their strengths and weaknesses and when to use them ...">
+    <meta itemprop="image" content="https://chrispaul.dev/img/posts/redux-mobx-confusion/banner_640.jpg">
+    <meta itemprop="keywords"
+        content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
 
 
-  <meta property="og:description" content="Using Redux or MobX in your React application? The article shows you all the differences between both state management libraries that can be used in React. It gives you guidance to learn MobX vs Redux in React.js applications, their strengths and weaknesses and when to use them ..." />
+    <meta itemprop="wordCount" content="3757">
+
+    <meta name="keywords" content="redux mobx, redux or mobx, redux vs mobx, redux alternative">
+
+    <meta property="og:title" content="Redux or MobX: An attempt to dissolve the Confusion - CPaul">
 
 
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://chrispaul.dev/redux-mobx-confusion/" />
-<meta property="og:image" content="https://chrispaul.dev/img/posts/redux-mobx-confusion/banner_640.jpg" />
+    <meta property="og:description"
+        content="Using Redux or MobX in your React application? The article shows you all the differences between both state management libraries that can be used in React. It gives you guidance to learn MobX vs Redux in React.js applications, their strengths and weaknesses and when to use them ..." />
 
-  
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://chrispaul.dev/redux-mobx-confusion/" />
+    <meta property="og:image" content="https://chrispaul.dev/img/posts/redux-mobx-confusion/banner_640.jpg" />
+
+
 
     <meta name="news_keywords" content="redux mobx,redux,mobx" />
 
-  
 
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/redux-mobx-confusion/banner_640.jpg"/><meta name="twitter:title" content="Redux or MobX: An attempt to dissolve the Confusion"/>
-<meta name="twitter:description" content="Using Redux or MobX in your React application? The article shows you all the differences between both state management libraries that can be used in React. It gives you guidance to learn MobX vs Redux in React.js applications, their strengths and weaknesses and when to use them ..."/>
-<meta name="twitter:site" content="@rwieruch"/>
-<meta name="twitter:domain" content="rwieruch"/>
 
-  
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/redux-mobx-confusion/banner_640.jpg" />
+    <meta name="twitter:title" content="Redux or MobX: An attempt to dissolve the Confusion" />
+    <meta name="twitter:description"
+        content="Using Redux or MobX in your React application? The article shows you all the differences between both state management libraries that can be used in React. It gives you guidance to learn MobX vs Redux in React.js applications, their strengths and weaknesses and when to use them ..." />
+    <meta name="twitter:site" content="@rwieruch" />
+    <meta name="twitter:domain" content="rwieruch" />
+
+
 
 </head>
 
 
-  <body>
+<body>
 
     <div id="all">
 
         <header>
 
-          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+            <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
 
-    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+                <div class="navbar navbar-default yamm" role="navigation" id="navbar">
 
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand home" href="../index.html">
-                    <img src="../img/page/logo.svg" alt="Redux or MobX: An attempt to dissolve the Confusion logo" class="img-lazy">
-                    <span class="sr-only">Redux or MobX: An attempt to dissolve the Confusion - go to homepage</span>
-                </a>
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand home" href="../index.html">
+                                <img src="../img/page/logo.svg"
+                                    alt="Redux or MobX: An attempt to dissolve the Confusion logo" class="img-lazy">
+                                <span class="sr-only">Redux or MobX: An attempt to dissolve the Confusion - go to
+                                    homepage</span>
+                            </a>
 
-                <div class="navbar-buttons">
-                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-align-justify"></i>
-                    </button>
-                </div>
-            </div>
-            
+                            <div class="navbar-buttons">
+                                <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse"
+                                    data-target="#navigation">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-align-justify"></i>
+                                </button>
+                            </div>
+                        </div>
 
-            <div class="navbar-collapse collapse" id="navigation">
-                <ul class="nav navbar-nav navbar-right">
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../index.html">Blog</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../work-with-me/index.html">Work with me</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../about/index.html">About</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
-                        
-                    </li>
-                    
-                </ul>
-            </div>
-            
 
-            <div class="collapse clearfix" id="search">
+                        <div class="navbar-collapse collapse" id="navigation">
+                            <ul class="nav navbar-nav navbar-right">
 
-                <form class="navbar-form" role="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
+                                <li class="dropdown">
 
-                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                                    <a href="../index.html">Blog</a>
 
-                </span>
+                                </li>
+
+                                <li class="dropdown">
+
+                                    <a href="../work-with-me/index.html">Work with me</a>
+
+                                </li>
+
+                                <li class="dropdown">
+
+                                    <a href="../about/index.html">About</a>
+
+                                </li>
+
+                                <li class="dropdown">
+
+                                    <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+
+                                </li>
+
+                            </ul>
+                        </div>
+
+
+                        <div class="collapse clearfix" id="search">
+
+                            <form class="navbar-form" role="search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <span class="input-group-btn">
+
+                                        <button type="submit" class="btn btn-template-main"><i
+                                                class="fa fa-search"></i></button>
+
+                                    </span>
+                                </div>
+                            </form>
+
+                        </div>
+
+
                     </div>
-                </form>
+                </div>
+
 
             </div>
-            
-
-        </div>
-    </div>
-    
-
-</div>
         </header>
 
         <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
-    
-
-<a
-    aria-label="icon-facebook"
-    class="icon-facebook"
-    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fredux-mobx-confusion%2f"
-    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-    <i class="fa fa-facebook"></i>
-</a>
 
 
-<a
-    aria-label="icon-twitter"
-    class="icon-twitter"
-    href="https://twitter.com/share?text=Redux%20or%20MobX%3a%20An%20attempt%20to%20dissolve%20the%20Confusion%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fredux-mobx-confusion%2f"
-    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-    <i class="fa fa-twitter"></i>
-</a>
-
-<a
-    aria-label="icon-linkedin"
-    class="icon-linkedin"
-    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Redux%20or%20MobX%3a%20An%20attempt%20to%20dissolve%20the%20Confusion&amp;url=https%3a%2f%2fchrispaul.dev%2fredux-mobx-confusion%2f">
-    <i class="fa fa-linkedin"></i>
-</a>
-
-</div>
-
-<div class="visible-xs visible-sm text-center">
-    <div class="post-share post-share-fixed post-share-mobile">
-        
-
-<a
-    aria-label="icon-facebook"
-    class="icon-facebook"
-    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fredux-mobx-confusion%2f"
-    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-    <i class="fa fa-facebook"></i>
-</a>
+            <a aria-label="icon-facebook" class="icon-facebook"
+                href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fredux-mobx-confusion%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+            </a>
 
 
-<a
-    aria-label="icon-twitter"
-    class="icon-twitter"
-    href="https://twitter.com/share?text=Redux%20or%20MobX%3a%20An%20attempt%20to%20dissolve%20the%20Confusion%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fredux-mobx-confusion%2f"
-    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-    <i class="fa fa-twitter"></i>
-</a>
+            <a aria-label="icon-twitter" class="icon-twitter"
+                href="https://twitter.com/share?text=Redux%20or%20MobX%3a%20An%20attempt%20to%20dissolve%20the%20Confusion%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fredux-mobx-confusion%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+            </a>
 
-<a
-    aria-label="icon-linkedin"
-    class="icon-linkedin"
-    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Redux%20or%20MobX%3a%20An%20attempt%20to%20dissolve%20the%20Confusion&amp;url=https%3a%2f%2fchrispaul.dev%2fredux-mobx-confusion%2f">
-    <i class="fa fa-linkedin"></i>
-</a>
+            <a aria-label="icon-linkedin" class="icon-linkedin"
+                href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Redux%20or%20MobX%3a%20An%20attempt%20to%20dissolve%20the%20Confusion&amp;url=https%3a%2f%2fchrispaul.dev%2fredux-mobx-confusion%2f">
+                <i class="fa fa-linkedin"></i>
+            </a>
 
-    </div>
-</div>
+        </div>
 
-        
+        <div class="visible-xs visible-sm text-center">
+            <div class="post-share post-share-fixed post-share-mobile">
+
+
+                <a aria-label="icon-facebook" class="icon-facebook"
+                    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fredux-mobx-confusion%2f"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="fa fa-facebook"></i>
+                </a>
+
+
+                <a aria-label="icon-twitter" class="icon-twitter"
+                    href="https://twitter.com/share?text=Redux%20or%20MobX%3a%20An%20attempt%20to%20dissolve%20the%20Confusion%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fredux-mobx-confusion%2f"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="fa fa-twitter"></i>
+                </a>
+
+                <a aria-label="icon-linkedin" class="icon-linkedin"
+                    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Redux%20or%20MobX%3a%20An%20attempt%20to%20dissolve%20the%20Confusion&amp;url=https%3a%2f%2fchrispaul.dev%2fredux-mobx-confusion%2f">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+
+            </div>
+        </div>
+
+
 
         <div class="hidden-xs">
-            
 
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
-    <div class="dark-mask"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
-                <h2 class="text-uppercase newsletter">Take Part</h2>
-            </div>
 
-            <div class="col-md-12">
-                <p class="text-center">
-                    <div id="mc_embed_signup">
-    <form
-        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
-        method="post"
-        id="revue-form"
-        name="revue-form"
-        target="_blank">
-        <div id="mc_embed_signup_scroll">
-            <input
-                class="email"
-                placeholder="email address"
-                type="email"
-                name="member[email]"
-                id="member_email"
-            >
-            <div>
-                <button
-                    type="submit"
-                    value="Subscribe"
-                    name="member[subscribe]"
-                    id="member_submit"
-                    class="btn btn-template-transparent-black btn-lg"
-                >
-                    Subscribe
-                </button>
-            </div>
+            <section class="bar background-image-fixed-2 no-mb color-white text-center">
+                <div class="dark-mask"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.
+                            </h3>
+                            <h2 class="text-uppercase newsletter">Take Part</h2>
+                        </div>
+
+                        <div class="col-md-12">
+                            <p class="text-center">
+                                <div id="mc_embed_signup">
+                                    <form action="https://www.getrevue.co/profile/rwieruch/add_subscriber" method="post"
+                                        id="revue-form" name="revue-form" target="_blank">
+                                        <div id="mc_embed_signup_scroll">
+                                            <input class="email" placeholder="email address" type="email"
+                                                name="member[email]" id="member_email">
+                                            <div>
+                                                <button type="submit" value="Subscribe" name="member[subscribe]"
+                                                    id="member_submit"
+                                                    class="btn btn-template-transparent-black btn-lg">
+                                                    Subscribe
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </form>
-</div>
-
-                </p>
-            </div>
-        </div>
-    </div>
-</section>        </div>
 
         <div id="content">
             <div class="container">
 
                 <div class="row">
 
-                    <article
-                        class="col-md-8 col-md-offset-2"
-                        id="blog-post"
-                        itemprop="blogPosts"
-                        itemscope itemtype="http://schema.org/BlogPosting">
+                    <article class="col-md-8 col-md-offset-2" id="blog-post" itemprop="blogPosts" itemscope
+                        itemtype="http://schema.org/BlogPosting">
 
                         <div id="post-content" itemprop="articleBody">
 
@@ -284,136 +270,220 @@
                             </header>
 
                             <div class="text-center">
-                                
-    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
-         <i class="fa fa-facebook"></i>Follow
-    </a>
+
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch"
+                                    class="facebook-button-follow">
+                                    <i class="fa fa-facebook"></i>Follow
+                                </a>
 
 
                                 &nbsp;
-                                
-
-                                &nbsp;
-                                
-  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
-    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
-  </a>
 
 
                                 &nbsp;
-                                
+
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://twitter.com/intent/follow?screen_name=rwieruch"
+                                    class="generic-button-follow">
+                                    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow"
+                                        alt="Follow on Twitter">
+                                </a>
+
+
+                                &nbsp;
+
                             </div>
 
                             <p class="text-muted text-uppercase mb-small text-center">
-    <span itemprop="author publisher">
-        
-    </span>
+                                <span itemprop="author publisher">
 
-    
-        <time datetime="2017-03-28" itemprop="datePublished">
-            March 28, 2017
-        </time>
-    
-
-    
-        <span class="hidden-xs hidden-sm"> - <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/redux-mobx-confusion.md">
-                Edit this Post on GitHub
-            </a>
-        </span>
-    
-</p>
-
-                            
-
-<div>
-  
-
-</div>
-
-<div class="post-image-primary">
-    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="pinterest-pinner">
-            <a
-                data-pin-do="buttonPin"
-                data-pin-save="true"
-                data-pin-tall="true"
-                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fredux-mobx-confusion%2f&amp;media=https://chrispaul.dev/img%2fposts%2fredux-mobx-confusion%2fbanner.jpg&amp;description=">
-            </a>
-        </div>
-
-        <img
-            class="img-lazy img-responsive"
-            data-lazy-src="/src="/img/posts/redux-mobx-confusion/banner.jpg"
-            data-is-src-set="is-src-set"
-            alt="redux mobx"
-            itemprop="image"
-        />
-    </div>
-</div>
+                                </span>
 
 
-<p>I used <a target="_blank" rel="noopener noreferrer" href="https://github.com/reactjs/redux">Redux</a> excessively the last years, but spent the recent time with <a target="_blank" rel="noopener noreferrer" href="https://github.com/mobxjs/mobx">MobX</a> as state management alternative. It seems that Redux alternatives evolve naturally into confusion in the community. People are <a target="_blank" rel="noopener noreferrer" href="https://www.reddit.com/r/reactjs/comments/4npzq5/confused_redux_or_mobx/">uncertain</a> which solution to pick. <strong>The issue isn&rsquo;t necessarily Redux vs MobX</strong>. Whenever there exists an alternative, people are curious what&rsquo;s the best way to solve their problem. I am writing these lines to dissolve the confusion around both state management solutions Redux and MobX.</p>
-
-<p>Often the article references <a href="../essential-react-libraries-framework/index.html">React as view layer library</a> for the usage of state management libraries such as MobX and Redux. Yet you can often substitute React with other solutions such as Angular or Vue.</p>
-
-<p>In the beginning of 2016 I wrote a <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/favesound-redux">fairly big application in React + Redux</a>. After I discovered MobX as alternative, I took the time to <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/favesound-mobx/pull/1">refactor the application from Redux to MobX</a>. I feel pretty comfortable in using both and in explaining their approaches.</p>
-
-<p>What is this article going to be about? First, I want to revisit shortly the problem a state management library is solving for us. After all, you would be doing fine by just using <code>this.setState()</code> and <code>this.state</code> in React or a variation of it in another view layer library or SPA framework. Second, I will continue to give you an overview of both solutions by showing the consistencies and differences. Third, I want to give beginners to the React ecosystem a roadmap to <a target="_blank" rel="noopener noreferrer" href="https://roadtoreact.com/course-details?courseId=TAMING_THE_STATE">learn state management in React</a>. Spoiler alert: <a href="../learn-react-before-using-redux/index.html">Begin with React&rsquo;s local state before you dive into MobX or Redux</a>. Last but not least, if you already have an application running with MobX or Redux, I want to give you more insights in refactoring from one to another state management library.</p>
-
-<h2 class="chapter-header" id="toc">Table of Contents</h2>
-
-<ul>
-<li><a href="#motivation">What problem do we solve?</a></li>
-<li><a href="#difference">What&rsquo;s the difference between Redux and MobX?</a></li>
-<li><a href="#learningCurve">The Learning Curve in React State Management</a></li>
-<li><a href="#anotherSolution">Another state management solution?</a></li>
-<li><a href="#finalThoughts">Final Thoughts</a></li>
-<li><a href="#factSheet">Fact Sheet</a></li>
-<li><a href="#keyTakeaways">Key Takeaways</a></li>
-<li><a href="#resources">More Resources</a></li>
-</ul>
-
-<h2 class="chapter-header" id="motivation">What problem do we solve?</h2>
-
-<p>Everyone wants to have state management in an application. But what problem does it solve for us? Most people start with a small application and already introduce a state management library. Everyone is speaking about it, aren&rsquo;t they? Redux! MobX! But most applications <a target="_blank" rel="noopener noreferrer" href="https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367">don&rsquo;t need ambitious state management</a> from the beginning. It is even more dangerous, because most <strong>people are never going to experience which problems libraries like Redux or MobX solve</strong>.</p>
-
-<p>Nowadays, the status quo is to build a frontend application with components. Components have internal state. For instance, in React such a local state is handled with <code>this.state</code> and <code>this.setState()</code>. In a growing application, the state management can become chaotic with local state, because:</p>
-
-<ul>
-<li>a component needs to share state with another component</li>
-<li>a component needs to mutate the state of another component</li>
-</ul>
-
-<p>At some point, it gets more difficult to reason about the application state. It becomes a messy web of state objects and state mutations across your component hierarchy. Most of the time, the state objects and state mutations are not necessarily bound to one component. They reach through your component tree and you have to <a target="_blank" rel="noopener noreferrer" href="https://facebook.github.io/react/docs/lifting-state-up.html">lift state up and down</a>.</p>
-
-<p>The solution therefore is to introduce a state management library like MobX or Redux. It gives you tools to save your state somewhere, to change your state and to receive state updates. You have one place to find your state, one place to change it and one place to get updates from. It follows the principle of a single source of truth. It makes it easier to reason about your state and state changes, because they get decoupled from your components.</p>
-
-<p>State management libraries like Redux and MobX often have utility add-ons, like for React they have <a target="_blank" rel="noopener noreferrer" href="https://github.com/reactjs/react-redux">react-redux</a> and <a target="_blank" rel="noopener noreferrer" href="https://github.com/mobxjs/mobx-react">mobx-react</a>, to give your components access to the state. Often these components are called <strong>container components</strong> or, to be more specific, <strong>connected components</strong>. From anywhere in your component hierarchy you can access and alter the state by upgrading your component to a connected component.</p>
-
-<h2 class="chapter-header" id="difference">What&#39;s the difference between Redux and MobX?</h2>
-
-<p>Before we dive into the differences, I want to give you the consitencies between MobX and Redux.</p>
-
-<p>Both libraries are used to manage state in JavaScript applications. They are not necessarily coupled to a library like React. They are used in other libraries like AngularJs and VueJs too. But they integrate well with the <a target="_blank" rel="noopener noreferrer" href="../reasons-why-i-moved-from-angular-to-react/index.html">philosophy of React</a>.</p>
-
-<p>If you choose one of the state management solutions, you will not experience a vendor lock-in. You can change to another state management solution any time. You can go from MobX to Redux or from Redux to MobX. I will demonstrate you later on how this works.</p>
-
-<p>Redux by <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/dan_abramov">Dan Abramov</a> and <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/acdlite">Andrew Clark</a> is a derivation of the <a target="_blank" rel="noopener noreferrer" href="https://facebook.github.io/flux/docs/in-depth-overview.html">flux architecture</a>. In contrast to flux, it uses a single store over multiple stores to save state. In addition, instead of a dispatcher it uses pure functions to alter the state. If you are not familiar with flux and you are new to state management, don&rsquo;t bother with the last paragraph.</p>
-
-<p>Redux is influenced by <strong>functional programming (FP) principles</strong>. FP can be done in JavaScript, but a lot of people come from an object-oriented background, like Java, and have difficulties to adopt functional programming principles in the first place. That adds up later on why MobX might be easier to learn as a beginner.</p>
-
-<p>Since Redux embraces functional programming, it uses <strong>pure functions</strong>. A function gets an input, returns an output and does not have other dependencies but pure functions. A pure function produces always the same output with the same input and doesn&rsquo;t have any side-effects.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">newState</span>
-</code></pre></div>
+                                <time datetime="2017-03-28" itemprop="datePublished">
+                                    March 28, 2017
+                                </time>
 
 
-<p>Your Redux <strong>state is immutable</strong>. Instead of mutating your state, you always return a new state. You don&rsquo;t perform state mutations or depend on object references.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// don&#39;t do this in Redux, because it mutates the array</span>
+                                <span class="hidden-xs hidden-sm"> - <a target="_blank" rel="noopener noreferrer"
+                                        href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/redux-mobx-confusion.md">
+                                        Edit this Post on GitHub
+                                    </a>
+                                </span>
+
+                            </p>
+
+
+
+                            <div>
+
+
+                            </div>
+
+                            <div class="post-image-primary">
+                                <div class="pinterest-pinner-wrapper" itemscope
+                                    itemtype="http://schema.org/ImageObject">
+                                    <div class="pinterest-pinner">
+                                        <a data-pin-do="buttonPin" data-pin-save="true" data-pin-tall="true"
+                                            href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fredux-mobx-confusion%2f&amp;media=https://chrispaul.dev/img%2fposts%2fredux-mobx-confusion%2fbanner.jpg&amp;description=">
+                                        </a>
+                                    </div>
+
+                                    <img class="img-lazy img-responsive"
+                                        data-lazy-src="/src="/img/posts/redux-mobx-confusion/banner.jpg"
+                                        data-is-src-set="is-src-set" alt="redux mobx" itemprop="image" />
+                                </div>
+                            </div>
+
+
+                            <p>I used <a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/reactjs/redux">Redux</a> excessively the last years, but
+                                spent the recent time with <a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/mobxjs/mobx">MobX</a> as state management alternative. It
+                                seems that Redux alternatives evolve naturally into confusion in the community. People
+                                are <a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.reddit.com/r/reactjs/comments/4npzq5/confused_redux_or_mobx/">uncertain</a>
+                                which solution to pick. <strong>The issue isn&rsquo;t necessarily Redux vs
+                                    MobX</strong>. Whenever there exists an alternative, people are curious what&rsquo;s
+                                the best way to solve their problem. I am writing these lines to dissolve the confusion
+                                around both state management solutions Redux and MobX.</p>
+
+                            <p>Often the article references <a
+                                    href="../essential-react-libraries-framework/index.html">React as view layer
+                                    library</a> for the usage of state management libraries such as MobX and Redux. Yet
+                                you can often substitute React with other solutions such as Angular or Vue.</p>
+
+                            <p>In the beginning of 2016 I wrote a <a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/rwieruch/favesound-redux">fairly big application in React +
+                                    Redux</a>. After I discovered MobX as alternative, I took the time to <a
+                                    target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/rwieruch/favesound-mobx/pull/1">refactor the application
+                                    from Redux to MobX</a>. I feel pretty comfortable in using both and in explaining
+                                their approaches.</p>
+
+                            <p>What is this article going to be about? First, I want to revisit shortly the problem a
+                                state management library is solving for us. After all, you would be doing fine by just
+                                using <code>this.setState()</code> and <code>this.state</code> in React or a variation
+                                of it in another view layer library or SPA framework. Second, I will continue to give
+                                you an overview of both solutions by showing the consistencies and differences. Third, I
+                                want to give beginners to the React ecosystem a roadmap to <a target="_blank"
+                                    rel="noopener noreferrer"
+                                    href="https://roadtoreact.com/course-details?courseId=TAMING_THE_STATE">learn state
+                                    management in React</a>. Spoiler alert: <a
+                                    href="../learn-react-before-using-redux/index.html">Begin with React&rsquo;s local
+                                    state before you dive into MobX or Redux</a>. Last but not least, if you already
+                                have an application running with MobX or Redux, I want to give you more insights in
+                                refactoring from one to another state management library.</p>
+
+                            <h2 class="chapter-header" id="toc">Table of Contents</h2>
+
+                            <ul>
+                                <li><a href="#motivation">What problem do we solve?</a></li>
+                                <li><a href="#difference">What&rsquo;s the difference between Redux and MobX?</a></li>
+                                <li><a href="#learningCurve">The Learning Curve in React State Management</a></li>
+                                <li><a href="#anotherSolution">Another state management solution?</a></li>
+                                <li><a href="#finalThoughts">Final Thoughts</a></li>
+                                <li><a href="#factSheet">Fact Sheet</a></li>
+                                <li><a href="#keyTakeaways">Key Takeaways</a></li>
+                                <li><a href="#resources">More Resources</a></li>
+                            </ul>
+
+                            <h2 class="chapter-header" id="motivation">What problem do we solve?</h2>
+
+                            <p>Everyone wants to have state management in an application. But what problem does it solve
+                                for us? Most people start with a small application and already introduce a state
+                                management library. Everyone is speaking about it, aren&rsquo;t they? Redux! MobX! But
+                                most applications <a target="_blank" rel="noopener noreferrer"
+                                    href="https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367">don&rsquo;t
+                                    need ambitious state management</a> from the beginning. It is even more dangerous,
+                                because most <strong>people are never going to experience which problems libraries like
+                                    Redux or MobX solve</strong>.</p>
+
+                            <p>Nowadays, the status quo is to build a frontend application with components. Components
+                                have internal state. For instance, in React such a local state is handled with
+                                <code>this.state</code> and <code>this.setState()</code>. In a growing application, the
+                                state management can become chaotic with local state, because:</p>
+
+                            <ul>
+                                <li>a component needs to share state with another component</li>
+                                <li>a component needs to mutate the state of another component</li>
+                            </ul>
+
+                            <p>At some point, it gets more difficult to reason about the application state. It becomes a
+                                messy web of state objects and state mutations across your component hierarchy. Most of
+                                the time, the state objects and state mutations are not necessarily bound to one
+                                component. They reach through your component tree and you have to <a target="_blank"
+                                    rel="noopener noreferrer"
+                                    href="https://facebook.github.io/react/docs/lifting-state-up.html">lift state up and
+                                    down</a>.</p>
+
+                            <p>The solution therefore is to introduce a state management library like MobX or Redux. It
+                                gives you tools to save your state somewhere, to change your state and to receive state
+                                updates. You have one place to find your state, one place to change it and one place to
+                                get updates from. It follows the principle of a single source of truth. It makes it
+                                easier to reason about your state and state changes, because they get decoupled from
+                                your components.</p>
+
+                            <p>State management libraries like Redux and MobX often have utility add-ons, like for React
+                                they have <a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/reactjs/react-redux">react-redux</a> and <a target="_blank"
+                                    rel="noopener noreferrer"
+                                    href="https://github.com/mobxjs/mobx-react">mobx-react</a>, to give your components
+                                access to the state. Often these components are called <strong>container
+                                    components</strong> or, to be more specific, <strong>connected components</strong>.
+                                From anywhere in your component hierarchy you can access and alter the state by
+                                upgrading your component to a connected component.</p>
+
+                            <h2 class="chapter-header" id="difference">What&#39;s the difference between Redux and MobX?
+                            </h2>
+
+                            <p>Before we dive into the differences, I want to give you the consitencies between MobX and
+                                Redux.</p>
+
+                            <p>Both libraries are used to manage state in JavaScript applications. They are not
+                                necessarily coupled to a library like React. They are used in other libraries like
+                                AngularJs and VueJs too. But they integrate well with the <a target="_blank"
+                                    rel="noopener noreferrer"
+                                    href="../reasons-why-i-moved-from-angular-to-react/index.html">philosophy of
+                                    React</a>.</p>
+
+                            <p>If you choose one of the state management solutions, you will not experience a vendor
+                                lock-in. You can change to another state management solution any time. You can go from
+                                MobX to Redux or from Redux to MobX. I will demonstrate you later on how this works.</p>
+
+                            <p>Redux by <a target="_blank" rel="noopener noreferrer"
+                                    href="https://twitter.com/dan_abramov">Dan Abramov</a> and <a target="_blank"
+                                    rel="noopener noreferrer" href="https://twitter.com/acdlite">Andrew Clark</a> is a
+                                derivation of the <a target="_blank" rel="noopener noreferrer"
+                                    href="https://facebook.github.io/flux/docs/in-depth-overview.html">flux
+                                    architecture</a>. In contrast to flux, it uses a single store over multiple stores
+                                to save state. In addition, instead of a dispatcher it uses pure functions to alter the
+                                state. If you are not familiar with flux and you are new to state management,
+                                don&rsquo;t bother with the last paragraph.</p>
+
+                            <p>Redux is influenced by <strong>functional programming (FP) principles</strong>. FP can be
+                                done in JavaScript, but a lot of people come from an object-oriented background, like
+                                Java, and have difficulties to adopt functional programming principles in the first
+                                place. That adds up later on why MobX might be easier to learn as a beginner.</p>
+
+                            <p>Since Redux embraces functional programming, it uses <strong>pure functions</strong>. A
+                                function gets an input, returns an output and does not have other dependencies but pure
+                                functions. A pure function produces always the same output with the same input and
+                                doesn&rsquo;t have any side-effects.</p>
+
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">newState</span>
+</code></pre>
+                            </div>
+
+
+                            <p>Your Redux <strong>state is immutable</strong>. Instead of mutating your state, you
+                                always return a new state. You don&rsquo;t perform state mutations or depend on object
+                                references.</p>
+
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// don&#39;t do this in Redux, because it mutates the array</span>
 <span style="color: #815ba4">function</span> <span style="color: #06b6ef">addAuthor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
   <span style="color: #815ba4">return</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">authors</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">push</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">action</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">author</span><span style="color: #e7e9db">);</span>
 <span style="color: #e7e9db">}</span>
@@ -422,12 +492,20 @@
 <span style="color: #815ba4">function</span> <span style="color: #06b6ef">addAuthor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
   <span style="color: #815ba4">return</span> <span style="color: #e7e9db">[</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">authors</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">author</span> <span style="color: #e7e9db">];</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>Last but not least, in idiomatic Redux, your <strong>state is normalized</strong> like in a database. The entities only <strong>reference each other by id</strong>. That&rsquo;s a best practice. Even though not everyone is doing it like that, you can use a library like <a target="_blank" rel="noopener noreferrer" href="https://github.com/paularmstrong/normalizr">normalizr</a> to achieve such a normalized state. Normalized state enables you to keep a <strong>flat state</strong> and to keep entities as <strong>single source of truth</strong>.</p>
+                            <p>Last but not least, in idiomatic Redux, your <strong>state is normalized</strong> like in
+                                a database. The entities only <strong>reference each other by id</strong>. That&rsquo;s
+                                a best practice. Even though not everyone is doing it like that, you can use a library
+                                like <a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/paularmstrong/normalizr">normalizr</a> to achieve such a
+                                normalized state. Normalized state enables you to keep a <strong>flat state</strong> and
+                                to keep entities as <strong>single source of truth</strong>.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">post</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
     <span style="color: #06b6ef">id</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;a&#39;</span><span style="color: #e7e9db">,</span>
     <span style="color: #06b6ef">authorId</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;b&#39;</span><span style="color: #e7e9db">,</span>
@@ -439,22 +517,33 @@
     <span style="color: #e7e9db">...</span>
   <span style="color: #e7e9db">}</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>In comparison, MobX by <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/mweststrate">Michel Weststrate</a> is influenced by <strong>object-oriented programming</strong>, but also by <strong>reactive programming</strong>. It wraps your state into observables. Thus you have all the capabilities of Observable in your state. The data can have plain setters and getters, but the observable makes it possible to retrieve updates once the data changed.</p>
+                            <p>In comparison, MobX by <a target="_blank" rel="noopener noreferrer"
+                                    href="https://twitter.com/mweststrate">Michel Weststrate</a> is influenced by
+                                <strong>object-oriented programming</strong>, but also by <strong>reactive
+                                    programming</strong>. It wraps your state into observables. Thus you have all the
+                                capabilities of Observable in your state. The data can have plain setters and getters,
+                                but the observable makes it possible to retrieve updates once the data changed.</p>
 
-<p>In Mobx your <strong>state is mutable</strong>. Thus you mutate the state directly:</p>
+                            <p>In Mobx your <strong>state is mutable</strong>. Thus you mutate the state directly:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">addAuthor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">author</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">addAuthor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">author</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
   <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">authors</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">push</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">author</span><span style="color: #e7e9db">);</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>Additionally the entities stay in a <strong>(deeply) nested data structure in relation to each other</strong>. You don&rsquo;t normalize your state. The <strong>state stays denormalized and nested</strong>.</p>
+                            <p>Additionally the entities stay in a <strong>(deeply) nested data structure in relation to
+                                    each other</strong>. You don&rsquo;t normalize your state. The <strong>state stays
+                                    denormalized and nested</strong>.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">post</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
     <span style="color: #06b6ef">id</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;a&#39;</span><span style="color: #e7e9db">,</span>
     <span style="color: #e7e9db">...</span>
@@ -464,22 +553,37 @@
     <span style="color: #e7e9db">}</span>
   <span style="color: #e7e9db">}</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<h3 id="one-store-vs-multiple-stores">One Store vs Multiple Stores</h3>
+                            <h3 id="one-store-vs-multiple-stores">One Store vs Multiple Stores</h3>
 
-<p>In Redux you keep all your state in <strong>one global store</strong> or <strong>one global state</strong>. The one state object is your single source of truth. Multiple reducers, on the other hand, allow it to alter the immutable state.</p>
+                            <p>In Redux you keep all your state in <strong>one global store</strong> or <strong>one
+                                    global state</strong>. The one state object is your single source of truth. Multiple
+                                reducers, on the other hand, allow it to alter the immutable state.</p>
 
-<p>In contrast, MobX uses <strong>multiple stores</strong>. Similar to Redux reducers, you can apply a divide and conquer by technical layers, domain etc. You might want to store your domain entities in separate stores yet also have control over the view state in on of your stores. After all, you collocate state that makes the most sense in your application.</p>
+                            <p>In contrast, MobX uses <strong>multiple stores</strong>. Similar to Redux reducers, you
+                                can apply a divide and conquer by technical layers, domain etc. You might want to store
+                                your domain entities in separate stores yet also have control over the view state in on
+                                of your stores. After all, you collocate state that makes the most sense in your
+                                application.</p>
 
-<p>Technically you can have multiple stores in Redux too. Nobody forces you to use only one store. But that&rsquo;s not the advertised use case of Redux. It would go against best practices to use multiple stores. In Redux you want to have one store that reacts via its reducers to global events.</p>
+                            <p>Technically you can have multiple stores in Redux too. Nobody forces you to use only one
+                                store. But that&rsquo;s not the advertised use case of Redux. It would go against best
+                                practices to use multiple stores. In Redux you want to have one store that reacts via
+                                its reducers to global events.</p>
 
-<h3 id="what-does-the-implementation-look-like">What does the implementation look like?</h3>
+                            <h3 id="what-does-the-implementation-look-like">What does the implementation look like?</h3>
 
-<p>In Redux it would need the following lines of code to add a new user to the global state. You can see how we make use of the <a target="_blank" rel="noopener noreferrer" href="https://github.com/sebmarkbage/ecmascript-rest-spread">object spread operator</a> to return a new state object. You could also use <code>Object.assign()</code> to have immutable objects in JavaScript ES5.</p>
+                            <p>In Redux it would need the following lines of code to add a new user to the global state.
+                                You can see how we make use of the <a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/sebmarkbage/ecmascript-rest-spread">object spread
+                                    operator</a> to return a new state object. You could also use
+                                <code>Object.assign()</code> to have immutable objects in JavaScript ES5.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">initialState</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">initialState</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">users</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[</span>
     <span style="color: #e7e9db">{</span>
       <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Dan&#39;</span>
@@ -502,14 +606,19 @@
 
 <span style="color: #776e71">// action</span>
 <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;USER_ADD&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">user</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">user</span> <span style="color: #e7e9db">};</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>You would have to <code>dispatch({ type: 'USER_ADD', user: user });</code> to add a new user to the global state.</p>
+                            <p>You would have to <code>dispatch({ type: 'USER_ADD', user: user });</code> to add a new
+                                user to the global state.</p>
 
-<p>In MobX a store would only <strong>manage a substate</strong> (like a reducer in Redux manages a substate) but you are able to <strong>mutate the state directly</strong>. The <code>@observable</code> annotation makes it possible to observe state changes.</p>
+                            <p>In MobX a store would only <strong>manage a substate</strong> (like a reducer in Redux
+                                manages a substate) but you are able to <strong>mutate the state directly</strong>. The
+                                <code>@observable</code> annotation makes it possible to observe state changes.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">UserStore</span> <span style="color: #e7e9db">{</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">UserStore</span> <span style="color: #e7e9db">{</span>
   <span style="color: #ef6155">@</span><span style="color: #06b6ef">observable</span> <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span>
     <span style="color: #e7e9db">{</span>
       <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Dan&#39;</span>
@@ -519,12 +628,16 @@
     <span style="color: #e7e9db">}</span>
   <span style="color: #e7e9db">];</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>Now it is possible to call <code>userStore.users.push(user);</code> on a store instance. It is a best practice though to keep your state mutations more explicit with actions.</p>
+                            <p>Now it is possible to call <code>userStore.users.push(user);</code> on a store instance.
+                                It is a best practice though to keep your state mutations more explicit with actions.
+                            </p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">UserStore</span> <span style="color: #e7e9db">{</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">UserStore</span> <span style="color: #e7e9db">{</span>
   <span style="color: #ef6155">@</span><span style="color: #06b6ef">observable</span> <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span>
     <span style="color: #e7e9db">{</span>
       <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Dan&#39;</span>
@@ -538,95 +651,208 @@
 </span><span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">push</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">);</span>
 </span><span style="background-color: #4f424c">  <span style="color: #e7e9db">}</span>
 </span><span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>You can strictly enforce it by configuring MobX with <code>configure({ enforceActions: true });</code>. Now you can mutate your state by calling <code>userStore.addUser(user);</code> on a store instance.</p>
+                            <p>You can strictly enforce it by configuring MobX with
+                                <code>configure({ enforceActions: true });</code>. Now you can mutate your state by
+                                calling <code>userStore.addUser(user);</code> on a store instance.</p>
 
-<p>You have seen how to update the state in both Redux and MobX. It is different. In Redux your <strong>state is read-only</strong>. You can alter the state only by using <strong>explicit actions</strong>. In contrast, in MobX the state enables read and write. You can mutate the state directly without using actions yet you can opt-in explicit actions by using the <code>enforceActions</code> configuration.</p>
+                            <p>You have seen how to update the state in both Redux and MobX. It is different. In Redux
+                                your <strong>state is read-only</strong>. You can alter the state only by using
+                                <strong>explicit actions</strong>. In contrast, in MobX the state enables read and
+                                write. You can mutate the state directly without using actions yet you can opt-in
+                                explicit actions by using the <code>enforceActions</code> configuration.</p>
 
-<h2 class="chapter-header" id="learningCurve">The Learning Curve in React State Management</h2>
+                            <h2 class="chapter-header" id="learningCurve">The Learning Curve in React State Management
+                            </h2>
 
-<p>Both Redux and MobX are mostly used in React applications. But they are standalone libraries for state management, which could be used everywhere without React. Their interoperability libraries make it easy to combine them with React components. It is <a target="_blank" rel="noopener noreferrer" href="https://github.com/reactjs/react-redux">react-redux</a> for <strong>Redux + React</strong> and <a target="_blank" rel="noopener noreferrer" href="https://github.com/mobxjs/mobx-react">mobx-react</a> for <strong>MobX + React</strong>. Later I will explain how to use both in a React component tree.</p>
+                            <p>Both Redux and MobX are mostly used in React applications. But they are standalone
+                                libraries for state management, which could be used everywhere without React. Their
+                                interoperability libraries make it easy to combine them with React components. It is <a
+                                    target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/reactjs/react-redux">react-redux</a> for <strong>Redux +
+                                    React</strong> and <a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/mobxjs/mobx-react">mobx-react</a> for <strong>MobX +
+                                    React</strong>. Later I will explain how to use both in a React component tree.</p>
 
-<p>In recent discussions, it happened that people argued about the learning curve in Redux. It was often in the context of React: people began to learn React and already wanted to leverage state management with Redux. <strong>Most people would argue that React and Redux themselves have a good learning curve, but both together can be overwhelming.</strong> An alternative therefore would be MobX, because it is more suitable for beginners.</p>
+                            <p>In recent discussions, it happened that people argued about the learning curve in Redux.
+                                It was often in the context of React: people began to learn React and already wanted to
+                                leverage state management with Redux. <strong>Most people would argue that React and
+                                    Redux themselves have a good learning curve, but both together can be
+                                    overwhelming.</strong> An alternative therefore would be MobX, because it is more
+                                suitable for beginners.</p>
 
-<p>However, I would suggest a different approach for React beginners to learn state management in the React ecosystem. Start to learn React with its own local state management functionality in components. In a React application you will first learn the React lifecycle methods and you will deal with local state management by using <code>setState()</code> and <code>this.state</code>. I highly recommend that learning path. Otherwise you will get overwhlemed quickly by the React ecosystem. Eventually, on this path, you will realize that the (internal) state management of components is getting difficult. After all, that&rsquo;s how the book <a href="../the-road-to-learn-react/index.html">The Road to learn React</a> approaches to teach state management in React.</p>
+                            <p>However, I would suggest a different approach for React beginners to learn state
+                                management in the React ecosystem. Start to learn React with its own local state
+                                management functionality in components. In a React application you will first learn the
+                                React lifecycle methods and you will deal with local state management by using
+                                <code>setState()</code> and <code>this.state</code>. I highly recommend that learning
+                                path. Otherwise you will get overwhlemed quickly by the React ecosystem. Eventually, on
+                                this path, you will realize that the (internal) state management of components is
+                                getting difficult. After all, that&rsquo;s how the book <a
+                                    href="../the-road-to-learn-react/index.html">The Road to learn React</a> approaches
+                                to teach state management in React.</p>
 
-<p>Now we are at the point: What problem does MobX or Redux solve for us. Both libraries give a way of managing application state externally to the components. The state gets decoupled from the components. Components can access the state, manipulate it (explicit, implicit) and get updated with the new state. The state is a single source of truth.</p>
+                            <p>Now we are at the point: What problem does MobX or Redux solve for us. Both libraries
+                                give a way of managing application state externally to the components. The state gets
+                                decoupled from the components. Components can access the state, manipulate it (explicit,
+                                implicit) and get updated with the new state. The state is a single source of truth.</p>
 
-<p>Now you have to make the decision to choose a state management library. You know why you need to solve the problem in the first place. Moreover after having already a larger application in place, you should feel comfortable with React by now.</p>
+                            <p>Now you have to make the decision to choose a state management library. You know why you
+                                need to solve the problem in the first place. Moreover after having already a larger
+                                application in place, you should feel comfortable with React by now.</p>
 
-<h3 id="redux-or-mobx-for-newcomers">Redux or MobX for Newcomers?</h3>
+                            <h3 id="redux-or-mobx-for-newcomers">Redux or MobX for Newcomers?</h3>
 
-<p>Once you are familiar with React components and the internal state management, you can choose a state management library to solve your problem. After I used both libraries, I would say MobX can be very suitable for beginners. We could already see that MobX needs less code, even though it uses some magic annotations we may not need to know about yet.</p>
+                            <p>Once you are familiar with React components and the internal state management, you can
+                                choose a state management library to solve your problem. After I used both libraries, I
+                                would say MobX can be very suitable for beginners. We could already see that MobX needs
+                                less code, even though it uses some magic annotations we may not need to know about yet.
+                            </p>
 
-<p>In MobX you don&rsquo;t need to be familiar with functional programming. Terms like immutability might be still foreign. Functional programming is a rising paradigm, but novel for most people in JavaScript. There is a clear trend towards it, but since not everyone has a functional programming background, it might be easier for people with an object-oriented background to adopt the principles of MobX.</p>
+                            <p>In MobX you don&rsquo;t need to be familiar with functional programming. Terms like
+                                immutability might be still foreign. Functional programming is a rising paradigm, but
+                                novel for most people in JavaScript. There is a clear trend towards it, but since not
+                                everyone has a functional programming background, it might be easier for people with an
+                                object-oriented background to adopt the principles of MobX.</p>
 
-<blockquote>
-<p>On a side note: MobX is suitable for <a target="_blank" rel="noopener noreferrer" href="https://medium.com/@mweststrate/3-reasons-why-i-stopped-using-react-setstate-ab73fc67a42e">internal component state in exchange for React setState</a> as well. I would recommend to keep <code>setState()</code> over MobX for internal component state management. But it clearly shows how easy you could weave MobX into React to accomplish internal component state management.</p>
-</blockquote>
+                            <blockquote>
+                                <p>On a side note: MobX is suitable for <a target="_blank" rel="noopener noreferrer"
+                                        href="https://medium.com/@mweststrate/3-reasons-why-i-stopped-using-react-setstate-ab73fc67a42e">internal
+                                        component state in exchange for React setState</a> as well. I would recommend to
+                                    keep <code>setState()</code> over MobX for internal component state management. But
+                                    it clearly shows how easy you could weave MobX into React to accomplish internal
+                                    component state management.</p>
+                            </blockquote>
 
-<h3 id="a-growing-application">A Growing Application</h3>
+                            <h3 id="a-growing-application">A Growing Application</h3>
 
-<p>In MobX you are mutating annotated objects and your components will render an update. MobX comes with more internal implementation magic than Redux, which makes it easier to use in the beginning with less code. Coming from an Angular background it felt very much like using two-way data binding. You hold some state somewhere, watch the state by using annotations and let the component update do the rest once the state was mutated.</p>
+                            <p>In MobX you are mutating annotated objects and your components will render an update.
+                                MobX comes with more internal implementation magic than Redux, which makes it easier to
+                                use in the beginning with less code. Coming from an Angular background it felt very much
+                                like using two-way data binding. You hold some state somewhere, watch the state by using
+                                annotations and let the component update do the rest once the state was mutated.</p>
 
-<p>MobX allows it to mutate the state directly from the component tree.</p>
+                            <p>MobX allows it to mutate the state directly from the component tree.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// component</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// component</span>
 <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">store</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">push</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">)}</span> <span style="color: #5bc4bf">/&gt;</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>A better way of doing it would be to have a MobX <code>@action</code> in the store.</p>
+                            <p>A better way of doing it would be to have a MobX <code>@action</code> in the store.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// component</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// component</span>
 <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">store</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">addUser</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">)}</span> <span style="color: #5bc4bf">/&gt;</span>
 
 <span style="color: #776e71">// store</span>
 <span style="color: #ef6155">@</span><span style="color: #06b6ef">action</span> <span style="color: #06b6ef">addUser</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
   <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">push</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">);</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>It would make the state mutating more explicit with actions. Moreover there exists a little functionality to enforce state mutations via explicit actions like you have seen above.</p>
+                            <p>It would make the state mutating more explicit with actions. Moreover there exists a
+                                little functionality to enforce state mutations via explicit actions like you have seen
+                                above.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// root file</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// root file</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">configure</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #06b6ef">configure</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">enforceActions</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span> <span style="color: #e7e9db">});</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>Mutating the state directly in the store like we did in the first example wouldn&rsquo;t work anymore. Coming from the first to the latter example shows how to embrace best practices in MobX. Moreover once you are doing explicit actions only, you are already using Redux constraints.</p>
+                            <p>Mutating the state directly in the store like we did in the first example wouldn&rsquo;t
+                                work anymore. Coming from the first to the latter example shows how to embrace best
+                                practices in MobX. Moreover once you are doing explicit actions only, you are already
+                                using Redux constraints.</p>
 
-<p>I would recommend to use MobX to kickstart projects. Once the application grows in size and contributors, it makes sense to apply best practices like using <strong>explicit actions</strong>. They are embracing the Redux constraints, which say you can never change the state directly and only by using actions.</p>
+                            <p>I would recommend to use MobX to kickstart projects. Once the application grows in size
+                                and contributors, it makes sense to apply best practices like using <strong>explicit
+                                    actions</strong>. They are embracing the Redux constraints, which say you can never
+                                change the state directly and only by using actions.</p>
 
-<h3 id="transition-to-redux">Transition to Redux</h3>
+                            <h3 id="transition-to-redux">Transition to Redux</h3>
 
-<p>Once your application gets bigger and has multiple developers working on it, you should consider to use Redux. It enforces by nature to use explicit actions to change the state. The action has a type and payload, which a reducer can use to change the state. In a team of developers it is very easy to reason about state changes that way.</p>
+                            <p>Once your application gets bigger and has multiple developers working on it, you should
+                                consider to use Redux. It enforces by nature to use explicit actions to change the
+                                state. The action has a type and payload, which a reducer can use to change the state.
+                                In a team of developers it is very easy to reason about state changes that way.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// reducer</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #776e71">// reducer</span>
 <span style="color: #e7e9db">(</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">newState</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>Redux gives you a whole architecture for state management with clear constraints. That is the <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=uvAXVMwHJXU">success story behind Redux</a>.</p>
+                            <p>Redux gives you a whole architecture for state management with clear constraints. That is
+                                the <a target="_blank" rel="noopener noreferrer"
+                                    href="https://www.youtube.com/watch?v=uvAXVMwHJXU">success story behind Redux</a>.
+                            </p>
 
-<p>Another advantage of Redux is using it on the server side. Since we are dealing with plain JavaScript, you could send the state across the network. Serializing and deserializing a state object works out of the box. Yet it is possible in MobX too.</p>
+                            <p>Another advantage of Redux is using it on the server side. Since we are dealing with
+                                plain JavaScript, you could send the state across the network. Serializing and
+                                deserializing a state object works out of the box. Yet it is possible in MobX too.</p>
 
-<p>MobX is less opinionated, but by using <code>configure({ enforceActions: true })</code> you can enforce clearer constraints like in Redux. That&rsquo;s why I wouldn&rsquo;t say you cannot use MobX in scaling applications, but there is a clear way of doing things in Redux. The documentation in MobX even says: <em>&ldquo;[MobX] does not tell you how to structure your code, where to store state or how to process events.&rdquo;</em> The development team would have to establish a state management architecture in the first place.</p>
+                            <p>MobX is less opinionated, but by using <code>configure({ enforceActions: true })</code>
+                                you can enforce clearer constraints like in Redux. That&rsquo;s why I wouldn&rsquo;t say
+                                you cannot use MobX in scaling applications, but there is a clear way of doing things in
+                                Redux. The documentation in MobX even says: <em>&ldquo;[MobX] does not tell you how to
+                                    structure your code, where to store state or how to process events.&rdquo;</em> The
+                                development team would have to establish a state management architecture in the first
+                                place.</p>
 
-<p>After all the state management learning curve isn&rsquo;t that steep. When we recap the recommendations, a beginner in React would <strong>first learn to use setState() and this.state</strong> properly. After a while you would <strong>realize the problems of using only setState()</strong> to maintain state in a React application. When looking for a solution, you stumble upon state management libraries like MobX or Redux. But which one to choose? Since MobX is less opinionated, has less boilerplate and can be used similar to <code>setState()</code> I would recommend in smaller projects to give MobX a shot. Once the application grows in size and contributors, you should consider to enforce more restrictions in MobX or give Redux a shot. I enjoyed using both libraries. Even if you don&rsquo;t use one of them after all, it makes sense to have seen an alternative way of doing state management.</p>
+                            <p>After all the state management learning curve isn&rsquo;t that steep. When we recap the
+                                recommendations, a beginner in React would <strong>first learn to use setState() and
+                                    this.state</strong> properly. After a while you would <strong>realize the problems
+                                    of using only setState()</strong> to maintain state in a React application. When
+                                looking for a solution, you stumble upon state management libraries like MobX or Redux.
+                                But which one to choose? Since MobX is less opinionated, has less boilerplate and can be
+                                used similar to <code>setState()</code> I would recommend in smaller projects to give
+                                MobX a shot. Once the application grows in size and contributors, you should consider to
+                                enforce more restrictions in MobX or give Redux a shot. I enjoyed using both libraries.
+                                Even if you don&rsquo;t use one of them after all, it makes sense to have seen an
+                                alternative way of doing state management.</p>
 
-<h2 class="chapter-header" id="anotherSolution">Another state management solution?</h2>
+                            <h2 class="chapter-header" id="anotherSolution">Another state management solution?</h2>
 
-<p>You may already started to use one state management solution, but want to consider another one? You could compare both real world <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/favesound-mobx">MobX</a> and <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/favesound-redux">Redux</a> applications. I made one big <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/favesound-mobx/pull/1">Pull Request</a> to show all changes at one place. In the case of the PR, it is a refactoring from Redux to MobX. But you could apply it vice versa. I don&rsquo;t think it is necessary coupled to Redux nor MobX, because most of the changes are very much decoupled from everything else.</p>
+                            <p>You may already started to use one state management solution, but want to consider
+                                another one? You could compare both real world <a target="_blank"
+                                    rel="noopener noreferrer" href="https://github.com/rwieruch/favesound-mobx">MobX</a>
+                                and <a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/rwieruch/favesound-redux">Redux</a> applications. I made
+                                one big <a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/rwieruch/favesound-mobx/pull/1">Pull Request</a> to show
+                                all changes at one place. In the case of the PR, it is a refactoring from Redux to MobX.
+                                But you could apply it vice versa. I don&rsquo;t think it is necessary coupled to Redux
+                                nor MobX, because most of the changes are very much decoupled from everything else.</p>
 
-<p>Basically you have to exchange Redux Actions, Action Creator, Action Types, Reducer, Global Store with MobX Stores. Additionally the interface to connect React components changes from <a target="_blank" rel="noopener noreferrer" href="https://github.com/reactjs/react-redux">react-redux</a> to <a target="_blank" rel="noopener noreferrer" href="https://github.com/mobxjs/mobx-react">mobx-react</a>. The <a target="_blank" rel="noopener noreferrer" href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0">presenter + container pattern</a> can still be applied. You would have to refactor only the container components. In MobX one could use <code>inject</code> to get a store dependency. After that the store can pass a substate and actions to a component. MobX <code>observer</code> makes sure that the component updates (render) after an <code>observable</code> property in the store has changed.</p>
+                            <p>Basically you have to exchange Redux Actions, Action Creator, Action Types, Reducer,
+                                Global Store with MobX Stores. Additionally the interface to connect React components
+                                changes from <a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/reactjs/react-redux">react-redux</a> to <a target="_blank"
+                                    rel="noopener noreferrer"
+                                    href="https://github.com/mobxjs/mobx-react">mobx-react</a>. The <a target="_blank"
+                                    rel="noopener noreferrer"
+                                    href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0">presenter
+                                    + container pattern</a> can still be applied. You would have to refactor only the
+                                container components. In MobX one could use <code>inject</code> to get a store
+                                dependency. After that the store can pass a substate and actions to a component. MobX
+                                <code>observer</code> makes sure that the component updates (render) after an
+                                <code>observable</code> property in the store has changed.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observer</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">inject</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx-react&#39;</span><span style="color: #e7e9db">;</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observer</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">inject</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx-react&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #e7e9db">...</span>
 
@@ -643,12 +869,15 @@
     <span style="color: #5bc4bf">/&gt;</span>
   <span style="color: #e7e9db">);</span>
 <span style="color: #e7e9db">}));</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>In Redux you would use <code>mapStateToProps</code> and <code>mapDispatchToProps</code> to pass a substate and actions to a component.</p>
+                            <p>In Redux you would use <code>mapStateToProps</code> and <code>mapDispatchToProps</code>
+                                to pass a substate and actions to a component.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">connect</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-redux&#39;</span><span style="color: #e7e9db">;</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">connect</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-redux&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">bindActionCreators</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;redux&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #e7e9db">...</span>
@@ -669,418 +898,460 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">const</span> <span style="color: #06b6ef">UserProfileContainer</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">connect</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">mapStateToProps</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">mapDispatchToProps</span><span style="color: #e7e9db">)(</span><span style="color: #06b6ef">UserProfile</span><span style="color: #e7e9db">);</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>There exists a tutorial on <a href="../mobx-react/index.html">how to refactor from Redux to MobX</a>. But as I said, one could also apply the refactoring vice versa. Once you have chosen a state management library, you can see that there is no vendor lock-in. They are pretty much decoupled from your application and therefore exchangeable.</p>
+                            <p>There exists a tutorial on <a href="../mobx-react/index.html">how to refactor from Redux
+                                    to MobX</a>. But as I said, one could also apply the refactoring vice versa. Once
+                                you have chosen a state management library, you can see that there is no vendor lock-in.
+                                They are pretty much decoupled from your application and therefore exchangeable.</p>
 
-<h2 class="chapter-header" id="finalThoughts">Final Thoughts</h2>
+                            <h2 class="chapter-header" id="finalThoughts">Final Thoughts</h2>
 
-<p>Whenever I read the comments in a Redux vs MobX discussion, there is always this one comment: <em>&ldquo;Redux has too much boilerplate, you should use MobX instead. I was able to remove XXX lines of code.&rdquo;</em> The comment might be true, but no one considers the trade off. <strong>Redux comes with more boilerplate as MobX, because it was added for specific design constraints.</strong> It allows you to reason about your application state even though it is on a larger scale. All the ceremony around state handling is there for a reason.</p>
+                            <p>Whenever I read the comments in a Redux vs MobX discussion, there is always this one
+                                comment: <em>&ldquo;Redux has too much boilerplate, you should use MobX instead. I was
+                                    able to remove XXX lines of code.&rdquo;</em> The comment might be true, but no one
+                                considers the trade off. <strong>Redux comes with more boilerplate as MobX, because it
+                                    was added for specific design constraints.</strong> It allows you to reason about
+                                your application state even though it is on a larger scale. All the ceremony around
+                                state handling is there for a reason.</p>
 
-<p>Redux library is pretty small. Most of the time you are <strong>dealing only with plain JavaScript objects and arrays</strong>. It is closer to vanilla JavaScript than MobX. In MobX one wraps the objects and arrays into observable objects which hide most of the boilerplate. It builds up on hidden abstractions. There the magic happens, but it is harder to understand the underlying mechanisms. In Redux it is easier to reason about it with plain JavaScript. It makes it easier for testing and easier for debugging your application.</p>
+                            <p>Redux library is pretty small. Most of the time you are <strong>dealing only with plain
+                                    JavaScript objects and arrays</strong>. It is closer to vanilla JavaScript than
+                                MobX. In MobX one wraps the objects and arrays into observable objects which hide most
+                                of the boilerplate. It builds up on hidden abstractions. There the magic happens, but it
+                                is harder to understand the underlying mechanisms. In Redux it is easier to reason about
+                                it with plain JavaScript. It makes it easier for testing and easier for debugging your
+                                application.</p>
 
-<p>Additionally one has again to consider where we came from in single page applications. A bunch of single page application frameworks and libraries had the same problems of state management, which eventually got solved by the overarching flux pattern. Redux is the successor of the pattern.</p>
+                            <p>Additionally one has again to consider where we came from in single page applications. A
+                                bunch of single page application frameworks and libraries had the same problems of state
+                                management, which eventually got solved by the overarching flux pattern. Redux is the
+                                successor of the pattern.</p>
 
-<p>In MobX it goes the opposite direction again. Again we start to mutate state directly without embracing the advantages of functional programming. For some people it feels again closer to two-way data binding. After a while people might run again into the same problems before a state management library like Redux was introduced. The state management gets scattered across components and ends up in a mess.</p>
+                            <p>In MobX it goes the opposite direction again. Again we start to mutate state directly
+                                without embracing the advantages of functional programming. For some people it feels
+                                again closer to two-way data binding. After a while people might run again into the same
+                                problems before a state management library like Redux was introduced. The state
+                                management gets scattered across components and ends up in a mess.</p>
 
-<p>While in Redux you have an established ceremony how to set up things, MobX is less opinionated. But it would be wise to embrace best practices in MobX. People need to know how to organize state management to improve the reasoning about it. Otherwise people tend to mutate state directly in components.</p>
+                            <p>While in Redux you have an established ceremony how to set up things, MobX is less
+                                opinionated. But it would be wise to embrace best practices in MobX. People need to know
+                                how to organize state management to improve the reasoning about it. Otherwise people
+                                tend to mutate state directly in components.</p>
 
-<p>Both libraries are great. While Redux is already well established, MobX becomes an valid alternative for state management.</p>
+                            <p>Both libraries are great. While Redux is already well established, MobX becomes an valid
+                                alternative for state management.</p>
 
-<div class="read-before">
-  Read more: <a href="../the-road-to-learn-react/index.html" itemprop="url">Learn plain React with setState and this.state</a>
-</div>
+                            <div class="read-before">
+                                Read more: <a href="../the-road-to-learn-react/index.html" itemprop="url">Learn plain
+                                    React with setState and this.state</a>
+                            </div>
 
-<div class="read-before">
-  Read more: <a href="https://roadtoreact.com/course-details?courseId=TAMING_THE_STATE" itemprop="url">Learn Redux and MobX in React in a full-blown course</a>
-</div>
+                            <div class="read-before">
+                                Read more: <a href="https://roadtoreact.com/course-details?courseId=TAMING_THE_STATE"
+                                    itemprop="url">Learn Redux and MobX in React in a full-blown course</a>
+                            </div>
 
-<h2 class="chapter-header" id="factSheet">Fact Sheet</h2>
+                            <h2 class="chapter-header" id="factSheet">Fact Sheet</h2>
 
-<ul>
-<li><p>Redux</p>
+                            <ul>
+                                <li>
+                                    <p>Redux</p>
 
-<ul>
-<li>single store</li>
-<li>functional programming paradigm</li>
-<li>immutable</li>
-<li>pure</li>
-<li>explicit update logic</li>
-<li>plain JavaScript</li>
-<li>more boilerplate</li>
-<li>normalized state</li>
-<li>flat state</li>
-</ul></li>
+                                    <ul>
+                                        <li>single store</li>
+                                        <li>functional programming paradigm</li>
+                                        <li>immutable</li>
+                                        <li>pure</li>
+                                        <li>explicit update logic</li>
+                                        <li>plain JavaScript</li>
+                                        <li>more boilerplate</li>
+                                        <li>normalized state</li>
+                                        <li>flat state</li>
+                                    </ul>
+                                </li>
 
-<li><p>MobX</p>
+                                <li>
+                                    <p>MobX</p>
 
-<ul>
-<li>multiple stores</li>
-<li>object-oriented programming and reactive programming paradigms</li>
-<li>mutable</li>
-<li>impure</li>
-<li>implicit update logic</li>
-<li>&ldquo;magic&rdquo; JavaScript</li>
-<li>less boilerplate</li>
-<li>denormalized state</li>
-<li>nested state</li>
-</ul></li>
-</ul>
+                                    <ul>
+                                        <li>multiple stores</li>
+                                        <li>object-oriented programming and reactive programming paradigms</li>
+                                        <li>mutable</li>
+                                        <li>impure</li>
+                                        <li>implicit update logic</li>
+                                        <li>&ldquo;magic&rdquo; JavaScript</li>
+                                        <li>less boilerplate</li>
+                                        <li>denormalized state</li>
+                                        <li>nested state</li>
+                                    </ul>
+                                </li>
+                            </ul>
 
-<h2 class="chapter-header" id="keyTakeaways">Key Takeaways</h2>
+                            <h2 class="chapter-header" id="keyTakeaways">Key Takeaways</h2>
 
-<ul>
-<li>learn React with setState and this.state to manage local state
+                            <ul>
+                                <li>learn React with setState and this.state to manage local state
 
-<ul>
-<li>get comfortable with it</li>
-<li>experience the issues you run into without a state managament library like Redux or MobX</li>
-</ul></li>
-<li>learning recommendations
+                                    <ul>
+                                        <li>get comfortable with it</li>
+                                        <li>experience the issues you run into without a state managament library like
+                                            Redux or MobX</li>
+                                    </ul>
+                                </li>
+                                <li>learning recommendations
 
-<ul>
-<li>setState -&gt; MobX -&gt; MobX more restricted (e.g. configure enforceActions) -&gt; Redux</li>
-<li>or stick to one solution after setState:</li>
-</ul></li>
-<li>use MobX over Redux:
+                                    <ul>
+                                        <li>setState -&gt; MobX -&gt; MobX more restricted (e.g. configure
+                                            enforceActions) -&gt; Redux</li>
+                                        <li>or stick to one solution after setState:</li>
+                                    </ul>
+                                </li>
+                                <li>use MobX over Redux:
 
-<ul>
-<li>short learning curve</li>
-<li>simple to use (magic)</li>
-<li>quick start</li>
-<li>less opinionated</li>
-<li>minimal boilerplate</li>
-<li>used in lightweight applications</li>
-<li>mutable data</li>
-<li>object-oriented programming</li>
-<li>in a smaller size &amp; few developers project</li>
-<li>but can be used in bigger size projects too, when used with explicit constraints</li>
-</ul></li>
-<li>use Redux over MobX:
+                                    <ul>
+                                        <li>short learning curve</li>
+                                        <li>simple to use (magic)</li>
+                                        <li>quick start</li>
+                                        <li>less opinionated</li>
+                                        <li>minimal boilerplate</li>
+                                        <li>used in lightweight applications</li>
+                                        <li>mutable data</li>
+                                        <li>object-oriented programming</li>
+                                        <li>in a smaller size &amp; few developers project</li>
+                                        <li>but can be used in bigger size projects too, when used with explicit
+                                            constraints</li>
+                                    </ul>
+                                </li>
+                                <li>use Redux over MobX:
 
-<ul>
-<li>clear constraints</li>
-<li>testable lightweight parts</li>
-<li>opinionated state management architecture</li>
-<li>mature best practices</li>
-<li>used in complex applications</li>
-<li>immutable data</li>
-<li>functional programming</li>
-<li>in a bigger size &amp; several developers / teams project</li>
-<li>testability, scaleability, maintainability</li>
-</ul></li>
-<li>container + presenter components is a valid pattern for both</li>
-<li>react-redux and mobx-react are exchangeable interfaces to React container components</li>
-<li>configured enforced actions of MobX makes state changes more obvious in a scaling app and should be best practice</li>
-</ul>
+                                    <ul>
+                                        <li>clear constraints</li>
+                                        <li>testable lightweight parts</li>
+                                        <li>opinionated state management architecture</li>
+                                        <li>mature best practices</li>
+                                        <li>used in complex applications</li>
+                                        <li>immutable data</li>
+                                        <li>functional programming</li>
+                                        <li>in a bigger size &amp; several developers / teams project</li>
+                                        <li>testability, scaleability, maintainability</li>
+                                    </ul>
+                                </li>
+                                <li>container + presenter components is a valid pattern for both</li>
+                                <li>react-redux and mobx-react are exchangeable interfaces to React container components
+                                </li>
+                                <li>configured enforced actions of MobX makes state changes more obvious in a scaling
+                                    app and should be best practice</li>
+                            </ul>
 
-<h2 class="chapter-header" id="resources">More Resources</h2>
+                            <h2 class="chapter-header" id="resources">More Resources</h2>
 
-<ul>
-<li><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=etnPDw5PKqg">comparison by Michel Weststrate</a> - the creator of MobX</li>
-<li><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=76FRrbY18Bs">comparison by Preethi Kasireddy</a></li>
-</ul>
-
-
-                            
-<div class="feedback-and-share text-center">
-    <hr>
-    
-    <p class="lead">
-        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
-    </p>
-    
-    
-        <p class="lead">
-            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
-        </p>
-    
-</div>
+                            <ul>
+                                <li><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.youtube.com/watch?v=etnPDw5PKqg">comparison by Michel
+                                        Weststrate</a> - the creator of MobX</li>
+                                <li><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.youtube.com/watch?v=76FRrbY18Bs">comparison by Preethi
+                                        Kasireddy</a></li>
+                            </ul>
 
 
-                            
-                                <div class="box-inline col-md-12">
-    <div class="col-md-12 text-center">
-        <h2 class="newsletter">The Road to learn React</h2>
-        
-            <div class="col-md-4">
-                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
-            </div>
-        
-        <p class="lead">
-            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
-        </p>
-        <a
-            class="btn btn-template-main"
-            href="https://roadtoreact.com"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Get the Book for free <i class="fa fa-chevron-right"></i>
-        </a>
-        
-            <div>
-                <a
-                    href="https://amzn.to/2QY2ONp"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Get it from Amazon
-                </a>
-            </div>
-        
-    </div>
-</div>
-                            
+
+                            <div class="feedback-and-share text-center">
+                                <hr>
+
+                                <p class="lead">
+                                    I would like to hear your thoughts :-) Find me on <a target="_blank"
+                                        rel="noopener noreferrer" aria-label="twitter"
+                                        href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and
+                                    <a target="_blank" aria-label="facebook"
+                                        href="https://www.facebook.com/rwieruch/"><i
+                                            class="fa fa-facebook"></i>Facebook</a>
+                                </p>
+
+
+                                <p class="lead">
+                                    Did the article help you? Share it with your friends on social media <i
+                                        class="fa fa-arrow-left"></i>, support me as my <a target="_blank"
+                                        rel="noopener noreferrer" aria-label="patreon"
+                                        href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and
+                                    become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+                                </p>
+
+                            </div>
+
+
+
+                            <div class="box-inline col-md-12">
+                                <div class="col-md-12 text-center">
+                                    <h2 class="newsletter">The Road to learn React</h2>
+
+                                    <div class="col-md-4">
+                                        <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+                                    </div>
+
+                                    <p class="lead">
+                                        Build a Hacker News App along the way. No setup configuration. No tooling. No
+                                        Redux. Plain React in 200+ pages of learning material. Learn React like
+                                        <strong>50.000+ readers</strong>.
+                                    </p>
+                                    <a class="btn btn-template-main" href="https://roadtoreact.com" target="_blank"
+                                        rel="noopener noreferrer">
+                                        Get the Book for free <i class="fa fa-chevron-right"></i>
+                                    </a>
+
+                                    <div>
+                                        <a href="https://amzn.to/2QY2ONp" target="_blank" rel="noopener noreferrer">
+                                            Get it from Amazon
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+
                         </div>
 
-                        
-                        
+
+
                         <div id="comments">
                             <div id="disqus_thread"></div>
-<script type="text/javascript">
+                            <script type="text/javascript">
 
-(function() {
-    
-    
-    if (window.location.hostname == "localhost")
-        return;
+                                (function () {
 
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'rwieruch';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                                    if (window.location.hostname == "localhost")
+                                        return;
+
+                                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                    var disqus_shortname = 'rwieruch';
+                                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a
+                                    href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span
+                                    class="logo-disqus">Disqus</span></a>
                         </div>
-                        
+
 
                     </article>
-                    
+
 
                 </div>
-                
+
 
             </div>
-            
-        </div>
-        
-
-        
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
-    <div class="dark-mask"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
-                <h2 class="text-uppercase">Take Part</h2>
-            </div>
-
-            <div class="col-md-12 text-center">
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
-                
-            </div>
-            <div class="col-md-12">
-                <p class="text-center">
-                    <div id="mc_embed_signup">
-    <form
-        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
-        method="post"
-        id="revue-form"
-        name="revue-form"
-        target="_blank">
-        <div id="mc_embed_signup_scroll">
-            <input
-                class="email"
-                placeholder="email address"
-                type="email"
-                name="member[email]"
-                id="member_email"
-            >
-            <div>
-                <button
-                    type="submit"
-                    value="Subscribe"
-                    name="member[subscribe]"
-                    id="member_submit"
-                    class="btn btn-template-transparent-black btn-lg"
-                >
-                    Subscribe
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
-
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-        <footer id="subfooter">
-    <div class="container">
-
-        <div class="col-md-5 col-sm-6">
-
-            <h4>Recent posts</h4>
-
-            <div class="blog-entries">
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../redux-vs-usereducer/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="React&#39;s useReducer vs Redux"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../publish-npm-package-node/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="How to publish a npm package?"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../react-scroll-to-item/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="How to Scroll to Item in React?"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
-                    </div>
-                </div>
-                
-            </div>
-
-            <hr class="hidden-md hidden-lg hidden-sm">
 
         </div>
-        
 
-        
-        <div class="col-md-5 col-md-offset-2 col-sm-6">
 
-            <h4>About Me</h4>
 
-            <div class="blog-entries">
-                <div class="item same-height-row clearfix">
-                    <div class="profile same-height-always">
-                        <img
-                            class="img-lazy img-responsive"
-                            data-lazy-src="//img/page/profile.jpg"
-                            alt="profile"
-                        >
+
+        <section class="bar background-image-fixed-2 no-mb color-white text-center">
+            <div class="dark-mask"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                        <h2 class="text-uppercase">Take Part</h2>
                     </div>
-                    <div class="name same-height-always">
-                        <p>
-                            Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+
+                    <div class="col-md-12 text-center">
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+
+                    </div>
+                    <div class="col-md-12">
+                        <p class="text-center">
+                            <div id="mc_embed_signup">
+                                <form action="https://www.getrevue.co/profile/rwieruch/add_subscriber" method="post"
+                                    id="revue-form" name="revue-form" target="_blank">
+                                    <div id="mc_embed_signup_scroll">
+                                        <input class="email" placeholder="email address" type="email"
+                                            name="member[email]" id="member_email">
+                                        <div>
+                                            <button type="submit" value="Subscribe" name="member[subscribe]"
+                                                id="member_submit" class="btn btn-template-transparent-black btn-lg">
+                                                Subscribe
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
                         </p>
                     </div>
                 </div>
             </div>
+        </section>
+        <footer id="subfooter">
+            <div class="container">
 
-        </div>
-        
-        
+                <div class="col-md-5 col-sm-6">
 
-    </div>
-    
-</footer>
+                    <h4>Recent posts</h4>
+
+                    <div class="blog-entries">
+
+                        <div class="item same-height-row clearfix">
+                            <div class="article same-height-always">
+                                <a href="../redux-vs-usereducer/index.html">
+
+                                    <img data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                        data-is-thumb="is-thumb" class="img-lazy img-responsive"
+                                        alt="React&#39;s useReducer vs Redux">
+
+                                </a>
+                            </div>
+                            <div class="name same-height-always">
+                                <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                            </div>
+                        </div>
+
+                        <div class="item same-height-row clearfix">
+                            <div class="article same-height-always">
+                                <a href="../publish-npm-package-node/index.html">
+
+                                    <img data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                        data-is-thumb="is-thumb" class="img-lazy img-responsive"
+                                        alt="How to publish a npm package?">
+
+                                </a>
+                            </div>
+                            <div class="name same-height-always">
+                                <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a>
+                                </h5>
+                            </div>
+                        </div>
+
+                        <div class="item same-height-row clearfix">
+                            <div class="article same-height-always">
+                                <a href="../react-scroll-to-item/index.html">
+
+                                    <img data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                        data-is-thumb="is-thumb" class="img-lazy img-responsive"
+                                        alt="How to Scroll to Item in React?">
+
+                                </a>
+                            </div>
+                            <div class="name same-height-always">
+                                <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a>
+                                </h5>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr class="hidden-md hidden-lg hidden-sm">
+
+                </div>
+
+
+
+                <div class="col-md-5 col-md-offset-2 col-sm-6">
+
+                    <h4>About Me</h4>
+
+                    <div class="blog-entries">
+                        <div class="item same-height-row clearfix">
+                            <div class="profile same-height-always">
+                                <img class="img-lazy img-responsive" data-lazy-src="//img/page/profile.jpg"
+                                    alt="profile">
+                            </div>
+                            <div class="name same-height-always">
+                                <p>
+                                    Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more
+                                    <a href="../about/index.html">about me</a>, <a
+                                        href="../work-with-me/index.html">work with me</a>, or have a look at my social
+                                    media profiles below.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </footer>
 
 
         <footer id="copyright">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <ul class="info list-inline quicklinks pull-left">
-          
-            <li>© Chris Paul</li>
-          
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <ul class="list-inline footer-social-buttons text-center">
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
-          
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <ul class="info list-inline quicklinks pull-right">
-          
-            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
-          
-        </ul>
-      </div>
-    </div>
-  </div>
-</footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <ul class="info list-inline quicklinks pull-left">
+
+                            <li>© Chris Paul</li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-inline footer-social-buttons text-center">
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i
+                                        class="fa fa-linkedin"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a>
+                            </li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="info list-inline quicklinks pull-right">
+
+                            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
 
     </div>
-    
 
-  
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<script src="../js/script.js"></script>  </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script src="../js/script.js"></script>
+</body>
+
 </html>

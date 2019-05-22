@@ -1,281 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-  <meta charset="utf-8">
-  <meta name="robots" content="all,follow">
-  <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  
 
-  <title>
-    MobX (with Decorators) in create-react-app - CPaul
-  </title>
 
-  <meta name="author" content="" />
-  <meta name="description" content="Everything you need to know about using MobX in a create-react-app with React. The article shows you all the different edge cases on how to activate JavaScript decorators, how to use MobX without decorators, and as bonus how to use MobX in Next.js. Afterward, you are prepared to setup your application with MobX and React.js ...">
-  
+    <title>
+        MobX (with Decorators) in create-react-app - CPaul
+    </title>
 
-  <meta name="theme-color" content="#38bb6c"/>
+    <meta name="author" content="" />
+    <meta name="description"
+        content="Everything you need to know about using MobX in a create-react-app with React. The article shows you all the different edge cases on how to activate JavaScript decorators, how to use MobX without decorators, and as bonus how to use MobX in Next.js. Afterward, you are prepared to setup your application with MobX and React.js ...">
 
-  <meta name="generator" content="Hugo 0.41" />
-<link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
-  <link href="../css/customizations.css" rel="stylesheet">
+    <meta name="theme-color" content="#38bb6c" />
+
+    <meta name="generator" content="Hugo 0.41" />
+    <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+    <link href="../css/customizations.css" rel="stylesheet">
 
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  
-<link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="../img/favicon/manifest.json">
-  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
 
-  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+    <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="../img/favicon/manifest.json">
+    <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
 
-<meta itemprop="name" content="MobX (with Decorators) in create-react-app">
-<meta itemprop="description" content="Everything you need to know about using MobX in a create-react-app with React. The article shows you all the different edge cases on how to activate JavaScript decorators, how to use MobX without decorators, and as bonus how to use MobX in Next.js. Afterward, you are prepared to setup your application with MobX and React.js ...">    <meta itemprop="image" content="https://chrispaul.dev/img/posts/create-react-app-mobx-decorators/banner_640.jpg"><meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+    <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
 
-
-<meta itemprop="wordCount" content="1279">
-
-<meta name="keywords" content="create-react-app mobx decorators">
-
-  <meta property="og:title" content="MobX (with Decorators) in create-react-app - CPaul">
+    <meta itemprop="name" content="MobX (with Decorators) in create-react-app">
+    <meta itemprop="description"
+        content="Everything you need to know about using MobX in a create-react-app with React. The article shows you all the different edge cases on how to activate JavaScript decorators, how to use MobX without decorators, and as bonus how to use MobX in Next.js. Afterward, you are prepared to setup your application with MobX and React.js ...">
+    <meta itemprop="image" content="https://chrispaul.dev/img/posts/create-react-app-mobx-decorators/banner_640.jpg">
+    <meta itemprop="keywords"
+        content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
 
 
-  <meta property="og:description" content="Everything you need to know about using MobX in a create-react-app with React. The article shows you all the different edge cases on how to activate JavaScript decorators, how to use MobX without decorators, and as bonus how to use MobX in Next.js. Afterward, you are prepared to setup your application with MobX and React.js ..." />
+    <meta itemprop="wordCount" content="1279">
+
+    <meta name="keywords" content="create-react-app mobx decorators">
+
+    <meta property="og:title" content="MobX (with Decorators) in create-react-app - CPaul">
 
 
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://chrispaul.dev/create-react-app-mobx-decorators/" />
-<meta property="og:image" content="https://chrispaul.dev/img/posts/create-react-app-mobx-decorators/banner_640.jpg" />
+    <meta property="og:description"
+        content="Everything you need to know about using MobX in a create-react-app with React. The article shows you all the different edge cases on how to activate JavaScript decorators, how to use MobX without decorators, and as bonus how to use MobX in Next.js. Afterward, you are prepared to setup your application with MobX and React.js ..." />
 
-  
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://chrispaul.dev/create-react-app-mobx-decorators/" />
+    <meta property="og:image"
+        content="https://chrispaul.dev/img/posts/create-react-app-mobx-decorators/banner_640.jpg" />
+
+
 
     <meta name="news_keywords" content="create-react-app mobx decorators" />
 
-  
 
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/create-react-app-mobx-decorators/banner_640.jpg"/><meta name="twitter:title" content="MobX (with Decorators) in create-react-app"/>
-<meta name="twitter:description" content="Everything you need to know about using MobX in a create-react-app with React. The article shows you all the different edge cases on how to activate JavaScript decorators, how to use MobX without decorators, and as bonus how to use MobX in Next.js. Afterward, you are prepared to setup your application with MobX and React.js ..."/>
-<meta name="twitter:site" content="@rwieruch"/>
-<meta name="twitter:domain" content="rwieruch"/>
 
-  
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image:src"
+        content="https://chrispaul.dev/img/posts/create-react-app-mobx-decorators/banner_640.jpg" />
+    <meta name="twitter:title" content="MobX (with Decorators) in create-react-app" />
+    <meta name="twitter:description"
+        content="Everything you need to know about using MobX in a create-react-app with React. The article shows you all the different edge cases on how to activate JavaScript decorators, how to use MobX without decorators, and as bonus how to use MobX in Next.js. Afterward, you are prepared to setup your application with MobX and React.js ..." />
+    <meta name="twitter:site" content="@rwieruch" />
+    <meta name="twitter:domain" content="rwieruch" />
+
+
 
 </head>
 
 
-  <body>
+<body>
 
     <div id="all">
 
         <header>
 
-          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+            <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
 
-    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+                <div class="navbar navbar-default yamm" role="navigation" id="navbar">
 
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand home" href="../index.html">
-                    <img src="../img/page/logo.svg" alt="MobX (with Decorators) in create-react-app logo" class="img-lazy">
-                    <span class="sr-only">MobX (with Decorators) in create-react-app - go to homepage</span>
-                </a>
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand home" href="../index.html">
+                                <img src="../img/page/logo.svg" alt="MobX (with Decorators) in create-react-app logo"
+                                    class="img-lazy">
+                                <span class="sr-only">MobX (with Decorators) in create-react-app - go to homepage</span>
+                            </a>
 
-                <div class="navbar-buttons">
-                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-align-justify"></i>
-                    </button>
-                </div>
-            </div>
-            
+                            <div class="navbar-buttons">
+                                <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse"
+                                    data-target="#navigation">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-align-justify"></i>
+                                </button>
+                            </div>
+                        </div>
 
-            <div class="navbar-collapse collapse" id="navigation">
-                <ul class="nav navbar-nav navbar-right">
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../index.html">Blog</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../work-with-me/index.html">Work with me</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../about/index.html">About</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
-                        
-                    </li>
-                    
-                </ul>
-            </div>
-            
 
-            <div class="collapse clearfix" id="search">
+                        <div class="navbar-collapse collapse" id="navigation">
+                            <ul class="nav navbar-nav navbar-right">
 
-                <form class="navbar-form" role="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
+                                <li class="dropdown">
 
-                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                                    <a href="../index.html">Blog</a>
 
-                </span>
+                                </li>
+
+                                <li class="dropdown">
+
+                                    <a href="../work-with-me/index.html">Work with me</a>
+
+                                </li>
+
+                                <li class="dropdown">
+
+                                    <a href="../about/index.html">About</a>
+
+                                </li>
+
+                                <li class="dropdown">
+
+                                    <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+
+                                </li>
+
+                            </ul>
+                        </div>
+
+
+                        <div class="collapse clearfix" id="search">
+
+                            <form class="navbar-form" role="search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <span class="input-group-btn">
+
+                                        <button type="submit" class="btn btn-template-main"><i
+                                                class="fa fa-search"></i></button>
+
+                                    </span>
+                                </div>
+                            </form>
+
+                        </div>
+
+
                     </div>
-                </form>
+                </div>
+
 
             </div>
-            
-
-        </div>
-    </div>
-    
-
-</div>
         </header>
 
         <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
-    
-
-<a
-    aria-label="icon-facebook"
-    class="icon-facebook"
-    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fcreate-react-app-mobx-decorators%2f"
-    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-    <i class="fa fa-facebook"></i>
-</a>
 
 
-<a
-    aria-label="icon-twitter"
-    class="icon-twitter"
-    href="https://twitter.com/share?text=MobX%20%28with%20Decorators%29%20in%20create-react-app%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fcreate-react-app-mobx-decorators%2f"
-    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-    <i class="fa fa-twitter"></i>
-</a>
-
-<a
-    aria-label="icon-linkedin"
-    class="icon-linkedin"
-    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=MobX%20%28with%20Decorators%29%20in%20create-react-app&amp;url=https%3a%2f%2fchrispaul.dev%2fcreate-react-app-mobx-decorators%2f">
-    <i class="fa fa-linkedin"></i>
-</a>
-
-</div>
-
-<div class="visible-xs visible-sm text-center">
-    <div class="post-share post-share-fixed post-share-mobile">
-        
-
-<a
-    aria-label="icon-facebook"
-    class="icon-facebook"
-    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fcreate-react-app-mobx-decorators%2f"
-    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-    <i class="fa fa-facebook"></i>
-</a>
+            <a aria-label="icon-facebook" class="icon-facebook"
+                href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fcreate-react-app-mobx-decorators%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+            </a>
 
 
-<a
-    aria-label="icon-twitter"
-    class="icon-twitter"
-    href="https://twitter.com/share?text=MobX%20%28with%20Decorators%29%20in%20create-react-app%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fcreate-react-app-mobx-decorators%2f"
-    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-    <i class="fa fa-twitter"></i>
-</a>
+            <a aria-label="icon-twitter" class="icon-twitter"
+                href="https://twitter.com/share?text=MobX%20%28with%20Decorators%29%20in%20create-react-app%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fcreate-react-app-mobx-decorators%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+            </a>
 
-<a
-    aria-label="icon-linkedin"
-    class="icon-linkedin"
-    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=MobX%20%28with%20Decorators%29%20in%20create-react-app&amp;url=https%3a%2f%2fchrispaul.dev%2fcreate-react-app-mobx-decorators%2f">
-    <i class="fa fa-linkedin"></i>
-</a>
+            <a aria-label="icon-linkedin" class="icon-linkedin"
+                href="https://www.linkedin.com/shareArticle?mini=true&amp;title=MobX%20%28with%20Decorators%29%20in%20create-react-app&amp;url=https%3a%2f%2fchrispaul.dev%2fcreate-react-app-mobx-decorators%2f">
+                <i class="fa fa-linkedin"></i>
+            </a>
 
-    </div>
-</div>
+        </div>
 
-        
+        <div class="visible-xs visible-sm text-center">
+            <div class="post-share post-share-fixed post-share-mobile">
+
+
+                <a aria-label="icon-facebook" class="icon-facebook"
+                    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fcreate-react-app-mobx-decorators%2f"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="fa fa-facebook"></i>
+                </a>
+
+
+                <a aria-label="icon-twitter" class="icon-twitter"
+                    href="https://twitter.com/share?text=MobX%20%28with%20Decorators%29%20in%20create-react-app%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fcreate-react-app-mobx-decorators%2f"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="fa fa-twitter"></i>
+                </a>
+
+                <a aria-label="icon-linkedin" class="icon-linkedin"
+                    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=MobX%20%28with%20Decorators%29%20in%20create-react-app&amp;url=https%3a%2f%2fchrispaul.dev%2fcreate-react-app-mobx-decorators%2f">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+
+            </div>
+        </div>
+
+
 
         <div class="hidden-xs">
-            
 
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
-    <div class="dark-mask"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
-                <h2 class="text-uppercase newsletter">Take Part</h2>
-            </div>
 
-            <div class="col-md-12">
-                <p class="text-center">
-                    <div id="mc_embed_signup">
-    <form
-        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
-        method="post"
-        id="revue-form"
-        name="revue-form"
-        target="_blank">
-        <div id="mc_embed_signup_scroll">
-            <input
-                class="email"
-                placeholder="email address"
-                type="email"
-                name="member[email]"
-                id="member_email"
-            >
-            <div>
-                <button
-                    type="submit"
-                    value="Subscribe"
-                    name="member[subscribe]"
-                    id="member_submit"
-                    class="btn btn-template-transparent-black btn-lg"
-                >
-                    Subscribe
-                </button>
-            </div>
+            <section class="bar background-image-fixed-2 no-mb color-white text-center">
+                <div class="dark-mask"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.
+                            </h3>
+                            <h2 class="text-uppercase newsletter">Take Part</h2>
+                        </div>
+
+                        <div class="col-md-12">
+                            <p class="text-center">
+                                <div id="mc_embed_signup">
+                                    <form action="https://www.getrevue.co/profile/rwieruch/add_subscriber" method="post"
+                                        id="revue-form" name="revue-form" target="_blank">
+                                        <div id="mc_embed_signup_scroll">
+                                            <input class="email" placeholder="email address" type="email"
+                                                name="member[email]" id="member_email">
+                                            <div>
+                                                <button type="submit" value="Subscribe" name="member[subscribe]"
+                                                    id="member_submit"
+                                                    class="btn btn-template-transparent-black btn-lg">
+                                                    Subscribe
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </form>
-</div>
-
-                </p>
-            </div>
-        </div>
-    </div>
-</section>        </div>
 
         <div id="content">
             <div class="container">
 
                 <div class="row">
 
-                    <article
-                        class="col-md-8 col-md-offset-2"
-                        id="blog-post"
-                        itemprop="blogPosts"
-                        itemscope itemtype="http://schema.org/BlogPosting">
+                    <article class="col-md-8 col-md-offset-2" id="blog-post" itemprop="blogPosts" itemscope
+                        itemtype="http://schema.org/BlogPosting">
 
                         <div id="post-content" itemprop="articleBody">
 
@@ -284,88 +271,106 @@
                             </header>
 
                             <div class="text-center">
-                                
-    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
-         <i class="fa fa-facebook"></i>Follow
-    </a>
+
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch"
+                                    class="facebook-button-follow">
+                                    <i class="fa fa-facebook"></i>Follow
+                                </a>
 
 
                                 &nbsp;
-                                
-
-                                &nbsp;
-                                
-  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
-    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
-  </a>
 
 
                                 &nbsp;
-                                
+
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://twitter.com/intent/follow?screen_name=rwieruch"
+                                    class="generic-button-follow">
+                                    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow"
+                                        alt="Follow on Twitter">
+                                </a>
+
+
+                                &nbsp;
+
                             </div>
 
                             <p class="text-muted text-uppercase mb-small text-center">
-    <span itemprop="author publisher">
-        
-    </span>
+                                <span itemprop="author publisher">
 
-    
-        <time datetime="2017-10-10" itemprop="datePublished">
-            October 10, 2017
-        </time>
-    
+                                </span>
 
-    
-        <span class="hidden-xs hidden-sm"> - <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/create-react-app-mobx-decorators.md">
-                Edit this Post on GitHub
-            </a>
-        </span>
-    
-</p>
+
+                                <time datetime="2017-10-10" itemprop="datePublished">
+                                    October 10, 2017
+                                </time>
+
+
+
+                                <span class="hidden-xs hidden-sm"> - <a target="_blank" rel="noopener noreferrer"
+                                        href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/create-react-app-mobx-decorators.md">
+                                        Edit this Post on GitHub
+                                    </a>
+                                </span>
+
+                            </p>
 
                             <div>
-  
-
-</div>
-
-<div class="post-image-primary">
-    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="pinterest-pinner">
-            <a
-                data-pin-do="buttonPin"
-                data-pin-save="true"
-                data-pin-tall="true"
-                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fcreate-react-app-mobx-decorators%2f&amp;media=https://chrispaul.dev/img%2fposts%2fcreate-react-app-mobx-decorators%2fbanner.jpg&amp;description=">
-            </a>
-        </div>
-
-        <img
-            class="img-lazy img-responsive"
-            data-lazy-src="/src="/img/posts/create-react-app-mobx-decorators/banner.jpg"
-            data-is-src-set="is-src-set"
-            alt="create-react-app mobx decorators"
-            itemprop="image"
-        />
-    </div>
-</div>
 
 
-<p>MobX is used for state management in modern applications. Often it is applied in a React.js application, but it is not necessarily bound to React. In addition, it is a <a href="../redux-mobx-confusion/index.html">valuable alternative to Redux</a> as state management solution. If you are using <a target="_blank" rel="noopener noreferrer" href="https://github.com/facebookincubator/create-react-app">create-react-app</a> as your application boilerplate, you most likely run into the questions of how to setup MobX and how to use <a target="_blank" rel="noopener noreferrer" href="https://tc39.github.io/proposal-decorators/">decorators</a> in create-react-app. The article should give you the essential knowledge to use MobX without and with decorators in create-react-app.</p>
+                            </div>
 
-<h2 class="chapter-header" id="mobx-without-decorators">MobX in create-react-app without Decorators</h2>
+                            <div class="post-image-primary">
+                                <div class="pinterest-pinner-wrapper" itemscope
+                                    itemtype="http://schema.org/ImageObject">
+                                    <div class="pinterest-pinner">
+                                        <a data-pin-do="buttonPin" data-pin-save="true" data-pin-tall="true"
+                                            href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fcreate-react-app-mobx-decorators%2f&amp;media=https://chrispaul.dev/img%2fposts%2fcreate-react-app-mobx-decorators%2fbanner.jpg&amp;description=">
+                                        </a>
+                                    </div>
 
-<p>Basically using MobX without decorators in create-react-app is straight forward. After scaffolding your application with create-react-app on the command line, you can install <a target="_blank" rel="noopener noreferrer" href="https://github.com/mobxjs/mobx">mobx</a> and <a target="_blank" rel="noopener noreferrer" href="https://github.com/mobxjs/mobx-react">mobx-react</a>:</p>
+                                    <img class="img-lazy img-responsive"
+                                        data-lazy-src="/src="/img/posts/create-react-app-mobx-decorators/banner.jpg"
+                                        data-is-src-set="is-src-set" alt="create-react-app mobx decorators"
+                                        itemprop="image" />
+                                </div>
+                            </div>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span> <span style="color: #06b6ef">mobx</span> <span style="color: #06b6ef">mobx</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">react</span>
-</code></pre></div>
+
+                            <p>MobX is used for state management in modern applications. Often it is applied in a
+                                React.js application, but it is not necessarily bound to React. In addition, it is a <a
+                                    href="../redux-mobx-confusion/index.html">valuable alternative to Redux</a> as state
+                                management solution. If you are using <a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/facebookincubator/create-react-app">create-react-app</a> as
+                                your application boilerplate, you most likely run into the questions of how to setup
+                                MobX and how to use <a target="_blank" rel="noopener noreferrer"
+                                    href="https://tc39.github.io/proposal-decorators/">decorators</a> in
+                                create-react-app. The article should give you the essential knowledge to use MobX
+                                without and with decorators in create-react-app.</p>
+
+                            <h2 class="chapter-header" id="mobx-without-decorators">MobX in create-react-app without
+                                Decorators</h2>
+
+                            <p>Basically using MobX without decorators in create-react-app is straight forward. After
+                                scaffolding your application with create-react-app on the command line, you can install
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/mobxjs/mobx">mobx</a> and <a target="_blank"
+                                    rel="noopener noreferrer"
+                                    href="https://github.com/mobxjs/mobx-react">mobx-react</a>:</p>
+
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span> <span style="color: #06b6ef">mobx</span> <span style="color: #06b6ef">mobx</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">react</span>
+</code></pre>
+                            </div>
 
 
-<p>Whereas the former is used as your state management solution, the latter is used to connect the state layer to your React view layer. Now you can use it to create state containers or, as in the following example, to leverage local component state instead of using React&rsquo;s local state:</p>
+                            <p>Whereas the former is used as your state management solution, the latter is used to
+                                connect the state layer to your React view layer. Now you can use it to create state
+                                containers or, as in the following example, to leverage local component state instead of
+                                using React&rsquo;s local state:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">extendObservable</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observer</span> <span style="color: #e7e9db">}</span>  <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx-react&#39;</span><span style="color: #e7e9db">;</span>
 
@@ -399,47 +404,69 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">observer</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">App</span><span style="color: #e7e9db">);</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>Whereas the <code>extendObservable</code> makes sure to create an observable value, the <code>observer</code> makes sure that the <code>App</code> component reacts when an observable value changes. The reaction leads to a re-rendering of the component. After all, that would be all the essentials to use MobX without decorators in create-react-app.</p>
+                            <p>Whereas the <code>extendObservable</code> makes sure to create an observable value, the
+                                <code>observer</code> makes sure that the <code>App</code> component reacts when an
+                                observable value changes. The reaction leads to a re-rendering of the component. After
+                                all, that would be all the essentials to use MobX without decorators in
+                                create-react-app.</p>
 
-<h2 class="chapter-header" id="create-react-app-mobx">Alternative Boilerplate: create-react-app-mobx</h2>
+                            <h2 class="chapter-header" id="create-react-app-mobx">Alternative Boilerplate:
+                                create-react-app-mobx</h2>
 
-<p>There exist a boilerplate project on GitHub, <a target="_blank" rel="noopener noreferrer" href="https://github.com/mobxjs/create-react-app-mobx">create-react-app-mobx</a>, that is maintained by Michel Weststrate the creator of MobX. It has MobX installed in a create-react-app bootstrapped application. The following commands are the installation instructions for the command line:</p>
+                            <p>There exist a boilerplate project on GitHub, <a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/mobxjs/create-react-app-mobx">create-react-app-mobx</a>,
+                                that is maintained by Michel Weststrate the creator of MobX. It has MobX installed in a
+                                create-react-app bootstrapped application. The following commands are the installation
+                                instructions for the command line:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">git</span> <span style="color: #06b6ef">clone</span> <span style="color: #06b6ef">git</span><span style="color: #ef6155">@</span><span style="color: #06b6ef">github</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">com</span><span style="color: #5bc4bf">:</span><span style="color: #06b6ef">mobxjs</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">create</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">react</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">app</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">mobx</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">git</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">git</span> <span style="color: #06b6ef">clone</span> <span style="color: #06b6ef">git</span><span style="color: #ef6155">@</span><span style="color: #06b6ef">github</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">com</span><span style="color: #5bc4bf">:</span><span style="color: #06b6ef">mobxjs</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">create</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">react</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">app</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">mobx</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">git</span>
 <span style="color: #06b6ef">cd</span> <span style="color: #06b6ef">create</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">react</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">app</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">mobx</span>
 <span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span>
 <span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">start</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>After that, you should find the running application in your browser. Furthermore, the GitHub repository is providing a git patch commit that you can use to upgrade your plain create-react-app to use MobX.</p>
+                            <p>After that, you should find the running application in your browser. Furthermore, the
+                                GitHub repository is providing a git patch commit that you can use to upgrade your plain
+                                create-react-app to use MobX.</p>
 
-<h2 class="chapter-header" id="mobx-with-decorators">But what about Decorators?</h2>
+                            <h2 class="chapter-header" id="mobx-with-decorators">But what about Decorators?</h2>
 
-<p>Basically everything shown before demonstrates that MobX can be used without decorators at all. The <a target="_blank" rel="noopener noreferrer" href="https://mobx.js.org/best/decorators.html">official MobX documentation</a> showcases it as well. If someone says you have to use decorators in MobX, it isn&rsquo;t true. You can use plain functions for it. So why using decorators?</p>
+                            <p>Basically everything shown before demonstrates that MobX can be used without decorators
+                                at all. The <a target="_blank" rel="noopener noreferrer"
+                                    href="https://mobx.js.org/best/decorators.html">official MobX documentation</a>
+                                showcases it as well. If someone says you have to use decorators in MobX, it isn&rsquo;t
+                                true. You can use plain functions for it. So why using decorators?</p>
 
-<p><strong>Advantages of using decorators:</strong></p>
+                            <p><strong>Advantages of using decorators:</strong></p>
 
-<ul>
-<li>minimizes boilerplate</li>
-<li>declarative</li>
-<li>easy to use and read</li>
-<li>popular when using MobX</li>
-</ul>
+                            <ul>
+                                <li>minimizes boilerplate</li>
+                                <li>declarative</li>
+                                <li>easy to use and read</li>
+                                <li>popular when using MobX</li>
+                            </ul>
 
-<p><strong>Disadvantages of using decorators:</strong></p>
+                            <p><strong>Disadvantages of using decorators:</strong></p>
 
-<ul>
-<li>not in native Javascript available, therefore needs transpiling (e.g. via Babel)</li>
-<li>unstable specification</li>
-</ul>
+                            <ul>
+                                <li>not in native Javascript available, therefore needs transpiling (e.g. via Babel)
+                                </li>
+                                <li>unstable specification</li>
+                            </ul>
 
-<p>MobX is not the only library using decorators. There are plenty of them and most of them provide a non decorator solution too. Then you can use both variations. In MobX, both alternatives look like the following:</p>
+                            <p>MobX is not the only library using decorators. There are plenty of them and most of them
+                                provide a non decorator solution too. Then you can use both variations. In MobX, both
+                                alternatives look like the following:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observer</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx-react&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #776e71">// non decorator usage</span>
@@ -457,12 +484,18 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>The annotation on a variable definition with <code>@observer class App</code> is the same as <code>observer(App)</code> if App is defined. That way it is possible to compose several decorators onto one component with solutions such as compose from the <a target="_blank" rel="noopener noreferrer" href="https://github.com/acdlite/recompose">recompose</a> library:</p>
+                            <p>The annotation on a variable definition with <code>@observer class App</code> is the same
+                                as <code>observer(App)</code> if App is defined. That way it is possible to compose
+                                several decorators onto one component with solutions such as compose from the <a
+                                    target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/acdlite/recompose">recompose</a> library:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observer</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">inject</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx-react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">compose</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;recompose&#39;</span><span style="color: #e7e9db">;</span>
 
@@ -491,22 +524,35 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>So what about decorators in React and create-react-app?</p>
+                            <p>So what about decorators in React and create-react-app?</p>
 
-<h2 class="chapter-header" id="decorators-create-react-app">Decorators in create-react-app</h2>
+                            <h2 class="chapter-header" id="decorators-create-react-app">Decorators in create-react-app
+                            </h2>
 
-<p>The current situation is that the maintainers of create-react-app are holding decorators back until Babel supports them in a stable stage:</p>
+                            <p>The current situation is that the maintainers of create-react-app are holding decorators
+                                back until Babel supports them in a stable stage:</p>
 
-<blockquote>
-<p><em>&ldquo;Our position is simple: we add transforms that are either stable enough (like async/await) or heavily used by Facebook (like class properties). Only that lets us be confident in suggesting them, because if something changes in the standard, we’ll write and release a codemod to migrate away from them.&rdquo;</em> (related issues <a target="_blank" rel="noopener noreferrer" href="https://github.com/facebookincubator/create-react-app/issues/411">1</a> &amp; <a target="_blank" rel="noopener noreferrer" href="https://github.com/facebookincubator/create-react-app/issues/214">2</a>)</p>
-</blockquote>
+                            <blockquote>
+                                <p><em>&ldquo;Our position is simple: we add transforms that are either stable enough
+                                        (like async/await) or heavily used by Facebook (like class properties). Only
+                                        that lets us be confident in suggesting them, because if something changes in
+                                        the standard, we’ll write and release a codemod to migrate away from
+                                        them.&rdquo;</em> (related issues <a target="_blank" rel="noopener noreferrer"
+                                        href="https://github.com/facebookincubator/create-react-app/issues/411">1</a>
+                                    &amp; <a target="_blank" rel="noopener noreferrer"
+                                        href="https://github.com/facebookincubator/create-react-app/issues/214">2</a>)
+                                </p>
+                            </blockquote>
 
-<p>But what if you want to use decorators for your create-react-app + MobX application right now?</p>
+                            <p>But what if you want to use decorators for your create-react-app + MobX application right
+                                now?</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observable</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observer</span> <span style="color: #e7e9db">}</span>  <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx-react&#39;</span><span style="color: #e7e9db">;</span>
 
@@ -535,20 +581,28 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>Running this code in a plain create-react-app application will yield a <code>Unexpected token</code> error in the developer console. You would have to add decorators to your Babel configuration. However, create-react-app doesn&rsquo;t give you access to the Babel configuration. There is only one way to access it: ejecting.</p>
+                            <p>Running this code in a plain create-react-app application will yield a
+                                <code>Unexpected token</code> error in the developer console. You would have to add
+                                decorators to your Babel configuration. However, create-react-app doesn&rsquo;t give you
+                                access to the Babel configuration. There is only one way to access it: ejecting.</p>
 
-<p><strong>Basically there are four steps to use decorators in create-react-app:</strong></p>
+                            <p><strong>Basically there are four steps to use decorators in create-react-app:</strong>
+                            </p>
 
-<ul>
-<li>type <code>npm run eject</code> on the command line, if you have bootstrapped your app with create-react-app</li>
-<li>install the necessary Babel plugin <code>npm install --save-dev @babel/plugin-proposal-decorators</code></li>
-<li>add the following Babel configuration to your <em>package.json</em></li>
-</ul>
+                            <ul>
+                                <li>type <code>npm run eject</code> on the command line, if you have bootstrapped your
+                                    app with create-react-app</li>
+                                <li>install the necessary Babel plugin
+                                    <code>npm install --save-dev @babel/plugin-proposal-decorators</code></li>
+                                <li>add the following Babel configuration to your <em>package.json</em></li>
+                            </ul>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #48b685">&quot;babel&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #48b685">&quot;babel&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
 <span style="background-color: #4f424c">  <span style="color: #48b685">&quot;plugins&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[</span>
 </span><span style="background-color: #4f424c">    <span style="color: #48b685">&quot;@babel/plugin-proposal-decorators&quot;</span>
 </span><span style="background-color: #4f424c">  <span style="color: #e7e9db">],</span>
@@ -556,35 +610,63 @@
     <span style="color: #48b685">&quot;react-app&quot;</span>
   <span style="color: #e7e9db">]</span>
 <span style="color: #e7e9db">},</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<ul>
-<li>install mobx and mobx-react, if you didn&rsquo;t do it already <code>npm install --save mobx mobx-react</code></li>
-</ul>
+                            <ul>
+                                <li>install mobx and mobx-react, if you didn&rsquo;t do it already
+                                    <code>npm install --save mobx mobx-react</code></li>
+                            </ul>
 
-<p>Now you should be able to use the @ annotation in create-react-app. The previous example has shown how to use decorators for MobX&rsquo;s local state management in a React component.</p>
+                            <p>Now you should be able to use the @ annotation in create-react-app. The previous example
+                                has shown how to use decorators for MobX&rsquo;s local state management in a React
+                                component.</p>
 
-<h2 class="chapter-header" id="create-react-app-avoid-eject">How to avoid eject when using Decorators</h2>
+                            <h2 class="chapter-header" id="create-react-app-avoid-eject">How to avoid eject when using
+                                Decorators</h2>
 
-<p>There is one <a target="_blank" rel="noopener noreferrer" href="https://github.com/kitze/custom-react-scripts">fork with custom-react-scripts</a> of create-react-app on GitHub where you can avoid ejecting your application. You would only have to follow the instructions in the GitHub repository to set it up. I will not write them down here, because they might change in the future.</p>
+                            <p>There is one <a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/kitze/custom-react-scripts">fork with
+                                    custom-react-scripts</a> of create-react-app on GitHub where you can avoid ejecting
+                                your application. You would only have to follow the instructions in the GitHub
+                                repository to set it up. I will not write them down here, because they might change in
+                                the future.</p>
 
-<p>But the fork of create-react-app has one drawback. Whereas create-react-app was designed to give you a simple to use, powerful yet zero-configuration boilerplate project for React, the fork of it comes with more complex configurations. Ultimately it&rsquo;s up to you to make the decision. It is a choice between ejecting your puristic create-react-app to only add decorators for your use case or to use the fork of create-react-app with custom-react-scripts to add overhaul more flexibility to configure your project.</p>
+                            <p>But the fork of create-react-app has one drawback. Whereas create-react-app was designed
+                                to give you a simple to use, powerful yet zero-configuration boilerplate project for
+                                React, the fork of it comes with more complex configurations. Ultimately it&rsquo;s up
+                                to you to make the decision. It is a choice between ejecting your puristic
+                                create-react-app to only add decorators for your use case or to use the fork of
+                                create-react-app with custom-react-scripts to add overhaul more flexibility to configure
+                                your project.</p>
 
-<h2 class="chapter-header" id="nextjs-mobx-decorators">MobX and Decorators in Next.js</h2>
+                            <h2 class="chapter-header" id="nextjs-mobx-decorators">MobX and Decorators in Next.js</h2>
 
-<p>The article is mainly about MobX with and without decorators in create-react-app. But what about its alternative Next.js for server-side rendered React applications? Fortunately there exists <a target="_blank" rel="noopener noreferrer" href="https://github.com/zeit/next.js/tree/master/examples/with-mobx">one sample project</a> that already demonstrates how to use MobX with decorators in a Next.js application.</p>
+                            <p>The article is mainly about MobX with and without decorators in create-react-app. But
+                                what about its alternative Next.js for server-side rendered React applications?
+                                Fortunately there exists <a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/zeit/next.js/tree/master/examples/with-mobx">one sample
+                                    project</a> that already demonstrates how to use MobX with decorators in a Next.js
+                                application.</p>
 
-<p>In addition, you have access to the .babelrc file to configure Babel in your Next.js application. In a newly bootstrapped Next.js application, you would enable MobX with decorators with these two steps. First, install the dependencies of MobX and the decorator transpilation to your project:</p>
+                            <p>In addition, you have access to the .babelrc file to configure Babel in your Next.js
+                                application. In a newly bootstrapped Next.js application, you would enable MobX with
+                                decorators with these two steps. First, install the dependencies of MobX and the
+                                decorator transpilation to your project:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span> <span style="color: #06b6ef">mobx</span> <span style="color: #06b6ef">mobx</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">react</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span> <span style="color: #06b6ef">mobx</span> <span style="color: #06b6ef">mobx</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">react</span>
 <span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">dev</span> <span style="color: #06b6ef">babel</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">plugin</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">transform</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">decorators</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">legacy</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>Second, add the decorator support to your <em>.babelrc</em> file at the root of the project:</p>
+                            <p>Second, add the decorator support to your <em>.babelrc</em> file at the root of the
+                                project:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
   <span style="color: #48b685">&quot;presets&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[</span>
     <span style="color: #48b685">&quot;next/babel&quot;</span>
   <span style="color: #e7e9db">],</span>
@@ -592,314 +674,314 @@
     <span style="color: #48b685">&quot;transform-decorators-legacy&quot;</span>
   <span style="color: #e7e9db">]</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>After all, the choice is again up to you. You can either clone the Next.js with MobX example project or add MobX with or without decorators on your own to it.</p>
+                            <p>After all, the choice is again up to you. You can either clone the Next.js with MobX
+                                example project or add MobX with or without decorators on your own to it.</p>
 
-<hr class="section-divider">
+                            <hr class="section-divider">
 
-<p>After showing all these different alternatives, using MobX with or without decorators in a plain React, a create-react-app or Next.js application, you have no excuse anymnore to give MobX as alternative to Redux a shot. Try it in your next side project.</p>
-
-
-                            
-<div class="feedback-and-share text-center">
-    <hr>
-    
-    <p class="lead">
-        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
-    </p>
-    
-    
-        <p class="lead">
-            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
-        </p>
-    
-</div>
+                            <p>After showing all these different alternatives, using MobX with or without decorators in
+                                a plain React, a create-react-app or Next.js application, you have no excuse anymnore to
+                                give MobX as alternative to Redux a shot. Try it in your next side project.</p>
 
 
-                            
-                                <div class="box-inline col-md-12">
-    <div class="col-md-12 text-center">
-        <h2 class="newsletter">The Road to learn React</h2>
-        
-            <div class="col-md-4">
-                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
-            </div>
-        
-        <p class="lead">
-            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
-        </p>
-        <a
-            class="btn btn-template-main"
-            href="https://roadtoreact.com"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Get the Book for free <i class="fa fa-chevron-right"></i>
-        </a>
-        
-            <div>
-                <a
-                    href="https://amzn.to/2QY2ONp"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Get it from Amazon
-                </a>
-            </div>
-        
-    </div>
-</div>
-                            
+
+                            <div class="feedback-and-share text-center">
+                                <hr>
+
+                                <p class="lead">
+                                    I would like to hear your thoughts :-) Find me on <a target="_blank"
+                                        rel="noopener noreferrer" aria-label="twitter"
+                                        href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and
+                                    <a target="_blank" aria-label="facebook"
+                                        href="https://www.facebook.com/rwieruch/"><i
+                                            class="fa fa-facebook"></i>Facebook</a>
+                                </p>
+
+
+                                <p class="lead">
+                                    Did the article help you? Share it with your friends on social media <i
+                                        class="fa fa-arrow-left"></i>, support me as my <a target="_blank"
+                                        rel="noopener noreferrer" aria-label="patreon"
+                                        href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and
+                                    become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+                                </p>
+
+                            </div>
+
+
+
+                            <div class="box-inline col-md-12">
+                                <div class="col-md-12 text-center">
+                                    <h2 class="newsletter">The Road to learn React</h2>
+
+                                    <div class="col-md-4">
+                                        <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+                                    </div>
+
+                                    <p class="lead">
+                                        Build a Hacker News App along the way. No setup configuration. No tooling. No
+                                        Redux. Plain React in 200+ pages of learning material. Learn React like
+                                        <strong>50.000+ readers</strong>.
+                                    </p>
+                                    <a class="btn btn-template-main" href="https://roadtoreact.com" target="_blank"
+                                        rel="noopener noreferrer">
+                                        Get the Book for free <i class="fa fa-chevron-right"></i>
+                                    </a>
+
+                                    <div>
+                                        <a href="https://amzn.to/2QY2ONp" target="_blank" rel="noopener noreferrer">
+                                            Get it from Amazon
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+
                         </div>
 
-                        
-                        
+
+
                         <div id="comments">
                             <div id="disqus_thread"></div>
-<script type="text/javascript">
+                            <script type="text/javascript">
 
-(function() {
-    
-    
-    if (window.location.hostname == "localhost")
-        return;
+                                (function () {
 
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'rwieruch';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                                    if (window.location.hostname == "localhost")
+                                        return;
+
+                                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                    var disqus_shortname = 'rwieruch';
+                                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a
+                                    href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span
+                                    class="logo-disqus">Disqus</span></a>
                         </div>
-                        
+
 
                     </article>
-                    
+
 
                 </div>
-                
+
 
             </div>
-            
-        </div>
-        
-
-        
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
-    <div class="dark-mask"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
-                <h2 class="text-uppercase">Take Part</h2>
-            </div>
-
-            <div class="col-md-12 text-center">
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
-                
-            </div>
-            <div class="col-md-12">
-                <p class="text-center">
-                    <div id="mc_embed_signup">
-    <form
-        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
-        method="post"
-        id="revue-form"
-        name="revue-form"
-        target="_blank">
-        <div id="mc_embed_signup_scroll">
-            <input
-                class="email"
-                placeholder="email address"
-                type="email"
-                name="member[email]"
-                id="member_email"
-            >
-            <div>
-                <button
-                    type="submit"
-                    value="Subscribe"
-                    name="member[subscribe]"
-                    id="member_submit"
-                    class="btn btn-template-transparent-black btn-lg"
-                >
-                    Subscribe
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
-
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-        <footer id="subfooter">
-    <div class="container">
-
-        <div class="col-md-5 col-sm-6">
-
-            <h4>Recent posts</h4>
-
-            <div class="blog-entries">
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../redux-vs-usereducer/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="React&#39;s useReducer vs Redux"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../publish-npm-package-node/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="How to publish a npm package?"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../react-scroll-to-item/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="How to Scroll to Item in React?"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
-                    </div>
-                </div>
-                
-            </div>
-
-            <hr class="hidden-md hidden-lg hidden-sm">
 
         </div>
-        
 
-        
-        <div class="col-md-5 col-md-offset-2 col-sm-6">
 
-            <h4>About Me</h4>
 
-            <div class="blog-entries">
-                <div class="item same-height-row clearfix">
-                    <div class="profile same-height-always">
-                        <img
-                            class="img-lazy img-responsive"
-                            data-lazy-src="//img/page/profile.jpg"
-                            alt="profile"
-                        >
+
+        <section class="bar background-image-fixed-2 no-mb color-white text-center">
+            <div class="dark-mask"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                        <h2 class="text-uppercase">Take Part</h2>
                     </div>
-                    <div class="name same-height-always">
-                        <p>
-                            Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+
+                    <div class="col-md-12 text-center">
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+
+                    </div>
+                    <div class="col-md-12">
+                        <p class="text-center">
+                            <div id="mc_embed_signup">
+                                <form action="https://www.getrevue.co/profile/rwieruch/add_subscriber" method="post"
+                                    id="revue-form" name="revue-form" target="_blank">
+                                    <div id="mc_embed_signup_scroll">
+                                        <input class="email" placeholder="email address" type="email"
+                                            name="member[email]" id="member_email">
+                                        <div>
+                                            <button type="submit" value="Subscribe" name="member[subscribe]"
+                                                id="member_submit" class="btn btn-template-transparent-black btn-lg">
+                                                Subscribe
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
                         </p>
                     </div>
                 </div>
             </div>
+        </section>
+        <footer id="subfooter">
+            <div class="container">
 
-        </div>
-        
-        
+                <div class="col-md-5 col-sm-6">
 
-    </div>
-    
-</footer>
+                    <h4>Recent posts</h4>
+
+                    <div class="blog-entries">
+
+                        <div class="item same-height-row clearfix">
+                            <div class="article same-height-always">
+                                <a href="../redux-vs-usereducer/index.html">
+
+                                    <img data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                        data-is-thumb="is-thumb" class="img-lazy img-responsive"
+                                        alt="React&#39;s useReducer vs Redux">
+
+                                </a>
+                            </div>
+                            <div class="name same-height-always">
+                                <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                            </div>
+                        </div>
+
+                        <div class="item same-height-row clearfix">
+                            <div class="article same-height-always">
+                                <a href="../publish-npm-package-node/index.html">
+
+                                    <img data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                        data-is-thumb="is-thumb" class="img-lazy img-responsive"
+                                        alt="How to publish a npm package?">
+
+                                </a>
+                            </div>
+                            <div class="name same-height-always">
+                                <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a>
+                                </h5>
+                            </div>
+                        </div>
+
+                        <div class="item same-height-row clearfix">
+                            <div class="article same-height-always">
+                                <a href="../react-scroll-to-item/index.html">
+
+                                    <img data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                        data-is-thumb="is-thumb" class="img-lazy img-responsive"
+                                        alt="How to Scroll to Item in React?">
+
+                                </a>
+                            </div>
+                            <div class="name same-height-always">
+                                <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a>
+                                </h5>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr class="hidden-md hidden-lg hidden-sm">
+
+                </div>
+
+
+
+                <div class="col-md-5 col-md-offset-2 col-sm-6">
+
+                    <h4>About Me</h4>
+
+                    <div class="blog-entries">
+                        <div class="item same-height-row clearfix">
+                            <div class="profile same-height-always">
+                                <img class="img-lazy img-responsive" data-lazy-src="//img/page/profile.jpg"
+                                    alt="profile">
+                            </div>
+                            <div class="name same-height-always">
+                                <p>
+                                    Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more
+                                    <a href="../about/index.html">about me</a>, <a
+                                        href="../work-with-me/index.html">work with me</a>, or have a look at my social
+                                    media profiles below.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </footer>
 
 
         <footer id="copyright">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <ul class="info list-inline quicklinks pull-left">
-          
-            <li>© Chris Paul</li>
-          
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <ul class="list-inline footer-social-buttons text-center">
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
-          
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <ul class="info list-inline quicklinks pull-right">
-          
-            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
-          
-        </ul>
-      </div>
-    </div>
-  </div>
-</footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <ul class="info list-inline quicklinks pull-left">
+
+                            <li>© Chris Paul</li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-inline footer-social-buttons text-center">
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i
+                                        class="fa fa-linkedin"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a>
+                            </li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="info list-inline quicklinks pull-right">
+
+                            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
 
     </div>
-    
 
-   
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<script src="../js/script.js"></script>  </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script src="../js/script.js"></script>
+</body>
+
 </html>

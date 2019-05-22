@@ -1,371 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
   <meta charset="utf-8">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  
+
 
   <title>
     Neural Networks in JavaScript with deeplearn.js - CPaul
   </title>
 
   <meta name="author" content="" />
-  <meta name="description" content="An extensive tutorial on how to implement a neural network in JavaScript with deeplearn.js to perform machine learning in JavaScript. You can bring neural networks to your browser by using the performance benefits of WebGL. Deeplearn.js makes it possible to implement a WebGL powered neural network ...">
-  
+  <meta name="description"
+    content="An extensive tutorial on how to implement a neural network in JavaScript with deeplearn.js to perform machine learning in JavaScript. You can bring neural networks to your browser by using the performance benefits of WebGL. Deeplearn.js makes it possible to implement a WebGL powered neural network ...">
 
-  <meta name="theme-color" content="#38bb6c"/>
+
+  <meta name="theme-color" content="#38bb6c" />
 
   <meta name="generator" content="Hugo 0.41" />
-<link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
   <link href="../css/customizations.css" rel="stylesheet">
 
-    <!--[if lt IE 9]>
+  <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  
-<link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="../img/favicon/manifest.json">
   <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
 
   <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
 
-<meta itemprop="name" content="Neural Networks in JavaScript with deeplearn.js">
-<meta itemprop="description" content="An extensive tutorial on how to implement a neural network in JavaScript with deeplearn.js to perform machine learning in JavaScript. You can bring neural networks to your browser by using the performance benefits of WebGL. Deeplearn.js makes it possible to implement a WebGL powered neural network ...">    <meta itemprop="image" content="https://chrispaul.dev/img/posts/neural-networks-deeplearnjs-javascript/banner_640.jpg"><meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+  <meta itemprop="name" content="Neural Networks in JavaScript with deeplearn.js">
+  <meta itemprop="description"
+    content="An extensive tutorial on how to implement a neural network in JavaScript with deeplearn.js to perform machine learning in JavaScript. You can bring neural networks to your browser by using the performance benefits of WebGL. Deeplearn.js makes it possible to implement a WebGL powered neural network ...">
+  <meta itemprop="image"
+    content="https://chrispaul.dev/img/posts/neural-networks-deeplearnjs-javascript/banner_640.jpg">
+  <meta itemprop="keywords"
+    content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
 
 
-<meta itemprop="wordCount" content="5317">
+  <meta itemprop="wordCount" content="5317">
 
-<meta name="keywords" content="machine learning javascript, neural network javascript deeplearnjs">
+  <meta name="keywords" content="machine learning javascript, neural network javascript deeplearnjs">
 
   <meta property="og:title" content="Neural Networks in JavaScript with deeplearn.js - CPaul">
 
 
-  <meta property="og:description" content="An extensive tutorial on how to implement a neural network in JavaScript with deeplearn.js to perform machine learning in JavaScript. You can bring neural networks to your browser by using the performance benefits of WebGL. Deeplearn.js makes it possible to implement a WebGL powered neural network ..." />
+  <meta property="og:description"
+    content="An extensive tutorial on how to implement a neural network in JavaScript with deeplearn.js to perform machine learning in JavaScript. You can bring neural networks to your browser by using the performance benefits of WebGL. Deeplearn.js makes it possible to implement a WebGL powered neural network ..." />
 
 
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://chrispaul.dev/neural-networks-deeplearnjs-javascript/" />
-<meta property="og:image" content="https://chrispaul.dev/img/posts/neural-networks-deeplearnjs-javascript/banner_640.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://chrispaul.dev/neural-networks-deeplearnjs-javascript/" />
+  <meta property="og:image"
+    content="https://chrispaul.dev/img/posts/neural-networks-deeplearnjs-javascript/banner_640.jpg" />
 
-  
 
-    <meta name="news_keywords" content="neural network javascript deeplearnjs" />
 
-  
+  <meta name="news_keywords" content="neural network javascript deeplearnjs" />
 
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/neural-networks-deeplearnjs-javascript/banner_640.jpg"/><meta name="twitter:title" content="Neural Networks in JavaScript with deeplearn.js"/>
-<meta name="twitter:description" content="An extensive tutorial on how to implement a neural network in JavaScript with deeplearn.js to perform machine learning in JavaScript. You can bring neural networks to your browser by using the performance benefits of WebGL. Deeplearn.js makes it possible to implement a WebGL powered neural network ..."/>
-<meta name="twitter:site" content="@rwieruch"/>
-<meta name="twitter:domain" content="rwieruch"/>
 
-  
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image:src"
+    content="https://chrispaul.dev/img/posts/neural-networks-deeplearnjs-javascript/banner_640.jpg" />
+  <meta name="twitter:title" content="Neural Networks in JavaScript with deeplearn.js" />
+  <meta name="twitter:description"
+    content="An extensive tutorial on how to implement a neural network in JavaScript with deeplearn.js to perform machine learning in JavaScript. You can bring neural networks to your browser by using the performance benefits of WebGL. Deeplearn.js makes it possible to implement a WebGL powered neural network ..." />
+  <meta name="twitter:site" content="@rwieruch" />
+  <meta name="twitter:domain" content="rwieruch" />
+
+
 
 </head>
 
 
-  <body>
+<body>
 
-    <div id="all">
+  <div id="all">
 
-        <header>
+    <header>
 
-          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+      <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
 
-    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+        <div class="navbar navbar-default yamm" role="navigation" id="navbar">
 
-        <div class="container">
+          <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand home" href="../index.html">
-                    <img src="../img/page/logo.svg" alt="Neural Networks in JavaScript with deeplearn.js logo" class="img-lazy">
-                    <span class="sr-only">Neural Networks in JavaScript with deeplearn.js - go to homepage</span>
-                </a>
+              <a class="navbar-brand home" href="../index.html">
+                <img src="../img/page/logo.svg" alt="Neural Networks in JavaScript with deeplearn.js logo"
+                  class="img-lazy">
+                <span class="sr-only">Neural Networks in JavaScript with deeplearn.js - go to homepage</span>
+              </a>
 
-                <div class="navbar-buttons">
-                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-align-justify"></i>
-                    </button>
-                </div>
+              <div class="navbar-buttons">
+                <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse"
+                  data-target="#navigation">
+                  <span class="sr-only">Toggle navigation</span>
+                  <i class="fa fa-align-justify"></i>
+                </button>
+              </div>
             </div>
-            
+
 
             <div class="navbar-collapse collapse" id="navigation">
-                <ul class="nav navbar-nav navbar-right">
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../index.html">Blog</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../work-with-me/index.html">Work with me</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../about/index.html">About</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
-                        
-                    </li>
-                    
-                </ul>
+              <ul class="nav navbar-nav navbar-right">
+
+                <li class="dropdown">
+
+                  <a href="../index.html">Blog</a>
+
+                </li>
+
+                <li class="dropdown">
+
+                  <a href="../work-with-me/index.html">Work with me</a>
+
+                </li>
+
+                <li class="dropdown">
+
+                  <a href="../about/index.html">About</a>
+
+                </li>
+
+                <li class="dropdown">
+
+                  <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+
+                </li>
+
+              </ul>
             </div>
-            
+
 
             <div class="collapse clearfix" id="search">
 
-                <form class="navbar-form" role="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
+              <form class="navbar-form" role="search">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search">
+                  <span class="input-group-btn">
 
                     <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
 
-                </span>
+                  </span>
+                </div>
+              </form>
+
+            </div>
+
+
+          </div>
+        </div>
+
+
+      </div>
+    </header>
+
+    <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+
+
+      <a aria-label="icon-facebook" class="icon-facebook"
+        href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fneural-networks-deeplearnjs-javascript%2f"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <i class="fa fa-facebook"></i>
+      </a>
+
+
+      <a aria-label="icon-twitter" class="icon-twitter"
+        href="https://twitter.com/share?text=Neural%20Networks%20in%20JavaScript%20with%20deeplearn.js%20by%20%40rwieruch%20%23JavaScript%20%23MachineLearning&amp;url=https%3a%2f%2fchrispaul.dev%2fneural-networks-deeplearnjs-javascript%2f"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <i class="fa fa-twitter"></i>
+      </a>
+
+      <a aria-label="icon-linkedin" class="icon-linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Neural%20Networks%20in%20JavaScript%20with%20deeplearn.js&amp;url=https%3a%2f%2fchrispaul.dev%2fneural-networks-deeplearnjs-javascript%2f">
+        <i class="fa fa-linkedin"></i>
+      </a>
+
+    </div>
+
+    <div class="visible-xs visible-sm text-center">
+      <div class="post-share post-share-fixed post-share-mobile">
+
+
+        <a aria-label="icon-facebook" class="icon-facebook"
+          href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fneural-networks-deeplearnjs-javascript%2f"
+          onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+          <i class="fa fa-facebook"></i>
+        </a>
+
+
+        <a aria-label="icon-twitter" class="icon-twitter"
+          href="https://twitter.com/share?text=Neural%20Networks%20in%20JavaScript%20with%20deeplearn.js%20by%20%40rwieruch%20%23JavaScript%20%23MachineLearning&amp;url=https%3a%2f%2fchrispaul.dev%2fneural-networks-deeplearnjs-javascript%2f"
+          onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+          <i class="fa fa-twitter"></i>
+        </a>
+
+        <a aria-label="icon-linkedin" class="icon-linkedin"
+          href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Neural%20Networks%20in%20JavaScript%20with%20deeplearn.js&amp;url=https%3a%2f%2fchrispaul.dev%2fneural-networks-deeplearnjs-javascript%2f">
+          <i class="fa fa-linkedin"></i>
+        </a>
+
+      </div>
+    </div>
+
+
+
+    <div class="hidden-xs">
+
+
+      <section class="bar background-image-fixed-2 no-mb color-white text-center">
+        <div class="dark-mask"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+              <h2 class="text-uppercase newsletter">Take Part</h2>
+            </div>
+
+            <div class="col-md-12">
+              <p class="text-center">
+                <div id="mc_embed_signup">
+                  <form action="https://www.getrevue.co/profile/rwieruch/add_subscriber" method="post" id="revue-form"
+                    name="revue-form" target="_blank">
+                    <div id="mc_embed_signup_scroll">
+                      <input class="email" placeholder="email address" type="email" name="member[email]"
+                        id="member_email">
+                      <div>
+                        <button type="submit" value="Subscribe" name="member[subscribe]" id="member_submit"
+                          class="btn btn-template-transparent-black btn-lg">
+                          Subscribe
+                        </button>
+                      </div>
                     </div>
-                </form>
+                  </form>
+                </div>
 
+              </p>
             </div>
-            
-
+          </div>
         </div>
+      </section>
     </div>
-    
 
-</div>
-        </header>
+    <div id="content">
+      <div class="container">
 
-        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
-    
-
-<a
-    aria-label="icon-facebook"
-    class="icon-facebook"
-    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fneural-networks-deeplearnjs-javascript%2f"
-    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-    <i class="fa fa-facebook"></i>
-</a>
-
-
-<a
-    aria-label="icon-twitter"
-    class="icon-twitter"
-    href="https://twitter.com/share?text=Neural%20Networks%20in%20JavaScript%20with%20deeplearn.js%20by%20%40rwieruch%20%23JavaScript%20%23MachineLearning&amp;url=https%3a%2f%2fchrispaul.dev%2fneural-networks-deeplearnjs-javascript%2f"
-    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-    <i class="fa fa-twitter"></i>
-</a>
-
-<a
-    aria-label="icon-linkedin"
-    class="icon-linkedin"
-    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Neural%20Networks%20in%20JavaScript%20with%20deeplearn.js&amp;url=https%3a%2f%2fchrispaul.dev%2fneural-networks-deeplearnjs-javascript%2f">
-    <i class="fa fa-linkedin"></i>
-</a>
-
-</div>
-
-<div class="visible-xs visible-sm text-center">
-    <div class="post-share post-share-fixed post-share-mobile">
-        
-
-<a
-    aria-label="icon-facebook"
-    class="icon-facebook"
-    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fneural-networks-deeplearnjs-javascript%2f"
-    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-    <i class="fa fa-facebook"></i>
-</a>
-
-
-<a
-    aria-label="icon-twitter"
-    class="icon-twitter"
-    href="https://twitter.com/share?text=Neural%20Networks%20in%20JavaScript%20with%20deeplearn.js%20by%20%40rwieruch%20%23JavaScript%20%23MachineLearning&amp;url=https%3a%2f%2fchrispaul.dev%2fneural-networks-deeplearnjs-javascript%2f"
-    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-    <i class="fa fa-twitter"></i>
-</a>
-
-<a
-    aria-label="icon-linkedin"
-    class="icon-linkedin"
-    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Neural%20Networks%20in%20JavaScript%20with%20deeplearn.js&amp;url=https%3a%2f%2fchrispaul.dev%2fneural-networks-deeplearnjs-javascript%2f">
-    <i class="fa fa-linkedin"></i>
-</a>
-
-    </div>
-</div>
-
-        
-
-        <div class="hidden-xs">
-            
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
-    <div class="dark-mask"></div>
-    <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
-                <h2 class="text-uppercase newsletter">Take Part</h2>
-            </div>
 
-            <div class="col-md-12">
-                <p class="text-center">
-                    <div id="mc_embed_signup">
-    <form
-        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
-        method="post"
-        id="revue-form"
-        name="revue-form"
-        target="_blank">
-        <div id="mc_embed_signup_scroll">
-            <input
-                class="email"
-                placeholder="email address"
-                type="email"
-                name="member[email]"
-                id="member_email"
-            >
-            <div>
-                <button
-                    type="submit"
-                    value="Subscribe"
-                    name="member[subscribe]"
-                    id="member_submit"
-                    class="btn btn-template-transparent-black btn-lg"
-                >
-                    Subscribe
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
+          <article class="col-md-8 col-md-offset-2" id="blog-post" itemprop="blogPosts" itemscope
+            itemtype="http://schema.org/BlogPosting">
 
-                </p>
-            </div>
-        </div>
-    </div>
-</section>        </div>
+            <div id="post-content" itemprop="articleBody">
 
-        <div id="content">
-            <div class="container">
+              <header>
+                <h1 itemprop="name headline">Neural Networks in JavaScript with deeplearn.js</h1>
+              </header>
 
-                <div class="row">
+              <div class="text-center">
 
-                    <article
-                        class="col-md-8 col-md-offset-2"
-                        id="blog-post"
-                        itemprop="blogPosts"
-                        itemscope itemtype="http://schema.org/BlogPosting">
-
-                        <div id="post-content" itemprop="articleBody">
-
-                            <header>
-                                <h1 itemprop="name headline">Neural Networks in JavaScript with deeplearn.js</h1>
-                            </header>
-
-                            <div class="text-center">
-                                
-    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
-         <i class="fa fa-facebook"></i>Follow
-    </a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch"
+                  class="facebook-button-follow">
+                  <i class="fa fa-facebook"></i>Follow
+                </a>
 
 
-                                &nbsp;
-                                
-
-                                &nbsp;
-                                
-  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
-    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
-  </a>
+                &nbsp;
 
 
-                                &nbsp;
-                                
-                            </div>
+                &nbsp;
 
-                            <p class="text-muted text-uppercase mb-small text-center">
-    <span itemprop="author publisher">
-        
-    </span>
-
-    
-        <time datetime="2017-12-05" itemprop="datePublished">
-            December 5, 2017
-        </time>
-    
-
-    
-        <span class="hidden-xs hidden-sm"> - <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/neural-networks-deeplearnjs-javascript.md">
-                Edit this Post on GitHub
-            </a>
-        </span>
-    
-</p>
-
-                            <div>
-  
-
-</div>
-
-<div class="post-image-primary">
-    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="pinterest-pinner">
-            <a
-                data-pin-do="buttonPin"
-                data-pin-save="true"
-                data-pin-tall="true"
-                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fneural-networks-deeplearnjs-javascript%2f&amp;media=https://chrispaul.dev/img%2fposts%2fneural-networks-deeplearnjs-javascript%2fbanner.jpg&amp;description=">
-            </a>
-        </div>
-
-        <img
-            class="img-lazy img-responsive"
-            data-lazy-src="/src="/img/posts/neural-networks-deeplearnjs-javascript/banner.jpg"
-            data-is-src-set="is-src-set"
-            alt="neural network javascript deeplearnjs"
-            itemprop="image"
-        />
-    </div>
-</div>
+                <a target="_blank" rel="noopener noreferrer"
+                  href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
+                  <img
+                    src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow"
+                    alt="Follow on Twitter">
+                </a>
 
 
-<p>A couple of my recent articles gave an introduction into a subfield of artificial intelligence by implementing foundational machine learning algorithms in JavaScript (e.g. <a href="../linear-regression-gradient-descent-javascript/index.html">linear regression with gradient descent</a>, <a href="../multivariate-linear-regression-normal-equation-javascript/index.html">linear regression with normal equation</a> or <a href="https://chrispaul.dev/logistic-regression-gradient-descent-classification-javascript">logistic regression with gradient descent</a>). These machine learning algorithms were implemented from scratch in JavaScript by using the <a target="_blank" rel="noopener noreferrer" href="http://mathjs.org/">math.js node package</a> for linear algebra (e.g. <a href="../linear-algebra-matrix-javascript/index.html">matrix operations</a>) and calculus. You can find all of these machine learning algorithms grouped in a <a target="_blank" rel="noopener noreferrer" href="https://github.com/javascript-machine-learning">GitHub organization</a>. If you find any flaws in them, please help me out to make the organization a great learning resource for others. I intend to grow the amount of repositories showcasing different machine learning algorithms to provide web developers a starting point when they enter the domain of machine learning.</p>
+                &nbsp;
 
-<p>Personally, I found it becomes quite complex and challenging to implement those algorithms from scratch at some point. Especially when combining JavaScript and neural networks with the implementation of forward and back propagation. Since I am learning about neural networks myself at the moment, I started to look for libraries doing the job for me. Hopefully I am able to catch up with those foundational implementations to publish them in the GitHub organization in the future. However, for now, as I researched about potential candidates to facilitate neural networks in JavaScript, I came across <a target="_blank" rel="noopener noreferrer" href="https://deeplearnjs.org/">deeplearn.js</a> which was recently released by Google. So I gave it a shot. In this article / tutorial, I want to share my experiences by implementing with you a neural network in JavaScript with deeplearn.js to solve a real world problem for web accessibility.</p>
+              </div>
 
-<p>
-    I highly recommend to take the <a target="_blank" rel="noopener noreferrer" rel="nofollow" href="https://click.linksynergy.com/link?id=yL1MQRWYyXQ&amp;offerid=467035.1560515719&amp;type=2&amp;murl=https%3A%2F%2Fwww.coursera.org%2Flearn%2Fmachine-learning">Machine Learning</a> course by Andrew Ng. This article will not explain the machine learning algorithms in detail, but only demonstrate their usage in JavaScript. The course on the other hand goes into detail and explains these algorithms in an amazing quality. At this point in time of writing the article, I learn about the topic myself and try to internalize my learnings by writing about them and applying them in JavaScript. If you find any parts for improvements, please reach out in the comments or create a Issue/Pull Request on GitHub.
-</p>
+              <p class="text-muted text-uppercase mb-small text-center">
+                <span itemprop="author publisher">
 
-<h2 class="chapter-header" id="neural-network-purpose">What&#39;s the purpose of the Neural Network?</h2>
+                </span>
 
-<p>The neural network implemented in this article should be able to improve web accessibility by choosing an appropriate font color regarding a background color. For instance, the font color on a dark blue background should be white whereas the font color on a light yellow background should be black. You might wonder: Why would you need a neural network for the task in the first place? It isn&rsquo;t too difficult to compute an accessible font color depending on a background color programmatically, is it? I quickly found a solution on Stack Overflow for the problem and adjusted it to my needs to facilitate colors in RGB space.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">getAccessibleColor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">rgb</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+                <time datetime="2017-12-05" itemprop="datePublished">
+                  December 5, 2017
+                </time>
+
+
+
+                <span class="hidden-xs hidden-sm"> - <a target="_blank" rel="noopener noreferrer"
+                    href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/neural-networks-deeplearnjs-javascript.md">
+                    Edit this Post on GitHub
+                  </a>
+                </span>
+
+              </p>
+
+              <div>
+
+
+              </div>
+
+              <div class="post-image-primary">
+                <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+                  <div class="pinterest-pinner">
+                    <a data-pin-do="buttonPin" data-pin-save="true" data-pin-tall="true"
+                      href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fneural-networks-deeplearnjs-javascript%2f&amp;media=https://chrispaul.dev/img%2fposts%2fneural-networks-deeplearnjs-javascript%2fbanner.jpg&amp;description=">
+                    </a>
+                  </div>
+
+                  <img class="img-lazy img-responsive"
+                    data-lazy-src="/src="/img/posts/neural-networks-deeplearnjs-javascript/banner.jpg"
+                    data-is-src-set="is-src-set" alt="neural network javascript deeplearnjs" itemprop="image" />
+                </div>
+              </div>
+
+
+              <p>A couple of my recent articles gave an introduction into a subfield of artificial intelligence by
+                implementing foundational machine learning algorithms in JavaScript (e.g. <a
+                  href="../linear-regression-gradient-descent-javascript/index.html">linear regression with gradient
+                  descent</a>, <a href="../multivariate-linear-regression-normal-equation-javascript/index.html">linear
+                  regression with normal equation</a> or <a
+                  href="https://chrispaul.dev/logistic-regression-gradient-descent-classification-javascript">logistic
+                  regression with gradient descent</a>). These machine learning algorithms were implemented from scratch
+                in JavaScript by using the <a target="_blank" rel="noopener noreferrer"
+                  href="http://mathjs.org/">math.js node package</a> for linear algebra (e.g. <a
+                  href="../linear-algebra-matrix-javascript/index.html">matrix operations</a>) and calculus. You can
+                find all of these machine learning algorithms grouped in a <a target="_blank" rel="noopener noreferrer"
+                  href="https://github.com/javascript-machine-learning">GitHub organization</a>. If you find any flaws
+                in them, please help me out to make the organization a great learning resource for others. I intend to
+                grow the amount of repositories showcasing different machine learning algorithms to provide web
+                developers a starting point when they enter the domain of machine learning.</p>
+
+              <p>Personally, I found it becomes quite complex and challenging to implement those algorithms from scratch
+                at some point. Especially when combining JavaScript and neural networks with the implementation of
+                forward and back propagation. Since I am learning about neural networks myself at the moment, I started
+                to look for libraries doing the job for me. Hopefully I am able to catch up with those foundational
+                implementations to publish them in the GitHub organization in the future. However, for now, as I
+                researched about potential candidates to facilitate neural networks in JavaScript, I came across <a
+                  target="_blank" rel="noopener noreferrer" href="https://deeplearnjs.org/">deeplearn.js</a> which was
+                recently released by Google. So I gave it a shot. In this article / tutorial, I want to share my
+                experiences by implementing with you a neural network in JavaScript with deeplearn.js to solve a real
+                world problem for web accessibility.</p>
+
+              <p>
+                I highly recommend to take the <a target="_blank" rel="noopener noreferrer" rel="nofollow"
+                  href="https://click.linksynergy.com/link?id=yL1MQRWYyXQ&amp;offerid=467035.1560515719&amp;type=2&amp;murl=https%3A%2F%2Fwww.coursera.org%2Flearn%2Fmachine-learning">Machine
+                  Learning</a> course by Andrew Ng. This article will not explain the machine learning algorithms in
+                detail, but only demonstrate their usage in JavaScript. The course on the other hand goes into detail
+                and explains these algorithms in an amazing quality. At this point in time of writing the article, I
+                learn about the topic myself and try to internalize my learnings by writing about them and applying them
+                in JavaScript. If you find any parts for improvements, please reach out in the comments or create a
+                Issue/Pull Request on GitHub.
+              </p>
+
+              <h2 class="chapter-header" id="neural-network-purpose">What&#39;s the purpose of the Neural Network?</h2>
+
+              <p>The neural network implemented in this article should be able to improve web accessibility by choosing
+                an appropriate font color regarding a background color. For instance, the font color on a dark blue
+                background should be white whereas the font color on a light yellow background should be black. You
+                might wonder: Why would you need a neural network for the task in the first place? It isn&rsquo;t too
+                difficult to compute an accessible font color depending on a background color programmatically, is it? I
+                quickly found a solution on Stack Overflow for the problem and adjusted it to my needs to facilitate
+                colors in RGB space.</p>
+
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">getAccessibleColor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">rgb</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
   <span style="color: #815ba4">let</span> <span style="color: #e7e9db">[</span> <span style="color: #06b6ef">r</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">g</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">b</span> <span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">rgb</span><span style="color: #e7e9db">;</span>
 
   <span style="color: #815ba4">let</span> <span style="color: #06b6ef">colors</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #06b6ef">r</span> <span style="color: #5bc4bf">/</span> <span style="color: #f99b15">255</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">g</span> <span style="color: #5bc4bf">/</span> <span style="color: #f99b15">255</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">b</span> <span style="color: #5bc4bf">/</span> <span style="color: #f99b15">255</span><span style="color: #e7e9db">];</span>
@@ -383,22 +400,44 @@
     <span style="color: #5bc4bf">?</span> <span style="color: #e7e9db">[</span> <span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">0</span> <span style="color: #e7e9db">]</span>
     <span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[</span> <span style="color: #f99b15">255</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">255</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">255</span> <span style="color: #e7e9db">];</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The use case of the neural network isn&rsquo;t too valuable for the real world because there is already a programmatic way to solve the problem. There isn&rsquo;t a need to use a machine trained algorithm for it. However, since there is a programmatic approach to solve the problem, it becomes simple to validate the performance of a neural network which might be able to solve the problem for us too. Checkout the animation in the <a target="_blank" rel="noopener noreferrer" href="https://github.com/javascript-machine-learning/color-accessibility-neural-network-deeplearnjs">GitHub repository of a learning neural network</a> to get to know how it will perform eventually and what you are going to build in this tutorial.</p>
+              <p>The use case of the neural network isn&rsquo;t too valuable for the real world because there is already
+                a programmatic way to solve the problem. There isn&rsquo;t a need to use a machine trained algorithm for
+                it. However, since there is a programmatic approach to solve the problem, it becomes simple to validate
+                the performance of a neural network which might be able to solve the problem for us too. Checkout the
+                animation in the <a target="_blank" rel="noopener noreferrer"
+                  href="https://github.com/javascript-machine-learning/color-accessibility-neural-network-deeplearnjs">GitHub
+                  repository of a learning neural network</a> to get to know how it will perform eventually and what you
+                are going to build in this tutorial.</p>
 
-<p>If you are familiar with machine learning, you might have noticed that the task at hand is a classification problem. An algorithm should decide a binary output (font color: white or black) based on an input (background color). Over the course of training the algorithm with a neural network, it will eventually output the correct font colors based on background colors as inputs.</p>
+              <p>If you are familiar with machine learning, you might have noticed that the task at hand is a
+                classification problem. An algorithm should decide a binary output (font color: white or black) based on
+                an input (background color). Over the course of training the algorithm with a neural network, it will
+                eventually output the correct font colors based on background colors as inputs.</p>
 
-<p>The following sections will give you guidance to setup all parts for your neural network from scratch. It is up to you to wire the parts together in your own file/folder setup. But you can consolidate the previous referenced GitHub repository for the implementation details.</p>
+              <p>The following sections will give you guidance to setup all parts for your neural network from scratch.
+                It is up to you to wire the parts together in your own file/folder setup. But you can consolidate the
+                previous referenced GitHub repository for the implementation details.</p>
 
-<h2 class="chapter-header" id="data-set-generation-javascript">Data Set Generation in JavaScript</h2>
+              <h2 class="chapter-header" id="data-set-generation-javascript">Data Set Generation in JavaScript</h2>
 
-<p>A training set in machine learning consists of input data points and output data points (labels). It is used to train the algorithm which will predict the output for new input data points outside of the training set (e.g. test set). During the training phase, the algorithm trained by the neural network adjusts its weights to predict the given labels of the input data points. In conclusion, the trained algorithm is a function which takes a data point as input and approximates the output label.</p>
+              <p>A training set in machine learning consists of input data points and output data points (labels). It is
+                used to train the algorithm which will predict the output for new input data points outside of the
+                training set (e.g. test set). During the training phase, the algorithm trained by the neural network
+                adjusts its weights to predict the given labels of the input data points. In conclusion, the trained
+                algorithm is a function which takes a data point as input and approximates the output label.</p>
 
-<p>After the algorithm is trained with the help of the neural network, it can output font colors for new background colors which weren&rsquo;t in the training set. Therefore you will use a <strong>test set</strong> later on. It is used to verify the accuracy of the trained algorithm. Since we are dealing with colors, it isn&rsquo;t difficult to generate a sample data set of input colors for the neural network.</p>
+              <p>After the algorithm is trained with the help of the neural network, it can output font colors for new
+                background colors which weren&rsquo;t in the training set. Therefore you will use a <strong>test
+                  set</strong> later on. It is used to verify the accuracy of the trained algorithm. Since we are
+                dealing with colors, it isn&rsquo;t difficult to generate a sample data set of input colors for the
+                neural network.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">generateRandomRgbColors</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">m</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">generateRandomRgbColors</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">m</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
   <span style="color: #815ba4">const</span> <span style="color: #06b6ef">rawInputs</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[];</span>
 
   <span style="color: #815ba4">for</span> <span style="color: #e7e9db">(</span><span style="color: #815ba4">let</span> <span style="color: #06b6ef">i</span> <span style="color: #5bc4bf">=</span> <span style="color: #f99b15">0</span><span style="color: #e7e9db">;</span> <span style="color: #06b6ef">i</span> <span style="color: #5bc4bf">&lt;</span> <span style="color: #06b6ef">m</span><span style="color: #e7e9db">;</span> <span style="color: #06b6ef">i</span><span style="color: #5bc4bf">++</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
@@ -419,14 +458,25 @@
 <span style="color: #815ba4">function</span> <span style="color: #06b6ef">randomIntFromInterval</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">min</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">max</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
   <span style="color: #815ba4">return</span> <span style="color: #e7e9db">Math.</span><span style="color: #06b6ef">floor</span><span style="color: #e7e9db">(Math.</span><span style="color: #06b6ef">random</span><span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">*</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">max</span> <span style="color: #5bc4bf">-</span> <span style="color: #06b6ef">min</span> <span style="color: #5bc4bf">+</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">+</span> <span style="color: #06b6ef">min</span><span style="color: #e7e9db">);</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The <code>generateRandomRgbColors()</code> function creates partial data sets of a given size m. The data points in the data sets are colors in the RGB color space. Each color is represented as a row in a matrix whereas each column is a <strong>feature</strong> of the color. A feature is either the R, G or B encoded value in the RGB space. The data set hasn&rsquo;t any labels yet, so the training set isn&rsquo;t complete (also called unlabeled training set), because it has only input values but no output values.</p>
+              <p>The <code>generateRandomRgbColors()</code> function creates partial data sets of a given size m. The
+                data points in the data sets are colors in the RGB color space. Each color is represented as a row in a
+                matrix whereas each column is a <strong>feature</strong> of the color. A feature is either the R, G or B
+                encoded value in the RGB space. The data set hasn&rsquo;t any labels yet, so the training set
+                isn&rsquo;t complete (also called unlabeled training set), because it has only input values but no
+                output values.</p>
 
-<p>Since the programmatic approach to generate an accessible font color based on a color is known, an adjusted version of the functionality can be derived to generate the labels for the training set (and the test set later on). The labels are adjusted for a binary classification problem and reflect the colors black and white implicitly in the RGB space. Therefore a label is either [0, 1] for the color black or [ 1, 0 ] for the color white.</p>
+              <p>Since the programmatic approach to generate an accessible font color based on a color is known, an
+                adjusted version of the functionality can be derived to generate the labels for the training set (and
+                the test set later on). The labels are adjusted for a binary classification problem and reflect the
+                colors black and white implicitly in the RGB space. Therefore a label is either [0, 1] for the color
+                black or [ 1, 0 ] for the color white.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">getAccessibleColor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">rgb</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">getAccessibleColor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">rgb</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
   <span style="color: #815ba4">let</span> <span style="color: #e7e9db">[</span> <span style="color: #06b6ef">r</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">g</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">b</span> <span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">rgb</span><span style="color: #e7e9db">;</span>
 
   <span style="color: #815ba4">let</span> <span style="color: #06b6ef">color</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #06b6ef">r</span> <span style="color: #5bc4bf">/</span> <span style="color: #f99b15">255</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">g</span> <span style="color: #5bc4bf">/</span> <span style="color: #f99b15">255</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">b</span> <span style="color: #5bc4bf">/</span> <span style="color: #f99b15">255</span><span style="color: #e7e9db">];</span>
@@ -444,47 +494,79 @@
 </span><span style="background-color: #4f424c">    <span style="color: #5bc4bf">?</span> <span style="color: #e7e9db">[</span> <span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">1</span> <span style="color: #e7e9db">]</span> <span style="color: #776e71">// black</span>
 </span><span style="background-color: #4f424c">    <span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[</span> <span style="color: #f99b15">1</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">0</span> <span style="color: #e7e9db">];</span> <span style="color: #776e71">// white</span>
 </span><span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Now you have everything in place to generate random data sets (training set, test set) of (background) colors which are classified either for black or white (font) colors.</p>
+              <p>Now you have everything in place to generate random data sets (training set, test set) of (background)
+                colors which are classified either for black or white (font) colors.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">generateColorSet</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">m</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">generateColorSet</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">m</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
   <span style="color: #815ba4">const</span> <span style="color: #06b6ef">rawInputs</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">generateRandomRgbColors</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">m</span><span style="color: #e7e9db">);</span>
   <span style="color: #815ba4">const</span> <span style="color: #06b6ef">rawTargets</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">rawInputs</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">getAccessibleColor</span><span style="color: #e7e9db">);</span>
 
   <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">rawInputs</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">rawTargets</span> <span style="color: #e7e9db">};</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Another step to give the underlying algorithm in the neural network a better time is <a href="../improving-gradient-descent-javascript/index.html">feature scaling</a>. In a simplified version of feature scaling, you want to have the values of your RGB channels between 0 and 1. Since you know about the maximum value, you can simply derive the normalized value for each color channel.</p>
+              <p>Another step to give the underlying algorithm in the neural network a better time is <a
+                  href="../improving-gradient-descent-javascript/index.html">feature scaling</a>. In a simplified
+                version of feature scaling, you want to have the values of your RGB channels between 0 and 1. Since you
+                know about the maximum value, you can simply derive the normalized value for each color channel.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">normalizeColor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">rgb</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">function</span> <span style="color: #06b6ef">normalizeColor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">rgb</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
   <span style="color: #815ba4">return</span> <span style="color: #06b6ef">rgb</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">v</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">v</span> <span style="color: #5bc4bf">/</span> <span style="color: #f99b15">255</span><span style="color: #e7e9db">);</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>It is up to you to put this functionality in your neural network model or as separate utility function. I will put it in the neural network model in the next step.</p>
+              <p>It is up to you to put this functionality in your neural network model or as separate utility function.
+                I will put it in the neural network model in the next step.</p>
 
-<h2 class="chapter-header" id="setup-neural-network-javascript">Setup Phase of a Neural Network Model in JavaScript</h2>
+              <h2 class="chapter-header" id="setup-neural-network-javascript">Setup Phase of a Neural Network Model in
+                JavaScript</h2>
 
-<p>Now comes the exciting part where you will implement a neural network in JavaScript. Before you can start implementing it, you should install the deeplearn.js library. It is a framework for neural networks in JavaScript. The official pitch for it says: <em>&ldquo;deeplearn.js is an open-source library that brings performant machine learning building blocks to the web, allowing you to train neural networks in a browser or run pre-trained models in inference mode.&rdquo;</em> In this article, you will train your model yourself and run it in inference mode afterward. There are two major advantages to use the library:</p>
+              <p>Now comes the exciting part where you will implement a neural network in JavaScript. Before you can
+                start implementing it, you should install the deeplearn.js library. It is a framework for neural
+                networks in JavaScript. The official pitch for it says: <em>&ldquo;deeplearn.js is an open-source
+                  library that brings performant machine learning building blocks to the web, allowing you to train
+                  neural networks in a browser or run pre-trained models in inference mode.&rdquo;</em> In this article,
+                you will train your model yourself and run it in inference mode afterward. There are two major
+                advantages to use the library:</p>
 
-<p>First, it uses the GPU of your local machine which accelerates the vector computations in machine learning algorithms. These machine learning computations are similar to graphical computations and thus it is computational efficient to use the GPU instead of the CPU.</p>
+              <p>First, it uses the GPU of your local machine which accelerates the vector computations in machine
+                learning algorithms. These machine learning computations are similar to graphical computations and thus
+                it is computational efficient to use the GPU instead of the CPU.</p>
 
-<p>Second, deeplearn.js is structured similar to the popular Tensorflow library which happens to be also developed by Google but is written in Python. So if you want to make the jump to machine learning in Python, deeplearn.js might give you a great gateway to the whole domain in JavaScript.</p>
+              <p>Second, deeplearn.js is structured similar to the popular Tensorflow library which happens to be also
+                developed by Google but is written in Python. So if you want to make the jump to machine learning in
+                Python, deeplearn.js might give you a great gateway to the whole domain in JavaScript.</p>
 
-<p>Let&rsquo;s get back to your project. If you have set it up with npm, you can simply install deeplearn.js on the command line. Otherwise check the official documentation of the deeplearn.js project for installation instructions.</p>
+              <p>Let&rsquo;s get back to your project. If you have set it up with npm, you can simply install
+                deeplearn.js on the command line. Otherwise check the official documentation of the deeplearn.js project
+                for installation instructions.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">deeplearn</span>
-</code></pre></div>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">deeplearn</span>
+</code></pre>
+              </div>
 
 
-<p>Since I didn&rsquo;t build a vast number of neural networks myself yet, I followed the common practice of architecting the neural network in an object-oriented programming style. In JavaScript, you can use a <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">JavaScript ES6 class</a> to facilitate it. A class gives you the perfect container for your neural network by defining properties and class methods to the specifications of your neural network. For instance, your function to normalize a color could find a spot in the class as method.</p>
+              <p>Since I didn&rsquo;t build a vast number of neural networks myself yet, I followed the common practice
+                of architecting the neural network in an object-oriented programming style. In JavaScript, you can use a
+                <a target="_blank" rel="noopener noreferrer"
+                  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">JavaScript ES6
+                  class</a> to facilitate it. A class gives you the perfect container for your neural network by
+                defining properties and class methods to the specifications of your neural network. For instance, your
+                function to normalize a color could find a spot in the class as method.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
 
   <span style="color: #06b6ef">normalizeColor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">rgb</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
     <span style="color: #815ba4">return</span> <span style="color: #06b6ef">rgb</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">v</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">v</span> <span style="color: #5bc4bf">/</span> <span style="color: #f99b15">255</span><span style="color: #e7e9db">);</span>
@@ -493,14 +575,23 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Perhaps it is a place for your functions to generate the data sets as well. In my case, I only put the normalization in the class as class method and leave the data set generation outside of the class. You could argue that there are different ways to generate a data set in the future and thus it shouldn&rsquo;t be defined in the neural network model itself. Nevertheless, that&rsquo;s only a implementation detail.</p>
+              <p>Perhaps it is a place for your functions to generate the data sets as well. In my case, I only put the
+                normalization in the class as class method and leave the data set generation outside of the class. You
+                could argue that there are different ways to generate a data set in the future and thus it
+                shouldn&rsquo;t be defined in the neural network model itself. Nevertheless, that&rsquo;s only a
+                implementation detail.</p>
 
-<p>The training and inference phase are summarized under the umbrella term <strong>session</strong> in machine learning. You can setup the session for the neural network in your neural network class. First of all, you can import the NDArrayMathGPU class from deeplearn.js which helps you to perform mathematical calculations on the GPU in a computational efficient way.</p>
+              <p>The training and inference phase are summarized under the umbrella term <strong>session</strong> in
+                machine learning. You can setup the session for the neural network in your neural network class. First
+                of all, you can import the NDArrayMathGPU class from deeplearn.js which helps you to perform
+                mathematical calculations on the GPU in a computational efficient way.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">NDArrayMathGPU</span><span style="color: #e7e9db">,</span>
 </span><span style="background-color: #4f424c"><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;deeplearn&#39;</span><span style="color: #e7e9db">;</span>
 </span>
@@ -511,12 +602,18 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Second, declare your class method to setup your session. It takes a training set as argument in its function signature and thus it becomes the perfect consumer for a generated training set from a previous implemented function. In the third step, the session initializes an empty graph. In the next steps, the graph will reflect your architecture of the neural network. It is up to you to define all of its properties.</p>
+              <p>Second, declare your class method to setup your session. It takes a training set as argument in its
+                function signature and thus it becomes the perfect consumer for a generated training set from a previous
+                implemented function. In the third step, the session initializes an empty graph. In the next steps, the
+                graph will reflect your architecture of the neural network. It is up to you to define all of its
+                properties.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
 <span style="background-color: #4f424c">  <span style="color: #06b6ef">Graph</span><span style="color: #e7e9db">,</span>
 </span>  <span style="color: #06b6ef">NDArrayMathGPU</span><span style="color: #e7e9db">,</span>
 <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;deeplearn&#39;</span><span style="color: #e7e9db">;</span>
@@ -532,12 +629,18 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Fourth, you define the shape of your input and output data points for your graph in form of a <strong>tensor</strong>. A tensor is an array (of arrays) of numbers with a variable number of dimensions. It can be a vector, a matrix or a higher dimensional matrix. The neural network has these tensors as input and output. In our case, there are three input units (one input unit per color channel) and two output units (binary classification, e.g. white and black color).</p>
+              <p>Fourth, you define the shape of your input and output data points for your graph in form of a
+                <strong>tensor</strong>. A tensor is an array (of arrays) of numbers with a variable number of
+                dimensions. It can be a vector, a matrix or a higher dimensional matrix. The neural network has these
+                tensors as input and output. In our case, there are three input units (one input unit per color channel)
+                and two output units (binary classification, e.g. white and black color).</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
 
 <span style="background-color: #4f424c">  <span style="color: #06b6ef">inputTensor</span><span style="color: #e7e9db">;</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">targetTensor</span><span style="color: #e7e9db">;</span>
@@ -554,12 +657,17 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Fifth, a neural network has hidden layers in between. It&rsquo;s the blackbox where the magic happens. Basically, the neural network comes up with its own cross computed paramaters which are trained in the session. After all, it is up to you to define the dimension (layer size with each unit size) of the hidden layer(s).</p>
+              <p>Fifth, a neural network has hidden layers in between. It&rsquo;s the blackbox where the magic happens.
+                Basically, the neural network comes up with its own cross computed paramaters which are trained in the
+                session. After all, it is up to you to define the dimension (layer size with each unit size) of the
+                hidden layer(s).</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
 
   <span style="color: #06b6ef">inputTensor</span><span style="color: #e7e9db">;</span>
   <span style="color: #06b6ef">targetTensor</span><span style="color: #e7e9db">;</span>
@@ -589,12 +697,17 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Depending on your number of layers, you are altering the graph to span more and more of its layers. The class method which creates the connected layer takes the graph, the mutated connected layer, the index of the new layer and number of units. The layer property of the graph can be used to return a new tensor that is identified by a name.</p>
+              <p>Depending on your number of layers, you are altering the graph to span more and more of its layers. The
+                class method which creates the connected layer takes the graph, the mutated connected layer, the index
+                of the new layer and number of units. The layer property of the graph can be used to return a new tensor
+                that is identified by a name.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
 
   <span style="color: #06b6ef">inputTensor</span><span style="color: #e7e9db">;</span>
   <span style="color: #06b6ef">targetTensor</span><span style="color: #e7e9db">;</span>
@@ -628,12 +741,17 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Each neuron in a neural network has to have a defined <strong>activation function</strong>. It can be a <strong>logistic activation function</strong> that you might know already from logistic regression and thus it becomes a <strong>logistic unit</strong> in the neural network. In our case, the neural network uses <strong>rectified linear units</strong> as default.</p>
+              <p>Each neuron in a neural network has to have a defined <strong>activation function</strong>. It can be a
+                <strong>logistic activation function</strong> that you might know already from logistic regression and
+                thus it becomes a <strong>logistic unit</strong> in the neural network. In our case, the neural network
+                uses <strong>rectified linear units</strong> as default.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
 
   <span style="color: #06b6ef">inputTensor</span><span style="color: #e7e9db">;</span>
   <span style="color: #06b6ef">targetTensor</span><span style="color: #e7e9db">;</span>
@@ -669,12 +787,15 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Sixth, create the layer which outputs the binary classification. It has 2 output units; one for each discrete value (black, white).</p>
+              <p>Sixth, create the layer which outputs the binary classification. It has 2 output units; one for each
+                discrete value (black, white).</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
 
   <span style="color: #06b6ef">inputTensor</span><span style="color: #e7e9db">;</span>
   <span style="color: #06b6ef">targetTensor</span><span style="color: #e7e9db">;</span>
@@ -698,12 +819,16 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Seventh, declare a cost tensor which defines the loss function. In this case, it will be a mean squared error. It optimizes the algorithm that takes the target tensor (labels) of the training set and the predicted tensor from the trained algorithm to evaluate the cost.</p>
+              <p>Seventh, declare a cost tensor which defines the loss function. In this case, it will be a mean squared
+                error. It optimizes the algorithm that takes the target tensor (labels) of the training set and the
+                predicted tensor from the trained algorithm to evaluate the cost.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
 
   <span style="color: #06b6ef">inputTensor</span><span style="color: #e7e9db">;</span>
   <span style="color: #06b6ef">targetTensor</span><span style="color: #e7e9db">;</span>
@@ -729,12 +854,15 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Last but not least, setup the session with the architected graph. Afterward, you can start to prepare the incoming training set for the upcoming training phase.</p>
+              <p>Last but not least, setup the session with the architected graph. Afterward, you can start to prepare
+                the incoming training set for the upcoming training phase.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">Graph</span><span style="color: #e7e9db">,</span>
 <span style="background-color: #4f424c">  <span style="color: #06b6ef">Session</span><span style="color: #e7e9db">,</span>
 </span>  <span style="color: #06b6ef">NDArrayMathGPU</span><span style="color: #e7e9db">,</span>
@@ -776,12 +904,16 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The setup isn&rsquo;t done before preparing the training set for the neural network. First, you can support the computation by using a callback function in the GPU performed math context. But it&rsquo;s not mandatory and you could perform the computation without it.</p>
+              <p>The setup isn&rsquo;t done before preparing the training set for the neural network. First, you can
+                support the computation by using a callback function in the GPU performed math context. But it&rsquo;s
+                not mandatory and you could perform the computation without it.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">Graph</span><span style="color: #e7e9db">,</span>
   <span style="color: #06b6ef">Session</span><span style="color: #e7e9db">,</span>
   <span style="color: #06b6ef">NDArrayMathGPU</span><span style="color: #e7e9db">,</span>
@@ -811,12 +943,18 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Second, you can destructure the input and output (labels, also called targets) from the training set to map them into a readable format for the neural network. The mathematical computations in deeplearn.js use their in-house NDArrays. After all, you can imagine them as simple array in array matrices or vectors. In addition, the colors from the input array are normalized to improve the performance of the neural network.</p>
+              <p>Second, you can destructure the input and output (labels, also called targets) from the training set to
+                map them into a readable format for the neural network. The mathematical computations in deeplearn.js
+                use their in-house NDArrays. After all, you can imagine them as simple array in array matrices or
+                vectors. In addition, the colors from the input array are normalized to improve the performance of the
+                neural network.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
 <span style="background-color: #4f424c">  <span style="color: #06b6ef">Array1D</span><span style="color: #e7e9db">,</span>
 </span>  <span style="color: #06b6ef">Graph</span><span style="color: #e7e9db">,</span>
   <span style="color: #06b6ef">Session</span><span style="color: #e7e9db">,</span>
@@ -850,12 +988,17 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Third, the input and target arrays are shuffled. The shuffler provided by deeplearn.js keeps both arrays in sync when shuffling them. The shuffle happens for each training iteration to feed different inputs as batches to the neural network. The whole shuffling process improves the trained algorithm, because it is more likely to make generalizations by avoiding over-fitting.</p>
+              <p>Third, the input and target arrays are shuffled. The shuffler provided by deeplearn.js keeps both
+                arrays in sync when shuffling them. The shuffle happens for each training iteration to feed different
+                inputs as batches to the neural network. The whole shuffling process improves the trained algorithm,
+                because it is more likely to make generalizations by avoiding over-fitting.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">Array1D</span><span style="color: #e7e9db">,</span>
 <span style="background-color: #4f424c">  <span style="color: #06b6ef">InCPUMemoryShuffledInputProviderBuilder</span><span style="color: #e7e9db">,</span>
 </span>  <span style="color: #06b6ef">Graph</span><span style="color: #e7e9db">,</span>
@@ -900,12 +1043,16 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Last but not least, the feed entries are the ultimate input for the feedforward algorithm of the neural network in the training phase. It matches data and tensors (which were defined by their shapes in the setup phase).</p>
+              <p>Last but not least, the feed entries are the ultimate input for the feedforward algorithm of the neural
+                network in the training phase. It matches data and tensors (which were defined by their shapes in the
+                setup phase).</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">Array1D</span><span style="color: #e7e9db">,</span>
   <span style="color: #06b6ef">InCPUMemoryShuffledInputProviderBuilder</span>
   <span style="color: #06b6ef">Graph</span><span style="color: #e7e9db">,</span>
@@ -957,12 +1104,17 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The setup phase of the neural network is finished. The neural network is implemented with all its layers and units. Moreover the training set is prepared for training. Only two <strong>hyperparameters</strong> are missing to configure the high level behaviour of the neural network. These are used in the next phase: the training phase.</p>
+              <p>The setup phase of the neural network is finished. The neural network is implemented with all its
+                layers and units. Moreover the training set is prepared for training. Only two
+                <strong>hyperparameters</strong> are missing to configure the high level behaviour of the neural
+                network. These are used in the next phase: the training phase.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">Array1D</span><span style="color: #e7e9db">,</span>
   <span style="color: #06b6ef">InCPUMemoryShuffledInputProviderBuilder</span><span style="color: #e7e9db">,</span>
   <span style="color: #06b6ef">Graph</span><span style="color: #e7e9db">,</span>
@@ -998,18 +1150,33 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The first parameter is the <strong>learning rate</strong>. You might remember it from linear or logistic regression with gradient descent. It determines how fast the algorithm converges to minimize the cost. So one could assume it should be high. But it mustn&rsquo;t be too high. Otherwise gradient descent never converges because it cannot find a local optima.</p>
+              <p>The first parameter is the <strong>learning rate</strong>. You might remember it from linear or
+                logistic regression with gradient descent. It determines how fast the algorithm converges to minimize
+                the cost. So one could assume it should be high. But it mustn&rsquo;t be too high. Otherwise gradient
+                descent never converges because it cannot find a local optima.</p>
 
-<p>The second parameter is the <strong>batch size</strong>. It defines how many data points of the training set are passed through the neural network in one <strong>epoch</strong> (iteration). An epoch includes one forward pass and one backward pass of one batch of data points. There are two advantages to training a neural network with batches. First, it is not as computational intensive because the algorithm is trained with less data points in memory. Second, a neural network trains faster with batches because the weights are adjusted with each batch of data points in an epoch rather than the whole training set going through it.</p>
+              <p>The second parameter is the <strong>batch size</strong>. It defines how many data points of the
+                training set are passed through the neural network in one <strong>epoch</strong> (iteration). An epoch
+                includes one forward pass and one backward pass of one batch of data points. There are two advantages to
+                training a neural network with batches. First, it is not as computational intensive because the
+                algorithm is trained with less data points in memory. Second, a neural network trains faster with
+                batches because the weights are adjusted with each batch of data points in an epoch rather than the
+                whole training set going through it.</p>
 
-<h2 class="chapter-header" id="training-neural-network-javascript">Training Phase</h2>
+              <h2 class="chapter-header" id="training-neural-network-javascript">Training Phase</h2>
 
-<p>The setup phase is finished. Next comes the training phases. It doesn&rsquo;t need too much implementation anymore, because all the cornerstones were defined in the setup phase. First of all, the <strong>training phase</strong> can be defined in a class method. It is executed again in the math context of deeplearn.js. In addition, it uses all the predefined properties of the neural network instance to train the algorithm.</p>
+              <p>The setup phase is finished. Next comes the training phases. It doesn&rsquo;t need too much
+                implementation anymore, because all the cornerstones were defined in the setup phase. First of all, the
+                <strong>training phase</strong> can be defined in a class method. It is executed again in the math
+                context of deeplearn.js. In addition, it uses all the predefined properties of the neural network
+                instance to train the algorithm.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
 
   <span style="color: #e7e9db">...</span>
 
@@ -1026,14 +1193,20 @@
 </span><span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The train method is only one epoch of the neural network training. So when it is called from outside, it has to be called iteratively. Moreover it trains only one batch. In order to train the algorithm for multiple batches, you have to run multiple iterations of the train method again.</p>
+              <p>The train method is only one epoch of the neural network training. So when it is called from outside,
+                it has to be called iteratively. Moreover it trains only one batch. In order to train the algorithm for
+                multiple batches, you have to run multiple iterations of the train method again.</p>
 
-<p>That&rsquo;s it for a basic training phase. But it can be improved by adjusting the learning rate over time. The learning rate can be high in the beginning, but when the algorithm converges with each step it takes, the learning rate could be decreased.</p>
+              <p>That&rsquo;s it for a basic training phase. But it can be improved by adjusting the learning rate over
+                time. The learning rate can be high in the beginning, but when the algorithm converges with each step it
+                takes, the learning rate could be decreased.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
 
   <span style="color: #e7e9db">...</span>
 
@@ -1053,12 +1226,19 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>In our case, the learning rate decreases by 10% every 50 steps. Next, it would be interesting to get the cost in the training phase to verify that it decreases over time. It could be simply returned with each iteration, but that&rsquo;s leads to computational inefficiency. Every time the cost is requested from the neural network, it has to access the GPU to return it. Therefore, we only access the cost once in a while to verify that it&rsquo;s decreasing. If the cost is not requested, the cost reduction constant for the training is defined with NONE (which was the default before).</p>
+              <p>In our case, the learning rate decreases by 10% every 50 steps. Next, it would be interesting to get
+                the cost in the training phase to verify that it decreases over time. It could be simply returned with
+                each iteration, but that&rsquo;s leads to computational inefficiency. Every time the cost is requested
+                from the neural network, it has to access the GPU to return it. Therefore, we only access the cost once
+                in a while to verify that it&rsquo;s decreasing. If the cost is not requested, the cost reduction
+                constant for the training is defined with NONE (which was the default before).</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">Array1D</span><span style="color: #e7e9db">,</span>
   <span style="color: #06b6ef">InCPUMemoryShuffledInputProviderBuilder</span><span style="color: #e7e9db">,</span>
   <span style="color: #06b6ef">Graph</span><span style="color: #e7e9db">,</span>
@@ -1096,16 +1276,24 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Finally, that&rsquo;s it for the training phase. Now it needs only to be executed iteratively from the outside after the session setup with the training set. The outside execution can decide on a condition if the train method should return the cost.</p>
+              <p>Finally, that&rsquo;s it for the training phase. Now it needs only to be executed iteratively from the
+                outside after the session setup with the training set. The outside execution can decide on a condition
+                if the train method should return the cost.</p>
 
-<h2 class="chapter-header" id="inference-neural-network-javascript">Inference Phase</h2>
+              <h2 class="chapter-header" id="inference-neural-network-javascript">Inference Phase</h2>
 
-<p>The final stage is the <strong>inference phase</strong> where a test set is used to validate the performance of the trained algorithm. The input is a color in RGB space for the background color and as output it should predict the classifier [ 0, 1 ] or [ 1, 0 ] for either black or white for the font color. Since the input data points were normalized, don&rsquo;t forget to normalize the color in this step as well.</p>
+              <p>The final stage is the <strong>inference phase</strong> where a test set is used to validate the
+                performance of the trained algorithm. The input is a color in RGB space for the background color and as
+                output it should predict the classifier [ 0, 1 ] or [ 1, 0 ] for either black or white for the font
+                color. Since the input data points were normalized, don&rsquo;t forget to normalize the color in this
+                step as well.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">ColorAccessibilityModel</span> <span style="color: #e7e9db">{</span>
 
   <span style="color: #e7e9db">...</span>
 
@@ -1126,22 +1314,46 @@
 </span><span style="background-color: #4f424c"><span style="color: #e7e9db">}</span>
 </span>
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">ColorAccessibilityModel</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The method run the performance critical parts in the math context again. There it needs to define a mapping that will end up as input for the session evaluation. Keep in mind, that the predict method doesn&rsquo;t need to run strictly after the training phase. It can be used during the training phase to output validations of the test set.</p>
+              <p>The method run the performance critical parts in the math context again. There it needs to define a
+                mapping that will end up as input for the session evaluation. Keep in mind, that the predict method
+                doesn&rsquo;t need to run strictly after the training phase. It can be used during the training phase to
+                output validations of the test set.</p>
 
-<p>Ultimately the neural network is implemented for setup, training and inference phase.</p>
+              <p>Ultimately the neural network is implemented for setup, training and inference phase.</p>
 
-<h2 class="chapter-header" id="neural-network-visualization-javascript">Visualize a learning Neural Network in JavaScript</h2>
+              <h2 class="chapter-header" id="neural-network-visualization-javascript">Visualize a learning Neural
+                Network in JavaScript</h2>
 
-<p>Now it&rsquo;s about time using the neural network to train it with a training set in the training phase and validate the predictions in the inference phase with a test set. In its simplest form, you would set up the neural network, run the training phase with a training set, validate over the time of training the minimizing cost and finally predict a couple of data points with a test set. All of it would happen on the developer console in the web browser with a couple of console.log statements. However, since the neural network is about color prediction and deeplearn.js runs in the browser anyway, it would be much more enjoyable to visualize the training phase and inference phase of the neural network.</p>
+              <p>Now it&rsquo;s about time using the neural network to train it with a training set in the training
+                phase and validate the predictions in the inference phase with a test set. In its simplest form, you
+                would set up the neural network, run the training phase with a training set, validate over the time of
+                training the minimizing cost and finally predict a couple of data points with a test set. All of it
+                would happen on the developer console in the web browser with a couple of console.log statements.
+                However, since the neural network is about color prediction and deeplearn.js runs in the browser anyway,
+                it would be much more enjoyable to visualize the training phase and inference phase of the neural
+                network.</p>
 
-<p>At this point, you can decide on your own how to visualize the phases of your performing neural network. It can be plain JavaScript by using a <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">canvas</a> and the <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame">requestAnimationFrame</a> API. But in the case of this article, I will demonstrate it by using <a target="_blank" rel="noopener noreferrer" href="https://reactjs.org/">React.js</a>, because I write about it on my blog as well.</p>
+              <p>At this point, you can decide on your own how to visualize the phases of your performing neural
+                network. It can be plain JavaScript by using a <a target="_blank" rel="noopener noreferrer"
+                  href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">canvas</a> and the <a
+                  target="_blank" rel="noopener noreferrer"
+                  href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame">requestAnimationFrame</a>
+                API. But in the case of this article, I will demonstrate it by using <a target="_blank"
+                  rel="noopener noreferrer" href="https://reactjs.org/">React.js</a>, because I write about it on my
+                blog as well.</p>
 
-<p>So after setting up the project with <a target="_blank" rel="noopener noreferrer" href="https://github.com/facebookincubator/create-react-app">create-react-app</a>, the App component will be our entry point for the visualization. First of all, import the neural network class and the functions to generate the data sets from your files. Moreover, add a couple of constants for the training set size, test set sizes and number of training iterations.</p>
+              <p>So after setting up the project with <a target="_blank" rel="noopener noreferrer"
+                  href="https://github.com/facebookincubator/create-react-app">create-react-app</a>, the App component
+                will be our entry point for the visualization. First of all, import the neural network class and the
+                functions to generate the data sets from your files. Moreover, add a couple of constants for the
+                training set size, test set sizes and number of training iterations.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;./App.css&#39;</span><span style="color: #e7e9db">;</span>
 
@@ -1157,12 +1369,17 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>In the constructor of the App component, generate the data sets (training set, test set), setup the neural network session by passing in the training set, and define the initial local state of the component. Over the course of the training phase, the value for the cost and number of iterations will be displayed somewhere, so these are the properties which end up in the component state.</p>
+              <p>In the constructor of the App component, generate the data sets (training set, test set), setup the
+                neural network session by passing in the training set, and define the initial local state of the
+                component. Over the course of the training phase, the value for the cost and number of iterations will
+                be displayed somewhere, so these are the properties which end up in the component state.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;./App.css&#39;</span><span style="color: #e7e9db">;</span>
 
@@ -1198,12 +1415,16 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Next, after setting up the session of the neural network in the constructor, you could train the neural network iteratively. In a naive approach you would only need a for loop in a mounting component lifecycle hook of React.</p>
+              <p>Next, after setting up the session of the neural network in the constructor, you could train the neural
+                network iteratively. In a naive approach you would only need a for loop in a mounting component
+                lifecycle hook of React.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
 
   <span style="color: #e7e9db">...</span>
 
@@ -1215,12 +1436,18 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>However, it wouldn&rsquo;t work to render an output during the training phase in React, because the component couldn&rsquo;t re-render while the neural network blocks the single JavaScript thread. That&rsquo;s where requestAnimationFrame can be used in React. Rather than defining a for loop statement ourselves, each requested animation frame of the browser can be used to run exactly one training iteration.</p>
+              <p>However, it wouldn&rsquo;t work to render an output during the training phase in React, because the
+                component couldn&rsquo;t re-render while the neural network blocks the single JavaScript thread.
+                That&rsquo;s where requestAnimationFrame can be used in React. Rather than defining a for loop statement
+                ourselves, each requested animation frame of the browser can be used to run exactly one training
+                iteration.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
 
   <span style="color: #e7e9db">...</span>
 
@@ -1242,12 +1469,15 @@
 </span><span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>In addition, the cost can be computed every 5th step. As mentioned, the GPU needs to be accessed to retrieve the cost. Thus it should be avoided to train the neural network faster.</p>
+              <p>In addition, the cost can be computed every 5th step. As mentioned, the GPU needs to be accessed to
+                retrieve the cost. Thus it should be avoided to train the neural network faster.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
 
   <span style="color: #e7e9db">...</span>
 
@@ -1277,12 +1507,16 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The training phase is running once the component mounted. Now it is about rendering the test set with the programmatically computed output and the predicted output. Over time, the predicted output should be the same as the programmatically computed output. The training set itself is never visualized.</p>
+              <p>The training phase is running once the component mounted. Now it is about rendering the test set with
+                the programmatically computed output and the predicted output. Over time, the predicted output should be
+                the same as the programmatically computed output. The training set itself is never visualized.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
 
   <span style="color: #e7e9db">...</span>
 
@@ -1327,12 +1561,17 @@
   <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The actual table iterates over the size of the test set size to display each color. The test set has the input colors (background colors) and output colors (font colors). Since the output colors are classified into black [ 0, 1 ] and white [ 1, 0 ] vectors when a data set is generated, they need to be transformed into actual colors again.</p>
+              <p>The actual table iterates over the size of the test set size to display each color. The test set has
+                the input colors (background colors) and output colors (font colors). Since the output colors are
+                classified into black [ 0, 1 ] and white [ 1, 0 ] vectors when a data set is generated, they need to be
+                transformed into actual colors again.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">ActualTable</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">testSet</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">ActualTable</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">testSet</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span>
   <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
     <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">p</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Programmatically</span> <span style="color: #06b6ef">Computed</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/p&gt;</span>
 
@@ -1349,12 +1588,16 @@
   <span style="color: #06b6ef">classifier</span><span style="color: #e7e9db">[</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">&gt;</span> <span style="color: #06b6ef">classifier</span><span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">]</span>
     <span style="color: #5bc4bf">?</span> <span style="color: #e7e9db">[</span> <span style="color: #f99b15">255</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">255</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">255</span> <span style="color: #e7e9db">]</span>
     <span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[</span> <span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">0</span><span style="color: #e7e9db">,</span> <span style="color: #f99b15">0</span> <span style="color: #e7e9db">]</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The ColorBox component is a generic component which takes the input color (background color) and target color (font color). It simply displays a rectangle with the input color style, the RGB code of the input color as string and styles the font of the RGB code into the given target color.</p>
+              <p>The ColorBox component is a generic component which takes the input color (background color) and target
+                color (font color). It simply displays a rectangle with the input color style, the RGB code of the input
+                color as string and styles the font of the RGB code into the given target color.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">ColorBox</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">rgbInput</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">rgbTarget</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">ColorBox</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">rgbInput</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">rgbTarget</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span>
   <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;color-box&quot;</span> <span style="color: #06b6ef">style</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{{</span> <span style="color: #06b6ef">backgroundColor</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">getRgbStyle</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">rgbInput</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">}}</span><span style="color: #5bc4bf">&gt;</span>
     <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">span</span> <span style="color: #06b6ef">style</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{{</span> <span style="color: #06b6ef">color</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">getRgbStyle</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">rgbTarget</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">}}</span><span style="color: #5bc4bf">&gt;</span>
       <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">RgbString</span> <span style="color: #06b6ef">rgb</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">rgbInput</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>
@@ -1366,12 +1609,15 @@
 
 <span style="color: #815ba4">const</span> <span style="color: #06b6ef">getRgbStyle</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">rgb</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
   <span style="color: #48b685">`rgb(</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">rgb</span><span style="color: #e7e9db">[</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">]</span><span style="color: #f99b15">}</span><span style="color: #48b685">, </span><span style="color: #f99b15">${</span><span style="color: #06b6ef">rgb</span><span style="color: #e7e9db">[</span><span style="color: #f99b15">1</span><span style="color: #e7e9db">]</span><span style="color: #f99b15">}</span><span style="color: #48b685">, </span><span style="color: #f99b15">${</span><span style="color: #06b6ef">rgb</span><span style="color: #e7e9db">[</span><span style="color: #f99b15">2</span><span style="color: #e7e9db">]</span><span style="color: #f99b15">}</span><span style="color: #48b685">)`</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Last but not least, the exciting part of visualizing the predicted colors in the inference table. It uses the color box as well, but gives a different set of props into it.</p>
+              <p>Last but not least, the exciting part of visualizing the predicted colors in the inference table. It
+                uses the color box as well, but gives a different set of props into it.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">InferenceTable</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">testSet</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">model</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">InferenceTable</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">testSet</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">model</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span>
   <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
     <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">p</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Neural</span> <span style="color: #06b6ef">Network</span> <span style="color: #06b6ef">Computed</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/p&gt;</span>
     <span style="color: #e7e9db">{Array(</span><span style="color: #06b6ef">TEST_SET_SIZE</span><span style="color: #e7e9db">).</span><span style="color: #06b6ef">fill</span><span style="color: #e7e9db">(</span><span style="color: #f99b15">0</span><span style="color: #e7e9db">).</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">((</span><span style="color: #06b6ef">v</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">i</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
@@ -1382,319 +1628,318 @@
       <span style="color: #5bc4bf">/&gt;</span>
     <span style="color: #e7e9db">)}</span>
   <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The input color is still the color defined in the test set. But the target color isn&rsquo;t the target color from the test set. The crucial part is that the target color is predicted in this component by using the neural network&rsquo;s predict method. It takes the input color and should predict the target color over the course of the training phase.</p>
+              <p>The input color is still the color defined in the test set. But the target color isn&rsquo;t the target
+                color from the test set. The crucial part is that the target color is predicted in this component by
+                using the neural network&rsquo;s predict method. It takes the input color and should predict the target
+                color over the course of the training phase.</p>
 
-<p>Finally, when you start your application, you should see the neural network in action. Whereas the actual table uses the fixed test set from the beginning, the inference table should change its font colors during the training phase. In fact, while the ActualTable component shows the actual test set, the InferenceTable shows the input data points of the test set, but the predicted output by using the neural network. The React rendered part can be seen in the <a target="_blank" rel="noopener noreferrer" href="https://github.com/javascript-machine-learning/color-accessibility-neural-network-deeplearnjs">GitHub repository</a> animation too.</p>
+              <p>Finally, when you start your application, you should see the neural network in action. Whereas the
+                actual table uses the fixed test set from the beginning, the inference table should change its font
+                colors during the training phase. In fact, while the ActualTable component shows the actual test set,
+                the InferenceTable shows the input data points of the test set, but the predicted output by using the
+                neural network. The React rendered part can be seen in the <a target="_blank" rel="noopener noreferrer"
+                  href="https://github.com/javascript-machine-learning/color-accessibility-neural-network-deeplearnjs">GitHub
+                  repository</a> animation too.</p>
 
-<hr class="section-divider">
+              <hr class="section-divider">
 
-<p>The article has shown you how deeplearn.js can be used to build neural networks in JavaScript for machine learning. If you have any recommendation for improvements, please leave a comment below. In addition, I am curious whether you are interested in the crossover of machine learning and JavaScript. If that&rsquo;s is the case, I would write more about it.</p>
+              <p>The article has shown you how deeplearn.js can be used to build neural networks in JavaScript for
+                machine learning. If you have any recommendation for improvements, please leave a comment below. In
+                addition, I am curious whether you are interested in the crossover of machine learning and JavaScript.
+                If that&rsquo;s is the case, I would write more about it.</p>
 
-<p>Furthermore, I would love to get more into the topic and I am open for opportunities in the field of machine learning. At the moment, I apply my learnings in JavaScript, but I am so keen to get into Python at some point as well. So if you know about any opportunities in the field, please reach out to me :-)</p>
-
-
-                            
-<div class="feedback-and-share text-center">
-    <hr>
-    
-    <p class="lead">
-        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
-    </p>
-    
-    
-        <p class="lead">
-            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
-        </p>
-    
-</div>
+              <p>Furthermore, I would love to get more into the topic and I am open for opportunities in the field of
+                machine learning. At the moment, I apply my learnings in JavaScript, but I am so keen to get into Python
+                at some point as well. So if you know about any opportunities in the field, please reach out to me :-)
+              </p>
 
 
-                            
-                                <div class="box-inline col-md-12">
-    <div class="col-md-12 text-center">
-        <h2 class="newsletter">The Road to learn React</h2>
-        
-            <div class="col-md-4">
-                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
-            </div>
-        
-        <p class="lead">
-            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
-        </p>
-        <a
-            class="btn btn-template-main"
-            href="https://roadtoreact.com"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Get the Book for free <i class="fa fa-chevron-right"></i>
-        </a>
-        
-            <div>
-                <a
-                    href="https://amzn.to/2QY2ONp"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Get it from Amazon
-                </a>
-            </div>
-        
-    </div>
-</div>
-                            
-                        </div>
 
-                        
-                        
-                        <div id="comments">
-                            <div id="disqus_thread"></div>
-<script type="text/javascript">
+              <div class="feedback-and-share text-center">
+                <hr>
 
-(function() {
-    
-    
-    if (window.location.hostname == "localhost")
-        return;
+                <p class="lead">
+                  I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer"
+                    aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a>
+                  and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i
+                      class="fa fa-facebook"></i>Facebook</a>
+                </p>
 
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'rwieruch';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-                        </div>
-                        
 
-                    </article>
-                    
+                <p class="lead">
+                  Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>,
+                  support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon"
+                    href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack
+                  developer with my books <i class="fa fa-arrow-down"></i>
+                </p>
+
+              </div>
+
+
+
+              <div class="box-inline col-md-12">
+                <div class="col-md-12 text-center">
+                  <h2 class="newsletter">The Road to learn React</h2>
+
+                  <div class="col-md-4">
+                    <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+                  </div>
+
+                  <p class="lead">
+                    Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in
+                    200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
+                  </p>
+                  <a class="btn btn-template-main" href="https://roadtoreact.com" target="_blank"
+                    rel="noopener noreferrer">
+                    Get the Book for free <i class="fa fa-chevron-right"></i>
+                  </a>
+
+                  <div>
+                    <a href="https://amzn.to/2QY2ONp" target="_blank" rel="noopener noreferrer">
+                      Get it from Amazon
+                    </a>
+                  </div>
 
                 </div>
-                
+              </div>
 
             </div>
-            
+
+
+
+            <div id="comments">
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+
+                (function () {
+
+
+                  if (window.location.hostname == "localhost")
+                    return;
+
+                  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                  var disqus_shortname = 'rwieruch';
+                  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+              <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered
+                  by Disqus.</a></noscript>
+              <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span
+                  class="logo-disqus">Disqus</span></a>
+            </div>
+
+
+          </article>
+
+
         </div>
-        
 
-        
 
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
-    <div class="dark-mask"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
-                <h2 class="text-uppercase">Take Part</h2>
-            </div>
+      </div>
 
-            <div class="col-md-12 text-center">
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
-                
-            </div>
-            <div class="col-md-12">
-                <p class="text-center">
-                    <div id="mc_embed_signup">
-    <form
-        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
-        method="post"
-        id="revue-form"
-        name="revue-form"
-        target="_blank">
-        <div id="mc_embed_signup_scroll">
-            <input
-                class="email"
-                placeholder="email address"
-                type="email"
-                name="member[email]"
-                id="member_email"
-            >
-            <div>
-                <button
-                    type="submit"
-                    value="Subscribe"
-                    name="member[subscribe]"
-                    id="member_submit"
-                    class="btn btn-template-transparent-black btn-lg"
-                >
-                    Subscribe
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
-
-                </p>
-            </div>
-        </div>
     </div>
-</section>
-        <footer id="subfooter">
-    <div class="container">
+
+
+
+
+    <section class="bar background-image-fixed-2 no-mb color-white text-center">
+      <div class="dark-mask"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+            <h2 class="text-uppercase">Take Part</h2>
+          </div>
+
+          <div class="col-md-12 text-center">
+
+            <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+
+            <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+
+            <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+
+            <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+
+            <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+
+          </div>
+          <div class="col-md-12">
+            <p class="text-center">
+              <div id="mc_embed_signup">
+                <form action="https://www.getrevue.co/profile/rwieruch/add_subscriber" method="post" id="revue-form"
+                  name="revue-form" target="_blank">
+                  <div id="mc_embed_signup_scroll">
+                    <input class="email" placeholder="email address" type="email" name="member[email]"
+                      id="member_email">
+                    <div>
+                      <button type="submit" value="Subscribe" name="member[subscribe]" id="member_submit"
+                        class="btn btn-template-transparent-black btn-lg">
+                        Subscribe
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer id="subfooter">
+      <div class="container">
 
         <div class="col-md-5 col-sm-6">
 
-            <h4>Recent posts</h4>
+          <h4>Recent posts</h4>
 
-            <div class="blog-entries">
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../redux-vs-usereducer/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="React&#39;s useReducer vs Redux"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../publish-npm-package-node/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="How to publish a npm package?"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../react-scroll-to-item/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="How to Scroll to Item in React?"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
-                    </div>
-                </div>
-                
+          <div class="blog-entries">
+
+            <div class="item same-height-row clearfix">
+              <div class="article same-height-always">
+                <a href="../redux-vs-usereducer/index.html">
+
+                  <img data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg" data-is-thumb="is-thumb"
+                    class="img-lazy img-responsive" alt="React&#39;s useReducer vs Redux">
+
+                </a>
+              </div>
+              <div class="name same-height-always">
+                <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+              </div>
             </div>
 
-            <hr class="hidden-md hidden-lg hidden-sm">
+            <div class="item same-height-row clearfix">
+              <div class="article same-height-always">
+                <a href="../publish-npm-package-node/index.html">
+
+                  <img data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg" data-is-thumb="is-thumb"
+                    class="img-lazy img-responsive" alt="How to publish a npm package?">
+
+                </a>
+              </div>
+              <div class="name same-height-always">
+                <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
+              </div>
+            </div>
+
+            <div class="item same-height-row clearfix">
+              <div class="article same-height-always">
+                <a href="../react-scroll-to-item/index.html">
+
+                  <img data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg" data-is-thumb="is-thumb"
+                    class="img-lazy img-responsive" alt="How to Scroll to Item in React?">
+
+                </a>
+              </div>
+              <div class="name same-height-always">
+                <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
+              </div>
+            </div>
+
+          </div>
+
+          <hr class="hidden-md hidden-lg hidden-sm">
 
         </div>
-        
 
-        
+
+
         <div class="col-md-5 col-md-offset-2 col-sm-6">
 
-            <h4>About Me</h4>
+          <h4>About Me</h4>
 
-            <div class="blog-entries">
-                <div class="item same-height-row clearfix">
-                    <div class="profile same-height-always">
-                        <img
-                            class="img-lazy img-responsive"
-                            data-lazy-src="//img/page/profile.jpg"
-                            alt="profile"
-                        >
-                    </div>
-                    <div class="name same-height-always">
-                        <p>
-                            Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
-                        </p>
-                    </div>
-                </div>
+          <div class="blog-entries">
+            <div class="item same-height-row clearfix">
+              <div class="profile same-height-always">
+                <img class="img-lazy img-responsive" data-lazy-src="//img/page/profile.jpg" alt="profile">
+              </div>
+              <div class="name same-height-always">
+                <p>
+                  Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more <a
+                    href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or
+                  have a look at my social media profiles below.
+                </p>
+              </div>
             </div>
+          </div>
 
         </div>
-        
-        
-
-    </div>
-    
-</footer>
 
 
-        <footer id="copyright">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <ul class="info list-inline quicklinks pull-left">
-          
-            <li>© Chris Paul</li>
-          
-        </ul>
+
       </div>
-      <div class="col-md-4">
-        <ul class="list-inline footer-social-buttons text-center">
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
-          
-        </ul>
+
+    </footer>
+
+
+    <footer id="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <ul class="info list-inline quicklinks pull-left">
+
+              <li>© Chris Paul</li>
+
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline footer-social-buttons text-center">
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="info list-inline quicklinks pull-right">
+
+              <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="col-md-4">
-        <ul class="info list-inline quicklinks pull-right">
-          
-            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
-          
-        </ul>
-      </div>
-    </div>
+    </footer>
+
+
   </div>
-</footer>
 
 
-    </div>
-    
-
-   
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<script src="../js/script.js"></script>  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+  <script src="../js/script.js"></script>
+</body>
+
 </html>

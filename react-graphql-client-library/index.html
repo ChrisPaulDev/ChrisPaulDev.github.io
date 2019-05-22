@@ -1,419 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
   <meta charset="utf-8">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  
+
 
   <title>
     How to build a GraphQL client library for React - CPaul
   </title>
 
   <meta name="author" content="" />
-  <meta name="description" content="A tutorial on how to build a GraphQL client library for React applications. It has three parts: the GraphQL client, connecting the GraphQL client to React, and offering Query and Mutation components for GraphQL operations ...">
-  
+  <meta name="description"
+    content="A tutorial on how to build a GraphQL client library for React applications. It has three parts: the GraphQL client, connecting the GraphQL client to React, and offering Query and Mutation components for GraphQL operations ...">
 
-  <meta name="theme-color" content="#38bb6c"/>
+
+  <meta name="theme-color" content="#38bb6c" />
 
   <meta name="generator" content="Hugo 0.41" />
-<link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
   <link href="../css/customizations.css" rel="stylesheet">
 
-    <!--[if lt IE 9]>
+  <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  
-<link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="../img/favicon/manifest.json">
   <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
 
   <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
 
-<meta itemprop="name" content="How to build a GraphQL client library for React">
-<meta itemprop="description" content="A tutorial on how to build a GraphQL client library for React applications. It has three parts: the GraphQL client, connecting the GraphQL client to React, and offering Query and Mutation components for GraphQL operations ...">    <meta itemprop="image" content="https://chrispaul.dev/img/posts/react-graphql-client-library/banner_640.jpg"><meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+  <meta itemprop="name" content="How to build a GraphQL client library for React">
+  <meta itemprop="description"
+    content="A tutorial on how to build a GraphQL client library for React applications. It has three parts: the GraphQL client, connecting the GraphQL client to React, and offering Query and Mutation components for GraphQL operations ...">
+  <meta itemprop="image" content="https://chrispaul.dev/img/posts/react-graphql-client-library/banner_640.jpg">
+  <meta itemprop="keywords"
+    content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
 
 
-<meta itemprop="wordCount" content="4364">
+  <meta itemprop="wordCount" content="4364">
 
-<meta name="keywords" content="react graphql client, react graphql client library, graphql react book, graphql apollo book">
+  <meta name="keywords"
+    content="react graphql client, react graphql client library, graphql react book, graphql apollo book">
 
   <meta property="og:title" content="How to build a GraphQL client library for React - CPaul">
 
 
-  <meta property="og:description" content="A tutorial on how to build a GraphQL client library for React applications. It has three parts: the GraphQL client, connecting the GraphQL client to React, and offering Query and Mutation components for GraphQL operations ..." />
+  <meta property="og:description"
+    content="A tutorial on how to build a GraphQL client library for React applications. It has three parts: the GraphQL client, connecting the GraphQL client to React, and offering Query and Mutation components for GraphQL operations ..." />
 
 
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://chrispaul.dev/react-graphql-client-library/" />
-<meta property="og:image" content="https://chrispaul.dev/img/posts/react-graphql-client-library/banner_640.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://chrispaul.dev/react-graphql-client-library/" />
+  <meta property="og:image" content="https://chrispaul.dev/img/posts/react-graphql-client-library/banner_640.jpg" />
 
-  
 
-    <meta name="news_keywords" content="react graphql client,react graphql client library,graphql react book,graphql apollo book" />
 
-  
+  <meta name="news_keywords"
+    content="react graphql client,react graphql client library,graphql react book,graphql apollo book" />
 
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/react-graphql-client-library/banner_640.jpg"/><meta name="twitter:title" content="How to build a GraphQL client library for React"/>
-<meta name="twitter:description" content="A tutorial on how to build a GraphQL client library for React applications. It has three parts: the GraphQL client, connecting the GraphQL client to React, and offering Query and Mutation components for GraphQL operations ..."/>
-<meta name="twitter:site" content="@rwieruch"/>
-<meta name="twitter:domain" content="rwieruch"/>
 
-  
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image:src"
+    content="https://chrispaul.dev/img/posts/react-graphql-client-library/banner_640.jpg" />
+  <meta name="twitter:title" content="How to build a GraphQL client library for React" />
+  <meta name="twitter:description"
+    content="A tutorial on how to build a GraphQL client library for React applications. It has three parts: the GraphQL client, connecting the GraphQL client to React, and offering Query and Mutation components for GraphQL operations ..." />
+  <meta name="twitter:site" content="@rwieruch" />
+  <meta name="twitter:domain" content="rwieruch" />
+
+
 
 </head>
 
 
-  <body>
+<body>
 
-    <div id="all">
+  <div id="all">
 
-        <header>
+    <header>
 
-          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+      <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
 
-    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+        <div class="navbar navbar-default yamm" role="navigation" id="navbar">
 
-        <div class="container">
+          <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand home" href="../index.html">
-                    <img src="../img/page/logo.svg" alt="How to build a GraphQL client library for React logo" class="img-lazy">
-                    <span class="sr-only">How to build a GraphQL client library for React - go to homepage</span>
-                </a>
+              <a class="navbar-brand home" href="../index.html">
+                <img src="../img/page/logo.svg" alt="How to build a GraphQL client library for React logo"
+                  class="img-lazy">
+                <span class="sr-only">How to build a GraphQL client library for React - go to homepage</span>
+              </a>
 
-                <div class="navbar-buttons">
-                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-align-justify"></i>
-                    </button>
-                </div>
+              <div class="navbar-buttons">
+                <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse"
+                  data-target="#navigation">
+                  <span class="sr-only">Toggle navigation</span>
+                  <i class="fa fa-align-justify"></i>
+                </button>
+              </div>
             </div>
-            
+
 
             <div class="navbar-collapse collapse" id="navigation">
-                <ul class="nav navbar-nav navbar-right">
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../index.html">Blog</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../work-with-me/index.html">Work with me</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../about/index.html">About</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
-                        
-                    </li>
-                    
-                </ul>
+              <ul class="nav navbar-nav navbar-right">
+
+                <li class="dropdown">
+
+                  <a href="../index.html">Blog</a>
+
+                </li>
+
+                <li class="dropdown">
+
+                  <a href="../work-with-me/index.html">Work with me</a>
+
+                </li>
+
+                <li class="dropdown">
+
+                  <a href="../about/index.html">About</a>
+
+                </li>
+
+                <li class="dropdown">
+
+                  <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+
+                </li>
+
+              </ul>
             </div>
-            
+
 
             <div class="collapse clearfix" id="search">
 
-                <form class="navbar-form" role="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
+              <form class="navbar-form" role="search">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search">
+                  <span class="input-group-btn">
 
                     <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
 
-                </span>
+                  </span>
+                </div>
+              </form>
+
+            </div>
+
+
+          </div>
+        </div>
+
+
+      </div>
+    </header>
+
+    <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+
+
+      <a aria-label="icon-facebook" class="icon-facebook"
+        href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freact-graphql-client-library%2f"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <i class="fa fa-facebook"></i>
+      </a>
+
+
+      <a aria-label="icon-twitter" class="icon-twitter"
+        href="https://twitter.com/share?text=How%20to%20build%20a%20GraphQL%20client%20library%20for%20React%20by%20%40rwieruch%20%23ReactJs%20%23GraphQL&amp;url=https%3a%2f%2fchrispaul.dev%2freact-graphql-client-library%2f"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <i class="fa fa-twitter"></i>
+      </a>
+
+      <a aria-label="icon-linkedin" class="icon-linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;title=How%20to%20build%20a%20GraphQL%20client%20library%20for%20React&amp;url=https%3a%2f%2fchrispaul.dev%2freact-graphql-client-library%2f">
+        <i class="fa fa-linkedin"></i>
+      </a>
+
+    </div>
+
+    <div class="visible-xs visible-sm text-center">
+      <div class="post-share post-share-fixed post-share-mobile">
+
+
+        <a aria-label="icon-facebook" class="icon-facebook"
+          href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freact-graphql-client-library%2f"
+          onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+          <i class="fa fa-facebook"></i>
+        </a>
+
+
+        <a aria-label="icon-twitter" class="icon-twitter"
+          href="https://twitter.com/share?text=How%20to%20build%20a%20GraphQL%20client%20library%20for%20React%20by%20%40rwieruch%20%23ReactJs%20%23GraphQL&amp;url=https%3a%2f%2fchrispaul.dev%2freact-graphql-client-library%2f"
+          onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+          <i class="fa fa-twitter"></i>
+        </a>
+
+        <a aria-label="icon-linkedin" class="icon-linkedin"
+          href="https://www.linkedin.com/shareArticle?mini=true&amp;title=How%20to%20build%20a%20GraphQL%20client%20library%20for%20React&amp;url=https%3a%2f%2fchrispaul.dev%2freact-graphql-client-library%2f">
+          <i class="fa fa-linkedin"></i>
+        </a>
+
+      </div>
+    </div>
+
+
+
+    <div class="hidden-xs">
+
+
+      <section class="bar background-image-fixed-2 no-mb color-white text-center">
+        <div class="dark-mask"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+              <h2 class="text-uppercase newsletter">Take Part</h2>
+            </div>
+
+            <div class="col-md-12">
+              <p class="text-center">
+                <div id="mc_embed_signup">
+                  <form action="https://www.getrevue.co/profile/rwieruch/add_subscriber" method="post" id="revue-form"
+                    name="revue-form" target="_blank">
+                    <div id="mc_embed_signup_scroll">
+                      <input class="email" placeholder="email address" type="email" name="member[email]"
+                        id="member_email">
+                      <div>
+                        <button type="submit" value="Subscribe" name="member[subscribe]" id="member_submit"
+                          class="btn btn-template-transparent-black btn-lg">
+                          Subscribe
+                        </button>
+                      </div>
                     </div>
-                </form>
+                  </form>
+                </div>
 
+              </p>
             </div>
-            
-
+          </div>
         </div>
+      </section>
     </div>
-    
 
-</div>
-        </header>
+    <div id="content">
+      <div class="container">
 
-        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
-    
-
-<a
-    aria-label="icon-facebook"
-    class="icon-facebook"
-    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freact-graphql-client-library%2f"
-    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-    <i class="fa fa-facebook"></i>
-</a>
-
-
-<a
-    aria-label="icon-twitter"
-    class="icon-twitter"
-    href="https://twitter.com/share?text=How%20to%20build%20a%20GraphQL%20client%20library%20for%20React%20by%20%40rwieruch%20%23ReactJs%20%23GraphQL&amp;url=https%3a%2f%2fchrispaul.dev%2freact-graphql-client-library%2f"
-    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-    <i class="fa fa-twitter"></i>
-</a>
-
-<a
-    aria-label="icon-linkedin"
-    class="icon-linkedin"
-    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=How%20to%20build%20a%20GraphQL%20client%20library%20for%20React&amp;url=https%3a%2f%2fchrispaul.dev%2freact-graphql-client-library%2f">
-    <i class="fa fa-linkedin"></i>
-</a>
-
-</div>
-
-<div class="visible-xs visible-sm text-center">
-    <div class="post-share post-share-fixed post-share-mobile">
-        
-
-<a
-    aria-label="icon-facebook"
-    class="icon-facebook"
-    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freact-graphql-client-library%2f"
-    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-    <i class="fa fa-facebook"></i>
-</a>
-
-
-<a
-    aria-label="icon-twitter"
-    class="icon-twitter"
-    href="https://twitter.com/share?text=How%20to%20build%20a%20GraphQL%20client%20library%20for%20React%20by%20%40rwieruch%20%23ReactJs%20%23GraphQL&amp;url=https%3a%2f%2fchrispaul.dev%2freact-graphql-client-library%2f"
-    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-    <i class="fa fa-twitter"></i>
-</a>
-
-<a
-    aria-label="icon-linkedin"
-    class="icon-linkedin"
-    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=How%20to%20build%20a%20GraphQL%20client%20library%20for%20React&amp;url=https%3a%2f%2fchrispaul.dev%2freact-graphql-client-library%2f">
-    <i class="fa fa-linkedin"></i>
-</a>
-
-    </div>
-</div>
-
-        
-
-        <div class="hidden-xs">
-            
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
-    <div class="dark-mask"></div>
-    <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
-                <h2 class="text-uppercase newsletter">Take Part</h2>
-            </div>
 
-            <div class="col-md-12">
-                <p class="text-center">
-                    <div id="mc_embed_signup">
-    <form
-        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
-        method="post"
-        id="revue-form"
-        name="revue-form"
-        target="_blank">
-        <div id="mc_embed_signup_scroll">
-            <input
-                class="email"
-                placeholder="email address"
-                type="email"
-                name="member[email]"
-                id="member_email"
-            >
-            <div>
-                <button
-                    type="submit"
-                    value="Subscribe"
-                    name="member[subscribe]"
-                    id="member_submit"
-                    class="btn btn-template-transparent-black btn-lg"
-                >
-                    Subscribe
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
+          <article class="col-md-8 col-md-offset-2" id="blog-post" itemprop="blogPosts" itemscope
+            itemtype="http://schema.org/BlogPosting">
 
-                </p>
-            </div>
-        </div>
-    </div>
-</section>        </div>
+            <div id="post-content" itemprop="articleBody">
 
-        <div id="content">
-            <div class="container">
+              <header>
+                <h1 itemprop="name headline">How to build a GraphQL client library for React</h1>
+              </header>
 
-                <div class="row">
+              <div class="text-center">
 
-                    <article
-                        class="col-md-8 col-md-offset-2"
-                        id="blog-post"
-                        itemprop="blogPosts"
-                        itemscope itemtype="http://schema.org/BlogPosting">
-
-                        <div id="post-content" itemprop="articleBody">
-
-                            <header>
-                                <h1 itemprop="name headline">How to build a GraphQL client library for React</h1>
-                            </header>
-
-                            <div class="text-center">
-                                
-    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
-         <i class="fa fa-facebook"></i>Follow
-    </a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch"
+                  class="facebook-button-follow">
+                  <i class="fa fa-facebook"></i>Follow
+                </a>
 
 
-                                &nbsp;
-                                
-
-                                &nbsp;
-                                
-  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
-    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
-  </a>
+                &nbsp;
 
 
-                                &nbsp;
-                                
-                            </div>
+                &nbsp;
 
-                            <p class="text-muted text-uppercase mb-small text-center">
-    <span itemprop="author publisher">
-        
-    </span>
-
-    
-        <time datetime="2018-06-13" itemprop="datePublished">
-            June 13, 2018
-        </time>
-    
-
-    
-        <span class="hidden-xs hidden-sm"> - <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/react-graphql-client-library.md">
-                Edit this Post on GitHub
-            </a>
-        </span>
-    
-</p>
-
-                            <div>
-  
-
-</div>
-
-<div class="post-image-primary">
-    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="pinterest-pinner">
-            <a
-                data-pin-do="buttonPin"
-                data-pin-save="true"
-                data-pin-tall="true"
-                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2freact-graphql-client-library%2f&amp;media=https://chrispaul.dev/img%2fposts%2freact-graphql-client-library%2fbanner.jpg&amp;description=">
-            </a>
-        </div>
-
-        <img
-            class="img-lazy img-responsive"
-            data-lazy-src="/src="/img/posts/react-graphql-client-library/banner.jpg"
-            data-is-src-set="is-src-set"
-            alt="react graphql client library"
-            itemprop="image"
-        />
-    </div>
-</div>
+                <a target="_blank" rel="noopener noreferrer"
+                  href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
+                  <img
+                    src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow"
+                    alt="Follow on Twitter">
+                </a>
 
 
-<p>
-  <em>
-    Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire <a href="https://roadtoreact.com">The Road to GraphQL</a> book that teaches you to become a fullstack developer with JavaScript.
-  </em>
-</p>
+                &nbsp;
 
-<div class="read-before">
-    <p>This tutorial is part 3 of 3 in this series.</p>
-    <div>Part 1: <a href="../react-with-graphql-tutorial/index.html" itemprop="url">A complete React with GraphQL Tutorial</a></div>
-    <div>Part 2: <a href="../react-graphql-apollo-tutorial/index.html" itemprop="url">A complete React with Apollo and GraphQL Tutorial</a></div>
-</div>
+              </div>
 
-<p>You may have used a GraphQL client library that was view-layer agnostic and thus able to work with React or other solutions like Angular or Vue. Other GraphQL client libraries like Relay and Urql aren&rsquo;t so powerful, because they are used only for React. The next chapter is to illustrate how to implement a GraphQL client library that works with React. The takeaway shouldn&rsquo;t be &ldquo;build your own GraphQL client for your production ready applications&rdquo;, however, you should instead learn:</p>
+              <p class="text-muted text-uppercase mb-small text-center">
+                <span itemprop="author publisher">
 
-<ul>
-<li>how a GraphQL client library works under the hood</li>
-<li>how simple a GraphQL client library can be implemented your way</li>
-<li>how it is capable of contributing to the GraphQL ecosystem</li>
-</ul>
-
-<p>There is lots of room to contribute to the GraphQL ecosystem, because the tools surrounding it are still fairly new. A diverse set of tools would speed this along, instead of Apollo pushing its maturation forward alone. This is not only a useful addition for your web development skillset, it is also an opportunity to contribute to the early stages of GraphQL.</p>
-
-<p>Before diving into implementing your own GraphQL client for React, consider the essentials for consuming a GraphQL API in a React application:</p>
-
-<ul>
-<li><p>A <strong>GraphQL client</strong> must be used. It can be any HTTP library or even the <a target="_blank" rel="noopener noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">native fetch API</a>, but it must be able to send HTTP methods with a payload across the wire. While the GraphQL specification isn&rsquo;t opinionated about the transportation layer, the GitHub GraphQL API you consume with a GraphQL client is using HTTP. Because we are using their API, our GraphQL client must be able to execute GraphQL operations using HTTP methods.</p></li>
-
-<li><p>There must be a way to <strong>provide the GraphQL client instance to the React view layer</strong>. It is the perfect use for <a href="../react-context-api/index.html">React&rsquo;s Context API</a> to provide the GraphQL client instance at the top level of the React component tree, and to consume it in every React component interested in it.</p></li>
-
-<li><p>There must be a way to <strong>execute GraphQL operations, like a query or a mutation, in a declarative way in React</strong>. You will implement a Query component and a Mutation component that exposes an API to execute the GraphQL operations and to access its result. Because you are implementing these components, you won&rsquo;t touch the GraphQL client provided with React&rsquo;s Context API explicitly in your React components, but only in the Query and Mutation components.</p></li>
-</ul>
-
-<p>The first part is React agnostic, but the second and third glue the GraphQL client (data layer) to React (view layer). It can be seen as an analog to the <em>redux</em> and <em>react-redux</em> or <em>apollo-client</em> and <em>react-apollo</em> libraries. The former is view layer agnostic, the latter is used to connect it to the view layer.</p>
-
-<p>While you implement a GraphQL client for React in the following sections, you will also implement a GitHub client application with React that consumes GitHub&rsquo;s GraphQL API, using GraphQL client.</p>
-
-<h2 class="chapter-header" id="graphql-client">Implementing your GraphQL Client</h2>
-
-<p>Next, you will separate the domain specific application (GitHub client) and the GraphQL client with its connecting parts to the React world. The latter could be extracted later, as a standalone library, and published on <a target="_blank" rel="noopener noreferrer" href="https://www.npmjs.com/">npm</a>. It could even be split up into two libraries, where the first part is the view layer agnostic GraphQL client, and the second is used to connect the former to the view layer..</p>
-
-<p>First, bootstrap your React application with <a target="_blank" rel="noopener noreferrer" href="https://github.com/facebook/create-react-app">create-react-app</a> where you will implement your GraphQL client and the connecting parts to the view layer.</p>
-
-<p>Second, create a file to implement your standalone GraphQL client. You are going to use <a target="_blank" rel="noopener noreferrer" href="https://github.com/axios/axios">axios</a> as HTTP client to send queries and mutations with HTTP POST methods.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">axios</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span>
-</code></pre></div>
+                </span>
 
 
-<p>The GraphQL client build with axios could be as lightweight as the following:</p>
+                <time datetime="2018-06-13" itemprop="datePublished">
+                  June 13, 2018
+                </time>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">axios</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;axios&#39;</span><span style="color: #e7e9db">;</span>
+
+
+                <span class="hidden-xs hidden-sm"> - <a target="_blank" rel="noopener noreferrer"
+                    href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/react-graphql-client-library.md">
+                    Edit this Post on GitHub
+                  </a>
+                </span>
+
+              </p>
+
+              <div>
+
+
+              </div>
+
+              <div class="post-image-primary">
+                <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+                  <div class="pinterest-pinner">
+                    <a data-pin-do="buttonPin" data-pin-save="true" data-pin-tall="true"
+                      href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2freact-graphql-client-library%2f&amp;media=https://chrispaul.dev/img%2fposts%2freact-graphql-client-library%2fbanner.jpg&amp;description=">
+                    </a>
+                  </div>
+
+                  <img class="img-lazy img-responsive"
+                    data-lazy-src="/src="/img/posts/react-graphql-client-library/banner.jpg"
+                    data-is-src-set="is-src-set" alt="react graphql client library" itemprop="image" />
+                </div>
+              </div>
+
+
+              <p>
+                <em>
+                  Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire <a
+                    href="https://roadtoreact.com">The Road to GraphQL</a> book that teaches you to become a fullstack
+                  developer with JavaScript.
+                </em>
+              </p>
+
+              <div class="read-before">
+                <p>This tutorial is part 3 of 3 in this series.</p>
+                <div>Part 1: <a href="../react-with-graphql-tutorial/index.html" itemprop="url">A complete React with
+                    GraphQL Tutorial</a></div>
+                <div>Part 2: <a href="../react-graphql-apollo-tutorial/index.html" itemprop="url">A complete React with
+                    Apollo and GraphQL Tutorial</a></div>
+              </div>
+
+              <p>You may have used a GraphQL client library that was view-layer agnostic and thus able to work with
+                React or other solutions like Angular or Vue. Other GraphQL client libraries like Relay and Urql
+                aren&rsquo;t so powerful, because they are used only for React. The next chapter is to illustrate how to
+                implement a GraphQL client library that works with React. The takeaway shouldn&rsquo;t be &ldquo;build
+                your own GraphQL client for your production ready applications&rdquo;, however, you should instead
+                learn:</p>
+
+              <ul>
+                <li>how a GraphQL client library works under the hood</li>
+                <li>how simple a GraphQL client library can be implemented your way</li>
+                <li>how it is capable of contributing to the GraphQL ecosystem</li>
+              </ul>
+
+              <p>There is lots of room to contribute to the GraphQL ecosystem, because the tools surrounding it are
+                still fairly new. A diverse set of tools would speed this along, instead of Apollo pushing its
+                maturation forward alone. This is not only a useful addition for your web development skillset, it is
+                also an opportunity to contribute to the early stages of GraphQL.</p>
+
+              <p>Before diving into implementing your own GraphQL client for React, consider the essentials for
+                consuming a GraphQL API in a React application:</p>
+
+              <ul>
+                <li>
+                  <p>A <strong>GraphQL client</strong> must be used. It can be any HTTP library or even the <a
+                      target="_blank" rel="noopener noreferrer"
+                      href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">native fetch API</a>, but it
+                    must be able to send HTTP methods with a payload across the wire. While the GraphQL specification
+                    isn&rsquo;t opinionated about the transportation layer, the GitHub GraphQL API you consume with a
+                    GraphQL client is using HTTP. Because we are using their API, our GraphQL client must be able to
+                    execute GraphQL operations using HTTP methods.</p>
+                </li>
+
+                <li>
+                  <p>There must be a way to <strong>provide the GraphQL client instance to the React view
+                      layer</strong>. It is the perfect use for <a href="../react-context-api/index.html">React&rsquo;s
+                      Context API</a> to provide the GraphQL client instance at the top level of the React component
+                    tree, and to consume it in every React component interested in it.</p>
+                </li>
+
+                <li>
+                  <p>There must be a way to <strong>execute GraphQL operations, like a query or a mutation, in a
+                      declarative way in React</strong>. You will implement a Query component and a Mutation component
+                    that exposes an API to execute the GraphQL operations and to access its result. Because you are
+                    implementing these components, you won&rsquo;t touch the GraphQL client provided with React&rsquo;s
+                    Context API explicitly in your React components, but only in the Query and Mutation components.</p>
+                </li>
+              </ul>
+
+              <p>The first part is React agnostic, but the second and third glue the GraphQL client (data layer) to
+                React (view layer). It can be seen as an analog to the <em>redux</em> and <em>react-redux</em> or
+                <em>apollo-client</em> and <em>react-apollo</em> libraries. The former is view layer agnostic, the
+                latter is used to connect it to the view layer.</p>
+
+              <p>While you implement a GraphQL client for React in the following sections, you will also implement a
+                GitHub client application with React that consumes GitHub&rsquo;s GraphQL API, using GraphQL client.</p>
+
+              <h2 class="chapter-header" id="graphql-client">Implementing your GraphQL Client</h2>
+
+              <p>Next, you will separate the domain specific application (GitHub client) and the GraphQL client with its
+                connecting parts to the React world. The latter could be extracted later, as a standalone library, and
+                published on <a target="_blank" rel="noopener noreferrer" href="https://www.npmjs.com/">npm</a>. It
+                could even be split up into two libraries, where the first part is the view layer agnostic GraphQL
+                client, and the second is used to connect the former to the view layer..</p>
+
+              <p>First, bootstrap your React application with <a target="_blank" rel="noopener noreferrer"
+                  href="https://github.com/facebook/create-react-app">create-react-app</a> where you will implement your
+                GraphQL client and the connecting parts to the view layer.</p>
+
+              <p>Second, create a file to implement your standalone GraphQL client. You are going to use <a
+                  target="_blank" rel="noopener noreferrer" href="https://github.com/axios/axios">axios</a> as HTTP
+                client to send queries and mutations with HTTP POST methods.</p>
+
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">axios</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span>
+</code></pre>
+              </div>
+
+
+              <p>The GraphQL client build with axios could be as lightweight as the following:</p>
+
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">axios</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;axios&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #815ba4">const</span> <span style="color: #06b6ef">graphQLClient</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">axios</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">create</span><span style="color: #e7e9db">();</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">graphQLClient</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Since you may need greater control for creating the GraphQL client instance&ndash;passing in the GraphQL API endpoint or HTTP headers, for example&ndash;you can also expose it with a function that returns the configured GraphQL client instance.</p>
+              <p>Since you may need greater control for creating the GraphQL client instance&ndash;passing in the
+                GraphQL API endpoint or HTTP headers, for example&ndash;you can also expose it with a function that
+                returns the configured GraphQL client instance.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">axios</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;axios&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">axios</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;axios&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #815ba4">const</span> <span style="color: #06b6ef">createGraphQLClient</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">baseURL</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">headers</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
   <span style="color: #06b6ef">axios</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">create</span><span style="color: #e7e9db">({</span>
@@ -422,12 +453,18 @@
   <span style="color: #e7e9db">});</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">createGraphQLClient</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Maybe you want to avoid using the GraphQL client with HTTP methods (e.g. <code>graphQLClient.post()</code>), or you may want to expose different functions for the query and mutation methods (e.g. <code>graphQLClient.query()</code>) called from the outside. That way, you never see the behind the scenes HTTP POST when interacting with the GraphQL client. For this, JavaScript class makes sense.</p>
+              <p>Maybe you want to avoid using the GraphQL client with HTTP methods (e.g.
+                <code>graphQLClient.post()</code>), or you may want to expose different functions for the query and
+                mutation methods (e.g. <code>graphQLClient.query()</code>) called from the outside. That way, you never
+                see the behind the scenes HTTP POST when interacting with the GraphQL client. For this, JavaScript class
+                makes sense.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">axios</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;axios&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">axios</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;axios&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #815ba4">class</span> <span style="color: #06b6ef">GraphQLClient</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">axios</span><span style="color: #e7e9db">;</span>
@@ -455,14 +492,20 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">GraphQLClient</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>That&rsquo;s it for the GraphQL client. You created an instance of the GraphQL client and executed GraphQL operations (query and mutation) with it. You may wonder: Where is the state, the caching of requests, and the normalization of the data? You don&rsquo;t need them. The lightweight GraphQL client operates without any extra features, though I invite you to extend the feature set of the GraphQL client after you implement it in the following sections.</p>
+              <p>That&rsquo;s it for the GraphQL client. You created an instance of the GraphQL client and executed
+                GraphQL operations (query and mutation) with it. You may wonder: Where is the state, the caching of
+                requests, and the normalization of the data? You don&rsquo;t need them. The lightweight GraphQL client
+                operates without any extra features, though I invite you to extend the feature set of the GraphQL client
+                after you implement it in the following sections.</p>
 
-<p>Next, use the instantiated GraphQL Client in your top level React component.</p>
+              <p>Next, use the instantiated GraphQL Client in your top level React component.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">App</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./App&#39;</span><span style="color: #e7e9db">;</span>
@@ -483,26 +526,39 @@
   <span style="color: #e7e9db">document.</span><span style="color: #06b6ef">getElementById</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;root&#39;</span><span style="color: #e7e9db">),</span>
 <span style="color: #e7e9db">);</span>
 <span style="color: #06b6ef">registerServiceWorker</span><span style="color: #e7e9db">();</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Necessary information is provided for the GraphQL client constructor to create a GitHub GraphQL client instance. In previous applications, you have seen how to obtain the <a target="_blank" rel="noopener noreferrer" href="https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line">personal access token from GitHub to access their data</a> and how to use it in a <em>.env</em> file for environment variables, to make it securely accessible for the GraphQL client instantiation.</p>
+              <p>Necessary information is provided for the GraphQL client constructor to create a GitHub GraphQL client
+                instance. In previous applications, you have seen how to obtain the <a target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line">personal
+                  access token from GitHub to access their data</a> and how to use it in a <em>.env</em> file for
+                environment variables, to make it securely accessible for the GraphQL client instantiation.</p>
 
-<h2 class="chapter-header" id="graphql-client-react">Implementing your GraphQL to React Bridge</h2>
+              <h2 class="chapter-header" id="graphql-client-react">Implementing your GraphQL to React Bridge</h2>
 
-<p>In this section, you connect your GraphQL client instance to your React view layer, and the best way is to use React&rsquo;s Context API. In a separate file, you can create the necessary parts for creating the context used to tunnel the GraphQL client instance from a Provider component to all Consumer components.</p>
+              <p>In this section, you connect your GraphQL client instance to your React view layer, and the best way is
+                to use React&rsquo;s Context API. In a separate file, you can create the necessary parts for creating
+                the context used to tunnel the GraphQL client instance from a Provider component to all Consumer
+                components.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">createContext</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">createContext</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #815ba4">const</span> <span style="color: #06b6ef">GraphQLClientContext</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">createContext</span><span style="color: #e7e9db">();</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">GraphQLClientContext</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>To provide the GraphQL client instance to your React component tree, use the previous context and its Provider component to make it available to the underlying React component hierarchy.</p>
+              <p>To provide the GraphQL client instance to your React component tree, use the previous context and its
+                Provider component to make it available to the underlying React component hierarchy.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">App</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./App&#39;</span><span style="color: #e7e9db">;</span>
@@ -526,12 +582,17 @@
 </span>  <span style="color: #e7e9db">document.</span><span style="color: #06b6ef">getElementById</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;root&#39;</span><span style="color: #e7e9db">),</span>
 <span style="color: #e7e9db">);</span>
 <span style="color: #06b6ef">registerServiceWorker</span><span style="color: #e7e9db">();</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Since you provided the GraphQL client instance to your React component tree, you can use the Consumer component from the context object to retrieve the client as a value. You can implement a <a href="../gentle-introduction-higher-order-components/index.html">higher-order component (HOC)</a> to make the GraphQL client instance accessible to React components using this HOC.</p>
+              <p>Since you provided the GraphQL client instance to your React component tree, you can use the Consumer
+                component from the context object to retrieve the client as a value. You can implement a <a
+                  href="../gentle-introduction-higher-order-components/index.html">higher-order component (HOC)</a> to
+                make the GraphQL client instance accessible to React components using this HOC.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">GraphQLClientContext</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../context&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #815ba4">const</span> <span style="color: #06b6ef">withClient</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">Component</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">props</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
@@ -541,18 +602,32 @@
 <span style="color: #e7e9db">);</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">withClient</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Rather than using the Consumer component directly in your React components, use it implicitly with a higher-order component to expose the GraphQL client instance to the props. By now you have implemented all the parts necessary to bridge the data layer to the view layer. You have a Provider component providing the GraphQL client instance for the whole React component tree, and a higher-order component using the Consumer component to make the GraphQL client instance available to all React components interested in it.</p>
+              <p>Rather than using the Consumer component directly in your React components, use it implicitly with a
+                higher-order component to expose the GraphQL client instance to the props. By now you have implemented
+                all the parts necessary to bridge the data layer to the view layer. You have a Provider component
+                providing the GraphQL client instance for the whole React component tree, and a higher-order component
+                using the Consumer component to make the GraphQL client instance available to all React components
+                interested in it.</p>
 
-<h2 class="chapter-header" id="react-query-component">Implementing the Query component in React</h2>
+              <h2 class="chapter-header" id="react-query-component">Implementing the Query component in React</h2>
 
-<p>Now you are going to explore on how to execute GraphQL queries and mutations with your own GraphQL client instance. However, rather than using the client directly in your React components by using the <code>withClient()</code> HOC, which would be possible as well, you will implement two components, called Query and Mutation, which are performing the GraphQL operations in your component tree in a declarative way.</p>
+              <p>Now you are going to explore on how to execute GraphQL queries and mutations with your own GraphQL
+                client instance. However, rather than using the client directly in your React components by using the
+                <code>withClient()</code> HOC, which would be possible as well, you will implement two components,
+                called Query and Mutation, which are performing the GraphQL operations in your component tree in a
+                declarative way.</p>
 
-<p>Both the Query and Mutation component implement the <a href="../react-render-props-pattern/index.html">render props</a> pattern to pass information to the component using Query or Mutation component. The minimal implementation of the Query component could look like the following:</p>
+              <p>Both the Query and Mutation component implement the <a
+                  href="../react-render-props-pattern/index.html">render props</a> pattern to pass information to the
+                component using Query or Mutation component. The minimal implementation of the Query component could
+                look like the following:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">withClient</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./withClient&#39;</span><span style="color: #e7e9db">;</span>
 
@@ -595,14 +670,25 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">withClient</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">Query</span><span style="color: #e7e9db">);</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The Query component receives a GraphQL query and optional variables as props. Once it mounts, it executes the query using the GraphQL client instance injected with the <code>withClient</code> higher-order component. If the request resolves successfully, all data and GraphQL errors are stored in the local state of the Query component. Otherwise, a network error is stored in the local state, in an array of errors. Also, a <code>loading</code> boolean tracks the request state. The Query component uses the render prop as a children function to pass in the local state of the component. The user of the Query component decides what should be rendered in response to the information (data, loading, errors) from the children function.</p>
+              <p>The Query component receives a GraphQL query and optional variables as props. Once it mounts, it
+                executes the query using the GraphQL client instance injected with the <code>withClient</code>
+                higher-order component. If the request resolves successfully, all data and GraphQL errors are stored in
+                the local state of the Query component. Otherwise, a network error is stored in the local state, in an
+                array of errors. Also, a <code>loading</code> boolean tracks the request state. The Query component uses
+                the render prop as a children function to pass in the local state of the component. The user of the
+                Query component decides what should be rendered in response to the information (data, loading, errors)
+                from the children function.</p>
 
-<p>In your App component&rsquo;s file, you can import the component, pass in a query and optional variables, and let the Query component execute the GraphQL query once it mounts. You will receive the information from the Query component in the children function during each render.</p>
+              <p>In your App component&rsquo;s file, you can import the component, pass in a query and optional
+                variables, and let the Query component execute the GraphQL query once it mounts. You will receive the
+                information from the Query component in the children function during each render.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Query</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./my-graphql-client-react&#39;</span><span style="color: #e7e9db">;</span>
 
@@ -701,12 +787,16 @@
 <span style="color: #e7e9db">);</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>For the sake of completion, the implementation could also add a list of repositories that belong to the organization. This part of the application provides a good reason to implement pagination later, as well as a mutation with your GraphQL client, Query component, and Mutation component.</p>
+              <p>For the sake of completion, the implementation could also add a list of repositories that belong to the
+                organization. This part of the application provides a good reason to implement pagination later, as well
+                as a mutation with your GraphQL client, Query component, and Mutation component.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
 
 <span style="color: #815ba4">const</span> <span style="color: #06b6ef">GET_ORGANIZATION</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">`</span>
 <span style="color: #48b685">  query (</span>
@@ -766,12 +856,17 @@
 </span><span style="background-color: #4f424c"><span style="color: #e7e9db">);</span>
 </span>
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The GraphQL query works now, using the Query component. But it only works for the initial request, not when searching for another GitHub organization with the input element. This is because the Query component executes the GraphQL query only when mounts, but not when the <code>organizationLogin</code> variable changes. Let&rsquo;s add this little feature in the Query component.</p>
+              <p>The GraphQL query works now, using the Query component. But it only works for the initial request, not
+                when searching for another GitHub organization with the input element. This is because the Query
+                component executes the GraphQL query only when mounts, but not when the <code>organizationLogin</code>
+                variable changes. Let&rsquo;s add this little feature in the Query component.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">isEqual</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;lodash&#39;</span><span style="color: #e7e9db">;</span>
 </span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">withClient</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./withClient&#39;</span><span style="color: #e7e9db">;</span>
@@ -805,22 +900,35 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">withClient</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">Query</span><span style="color: #e7e9db">);</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>In this case, <a target="_blank" rel="noopener noreferrer" href="https://lodash.com/">lodash</a> is used to make an equal check on the previous and next variables which are passed as props to the Query component. So don&rsquo;t forget to install lodash or any other utility library which can do the check for you.</p>
+              <p>In this case, <a target="_blank" rel="noopener noreferrer" href="https://lodash.com/">lodash</a> is
+                used to make an equal check on the previous and next variables which are passed as props to the Query
+                component. So don&rsquo;t forget to install lodash or any other utility library which can do the check
+                for you.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">lodash</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span>
-</code></pre></div>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">lodash</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span>
+</code></pre>
+              </div>
 
 
-<p>Once the variables change, the GraphQL query is executed again. When you try your application, the search for another GitHub organization works now, because when the variable for the <code>organizationLogin</code> changes on a submit click, the GraphQL query in the Query component executes again.</p>
+              <p>Once the variables change, the GraphQL query is executed again. When you try your application, the
+                search for another GitHub organization works now, because when the variable for the
+                <code>organizationLogin</code> changes on a submit click, the GraphQL query in the Query component
+                executes again.</p>
 
-<h2 class="chapter-header" id="react-query-pagination-component">Implementing the Query component with Pagination in React</h2>
+              <h2 class="chapter-header" id="react-query-pagination-component">Implementing the Query component with
+                Pagination in React</h2>
 
-<p>We&rsquo;ve added some functionality, but the application only fetches the first page of repositories, and there is currently no means to fetch the next page. You have to add a mechanism that executes a query to fetch more pages from the GraphQL backend. To do this, we extend the Query component:</p>
+              <p>We&rsquo;ve added some functionality, but the application only fetches the first page of repositories,
+                and there is currently no means to fetch the next page. You have to add a mechanism that executes a
+                query to fetch more pages from the GraphQL backend. To do this, we extend the Query component:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
 
 <span style="color: #815ba4">class</span> <span style="color: #06b6ef">Query</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
@@ -869,16 +977,26 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">withClient</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">Query</span><span style="color: #e7e9db">);</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The <code>queryMore()</code> method, exposed with the children function as <code>fetchMore()</code> function, is used similar to the <code>query()</code> method. You switch from a declarative query execution to a imperative query execution using the <code>fetchMore()</code> function in React now. There, pass in a query and variables with a pagination argument to the function.</p>
+              <p>The <code>queryMore()</code> method, exposed with the children function as <code>fetchMore()</code>
+                function, is used similar to the <code>query()</code> method. You switch from a declarative query
+                execution to a imperative query execution using the <code>fetchMore()</code> function in React now.
+                There, pass in a query and variables with a pagination argument to the function.</p>
 
-<p>The one crucial difference to the <code>query()</code> method is the <code>resolveFetchMore()</code> function that is passed to the Query component as prop. It is used when a query resolves successfully, to merge the result with the component state. You can define from the outside how to merge this information.</p>
+              <p>The one crucial difference to the <code>query()</code> method is the <code>resolveFetchMore()</code>
+                function that is passed to the Query component as prop. It is used when a query resolves successfully,
+                to merge the result with the component state. You can define from the outside how to merge this
+                information.</p>
 
-<p>First, the query needs to provide a cursor argument in the GitHub GraphQL API to fetch another page of repositories. The <code>pageInfo</code> field is used to retrieve the cursor for the next page, and to see whether there is a next page.</p>
+              <p>First, the query needs to provide a cursor argument in the GitHub GraphQL API to fetch another page of
+                repositories. The <code>pageInfo</code> field is used to retrieve the cursor for the next page, and to
+                see whether there is a next page.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">GET_ORGANIZATION</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">`</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">GET_ORGANIZATION</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">`</span>
 <span style="color: #48b685">  query (</span>
 <span style="color: #48b685">    $organizationLogin: String!,</span>
 <span style="background-color: #4f424c"><span style="color: #48b685">    $cursor: String</span>
@@ -906,12 +1024,17 @@
 <span style="color: #48b685">    }</span>
 <span style="color: #48b685">  }</span>
 <span style="color: #48b685">`</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Second, the <code>fetchMore()</code> function is accessed in the Query&rsquo;s children as a function. The function can be passed down as a wrapped higher-order function to the next component that makes use of it. This way, the next component doesn&rsquo;t have to worry about passing arguments to the function anymore, as it is handled in the App component.</p>
+              <p>Second, the <code>fetchMore()</code> function is accessed in the Query&rsquo;s children as a function.
+                The function can be passed down as a wrapped higher-order function to the next component that makes use
+                of it. This way, the next component doesn&rsquo;t have to worry about passing arguments to the function
+                anymore, as it is handled in the App component.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
 
 <span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolveFetchMore</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
 </span><span style="background-color: #4f424c"> <span style="color: #e7e9db">...</span>
@@ -962,12 +1085,16 @@
 <span style="color: #e7e9db">...</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Third, the Repositories component can use the function to fetch the next page of the paginated list of repositories with a button. The button becomes available only when there is a next page of the paginated list.</p>
+              <p>Third, the Repositories component can use the function to fetch the next page of the paginated list of
+                repositories with a button. The button becomes available only when there is a next page of the paginated
+                list.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Organization</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Organization</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span>
   <span style="color: #06b6ef">organization</span><span style="color: #e7e9db">,</span>
 <span style="background-color: #4f424c">  <span style="color: #06b6ef">onFetchMoreRepositories</span><span style="color: #e7e9db">,</span>
 </span><span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
@@ -996,12 +1123,16 @@
 </span><span style="background-color: #4f424c">    <span style="color: #e7e9db">)}</span>
 </span>  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
 <span style="color: #e7e9db">);</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Next, implement the <code>resolveFetchMore()</code> function which was already passed in a previous step to the Query component. In this function, you have access to the query result when you fetch another page, as well as the state of the Query component.</p>
+              <p>Next, implement the <code>resolveFetchMore()</code> function which was already passed in a previous
+                step to the Query component. In this function, you have access to the query result when you fetch
+                another page, as well as the state of the Query component.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolveFetchMore</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolveFetchMore</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
 <span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">edges</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">oldR</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">organization</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">repositories</span><span style="color: #e7e9db">;</span>
 </span><span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">edges</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">newR</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">data</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">organization</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">repositories</span><span style="color: #e7e9db">;</span>
 </span><span style="background-color: #4f424c">
@@ -1017,16 +1148,24 @@
 </span><span style="background-color: #4f424c">    <span style="color: #e7e9db">},</span>
 </span><span style="background-color: #4f424c">  <span style="color: #e7e9db">};</span>
 </span><span style="color: #e7e9db">};</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The function merges the edges of the repositories from the state and new result into a new list of edges. The list is used in the returned object, which is used in the Query function for the <code>data</code> property in the state. Check the Query component again to verify it. With this resolving function, you can decide how to treat a paginated query, by merging component state of the Query component and the query result into a new state for the Query component.</p>
+              <p>The function merges the edges of the repositories from the state and new result into a new list of
+                edges. The list is used in the returned object, which is used in the Query function for the
+                <code>data</code> property in the state. Check the Query component again to verify it. With this
+                resolving function, you can decide how to treat a paginated query, by merging component state of the
+                Query component and the query result into a new state for the Query component.</p>
 
-<h2 class="chapter-header" id="implementing-react-mutation-component">Implementing the Mutation component in React</h2>
+              <h2 class="chapter-header" id="implementing-react-mutation-component">Implementing the Mutation component
+                in React</h2>
 
-<p>So far, you have implemented data reading part with your GraphQL client using a Query component, with pagination. Now you&rsquo;ll add its counterpart, a Mutation component:</p>
+              <p>So far, you have implemented data reading part with your GraphQL client using a Query component, with
+                pagination. Now you&rsquo;ll add its counterpart, a Mutation component:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">withClient</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./withClient&#39;</span><span style="color: #e7e9db">;</span>
 
@@ -1070,16 +1209,25 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">withClient</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">Mutation</span><span style="color: #e7e9db">);</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>It is similar to the initial Query component except for three things: the render method, the arguments passed to the mutate method, and the point when the mutate method is executed.</p>
+              <p>It is similar to the initial Query component except for three things: the render method, the arguments
+                passed to the mutate method, and the point when the mutate method is executed.</p>
 
-<p>First, the render method gives access to the state of the component, but also to the mutate method to use imperatively from the outside. Second, arguments passed to the mutate method are either the arguments passed to the mutate method at execution or the props passed to the Mutation component as fallback. Third, the mutate method exposed to the outside as a function is used any time except when the Mutation component mounts, as it did in the Query component. It is up to the user of the Mutation component to trigger it.</p>
+              <p>First, the render method gives access to the state of the component, but also to the mutate method to
+                use imperatively from the outside. Second, arguments passed to the mutate method are either the
+                arguments passed to the mutate method at execution or the props passed to the Mutation component as
+                fallback. Third, the mutate method exposed to the outside as a function is used any time except when the
+                Mutation component mounts, as it did in the Query component. It is up to the user of the Mutation
+                component to trigger it.</p>
 
-<p>So how to use it in your App component&rsquo;s file? First, you can implement a mutation which works for GitHub&rsquo;s GraphQL API.</p>
+              <p>So how to use it in your App component&rsquo;s file? First, you can implement a mutation which works
+                for GitHub&rsquo;s GraphQL API.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">WATCH_REPOSITORY</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">`</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">WATCH_REPOSITORY</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">`</span>
 <span style="color: #48b685">  mutation($id: ID!, $viewerSubscription: SubscriptionState!) {</span>
 <span style="color: #48b685">    updateSubscription(</span>
 <span style="color: #48b685">      input: { state: $viewerSubscription, subscribableId: $id }</span>
@@ -1091,12 +1239,15 @@
 <span style="color: #48b685">    }</span>
 <span style="color: #48b685">  }</span>
 <span style="color: #48b685">`</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Use the new Mutation component in your Repositories component for each repository to watch or unwatch it on GitHub with the mutation.</p>
+              <p>Use the new Mutation component in your Repositories component for each repository to watch or unwatch
+                it on GitHub with the mutation.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Query</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">Mutation</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./my-graphql-client-react&#39;</span><span style="color: #e7e9db">;</span>
 </span>
 <span style="color: #e7e9db">...</span>
@@ -1144,14 +1295,23 @@
     <span style="color: #e7e9db">...</span>
   <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
 <span style="color: #e7e9db">);</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The Mutation component grants access to the mutation function and the mutation result in its child as a function. The button can then use the function to watch or unwatch the repository. In this case, the variables are passed in the mutate function, but you could pass them in the Mutation component too.</p>
+              <p>The Mutation component grants access to the mutation function and the mutation result in its child as a
+                function. The button can then use the function to watch or unwatch the repository. In this case, the
+                variables are passed in the mutate function, but you could pass them in the Mutation component too.</p>
 
-<p>You may notice your mutation works only once now, as every other mutation keeps same count of watchers, meaning it doesn&rsquo;t toggle between watch and unwatch. This is because the repository prop with the <code>viewerSubscription</code> and the <code>totalCount</code> properties doesn&rsquo;t change after a mutation, since it is a prop from the Query component above. It is managed in the Query component, not in the Mutation component. You need to manage the data in the Mutation component instead, to update it after a mutation accordingly.</p>
+              <p>You may notice your mutation works only once now, as every other mutation keeps same count of watchers,
+                meaning it doesn&rsquo;t toggle between watch and unwatch. This is because the repository prop with the
+                <code>viewerSubscription</code> and the <code>totalCount</code> properties doesn&rsquo;t change after a
+                mutation, since it is a prop from the Query component above. It is managed in the Query component, not
+                in the Mutation component. You need to manage the data in the Mutation component instead, to update it
+                after a mutation accordingly.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">withClient</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./withClient&#39;</span><span style="color: #e7e9db">;</span>
 
@@ -1195,20 +1355,33 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">withClient</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">Mutation</span><span style="color: #e7e9db">);</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The previous additions to the Mutation component implemented two requirements:</p>
+              <p>The previous additions to the Mutation component implemented two requirements:</p>
 
-<ul>
-<li><p>The Mutation component has to take over the state of the data to be mutated. In this case, the <code>initial</code> prop makes it possible to set an initial state with the data it takes over.</p></li>
+              <ul>
+                <li>
+                  <p>The Mutation component has to take over the state of the data to be mutated. In this case, the
+                    <code>initial</code> prop makes it possible to set an initial state with the data it takes over.</p>
+                </li>
 
-<li><p>The Mutation component needs a way to update the state after a successful mutation, to retrieve recent data from it. In this case, the <code>resolveMutation()</code> function is passed as prop to the Mutation component, which is used to merge the Mutation component state with the mutation result into a new Mutation component state. This is similar to the <code>resolveFetchMore()</code> function from the Query component used for pagination.</p></li>
-</ul>
+                <li>
+                  <p>The Mutation component needs a way to update the state after a successful mutation, to retrieve
+                    recent data from it. In this case, the <code>resolveMutation()</code> function is passed as prop to
+                    the Mutation component, which is used to merge the Mutation component state with the mutation result
+                    into a new Mutation component state. This is similar to the <code>resolveFetchMore()</code> function
+                    from the Query component used for pagination.</p>
+                </li>
+              </ul>
 
-<p>After these improvements, you can update the Mutation component in your GitHub client application. Give it the initial state using the prop for it, which should give all the information needed for the Mutation component&rsquo;s render prop function.</p>
+              <p>After these improvements, you can update the Mutation component in your GitHub client application. Give
+                it the initial state using the prop for it, which should give all the information needed for the
+                Mutation component&rsquo;s render prop function.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolveWatchMutation</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolveWatchMutation</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
 </span><span style="background-color: #4f424c">  <span style="color: #e7e9db">...</span>
 </span><span style="background-color: #4f424c"><span style="color: #e7e9db">};</span>
 </span>
@@ -1262,12 +1435,19 @@
     <span style="color: #e7e9db">...</span>
   <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
 <span style="color: #e7e9db">);</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Rather than letting a user outside the Mutation component dictate its data, the Mutation component takes over, only using data provided by its child function for rendering. Once you execute the mutation, the state of the Mutation component should change and the new state should be reflected in the return value of the child function. What&rsquo;s missing is the update to the Mutation component&rsquo;s state using the <code>resolveMutation</code> function. It could look like the following, to merge the previous state with the mutation result to a new state object.</p>
+              <p>Rather than letting a user outside the Mutation component dictate its data, the Mutation component
+                takes over, only using data provided by its child function for rendering. Once you execute the mutation,
+                the state of the Mutation component should change and the new state should be reflected in the return
+                value of the child function. What&rsquo;s missing is the update to the Mutation component&rsquo;s state
+                using the <code>resolveMutation</code> function. It could look like the following, to merge the previous
+                state with the mutation result to a new state object.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolveWatchMutation</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolveWatchMutation</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
 <span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">totalCount</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">repository</span><span style="color: #e7e9db">;</span>
 </span><span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">viewerSubscription</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">data</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">updateSubscription</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">subscribable</span><span style="color: #e7e9db">;</span>
 </span><span style="background-color: #4f424c">
@@ -1281,14 +1461,25 @@
 </span><span style="background-color: #4f424c">    <span style="color: #e7e9db">},</span>
 </span><span style="background-color: #4f424c">  <span style="color: #e7e9db">};</span>
 </span><span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The resolving function updates the Mutation component&rsquo;s internal state. See the Mutation component&rsquo;s usage of the resolving function again. It takes the <code>totalCount</code> of watchers of the repository and increments or decrements it based on the <code>viewerSubscription</code> property from the mutation result. The new state is passed as data to the Mutation component&rsquo;s child function. What&rsquo;s important is that the resolving function has to return the identical structure of the data provided to the Mutation component with the <code>initial</code> prop. Otherwise, your rendering may break, because data from the render prop function has lost its identical structure.</p>
+              <p>The resolving function updates the Mutation component&rsquo;s internal state. See the Mutation
+                component&rsquo;s usage of the resolving function again. It takes the <code>totalCount</code> of
+                watchers of the repository and increments or decrements it based on the <code>viewerSubscription</code>
+                property from the mutation result. The new state is passed as data to the Mutation component&rsquo;s
+                child function. What&rsquo;s important is that the resolving function has to return the identical
+                structure of the data provided to the Mutation component with the <code>initial</code> prop. Otherwise,
+                your rendering may break, because data from the render prop function has lost its identical structure.
+              </p>
 
-<p>If the props used for the <code>initial</code> prop of the Mutation component changes in the Mutation component, nothing reflects this update. We&rsquo;ll need to add a lifecycle method in the Mutation component to update its local state when a new <code>initial</code> prop comes in.</p>
+              <p>If the props used for the <code>initial</code> prop of the Mutation component changes in the Mutation
+                component, nothing reflects this update. We&rsquo;ll need to add a lifecycle method in the Mutation
+                component to update its local state when a new <code>initial</code> prop comes in.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">isEqual</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;lodash&#39;</span><span style="color: #e7e9db">;</span>
 </span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">withClient</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./withClient&#39;</span><span style="color: #e7e9db">;</span>
@@ -1314,319 +1505,319 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">withClient</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">Mutation</span><span style="color: #e7e9db">);</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Everything is in place for the Mutation component now. It manages its own state, which is used as data in the Mutation component&rsquo;s render prop function. We&rsquo;ve implemented a Mutation component that handles the GraphQL mutation using your GraphQL client in a React application.</p>
+              <p>Everything is in place for the Mutation component now. It manages its own state, which is used as data
+                in the Mutation component&rsquo;s render prop function. We&rsquo;ve implemented a Mutation component
+                that handles the GraphQL mutation using your GraphQL client in a React application.</p>
 
-<hr class="section-divider">
+              <hr class="section-divider">
 
-<p>There&rsquo;s a big difference between this lightweight GraphQL client and a sophisticated GraphQL client like Apollo Client. Obviously, the Apollo Client has more features, probably has better performance, and certainly gives more options. The key difference is where the data is stored. Apollo Client has a central cache to manage all normalized data, but the lightweight GraphQL client manages the data in the intermediate Query and Mutation components. They are only locally available to the React components using the Query and Mutation components and the components below them using React&rsquo;s props.</p>
+              <p>There&rsquo;s a big difference between this lightweight GraphQL client and a sophisticated GraphQL
+                client like Apollo Client. Obviously, the Apollo Client has more features, probably has better
+                performance, and certainly gives more options. The key difference is where the data is stored. Apollo
+                Client has a central cache to manage all normalized data, but the lightweight GraphQL client manages the
+                data in the intermediate Query and Mutation components. They are only locally available to the React
+                components using the Query and Mutation components and the components below them using React&rsquo;s
+                props.</p>
 
-<p>This implementation of a GraphQL client in React should have illustrated that it&rsquo;s not as complicated as it seems. Hopefully this will eventually inspire you to contribute to the GraphQL and React ecosystem with your own libraries. Perhaps you&rsquo;ll create more sophisticated GraphQL client libraries on top of the previous ideas.  You can find the previous GraphQL client as <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/react-graphql-client-library">library and repository on GitHub</a>. Check it out to find your own solutions and open source them on npm as library. I am looking forward to seeing what you come up with, so please contact me when you&rsquo;d like to discuss contributing to the ecosystem.</p>
+              <p>This implementation of a GraphQL client in React should have illustrated that it&rsquo;s not as
+                complicated as it seems. Hopefully this will eventually inspire you to contribute to the GraphQL and
+                React ecosystem with your own libraries. Perhaps you&rsquo;ll create more sophisticated GraphQL client
+                libraries on top of the previous ideas. You can find the previous GraphQL client as <a target="_blank"
+                  rel="noopener noreferrer" href="https://github.com/rwieruch/react-graphql-client-library">library and
+                  repository on GitHub</a>. Check it out to find your own solutions and open source them on npm as
+                library. I am looking forward to seeing what you come up with, so please contact me when you&rsquo;d
+                like to discuss contributing to the ecosystem.</p>
 
-<div class="read-before">
-  Read more: <a href="../react-apollo-client-example/index.html" itemprop="url">A minimal Apollo Client in React Example</a>
-</div>
-
-
-                            
-<div class="feedback-and-share text-center">
-    <hr>
-    
-    <p class="lead">
-        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
-    </p>
-    
-    
-        <p class="lead">
-            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
-        </p>
-    
-</div>
+              <div class="read-before">
+                Read more: <a href="../react-apollo-client-example/index.html" itemprop="url">A minimal Apollo Client in
+                  React Example</a>
+              </div>
 
 
-                            
-                                <div class="box-inline col-md-12">
-    <div class="col-md-12 text-center">
-        <h2 class="newsletter">The Road to learn React</h2>
-        
-            <div class="col-md-4">
-                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
-            </div>
-        
-        <p class="lead">
-            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
-        </p>
-        <a
-            class="btn btn-template-main"
-            href="https://roadtoreact.com"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Get the Book for free <i class="fa fa-chevron-right"></i>
-        </a>
-        
-            <div>
-                <a
-                    href="https://amzn.to/2QY2ONp"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Get it from Amazon
-                </a>
-            </div>
-        
-    </div>
-</div>
-                            
-                        </div>
 
-                        
-                        
-                        <div id="comments">
-                            <div id="disqus_thread"></div>
-<script type="text/javascript">
+              <div class="feedback-and-share text-center">
+                <hr>
 
-(function() {
-    
-    
-    if (window.location.hostname == "localhost")
-        return;
+                <p class="lead">
+                  I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer"
+                    aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a>
+                  and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i
+                      class="fa fa-facebook"></i>Facebook</a>
+                </p>
 
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'rwieruch';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-                        </div>
-                        
 
-                    </article>
-                    
+                <p class="lead">
+                  Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>,
+                  support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon"
+                    href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack
+                  developer with my books <i class="fa fa-arrow-down"></i>
+                </p>
+
+              </div>
+
+
+
+              <div class="box-inline col-md-12">
+                <div class="col-md-12 text-center">
+                  <h2 class="newsletter">The Road to learn React</h2>
+
+                  <div class="col-md-4">
+                    <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+                  </div>
+
+                  <p class="lead">
+                    Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in
+                    200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
+                  </p>
+                  <a class="btn btn-template-main" href="https://roadtoreact.com" target="_blank"
+                    rel="noopener noreferrer">
+                    Get the Book for free <i class="fa fa-chevron-right"></i>
+                  </a>
+
+                  <div>
+                    <a href="https://amzn.to/2QY2ONp" target="_blank" rel="noopener noreferrer">
+                      Get it from Amazon
+                    </a>
+                  </div>
 
                 </div>
-                
+              </div>
 
             </div>
-            
+
+
+
+            <div id="comments">
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+
+                (function () {
+
+
+                  if (window.location.hostname == "localhost")
+                    return;
+
+                  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                  var disqus_shortname = 'rwieruch';
+                  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+              <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered
+                  by Disqus.</a></noscript>
+              <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span
+                  class="logo-disqus">Disqus</span></a>
+            </div>
+
+
+          </article>
+
+
         </div>
-        
 
-        
 
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
-    <div class="dark-mask"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
-                <h2 class="text-uppercase">Take Part</h2>
-            </div>
+      </div>
 
-            <div class="col-md-12 text-center">
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
-                
-            </div>
-            <div class="col-md-12">
-                <p class="text-center">
-                    <div id="mc_embed_signup">
-    <form
-        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
-        method="post"
-        id="revue-form"
-        name="revue-form"
-        target="_blank">
-        <div id="mc_embed_signup_scroll">
-            <input
-                class="email"
-                placeholder="email address"
-                type="email"
-                name="member[email]"
-                id="member_email"
-            >
-            <div>
-                <button
-                    type="submit"
-                    value="Subscribe"
-                    name="member[subscribe]"
-                    id="member_submit"
-                    class="btn btn-template-transparent-black btn-lg"
-                >
-                    Subscribe
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
-
-                </p>
-            </div>
-        </div>
     </div>
-</section>
-        <footer id="subfooter">
-    <div class="container">
+
+
+
+
+    <section class="bar background-image-fixed-2 no-mb color-white text-center">
+      <div class="dark-mask"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+            <h2 class="text-uppercase">Take Part</h2>
+          </div>
+
+          <div class="col-md-12 text-center">
+
+            <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+
+            <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+
+            <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+
+            <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+
+            <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+
+          </div>
+          <div class="col-md-12">
+            <p class="text-center">
+              <div id="mc_embed_signup">
+                <form action="https://www.getrevue.co/profile/rwieruch/add_subscriber" method="post" id="revue-form"
+                  name="revue-form" target="_blank">
+                  <div id="mc_embed_signup_scroll">
+                    <input class="email" placeholder="email address" type="email" name="member[email]"
+                      id="member_email">
+                    <div>
+                      <button type="submit" value="Subscribe" name="member[subscribe]" id="member_submit"
+                        class="btn btn-template-transparent-black btn-lg">
+                        Subscribe
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer id="subfooter">
+      <div class="container">
 
         <div class="col-md-5 col-sm-6">
 
-            <h4>Recent posts</h4>
+          <h4>Recent posts</h4>
 
-            <div class="blog-entries">
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../redux-vs-usereducer/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="React&#39;s useReducer vs Redux"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../publish-npm-package-node/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="How to publish a npm package?"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../react-scroll-to-item/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="How to Scroll to Item in React?"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
-                    </div>
-                </div>
-                
+          <div class="blog-entries">
+
+            <div class="item same-height-row clearfix">
+              <div class="article same-height-always">
+                <a href="../redux-vs-usereducer/index.html">
+
+                  <img data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg" data-is-thumb="is-thumb"
+                    class="img-lazy img-responsive" alt="React&#39;s useReducer vs Redux">
+
+                </a>
+              </div>
+              <div class="name same-height-always">
+                <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+              </div>
             </div>
 
-            <hr class="hidden-md hidden-lg hidden-sm">
+            <div class="item same-height-row clearfix">
+              <div class="article same-height-always">
+                <a href="../publish-npm-package-node/index.html">
+
+                  <img data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg" data-is-thumb="is-thumb"
+                    class="img-lazy img-responsive" alt="How to publish a npm package?">
+
+                </a>
+              </div>
+              <div class="name same-height-always">
+                <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
+              </div>
+            </div>
+
+            <div class="item same-height-row clearfix">
+              <div class="article same-height-always">
+                <a href="../react-scroll-to-item/index.html">
+
+                  <img data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg" data-is-thumb="is-thumb"
+                    class="img-lazy img-responsive" alt="How to Scroll to Item in React?">
+
+                </a>
+              </div>
+              <div class="name same-height-always">
+                <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
+              </div>
+            </div>
+
+          </div>
+
+          <hr class="hidden-md hidden-lg hidden-sm">
 
         </div>
-        
 
-        
+
+
         <div class="col-md-5 col-md-offset-2 col-sm-6">
 
-            <h4>About Me</h4>
+          <h4>About Me</h4>
 
-            <div class="blog-entries">
-                <div class="item same-height-row clearfix">
-                    <div class="profile same-height-always">
-                        <img
-                            class="img-lazy img-responsive"
-                            data-lazy-src="//img/page/profile.jpg"
-                            alt="profile"
-                        >
-                    </div>
-                    <div class="name same-height-always">
-                        <p>
-                            Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
-                        </p>
-                    </div>
-                </div>
+          <div class="blog-entries">
+            <div class="item same-height-row clearfix">
+              <div class="profile same-height-always">
+                <img class="img-lazy img-responsive" data-lazy-src="//img/page/profile.jpg" alt="profile">
+              </div>
+              <div class="name same-height-always">
+                <p>
+                  Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more <a
+                    href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or
+                  have a look at my social media profiles below.
+                </p>
+              </div>
             </div>
+          </div>
 
         </div>
-        
-        
-
-    </div>
-    
-</footer>
 
 
-        <footer id="copyright">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <ul class="info list-inline quicklinks pull-left">
-          
-            <li>© Chris Paul</li>
-          
-        </ul>
+
       </div>
-      <div class="col-md-4">
-        <ul class="list-inline footer-social-buttons text-center">
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
-          
-        </ul>
+
+    </footer>
+
+
+    <footer id="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <ul class="info list-inline quicklinks pull-left">
+
+              <li>© Chris Paul</li>
+
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline footer-social-buttons text-center">
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="info list-inline quicklinks pull-right">
+
+              <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="col-md-4">
-        <ul class="info list-inline quicklinks pull-right">
-          
-            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
-          
-        </ul>
-      </div>
-    </div>
+    </footer>
+
+
   </div>
-</footer>
 
 
-    </div>
-    
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src="../js/script.js"></script>
+</body>
 
-<script src="../js/script.js"></script>  </body>
 </html>

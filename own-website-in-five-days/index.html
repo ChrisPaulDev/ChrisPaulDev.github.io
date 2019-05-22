@@ -1,279 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-  <meta charset="utf-8">
-  <meta name="robots" content="all,follow">
-  <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  
 
-  <title>
-    Technical Cheatsheet: 5 days to your own Website - CPaul
-  </title>
 
-  <meta name="author" content="" />
-  <meta name="description" content="Technical cheatsheet to create and host your own website in five days. You will learn how to use Hugo and DigitalOcean to publish your website online. Hugo is a static website generator to...">
-  
+    <title>
+        Technical Cheatsheet: 5 days to your own Website - CPaul
+    </title>
 
-  <meta name="theme-color" content="#38bb6c"/>
+    <meta name="author" content="" />
+    <meta name="description"
+        content="Technical cheatsheet to create and host your own website in five days. You will learn how to use Hugo and DigitalOcean to publish your website online. Hugo is a static website generator to...">
 
-  <meta name="generator" content="Hugo 0.41" />
-<link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
-  <link href="../css/customizations.css" rel="stylesheet">
+    <meta name="theme-color" content="#38bb6c" />
+
+    <meta name="generator" content="Hugo 0.41" />
+    <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+    <link href="../css/customizations.css" rel="stylesheet">
 
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  
-<link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="../img/favicon/manifest.json">
-  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
 
-  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+    <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="../img/favicon/manifest.json">
+    <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
 
-<meta itemprop="name" content="Technical Cheatsheet: 5 days to your own Website">
-<meta itemprop="description" content="Technical cheatsheet to create and host your own website in five days. You will learn how to use Hugo and DigitalOcean to publish your website online. Hugo is a static website generator to...">
+    <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
 
-<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+    <meta itemprop="name" content="Technical Cheatsheet: 5 days to your own Website">
+    <meta itemprop="description"
+        content="Technical cheatsheet to create and host your own website in five days. You will learn how to use Hugo and DigitalOcean to publish your website online. Hugo is a static website generator to...">
 
-
-<meta itemprop="wordCount" content="1079">
-
-<meta name="keywords" content="website in five days, hugo website">
-
-  <meta property="og:title" content="Technical Cheatsheet: 5 days to your own Website - CPaul">
+    <meta itemprop="keywords"
+        content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
 
 
-  <meta property="og:description" content="Technical cheatsheet to create and host your own website in five days. You will learn how to use Hugo and DigitalOcean to publish your website online. Hugo is a static website generator to..." />
+    <meta itemprop="wordCount" content="1079">
+
+    <meta name="keywords" content="website in five days, hugo website">
+
+    <meta property="og:title" content="Technical Cheatsheet: 5 days to your own Website - CPaul">
 
 
-<meta property="og:type" content="promo" />
-<meta property="og:url" content="https://chrispaul.dev/own-website-in-five-days/" />
-<meta property="og:image" content="" />
+    <meta property="og:description"
+        content="Technical cheatsheet to create and host your own website in five days. You will learn how to use Hugo and DigitalOcean to publish your website online. Hugo is a static website generator to..." />
 
-  
+
+    <meta property="og:type" content="promo" />
+    <meta property="og:url" content="https://chrispaul.dev/own-website-in-five-days/" />
+    <meta property="og:image" content="" />
+
+
 
     <meta name="news_keywords" content="website in five days" />
-  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Technical Cheatsheet: 5 days to your own Website"/>
-<meta name="twitter:description" content="Technical cheatsheet to create and host your own website in five days. You will learn how to use Hugo and DigitalOcean to publish your website online. Hugo is a static website generator to..."/>
-<meta name="twitter:site" content="@rwieruch"/>
-<meta name="twitter:domain" content="rwieruch"/>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Technical Cheatsheet: 5 days to your own Website" />
+    <meta name="twitter:description"
+        content="Technical cheatsheet to create and host your own website in five days. You will learn how to use Hugo and DigitalOcean to publish your website online. Hugo is a static website generator to..." />
+    <meta name="twitter:site" content="@rwieruch" />
+    <meta name="twitter:domain" content="rwieruch" />
 
-  
+
 
 </head>
 
 
-  <body>
+<body>
 
     <div id="all">
 
         <header>
 
-          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+            <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
 
-    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+                <div class="navbar navbar-default yamm" role="navigation" id="navbar">
 
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand home" href="../index.html">
-                    <img src="../img/page/logo.svg" alt="Technical Cheatsheet: 5 days to your own Website logo" class="img-lazy">
-                    <span class="sr-only">Technical Cheatsheet: 5 days to your own Website - go to homepage</span>
-                </a>
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand home" href="../index.html">
+                                <img src="../img/page/logo.svg"
+                                    alt="Technical Cheatsheet: 5 days to your own Website logo" class="img-lazy">
+                                <span class="sr-only">Technical Cheatsheet: 5 days to your own Website - go to
+                                    homepage</span>
+                            </a>
 
-                <div class="navbar-buttons">
-                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-align-justify"></i>
-                    </button>
-                </div>
-            </div>
-            
+                            <div class="navbar-buttons">
+                                <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse"
+                                    data-target="#navigation">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-align-justify"></i>
+                                </button>
+                            </div>
+                        </div>
 
-            <div class="navbar-collapse collapse" id="navigation">
-                <ul class="nav navbar-nav navbar-right">
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../index.html">Blog</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../work-with-me/index.html">Work with me</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../about/index.html">About</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
-                        
-                    </li>
-                    
-                </ul>
-            </div>
-            
 
-            <div class="collapse clearfix" id="search">
+                        <div class="navbar-collapse collapse" id="navigation">
+                            <ul class="nav navbar-nav navbar-right">
 
-                <form class="navbar-form" role="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
+                                <li class="dropdown">
 
-                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                                    <a href="../index.html">Blog</a>
 
-                </span>
+                                </li>
+
+                                <li class="dropdown">
+
+                                    <a href="../work-with-me/index.html">Work with me</a>
+
+                                </li>
+
+                                <li class="dropdown">
+
+                                    <a href="../about/index.html">About</a>
+
+                                </li>
+
+                                <li class="dropdown">
+
+                                    <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+
+                                </li>
+
+                            </ul>
+                        </div>
+
+
+                        <div class="collapse clearfix" id="search">
+
+                            <form class="navbar-form" role="search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <span class="input-group-btn">
+
+                                        <button type="submit" class="btn btn-template-main"><i
+                                                class="fa fa-search"></i></button>
+
+                                    </span>
+                                </div>
+                            </form>
+
+                        </div>
+
+
                     </div>
-                </form>
+                </div>
+
 
             </div>
-            
-
-        </div>
-    </div>
-    
-
-</div>
         </header>
 
         <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
-    
-
-<a
-    aria-label="icon-facebook"
-    class="icon-facebook"
-    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fown-website-in-five-days%2f"
-    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-    <i class="fa fa-facebook"></i>
-</a>
 
 
-<a
-    aria-label="icon-twitter"
-    class="icon-twitter"
-    href="https://twitter.com/share?text=Technical%20Cheatsheet%3a%205%20days%20to%20your%20own%20Website%20by%20%40rwieruch%20%23programming&amp;url=https%3a%2f%2fchrispaul.dev%2fown-website-in-five-days%2f"
-    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-    <i class="fa fa-twitter"></i>
-</a>
-
-<a
-    aria-label="icon-linkedin"
-    class="icon-linkedin"
-    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Technical%20Cheatsheet%3a%205%20days%20to%20your%20own%20Website&amp;url=https%3a%2f%2fchrispaul.dev%2fown-website-in-five-days%2f">
-    <i class="fa fa-linkedin"></i>
-</a>
-
-</div>
-
-<div class="visible-xs visible-sm text-center">
-    <div class="post-share post-share-fixed post-share-mobile">
-        
-
-<a
-    aria-label="icon-facebook"
-    class="icon-facebook"
-    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fown-website-in-five-days%2f"
-    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-    <i class="fa fa-facebook"></i>
-</a>
+            <a aria-label="icon-facebook" class="icon-facebook"
+                href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fown-website-in-five-days%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+            </a>
 
 
-<a
-    aria-label="icon-twitter"
-    class="icon-twitter"
-    href="https://twitter.com/share?text=Technical%20Cheatsheet%3a%205%20days%20to%20your%20own%20Website%20by%20%40rwieruch%20%23programming&amp;url=https%3a%2f%2fchrispaul.dev%2fown-website-in-five-days%2f"
-    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-    <i class="fa fa-twitter"></i>
-</a>
+            <a aria-label="icon-twitter" class="icon-twitter"
+                href="https://twitter.com/share?text=Technical%20Cheatsheet%3a%205%20days%20to%20your%20own%20Website%20by%20%40rwieruch%20%23programming&amp;url=https%3a%2f%2fchrispaul.dev%2fown-website-in-five-days%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+            </a>
 
-<a
-    aria-label="icon-linkedin"
-    class="icon-linkedin"
-    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Technical%20Cheatsheet%3a%205%20days%20to%20your%20own%20Website&amp;url=https%3a%2f%2fchrispaul.dev%2fown-website-in-five-days%2f">
-    <i class="fa fa-linkedin"></i>
-</a>
+            <a aria-label="icon-linkedin" class="icon-linkedin"
+                href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Technical%20Cheatsheet%3a%205%20days%20to%20your%20own%20Website&amp;url=https%3a%2f%2fchrispaul.dev%2fown-website-in-five-days%2f">
+                <i class="fa fa-linkedin"></i>
+            </a>
 
-    </div>
-</div>
+        </div>
 
-        
+        <div class="visible-xs visible-sm text-center">
+            <div class="post-share post-share-fixed post-share-mobile">
+
+
+                <a aria-label="icon-facebook" class="icon-facebook"
+                    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fown-website-in-five-days%2f"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="fa fa-facebook"></i>
+                </a>
+
+
+                <a aria-label="icon-twitter" class="icon-twitter"
+                    href="https://twitter.com/share?text=Technical%20Cheatsheet%3a%205%20days%20to%20your%20own%20Website%20by%20%40rwieruch%20%23programming&amp;url=https%3a%2f%2fchrispaul.dev%2fown-website-in-five-days%2f"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="fa fa-twitter"></i>
+                </a>
+
+                <a aria-label="icon-linkedin" class="icon-linkedin"
+                    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Technical%20Cheatsheet%3a%205%20days%20to%20your%20own%20Website&amp;url=https%3a%2f%2fchrispaul.dev%2fown-website-in-five-days%2f">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+
+            </div>
+        </div>
+
+
 
         <div class="hidden-xs">
-            
 
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
-    <div class="dark-mask"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
-                <h2 class="text-uppercase newsletter">Take Part</h2>
-            </div>
 
-            <div class="col-md-12">
-                <p class="text-center">
-                    <div id="mc_embed_signup">
-    <form
-        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
-        method="post"
-        id="revue-form"
-        name="revue-form"
-        target="_blank">
-        <div id="mc_embed_signup_scroll">
-            <input
-                class="email"
-                placeholder="email address"
-                type="email"
-                name="member[email]"
-                id="member_email"
-            >
-            <div>
-                <button
-                    type="submit"
-                    value="Subscribe"
-                    name="member[subscribe]"
-                    id="member_submit"
-                    class="btn btn-template-transparent-black btn-lg"
-                >
-                    Subscribe
-                </button>
-            </div>
+            <section class="bar background-image-fixed-2 no-mb color-white text-center">
+                <div class="dark-mask"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.
+                            </h3>
+                            <h2 class="text-uppercase newsletter">Take Part</h2>
+                        </div>
+
+                        <div class="col-md-12">
+                            <p class="text-center">
+                                <div id="mc_embed_signup">
+                                    <form action="https://www.getrevue.co/profile/rwieruch/add_subscriber" method="post"
+                                        id="revue-form" name="revue-form" target="_blank">
+                                        <div id="mc_embed_signup_scroll">
+                                            <input class="email" placeholder="email address" type="email"
+                                                name="member[email]" id="member_email">
+                                            <div>
+                                                <button type="submit" value="Subscribe" name="member[subscribe]"
+                                                    id="member_submit"
+                                                    class="btn btn-template-transparent-black btn-lg">
+                                                    Subscribe
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </form>
-</div>
-
-                </p>
-            </div>
-        </div>
-    </div>
-</section>        </div>
 
         <div id="content">
             <div class="container">
 
                 <div class="row">
 
-                    <article
-                        class="col-md-8 col-md-offset-2"
-                        id="blog-post"
-                        itemprop="blogPosts"
-                        itemscope itemtype="http://schema.org/BlogPosting">
+                    <article class="col-md-8 col-md-offset-2" id="blog-post" itemprop="blogPosts" itemscope
+                        itemtype="http://schema.org/BlogPosting">
 
                         <div id="post-content" itemprop="articleBody">
 
@@ -282,491 +266,569 @@
                             </header>
 
                             <div class="text-center">
-                                
-    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
-         <i class="fa fa-facebook"></i>Follow
-    </a>
+
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch"
+                                    class="facebook-button-follow">
+                                    <i class="fa fa-facebook"></i>Follow
+                                </a>
 
 
                                 &nbsp;
-                                
-
-                                &nbsp;
-                                
-  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
-    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
-  </a>
 
 
                                 &nbsp;
-                                
+
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://twitter.com/intent/follow?screen_name=rwieruch"
+                                    class="generic-button-follow">
+                                    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow"
+                                        alt="Follow on Twitter">
+                                </a>
+
+
+                                &nbsp;
+
                             </div>
 
                             <p class="text-muted text-uppercase mb-small text-center">
-    <span itemprop="author publisher">
-        
-    </span>
+                                <span itemprop="author publisher">
 
-    
-        <time datetime="2016-11-09" itemprop="datePublished">
-            November 9, 2016
-        </time>
-    
+                                </span>
 
-    
-        <span class="hidden-xs hidden-sm"> - <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/own-website-in-five-days.md">
-                Edit this Post on GitHub
-            </a>
-        </span>
-    
-</p>
 
-                            
+                                <time datetime="2016-11-09" itemprop="datePublished">
+                                    November 9, 2016
+                                </time>
 
-<div>
-  
 
-</div>
 
-<div class="read-before">
-    <p>This tutorial is part 2 of a series.</p>
-    <div>Part 1: <a href="../developer-setup/index.html" itemprop="url">Day One - Technical Cheatsheet: Setup your development environment</a></div>
-</div>
+                                <span class="hidden-xs hidden-sm"> - <a target="_blank" rel="noopener noreferrer"
+                                        href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/own-website-in-five-days.md">
+                                        Edit this Post on GitHub
+                                    </a>
+                                </span>
 
-<p>The following document is only a cheatsheet which summarises the steps you need to take to setup your own website. On purpose it&rsquo;s called technical, because you will not use a content management system (CMS) like Wordpress. It doesn&rsquo;t claim to be complete nor to guide you exhaustively through the whole process. After all it should only give you guidance on the way to publish your website. Additionally since you will put all the technical effort into it, you will have more control over your website than in a CMS. It addresses Mac users, but you could substitute some tools and instructions with something equivalent for Windows or Linux.</p>
+                            </p>
 
-<h2 class="chapter-header" id="toc">Table of Contents</h2>
 
-<ul>
-<li><a href="#hugo">Day Two: Hugo</a></li>
-<li><a href="#digitalOcean">Day Three: DigitalOcean</a></li>
-<li><a href="#createWebsite">Day Four: Create your Website</a></li>
-<li><a href="#publishIt">Day Five: Publish It!</a></li>
-</ul>
 
-<h2 class="chapter-header" id="hugo">Day Two: Hugo</h2>
+                            <div>
 
-<p>We will use the open source website generator Hugo.</p>
 
-<p>Personally I decided to move from Wordpress to Hugo some time ago. Wordpress can be very fragile at some point. I felt to have too little control. A plugin could crash my whole site. It was always a mess to roll back. I missed the local sandbox to experiment and the control over a theme. In general I like to write own HTML and CSS when I need to.</p>
+                            </div>
 
-<p>In Hugo you don&rsquo;t need to write HTML and CSS at all. You can simply use a theme like in Wordpress. But once you need to change something, it simple with some basic website knowledge. You can take a theme and adjust it to your needs.</p>
+                            <div class="read-before">
+                                <p>This tutorial is part 2 of a series.</p>
+                                <div>Part 1: <a href="../developer-setup/index.html" itemprop="url">Day One - Technical
+                                        Cheatsheet: Setup your development environment</a></div>
+                            </div>
 
-<p>Read more about <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a> and its features before you continue.</p>
+                            <p>The following document is only a cheatsheet which summarises the steps you need to take
+                                to setup your own website. On purpose it&rsquo;s called technical, because you will not
+                                use a content management system (CMS) like Wordpress. It doesn&rsquo;t claim to be
+                                complete nor to guide you exhaustively through the whole process. After all it should
+                                only give you guidance on the way to publish your website. Additionally since you will
+                                put all the technical effort into it, you will have more control over your website than
+                                in a CMS. It addresses Mac users, but you could substitute some tools and instructions
+                                with something equivalent for Windows or Linux.</p>
 
-<p>Now you can install Hugo with Homebrew:</p>
+                            <h2 class="chapter-header" id="toc">Table of Contents</h2>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">brew</span> <span style="color: #06b6ef">update</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #06b6ef">brew</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">hugo</span>
-</code></pre></div>
+                            <ul>
+                                <li><a href="#hugo">Day Two: Hugo</a></li>
+                                <li><a href="#digitalOcean">Day Three: DigitalOcean</a></li>
+                                <li><a href="#createWebsite">Day Four: Create your Website</a></li>
+                                <li><a href="#publishIt">Day Five: Publish It!</a></li>
+                            </ul>
 
+                            <h2 class="chapter-header" id="hugo">Day Two: Hugo</h2>
 
-<p>You can create your first basic website by following the <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/overview/quickstart/">quickstart guide</a>. Give yourself a bit of time to understand Hugo. The quickstart guide covers how to scaffold your project and its content. Additionally you get to know how to apply a theme and how to experiment with your local website.</p>
+                            <p>We will use the open source website generator Hugo.</p>
 
-<p>The quickstart guide already provides you with a solution to publish your website with <a target="_blank" rel="noopener noreferrer" href="https://pages.github.com/">GitHub Pages</a>. It&rsquo;s great for your first website. If that&rsquo;s enough, you can stop here. But I want to go a bit further. I will continue the cheatsheet by providing you the breadcrumbs to host your Hugo website on <a target="_blank" rel="nofollow noopener noreferrer" href="https://m.do.co/c/fb27c90322f3">DigitalOcean</a>.</p>
+                            <p>Personally I decided to move from Wordpress to Hugo some time ago. Wordpress can be very
+                                fragile at some point. I felt to have too little control. A plugin could crash my whole
+                                site. It was always a mess to roll back. I missed the local sandbox to experiment and
+                                the control over a theme. In general I like to write own HTML and CSS when I need to.
+                            </p>
 
-<h2 class="chapter-header" id="digitalOcean">Day Three: DigitalOcean</h2>
+                            <p>In Hugo you don&rsquo;t need to write HTML and CSS at all. You can simply use a theme
+                                like in Wordpress. But once you need to change something, it simple with some basic
+                                website knowledge. You can take a theme and adjust it to your needs.</p>
 
-<p>Good things about hosting on DigitalOcean:</p>
+                            <p>Read more about <a target="_blank" rel="noopener noreferrer"
+                                    href="https://gohugo.io/">Hugo</a> and its features before you continue.</p>
 
-<ul>
-<li>maximum flexibility</li>
-<li>scalable infrastructure</li>
-<li>great user interface and experience</li>
-<li>multiple websites on one instance</li>
-</ul>
+                            <p>Now you can install Hugo with Homebrew:</p>
 
-<p>You can Sign Up on <a target="_blank" rel="nofollow noopener noreferrer" href="https://m.do.co/c/fb27c90322f3">DigitalOcean</a>. After that you can create your first Droplet to host your website(s). Choose Ubuntu from the selection of Distributions.</p>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">brew</span> <span style="color: #06b6ef">update</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #06b6ef">brew</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">hugo</span>
+</code></pre>
+                            </div>
 
-<p>You can get more guidance in the following step by step tutorial:</p>
 
-<ul>
-<li><a target="_blank" rel="noopener noreferrer" href="https://www.digitalocean.com/community/tutorials/how-to-create-your-first-digitalocean-droplet-virtual-server">How To Create Your First DigitalOcean Droplet Virtual Server</a></li>
-</ul>
+                            <p>You can create your first basic website by following the <a target="_blank"
+                                    rel="noopener noreferrer" href="https://gohugo.io/overview/quickstart/">quickstart
+                                    guide</a>. Give yourself a bit of time to understand Hugo. The quickstart guide
+                                covers how to scaffold your project and its content. Additionally you get to know how to
+                                apply a theme and how to experiment with your local website.</p>
 
-<h3 id="ubuntu-hugo">Ubuntu + Hugo</h3>
+                            <p>The quickstart guide already provides you with a solution to publish your website with <a
+                                    target="_blank" rel="noopener noreferrer" href="https://pages.github.com/">GitHub
+                                    Pages</a>. It&rsquo;s great for your first website. If that&rsquo;s enough, you can
+                                stop here. But I want to go a bit further. I will continue the cheatsheet by providing
+                                you the breadcrumbs to host your Hugo website on <a target="_blank"
+                                    rel="nofollow noopener noreferrer"
+                                    href="https://m.do.co/c/fb27c90322f3">DigitalOcean</a>.</p>
 
-<p>Now you will have to follow two DigitalOcean tutorials in a row. First to setup your infrastructure and second to install Hugo on your Ubuntu machine. Since I provide only the cheatsheet, I will save you the time to summarize the steps myself.</p>
+                            <h2 class="chapter-header" id="digitalOcean">Day Three: DigitalOcean</h2>
 
-<ul>
-<li><a target="_blank" rel="noopener noreferrer" href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04">Initial Server Setup with Ubuntu</a></li>
-<li><a target="_blank" rel="noopener noreferrer" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-hugo-a-static-site-generator-on-ubuntu-14-04">How To Install and Use Hugo, a Static Site Generator</a></li>
-</ul>
+                            <p>Good things about hosting on DigitalOcean:</p>
 
-<p>The second tutorial will partly show you again how to build an own website with Hugo. You could skip the part, but also could do it once again to get used to it. Additionally it will give you some more learnings in using your Ubuntu machine.</p>
+                            <ul>
+                                <li>maximum flexibility</li>
+                                <li>scalable infrastructure</li>
+                                <li>great user interface and experience</li>
+                                <li>multiple websites on one instance</li>
+                            </ul>
 
-<h3 id="nginx">Nginx</h3>
+                            <p>You can Sign Up on <a target="_blank" rel="nofollow noopener noreferrer"
+                                    href="https://m.do.co/c/fb27c90322f3">DigitalOcean</a>. After that you can create
+                                your first Droplet to host your website(s). Choose Ubuntu from the selection of
+                                Distributions.</p>
 
-<p>Locally you use <code>hugo server</code> to serve your website. On the Ubuntu machine you will use Nginx. The next tutorial shows you how to install Nginx and how to serve multiple websites. Later it’s fine if you have only one website or multiple websites.</p>
+                            <p>You can get more guidance in the following step by step tutorial:</p>
 
-<ul>
-<li><a target="_blank" rel="noopener noreferrer" href="https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-14-04-lts">How To Set Up Nginx Server Blocks</a></li>
-</ul>
+                            <ul>
+                                <li><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.digitalocean.com/community/tutorials/how-to-create-your-first-digitalocean-droplet-virtual-server">How
+                                        To Create Your First DigitalOcean Droplet Virtual Server</a></li>
+                            </ul>
 
-<h3 id="domain">Domain</h3>
+                            <h3 id="ubuntu-hugo">Ubuntu + Hugo</h3>
 
-<p>DigitalOcean doesn&rsquo;t give the option to buy domains. But they give advice how to apply your bought domain on your Droplet from a wide range of domain registrars.</p>
+                            <p>Now you will have to follow two DigitalOcean tutorials in a row. First to setup your
+                                infrastructure and second to install Hugo on your Ubuntu machine. Since I provide only
+                                the cheatsheet, I will save you the time to summarize the steps myself.</p>
 
-<ul>
-<li><a target="_blank" rel="noopener noreferrer" href="https://www.digitalocean.com/community/tutorials/how-to-point-to-digitalocean-nameservers-from-common-domain-registrars">How to Point to DigitalOcean Nameservers From Common Domain Registrars</a></li>
-</ul>
+                            <ul>
+                                <li><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-14-04">Initial
+                                        Server Setup with Ubuntu</a></li>
+                                <li><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-hugo-a-static-site-generator-on-ubuntu-14-04">How
+                                        To Install and Use Hugo, a Static Site Generator</a></li>
+                            </ul>
 
-<p>Basically you only have to set the nameservers and wait some time until the changes apply. When you have followed the Nginx chapter, you should test your domain with one of your two server blocks. It should work before you continue.</p>
+                            <p>The second tutorial will partly show you again how to build an own website with Hugo. You
+                                could skip the part, but also could do it once again to get used to it. Additionally it
+                                will give you some more learnings in using your Ubuntu machine.</p>
 
-<p>Once it works, delete the <code>index.html</code> file you created in <code>/var/www/yourdomain.com/html</code> but keep the html directory. Keep in mind that you will use the directory to put your website in later on.</p>
+                            <h3 id="nginx">Nginx</h3>
 
-<h2 class="chapter-header" id="createWebsite">Day Four: Create your Website</h2>
+                            <p>Locally you use <code>hugo server</code> to serve your website. On the Ubuntu machine you
+                                will use Nginx. The next tutorial shows you how to install Nginx and how to serve
+                                multiple websites. Later it’s fine if you have only one website or multiple websites.
+                            </p>
 
-<p>Now let&rsquo;s get back to your local machine. You already experiment with Hugo, but now its time to build your website. That&rsquo;s on you. At some earlier stage you already used themes from GitHub for your website. There are <a target="_blank" rel="noopener noreferrer" href="http://themes.gohugo.io/">a lot of great themes</a> out there were you only have to fill in the content.</p>
+                            <ul>
+                                <li><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-14-04-lts">How
+                                        To Set Up Nginx Server Blocks</a></li>
+                            </ul>
 
-<p>In your <code>config.toml</code> of your Hugo website make sure to use your domain address:</p>
+                            <h3 id="domain">Domain</h3>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">baseurl</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&quot;http://www.mywebsiteurl.com/&quot;</span>
-</code></pre></div>
+                            <p>DigitalOcean doesn&rsquo;t give the option to buy domains. But they give advice how to
+                                apply your bought domain on your Droplet from a wide range of domain registrars.</p>
 
+                            <ul>
+                                <li><a target="_blank" rel="noopener noreferrer"
+                                        href="https://www.digitalocean.com/community/tutorials/how-to-point-to-digitalocean-nameservers-from-common-domain-registrars">How
+                                        to Point to DigitalOcean Nameservers From Common Domain Registrars</a></li>
+                            </ul>
 
-<p>Otherwise Nginx will have problems to resolve the path to your website.</p>
+                            <p>Basically you only have to set the nameservers and wait some time until the changes
+                                apply. When you have followed the Nginx chapter, you should test your domain with one of
+                                your two server blocks. It should work before you continue.</p>
 
-<h2 class="chapter-header" id="publishIt">Day Five: Publish It!</h2>
+                            <p>Once it works, delete the <code>index.html</code> file you created in
+                                <code>/var/www/yourdomain.com/html</code> but keep the html directory. Keep in mind that
+                                you will use the directory to put your website in later on.</p>
 
-<p>Once you are content with your website on your local machine you can publish it. Before you have to make sure that <code>hugo server</code> doesn&rsquo;t throw any errors in your command line when you start it locally.</p>
+                            <h2 class="chapter-header" id="createWebsite">Day Four: Create your Website</h2>
 
-<p>You can upload your Hugo website to GitHub by creating a new repository.</p>
+                            <p>Now let&rsquo;s get back to your local machine. You already experiment with Hugo, but now
+                                its time to build your website. That&rsquo;s on you. At some earlier stage you already
+                                used themes from GitHub for your website. There are <a target="_blank"
+                                    rel="noopener noreferrer" href="http://themes.gohugo.io/">a lot of great themes</a>
+                                out there were you only have to fill in the content.</p>
 
-<ul>
-<li><a target="_blank" rel="noopener noreferrer" href="https://help.github.com/articles/create-a-repo/">GitHub: Create A Repo</a></li>
-</ul>
+                            <p>In your <code>config.toml</code> of your Hugo website make sure to use your domain
+                                address:</p>
 
-<p>When your website is on GitHub, you can clone it to your Ubuntu machine:</p>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">baseurl</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&quot;http://www.mywebsiteurl.com/&quot;</span>
+</code></pre>
+                            </div>
 
-<p>First you have to login to your Ubuntu machine again. In an earlier step you already created an User on your Ubuntu server which is not the root user. When you connect to your machine you will end up in your home directory:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #ef6155">/home/myusername/</span>
-</code></pre></div>
+                            <p>Otherwise Nginx will have problems to resolve the path to your website.</p>
 
+                            <h2 class="chapter-header" id="publishIt">Day Five: Publish It!</h2>
 
-<p>Now you can clone your Hugo website Repository:</p>
+                            <p>Once you are content with your website on your local machine you can publish it. Before
+                                you have to make sure that <code>hugo server</code> doesn&rsquo;t throw any errors in
+                                your command line when you start it locally.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">git</span> <span style="color: #06b6ef">clone</span> <span style="color: #06b6ef">https</span><span style="color: #5bc4bf">:</span><span style="color: #776e71">//github.com/mygithubname/myhugowebsiterepository.git</span>
-</code></pre></div>
+                            <p>You can upload your Hugo website to GitHub by creating a new repository.</p>
 
+                            <ul>
+                                <li><a target="_blank" rel="noopener noreferrer"
+                                        href="https://help.github.com/articles/create-a-repo/">GitHub: Create A Repo</a>
+                                </li>
+                            </ul>
 
-<p>You should see the directory of your website by typing:</p>
+                            <p>When your website is on GitHub, you can clone it to your Ubuntu machine:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">ls</span>
-</code></pre></div>
+                            <p>First you have to login to your Ubuntu machine again. In an earlier step you already
+                                created an User on your Ubuntu server which is not the root user. When you connect to
+                                your machine you will end up in your home directory:</p>
 
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #ef6155">/home/myusername/</span>
+</code></pre>
+                            </div>
 
-<p>Navigate into your repository <code>cd myhugowebsiterepository</code> and type <code>hugo</code> to build your website. There shouldn’t be any errors when you build the website. Once again with <code>ls</code> you should see a folder named public in your website directory. The public folder is all you need to serve your website with Nginx.</p>
 
-<p>The last step is to link the public folder to your Nginx server. Remember when you have set up the server blocks and deleted the index.html file from the <code>/var/www/yourdomain.com/html</code>? Now you can symlink the content of the public folder to the empty html folder:</p>
+                            <p>Now you can clone your Hugo website Repository:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">sudo</span> <span style="color: #06b6ef">ln</span> <span style="color: #5bc4bf">-</span><span style="color: #06b6ef">s</span> <span style="color: #5bc4bf">/</span><span style="color: #06b6ef">home</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">yourusername</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">yourrepositoryname</span><span style="color: #5bc4bf">/</span><span style="color: #815ba4">public</span><span style="color: #5bc4bf">/*</span> <span style="color: #ef6155">/var/www/yourdomain.com/html</span>
-</code></pre></div>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">git</span> <span style="color: #06b6ef">clone</span> <span style="color: #06b6ef">https</span><span style="color: #5bc4bf">:</span><span style="color: #776e71">//github.com/mygithubname/myhugowebsiterepository.git</span>
+</code></pre>
+                            </div>
 
 
-<p>That&rsquo;s it. You should be able to visit <code>yourdomain.com</code> now.</p>
+                            <p>You should see the directory of your website by typing:</p>
 
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">ls</span>
+</code></pre>
+                            </div>
 
-                            
-<div class="feedback-and-share text-center">
-    <hr>
-    
-    <p class="lead">
-        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
-    </p>
-    
-    
-        <p class="lead">
-            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
-        </p>
-    
-</div>
 
+                            <p>Navigate into your repository <code>cd myhugowebsiterepository</code> and type
+                                <code>hugo</code> to build your website. There shouldn’t be any errors when you build
+                                the website. Once again with <code>ls</code> you should see a folder named public in
+                                your website directory. The public folder is all you need to serve your website with
+                                Nginx.</p>
 
-                            
-                                <div class="box-inline col-md-12">
-    <div class="col-md-12 text-center">
-        <h2 class="newsletter">The Road to learn React</h2>
-        
-            <div class="col-md-4">
-                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
-            </div>
-        
-        <p class="lead">
-            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
-        </p>
-        <a
-            class="btn btn-template-main"
-            href="https://roadtoreact.com"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Get the Book for free <i class="fa fa-chevron-right"></i>
-        </a>
-        
-            <div>
-                <a
-                    href="https://amzn.to/2QY2ONp"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Get it from Amazon
-                </a>
-            </div>
-        
-    </div>
-</div>
-                            
+                            <p>The last step is to link the public folder to your Nginx server. Remember when you have
+                                set up the server blocks and deleted the index.html file from the
+                                <code>/var/www/yourdomain.com/html</code>? Now you can symlink the content of the public
+                                folder to the empty html folder:</p>
+
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">sudo</span> <span style="color: #06b6ef">ln</span> <span style="color: #5bc4bf">-</span><span style="color: #06b6ef">s</span> <span style="color: #5bc4bf">/</span><span style="color: #06b6ef">home</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">yourusername</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">yourrepositoryname</span><span style="color: #5bc4bf">/</span><span style="color: #815ba4">public</span><span style="color: #5bc4bf">/*</span> <span style="color: #ef6155">/var/www/yourdomain.com/html</span>
+</code></pre>
+                            </div>
+
+
+                            <p>That&rsquo;s it. You should be able to visit <code>yourdomain.com</code> now.</p>
+
+
+
+                            <div class="feedback-and-share text-center">
+                                <hr>
+
+                                <p class="lead">
+                                    I would like to hear your thoughts :-) Find me on <a target="_blank"
+                                        rel="noopener noreferrer" aria-label="twitter"
+                                        href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and
+                                    <a target="_blank" aria-label="facebook"
+                                        href="https://www.facebook.com/rwieruch/"><i
+                                            class="fa fa-facebook"></i>Facebook</a>
+                                </p>
+
+
+                                <p class="lead">
+                                    Did the article help you? Share it with your friends on social media <i
+                                        class="fa fa-arrow-left"></i>, support me as my <a target="_blank"
+                                        rel="noopener noreferrer" aria-label="patreon"
+                                        href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and
+                                    become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+                                </p>
+
+                            </div>
+
+
+
+                            <div class="box-inline col-md-12">
+                                <div class="col-md-12 text-center">
+                                    <h2 class="newsletter">The Road to learn React</h2>
+
+                                    <div class="col-md-4">
+                                        <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+                                    </div>
+
+                                    <p class="lead">
+                                        Build a Hacker News App along the way. No setup configuration. No tooling. No
+                                        Redux. Plain React in 200+ pages of learning material. Learn React like
+                                        <strong>50.000+ readers</strong>.
+                                    </p>
+                                    <a class="btn btn-template-main" href="https://roadtoreact.com" target="_blank"
+                                        rel="noopener noreferrer">
+                                        Get the Book for free <i class="fa fa-chevron-right"></i>
+                                    </a>
+
+                                    <div>
+                                        <a href="https://amzn.to/2QY2ONp" target="_blank" rel="noopener noreferrer">
+                                            Get it from Amazon
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+
                         </div>
 
-                        
-                        
+
+
                         <div id="comments">
                             <div id="disqus_thread"></div>
-<script type="text/javascript">
+                            <script type="text/javascript">
 
-(function() {
-    
-    
-    if (window.location.hostname == "localhost")
-        return;
+                                (function () {
 
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'rwieruch';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                                    if (window.location.hostname == "localhost")
+                                        return;
+
+                                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                    var disqus_shortname = 'rwieruch';
+                                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a
+                                    href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span
+                                    class="logo-disqus">Disqus</span></a>
                         </div>
-                        
+
 
                     </article>
-                    
+
 
                 </div>
-                
+
 
             </div>
-            
-        </div>
-        
-
-        
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
-    <div class="dark-mask"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
-                <h2 class="text-uppercase">Take Part</h2>
-            </div>
-
-            <div class="col-md-12 text-center">
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
-                
-            </div>
-            <div class="col-md-12">
-                <p class="text-center">
-                    <div id="mc_embed_signup">
-    <form
-        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
-        method="post"
-        id="revue-form"
-        name="revue-form"
-        target="_blank">
-        <div id="mc_embed_signup_scroll">
-            <input
-                class="email"
-                placeholder="email address"
-                type="email"
-                name="member[email]"
-                id="member_email"
-            >
-            <div>
-                <button
-                    type="submit"
-                    value="Subscribe"
-                    name="member[subscribe]"
-                    id="member_submit"
-                    class="btn btn-template-transparent-black btn-lg"
-                >
-                    Subscribe
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
-
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-        <footer id="subfooter">
-    <div class="container">
-
-        <div class="col-md-5 col-sm-6">
-
-            <h4>Recent posts</h4>
-
-            <div class="blog-entries">
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../redux-vs-usereducer/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="React&#39;s useReducer vs Redux"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../publish-npm-package-node/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="How to publish a npm package?"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../react-scroll-to-item/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="How to Scroll to Item in React?"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
-                    </div>
-                </div>
-                
-            </div>
-
-            <hr class="hidden-md hidden-lg hidden-sm">
 
         </div>
-        
 
-        
-        <div class="col-md-5 col-md-offset-2 col-sm-6">
 
-            <h4>About Me</h4>
 
-            <div class="blog-entries">
-                <div class="item same-height-row clearfix">
-                    <div class="profile same-height-always">
-                        <img
-                            class="img-lazy img-responsive"
-                            data-lazy-src="//img/page/profile.jpg"
-                            alt="profile"
-                        >
+
+        <section class="bar background-image-fixed-2 no-mb color-white text-center">
+            <div class="dark-mask"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                        <h2 class="text-uppercase">Take Part</h2>
                     </div>
-                    <div class="name same-height-always">
-                        <p>
-                            Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+
+                    <div class="col-md-12 text-center">
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+
+                    </div>
+                    <div class="col-md-12">
+                        <p class="text-center">
+                            <div id="mc_embed_signup">
+                                <form action="https://www.getrevue.co/profile/rwieruch/add_subscriber" method="post"
+                                    id="revue-form" name="revue-form" target="_blank">
+                                    <div id="mc_embed_signup_scroll">
+                                        <input class="email" placeholder="email address" type="email"
+                                            name="member[email]" id="member_email">
+                                        <div>
+                                            <button type="submit" value="Subscribe" name="member[subscribe]"
+                                                id="member_submit" class="btn btn-template-transparent-black btn-lg">
+                                                Subscribe
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
                         </p>
                     </div>
                 </div>
             </div>
+        </section>
+        <footer id="subfooter">
+            <div class="container">
 
-        </div>
-        
-        
+                <div class="col-md-5 col-sm-6">
 
-    </div>
-    
-</footer>
+                    <h4>Recent posts</h4>
+
+                    <div class="blog-entries">
+
+                        <div class="item same-height-row clearfix">
+                            <div class="article same-height-always">
+                                <a href="../redux-vs-usereducer/index.html">
+
+                                    <img data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                        data-is-thumb="is-thumb" class="img-lazy img-responsive"
+                                        alt="React&#39;s useReducer vs Redux">
+
+                                </a>
+                            </div>
+                            <div class="name same-height-always">
+                                <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                            </div>
+                        </div>
+
+                        <div class="item same-height-row clearfix">
+                            <div class="article same-height-always">
+                                <a href="../publish-npm-package-node/index.html">
+
+                                    <img data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                        data-is-thumb="is-thumb" class="img-lazy img-responsive"
+                                        alt="How to publish a npm package?">
+
+                                </a>
+                            </div>
+                            <div class="name same-height-always">
+                                <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a>
+                                </h5>
+                            </div>
+                        </div>
+
+                        <div class="item same-height-row clearfix">
+                            <div class="article same-height-always">
+                                <a href="../react-scroll-to-item/index.html">
+
+                                    <img data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                        data-is-thumb="is-thumb" class="img-lazy img-responsive"
+                                        alt="How to Scroll to Item in React?">
+
+                                </a>
+                            </div>
+                            <div class="name same-height-always">
+                                <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a>
+                                </h5>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr class="hidden-md hidden-lg hidden-sm">
+
+                </div>
+
+
+
+                <div class="col-md-5 col-md-offset-2 col-sm-6">
+
+                    <h4>About Me</h4>
+
+                    <div class="blog-entries">
+                        <div class="item same-height-row clearfix">
+                            <div class="profile same-height-always">
+                                <img class="img-lazy img-responsive" data-lazy-src="//img/page/profile.jpg"
+                                    alt="profile">
+                            </div>
+                            <div class="name same-height-always">
+                                <p>
+                                    Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more
+                                    <a href="../about/index.html">about me</a>, <a
+                                        href="../work-with-me/index.html">work with me</a>, or have a look at my social
+                                    media profiles below.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </footer>
 
 
         <footer id="copyright">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <ul class="info list-inline quicklinks pull-left">
-          
-            <li>© Chris Paul</li>
-          
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <ul class="list-inline footer-social-buttons text-center">
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
-          
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <ul class="info list-inline quicklinks pull-right">
-          
-            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
-          
-        </ul>
-      </div>
-    </div>
-  </div>
-</footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <ul class="info list-inline quicklinks pull-left">
+
+                            <li>© Chris Paul</li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-inline footer-social-buttons text-center">
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i
+                                        class="fa fa-linkedin"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a>
+                            </li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="info list-inline quicklinks pull-right">
+
+                            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
 
     </div>
-    
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<script src="../js/script.js"></script>  </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script src="../js/script.js"></script>
+</body>
+
 </html>

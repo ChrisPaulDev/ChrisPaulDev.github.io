@@ -1,444 +1,442 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
   <meta charset="utf-8">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  
+
 
   <title>
     MobX React: Refactor your application from Redux to MobX - CPaul
   </title>
 
   <meta name="author" content="" />
-  <meta name="description" content="Refactor your React application from Redux to MobX. Use MobX instead of Redux for state management in React JS. Get to know actions, reactions and derivations in MobX and best practices...">
-  
+  <meta name="description"
+    content="Refactor your React application from Redux to MobX. Use MobX instead of Redux for state management in React JS. Get to know actions, reactions and derivations in MobX and best practices...">
 
-  <meta name="theme-color" content="#38bb6c"/>
+
+  <meta name="theme-color" content="#38bb6c" />
 
   <meta name="generator" content="Hugo 0.41" />
-<link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
   <link href="../css/customizations.css" rel="stylesheet">
 
-    <!--[if lt IE 9]>
+  <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  
-<link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="../img/favicon/manifest.json">
   <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
 
   <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
 
-<meta itemprop="name" content="MobX React: Refactor your application from Redux to MobX">
-<meta itemprop="description" content="Refactor your React application from Redux to MobX. Use MobX instead of Redux for state management in React JS. Get to know actions, reactions and derivations in MobX and best practices...">    <meta itemprop="image" content="https://chrispaul.dev/img/posts/mobx-react/banner_640.jpg"><meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+  <meta itemprop="name" content="MobX React: Refactor your application from Redux to MobX">
+  <meta itemprop="description"
+    content="Refactor your React application from Redux to MobX. Use MobX instead of Redux for state management in React JS. Get to know actions, reactions and derivations in MobX and best practices...">
+  <meta itemprop="image" content="https://chrispaul.dev/img/posts/mobx-react/banner_640.jpg">
+  <meta itemprop="keywords"
+    content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
 
 
-<meta itemprop="wordCount" content="3334">
+  <meta itemprop="wordCount" content="3334">
 
-<meta name="keywords" content="mobx react">
+  <meta name="keywords" content="mobx react">
 
   <meta property="og:title" content="MobX React: Refactor your application from Redux to MobX - CPaul">
 
 
-  <meta property="og:description" content="Refactor your React application from Redux to MobX. Use MobX instead of Redux for state management in React JS. Get to know actions, reactions and derivations in MobX and best practices..." />
+  <meta property="og:description"
+    content="Refactor your React application from Redux to MobX. Use MobX instead of Redux for state management in React JS. Get to know actions, reactions and derivations in MobX and best practices..." />
 
 
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://chrispaul.dev/mobx-react/" />
-<meta property="og:image" content="https://chrispaul.dev/img/posts/mobx-react/banner_640.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://chrispaul.dev/mobx-react/" />
+  <meta property="og:image" content="https://chrispaul.dev/img/posts/mobx-react/banner_640.jpg" />
 
-  
 
-    <meta name="news_keywords" content="mobx react" />
 
-  
+  <meta name="news_keywords" content="mobx react" />
 
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/mobx-react/banner_640.jpg"/><meta name="twitter:title" content="MobX React: Refactor your application from Redux to MobX"/>
-<meta name="twitter:description" content="Refactor your React application from Redux to MobX. Use MobX instead of Redux for state management in React JS. Get to know actions, reactions and derivations in MobX and best practices..."/>
-<meta name="twitter:site" content="@rwieruch"/>
-<meta name="twitter:domain" content="rwieruch"/>
 
-  
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/mobx-react/banner_640.jpg" />
+  <meta name="twitter:title" content="MobX React: Refactor your application from Redux to MobX" />
+  <meta name="twitter:description"
+    content="Refactor your React application from Redux to MobX. Use MobX instead of Redux for state management in React JS. Get to know actions, reactions and derivations in MobX and best practices..." />
+  <meta name="twitter:site" content="@rwieruch" />
+  <meta name="twitter:domain" content="rwieruch" />
+
+
 
 </head>
 
 
-  <body>
+<body>
 
-    <div id="all">
+  <div id="all">
 
-        <header>
+    <header>
 
-          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+      <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
 
-    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+        <div class="navbar navbar-default yamm" role="navigation" id="navbar">
 
-        <div class="container">
+          <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand home" href="../index.html">
-                    <img src="../img/page/logo.svg" alt="MobX React: Refactor your application from Redux to MobX logo" class="img-lazy">
-                    <span class="sr-only">MobX React: Refactor your application from Redux to MobX - go to homepage</span>
-                </a>
+              <a class="navbar-brand home" href="../index.html">
+                <img src="../img/page/logo.svg" alt="MobX React: Refactor your application from Redux to MobX logo"
+                  class="img-lazy">
+                <span class="sr-only">MobX React: Refactor your application from Redux to MobX - go to homepage</span>
+              </a>
 
-                <div class="navbar-buttons">
-                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-align-justify"></i>
-                    </button>
-                </div>
+              <div class="navbar-buttons">
+                <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse"
+                  data-target="#navigation">
+                  <span class="sr-only">Toggle navigation</span>
+                  <i class="fa fa-align-justify"></i>
+                </button>
+              </div>
             </div>
-            
+
 
             <div class="navbar-collapse collapse" id="navigation">
-                <ul class="nav navbar-nav navbar-right">
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../index.html">Blog</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../work-with-me/index.html">Work with me</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../about/index.html">About</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
-                        
-                    </li>
-                    
-                </ul>
+              <ul class="nav navbar-nav navbar-right">
+
+                <li class="dropdown">
+
+                  <a href="../index.html">Blog</a>
+
+                </li>
+
+                <li class="dropdown">
+
+                  <a href="../work-with-me/index.html">Work with me</a>
+
+                </li>
+
+                <li class="dropdown">
+
+                  <a href="../about/index.html">About</a>
+
+                </li>
+
+                <li class="dropdown">
+
+                  <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+
+                </li>
+
+              </ul>
             </div>
-            
+
 
             <div class="collapse clearfix" id="search">
 
-                <form class="navbar-form" role="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
+              <form class="navbar-form" role="search">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search">
+                  <span class="input-group-btn">
 
                     <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
 
-                </span>
+                  </span>
+                </div>
+              </form>
+
+            </div>
+
+
+          </div>
+        </div>
+
+
+      </div>
+    </header>
+
+    <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+
+
+      <a aria-label="icon-facebook" class="icon-facebook"
+        href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fmobx-react%2f"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <i class="fa fa-facebook"></i>
+      </a>
+
+
+      <a aria-label="icon-twitter" class="icon-twitter"
+        href="https://twitter.com/share?text=MobX%20React%3a%20Refactor%20your%20application%20from%20Redux%20to%20MobX%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fmobx-react%2f"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <i class="fa fa-twitter"></i>
+      </a>
+
+      <a aria-label="icon-linkedin" class="icon-linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;title=MobX%20React%3a%20Refactor%20your%20application%20from%20Redux%20to%20MobX&amp;url=https%3a%2f%2fchrispaul.dev%2fmobx-react%2f">
+        <i class="fa fa-linkedin"></i>
+      </a>
+
+    </div>
+
+    <div class="visible-xs visible-sm text-center">
+      <div class="post-share post-share-fixed post-share-mobile">
+
+
+        <a aria-label="icon-facebook" class="icon-facebook"
+          href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fmobx-react%2f"
+          onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+          <i class="fa fa-facebook"></i>
+        </a>
+
+
+        <a aria-label="icon-twitter" class="icon-twitter"
+          href="https://twitter.com/share?text=MobX%20React%3a%20Refactor%20your%20application%20from%20Redux%20to%20MobX%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fmobx-react%2f"
+          onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+          <i class="fa fa-twitter"></i>
+        </a>
+
+        <a aria-label="icon-linkedin" class="icon-linkedin"
+          href="https://www.linkedin.com/shareArticle?mini=true&amp;title=MobX%20React%3a%20Refactor%20your%20application%20from%20Redux%20to%20MobX&amp;url=https%3a%2f%2fchrispaul.dev%2fmobx-react%2f">
+          <i class="fa fa-linkedin"></i>
+        </a>
+
+      </div>
+    </div>
+
+
+
+    <div class="hidden-xs">
+
+
+      <section class="bar background-image-fixed-2 no-mb color-white text-center">
+        <div class="dark-mask"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+              <h2 class="text-uppercase newsletter">Take Part</h2>
+            </div>
+
+            <div class="col-md-12">
+              <p class="text-center">
+                <div id="mc_embed_signup">
+                  <form action="https://www.getrevue.co/profile/rwieruch/add_subscriber" method="post" id="revue-form"
+                    name="revue-form" target="_blank">
+                    <div id="mc_embed_signup_scroll">
+                      <input class="email" placeholder="email address" type="email" name="member[email]"
+                        id="member_email">
+                      <div>
+                        <button type="submit" value="Subscribe" name="member[subscribe]" id="member_submit"
+                          class="btn btn-template-transparent-black btn-lg">
+                          Subscribe
+                        </button>
+                      </div>
                     </div>
-                </form>
+                  </form>
+                </div>
 
+              </p>
             </div>
-            
-
+          </div>
         </div>
+      </section>
     </div>
-    
 
-</div>
-        </header>
+    <div id="content">
+      <div class="container">
 
-        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
-    
-
-<a
-    aria-label="icon-facebook"
-    class="icon-facebook"
-    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fmobx-react%2f"
-    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-    <i class="fa fa-facebook"></i>
-</a>
-
-
-<a
-    aria-label="icon-twitter"
-    class="icon-twitter"
-    href="https://twitter.com/share?text=MobX%20React%3a%20Refactor%20your%20application%20from%20Redux%20to%20MobX%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fmobx-react%2f"
-    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-    <i class="fa fa-twitter"></i>
-</a>
-
-<a
-    aria-label="icon-linkedin"
-    class="icon-linkedin"
-    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=MobX%20React%3a%20Refactor%20your%20application%20from%20Redux%20to%20MobX&amp;url=https%3a%2f%2fchrispaul.dev%2fmobx-react%2f">
-    <i class="fa fa-linkedin"></i>
-</a>
-
-</div>
-
-<div class="visible-xs visible-sm text-center">
-    <div class="post-share post-share-fixed post-share-mobile">
-        
-
-<a
-    aria-label="icon-facebook"
-    class="icon-facebook"
-    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fmobx-react%2f"
-    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-    <i class="fa fa-facebook"></i>
-</a>
-
-
-<a
-    aria-label="icon-twitter"
-    class="icon-twitter"
-    href="https://twitter.com/share?text=MobX%20React%3a%20Refactor%20your%20application%20from%20Redux%20to%20MobX%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2fmobx-react%2f"
-    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-    <i class="fa fa-twitter"></i>
-</a>
-
-<a
-    aria-label="icon-linkedin"
-    class="icon-linkedin"
-    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=MobX%20React%3a%20Refactor%20your%20application%20from%20Redux%20to%20MobX&amp;url=https%3a%2f%2fchrispaul.dev%2fmobx-react%2f">
-    <i class="fa fa-linkedin"></i>
-</a>
-
-    </div>
-</div>
-
-        
-
-        <div class="hidden-xs">
-            
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
-    <div class="dark-mask"></div>
-    <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
-                <h2 class="text-uppercase newsletter">Take Part</h2>
-            </div>
 
-            <div class="col-md-12">
-                <p class="text-center">
-                    <div id="mc_embed_signup">
-    <form
-        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
-        method="post"
-        id="revue-form"
-        name="revue-form"
-        target="_blank">
-        <div id="mc_embed_signup_scroll">
-            <input
-                class="email"
-                placeholder="email address"
-                type="email"
-                name="member[email]"
-                id="member_email"
-            >
-            <div>
-                <button
-                    type="submit"
-                    value="Subscribe"
-                    name="member[subscribe]"
-                    id="member_submit"
-                    class="btn btn-template-transparent-black btn-lg"
-                >
-                    Subscribe
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
+          <article class="col-md-8 col-md-offset-2" id="blog-post" itemprop="blogPosts" itemscope
+            itemtype="http://schema.org/BlogPosting">
 
-                </p>
-            </div>
-        </div>
-    </div>
-</section>        </div>
+            <div id="post-content" itemprop="articleBody">
 
-        <div id="content">
-            <div class="container">
+              <header>
+                <h1 itemprop="name headline">MobX React: Refactor your application from Redux to MobX</h1>
+              </header>
 
-                <div class="row">
+              <div class="text-center">
 
-                    <article
-                        class="col-md-8 col-md-offset-2"
-                        id="blog-post"
-                        itemprop="blogPosts"
-                        itemscope itemtype="http://schema.org/BlogPosting">
-
-                        <div id="post-content" itemprop="articleBody">
-
-                            <header>
-                                <h1 itemprop="name headline">MobX React: Refactor your application from Redux to MobX</h1>
-                            </header>
-
-                            <div class="text-center">
-                                
-    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
-         <i class="fa fa-facebook"></i>Follow
-    </a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch"
+                  class="facebook-button-follow">
+                  <i class="fa fa-facebook"></i>Follow
+                </a>
 
 
-                                &nbsp;
-                                
-
-                                &nbsp;
-                                
-  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
-    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
-  </a>
+                &nbsp;
 
 
-                                &nbsp;
-                                
-                            </div>
+                &nbsp;
 
-                            <p class="text-muted text-uppercase mb-small text-center">
-    <span itemprop="author publisher">
-        
-    </span>
-
-    
-        <time datetime="2016-07-18" itemprop="datePublished">
-            July 18, 2016
-        </time>
-    
-
-    
-        <span class="hidden-xs hidden-sm"> - <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/mobx-react.md">
-                Edit this Post on GitHub
-            </a>
-        </span>
-    
-</p>
-
-                            
-
-<div>
-  
-
-</div>
-
-<div class="post-image-primary">
-    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="pinterest-pinner">
-            <a
-                data-pin-do="buttonPin"
-                data-pin-save="true"
-                data-pin-tall="true"
-                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fmobx-react%2f&amp;media=https://chrispaul.dev/img%2fposts%2fmobx-react%2fbanner.jpg&amp;description=">
-            </a>
-        </div>
-
-        <img
-            class="img-lazy img-responsive"
-            data-lazy-src="/src="/img/posts/mobx-react/banner.jpg"
-            data-is-src-set="is-src-set"
-            alt="mobx react"
-            itemprop="image"
-        />
-    </div>
-</div>
+                <a target="_blank" rel="noopener noreferrer"
+                  href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
+                  <img
+                    src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow"
+                    alt="Follow on Twitter">
+                </a>
 
 
-<div class="read-before">
-    <p>This React tutorial is part 2 of 2 in the series.</p>
-    <div>Part 1: <a href="../the-soundcloud-client-in-react-redux/index.html" itemprop="url">The SoundCloud Client in React &#43; Redux</a></div>
-</div>
+                &nbsp;
 
-<p>MobX is a state management solution. It is a standalone pure technical solution without being opinionated about the architectural state management app design. The 4 pillars State, Actions, Reactions and Derivations make state management in MobX possible. First the State encapsulates all of your application state which can consist of primitives to complex objects. While Actions mutate the State, Reactions are running every time the State was mutated. Derivations are similar to Reactions, but they produce a new value depending on the State.</p>
+              </div>
 
-<div class="post-image-primary">
-    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="pinterest-pinner">
-            <a
-                data-pin-do="buttonPin"
-                data-pin-save="true"
-                data-pin-tall="true"
-                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fmobx-react%2f&amp;media=https://chrispaul.dev/img%2fposts%2fmobx-react%2ffour_pillars.png&amp;description=">
-            </a>
-        </div>
+              <p class="text-muted text-uppercase mb-small text-center">
+                <span itemprop="author publisher">
 
-        <img
-            class="img-lazy img-responsive"
-            data-lazy-src="/src="/img/posts/mobx-react/four_pillars.png"
-            data-is-src-set=""
-            alt="mobx react"
-            itemprop="image"
-        />
-    </div>
-</div>
+                </span>
 
 
-<p>The MobX React: Refactor your application from Redux to MobX tutorial will teach you how to use MobX instead of Redux for state management in React. We will come from a Redux + React seed project and refactor it from Redux to MobX. While we do so, I will explain in detail the concepts behind MobX and the similarities and differences compared to Redux.</p>
-
-<h2 class="chapter-header">Seed Project?</h2>
-
-<p>
-    If you don’t have the outcome of <a href="../the-soundcloud-client-in-react-redux/index.html">The SoundCloud Client in React + Redux</a>, checkout this <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/react-redux-soundcloud">repository</a>. Clone the repository and use the Base folder named base-init/ as seed project. The seed project is the same which you would implement when you would step through the <a href="../the-soundcloud-client-in-react-redux/index.html">initial tutorial</a>. Next to the Base folder you will find several Extension folders, which will show the outcome of each tutorial which builds up on The SoundCloud Client in React + Redux.
-</p>
-
-<p>
-    When you have your own <a href="../the-soundcloud-client-in-react-redux/index.html">The SoundCloud Client in React + Redux</a> project, you can continue with the <a href="#toc">Table of Contents</a> and ignore the following instructions.
-</p>
-
-<p>
-    When you want to use the seed project, make sure to clone the <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/react-redux-soundcloud">repository</a>. Use the base-init/ folder as your project folder. Make sure that your project starts with <code>npm install && npm start</code>.
-</p>
+                <time datetime="2016-07-18" itemprop="datePublished">
+                  July 18, 2016
+                </time>
 
 
-<h2 class="chapter-header" id="toc">Table of Contents</h2>
 
-<ul>
-<li><a href="#dependencies">MobX Dependencies</a></li>
-<li><a href="#state">MobX State</a></li>
-<li><a href="#actions">MobX Actions</a></li>
-<li><a href="#reduxMobxStateManagement">Redux to MobX State Management</a></li>
-<li><a href="#components">Redux to MobX Components</a></li>
-<li><a href="#reactions">MobX Reactions</a></li>
-<li><a href="#derivations">MobX Derivations</a></li>
-<li><a href="#explicitActions">Explicit Actions</a></li>
-<li><a href="#provideAndInject">Provide and Inject</a></li>
-<li><a href="#troubleshoot">Troubleshoot</a></li>
-<li><a href="#finalThoughts">Final Thoughts</a></li>
-</ul>
+                <span class="hidden-xs hidden-sm"> - <a target="_blank" rel="noopener noreferrer"
+                    href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/mobx-react.md">
+                    Edit this Post on GitHub
+                  </a>
+                </span>
 
-<h2 class="chapter-header" id="dependencies">MobX Dependencies</h2>
-
-<p>Let&rsquo;s begin with the dependencies of MobX. It comes as standalone library, but can also be used in combination with React. Therefore we need to install both libraries, <a target="_blank" rel="noopener noreferrer" href="https://github.com/mobxjs/mobx">mobx</a> and <a target="_blank" rel="noopener noreferrer" href="https://github.com/mobxjs/mobx-react">mobx-react</a>, to use MobX in combination with React.</p>
-
-<p><em>From root folder:</em></p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span> <span style="color: #06b6ef">mobx</span> <span style="color: #06b6ef">mobx</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">react</span>
-</code></pre></div>
+              </p>
 
 
-<p>Moreover we need class property transformation and decorators to use MobX.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">dev</span> <span style="color: #06b6ef">babel</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">plugin</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">transform</span><span style="color: #5bc4bf">-</span><span style="color: #815ba4">class</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">properties</span>
+              <div>
+
+
+              </div>
+
+              <div class="post-image-primary">
+                <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+                  <div class="pinterest-pinner">
+                    <a data-pin-do="buttonPin" data-pin-save="true" data-pin-tall="true"
+                      href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fmobx-react%2f&amp;media=https://chrispaul.dev/img%2fposts%2fmobx-react%2fbanner.jpg&amp;description=">
+                    </a>
+                  </div>
+
+                  <img class="img-lazy img-responsive" data-lazy-src="/src="/img/posts/mobx-react/banner.jpg"
+                    data-is-src-set="is-src-set" alt="mobx react" itemprop="image" />
+                </div>
+              </div>
+
+
+              <div class="read-before">
+                <p>This React tutorial is part 2 of 2 in the series.</p>
+                <div>Part 1: <a href="../the-soundcloud-client-in-react-redux/index.html" itemprop="url">The SoundCloud
+                    Client in React &#43; Redux</a></div>
+              </div>
+
+              <p>MobX is a state management solution. It is a standalone pure technical solution without being
+                opinionated about the architectural state management app design. The 4 pillars State, Actions, Reactions
+                and Derivations make state management in MobX possible. First the State encapsulates all of your
+                application state which can consist of primitives to complex objects. While Actions mutate the State,
+                Reactions are running every time the State was mutated. Derivations are similar to Reactions, but they
+                produce a new value depending on the State.</p>
+
+              <div class="post-image-primary">
+                <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
+                  <div class="pinterest-pinner">
+                    <a data-pin-do="buttonPin" data-pin-save="true" data-pin-tall="true"
+                      href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fmobx-react%2f&amp;media=https://chrispaul.dev/img%2fposts%2fmobx-react%2ffour_pillars.png&amp;description=">
+                    </a>
+                  </div>
+
+                  <img class="img-lazy img-responsive" data-lazy-src="/src="/img/posts/mobx-react/four_pillars.png"
+                    data-is-src-set="" alt="mobx react" itemprop="image" />
+                </div>
+              </div>
+
+
+              <p>The MobX React: Refactor your application from Redux to MobX tutorial will teach you how to use MobX
+                instead of Redux for state management in React. We will come from a Redux + React seed project and
+                refactor it from Redux to MobX. While we do so, I will explain in detail the concepts behind MobX and
+                the similarities and differences compared to Redux.</p>
+
+              <h2 class="chapter-header">Seed Project?</h2>
+
+              <p>
+                If you don’t have the outcome of <a href="../the-soundcloud-client-in-react-redux/index.html">The
+                  SoundCloud Client in React + Redux</a>, checkout this <a target="_blank" rel="noopener noreferrer"
+                  href="https://github.com/rwieruch/react-redux-soundcloud">repository</a>. Clone the repository and use
+                the Base folder named base-init/ as seed project. The seed project is the same which you would implement
+                when you would step through the <a href="../the-soundcloud-client-in-react-redux/index.html">initial
+                  tutorial</a>. Next to the Base folder you will find several Extension folders, which will show the
+                outcome of each tutorial which builds up on The SoundCloud Client in React + Redux.
+              </p>
+
+              <p>
+                When you have your own <a href="../the-soundcloud-client-in-react-redux/index.html">The SoundCloud
+                  Client in React + Redux</a> project, you can continue with the <a href="#toc">Table of Contents</a>
+                and ignore the following instructions.
+              </p>
+
+              <p>
+                When you want to use the seed project, make sure to clone the <a target="_blank"
+                  rel="noopener noreferrer" href="https://github.com/rwieruch/react-redux-soundcloud">repository</a>.
+                Use the base-init/ folder as your project folder. Make sure that your project starts with
+                <code>npm install && npm start</code>.
+              </p>
+
+
+              <h2 class="chapter-header" id="toc">Table of Contents</h2>
+
+              <ul>
+                <li><a href="#dependencies">MobX Dependencies</a></li>
+                <li><a href="#state">MobX State</a></li>
+                <li><a href="#actions">MobX Actions</a></li>
+                <li><a href="#reduxMobxStateManagement">Redux to MobX State Management</a></li>
+                <li><a href="#components">Redux to MobX Components</a></li>
+                <li><a href="#reactions">MobX Reactions</a></li>
+                <li><a href="#derivations">MobX Derivations</a></li>
+                <li><a href="#explicitActions">Explicit Actions</a></li>
+                <li><a href="#provideAndInject">Provide and Inject</a></li>
+                <li><a href="#troubleshoot">Troubleshoot</a></li>
+                <li><a href="#finalThoughts">Final Thoughts</a></li>
+              </ul>
+
+              <h2 class="chapter-header" id="dependencies">MobX Dependencies</h2>
+
+              <p>Let&rsquo;s begin with the dependencies of MobX. It comes as standalone library, but can also be used
+                in combination with React. Therefore we need to install both libraries, <a target="_blank"
+                  rel="noopener noreferrer" href="https://github.com/mobxjs/mobx">mobx</a> and <a target="_blank"
+                  rel="noopener noreferrer" href="https://github.com/mobxjs/mobx-react">mobx-react</a>, to use MobX in
+                combination with React.</p>
+
+              <p><em>From root folder:</em></p>
+
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span> <span style="color: #06b6ef">mobx</span> <span style="color: #06b6ef">mobx</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">react</span>
+</code></pre>
+              </div>
+
+
+              <p>Moreover we need class property transformation and decorators to use MobX.</p>
+
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">dev</span> <span style="color: #06b6ef">babel</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">plugin</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">transform</span><span style="color: #5bc4bf">-</span><span style="color: #815ba4">class</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">properties</span>
 <span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">dev</span> <span style="color: #06b6ef">babel</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">plugin</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">transform</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">decorators</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">legacy</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Now we can add both plugins to our babel configuration, that Babel is able to transpile decorators and class properties.</p>
+              <p>Now we can add both plugins to our babel configuration, that Babel is able to transpile decorators and
+                class properties.</p>
 
-<p><em>package.json</em></p>
+              <p><em>package.json</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #48b685">&quot;babel&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #48b685">&quot;babel&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
   <span style="color: #48b685">&quot;presets&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[</span>
     <span style="color: #48b685">&quot;es2015&quot;</span><span style="color: #e7e9db">,</span>
     <span style="color: #48b685">&quot;react&quot;</span><span style="color: #e7e9db">,</span>
@@ -449,24 +447,32 @@
 </span><span style="background-color: #4f424c">    <span style="color: #48b685">&quot;transform-class-properties&quot;</span>
 </span><span style="background-color: #4f424c">  <span style="color: #e7e9db">]</span>
 </span><span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<h2 class="chapter-header" id="state">MobX State</h2>
+              <h2 class="chapter-header" id="state">MobX State</h2>
 
-<p>Redux uses Actions to change the global state with the help of a Reducer. Actions never mutate the global state directly. MobX doesn&rsquo;t use Reducers. That&rsquo;s why MobX Actions mutate the state directly. Both libraries call it Action, but they apply them in a different way to change the state.</p>
+              <p>Redux uses Actions to change the global state with the help of a Reducer. Actions never mutate the
+                global state directly. MobX doesn&rsquo;t use Reducers. That&rsquo;s why MobX Actions mutate the state
+                directly. Both libraries call it Action, but they apply them in a different way to change the state.</p>
 
-<p>MobX revives the &ldquo;old&rdquo; single page application concepts, when you would have some service/object(/ES6 class) to hold some application state. In MobX one could call these containers either store or state. Let&rsquo;s begin by implementing the first store to hold our user state.</p>
+              <p>MobX revives the &ldquo;old&rdquo; single page application concepts, when you would have some
+                service/object(/ES6 class) to hold some application state. In MobX one could call these containers
+                either store or state. Let&rsquo;s begin by implementing the first store to hold our user state.</p>
 
-<p><em>From stores folder:</em></p>
+              <p><em>From stores folder:</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">touch</span> <span style="color: #06b6ef">userStore</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span>
-</code></pre></div>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">touch</span> <span style="color: #06b6ef">userStore</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span>
+</code></pre>
+              </div>
 
 
-<p><em>src/stores/userStore.js</em></p>
+              <p><em>src/stores/userStore.js</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observable</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observable</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #815ba4">class</span> <span style="color: #06b6ef">UserStore</span> <span style="color: #e7e9db">{</span>
 
@@ -482,28 +488,39 @@
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">userStore</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">export</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">UserStore</span> <span style="color: #e7e9db">};</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The UserStore class has a simple constructor which sets the initial state of a login user (me) to null. Nothing unusual so far. MobX comes into place when we decorate the me property with @observable to clarify that the property can change over time.</p>
+              <p>The UserStore class has a simple constructor which sets the initial state of a login user (me) to null.
+                Nothing unusual so far. MobX comes into place when we decorate the me property with @observable to
+                clarify that the property can change over time.</p>
 
-<blockquote>
-<p>These changes can be made visible in our components with a MobX Reaction. That will be explained when we refactor the components later on.</p>
-</blockquote>
+              <blockquote>
+                <p>These changes can be made visible in our components with a MobX Reaction. That will be explained when
+                  we refactor the components later on.</p>
+              </blockquote>
 
-<p>Moreover we can new the store to make sure that we export it as a singleton instance. Last but not least we can export the UserStore class directly to reuse it somewhere else independently (e.g. unit tests).</p>
+              <p>Moreover we can new the store to make sure that we export it as a singleton instance. Last but not
+                least we can export the UserStore class directly to reuse it somewhere else independently (e.g. unit
+                tests).</p>
 
-<p>What else do we have as state in the present application? Next to the user object (me), there is an array of tracks and an active track once a user clicked a Play button. Let&rsquo;s implement the second store to hold that MobX State.</p>
+              <p>What else do we have as state in the present application? Next to the user object (me), there is an
+                array of tracks and an active track once a user clicked a Play button. Let&rsquo;s implement the second
+                store to hold that MobX State.</p>
 
-<p><em>From stores folder:</em></p>
+              <p><em>From stores folder:</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">touch</span> <span style="color: #06b6ef">trackStore</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span>
-</code></pre></div>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">touch</span> <span style="color: #06b6ef">trackStore</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span>
+</code></pre>
+              </div>
 
 
-<p><em>src/stores/trackStore.js</em></p>
+              <p><em>src/stores/trackStore.js</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observable</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observable</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #815ba4">class</span> <span style="color: #06b6ef">TrackStore</span> <span style="color: #e7e9db">{</span>
 
@@ -521,24 +538,34 @@
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">trackStore</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">export</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">TrackStore</span> <span style="color: #e7e9db">};</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Similar to the UserStore, we decorate the two properties tracks and activeTrack with <code>@observable</code> to indicate that these can change over time. Additionally to the UserStore the TrackStore can be initialized with an array of tracks.</p>
+              <p>Similar to the UserStore, we decorate the two properties tracks and activeTrack with
+                <code>@observable</code> to indicate that these can change over time. Additionally to the UserStore the
+                TrackStore can be initialized with an array of tracks.</p>
 
-<p>We are set up to save all of our state which was handled in the Redux global store before. But we don&rsquo;t use the stores yet. Let&rsquo;s do it by refactoring the authentication process. There we fetch data like login user and tracks from the SoundCloud API (<a href="../what-is-an-api-javascript/index.html">What&rsquo;s an API?</a>). Now we want to use MobX Actions to set the fetched data in our stores rather than using Redux Actions.</p>
+              <p>We are set up to save all of our state which was handled in the Redux global store before. But we
+                don&rsquo;t use the stores yet. Let&rsquo;s do it by refactoring the authentication process. There we
+                fetch data like login user and tracks from the SoundCloud API (<a
+                  href="../what-is-an-api-javascript/index.html">What&rsquo;s an API?</a>). Now we want to use MobX
+                Actions to set the fetched data in our stores rather than using Redux Actions.</p>
 
-<h2 class="chapter-header" id="actions">MobX Actions</h2>
+              <h2 class="chapter-header" id="actions">MobX Actions</h2>
 
-<p>State mutations are called Actions in MobX. Rather than mutating the state via Actions and Reducers like in Redux, MobX mutates the state directly in the store.</p>
+              <p>State mutations are called Actions in MobX. Rather than mutating the state via Actions and Reducers
+                like in Redux, MobX mutates the state directly in the store.</p>
 
-<p>Let&rsquo;s use our first MobX Action in the authentication process. Afterwards we can get rid of all the Redux Action aware implementations.</p>
+              <p>Let&rsquo;s use our first MobX Action in the authentication process. Afterwards we can get rid of all
+                the Redux Action aware implementations.</p>
 
-<p><em>src/actions/auth.js</em></p>
+              <p><em>src/actions/auth.js</em></p>
 
-<p>Before:</p>
+              <p>Before:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">SC</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;soundcloud&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">SC</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;soundcloud&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #5bc4bf">*</span> <span style="color: #06b6ef">as</span> <span style="color: #06b6ef">actionTypes</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../constants/actionTypes&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">setTracks</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../actions/track&#39;</span><span style="color: #e7e9db">;</span>
 
@@ -577,12 +604,14 @@
       <span style="color: #e7e9db">});</span>
   <span style="color: #e7e9db">};</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>After:</p>
+              <p>After:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">SC</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;soundcloud&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">SC</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;soundcloud&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">userStore</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../stores/userStore&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">trackStore</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../stores/trackStore&#39;</span><span style="color: #e7e9db">;</span>
 
@@ -608,63 +637,81 @@
       <span style="color: #06b6ef">trackStore</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">tracks</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">data</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">collection</span><span style="color: #e7e9db">;</span>
     <span style="color: #e7e9db">});</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Basically we replaced the dispatch wrapped action creators with mutations on our new stores. Moreover all functions are not Redux middleware aware anymore, so we removed the returned function which enabled us to access to dispatch functionality. Additionally we removed the plain Redux action creator setMe. You can already see that rather than having an Action to change our global state implicit with Reducers, we mutate the state directly in the stores.</p>
+              <p>Basically we replaced the dispatch wrapped action creators with mutations on our new stores. Moreover
+                all functions are not Redux middleware aware anymore, so we removed the returned function which enabled
+                us to access to dispatch functionality. Additionally we removed the plain Redux action creator setMe.
+                You can already see that rather than having an Action to change our global state implicit with Reducers,
+                we mutate the state directly in the stores.</p>
 
-<h2 class="chapter-header" id="reduxMobxStateManagement">Redux to MobX State Management</h2>
+              <h2 class="chapter-header" id="reduxMobxStateManagement">Redux to MobX State Management</h2>
 
-<p>The state management with MobX is up and running. We are fetching data and set these data in our stores.</p>
+              <p>The state management with MobX is up and running. We are fetching data and set these data in our
+                stores.</p>
 
-<p>Let&rsquo;s remove some Redux dependent files/folders.</p>
+              <p>Let&rsquo;s remove some Redux dependent files/folders.</p>
 
-<p>Since we are not using Redux Actions anymore, one can remove all remaining files in that folder.</p>
+              <p>Since we are not using Redux Actions anymore, one can remove all remaining files in that folder.</p>
 
-<p>*From actions folder: *</p>
+              <p>*From actions folder: *</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">rm</span> <span style="color: #06b6ef">index</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">rm</span> <span style="color: #06b6ef">index</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span>
 <span style="color: #06b6ef">rm</span> <span style="color: #06b6ef">track</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Additionally we don&rsquo;t need Action Types anymore.</p>
+              <p>Additionally we don&rsquo;t need Action Types anymore.</p>
 
-<p><em>From constants folder:</em></p>
+              <p><em>From constants folder:</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">rm</span> <span style="color: #06b6ef">actionTypes</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span>
-</code></pre></div>
-
-
-<p>Moreover one can remove the reducers folder, because we mutate our state directly in the stores.</p>
-
-<p><em>From src folder:</em></p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">rm</span> <span style="color: #5bc4bf">-</span><span style="color: #06b6ef">rf</span> <span style="color: #06b6ef">reducers</span>
-</code></pre></div>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">rm</span> <span style="color: #06b6ef">actionTypes</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span>
+</code></pre>
+              </div>
 
 
-<p>Last but not least let&rsquo;s remove the configureStore.js file, which sets up the Redux store and uses the removed reducers.</p>
+              <p>Moreover one can remove the reducers folder, because we mutate our state directly in the stores.</p>
 
-<p><em>From stores folder:</em></p>
+              <p><em>From src folder:</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">rm</span> <span style="color: #06b6ef">configureStore</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span>
-</code></pre></div>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">rm</span> <span style="color: #5bc4bf">-</span><span style="color: #06b6ef">rf</span> <span style="color: #06b6ef">reducers</span>
+</code></pre>
+              </div>
 
 
-<p>The state management with MobX State and Actions is implemented.</p>
+              <p>Last but not least let&rsquo;s remove the configureStore.js file, which sets up the Redux store and
+                uses the removed reducers.</p>
 
-<h2 class="chapter-header" id="components">Redux to MobX Components</h2>
+              <p><em>From stores folder:</em></p>
 
-<p>We have our stores and the overhauled authentication process, which mutates the store state after fetching the data.</p>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">rm</span> <span style="color: #06b6ef">configureStore</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span>
+</code></pre>
+              </div>
 
-<p>Now we have to marry the components with MobX instead of Redux. Let&rsquo;s begin with the entry point.</p>
 
-<p><em>src/index.js</em></p>
+              <p>The state management with MobX State and Actions is implemented.</p>
 
-<p>Before:</p>
+              <h2 class="chapter-header" id="components">Redux to MobX Components</h2>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">SC</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;soundcloud&#39;</span><span style="color: #e7e9db">;</span>
+              <p>We have our stores and the overhauled authentication process, which mutates the store state after
+                fetching the data.</p>
+
+              <p>Now we have to marry the components with MobX instead of Redux. Let&rsquo;s begin with the entry point.
+              </p>
+
+              <p><em>src/index.js</em></p>
+
+              <p>Before:</p>
+
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">SC</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;soundcloud&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Router</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">Route</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">IndexRoute</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">browserHistory</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-router&#39;</span><span style="color: #e7e9db">;</span>
@@ -694,12 +741,14 @@
   <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Provider&gt;,</span>
   <span style="color: #e7e9db">document.</span><span style="color: #06b6ef">getElementById</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;app&#39;</span><span style="color: #e7e9db">)</span>
 <span style="color: #e7e9db">);</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>After:</p>
+              <p>After:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">SC</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;soundcloud&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">SC</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;soundcloud&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Router</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">Route</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">IndexRoute</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">browserHistory</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-router&#39;</span><span style="color: #e7e9db">;</span>
@@ -720,20 +769,30 @@
   <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Router&gt;,</span>
   <span style="color: #e7e9db">document.</span><span style="color: #06b6ef">getElementById</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;app&#39;</span><span style="color: #e7e9db">)</span>
 <span style="color: #e7e9db">);</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>First we removed the wrapping Provider component. The <a target="_blank" rel="noopener noreferrer" href="https://github.com/reactjs/react-redux">react-redux</a> Provider helped us to inject the Redux store into the React component tree. We don&rsquo;t need that anymore, because we can import the stores directly. Later we will learn about a MobX decorator which helps us to update the components after observed properties changed.</p>
+              <p>First we removed the wrapping Provider component. The <a target="_blank" rel="noopener noreferrer"
+                  href="https://github.com/reactjs/react-redux">react-redux</a> Provider helped us to inject the Redux
+                store into the React component tree. We don&rsquo;t need that anymore, because we can import the stores
+                directly. Later we will learn about a MobX decorator which helps us to update the components after
+                observed properties changed.</p>
 
-<blockquote>
-<p>We are using the plain browserHistory and don&rsquo;t need to sync it anymore with the Redux store. That is less code, but we loose the benefit of a synced browser history in our state.</p>
-</blockquote>
+              <blockquote>
+                <p>We are using the plain browserHistory and don&rsquo;t need to sync it anymore with the Redux store.
+                  That is less code, but we loose the benefit of a synced browser history in our state.</p>
+              </blockquote>
 
-<p>Now we can move on to the Stream component. There are no real best practices yet for MobX aware components, but the concept of container and presenter components can still be applied. We begin by refactoring the container component, because that one can still pass the state and the MobX Actions to the presenter component.</p>
+              <p>Now we can move on to the Stream component. There are no real best practices yet for MobX aware
+                components, but the concept of container and presenter components can still be applied. We begin by
+                refactoring the container component, because that one can still pass the state and the MobX Actions to
+                the presenter component.</p>
 
-<p><em>src/components/Stream/index.js</em></p>
+              <p><em>src/components/Stream/index.js</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observer</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx-react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">Stream</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./presenter&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">CLIENT_ID</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../../constants/auth&#39;</span><span style="color: #e7e9db">;</span>
@@ -755,18 +814,26 @@
 <span style="color: #e7e9db">})</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">StreamContainer</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The stores get imported and their properties get passed to the presenter component. Moreover the onPlay callback mutates the state directly on the store. There is no Action and Reducer roundtrip like in Redux. The onAuth callback triggers the authentication and fetches all the relevant data. Additionally we wrapped the stateless functional component into an MobX observer helper function. Now every time an observable property in the stores changes, the component will trigger a re-render. I will dive more into details for the Stream presenter component.</p>
+              <p>The stores get imported and their properties get passed to the presenter component. Moreover the onPlay
+                callback mutates the state directly on the store. There is no Action and Reducer roundtrip like in
+                Redux. The onAuth callback triggers the authentication and fetches all the relevant data. Additionally
+                we wrapped the stateless functional component into an MobX observer helper function. Now every time an
+                observable property in the stores changes, the component will trigger a re-render. I will dive more into
+                details for the Stream presenter component.</p>
 
-<h2 class="chapter-header" id="reactions">MobX Reactions</h2>
+              <h2 class="chapter-header" id="reactions">MobX Reactions</h2>
 
-<p>Let&rsquo;s move on to the Stream presenter component. The component needs to show the recent data of the stores. In MobX the updates due to I/O and Networking are called Reactions.</p>
+              <p>Let&rsquo;s move on to the Stream presenter component. The component needs to show the recent data of
+                the stores. In MobX the updates due to I/O and Networking are called Reactions.</p>
 
-<p><em>src/components/Stream/presenter.js</em></p>
+              <p><em>src/components/Stream/presenter.js</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observer</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx-react&#39;</span><span style="color: #e7e9db">;</span>
 
@@ -821,30 +888,46 @@
 <span style="color: #e7e9db">}</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">Stream</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The component itself didn&rsquo;t change a lot. It receives the props as before consisting of some state and callbacks.</p>
+              <p>The component itself didn&rsquo;t change a lot. It receives the props as before consisting of some
+                state and callbacks.</p>
 
-<p>There is one little part which is new - the @observer decorator. In the Stream container component we used it differently because it was a stateless functional component. In extended React components one can use the same functionality as decorator. The decorator makes it possible to re-render the component every time an @observable decorated property from the store changes.</p>
+              <p>There is one little part which is new - the @observer decorator. In the Stream container component we
+                used it differently because it was a stateless functional component. In extended React components one
+                can use the same functionality as decorator. The decorator makes it possible to re-render the component
+                every time an @observable decorated property from the store changes.</p>
 
-<p>For instance whenever someone hits the Play button, the activeTrack gets mutated in the trackStore (which happens in the Stream container component). Since we changed the activeTrack @observable property, the render method of the React component gets triggered.</p>
+              <p>For instance whenever someone hits the Play button, the activeTrack gets mutated in the trackStore
+                (which happens in the Stream container component). Since we changed the activeTrack @observable
+                property, the render method of the React component gets triggered.</p>
 
-<p>That&rsquo;s a lot of magic for one little @observer decorator. What happens exactly? Every time an @observable property changes MobX triggers an internal autrun method. Autorun creates a MobX Reaction, which runs every time and once in the beginning, whenever an @observable decorated property changed. The @observer decorator makes sure that the render method of the component gets wrapped into the MobX autorun. As result the changed property gets reflected in the presenter component due to an component re-render.</p>
+              <p>That&rsquo;s a lot of magic for one little @observer decorator. What happens exactly? Every time an
+                @observable property changes MobX triggers an internal autrun method. Autorun creates a MobX Reaction,
+                which runs every time and once in the beginning, whenever an @observable decorated property changed. The
+                @observer decorator makes sure that the render method of the component gets wrapped into the MobX
+                autorun. As result the changed property gets reflected in the presenter component due to an component
+                re-render.</p>
 
-<h2 class="chapter-header" id="derivations">MobX Derivations</h2>
+              <h2 class="chapter-header" id="derivations">MobX Derivations</h2>
 
-<p>Let&rsquo;s introduce the last MobX concept: Derivations. A MobX Derivation is any value that can be computed from the MobX state. Rather than getting a value directly from the state, one can have a @computed decorated function to retrieve a computed value from the state.</p>
+              <p>Let&rsquo;s introduce the last MobX concept: Derivations. A MobX Derivation is any value that can be
+                computed from the MobX state. Rather than getting a value directly from the state, one can have a
+                @computed decorated function to retrieve a computed value from the state.</p>
 
-<blockquote>
-<p>There is a similarity to Redux Selectors, which enable one to compute derived data from the Redux store.</p>
-</blockquote>
+              <blockquote>
+                <p>There is a similarity to Redux Selectors, which enable one to compute derived data from the Redux
+                  store.</p>
+              </blockquote>
 
-<p>Let&rsquo;s extend the TrackStore by a computation.</p>
+              <p>Let&rsquo;s extend the TrackStore by a computation.</p>
 
-<p><em>src/stores/trackStore.js</em></p>
+              <p><em>src/stores/trackStore.js</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observable</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">computed</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observable</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">computed</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx&#39;</span><span style="color: #e7e9db">;</span>
 </span>
 <span style="color: #815ba4">class</span> <span style="color: #06b6ef">TrackStore</span> <span style="color: #e7e9db">{</span>
 
@@ -872,16 +955,20 @@
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">trackStore</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">export</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">TrackStore</span> <span style="color: #e7e9db">};</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The activeTrack decorated function uses an id and a list of tracks to derive the active track. Before we saved the activeTrack directly in the store. Now we save only the id of the active track.</p>
+              <p>The activeTrack decorated function uses an id and a list of tracks to derive the active track. Before
+                we saved the activeTrack directly in the store. Now we save only the id of the active track.</p>
 
-<p>After that we have to change the Stream container onPlay callback by setting an id rather than a whole track object.</p>
+              <p>After that we have to change the Stream container onPlay callback by setting an id rather than a whole
+                track object.</p>
 
-<p><em>src/components/Stream/index.js</em></p>
+              <p><em>src/components/Stream/index.js</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observer</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx-react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">Stream</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./presenter&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">CLIENT_ID</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../../constants/auth&#39;</span><span style="color: #e7e9db">;</span>
@@ -903,18 +990,24 @@
 <span style="color: #e7e9db">})</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">StreamContainer</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>We don&rsquo;t have to change the Stream presenter component. There we can still derive the activeTrack with trackStore.activeTrack since it is a MobX Derivation.</p>
+              <p>We don&rsquo;t have to change the Stream presenter component. There we can still derive the activeTrack
+                with trackStore.activeTrack since it is a MobX Derivation.</p>
 
-<h2 class="chapter-header" id="explicitActions">Explicit Actions</h2>
+              <h2 class="chapter-header" id="explicitActions">Explicit Actions</h2>
 
-<p>MobX has a strict mode which is off by default. When the strict mode is enabled and it enforces globally that state mutations are only allowed inside actions. In our approach we are mutating the state from outside the stores. Let&rsquo;s use the strict mode globally and implement proper explicit actions to change the state.</p>
+              <p>MobX has a strict mode which is off by default. When the strict mode is enabled and it enforces
+                globally that state mutations are only allowed inside actions. In our approach we are mutating the state
+                from outside the stores. Let&rsquo;s use the strict mode globally and implement proper explicit actions
+                to change the state.</p>
 
-<p><em>src/index.js</em></p>
+              <p><em>src/index.js</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">SC</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;soundcloud&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">SC</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;soundcloud&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Router</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">Route</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">IndexRoute</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">browserHistory</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-router&#39;</span><span style="color: #e7e9db">;</span>
@@ -929,16 +1022,19 @@
 <span style="background-color: #4f424c"><span style="color: #06b6ef">configure</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">enforceActions</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span> <span style="color: #e7e9db">});</span>
 </span>
 <span style="color: #e7e9db">...</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>When you start your app now, the console output will give you an error that you are not allowed to change the state outside of an action.</p>
+              <p>When you start your app now, the console output will give you an error that you are not allowed to
+                change the state outside of an action.</p>
 
-<p>Now let&rsquo;s implement the actions in our stores.</p>
+              <p>Now let&rsquo;s implement the actions in our stores.</p>
 
-<p><em>src/stores/trackStore.js</em></p>
+              <p><em>src/stores/trackStore.js</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observable</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">computed</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observable</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">computed</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx&#39;</span><span style="color: #e7e9db">;</span>
 </span>
 <span style="color: #815ba4">class</span> <span style="color: #06b6ef">TrackStore</span> <span style="color: #e7e9db">{</span>
 
@@ -974,14 +1070,16 @@
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">trackStore</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">export</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">TrackStore</span> <span style="color: #e7e9db">};</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>The same applies for the userStore.</p>
+              <p>The same applies for the userStore.</p>
 
-<p><em>src/stores/userStore.js</em></p>
+              <p><em>src/stores/userStore.js</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observable</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observable</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">action</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx&#39;</span><span style="color: #e7e9db">;</span>
 </span>
 <span style="color: #815ba4">class</span> <span style="color: #06b6ef">UserStore</span> <span style="color: #e7e9db">{</span>
 
@@ -1001,14 +1099,17 @@
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">userStore</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">export</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">UserStore</span> <span style="color: #e7e9db">};</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Last but not least we have to exchange all the direct state mutations on the store with explicit action invocations.</p>
+              <p>Last but not least we have to exchange all the direct state mutations on the store with explicit action
+                invocations.</p>
 
-<p><em>src/components/Stream/index.js</em></p>
+              <p><em>src/components/Stream/index.js</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observer</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx-react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">Stream</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./presenter&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">CLIENT_ID</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../../constants/auth&#39;</span><span style="color: #e7e9db">;</span>
@@ -1030,12 +1131,14 @@
 <span style="color: #e7e9db">})</span>
 
 <span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">StreamContainer</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p><em>src/actions/auth.js</em></p>
+              <p><em>src/actions/auth.js</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">SC</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;soundcloud&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">SC</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;soundcloud&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">userStore</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../stores/userStore&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">trackStore</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../stores/trackStore&#39;</span><span style="color: #e7e9db">;</span>
 
@@ -1061,18 +1164,25 @@
 <span style="background-color: #4f424c">      <span style="color: #06b6ef">trackStore</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setTracks</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">collection</span><span style="color: #e7e9db">);</span>
 </span>    <span style="color: #e7e9db">});</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>I would recommend to turn strict mode on as best practice when using MobX, because you know always which action alters the state.</p>
+              <p>I would recommend to turn strict mode on as best practice when using MobX, because you know always
+                which action alters the state.</p>
 
-<h2 class="chapter-header" id="provideAndInject">Provide and Inject</h2>
+              <h2 class="chapter-header" id="provideAndInject">Provide and Inject</h2>
 
-<p>One last step is missing. We are still importing our stores somewhere in between of our components hierarchy in the Stream container. MobX provides some helpers to inject stores, but also other objects, from above. Let&rsquo;s begin in the React root component to provide the stores to the underlying component hierarchy. Therefore we can use the Provider component, which makes all its props available for its children.</p>
+              <p>One last step is missing. We are still importing our stores somewhere in between of our components
+                hierarchy in the Stream container. MobX provides some helpers to inject stores, but also other objects,
+                from above. Let&rsquo;s begin in the React root component to provide the stores to the underlying
+                component hierarchy. Therefore we can use the Provider component, which makes all its props available
+                for its children.</p>
 
-<p><em>src/index.js</em></p>
+              <p><em>src/index.js</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">SC</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;soundcloud&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">SC</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;soundcloud&#39;</span><span style="color: #e7e9db">;</span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Provider</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx-react&#39;</span><span style="color: #e7e9db">;</span>
 </span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
@@ -1103,14 +1213,17 @@
 <span style="background-color: #4f424c">  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Provider&gt;,</span>
 </span>  <span style="color: #e7e9db">document.</span><span style="color: #06b6ef">getElementById</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;app&#39;</span><span style="color: #e7e9db">)</span>
 <span style="color: #e7e9db">);</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<p>Now we can refactor the Stream container component to get the stores with the inject higher order component. Inject uses the React context to pass the props from the Provider component above.</p>
+              <p>Now we can refactor the Stream container component to get the stores with the inject higher order
+                component. Inject uses the React context to pass the props from the Provider component above.</p>
 
-<p><em>src/components/Stream/index.js</em></p>
+              <p><em>src/components/Stream/index.js</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">observer</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">inject</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;mobx-react&#39;</span><span style="color: #e7e9db">;</span>
 </span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">Stream</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./presenter&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">CLIENT_ID</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../../constants/auth&#39;</span><span style="color: #e7e9db">;</span>
@@ -1130,28 +1243,42 @@
 <span style="color: #e7e9db">}))</span>
 
 <span style="background-color: #4f424c"><span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">StreamContainer</span><span style="color: #e7e9db">;</span>
-</span></code></pre></div>
+</span></code></pre>
+              </div>
 
 
-<p>At the end one can remove all the unused libraries which we used in the Redux environment.</p>
+              <p>At the end one can remove all the unused libraries which we used in the Redux environment.</p>
 
-<p><em>From root folder:</em></p>
+              <p><em>From root folder:</em></p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">uninstall</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span> <span style="color: #06b6ef">redux</span> <span style="color: #06b6ef">react</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">redux</span> <span style="color: #06b6ef">redux</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">logger</span> <span style="color: #06b6ef">redux</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">thunk</span> <span style="color: #06b6ef">react</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">router</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">redux</span>
-</code></pre></div>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">uninstall</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span> <span style="color: #06b6ef">redux</span> <span style="color: #06b6ef">react</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">redux</span> <span style="color: #06b6ef">redux</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">logger</span> <span style="color: #06b6ef">redux</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">thunk</span> <span style="color: #06b6ef">react</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">router</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">redux</span>
+</code></pre>
+              </div>
 
 
-<p>Finally one can see that due to the refactoring a lot of Redux dependent code has been removed. That could be seen as an advantage, because after spending some time to set up a bunch of Action Types, Action Creators, Actions and Reducers, it feels like a lot of boilerplate. The paradox is the fact that these constraints and APIs of Redux make it so successful for state management even in larger applications. MobX leaves out the whole architectural design which comes with Redux. Be aware of that and don&rsquo;t mistake MobX as replacement for Redux. You can find the outcome of this React tutorial in the <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/react-mobx-soundcloud">react-mobx-soundcloud repository</a>. Moreover there exists a real world <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/favesound-mobx">MobX + React + SoundCloud application</a>.</p>
+              <p>Finally one can see that due to the refactoring a lot of Redux dependent code has been removed. That
+                could be seen as an advantage, because after spending some time to set up a bunch of Action Types,
+                Action Creators, Actions and Reducers, it feels like a lot of boilerplate. The paradox is the fact that
+                these constraints and APIs of Redux make it so successful for state management even in larger
+                applications. MobX leaves out the whole architectural design which comes with Redux. Be aware of that
+                and don&rsquo;t mistake MobX as replacement for Redux. You can find the outcome of this React tutorial
+                in the <a target="_blank" rel="noopener noreferrer"
+                  href="https://github.com/rwieruch/react-mobx-soundcloud">react-mobx-soundcloud repository</a>.
+                Moreover there exists a real world <a target="_blank" rel="noopener noreferrer"
+                  href="https://github.com/rwieruch/favesound-mobx">MobX + React + SoundCloud application</a>.</p>
 
-<h2 class="chapter-header" id="troubleshoot">Troubleshoot</h2>
+              <h2 class="chapter-header" id="troubleshoot">Troubleshoot</h2>
 
-<p>You may encounter issues in that tutorial. Here you will find some references how to handle issues.</p>
+              <p>You may encounter issues in that tutorial. Here you will find some references how to handle issues.</p>
 
-<h3 id="dependencies">Dependencies</h3>
+              <h3 id="dependencies">Dependencies</h3>
 
-<p>In case you want to know which versions npm installed during that tutorial, here a list of all npm packages in my package.json.</p>
+              <p>In case you want to know which versions npm installed during that tutorial, here a list of all npm
+                packages in my package.json.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span>  <span style="color: #48b685">&quot;devDependencies&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
+              <div class="highlight" style="background: #2f1e2e">
+                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span>  <span style="color: #48b685">&quot;devDependencies&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
     <span style="color: #48b685">&quot;babel-core&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^6.9.1&quot;</span><span style="color: #e7e9db">,</span>
     <span style="color: #48b685">&quot;babel-loader&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^6.2.4&quot;</span><span style="color: #e7e9db">,</span>
     <span style="color: #48b685">&quot;babel-plugin-transform-class-properties&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^6.10.2&quot;</span><span style="color: #e7e9db">,</span>
@@ -1179,314 +1306,301 @@
     <span style="color: #48b685">&quot;soundcloud&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^3.1.2&quot;</span><span style="color: #e7e9db">,</span>
     <span style="color: #48b685">&quot;whatwg-fetch&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;^1.0.0&quot;</span>
   <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+              </div>
 
 
-<h2 class="chapter-header" id="finalThoughts">Final Thoughts</h2>
+              <h2 class="chapter-header" id="finalThoughts">Final Thoughts</h2>
 
 
-<p>
-    Have a look again in <a href="../the-soundcloud-client-in-react-redux/index.html">The SoundCloud Client in React + Redux</a> tutorial for more smaller tutorials which build up on top of the SoundCloud project. All tutorials on top will get released in <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/react-redux-soundcloud">the repository</a> as well.
-</p>
+              <p>
+                Have a look again in <a href="../the-soundcloud-client-in-react-redux/index.html">The SoundCloud Client
+                  in React + Redux</a> tutorial for more smaller tutorials which build up on top of the SoundCloud
+                project. All tutorials on top will get released in <a target="_blank" rel="noopener noreferrer"
+                  href="https://github.com/rwieruch/react-redux-soundcloud">the repository</a> as well.
+              </p>
 
 
-                            
-<div class="feedback-and-share text-center">
-    <hr>
-    
-    <p class="lead">
-        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
-    </p>
-    
-    
-        <p class="lead">
-            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
-        </p>
-    
-</div>
+
+              <div class="feedback-and-share text-center">
+                <hr>
+
+                <p class="lead">
+                  I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer"
+                    aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a>
+                  and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i
+                      class="fa fa-facebook"></i>Facebook</a>
+                </p>
 
 
-                            
-                                <div class="box-inline col-md-12">
-    <div class="col-md-12 text-center">
-        <h2 class="newsletter">The Road to learn React</h2>
-        
-            <div class="col-md-4">
-                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
-            </div>
-        
-        <p class="lead">
-            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
-        </p>
-        <a
-            class="btn btn-template-main"
-            href="https://roadtoreact.com"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Get the Book for free <i class="fa fa-chevron-right"></i>
-        </a>
-        
-            <div>
-                <a
-                    href="https://amzn.to/2QY2ONp"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Get it from Amazon
-                </a>
-            </div>
-        
-    </div>
-</div>
-                            
-                        </div>
+                <p class="lead">
+                  Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>,
+                  support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon"
+                    href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack
+                  developer with my books <i class="fa fa-arrow-down"></i>
+                </p>
 
-                        
-                        
-                        <div id="comments">
-                            <div id="disqus_thread"></div>
-<script type="text/javascript">
+              </div>
 
-(function() {
-    
-    
-    if (window.location.hostname == "localhost")
-        return;
 
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'rwieruch';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-                        </div>
-                        
 
-                    </article>
-                    
+              <div class="box-inline col-md-12">
+                <div class="col-md-12 text-center">
+                  <h2 class="newsletter">The Road to learn React</h2>
+
+                  <div class="col-md-4">
+                    <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+                  </div>
+
+                  <p class="lead">
+                    Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in
+                    200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
+                  </p>
+                  <a class="btn btn-template-main" href="https://roadtoreact.com" target="_blank"
+                    rel="noopener noreferrer">
+                    Get the Book for free <i class="fa fa-chevron-right"></i>
+                  </a>
+
+                  <div>
+                    <a href="https://amzn.to/2QY2ONp" target="_blank" rel="noopener noreferrer">
+                      Get it from Amazon
+                    </a>
+                  </div>
 
                 </div>
-                
+              </div>
 
             </div>
-            
+
+
+
+            <div id="comments">
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+
+                (function () {
+
+
+                  if (window.location.hostname == "localhost")
+                    return;
+
+                  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                  var disqus_shortname = 'rwieruch';
+                  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+              <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered
+                  by Disqus.</a></noscript>
+              <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span
+                  class="logo-disqus">Disqus</span></a>
+            </div>
+
+
+          </article>
+
+
         </div>
-        
 
-        
 
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
-    <div class="dark-mask"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
-                <h2 class="text-uppercase">Take Part</h2>
-            </div>
+      </div>
 
-            <div class="col-md-12 text-center">
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
-                
-            </div>
-            <div class="col-md-12">
-                <p class="text-center">
-                    <div id="mc_embed_signup">
-    <form
-        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
-        method="post"
-        id="revue-form"
-        name="revue-form"
-        target="_blank">
-        <div id="mc_embed_signup_scroll">
-            <input
-                class="email"
-                placeholder="email address"
-                type="email"
-                name="member[email]"
-                id="member_email"
-            >
-            <div>
-                <button
-                    type="submit"
-                    value="Subscribe"
-                    name="member[subscribe]"
-                    id="member_submit"
-                    class="btn btn-template-transparent-black btn-lg"
-                >
-                    Subscribe
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
-
-                </p>
-            </div>
-        </div>
     </div>
-</section>
-        <footer id="subfooter">
-    <div class="container">
+
+
+
+
+    <section class="bar background-image-fixed-2 no-mb color-white text-center">
+      <div class="dark-mask"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+            <h2 class="text-uppercase">Take Part</h2>
+          </div>
+
+          <div class="col-md-12 text-center">
+
+            <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+
+            <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+
+            <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+
+            <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+
+            <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+
+          </div>
+          <div class="col-md-12">
+            <p class="text-center">
+              <div id="mc_embed_signup">
+                <form action="https://www.getrevue.co/profile/rwieruch/add_subscriber" method="post" id="revue-form"
+                  name="revue-form" target="_blank">
+                  <div id="mc_embed_signup_scroll">
+                    <input class="email" placeholder="email address" type="email" name="member[email]"
+                      id="member_email">
+                    <div>
+                      <button type="submit" value="Subscribe" name="member[subscribe]" id="member_submit"
+                        class="btn btn-template-transparent-black btn-lg">
+                        Subscribe
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer id="subfooter">
+      <div class="container">
 
         <div class="col-md-5 col-sm-6">
 
-            <h4>Recent posts</h4>
+          <h4>Recent posts</h4>
 
-            <div class="blog-entries">
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../redux-vs-usereducer/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="React&#39;s useReducer vs Redux"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../publish-npm-package-node/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="How to publish a npm package?"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../react-scroll-to-item/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="How to Scroll to Item in React?"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
-                    </div>
-                </div>
-                
+          <div class="blog-entries">
+
+            <div class="item same-height-row clearfix">
+              <div class="article same-height-always">
+                <a href="../redux-vs-usereducer/index.html">
+
+                  <img data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg" data-is-thumb="is-thumb"
+                    class="img-lazy img-responsive" alt="React&#39;s useReducer vs Redux">
+
+                </a>
+              </div>
+              <div class="name same-height-always">
+                <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+              </div>
             </div>
 
-            <hr class="hidden-md hidden-lg hidden-sm">
+            <div class="item same-height-row clearfix">
+              <div class="article same-height-always">
+                <a href="../publish-npm-package-node/index.html">
+
+                  <img data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg" data-is-thumb="is-thumb"
+                    class="img-lazy img-responsive" alt="How to publish a npm package?">
+
+                </a>
+              </div>
+              <div class="name same-height-always">
+                <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
+              </div>
+            </div>
+
+            <div class="item same-height-row clearfix">
+              <div class="article same-height-always">
+                <a href="../react-scroll-to-item/index.html">
+
+                  <img data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg" data-is-thumb="is-thumb"
+                    class="img-lazy img-responsive" alt="How to Scroll to Item in React?">
+
+                </a>
+              </div>
+              <div class="name same-height-always">
+                <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
+              </div>
+            </div>
+
+          </div>
+
+          <hr class="hidden-md hidden-lg hidden-sm">
 
         </div>
-        
 
-        
+
+
         <div class="col-md-5 col-md-offset-2 col-sm-6">
 
-            <h4>About Me</h4>
+          <h4>About Me</h4>
 
-            <div class="blog-entries">
-                <div class="item same-height-row clearfix">
-                    <div class="profile same-height-always">
-                        <img
-                            class="img-lazy img-responsive"
-                            data-lazy-src="//img/page/profile.jpg"
-                            alt="profile"
-                        >
-                    </div>
-                    <div class="name same-height-always">
-                        <p>
-                            Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
-                        </p>
-                    </div>
-                </div>
+          <div class="blog-entries">
+            <div class="item same-height-row clearfix">
+              <div class="profile same-height-always">
+                <img class="img-lazy img-responsive" data-lazy-src="//img/page/profile.jpg" alt="profile">
+              </div>
+              <div class="name same-height-always">
+                <p>
+                  Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more <a
+                    href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or
+                  have a look at my social media profiles below.
+                </p>
+              </div>
             </div>
+          </div>
 
         </div>
-        
-        
-
-    </div>
-    
-</footer>
 
 
-        <footer id="copyright">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <ul class="info list-inline quicklinks pull-left">
-          
-            <li>© Chris Paul</li>
-          
-        </ul>
+
       </div>
-      <div class="col-md-4">
-        <ul class="list-inline footer-social-buttons text-center">
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
-          
-        </ul>
+
+    </footer>
+
+
+    <footer id="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <ul class="info list-inline quicklinks pull-left">
+
+              <li>© Chris Paul</li>
+
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline footer-social-buttons text-center">
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+
+              <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                  href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="info list-inline quicklinks pull-right">
+
+              <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="col-md-4">
-        <ul class="info list-inline quicklinks pull-right">
-          
-            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
-          
-        </ul>
-      </div>
-    </div>
+    </footer>
+
+
   </div>
-</footer>
 
 
-    </div>
-    
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src="../js/script.js"></script>
+</body>
 
-<script src="../js/script.js"></script>  </body>
 </html>

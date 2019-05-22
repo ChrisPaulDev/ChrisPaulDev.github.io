@@ -1,281 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-  <meta charset="utf-8">
-  <meta name="robots" content="all,follow">
-  <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  
 
-  <title>
-    The minimal Node.js with Babel Setup - CPaul
-  </title>
 
-  <meta name="author" content="" />
-  <meta name="description" content="A common sense minimal Node.js setup guide which uses Babel and Nodemon: Whereas Babel with the Babel Cli is used for enabling recent JavaScript language features, Nodemon is used for keeping your node process up and running ...">
-  
+    <title>
+        The minimal Node.js with Babel Setup - CPaul
+    </title>
 
-  <meta name="theme-color" content="#38bb6c"/>
+    <meta name="author" content="" />
+    <meta name="description"
+        content="A common sense minimal Node.js setup guide which uses Babel and Nodemon: Whereas Babel with the Babel Cli is used for enabling recent JavaScript language features, Nodemon is used for keeping your node process up and running ...">
 
-  <meta name="generator" content="Hugo 0.41" />
-<link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
-  <link href="../css/customizations.css" rel="stylesheet">
+    <meta name="theme-color" content="#38bb6c" />
+
+    <meta name="generator" content="Hugo 0.41" />
+    <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+    <link href="../css/customizations.css" rel="stylesheet">
 
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  
-<link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="../img/favicon/manifest.json">
-  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
 
-  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+    <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="../img/favicon/manifest.json">
+    <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
 
-<meta itemprop="name" content="The minimal Node.js with Babel Setup">
-<meta itemprop="description" content="A common sense minimal Node.js setup guide which uses Babel and Nodemon: Whereas Babel with the Babel Cli is used for enabling recent JavaScript language features, Nodemon is used for keeping your node process up and running ...">    <meta itemprop="image" content="https://chrispaul.dev/img/posts/minimal-node-js-babel-setup/banner_640.jpg"><meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+    <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
 
-
-<meta itemprop="wordCount" content="1501">
-
-<meta name="keywords" content="node setup, node js setup, node babel setup, node js babel setup">
-
-  <meta property="og:title" content="The minimal Node.js with Babel Setup - CPaul">
+    <meta itemprop="name" content="The minimal Node.js with Babel Setup">
+    <meta itemprop="description"
+        content="A common sense minimal Node.js setup guide which uses Babel and Nodemon: Whereas Babel with the Babel Cli is used for enabling recent JavaScript language features, Nodemon is used for keeping your node process up and running ...">
+    <meta itemprop="image" content="https://chrispaul.dev/img/posts/minimal-node-js-babel-setup/banner_640.jpg">
+    <meta itemprop="keywords"
+        content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
 
 
-  <meta property="og:description" content="A common sense minimal Node.js setup guide which uses Babel and Nodemon: Whereas Babel with the Babel Cli is used for enabling recent JavaScript language features, Nodemon is used for keeping your node process up and running ..." />
+    <meta itemprop="wordCount" content="1501">
+
+    <meta name="keywords" content="node setup, node js setup, node babel setup, node js babel setup">
+
+    <meta property="og:title" content="The minimal Node.js with Babel Setup - CPaul">
 
 
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://chrispaul.dev/minimal-node-js-babel-setup/" />
-<meta property="og:image" content="https://chrispaul.dev/img/posts/minimal-node-js-babel-setup/banner_640.jpg" />
+    <meta property="og:description"
+        content="A common sense minimal Node.js setup guide which uses Babel and Nodemon: Whereas Babel with the Babel Cli is used for enabling recent JavaScript language features, Nodemon is used for keeping your node process up and running ..." />
 
-  
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://chrispaul.dev/minimal-node-js-babel-setup/" />
+    <meta property="og:image" content="https://chrispaul.dev/img/posts/minimal-node-js-babel-setup/banner_640.jpg" />
+
+
 
     <meta name="news_keywords" content="node setup,node js setup,node babel setup,node js babel setup" />
 
-  
 
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/minimal-node-js-babel-setup/banner_640.jpg"/><meta name="twitter:title" content="The minimal Node.js with Babel Setup"/>
-<meta name="twitter:description" content="A common sense minimal Node.js setup guide which uses Babel and Nodemon: Whereas Babel with the Babel Cli is used for enabling recent JavaScript language features, Nodemon is used for keeping your node process up and running ..."/>
-<meta name="twitter:site" content="@rwieruch"/>
-<meta name="twitter:domain" content="rwieruch"/>
 
-  
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image:src"
+        content="https://chrispaul.dev/img/posts/minimal-node-js-babel-setup/banner_640.jpg" />
+    <meta name="twitter:title" content="The minimal Node.js with Babel Setup" />
+    <meta name="twitter:description"
+        content="A common sense minimal Node.js setup guide which uses Babel and Nodemon: Whereas Babel with the Babel Cli is used for enabling recent JavaScript language features, Nodemon is used for keeping your node process up and running ..." />
+    <meta name="twitter:site" content="@rwieruch" />
+    <meta name="twitter:domain" content="rwieruch" />
+
+
 
 </head>
 
 
-  <body>
+<body>
 
     <div id="all">
 
         <header>
 
-          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+            <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
 
-    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+                <div class="navbar navbar-default yamm" role="navigation" id="navbar">
 
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand home" href="../index.html">
-                    <img src="../img/page/logo.svg" alt="The minimal Node.js with Babel Setup logo" class="img-lazy">
-                    <span class="sr-only">The minimal Node.js with Babel Setup - go to homepage</span>
-                </a>
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand home" href="../index.html">
+                                <img src="../img/page/logo.svg" alt="The minimal Node.js with Babel Setup logo"
+                                    class="img-lazy">
+                                <span class="sr-only">The minimal Node.js with Babel Setup - go to homepage</span>
+                            </a>
 
-                <div class="navbar-buttons">
-                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-align-justify"></i>
-                    </button>
-                </div>
-            </div>
-            
+                            <div class="navbar-buttons">
+                                <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse"
+                                    data-target="#navigation">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-align-justify"></i>
+                                </button>
+                            </div>
+                        </div>
 
-            <div class="navbar-collapse collapse" id="navigation">
-                <ul class="nav navbar-nav navbar-right">
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../index.html">Blog</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../work-with-me/index.html">Work with me</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../about/index.html">About</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
-                        
-                    </li>
-                    
-                </ul>
-            </div>
-            
 
-            <div class="collapse clearfix" id="search">
+                        <div class="navbar-collapse collapse" id="navigation">
+                            <ul class="nav navbar-nav navbar-right">
 
-                <form class="navbar-form" role="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
+                                <li class="dropdown">
 
-                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                                    <a href="../index.html">Blog</a>
 
-                </span>
+                                </li>
+
+                                <li class="dropdown">
+
+                                    <a href="../work-with-me/index.html">Work with me</a>
+
+                                </li>
+
+                                <li class="dropdown">
+
+                                    <a href="../about/index.html">About</a>
+
+                                </li>
+
+                                <li class="dropdown">
+
+                                    <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+
+                                </li>
+
+                            </ul>
+                        </div>
+
+
+                        <div class="collapse clearfix" id="search">
+
+                            <form class="navbar-form" role="search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <span class="input-group-btn">
+
+                                        <button type="submit" class="btn btn-template-main"><i
+                                                class="fa fa-search"></i></button>
+
+                                    </span>
+                                </div>
+                            </form>
+
+                        </div>
+
+
                     </div>
-                </form>
+                </div>
+
 
             </div>
-            
-
-        </div>
-    </div>
-    
-
-</div>
         </header>
 
         <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
-    
-
-<a
-    aria-label="icon-facebook"
-    class="icon-facebook"
-    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fminimal-node-js-babel-setup%2f"
-    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-    <i class="fa fa-facebook"></i>
-</a>
 
 
-<a
-    aria-label="icon-twitter"
-    class="icon-twitter"
-    href="https://twitter.com/share?text=The%20minimal%20Node.js%20with%20Babel%20Setup%20by%20%40rwieruch%20%23NodeJs&amp;url=https%3a%2f%2fchrispaul.dev%2fminimal-node-js-babel-setup%2f"
-    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-    <i class="fa fa-twitter"></i>
-</a>
-
-<a
-    aria-label="icon-linkedin"
-    class="icon-linkedin"
-    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=The%20minimal%20Node.js%20with%20Babel%20Setup&amp;url=https%3a%2f%2fchrispaul.dev%2fminimal-node-js-babel-setup%2f">
-    <i class="fa fa-linkedin"></i>
-</a>
-
-</div>
-
-<div class="visible-xs visible-sm text-center">
-    <div class="post-share post-share-fixed post-share-mobile">
-        
-
-<a
-    aria-label="icon-facebook"
-    class="icon-facebook"
-    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fminimal-node-js-babel-setup%2f"
-    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-    <i class="fa fa-facebook"></i>
-</a>
+            <a aria-label="icon-facebook" class="icon-facebook"
+                href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fminimal-node-js-babel-setup%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
+            </a>
 
 
-<a
-    aria-label="icon-twitter"
-    class="icon-twitter"
-    href="https://twitter.com/share?text=The%20minimal%20Node.js%20with%20Babel%20Setup%20by%20%40rwieruch%20%23NodeJs&amp;url=https%3a%2f%2fchrispaul.dev%2fminimal-node-js-babel-setup%2f"
-    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-    <i class="fa fa-twitter"></i>
-</a>
+            <a aria-label="icon-twitter" class="icon-twitter"
+                href="https://twitter.com/share?text=The%20minimal%20Node.js%20with%20Babel%20Setup%20by%20%40rwieruch%20%23NodeJs&amp;url=https%3a%2f%2fchrispaul.dev%2fminimal-node-js-babel-setup%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+            </a>
 
-<a
-    aria-label="icon-linkedin"
-    class="icon-linkedin"
-    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=The%20minimal%20Node.js%20with%20Babel%20Setup&amp;url=https%3a%2f%2fchrispaul.dev%2fminimal-node-js-babel-setup%2f">
-    <i class="fa fa-linkedin"></i>
-</a>
+            <a aria-label="icon-linkedin" class="icon-linkedin"
+                href="https://www.linkedin.com/shareArticle?mini=true&amp;title=The%20minimal%20Node.js%20with%20Babel%20Setup&amp;url=https%3a%2f%2fchrispaul.dev%2fminimal-node-js-babel-setup%2f">
+                <i class="fa fa-linkedin"></i>
+            </a>
 
-    </div>
-</div>
+        </div>
 
-        
+        <div class="visible-xs visible-sm text-center">
+            <div class="post-share post-share-fixed post-share-mobile">
+
+
+                <a aria-label="icon-facebook" class="icon-facebook"
+                    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fminimal-node-js-babel-setup%2f"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="fa fa-facebook"></i>
+                </a>
+
+
+                <a aria-label="icon-twitter" class="icon-twitter"
+                    href="https://twitter.com/share?text=The%20minimal%20Node.js%20with%20Babel%20Setup%20by%20%40rwieruch%20%23NodeJs&amp;url=https%3a%2f%2fchrispaul.dev%2fminimal-node-js-babel-setup%2f"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="fa fa-twitter"></i>
+                </a>
+
+                <a aria-label="icon-linkedin" class="icon-linkedin"
+                    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=The%20minimal%20Node.js%20with%20Babel%20Setup&amp;url=https%3a%2f%2fchrispaul.dev%2fminimal-node-js-babel-setup%2f">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+
+            </div>
+        </div>
+
+
 
         <div class="hidden-xs">
-            
 
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
-    <div class="dark-mask"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
-                <h2 class="text-uppercase newsletter">Take Part</h2>
-            </div>
 
-            <div class="col-md-12">
-                <p class="text-center">
-                    <div id="mc_embed_signup">
-    <form
-        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
-        method="post"
-        id="revue-form"
-        name="revue-form"
-        target="_blank">
-        <div id="mc_embed_signup_scroll">
-            <input
-                class="email"
-                placeholder="email address"
-                type="email"
-                name="member[email]"
-                id="member_email"
-            >
-            <div>
-                <button
-                    type="submit"
-                    value="Subscribe"
-                    name="member[subscribe]"
-                    id="member_submit"
-                    class="btn btn-template-transparent-black btn-lg"
-                >
-                    Subscribe
-                </button>
-            </div>
+            <section class="bar background-image-fixed-2 no-mb color-white text-center">
+                <div class="dark-mask"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.
+                            </h3>
+                            <h2 class="text-uppercase newsletter">Take Part</h2>
+                        </div>
+
+                        <div class="col-md-12">
+                            <p class="text-center">
+                                <div id="mc_embed_signup">
+                                    <form action="https://www.getrevue.co/profile/rwieruch/add_subscriber" method="post"
+                                        id="revue-form" name="revue-form" target="_blank">
+                                        <div id="mc_embed_signup_scroll">
+                                            <input class="email" placeholder="email address" type="email"
+                                                name="member[email]" id="member_email">
+                                            <div>
+                                                <button type="submit" value="Subscribe" name="member[subscribe]"
+                                                    id="member_submit"
+                                                    class="btn btn-template-transparent-black btn-lg">
+                                                    Subscribe
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </form>
-</div>
-
-                </p>
-            </div>
-        </div>
-    </div>
-</section>        </div>
 
         <div id="content">
             <div class="container">
 
                 <div class="row">
 
-                    <article
-                        class="col-md-8 col-md-offset-2"
-                        id="blog-post"
-                        itemprop="blogPosts"
-                        itemscope itemtype="http://schema.org/BlogPosting">
+                    <article class="col-md-8 col-md-offset-2" id="blog-post" itemprop="blogPosts" itemscope
+                        itemtype="http://schema.org/BlogPosting">
 
                         <div id="post-content" itemprop="articleBody">
 
@@ -284,135 +270,172 @@
                             </header>
 
                             <div class="text-center">
-                                
-    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
-         <i class="fa fa-facebook"></i>Follow
-    </a>
+
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch"
+                                    class="facebook-button-follow">
+                                    <i class="fa fa-facebook"></i>Follow
+                                </a>
 
 
                                 &nbsp;
-                                
-
-                                &nbsp;
-                                
-  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
-    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
-  </a>
 
 
                                 &nbsp;
-                                
+
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://twitter.com/intent/follow?screen_name=rwieruch"
+                                    class="generic-button-follow">
+                                    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow"
+                                        alt="Follow on Twitter">
+                                </a>
+
+
+                                &nbsp;
+
                             </div>
 
                             <p class="text-muted text-uppercase mb-small text-center">
-    <span itemprop="author publisher">
-        
-    </span>
+                                <span itemprop="author publisher">
 
-    
-        <time datetime="2018-06-18" itemprop="datePublished">
-            June 18, 2018
-        </time>
-    
-
-    
-        <span class="hidden-xs hidden-sm"> - <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/minimal-node-js-babel-setup.md">
-                Edit this Post on GitHub
-            </a>
-        </span>
-    
-</p>
-
-                            
-
-<div>
-  
-
-</div>
-
-<div class="post-image-primary">
-    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="pinterest-pinner">
-            <a
-                data-pin-do="buttonPin"
-                data-pin-save="true"
-                data-pin-tall="true"
-                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fminimal-node-js-babel-setup%2f&amp;media=https://chrispaul.dev/img%2fposts%2fminimal-node-js-babel-setup%2fbanner.jpg&amp;description=">
-            </a>
-        </div>
-
-        <img
-            class="img-lazy img-responsive"
-            data-lazy-src="/src="/img/posts/minimal-node-js-babel-setup/banner.jpg"
-            data-is-src-set="is-src-set"
-            alt="node js babel setup"
-            itemprop="image"
-        />
-    </div>
-</div>
+                                </span>
 
 
-<div class="read-before">
-    <p>This tutorial is part 2 of 2 in the series.</p>
-    <div>Part 1: <a href="../developer-setup/index.html" itemprop="url">My development setup as a JavaScript web developer</a></div>
-</div>
+                                <time datetime="2018-06-18" itemprop="datePublished">
+                                    June 18, 2018
+                                </time>
 
-<p>I have always been of the understanding there are no common sense rules about how to create a minimal Node.js application with Babel. In my search for these answers, it seemed that every tutorial I came across showed something different. As a result, I wanted to streamline this project setup for my readers and myself, so I developed a common approach for Node.js applications with Babel. I think it is a good foundation for learning JavaScript on the command line, building sophisticated Node.js projects on top of it, releasing it as node package (library) on npm as an open source project, or to build a RESTful or GraphQL server on top of it. The final project you are going to implement here can be found in this <a href="https://github.com/rwieruch/node-babel-server">GitHub repository</a>.</p>
 
-<h2 class="chapter-header" id="node-js-project-setup">Node.js Project Setup</h2>
 
-<p>For any new project, there has to be a folder to allocate its configuration, and more importantly, its source code. This folder usually resides in another folder where all your other projects are found. To get started with your new project, create its folder on the command line or in your file explorer, and navigate to it.</p>
+                                <span class="hidden-xs hidden-sm"> - <a target="_blank" rel="noopener noreferrer"
+                                        href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/minimal-node-js-babel-setup.md">
+                                        Edit this Post on GitHub
+                                    </a>
+                                </span>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">mkdir</span> <span style="color: #06b6ef">my</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">project</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">name</span>
+                            </p>
+
+
+
+                            <div>
+
+
+                            </div>
+
+                            <div class="post-image-primary">
+                                <div class="pinterest-pinner-wrapper" itemscope
+                                    itemtype="http://schema.org/ImageObject">
+                                    <div class="pinterest-pinner">
+                                        <a data-pin-do="buttonPin" data-pin-save="true" data-pin-tall="true"
+                                            href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fminimal-node-js-babel-setup%2f&amp;media=https://chrispaul.dev/img%2fposts%2fminimal-node-js-babel-setup%2fbanner.jpg&amp;description=">
+                                        </a>
+                                    </div>
+
+                                    <img class="img-lazy img-responsive"
+                                        data-lazy-src="/src="/img/posts/minimal-node-js-babel-setup/banner.jpg"
+                                        data-is-src-set="is-src-set" alt="node js babel setup" itemprop="image" />
+                                </div>
+                            </div>
+
+
+                            <div class="read-before">
+                                <p>This tutorial is part 2 of 2 in the series.</p>
+                                <div>Part 1: <a href="../developer-setup/index.html" itemprop="url">My development setup
+                                        as a JavaScript web developer</a></div>
+                            </div>
+
+                            <p>I have always been of the understanding there are no common sense rules about how to
+                                create a minimal Node.js application with Babel. In my search for these answers, it
+                                seemed that every tutorial I came across showed something different. As a result, I
+                                wanted to streamline this project setup for my readers and myself, so I developed a
+                                common approach for Node.js applications with Babel. I think it is a good foundation for
+                                learning JavaScript on the command line, building sophisticated Node.js projects on top
+                                of it, releasing it as node package (library) on npm as an open source project, or to
+                                build a RESTful or GraphQL server on top of it. The final project you are going to
+                                implement here can be found in this <a
+                                    href="https://github.com/rwieruch/node-babel-server">GitHub repository</a>.</p>
+
+                            <h2 class="chapter-header" id="node-js-project-setup">Node.js Project Setup</h2>
+
+                            <p>For any new project, there has to be a folder to allocate its configuration, and more
+                                importantly, its source code. This folder usually resides in another folder where all
+                                your other projects are found. To get started with your new project, create its folder
+                                on the command line or in your file explorer, and navigate to it.</p>
+
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">mkdir</span> <span style="color: #06b6ef">my</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">project</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">name</span>
 <span style="color: #06b6ef">cd</span> <span style="color: #06b6ef">my</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">project</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">name</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>Once inside the project folder, you can initialize it as <a target="_blank" rel="noopener noreferrer" href="https://docs.npmjs.com/cli/init">npm</a> project. Adding the <code>-y</code> shorthand flag tells npm it should take all the defaults. If you leave the flag out, you will need to specify the information about your project manually.</p>
+                            <p>Once inside the project folder, you can initialize it as <a target="_blank"
+                                    rel="noopener noreferrer" href="https://docs.npmjs.com/cli/init">npm</a> project.
+                                Adding the <code>-y</code> shorthand flag tells npm it should take all the defaults. If
+                                you leave the flag out, you will need to specify the information about your project
+                                manually.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">init</span> <span style="color: #5bc4bf">-</span><span style="color: #06b6ef">y</span>
-</code></pre></div>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">init</span> <span style="color: #5bc4bf">-</span><span style="color: #06b6ef">y</span>
+</code></pre>
+                            </div>
 
 
-<p>You can checkout the <em>package.json</em> file after initializing your project as an npm project, and it should be filled with your defaults. To change them, type the following into the command line:</p>
+                            <p>You can checkout the <em>package.json</em> file after initializing your project as an npm
+                                project, and it should be filled with your defaults. To change them, type the following
+                                into the command line:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">config</span> <span style="color: #06b6ef">list</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">config</span> <span style="color: #06b6ef">list</span>
 
 <span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">set</span> <span style="color: #06b6ef">init</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">author</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">name</span> <span style="color: #48b685">&quot;&lt;Your Name&gt;&quot;</span>
 <span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">set</span> <span style="color: #06b6ef">init</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">author</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">email</span> <span style="color: #48b685">&quot;you@example.com&quot;</span>
 <span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">set</span> <span style="color: #06b6ef">init</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">author</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">url</span> <span style="color: #48b685">&quot;example.com&quot;</span>
 <span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">set</span> <span style="color: #06b6ef">init</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">license</span> <span style="color: #48b685">&quot;MIT&quot;</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>After setting up your npm project, you can install node packages (libraries) to your project with npm. Once you install a new node package, it will be stored in your <em>package.json</em> file. After all, your project is a node package, too. You can use it to open source this project on npm later.</p>
+                            <p>After setting up your npm project, you can install node packages (libraries) to your
+                                project with npm. Once you install a new node package, it will be stored in your
+                                <em>package.json</em> file. After all, your project is a node package, too. You can use
+                                it to open source this project on npm later.</p>
 
-<p>Next, on the command line or in your editor/IDE, create a <em>src/</em> folder for your project&rsquo;s source code. In this folder, create a <em>src/index.js</em> file as an entry point to your project:</p>
+                            <p>Next, on the command line or in your editor/IDE, create a <em>src/</em> folder for your
+                                project&rsquo;s source code. In this folder, create a <em>src/index.js</em> file as an
+                                entry point to your project:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">mkdir</span> <span style="color: #06b6ef">src</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">mkdir</span> <span style="color: #06b6ef">src</span>
 <span style="color: #06b6ef">cd</span> <span style="color: #06b6ef">src</span>
 <span style="color: #06b6ef">touch</span> <span style="color: #06b6ef">index</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>To begin, introduce a <code>console.log</code> statement in the file to make sure your setup is running:</p>
+                            <p>To begin, introduce a <code>console.log</code> statement in the file to make sure your
+                                setup is running:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Hello Node.js project.&#39;</span><span style="color: #e7e9db">);</span>
-</code></pre></div>
-
-
-<p>When you go on the command line again, you can run this file with Node.js from your project&rsquo;s root folder:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">node</span> <span style="color: #06b6ef">src</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">index</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span>
-</code></pre></div>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Hello Node.js project.&#39;</span><span style="color: #e7e9db">);</span>
+</code></pre>
+                            </div>
 
 
-<p>A statement log appears in the command line after the script is executed. Next, move this script into your <em>package.json</em> file, because that&rsquo;s where all your project&rsquo;s scripts will end up eventually.</p>
+                            <p>When you go on the command line again, you can run this file with Node.js from your
+                                project&rsquo;s root folder:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">node</span> <span style="color: #06b6ef">src</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">index</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">js</span>
+</code></pre>
+                            </div>
+
+
+                            <p>A statement log appears in the command line after the script is executed. Next, move this
+                                script into your <em>package.json</em> file, because that&rsquo;s where all your
+                                project&rsquo;s scripts will end up eventually.</p>
+
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
   <span style="color: #e7e9db">...</span>
   <span style="color: #48b685">&quot;main&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;index.js&quot;</span><span style="color: #e7e9db">,</span>
   <span style="color: #48b685">&quot;scripts&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
@@ -422,22 +445,36 @@
   <span style="color: #48b685">&quot;keywords&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[],</span>
   <span style="color: #e7e9db">...</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>On the command line, run the same script as before, except with <code>npm start</code> . Every time you change the underlying start script in the <em>package.json</em> file&rsquo;s npm scripts, you only need to type <code>npm start</code> on the command line without the specifics of the script. Try creating more npm scripts for your needs like testing and deploying in the <em>package.json</em> file for this project later.</p>
+                            <p>On the command line, run the same script as before, except with <code>npm start</code> .
+                                Every time you change the underlying start script in the <em>package.json</em>
+                                file&rsquo;s npm scripts, you only need to type <code>npm start</code> on the command
+                                line without the specifics of the script. Try creating more npm scripts for your needs
+                                like testing and deploying in the <em>package.json</em> file for this project later.</p>
 
-<h2 class="chapter-header" id="node-js-nodemon">Node.js with Nodemon</h2>
+                            <h2 class="chapter-header" id="node-js-nodemon">Node.js with Nodemon</h2>
 
-<p>The only remaining concern is that you have start the script every time you want to try your source code. You can change this with an always-running node process. To remedy this, install the commonly used <a target="_blank" rel="noopener noreferrer" href="https://github.com/remy/nodemon">nodemon</a> library on the command line as <a target="_blank" rel="noopener noreferrer" href="https://docs.npmjs.com/files/package.json#dependencies">development dependency</a> to your project.</p>
+                            <p>The only remaining concern is that you have start the script every time you want to try
+                                your source code. You can change this with an always-running node process. To remedy
+                                this, install the commonly used <a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/remy/nodemon">nodemon</a> library on the command line as <a
+                                    target="_blank" rel="noopener noreferrer"
+                                    href="https://docs.npmjs.com/files/package.json#dependencies">development
+                                    dependency</a> to your project.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">nodemon</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">dev</span>
-</code></pre></div>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">nodemon</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">dev</span>
+</code></pre>
+                            </div>
 
 
-<p>Next, exchange node with nodemon in your npm start script:</p>
+                            <p>Next, exchange node with nodemon in your npm start script:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
   <span style="color: #e7e9db">...</span>
   <span style="color: #48b685">&quot;main&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;index.js&quot;</span><span style="color: #e7e9db">,</span>
   <span style="color: #48b685">&quot;scripts&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
@@ -447,28 +484,44 @@
   <span style="color: #48b685">&quot;keywords&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[],</span>
   <span style="color: #e7e9db">...</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>When you run your application with <code>npm start</code> from the command line, it should keep running. The best part is that the script will execute again once you change the source code. Try adjusting your source code in the <em>src/index.js</em> file and see what happens in your command line.</p>
+                            <p>When you run your application with <code>npm start</code> from the command line, it
+                                should keep running. The best part is that the script will execute again once you change
+                                the source code. Try adjusting your source code in the <em>src/index.js</em> file and
+                                see what happens in your command line.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Hello ever running Node.js project.&#39;</span><span style="color: #e7e9db">);</span>
-</span></code></pre></div>
-
-
-<p>This little adjustment to the environment gives developers a powerful tool, because the node process executes again once you change your code. If you introduce a bug, you will see a stack trace in the command line, and the script runs again without any flaws.</p>
-
-<h2 class="chapter-header" id="node-js-babel">Node.js with Babel</h2>
-
-<p>You should be able to develop a Node.js application by now, but there is more to setting up a sophisticated Node.js project that is capable of using recent JavaScript language features (ECMAScript) that are not included in the recent Node.js versions. That&rsquo;s where <a target="_blank" rel="noopener noreferrer" href="https://babeljs.io/">Babel</a> becomes useful. You can install it from the command line for your project&rsquo;s development dependencies.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #ef6155">@</span><span style="color: #06b6ef">babel</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">core</span> <span style="color: #ef6155">@</span><span style="color: #06b6ef">babel</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">node</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">dev</span>
-</code></pre></div>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Hello ever running Node.js project.&#39;</span><span style="color: #e7e9db">);</span>
+</span></code></pre>
+                            </div>
 
 
-<p>Next, add it to your npm start script:</p>
+                            <p>This little adjustment to the environment gives developers a powerful tool, because the
+                                node process executes again once you change your code. If you introduce a bug, you will
+                                see a stack trace in the command line, and the script runs again without any flaws.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+                            <h2 class="chapter-header" id="node-js-babel">Node.js with Babel</h2>
+
+                            <p>You should be able to develop a Node.js application by now, but there is more to setting
+                                up a sophisticated Node.js project that is capable of using recent JavaScript language
+                                features (ECMAScript) that are not included in the recent Node.js versions. That&rsquo;s
+                                where <a target="_blank" rel="noopener noreferrer" href="https://babeljs.io/">Babel</a>
+                                becomes useful. You can install it from the command line for your project&rsquo;s
+                                development dependencies.</p>
+
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #ef6155">@</span><span style="color: #06b6ef">babel</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">core</span> <span style="color: #ef6155">@</span><span style="color: #06b6ef">babel</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">node</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">dev</span>
+</code></pre>
+                            </div>
+
+
+                            <p>Next, add it to your npm start script:</p>
+
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
   <span style="color: #e7e9db">...</span>
   <span style="color: #48b685">&quot;main&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">&quot;index.js&quot;</span><span style="color: #e7e9db">,</span>
   <span style="color: #48b685">&quot;scripts&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
@@ -478,419 +531,475 @@
   <span style="color: #48b685">&quot;keywords&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[],</span>
   <span style="color: #e7e9db">...</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>Nothing should change when you run the application again, though that&rsquo;s just the surface. Under the hood, Babel transpiles your code to vanilla JavaScript. When you use an upcoming JavaScript language feature, which hasn&rsquo;t been introduced in Node.js, you can still use the feature in your source code. Babel makes sure that Node.js understands it. However, there is still one crucial step to include upcoming language features with Babel. You can activate different upcoming JavaScript features by adding them as presets to Babel. Let&rsquo;s add the most common used Babel preset to your application:</p>
+                            <p>Nothing should change when you run the application again, though that&rsquo;s just the
+                                surface. Under the hood, Babel transpiles your code to vanilla JavaScript. When you use
+                                an upcoming JavaScript language feature, which hasn&rsquo;t been introduced in Node.js,
+                                you can still use the feature in your source code. Babel makes sure that Node.js
+                                understands it. However, there is still one crucial step to include upcoming language
+                                features with Babel. You can activate different upcoming JavaScript features by adding
+                                them as presets to Babel. Let&rsquo;s add the most common used Babel preset to your
+                                application:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #ef6155">@</span><span style="color: #06b6ef">babel</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">preset</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">env</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">dev</span>
-</code></pre></div>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #ef6155">@</span><span style="color: #06b6ef">babel</span><span style="color: #5bc4bf">/</span><span style="color: #06b6ef">preset</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">env</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">dev</span>
+</code></pre>
+                            </div>
 
 
-<p>Now, in the project&rsquo;s root folder, create a <em>.babelrc</em> file in the command line:</p>
+                            <p>Now, in the project&rsquo;s root folder, create a <em>.babelrc</em> file in the command
+                                line:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">touch</span> <span style="color: #e7e9db">.</span><span style="color: #06b6ef">babelrc</span>
-</code></pre></div>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">touch</span> <span style="color: #e7e9db">.</span><span style="color: #06b6ef">babelrc</span>
+</code></pre>
+                            </div>
 
 
-<p>In this configuration file for Babel, you can include the recently installed dependency for unlocking the upcoming JavaScript language features.</p>
+                            <p>In this configuration file for Babel, you can include the recently installed dependency
+                                for unlocking the upcoming JavaScript language features.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">{</span>
   <span style="color: #48b685">&quot;presets&quot;</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[</span>
     <span style="color: #48b685">&quot;@babel/preset-env&quot;</span>
   <span style="color: #e7e9db">]</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>Now you can include upcoming JavaScript features in your <em>src/index.js</em> file. If you run into problems because your desired feature is not working, check whether there exists a dedicated Babel preset for it.</p>
+                            <p>Now you can include upcoming JavaScript features in your <em>src/index.js</em> file. If
+                                you run into problems because your desired feature is not working, check whether there
+                                exists a dedicated Babel preset for it.</p>
 
-<h2 class="chapter-header" id="node-js-environment-variables">Environment Variables in Node.js</h2>
+                            <h2 class="chapter-header" id="node-js-environment-variables">Environment Variables in
+                                Node.js</h2>
 
-<p>It is important to set data like private API keys and user credentials like password, username, and email as environmental variables, but without exposing them in the source code. For this, we put environmental variables in a dedicated file that is safe from external access. The <em>.env</em> file lets you set Node.js environment variables as accessible in your project&rsquo;s source code. On the command line, in your project&rsquo;s root folder, create a <em>.env</em> file:</p>
+                            <p>It is important to set data like private API keys and user credentials like password,
+                                username, and email as environmental variables, but without exposing them in the source
+                                code. For this, we put environmental variables in a dedicated file that is safe from
+                                external access. The <em>.env</em> file lets you set Node.js environment variables as
+                                accessible in your project&rsquo;s source code. On the command line, in your
+                                project&rsquo;s root folder, create a <em>.env</em> file:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">touch</span> <span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span>
-</code></pre></div>
-
-
-<p>Now you can place any key value pair that you don&rsquo;t want in your source code in this new file.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">MY_SECRET</span><span style="color: #5bc4bf">=</span><span style="color: #06b6ef">mysupersecretpassword</span>
-</code></pre></div>
-
-
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/motdotla/dotenv">dotenv</a> is another helpful library to make environmental variables accessible in the source code. First, install it on the command line as a normal dependency:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">dotenv</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span>
-</code></pre></div>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">touch</span> <span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span>
+</code></pre>
+                            </div>
 
 
-<p>Second, import it into your <em>src/index.js</em> file  to initialize it. The environment variable from your <em>.env</em> file is now accessible in your source code.</p>
+                            <p>Now you can place any key value pair that you don&rsquo;t want in your source code in
+                                this new file.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;dotenv/config&#39;</span><span style="color: #e7e9db">;</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">MY_SECRET</span><span style="color: #5bc4bf">=</span><span style="color: #06b6ef">mysupersecretpassword</span>
+</code></pre>
+                            </div>
+
+
+                            <p><a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/motdotla/dotenv">dotenv</a> is another helpful library to
+                                make environmental variables accessible in the source code. First, install it on the
+                                command line as a normal dependency:</p>
+
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">dotenv</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span>
+</code></pre>
+                            </div>
+
+
+                            <p>Second, import it into your <em>src/index.js</em> file to initialize it. The environment
+                                variable from your <em>.env</em> file is now accessible in your source code.</p>
+
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;dotenv/config&#39;</span><span style="color: #e7e9db">;</span>
 </span>
 <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Hello Node.js project.&#39;</span><span style="color: #e7e9db">);</span>
 
 <span style="background-color: #4f424c"><span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">MY_SECRET</span><span style="color: #e7e9db">);</span>
-</span></code></pre></div>
+</span></code></pre>
+                            </div>
 
 
-<p>Start the npm script again, and you should see the environmental variable in the command line. Now you are able to store sensible data separate from the source code.</p>
+                            <p>Start the npm script again, and you should see the environmental variable in the command
+                                line. Now you are able to store sensible data separate from the source code.</p>
 
-<p>Now, consider the following code for your <em>src/index.js</em> file, where a function is imported from another file from this project.</p>
+                            <p>Now, consider the following code for your <em>src/index.js</em> file, where a function is
+                                imported from another file from this project.</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">saySomething</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./my-other-file.js&#39;</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">saySomething</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./my-other-file.js&#39;</span>
 
 <span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;dotenv/config&#39;</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>If you use an environment variable in your <em>src/my-other-file.js</em>, it is undefined because the initialization of the dotenv package happens after the import in your <em>src/index.js</em> file. To fix it, put the dotenv initialization before your local file imports:</p>
+                            <p>If you use an environment variable in your <em>src/my-other-file.js</em>, it is undefined
+                                because the initialization of the dotenv package happens after the import in your
+                                <em>src/index.js</em> file. To fix it, put the dotenv initialization before your local
+                                file imports:</p>
 
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;dotenv/config&#39;</span><span style="color: #e7e9db">;</span>
+                            <div class="highlight" style="background: #2f1e2e">
+                                <pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;dotenv/config&#39;</span><span style="color: #e7e9db">;</span>
 
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">saySomething</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./my-other-file.js&#39;</span>
-</code></pre></div>
+</code></pre>
+                            </div>
 
 
-<p>That&rsquo;s a basic understanding of Node.js environment variables. They should be used to keep sensible data secure in JavaScript applications, but shouldn&rsquo;t be shared on public GitHub repositories when using git.</p>
+                            <p>That&rsquo;s a basic understanding of Node.js environment variables. They should be used
+                                to keep sensible data secure in JavaScript applications, but shouldn&rsquo;t be shared
+                                on public GitHub repositories when using git.</p>
 
-<h3 id="exercises">Exercises:</h3>
+                            <h3 id="exercises">Exercises:</h3>
 
-<ul>
-<li>Confirm your <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/node-babel-server">source code</a></li>
-<li>Ask yourself:
+                            <ul>
+                                <li>Confirm your <a target="_blank" rel="noopener noreferrer"
+                                        href="https://github.com/rwieruch/node-babel-server">source code</a></li>
+                                <li>Ask yourself:
 
-<ul>
-<li>What&rsquo;s <code>npm init</code> doing when you setup your Node.js project?</li>
-<li>What benefit is Nodemon giving us?</li>
-<li>Why do we need Babel?</li>
-<li>Why do we need Environment Variables?</li>
-</ul></li>
-</ul>
+                                    <ul>
+                                        <li>What&rsquo;s <code>npm init</code> doing when you setup your Node.js
+                                            project?</li>
+                                        <li>What benefit is Nodemon giving us?</li>
+                                        <li>Why do we need Babel?</li>
+                                        <li>Why do we need Environment Variables?</li>
+                                    </ul>
+                                </li>
+                            </ul>
 
-<hr class="section-divider">
+                            <hr class="section-divider">
 
-<p>This guide has shown you how to create a Node.js project from scratch, and how you can introduce upcoming JavaScript features in your Node.js environment using Babel. You have seen how npm scripts are used to start, test, and deploy applications, and how environment variables secure sensible data like private API keys and user credentials. The finished product is a node package that can be open sourced on npm, another rewarding aspect of working with the Node.js ecosystem.</p>
+                            <p>This guide has shown you how to create a Node.js project from scratch, and how you can
+                                introduce upcoming JavaScript features in your Node.js environment using Babel. You have
+                                seen how npm scripts are used to start, test, and deploy applications, and how
+                                environment variables secure sensible data like private API keys and user credentials.
+                                The finished product is a node package that can be open sourced on npm, another
+                                rewarding aspect of working with the Node.js ecosystem.</p>
 
-<div class="read-before">
-    <p>This tutorial is part 1 of 2 in the series.</p>
-    <div>Part 2: <a href="../node-js-express-tutorial/index.html" itemprop="url">How to setup Express.js in Node.js</a></div>
-</div>
+                            <div class="read-before">
+                                <p>This tutorial is part 1 of 2 in the series.</p>
+                                <div>Part 2: <a href="../node-js-express-tutorial/index.html" itemprop="url">How to
+                                        setup Express.js in Node.js</a></div>
+                            </div>
 
-<div class="read-before">
-    <p>This tutorial is part 1 of 2 in the series.</p>
-    <div>Part 2: <a href="../graphql-apollo-server-tutorial/index.html" itemprop="url">GraphQL Server Tutorial with Apollo Server and Express</a></div>
-</div>
+                            <div class="read-before">
+                                <p>This tutorial is part 1 of 2 in the series.</p>
+                                <div>Part 2: <a href="../graphql-apollo-server-tutorial/index.html"
+                                        itemprop="url">GraphQL Server Tutorial with Apollo Server and Express</a></div>
+                            </div>
 
-<div class="read-before">
-    <p>This tutorial is part 1 of 2 in the series.</p>
-    <div>Part 2: <a href="../node-js-testing-mocha-chai/index.html" itemprop="url">Node Testing Setup with Mocha and Chai</a></div>
-</div>
+                            <div class="read-before">
+                                <p>This tutorial is part 1 of 2 in the series.</p>
+                                <div>Part 2: <a href="../node-js-testing-mocha-chai/index.html" itemprop="url">Node
+                                        Testing Setup with Mocha and Chai</a></div>
+                            </div>
 
-<div class="read-before">
-    <p>This tutorial is part 1 of 2 in the series.</p>
-    <div>Part 2: <a href="../publish-npm-package-node/index.html" itemprop="url">How to publish a npm package?</a></div>
-</div>
-
-
-                            
-<div class="feedback-and-share text-center">
-    <hr>
-    
-    <p class="lead">
-        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
-    </p>
-    
-    
-        <p class="lead">
-            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
-        </p>
-    
-</div>
+                            <div class="read-before">
+                                <p>This tutorial is part 1 of 2 in the series.</p>
+                                <div>Part 2: <a href="../publish-npm-package-node/index.html" itemprop="url">How to
+                                        publish a npm package?</a></div>
+                            </div>
 
 
-                            
-                                <div class="box-inline col-md-12">
-    <div class="col-md-12 text-center">
-        <h2 class="newsletter">The Road to learn React</h2>
-        
-            <div class="col-md-4">
-                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
-            </div>
-        
-        <p class="lead">
-            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
-        </p>
-        <a
-            class="btn btn-template-main"
-            href="https://roadtoreact.com"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Get the Book for free <i class="fa fa-chevron-right"></i>
-        </a>
-        
-            <div>
-                <a
-                    href="https://amzn.to/2QY2ONp"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Get it from Amazon
-                </a>
-            </div>
-        
-    </div>
-</div>
-                            
+
+                            <div class="feedback-and-share text-center">
+                                <hr>
+
+                                <p class="lead">
+                                    I would like to hear your thoughts :-) Find me on <a target="_blank"
+                                        rel="noopener noreferrer" aria-label="twitter"
+                                        href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and
+                                    <a target="_blank" aria-label="facebook"
+                                        href="https://www.facebook.com/rwieruch/"><i
+                                            class="fa fa-facebook"></i>Facebook</a>
+                                </p>
+
+
+                                <p class="lead">
+                                    Did the article help you? Share it with your friends on social media <i
+                                        class="fa fa-arrow-left"></i>, support me as my <a target="_blank"
+                                        rel="noopener noreferrer" aria-label="patreon"
+                                        href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and
+                                    become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+                                </p>
+
+                            </div>
+
+
+
+                            <div class="box-inline col-md-12">
+                                <div class="col-md-12 text-center">
+                                    <h2 class="newsletter">The Road to learn React</h2>
+
+                                    <div class="col-md-4">
+                                        <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+                                    </div>
+
+                                    <p class="lead">
+                                        Build a Hacker News App along the way. No setup configuration. No tooling. No
+                                        Redux. Plain React in 200+ pages of learning material. Learn React like
+                                        <strong>50.000+ readers</strong>.
+                                    </p>
+                                    <a class="btn btn-template-main" href="https://roadtoreact.com" target="_blank"
+                                        rel="noopener noreferrer">
+                                        Get the Book for free <i class="fa fa-chevron-right"></i>
+                                    </a>
+
+                                    <div>
+                                        <a href="https://amzn.to/2QY2ONp" target="_blank" rel="noopener noreferrer">
+                                            Get it from Amazon
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+
                         </div>
 
-                        
-                        
+
+
                         <div id="comments">
                             <div id="disqus_thread"></div>
-<script type="text/javascript">
+                            <script type="text/javascript">
 
-(function() {
-    
-    
-    if (window.location.hostname == "localhost")
-        return;
+                                (function () {
 
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'rwieruch';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+                                    if (window.location.hostname == "localhost")
+                                        return;
+
+                                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                    var disqus_shortname = 'rwieruch';
+                                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a
+                                    href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span
+                                    class="logo-disqus">Disqus</span></a>
                         </div>
-                        
+
 
                     </article>
-                    
+
 
                 </div>
-                
+
 
             </div>
-            
-        </div>
-        
-
-        
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
-    <div class="dark-mask"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
-                <h2 class="text-uppercase">Take Part</h2>
-            </div>
-
-            <div class="col-md-12 text-center">
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
-                
-            </div>
-            <div class="col-md-12">
-                <p class="text-center">
-                    <div id="mc_embed_signup">
-    <form
-        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
-        method="post"
-        id="revue-form"
-        name="revue-form"
-        target="_blank">
-        <div id="mc_embed_signup_scroll">
-            <input
-                class="email"
-                placeholder="email address"
-                type="email"
-                name="member[email]"
-                id="member_email"
-            >
-            <div>
-                <button
-                    type="submit"
-                    value="Subscribe"
-                    name="member[subscribe]"
-                    id="member_submit"
-                    class="btn btn-template-transparent-black btn-lg"
-                >
-                    Subscribe
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
-
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-        <footer id="subfooter">
-    <div class="container">
-
-        <div class="col-md-5 col-sm-6">
-
-            <h4>Recent posts</h4>
-
-            <div class="blog-entries">
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../redux-vs-usereducer/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="React&#39;s useReducer vs Redux"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../publish-npm-package-node/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="How to publish a npm package?"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../react-scroll-to-item/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="How to Scroll to Item in React?"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
-                    </div>
-                </div>
-                
-            </div>
-
-            <hr class="hidden-md hidden-lg hidden-sm">
 
         </div>
-        
 
-        
-        <div class="col-md-5 col-md-offset-2 col-sm-6">
 
-            <h4>About Me</h4>
 
-            <div class="blog-entries">
-                <div class="item same-height-row clearfix">
-                    <div class="profile same-height-always">
-                        <img
-                            class="img-lazy img-responsive"
-                            data-lazy-src="//img/page/profile.jpg"
-                            alt="profile"
-                        >
+
+        <section class="bar background-image-fixed-2 no-mb color-white text-center">
+            <div class="dark-mask"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                        <h2 class="text-uppercase">Take Part</h2>
                     </div>
-                    <div class="name same-height-always">
-                        <p>
-                            Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+
+                    <div class="col-md-12 text-center">
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+
+                    </div>
+                    <div class="col-md-12">
+                        <p class="text-center">
+                            <div id="mc_embed_signup">
+                                <form action="https://www.getrevue.co/profile/rwieruch/add_subscriber" method="post"
+                                    id="revue-form" name="revue-form" target="_blank">
+                                    <div id="mc_embed_signup_scroll">
+                                        <input class="email" placeholder="email address" type="email"
+                                            name="member[email]" id="member_email">
+                                        <div>
+                                            <button type="submit" value="Subscribe" name="member[subscribe]"
+                                                id="member_submit" class="btn btn-template-transparent-black btn-lg">
+                                                Subscribe
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
                         </p>
                     </div>
                 </div>
             </div>
+        </section>
+        <footer id="subfooter">
+            <div class="container">
 
-        </div>
-        
-        
+                <div class="col-md-5 col-sm-6">
 
-    </div>
-    
-</footer>
+                    <h4>Recent posts</h4>
+
+                    <div class="blog-entries">
+
+                        <div class="item same-height-row clearfix">
+                            <div class="article same-height-always">
+                                <a href="../redux-vs-usereducer/index.html">
+
+                                    <img data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                        data-is-thumb="is-thumb" class="img-lazy img-responsive"
+                                        alt="React&#39;s useReducer vs Redux">
+
+                                </a>
+                            </div>
+                            <div class="name same-height-always">
+                                <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                            </div>
+                        </div>
+
+                        <div class="item same-height-row clearfix">
+                            <div class="article same-height-always">
+                                <a href="../publish-npm-package-node/index.html">
+
+                                    <img data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                        data-is-thumb="is-thumb" class="img-lazy img-responsive"
+                                        alt="How to publish a npm package?">
+
+                                </a>
+                            </div>
+                            <div class="name same-height-always">
+                                <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a>
+                                </h5>
+                            </div>
+                        </div>
+
+                        <div class="item same-height-row clearfix">
+                            <div class="article same-height-always">
+                                <a href="../react-scroll-to-item/index.html">
+
+                                    <img data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                        data-is-thumb="is-thumb" class="img-lazy img-responsive"
+                                        alt="How to Scroll to Item in React?">
+
+                                </a>
+                            </div>
+                            <div class="name same-height-always">
+                                <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a>
+                                </h5>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr class="hidden-md hidden-lg hidden-sm">
+
+                </div>
+
+
+
+                <div class="col-md-5 col-md-offset-2 col-sm-6">
+
+                    <h4>About Me</h4>
+
+                    <div class="blog-entries">
+                        <div class="item same-height-row clearfix">
+                            <div class="profile same-height-always">
+                                <img class="img-lazy img-responsive" data-lazy-src="//img/page/profile.jpg"
+                                    alt="profile">
+                            </div>
+                            <div class="name same-height-always">
+                                <p>
+                                    Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more
+                                    <a href="../about/index.html">about me</a>, <a
+                                        href="../work-with-me/index.html">work with me</a>, or have a look at my social
+                                    media profiles below.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </footer>
 
 
         <footer id="copyright">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <ul class="info list-inline quicklinks pull-left">
-          
-            <li>© Chris Paul</li>
-          
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <ul class="list-inline footer-social-buttons text-center">
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
-          
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <ul class="info list-inline quicklinks pull-right">
-          
-            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
-          
-        </ul>
-      </div>
-    </div>
-  </div>
-</footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <ul class="info list-inline quicklinks pull-left">
+
+                            <li>© Chris Paul</li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-inline footer-social-buttons text-center">
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i
+                                        class="fa fa-linkedin"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a>
+                            </li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="info list-inline quicklinks pull-right">
+
+                            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
 
     </div>
-    
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<script src="../js/script.js"></script>  </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script src="../js/script.js"></script>
+</body>
+
 </html>

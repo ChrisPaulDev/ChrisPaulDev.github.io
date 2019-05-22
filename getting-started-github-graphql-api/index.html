@@ -1,553 +1,719 @@
 <!DOCTYPE html>
-<html lang="en">  <head>
-  <meta charset="utf-8">
-  <meta name="robots" content="all,follow">
-  <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta name="viewport" content="width=device-width, initial-scale=1">    <title>
-    Getting Started with GitHub&#39;s GraphQL API - CPaul
-  </title>  <meta name="author" content="" />
-  <meta name="description" content="Everything you need to get started with GitHub&#39;s GraphQL API for learning GraphQL in JavaScript. This walkthrough demonstrates you how to set up your data on GitHub, how to create a personal access token, and how to consume their API without any source code with GraphiQL or GitHub&#39;s GraphQL Explorer ...">
-    <meta name="theme-color" content="#38bb6c"/>  <meta name="generator" content="Hugo 0.41" />
-<link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
-  <link href="../css/customizations.css" rel="stylesheet">    <!--[if lt IE 9]>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        Getting Started with GitHub&#39;s GraphQL API - CPaul
+    </title>
+    <meta name="author" content="" />
+    <meta name="description"
+        content="Everything you need to get started with GitHub&#39;s GraphQL API for learning GraphQL in JavaScript. This walkthrough demonstrates you how to set up your data on GitHub, how to create a personal access token, and how to consume their API without any source code with GraphiQL or GitHub&#39;s GraphQL Explorer ...">
+    <meta name="theme-color" content="#38bb6c" />
+    <meta name="generator" content="Hugo 0.41" />
+    <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+    <link href="../css/customizations.css" rel="stylesheet">
+    <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  
-<link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="../img/favicon/manifest.json">
-  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul"><meta itemprop="name" content="Getting Started with GitHub&#39;s GraphQL API">
-<meta itemprop="description" content="Everything you need to get started with GitHub&#39;s GraphQL API for learning GraphQL in JavaScript. This walkthrough demonstrates you how to set up your data on GitHub, how to create a personal access token, and how to consume their API without any source code with GraphiQL or GitHub&#39;s GraphQL Explorer ...">    <meta itemprop="image" content="https://chrispaul.dev/img/posts/getting-started-github-graphql-api/banner_640.jpg"><meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
-<meta itemprop="wordCount" content="1584"><meta name="keywords" content="github graphql API, github graphql apollo, github graphql react">  <meta property="og:title" content="Getting Started with GitHub&#39;s GraphQL API - CPaul">
-  <meta property="og:description" content="Everything you need to get started with GitHub&#39;s GraphQL API for learning GraphQL in JavaScript. This walkthrough demonstrates you how to set up your data on GitHub, how to create a personal access token, and how to consume their API without any source code with GraphiQL or GitHub&#39;s GraphQL Explorer ..." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://chrispaul.dev/getting-started-github-graphql-api/" />
-<meta property="og:image" content="https://chrispaul.dev/img/posts/getting-started-github-graphql-api/banner_640.jpg" />      <meta name="news_keywords" content="github graphql API,github graphql apollo,github graphql react" />      <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/getting-started-github-graphql-api/banner_640.jpg"/><meta name="twitter:title" content="Getting Started with GitHub&#39;s GraphQL API"/>
-<meta name="twitter:description" content="Everything you need to get started with GitHub&#39;s GraphQL API for learning GraphQL in JavaScript. This walkthrough demonstrates you how to set up your data on GitHub, how to create a personal access token, and how to consume their API without any source code with GraphiQL or GitHub&#39;s GraphQL Explorer ..."/>
-<meta name="twitter:site" content="@rwieruch"/>
-<meta name="twitter:domain" content="rwieruch"/>  </head>
-  <body>    <div id="all">        <header>          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">    <div class="navbar navbar-default yamm" role="navigation" id="navbar">        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand home" href="../index.html">
-                    <img src="../img/page/logo.svg" alt="Getting Started with GitHub&#39;s GraphQL API logo" class="img-lazy">
-                    <span class="sr-only">Getting Started with GitHub&#39;s GraphQL API - go to homepage</span>
-                </a>                <div class="navbar-buttons">
-                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-align-justify"></i>
-                    </button>
+
+    <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="../img/favicon/manifest.json">
+    <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
+    <meta itemprop="name" content="Getting Started with GitHub&#39;s GraphQL API">
+    <meta itemprop="description"
+        content="Everything you need to get started with GitHub&#39;s GraphQL API for learning GraphQL in JavaScript. This walkthrough demonstrates you how to set up your data on GitHub, how to create a personal access token, and how to consume their API without any source code with GraphiQL or GitHub&#39;s GraphQL Explorer ...">
+    <meta itemprop="image" content="https://chrispaul.dev/img/posts/getting-started-github-graphql-api/banner_640.jpg">
+    <meta itemprop="keywords"
+        content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+    <meta itemprop="wordCount" content="1584">
+    <meta name="keywords" content="github graphql API, github graphql apollo, github graphql react">
+    <meta property="og:title" content="Getting Started with GitHub&#39;s GraphQL API - CPaul">
+    <meta property="og:description"
+        content="Everything you need to get started with GitHub&#39;s GraphQL API for learning GraphQL in JavaScript. This walkthrough demonstrates you how to set up your data on GitHub, how to create a personal access token, and how to consume their API without any source code with GraphiQL or GitHub&#39;s GraphQL Explorer ..." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://chrispaul.dev/getting-started-github-graphql-api/" />
+    <meta property="og:image"
+        content="https://chrispaul.dev/img/posts/getting-started-github-graphql-api/banner_640.jpg" />
+    <meta name="news_keywords" content="github graphql API,github graphql apollo,github graphql react" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image:src"
+        content="https://chrispaul.dev/img/posts/getting-started-github-graphql-api/banner_640.jpg" />
+    <meta name="twitter:title" content="Getting Started with GitHub&#39;s GraphQL API" />
+    <meta name="twitter:description"
+        content="Everything you need to get started with GitHub&#39;s GraphQL API for learning GraphQL in JavaScript. This walkthrough demonstrates you how to set up your data on GitHub, how to create a personal access token, and how to consume their API without any source code with GraphiQL or GitHub&#39;s GraphQL Explorer ..." />
+    <meta name="twitter:site" content="@rwieruch" />
+    <meta name="twitter:domain" content="rwieruch" />
+</head>
+
+<body>
+    <div id="all">
+        <header>
+            <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+                <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand home" href="../index.html">
+                                <img src="../img/page/logo.svg" alt="Getting Started with GitHub&#39;s GraphQL API logo"
+                                    class="img-lazy">
+                                <span class="sr-only">Getting Started with GitHub&#39;s GraphQL API - go to
+                                    homepage</span>
+                            </a>
+                            <div class="navbar-buttons">
+                                <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse"
+                                    data-target="#navigation">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <i class="fa fa-align-justify"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="navbar-collapse collapse" id="navigation">
+                            <ul class="nav navbar-nav navbar-right">
+
+                                <li class="dropdown">
+
+                                    <a href="../index.html">Blog</a>
+
+                                </li>
+
+                                <li class="dropdown">
+
+                                    <a href="../work-with-me/index.html">Work with me</a>
+
+                                </li>
+
+                                <li class="dropdown">
+
+                                    <a href="../about/index.html">About</a>
+
+                                </li>
+
+                                <li class="dropdown">
+
+                                    <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
+
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="collapse clearfix" id="search">
+                            <form class="navbar-form" role="search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <span class="input-group-btn"> <button type="submit"
+                                            class="btn btn-template-main"><i class="fa fa-search"></i></button> </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
-                        <div class="navbar-collapse collapse" id="navigation">
-                <ul class="nav navbar-nav navbar-right">
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../index.html">Blog</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../work-with-me/index.html">Work with me</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a href="../about/index.html">About</a>
-                        
-                    </li>
-                    
-                    <li class="dropdown">
-                        
-                            <a style="color: #38bb6c" href="https://roadtoreact.com/">Books &amp; Courses</a>
-                        
-                    </li>
-                    
-                </ul>
-            </div>
-                        <div class="collapse clearfix" id="search">                <form class="navbar-form" role="search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>                </span>
-                    </div>
-                </form>            </div>
-                    </div>
-    </div>
-    </div>
-        </header>        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
-    <a
-    aria-label="icon-facebook"
-    class="icon-facebook"
-    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f"
-    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-    <i class="fa fa-facebook"></i>
-</a>
-<a
-    aria-label="icon-twitter"
-    class="icon-twitter"
-    href="https://twitter.com/share?text=Getting%20Started%20with%20GitHub%27s%20GraphQL%20API%20by%20%40rwieruch%20%23ReactJs%20%23GraphQL&amp;url=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f"
-    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-    <i class="fa fa-twitter"></i>
-</a><a
-    aria-label="icon-linkedin"
-    class="icon-linkedin"
-    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Getting%20Started%20with%20GitHub%27s%20GraphQL%20API&amp;url=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f">
-    <i class="fa fa-linkedin"></i>
-</a></div><div class="visible-xs visible-sm text-center">
-    <div class="post-share post-share-fixed post-share-mobile">
-        <a
-    aria-label="icon-facebook"
-    class="icon-facebook"
-    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f"
-    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-    <i class="fa fa-facebook"></i>
-</a>
-<a
-    aria-label="icon-twitter"
-    class="icon-twitter"
-    href="https://twitter.com/share?text=Getting%20Started%20with%20GitHub%27s%20GraphQL%20API%20by%20%40rwieruch%20%23ReactJs%20%23GraphQL&amp;url=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f"
-    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-    <i class="fa fa-twitter"></i>
-</a><a
-    aria-label="icon-linkedin"
-    class="icon-linkedin"
-    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Getting%20Started%20with%20GitHub%27s%20GraphQL%20API&amp;url=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f">
-    <i class="fa fa-linkedin"></i>
-</a>    </div>
-</div>                <div class="hidden-xs">
-            <section class="bar background-image-fixed-2 no-mb color-white text-center">
-    <div class="dark-mask"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
-                <h2 class="text-uppercase newsletter">Take Part</h2>
-            </div>            <div class="col-md-12">
-                <p class="text-center">
-                    <div id="mc_embed_signup">
-    <form
-        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
-        method="post"
-        id="revue-form"
-        name="revue-form"
-        target="_blank">
-        <div id="mc_embed_signup_scroll">
-            <input
-                class="email"
-                placeholder="email address"
-                type="email"
-                name="member[email]"
-                id="member_email"
-            >
-            <div>
-                <button
-                    type="submit"
-                    value="Subscribe"
-                    name="member[subscribe]"
-                    id="member_submit"
-                    class="btn btn-template-transparent-black btn-lg"
-                >
-                    Subscribe
-                </button>
-            </div>
-        </div>
-    </form>
-</div>                </p>
-            </div>
-        </div>
-    </div>
-</section>        </div>        <div id="content">
-            <div class="container">                <div class="row">                    <article
-                        class="col-md-8 col-md-offset-2"
-                        id="blog-post"
-                        itemprop="blogPosts"
-                        itemscope itemtype="http://schema.org/BlogPosting">                        <div id="post-content" itemprop="articleBody">                            <header>
-                                <h1 itemprop="name headline">Getting Started with GitHub&#39;s GraphQL API</h1>
-                            </header>                            <div class="text-center">
-                                
-    <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
-         <i class="fa fa-facebook"></i>Follow
-    </a>
-                                &nbsp;
-                                                                &nbsp;
-                                
-  <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
-    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
-  </a>
-                                &nbsp;
-                                
-                            </div>                            <p class="text-muted text-uppercase mb-small text-center">
-    <span itemprop="author publisher">
-        
-    </span>    
-        <time datetime="2018-06-09" itemprop="datePublished">
-            June 9, 2018
-        </time>
-        
-        <span class="hidden-xs hidden-sm"> - <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/getting-started-github-graphql-api.md">
-                Edit this Post on GitHub
+        </header>
+        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+            <a aria-label="icon-facebook" class="icon-facebook"
+                href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f"
+                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                <i class="fa fa-facebook"></i>
             </a>
-        </span>
-    
-</p>                            <div>
-  </div><div class="post-image-primary">
-    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="pinterest-pinner">
-            <a
-                data-pin-do="buttonPin"
-                data-pin-save="true"
-                data-pin-tall="true"
-                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f&amp;media=https://chrispaul.dev/img%2fposts%2fgetting-started-github-graphql-api%2fbanner.jpg&amp;description=">
-            </a>
-        </div>        <img
-            class="img-lazy img-responsive"
-            data-lazy-src="/src="/img/posts/getting-started-github-graphql-api/banner.jpg"
-            data-is-src-set="is-src-set"
-            alt="github graphql API apollo react"
-            itemprop="image"
-        />
-    </div>
-</div>
-<p>
-  <em>
-    Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire <a href="https://roadtoreact.com">The Road to GraphQL</a> book that teaches you to become a fullstack developer with JavaScript.
-  </em>
-</p><div class="read-before">
-    <p>This tutorial is part 1 of 5 in this series.</p>
-    <div>Part 2: <a href="../graphql-tutorial/index.html" itemprop="url">A GraphQL Tutorial for Beginners</a></div>
-    <div>Part 3: <a href="../react-with-graphql-tutorial/index.html" itemprop="url">A complete React with GraphQL Tutorial</a></div>
-    <div>Part 4: <a href="../graphql-apollo-client-tutorial/index.html" itemprop="url">A Apollo Client Tutorial for Beginners</a></div>
-    <div>Part 5: <a href="../react-graphql-apollo-tutorial/index.html" itemprop="url">A complete React with Apollo and GraphQL Tutorial</a></div>
-</div><p>Step-by-step is often the easiest way to learn something new, so it&rsquo;s fortunate that learning GraphQL in JavaScript teaches both the client and the server-side of an application. Seeing both sides of the web transactions is useful, but the catch is you have to learn two environments. The step-by-step mentality can be difficult to apply here, so I encourage beginners to start with a client-side application by consuming a third-party GraphQL API before the server side, which uses a GraphQL server.</p><p><a target="_blank" rel="noopener noreferrer" href="https://github.com">GitHub</a> is one of the first major tech brands to adopt GraphQL. They even managed to <a target="_blank" rel="noopener noreferrer" href="https://githubengineering.com/the-github-graphql-api">release</a> a public GraphQL API <a target="_blank" rel="noopener noreferrer" href="https://developer.github.com/v4">(official documentation)</a>, which is quite popular among developers, because most are familiar enough with GitHub from using it for their own projects.</p><p>In this chapter, I hope to cover everything you need to get started with GitHub&rsquo;s GraphQL API, and learning to use GraphQL in JavaScript from a client-side perspective by consuming their API. You should gain understanding about GitHub&rsquo;s terminology, and how to consume account data using its GraphQL API. There are a few applications we will implement with this GraphQL API from a client perspective, so it makes sense to invest time into this section to avoid any fundamental mistakes. Afterward, we will transition to the server-side by implementing our own GraphQL server.</p><h2 class="chapter-header" id="github-api-data">Feeding the API with Data on GitHub</h2><p>If you don&rsquo;t have an account on GitHub yet, and don&rsquo;t know much about its ecosystem, follow <a href="https://lab.github.com/">this official GitHub Learning Lab</a>. If you want to dive deeper into Git and its essential commands, check out <a href="../git-essential-commands/index.html">this guide</a> about it. This might come in handy if you decide to share projects with others on GitHub in the future. It is a good way to showcase a development portfolio to potential clients or hiring companies.</p><p>For our interactions with GitHub&rsquo;s GraphQL API, you will use your own account with information to read/write from/to this data. Before that, complete your GitHub profile by providing additional information so you can recognize it later when it is read by the API.</p><h3 id="exercises">Exercises:</h3><ul>
-<li>Create a GitHub account if you don&rsquo;t have one</li>
-<li>Provide additional information for your GitHub profile</li>
-</ul><h3 id="github-repository">GitHub Repositories</h3><p>You can also create repositories on GitHub. In the words of their official glossary: <em>&ldquo;A repository is the most basic element of GitHub. They&rsquo;re easiest to imagine as a project&rsquo;s folder. A repository contains all of the project files (including documentation), and stores each file&rsquo;s revision history. Repositories can have multiple collaborators and can be either public or private.&rdquo;</em> <a target="_blank" rel="noopener noreferrer" href="https://help.github.com/articles/github-glossary/">GitHub&rsquo;s glossary</a> will explain the key terms&ndash;repository, issue, clone, fork, push&ndash;which are necessary to follow along with the upcoming chapters to learn about GraphQL. Basically a repository is the place for application source code that can be shared with others. I encourage you to put a few of your projects into GitHub repositories, so you can access them all later with what you&rsquo;ve learned about their GraphQL API.</p><p>If you don&rsquo;t have any projects to upload, you can always &lsquo;fork&rsquo; repositories from other GitHub users and work on copies of them. A fork is basically a clone of a repository where you can add changes without altering the original. There are many public repositories on GitHub that can be cloned to your local machine or forked to your list so you can get an understanding of the mechanic through experimentation. For example, if you visit <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch">my GitHub profile</a>, you can see all my public repositories, though not all of these are mine, because some of them are just forks of others. Feel free to fork these repositories if you&rsquo;d like to use them as practice, and if you&rsquo;d like them to be accessible via GitHub&rsquo;s GraphQL API from your own account.</p><h3 id="exercises-1">Exercises:</h3><ul>
-<li>Create/Fork a couple of GitHub repositories, and verify that they show in your account as copies. Copies are indicated by the username that proceeds the repository name in all its titles; for example, a repo called <em>OriginalAuthor/TestRepo</em> would be renamed to <em>YourUserName/TestRepo</em> once you&rsquo;ve forked it.</li>
-</ul><h3 id="github-paginated-data">Paginated Data</h3><p>GitHub&rsquo;s GraphQL API allows you to request multiple repositories at once, which is useful for pagination. Pagination is a programming mechanic invented to work with large lists of items. For example, imagine you have more than a hundred repositories in your GitHub account, but your UI only shows ten of them. Transferring the whole list across the wire for each request is impractical and inefficient, because only a subset is needed at a time, which pagination allows.</p><p>Using pagination with GitHub&rsquo;s GraphQL API lets you adjust the numbers to your own needs, so make sure to adjust the numbers (e.g. limit, offset) to your personal requirements (e.g. available repositories of your GitHub account or available repositories of a GitHub organization). You at least want to have enough repositories in your collection to see the pagination feature in action, so I recommend more than twenty (20), assuming each page will display ten (10), or use five(5) repositories when displaying two (2).</p><h3 id="github-issues-pull-requests">Issues and Pull Requests</h3><p>Once you dive deeper into GitHub&rsquo;s GraphQL API and you start to request nested relationships (e.g. issues of repositories, pull requests of repositories), make sure that the repositories have a few issues or pull requests. This is so you&rsquo;ll see something when we implement the feature to show all the issues in a repository. It might be better to request repositories from a GitHub organization where there will be plenty of issues and pull requests.</p><h3 id="exercises-2">Exercises:</h3><ul>
-<li>Read more about the different terms in <a target="_blank" rel="noopener noreferrer" href="https://help.github.com/articles/github-glossary/">GitHub&rsquo;s glossary</a>. Consider these questions:<ul>
-<li>What is a GitHub organization and GitHub user?</li>
-<li>What are repositories, issues and pull requests?</li>
-<li>What are GitHub repository stars and GitHub repository watchers?</li>
-</ul></li>
-<li>Create or fork enough repositories to use the pagination feature.</li>
-<li>Create pull requests and issues in a few of your GitHub repositories.</li>
-</ul><h2 class="chapter-header" id="github-personal-access-token">Read/Write Data with GitHub&#39;s Personal Access Token</h2><p>To use GitHub&rsquo;s GraphQL API, you need to generate a personal access token on their website. The access token authorizes users to interact with data, to read and write it under your username. <a target="_blank" rel="noopener noreferrer" href="https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line">Follow their step by step instructions</a> to obtain the personal access token, and be sure to check the necessary scopes (permissions) for it, as you will need them to implement a well-rounded GitHub client later.</p><div class="post-image-primary">
-    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="pinterest-pinner">
-            <a
-                data-pin-do="buttonPin"
-                data-pin-save="true"
-                data-pin-tall="true"
-                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f&amp;media=https://chrispaul.dev/img%2fposts%2fgetting-started-github-graphql-api%2fgithub-personal-access-token.jpg&amp;description=">
-            </a>
-        </div>        <img
-            class="img-lazy img-responsive"
-            data-lazy-src="/src="/img/posts/getting-started-github-graphql-api/github-personal-access-token.jpg"
-            data-is-src-set="is-src-set"
-            alt="react graphql github"
-            itemprop="image"
-        />
-    </div>
-</div>
-<p>Later, the personal access token can be used to interact with GitHub&rsquo;s GraphQL API. Be careful not to share these authorizations with any third parties.</p><h2 class="chapter-header" id="github-graphql-api">Interacting with GitHub&#39;s GraphQL API</h2><p>There are two common ways to interact with the GitHub GraphQL API without writing any source code for it. First, you can use <a target="_blank" rel="noopener noreferrer" href="https://developer.github.com/v4/explorer/">GitHub&rsquo;s GraphQL Explorer</a>. You only need to sign up with your GitHub account to perform a query or mutation to their GraphQL API, and its a good way to simplify your first experience. Second, you can use a generic client in the form of an application. GraphiQL is a client that makes GraphQL requests as integration or as a standalone application. The former can be accomplished <a target="_blank" rel="noopener noreferrer" href="https://github.com/skevy/graphiql-app">by setting up GraphiQL directly in your application</a>; the latter may be more convenient for you by <a target="_blank" rel="noopener noreferrer" href="https://github.com/skevy/graphiql-app">using GraphiQL as standalone application</a>. It&rsquo;s a lightweight shell around GraphiQL that can be downloaded and installed manually or by the command line.</p><p>GitHub&rsquo;s GraphQL Explorer knows about your credentials, since you need to sign up using it, but the GraphiQL application needs to know about the personal access token you created. You can add it in your HTTP header for every request in the headers configuration.</p><div class="post-image-primary">
-    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="pinterest-pinner">
-            <a
-                data-pin-do="buttonPin"
-                data-pin-save="true"
-                data-pin-tall="true"
-                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f&amp;media=https://chrispaul.dev/img%2fposts%2fgetting-started-github-graphql-api%2fgraphiql-headers.jpg&amp;description=">
-            </a>
-        </div>        <img
-            class="img-lazy img-responsive"
-            data-lazy-src="/src="/img/posts/getting-started-github-graphql-api/graphiql-headers.jpg"
-            data-is-src-set="is-src-set"
-            alt="graphiql headers"
-            itemprop="image"
-        />
-    </div>
-</div>
-<p>In the next step, we add a new header with a name and value to your GraphiQL configuration. To communicate with GitHub&rsquo;s GraphQL API, fill in the header name with &ldquo;Authorization&rdquo; and the header value with &ldquo;bearer [your personal access token]&ldquo;. Save this new header for your GraphiQL application. Finally, you are ready to make requests to GitHub&rsquo;s GraphQL API with your GraphiQL application.</p><div class="post-image-primary">
-    <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="pinterest-pinner">
-            <a
-                data-pin-do="buttonPin"
-                data-pin-save="true"
-                data-pin-tall="true"
-                href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f&amp;media=https://chrispaul.dev/img%2fposts%2fgetting-started-github-graphql-api%2fgraphiql-authorization.jpg&amp;description=">
-            </a>
-        </div>        <img
-            class="img-lazy img-responsive"
-            data-lazy-src="/src="/img/posts/getting-started-github-graphql-api/graphiql-authorization.jpg"
-            data-is-src-set="is-src-set"
-            alt="graphiql authorization"
-            itemprop="image"
-        />
-    </div>
-</div>
-<p>If you use your own GraphiQL application, you&rsquo;ll need to provide the GraphQL endpoint for GitHub&rsquo;s GraphQL API: <code>https://api.github.com/graphql</code>. For GitHub&rsquo;s GraphQL API, use the <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">POST HTTP method</a> for queries and mutations, and to transfer data as a payload to your GraphQL endpoint.</p><p>This section provided you with two ways to interact with GitHub&rsquo;s GraphQL API. Where GitHub&rsquo;s GraphQL Explorer can only be used for GitHub&rsquo;s API, GraphiQL integrated into an application or standalone can be used for any GraphQL API. The difference is that it requires a bit more setup. The GitHub GraphQL Explorer is really nothing more than a hosted standalone GraphiQL application tailored to use GitHub&rsquo;s GraphQL API.</p><hr class="section-divider"><p>After you&rsquo;ve set up GitHub to use their GraphQL API to learn about GraphQL, you should be ready to implement your first GraphQL client interactions. Follow along and create your first GraphQL client-side application with the tools you have just set up but also with React.</p><div class="read-before">
-    <p>This tutorial is part 1 of 5 in this series.</p>
-    <div>Part 2: <a href="../graphql-tutorial/index.html" itemprop="url">A GraphQL Tutorial for Beginners</a></div>
-    <div>Part 3: <a href="../react-with-graphql-tutorial/index.html" itemprop="url">A complete React with GraphQL Tutorial</a></div>
-    <div>Part 4: <a href="../graphql-apollo-client-tutorial/index.html" itemprop="url">A Apollo Client Tutorial for Beginners</a></div>
-    <div>Part 5: <a href="../react-graphql-apollo-tutorial/index.html" itemprop="url">A complete React with Apollo and GraphQL Tutorial</a></div>
-</div>
-                            
-<div class="feedback-and-share text-center">
-    <hr>
-    
-    <p class="lead">
-        I would like to hear your thoughts :-) Find me on <a target="_blank" rel="noopener noreferrer" aria-label="twitter" href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and <a target="_blank" aria-label="facebook" href="https://www.facebook.com/rwieruch/"><i class="fa fa-facebook"></i>Facebook</a>
-    </p>
-    
-    
-        <p class="lead">
-            Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
-        </p>
-    
-</div>
-                            
-                                <div class="box-inline col-md-12">
-    <div class="col-md-12 text-center">
-        <h2 class="newsletter">The Road to learn React</h2>
-        
-            <div class="col-md-4">
-                <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
-            </div>
-        
-        <p class="lead">
-            Build a Hacker News App along the way. No setup configuration. No tooling. No Redux. Plain React in 200+ pages of learning material. Learn React like <strong>50.000+ readers</strong>.
-        </p>
-        <a
-            class="btn btn-template-main"
-            href="https://roadtoreact.com"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Get the Book for free <i class="fa fa-chevron-right"></i>
-        </a>
-        
-            <div>
-                <a
-                    href="https://amzn.to/2QY2ONp"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Get it from Amazon
+            <a aria-label="icon-twitter" class="icon-twitter"
+                href="https://twitter.com/share?text=Getting%20Started%20with%20GitHub%27s%20GraphQL%20API%20by%20%40rwieruch%20%23ReactJs%20%23GraphQL&amp;url=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f"
+                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fa fa-twitter"></i>
+            </a><a aria-label="icon-linkedin" class="icon-linkedin"
+                href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Getting%20Started%20with%20GitHub%27s%20GraphQL%20API&amp;url=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f">
+                <i class="fa fa-linkedin"></i>
+            </a></div>
+        <div class="visible-xs visible-sm text-center">
+            <div class="post-share post-share-fixed post-share-mobile">
+                <a aria-label="icon-facebook" class="icon-facebook"
+                    href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="fa fa-facebook"></i>
                 </a>
-            </div>
-        
-    </div>
-</div>
-                            
-                        </div>                        
-                        
+                <a aria-label="icon-twitter" class="icon-twitter"
+                    href="https://twitter.com/share?text=Getting%20Started%20with%20GitHub%27s%20GraphQL%20API%20by%20%40rwieruch%20%23ReactJs%20%23GraphQL&amp;url=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="fa fa-twitter"></i>
+                </a><a aria-label="icon-linkedin" class="icon-linkedin"
+                    href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Getting%20Started%20with%20GitHub%27s%20GraphQL%20API&amp;url=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f">
+                    <i class="fa fa-linkedin"></i>
+                </a> </div>
+        </div>
+        <div class="hidden-xs">
+            <section class="bar background-image-fixed-2 no-mb color-white text-center">
+                <div class="dark-mask"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.
+                            </h3>
+                            <h2 class="text-uppercase newsletter">Take Part</h2>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="text-center">
+                                <div id="mc_embed_signup">
+                                    <form action="https://www.getrevue.co/profile/rwieruch/add_subscriber" method="post"
+                                        id="revue-form" name="revue-form" target="_blank">
+                                        <div id="mc_embed_signup_scroll">
+                                            <input class="email" placeholder="email address" type="email"
+                                                name="member[email]" id="member_email">
+                                            <div>
+                                                <button type="submit" value="Subscribe" name="member[subscribe]"
+                                                    id="member_submit"
+                                                    class="btn btn-template-transparent-black btn-lg">
+                                                    Subscribe
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <article class="col-md-8 col-md-offset-2" id="blog-post" itemprop="blogPosts" itemscope
+                        itemtype="http://schema.org/BlogPosting">
+                        <div id="post-content" itemprop="articleBody">
+                            <header>
+                                <h1 itemprop="name headline">Getting Started with GitHub&#39;s GraphQL API</h1>
+                            </header>
+                            <div class="text-center">
+
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch"
+                                    class="facebook-button-follow">
+                                    <i class="fa fa-facebook"></i>Follow
+                                </a>
+                                &nbsp;
+                                &nbsp;
+
+                                <a target="_blank" rel="noopener noreferrer"
+                                    href="https://twitter.com/intent/follow?screen_name=rwieruch"
+                                    class="generic-button-follow">
+                                    <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow"
+                                        alt="Follow on Twitter">
+                                </a>
+                                &nbsp;
+
+                            </div>
+                            <p class="text-muted text-uppercase mb-small text-center">
+                                <span itemprop="author publisher">
+
+                                </span>
+                                <time datetime="2018-06-09" itemprop="datePublished">
+                                    June 9, 2018
+                                </time>
+
+                                <span class="hidden-xs hidden-sm"> - <a target="_blank" rel="noopener noreferrer"
+                                        href="https://github.com/rwieruch/blog_chriswieruch_content/blob/master/getting-started-github-graphql-api.md">
+                                        Edit this Post on GitHub
+                                    </a>
+                                </span>
+
+                            </p>
+                            <div>
+                            </div>
+                            <div class="post-image-primary">
+                                <div class="pinterest-pinner-wrapper" itemscope
+                                    itemtype="http://schema.org/ImageObject">
+                                    <div class="pinterest-pinner">
+                                        <a data-pin-do="buttonPin" data-pin-save="true" data-pin-tall="true"
+                                            href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f&amp;media=https://chrispaul.dev/img%2fposts%2fgetting-started-github-graphql-api%2fbanner.jpg&amp;description=">
+                                        </a>
+                                    </div> <img class="img-lazy img-responsive"
+                                        data-lazy-src="/src="/img/posts/getting-started-github-graphql-api/banner.jpg"
+                                        data-is-src-set="is-src-set" alt="github graphql API apollo react"
+                                        itemprop="image" />
+                                </div>
+                            </div>
+                            <p>
+                                <em>
+                                    Interested in reading this tutorial as one of many chapters in my GraphQL book?
+                                    Checkout the entire <a href="https://roadtoreact.com">The Road to GraphQL</a> book
+                                    that teaches you to become a fullstack developer with JavaScript.
+                                </em>
+                            </p>
+                            <div class="read-before">
+                                <p>This tutorial is part 1 of 5 in this series.</p>
+                                <div>Part 2: <a href="../graphql-tutorial/index.html" itemprop="url">A GraphQL Tutorial
+                                        for Beginners</a></div>
+                                <div>Part 3: <a href="../react-with-graphql-tutorial/index.html" itemprop="url">A
+                                        complete React with GraphQL Tutorial</a></div>
+                                <div>Part 4: <a href="../graphql-apollo-client-tutorial/index.html" itemprop="url">A
+                                        Apollo Client Tutorial for Beginners</a></div>
+                                <div>Part 5: <a href="../react-graphql-apollo-tutorial/index.html" itemprop="url">A
+                                        complete React with Apollo and GraphQL Tutorial</a></div>
+                            </div>
+                            <p>Step-by-step is often the easiest way to learn something new, so it&rsquo;s fortunate
+                                that learning GraphQL in JavaScript teaches both the client and the server-side of an
+                                application. Seeing both sides of the web transactions is useful, but the catch is you
+                                have to learn two environments. The step-by-step mentality can be difficult to apply
+                                here, so I encourage beginners to start with a client-side application by consuming a
+                                third-party GraphQL API before the server side, which uses a GraphQL server.</p>
+                            <p><a target="_blank" rel="noopener noreferrer" href="https://github.com">GitHub</a> is one
+                                of the first major tech brands to adopt GraphQL. They even managed to <a target="_blank"
+                                    rel="noopener noreferrer"
+                                    href="https://githubengineering.com/the-github-graphql-api">release</a> a public
+                                GraphQL API <a target="_blank" rel="noopener noreferrer"
+                                    href="https://developer.github.com/v4">(official documentation)</a>, which is quite
+                                popular among developers, because most are familiar enough with GitHub from using it for
+                                their own projects.</p>
+                            <p>In this chapter, I hope to cover everything you need to get started with GitHub&rsquo;s
+                                GraphQL API, and learning to use GraphQL in JavaScript from a client-side perspective by
+                                consuming their API. You should gain understanding about GitHub&rsquo;s terminology, and
+                                how to consume account data using its GraphQL API. There are a few applications we will
+                                implement with this GraphQL API from a client perspective, so it makes sense to invest
+                                time into this section to avoid any fundamental mistakes. Afterward, we will transition
+                                to the server-side by implementing our own GraphQL server.</p>
+                            <h2 class="chapter-header" id="github-api-data">Feeding the API with Data on GitHub</h2>
+                            <p>If you don&rsquo;t have an account on GitHub yet, and don&rsquo;t know much about its
+                                ecosystem, follow <a href="https://lab.github.com/">this official GitHub Learning
+                                    Lab</a>. If you want to dive deeper into Git and its essential commands, check out
+                                <a href="../git-essential-commands/index.html">this guide</a> about it. This might come
+                                in handy if you decide to share projects with others on GitHub in the future. It is a
+                                good way to showcase a development portfolio to potential clients or hiring companies.
+                            </p>
+                            <p>For our interactions with GitHub&rsquo;s GraphQL API, you will use your own account with
+                                information to read/write from/to this data. Before that, complete your GitHub profile
+                                by providing additional information so you can recognize it later when it is read by the
+                                API.</p>
+                            <h3 id="exercises">Exercises:</h3>
+                            <ul>
+                                <li>Create a GitHub account if you don&rsquo;t have one</li>
+                                <li>Provide additional information for your GitHub profile</li>
+                            </ul>
+                            <h3 id="github-repository">GitHub Repositories</h3>
+                            <p>You can also create repositories on GitHub. In the words of their official glossary:
+                                <em>&ldquo;A repository is the most basic element of GitHub. They&rsquo;re easiest to
+                                    imagine as a project&rsquo;s folder. A repository contains all of the project files
+                                    (including documentation), and stores each file&rsquo;s revision history.
+                                    Repositories can have multiple collaborators and can be either public or
+                                    private.&rdquo;</em> <a target="_blank" rel="noopener noreferrer"
+                                    href="https://help.github.com/articles/github-glossary/">GitHub&rsquo;s glossary</a>
+                                will explain the key terms&ndash;repository, issue, clone, fork, push&ndash;which are
+                                necessary to follow along with the upcoming chapters to learn about GraphQL. Basically a
+                                repository is the place for application source code that can be shared with others. I
+                                encourage you to put a few of your projects into GitHub repositories, so you can access
+                                them all later with what you&rsquo;ve learned about their GraphQL API.</p>
+                            <p>If you don&rsquo;t have any projects to upload, you can always &lsquo;fork&rsquo;
+                                repositories from other GitHub users and work on copies of them. A fork is basically a
+                                clone of a repository where you can add changes without altering the original. There are
+                                many public repositories on GitHub that can be cloned to your local machine or forked to
+                                your list so you can get an understanding of the mechanic through experimentation. For
+                                example, if you visit <a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/rwieruch">my GitHub profile</a>, you can see all my public
+                                repositories, though not all of these are mine, because some of them are just forks of
+                                others. Feel free to fork these repositories if you&rsquo;d like to use them as
+                                practice, and if you&rsquo;d like them to be accessible via GitHub&rsquo;s GraphQL API
+                                from your own account.</p>
+                            <h3 id="exercises-1">Exercises:</h3>
+                            <ul>
+                                <li>Create/Fork a couple of GitHub repositories, and verify that they show in your
+                                    account as copies. Copies are indicated by the username that proceeds the repository
+                                    name in all its titles; for example, a repo called <em>OriginalAuthor/TestRepo</em>
+                                    would be renamed to <em>YourUserName/TestRepo</em> once you&rsquo;ve forked it.</li>
+                            </ul>
+                            <h3 id="github-paginated-data">Paginated Data</h3>
+                            <p>GitHub&rsquo;s GraphQL API allows you to request multiple repositories at once, which is
+                                useful for pagination. Pagination is a programming mechanic invented to work with large
+                                lists of items. For example, imagine you have more than a hundred repositories in your
+                                GitHub account, but your UI only shows ten of them. Transferring the whole list across
+                                the wire for each request is impractical and inefficient, because only a subset is
+                                needed at a time, which pagination allows.</p>
+                            <p>Using pagination with GitHub&rsquo;s GraphQL API lets you adjust the numbers to your own
+                                needs, so make sure to adjust the numbers (e.g. limit, offset) to your personal
+                                requirements (e.g. available repositories of your GitHub account or available
+                                repositories of a GitHub organization). You at least want to have enough repositories in
+                                your collection to see the pagination feature in action, so I recommend more than twenty
+                                (20), assuming each page will display ten (10), or use five(5) repositories when
+                                displaying two (2).</p>
+                            <h3 id="github-issues-pull-requests">Issues and Pull Requests</h3>
+                            <p>Once you dive deeper into GitHub&rsquo;s GraphQL API and you start to request nested
+                                relationships (e.g. issues of repositories, pull requests of repositories), make sure
+                                that the repositories have a few issues or pull requests. This is so you&rsquo;ll see
+                                something when we implement the feature to show all the issues in a repository. It might
+                                be better to request repositories from a GitHub organization where there will be plenty
+                                of issues and pull requests.</p>
+                            <h3 id="exercises-2">Exercises:</h3>
+                            <ul>
+                                <li>Read more about the different terms in <a target="_blank" rel="noopener noreferrer"
+                                        href="https://help.github.com/articles/github-glossary/">GitHub&rsquo;s
+                                        glossary</a>. Consider these questions:<ul>
+                                        <li>What is a GitHub organization and GitHub user?</li>
+                                        <li>What are repositories, issues and pull requests?</li>
+                                        <li>What are GitHub repository stars and GitHub repository watchers?</li>
+                                    </ul>
+                                </li>
+                                <li>Create or fork enough repositories to use the pagination feature.</li>
+                                <li>Create pull requests and issues in a few of your GitHub repositories.</li>
+                            </ul>
+                            <h2 class="chapter-header" id="github-personal-access-token">Read/Write Data with
+                                GitHub&#39;s Personal Access Token</h2>
+                            <p>To use GitHub&rsquo;s GraphQL API, you need to generate a personal access token on their
+                                website. The access token authorizes users to interact with data, to read and write it
+                                under your username. <a target="_blank" rel="noopener noreferrer"
+                                    href="https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line">Follow
+                                    their step by step instructions</a> to obtain the personal access token, and be sure
+                                to check the necessary scopes (permissions) for it, as you will need them to implement a
+                                well-rounded GitHub client later.</p>
+                            <div class="post-image-primary">
+                                <div class="pinterest-pinner-wrapper" itemscope
+                                    itemtype="http://schema.org/ImageObject">
+                                    <div class="pinterest-pinner">
+                                        <a data-pin-do="buttonPin" data-pin-save="true" data-pin-tall="true"
+                                            href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f&amp;media=https://chrispaul.dev/img%2fposts%2fgetting-started-github-graphql-api%2fgithub-personal-access-token.jpg&amp;description=">
+                                        </a>
+                                    </div> <img class="img-lazy img-responsive"
+                                        data-lazy-src="/src="/img/posts/getting-started-github-graphql-api/github-personal-access-token.jpg"
+                                        data-is-src-set="is-src-set" alt="react graphql github" itemprop="image" />
+                                </div>
+                            </div>
+                            <p>Later, the personal access token can be used to interact with GitHub&rsquo;s GraphQL API.
+                                Be careful not to share these authorizations with any third parties.</p>
+                            <h2 class="chapter-header" id="github-graphql-api">Interacting with GitHub&#39;s GraphQL API
+                            </h2>
+                            <p>There are two common ways to interact with the GitHub GraphQL API without writing any
+                                source code for it. First, you can use <a target="_blank" rel="noopener noreferrer"
+                                    href="https://developer.github.com/v4/explorer/">GitHub&rsquo;s GraphQL
+                                    Explorer</a>. You only need to sign up with your GitHub account to perform a query
+                                or mutation to their GraphQL API, and its a good way to simplify your first experience.
+                                Second, you can use a generic client in the form of an application. GraphiQL is a client
+                                that makes GraphQL requests as integration or as a standalone application. The former
+                                can be accomplished <a target="_blank" rel="noopener noreferrer"
+                                    href="https://github.com/skevy/graphiql-app">by setting up GraphiQL directly in your
+                                    application</a>; the latter may be more convenient for you by <a target="_blank"
+                                    rel="noopener noreferrer" href="https://github.com/skevy/graphiql-app">using
+                                    GraphiQL as standalone application</a>. It&rsquo;s a lightweight shell around
+                                GraphiQL that can be downloaded and installed manually or by the command line.</p>
+                            <p>GitHub&rsquo;s GraphQL Explorer knows about your credentials, since you need to sign up
+                                using it, but the GraphiQL application needs to know about the personal access token you
+                                created. You can add it in your HTTP header for every request in the headers
+                                configuration.</p>
+                            <div class="post-image-primary">
+                                <div class="pinterest-pinner-wrapper" itemscope
+                                    itemtype="http://schema.org/ImageObject">
+                                    <div class="pinterest-pinner">
+                                        <a data-pin-do="buttonPin" data-pin-save="true" data-pin-tall="true"
+                                            href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f&amp;media=https://chrispaul.dev/img%2fposts%2fgetting-started-github-graphql-api%2fgraphiql-headers.jpg&amp;description=">
+                                        </a>
+                                    </div> <img class="img-lazy img-responsive"
+                                        data-lazy-src="/src="/img/posts/getting-started-github-graphql-api/graphiql-headers.jpg"
+                                        data-is-src-set="is-src-set" alt="graphiql headers" itemprop="image" />
+                                </div>
+                            </div>
+                            <p>In the next step, we add a new header with a name and value to your GraphiQL
+                                configuration. To communicate with GitHub&rsquo;s GraphQL API, fill in the header name
+                                with &ldquo;Authorization&rdquo; and the header value with &ldquo;bearer [your personal
+                                access token]&ldquo;. Save this new header for your GraphiQL application. Finally, you
+                                are ready to make requests to GitHub&rsquo;s GraphQL API with your GraphiQL application.
+                            </p>
+                            <div class="post-image-primary">
+                                <div class="pinterest-pinner-wrapper" itemscope
+                                    itemtype="http://schema.org/ImageObject">
+                                    <div class="pinterest-pinner">
+                                        <a data-pin-do="buttonPin" data-pin-save="true" data-pin-tall="true"
+                                            href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fgetting-started-github-graphql-api%2f&amp;media=https://chrispaul.dev/img%2fposts%2fgetting-started-github-graphql-api%2fgraphiql-authorization.jpg&amp;description=">
+                                        </a>
+                                    </div> <img class="img-lazy img-responsive"
+                                        data-lazy-src="/src="/img/posts/getting-started-github-graphql-api/graphiql-authorization.jpg"
+                                        data-is-src-set="is-src-set" alt="graphiql authorization" itemprop="image" />
+                                </div>
+                            </div>
+                            <p>If you use your own GraphiQL application, you&rsquo;ll need to provide the GraphQL
+                                endpoint for GitHub&rsquo;s GraphQL API: <code>https://api.github.com/graphql</code>.
+                                For GitHub&rsquo;s GraphQL API, use the <a target="_blank" rel="noopener noreferrer"
+                                    href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">POST
+                                    HTTP method</a> for queries and mutations, and to transfer data as a payload to your
+                                GraphQL endpoint.</p>
+                            <p>This section provided you with two ways to interact with GitHub&rsquo;s GraphQL API.
+                                Where GitHub&rsquo;s GraphQL Explorer can only be used for GitHub&rsquo;s API, GraphiQL
+                                integrated into an application or standalone can be used for any GraphQL API. The
+                                difference is that it requires a bit more setup. The GitHub GraphQL Explorer is really
+                                nothing more than a hosted standalone GraphiQL application tailored to use
+                                GitHub&rsquo;s GraphQL API.</p>
+                            <hr class="section-divider">
+                            <p>After you&rsquo;ve set up GitHub to use their GraphQL API to learn about GraphQL, you
+                                should be ready to implement your first GraphQL client interactions. Follow along and
+                                create your first GraphQL client-side application with the tools you have just set up
+                                but also with React.</p>
+                            <div class="read-before">
+                                <p>This tutorial is part 1 of 5 in this series.</p>
+                                <div>Part 2: <a href="../graphql-tutorial/index.html" itemprop="url">A GraphQL Tutorial
+                                        for Beginners</a></div>
+                                <div>Part 3: <a href="../react-with-graphql-tutorial/index.html" itemprop="url">A
+                                        complete React with GraphQL Tutorial</a></div>
+                                <div>Part 4: <a href="../graphql-apollo-client-tutorial/index.html" itemprop="url">A
+                                        Apollo Client Tutorial for Beginners</a></div>
+                                <div>Part 5: <a href="../react-graphql-apollo-tutorial/index.html" itemprop="url">A
+                                        complete React with Apollo and GraphQL Tutorial</a></div>
+                            </div>
+
+                            <div class="feedback-and-share text-center">
+                                <hr>
+
+                                <p class="lead">
+                                    I would like to hear your thoughts :-) Find me on <a target="_blank"
+                                        rel="noopener noreferrer" aria-label="twitter"
+                                        href="https://twitter.com/rwieruch"><i class="fa fa-twitter"></i>Twitter</a> and
+                                    <a target="_blank" aria-label="facebook"
+                                        href="https://www.facebook.com/rwieruch/"><i
+                                            class="fa fa-facebook"></i>Facebook</a>
+                                </p>
+
+
+                                <p class="lead">
+                                    Did the article help you? Share it with your friends on social media <i
+                                        class="fa fa-arrow-left"></i>, support me as my <a target="_blank"
+                                        rel="noopener noreferrer" aria-label="patreon"
+                                        href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and
+                                    become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
+                                </p>
+
+                            </div>
+
+                            <div class="box-inline col-md-12">
+                                <div class="col-md-12 text-center">
+                                    <h2 class="newsletter">The Road to learn React</h2>
+
+                                    <div class="col-md-4">
+                                        <img class="img-lazy img-responsive" data-lazy-src="//img/page/cover.png">
+                                    </div>
+
+                                    <p class="lead">
+                                        Build a Hacker News App along the way. No setup configuration. No tooling. No
+                                        Redux. Plain React in 200+ pages of learning material. Learn React like
+                                        <strong>50.000+ readers</strong>.
+                                    </p>
+                                    <a class="btn btn-template-main" href="https://roadtoreact.com" target="_blank"
+                                        rel="noopener noreferrer">
+                                        Get the Book for free <i class="fa fa-chevron-right"></i>
+                                    </a>
+
+                                    <div>
+                                        <a href="https://amzn.to/2QY2ONp" target="_blank" rel="noopener noreferrer">
+                                            Get it from Amazon
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
                         <div id="comments">
                             <div id="disqus_thread"></div>
-<script type="text/javascript">(function() {
-    
-    
-    if (window.location.hostname == "localhost")
-        return;    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    var disqus_shortname = 'rwieruch';
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                            <script type="text/javascript">(function () {
+
+
+                                    if (window.location.hostname == "localhost")
+                                        return; var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                    var disqus_shortname = 'rwieruch';
+                                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                })();
+                            </script>
+                            <noscript>Please enable JavaScript to view the <a
+                                    href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span
+                                    class="logo-disqus">Disqus</span></a>
                         </div>
-                                            </article>
+                    </article>
+                </div>
+            </div>
+
+        </div>
+        <section class="bar background-image-fixed-2 no-mb color-white text-center">
+            <div class="dark-mask"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
+                        <h2 class="text-uppercase">Take Part</h2>
+                    </div>
+                    <div class="col-md-12 text-center">
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
+
+                        <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
+
+                    </div>
+                    <div class="col-md-12">
+                        <p class="text-center">
+                            <div id="mc_embed_signup">
+                                <form action="https://www.getrevue.co/profile/rwieruch/add_subscriber" method="post"
+                                    id="revue-form" name="revue-form" target="_blank">
+                                    <div id="mc_embed_signup_scroll">
+                                        <input class="email" placeholder="email address" type="email"
+                                            name="member[email]" id="member_email">
+                                        <div>
+                                            <button type="submit" value="Subscribe" name="member[subscribe]"
+                                                id="member_submit" class="btn btn-template-transparent-black btn-lg">
+                                                Subscribe
+                                            </button>
+                                        </div>
                                     </div>
+                                </form>
                             </div>
-            
-        </div>
-                <section class="bar background-image-fixed-2 no-mb color-white text-center">
-    <div class="dark-mask"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
-                <h2 class="text-uppercase">Take Part</h2>
-            </div>            <div class="col-md-12 text-center">
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Learn Web Development with JavaScript</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Tips and Tricks</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Access Tutorials, eBooks and Courses</h3>
-                
-                    <h3 class="lead"><i class="fa fa-check"></i> Personal Development as a Software Engineer</h3>
-                
-            </div>
-            <div class="col-md-12">
-                <p class="text-center">
-                    <div id="mc_embed_signup">
-    <form
-        action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
-        method="post"
-        id="revue-form"
-        name="revue-form"
-        target="_blank">
-        <div id="mc_embed_signup_scroll">
-            <input
-                class="email"
-                placeholder="email address"
-                type="email"
-                name="member[email]"
-                id="member_email"
-            >
-            <div>
-                <button
-                    type="submit"
-                    value="Subscribe"
-                    name="member[subscribe]"
-                    id="member_submit"
-                    class="btn btn-template-transparent-black btn-lg"
-                >
-                    Subscribe
-                </button>
-            </div>
-        </div>
-    </form>
-</div>                </p>
-            </div>
-        </div>
-    </div>
-</section>
-        <footer id="subfooter">
-    <div class="container">        <div class="col-md-5 col-sm-6">            <h4>Recent posts</h4>            <div class="blog-entries">
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../redux-vs-usereducer/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="React&#39;s useReducer vs Redux"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../publish-npm-package-node/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="How to publish a npm package?"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a></h5>
-                    </div>
-                </div>
-                
-                <div class="item same-height-row clearfix">
-                    <div class="article same-height-always">
-                        <a href="../react-scroll-to-item/index.html">
-                          
-                            <img
-                                data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
-                                data-is-thumb="is-thumb"
-                                class="img-lazy img-responsive"
-                                alt="How to Scroll to Item in React?"
-                            >
-                          
-                        </a>
-                    </div>
-                    <div class="name same-height-always">
-                        <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a></h5>
-                    </div>
-                </div>
-                
-            </div>            <hr class="hidden-md hidden-lg hidden-sm">        </div>
-                
-        <div class="col-md-5 col-md-offset-2 col-sm-6">            <h4>About Me</h4>            <div class="blog-entries">
-                <div class="item same-height-row clearfix">
-                    <div class="profile same-height-always">
-                        <img
-                            class="img-lazy img-responsive"
-                            data-lazy-src="//img/page/profile.jpg"
-                            alt="profile"
-                        >
-                    </div>
-                    <div class="name same-height-always">
-                        <p>
-                            Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
                         </p>
                     </div>
                 </div>
-            </div>        </div>
-        
             </div>
-    
-</footer>
+        </section>
+        <footer id="subfooter">
+            <div class="container">
+                <div class="col-md-5 col-sm-6">
+                    <h4>Recent posts</h4>
+                    <div class="blog-entries">
+
+                        <div class="item same-height-row clearfix">
+                            <div class="article same-height-always">
+                                <a href="../redux-vs-usereducer/index.html">
+
+                                    <img data-lazy-src="//img/posts/redux-vs-usereducer/banner.jpg"
+                                        data-is-thumb="is-thumb" class="img-lazy img-responsive"
+                                        alt="React&#39;s useReducer vs Redux">
+
+                                </a>
+                            </div>
+                            <div class="name same-height-always">
+                                <h5><a href="../redux-vs-usereducer/index.html">React&#39;s useReducer vs Redux</a></h5>
+                            </div>
+                        </div>
+
+                        <div class="item same-height-row clearfix">
+                            <div class="article same-height-always">
+                                <a href="../publish-npm-package-node/index.html">
+
+                                    <img data-lazy-src="//img/posts/publish-npm-package-node/banner.jpg"
+                                        data-is-thumb="is-thumb" class="img-lazy img-responsive"
+                                        alt="How to publish a npm package?">
+
+                                </a>
+                            </div>
+                            <div class="name same-height-always">
+                                <h5><a href="../publish-npm-package-node/index.html">How to publish a npm package?</a>
+                                </h5>
+                            </div>
+                        </div>
+
+                        <div class="item same-height-row clearfix">
+                            <div class="article same-height-always">
+                                <a href="../react-scroll-to-item/index.html">
+
+                                    <img data-lazy-src="//img/posts/react-scroll-to-item/banner.jpg"
+                                        data-is-thumb="is-thumb" class="img-lazy img-responsive"
+                                        alt="How to Scroll to Item in React?">
+
+                                </a>
+                            </div>
+                            <div class="name same-height-always">
+                                <h5><a href="../react-scroll-to-item/index.html">How to Scroll to Item in React?</a>
+                                </h5>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr class="hidden-md hidden-lg hidden-sm">
+                </div>
+
+                <div class="col-md-5 col-md-offset-2 col-sm-6">
+                    <h4>About Me</h4>
+                    <div class="blog-entries">
+                        <div class="item same-height-row clearfix">
+                            <div class="profile same-height-always">
+                                <img class="img-lazy img-responsive" data-lazy-src="//img/page/profile.jpg"
+                                    alt="profile">
+                            </div>
+                            <div class="name same-height-always">
+                                <p>
+                                    Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more
+                                    <a href="../about/index.html">about me</a>, <a
+                                        href="../work-with-me/index.html">work with me</a>, or have a look at my social
+                                    media profiles below.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </footer>
         <footer id="copyright">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <ul class="info list-inline quicklinks pull-left">
-          
-            <li>© Chris Paul</li>
-          
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <ul class="list-inline footer-social-buttons text-center">
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i class="fa fa-linkedin"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
-          
-            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media" href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
-          
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <ul class="info list-inline quicklinks pull-right">
-          
-            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
-          
-        </ul>
-      </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <ul class="info list-inline quicklinks pull-left">
+
+                            <li>© Chris Paul</li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-inline footer-social-buttons text-center">
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.twitter.com/rwieruch"><i class="fa fa-twitter"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.github.com/rwieruch"><i class="fa fa-github"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.linkedin.com/in/chris-wieruch-971933a6"><i
+                                        class="fa fa-linkedin"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.producthunt.com/@rwieruch"><i class="fa fa-product-hunt"></i></a>
+                            </li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.paypal.me/rwieruch"><i class="fa fa-paypal"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.facebook.com/rwieruch"><i class="fa fa-facebook"></i></a></li>
+
+                            <li><a target="_blank" rel="noopener noreferrer" aria-label="social-media"
+                                    href="https://www.instagram.com/rwieruch/"><i class="fa fa-instagram"></i></a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="info list-inline quicklinks pull-right">
+
+                            <li><a aria-label="quicklinks" href="../legal/index.html">Legal Notice</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
-  </div>
-</footer>
-    </div>
-     
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script><script src="../js/script.js"></script>  </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+
 </html>

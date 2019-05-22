@@ -13,10 +13,10 @@ function init() {
 }
 
 function initServiceWorker() {
-  if('serviceWorker' in navigator) {
+  if ('serviceWorker' in navigator) {
     navigator.serviceWorker
-     .register('../sw.js')
-     .then(doneServiceWorker);
+      .register('../sw.js')
+      .then(doneServiceWorker);
   }
 }
 
@@ -28,7 +28,7 @@ function initLazyImages() {
   var imgDefer = document.getElementsByClassName('img-lazy');
 
   for (var i = 0; i < imgDefer.length; i++) {
-    if(imgDefer[i].getAttribute('data-lazy-src')) {
+    if (imgDefer[i].getAttribute('data-lazy-src')) {
       var isSrcSet = imgDefer[i].getAttribute('data-is-src-set') === 'is-src-set';
       var isThumb = imgDefer[i].getAttribute('data-is-thumb') === 'is-thumb';
 
