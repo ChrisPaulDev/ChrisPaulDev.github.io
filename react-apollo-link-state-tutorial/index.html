@@ -1,136 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
+<html lang="en">  <head>
   <meta charset="utf-8">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-
-  <title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">    <title>
     A apollo-link-state Tutorial for Local State in React - CPaul
-  </title>
-
-  <meta name="author" content="" />
-
-  
-    <meta name="description" content="A tutorial about how to use Apollo Link State as local state management solution in a React application when having a GraphQL powered server in the first place. The example shows you how to use Apollo Link State instead of React&#39;s Local State, but also instead of Redux or MobX to manage global state ...">
-  
-
-  <meta name="theme-color" content="#38bb6c"/>
-
-  <meta name="generator" content="Hugo 0.41" />
-
-  
-  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
-
-  
-  
-
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </title>  <meta name="author" content="" />
+  <meta name="description" content="A tutorial about how to use Apollo Link State as local state management solution in a React application when having a GraphQL powered server in the first place. The example shows you how to use Apollo Link State instead of React&#39;s Local State, but also instead of Redux or MobX to manage global state ...">
+    <meta name="theme-color" content="#38bb6c"/>  <meta name="generator" content="Hugo 0.41" />
+<link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-  
-  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
-  <link href="../css/customizations.css" rel="stylesheet">
-
-  
-  
-    <!--[if lt IE 9]>
+<link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">    <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   
-
-  
-  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="../img/favicon/manifest.json">
-  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-
-  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
-
-  
-  
-<meta itemprop="name" content="A apollo-link-state Tutorial for Local State in React">
-<meta itemprop="description" content="A tutorial about how to use Apollo Link State as local state management solution in a React application when having a GraphQL powered server in the first place. The example shows you how to use Apollo Link State instead of React&#39;s Local State, but also instead of Redux or MobX to manage global state ...">
-
-
-
-    <meta itemprop="image" content="https://chrispaul.dev/img/posts/react-apollo-link-state-tutorial/banner_640.jpg">
-
-
-
-<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
-
-
-<meta itemprop="wordCount" content="3663">
-
-
-  
-  <meta name="keywords" content="apollo link state tutorial, apollo link state example, apollo link state local state, apollo link state local state management, apollo link state react, react graphql book, react graphql apollo book">
-
-  <meta property="og:title" content="A apollo-link-state Tutorial for Local State in React - CPaul">
-
-
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul"><meta itemprop="name" content="A apollo-link-state Tutorial for Local State in React">
+<meta itemprop="description" content="A tutorial about how to use Apollo Link State as local state management solution in a React application when having a GraphQL powered server in the first place. The example shows you how to use Apollo Link State instead of React&#39;s Local State, but also instead of Redux or MobX to manage global state ...">    <meta itemprop="image" content="https://chrispaul.dev/img/posts/react-apollo-link-state-tutorial/banner_640.jpg"><meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+<meta itemprop="wordCount" content="3663"><meta name="keywords" content="apollo link state tutorial, apollo link state example, apollo link state local state, apollo link state local state management, apollo link state react, react graphql book, react graphql apollo book">  <meta property="og:title" content="A apollo-link-state Tutorial for Local State in React - CPaul">
   <meta property="og:description" content="A tutorial about how to use Apollo Link State as local state management solution in a React application when having a GraphQL powered server in the first place. The example shows you how to use Apollo Link State instead of React&#39;s Local State, but also instead of Redux or MobX to manage global state ..." />
-
-
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://chrispaul.dev/react-apollo-link-state-tutorial/" />
-<meta property="og:image" content="https://chrispaul.dev/img/posts/react-apollo-link-state-tutorial/banner_640.jpg" />
-
-  
-
-    <meta name="news_keywords" content="apollo link state tutorial,apollo link state example,apollo link state local state,apollo link state local state management,apollo link state react,react graphql book,react graphql apollo book" />
-
-  
-
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/react-apollo-link-state-tutorial/banner_640.jpg"/>
-
-
-
-<meta name="twitter:title" content="A apollo-link-state Tutorial for Local State in React"/>
+<meta property="og:image" content="https://chrispaul.dev/img/posts/react-apollo-link-state-tutorial/banner_640.jpg" />      <meta name="news_keywords" content="apollo link state tutorial,apollo link state example,apollo link state local state,apollo link state local state management,apollo link state react,react graphql book,react graphql apollo book" />      <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/react-apollo-link-state-tutorial/banner_640.jpg"/><meta name="twitter:title" content="A apollo-link-state Tutorial for Local State in React"/>
 <meta name="twitter:description" content="A tutorial about how to use Apollo Link State as local state management solution in a React application when having a GraphQL powered server in the first place. The example shows you how to use Apollo Link State instead of React&#39;s Local State, but also instead of Redux or MobX to manage global state ..."/>
 <meta name="twitter:site" content="@rwieruch"/>
-<meta name="twitter:domain" content="rwieruch"/>
-
-  
-
-</head>
-
-
-  <body>
-
-    <div id="all">
-
-        <header>
-
-          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
-
-    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
-
-        <div class="container">
+<meta name="twitter:domain" content="rwieruch"/>  </head>
+  <body>    <div id="all">        <header>          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">    <div class="navbar navbar-default yamm" role="navigation" id="navbar">        <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="../index.html">
                     <img src="../img/page/logo.svg" alt="A apollo-link-state Tutorial for Local State in React logo" class="img-lazy">
                     <span class="sr-only">A apollo-link-state Tutorial for Local State in React - go to homepage</span>
-                </a>
-
-                <div class="navbar-buttons">
+                </a>                <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
                         <span class="sr-only">Toggle navigation</span>
                         <i class="fa fa-align-justify"></i>
                     </button>
                 </div>
             </div>
-            
-
-            <div class="navbar-collapse collapse" id="navigation">
+                        <div class="navbar-collapse collapse" id="navigation">
                 <ul class="nav navbar-nav navbar-right">
                     
                     <li class="dropdown">
@@ -159,124 +71,66 @@
                     
                 </ul>
             </div>
-            
-
-            <div class="collapse clearfix" id="search">
-
-                <form class="navbar-form" role="search">
+                        <div class="collapse clearfix" id="search">                <form class="navbar-form" role="search">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
-
-                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
-
-                </span>
+                        <span class="input-group-btn">                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>                </span>
                     </div>
-                </form>
-
-            </div>
-            
-
-        </div>
+                </form>            </div>
+                    </div>
     </div>
-    
-
-</div>
-
-
-
-
-        </header>
-
-        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
-    
-
-<a
+    </div>
+        </header>        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    <a
     aria-label="icon-facebook"
     class="icon-facebook"
     href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freact-apollo-link-state-tutorial%2f"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
     <i class="fa fa-facebook"></i>
 </a>
-
-
 <a
     aria-label="icon-twitter"
     class="icon-twitter"
     href="https://twitter.com/share?text=A%20apollo-link-state%20Tutorial%20for%20Local%20State%20in%20React%20by%20%40rwieruch%20%23ReactJs%20%23GraphQL&amp;url=https%3a%2f%2fchrispaul.dev%2freact-apollo-link-state-tutorial%2f"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
     <i class="fa fa-twitter"></i>
-</a>
-
-
-
-
-
-<a
+</a><a
     aria-label="icon-linkedin"
     class="icon-linkedin"
     href="https://www.linkedin.com/shareArticle?mini=true&amp;title=A%20apollo-link-state%20Tutorial%20for%20Local%20State%20in%20React&amp;url=https%3a%2f%2fchrispaul.dev%2freact-apollo-link-state-tutorial%2f">
     <i class="fa fa-linkedin"></i>
-</a>
-
-</div>
-
-<div class="visible-xs visible-sm text-center">
+</a></div><div class="visible-xs visible-sm text-center">
     <div class="post-share post-share-fixed post-share-mobile">
-        
-
-<a
+        <a
     aria-label="icon-facebook"
     class="icon-facebook"
     href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freact-apollo-link-state-tutorial%2f"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
     <i class="fa fa-facebook"></i>
 </a>
-
-
 <a
     aria-label="icon-twitter"
     class="icon-twitter"
     href="https://twitter.com/share?text=A%20apollo-link-state%20Tutorial%20for%20Local%20State%20in%20React%20by%20%40rwieruch%20%23ReactJs%20%23GraphQL&amp;url=https%3a%2f%2fchrispaul.dev%2freact-apollo-link-state-tutorial%2f"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
     <i class="fa fa-twitter"></i>
-</a>
-
-
-
-
-
-<a
+</a><a
     aria-label="icon-linkedin"
     class="icon-linkedin"
     href="https://www.linkedin.com/shareArticle?mini=true&amp;title=A%20apollo-link-state%20Tutorial%20for%20Local%20State%20in%20React&amp;url=https%3a%2f%2fchrispaul.dev%2freact-apollo-link-state-tutorial%2f">
     <i class="fa fa-linkedin"></i>
-</a>
-
-    </div>
-</div>
-
-        
-
-        <div class="hidden-xs">
-            
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
+</a>    </div>
+</div>                <div class="hidden-xs">
+            <section class="bar background-image-fixed-2 no-mb color-white text-center">
     <div class="dark-mask"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
                 <h2 class="text-uppercase newsletter">Take Part</h2>
-            </div>
-
-            <div class="col-md-12">
+            </div>            <div class="col-md-12">
                 <p class="text-center">
-                    
-
-
-
-<div id="mc_embed_signup">
+                    <div id="mc_embed_signup">
     <form
         action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
         method="post"
@@ -304,68 +158,38 @@
             </div>
         </div>
     </form>
-</div>
-
-                </p>
+</div>                </p>
             </div>
         </div>
     </div>
-</section>
-
-
-
-        </div>
-
-        <div id="content">
-            <div class="container">
-
-                <div class="row">
-
-                    <article
+</section>        </div>        <div id="content">
+            <div class="container">                <div class="row">                    <article
                         class="col-md-8 col-md-offset-2"
                         id="blog-post"
                         itemprop="blogPosts"
-                        itemscope itemtype="http://schema.org/BlogPosting">
-
-                        <div id="post-content" itemprop="articleBody">
-
-                            <header>
+                        itemscope itemtype="http://schema.org/BlogPosting">                        <div id="post-content" itemprop="articleBody">                            <header>
                                 <h1 itemprop="name headline">A apollo-link-state Tutorial for Local State in React</h1>
-                            </header>
-
-                            <div class="text-center">
+                            </header>                            <div class="text-center">
                                 
     <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
          <i class="fa fa-facebook"></i>Follow
     </a>
-
-
                                 &nbsp;
-                                
-
-                                &nbsp;
+                                                                &nbsp;
                                 
   <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
     <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
   </a>
-
-
                                 &nbsp;
                                 
-                            </div>
-
-                            <p class="text-muted text-uppercase mb-small text-center">
+                            </div>                            <p class="text-muted text-uppercase mb-small text-center">
     <span itemprop="author publisher">
         
-    </span>
-
-    
+    </span>    
         <time datetime="2018-05-13" itemprop="datePublished">
             May 13, 2018
         </time>
-    
-
-    
+        
         <span class="hidden-xs hidden-sm"> - <a
             target="_blank"
             rel="noopener noreferrer"
@@ -374,16 +198,8 @@
             </a>
         </span>
     
-</p>
-
-                            
-
-<div>
-  
-
-</div>
-
-<div class="post-image-primary">
+</p>                            <div>
+  </div><div class="post-image-primary">
     <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
         <div class="pinterest-pinner">
             <a
@@ -392,9 +208,7 @@
                 data-pin-tall="true"
                 href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2freact-apollo-link-state-tutorial%2f&amp;media=https://chrispaul.dev/img%2fposts%2freact-apollo-link-state-tutorial%2fbanner.jpg&amp;description=">
             </a>
-        </div>
-
-        <img
+        </div>        <img
             class="img-lazy img-responsive"
             data-lazy-src="/src="/img/posts/react-apollo-link-state-tutorial/banner.jpg"
             data-is-src-set="is-src-set"
@@ -403,59 +217,29 @@
         />
     </div>
 </div>
-
-
 <p>
   <em>
     Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire <a href="https://roadtoreact.com">The Road to GraphQL</a> book that teaches you to become a fullstack developer with JavaScript.
   </em>
-</p>
-
-<div class="read-before">
+</p><div class="read-before">
     <p>This tutorial is part 2 of 3 in this series.</p>
     <div>Part 1: <a href="../react-apollo-client-example/index.html" itemprop="url">A minimal Apollo Client in React Application</a></div>
     <div>Part 3: <a href="../react-redux-apollo-client-state-management-tutorial/index.html" itemprop="url">How to use Redux with Apollo Client and GraphQL in React</a></div>
-</div>
-
-<p>There are many people out there questioning how to deal with local data in a React application when using Apollo Client for remote data with its queries and mutations. As shown in previous applications, it can be done with React&rsquo;s local state management. When the state management for the local data <a href="../learn-react-before-using-redux/index.html">reaches a point where it becomes too complex</a>, it may be beneficial to introduce a state management library such as <a href="../redux-mobx-confusion/index.html">Redux or MobX</a>. However, this leaves the issue of not having a single source of truth as state. There are two state layer then. This topic is revisited later in another application, where I will point out how to use Redux side by side with Apollo Client.</p>
-
-<p>In this section though, I want to show how to use <a target="_blank" rel="noopener noreferrer" href="https://www.apollographql.com/docs/link/links/state.html">apollo-link-state</a> instead of introducing Redux or MobX in a React example application. When using Apollo Link State, the Apollo Client Cache becomes your single source of truth for state. It manages remote data and local data then. It is important to note that Apollo Link State makes only sense when having a GraphQL backend which is consumed by Apollo Client in the frontend. Only then the Apollo Link State add-on can be used as state management solution for the local data.</p>
-
-<p>However, it is still important to remember that React&rsquo;s local state is often sufficient when dealing with co-located state, which is not reaching outside to the general application but is close to its components, even though there is a sophisticated state management layer in place. You apply the same rules as for introducing Redux or MobX: React&rsquo;s local state stays important even with sophisticated state management solutions such as Redux, MobX or Apollo Link State. Not everything belongs in the global state which is established by these libraries.</p>
-
-<h2 class="chapter-header" id="toc">Table of Contents</h2>
-
-<ul>
+</div><p>There are many people out there questioning how to deal with local data in a React application when using Apollo Client for remote data with its queries and mutations. As shown in previous applications, it can be done with React&rsquo;s local state management. When the state management for the local data <a href="../learn-react-before-using-redux/index.html">reaches a point where it becomes too complex</a>, it may be beneficial to introduce a state management library such as <a href="../redux-mobx-confusion/index.html">Redux or MobX</a>. However, this leaves the issue of not having a single source of truth as state. There are two state layer then. This topic is revisited later in another application, where I will point out how to use Redux side by side with Apollo Client.</p><p>In this section though, I want to show how to use <a target="_blank" rel="noopener noreferrer" href="https://www.apollographql.com/docs/link/links/state.html">apollo-link-state</a> instead of introducing Redux or MobX in a React example application. When using Apollo Link State, the Apollo Client Cache becomes your single source of truth for state. It manages remote data and local data then. It is important to note that Apollo Link State makes only sense when having a GraphQL backend which is consumed by Apollo Client in the frontend. Only then the Apollo Link State add-on can be used as state management solution for the local data.</p><p>However, it is still important to remember that React&rsquo;s local state is often sufficient when dealing with co-located state, which is not reaching outside to the general application but is close to its components, even though there is a sophisticated state management layer in place. You apply the same rules as for introducing Redux or MobX: React&rsquo;s local state stays important even with sophisticated state management solutions such as Redux, MobX or Apollo Link State. Not everything belongs in the global state which is established by these libraries.</p><h2 class="chapter-header" id="toc">Table of Contents</h2><ul>
 <li><a href="#apollo-link-state-resolver-defaults">Setup of Apollo Link State: Resolvers and Defaults</a></li>
 <li><a href="#apollo-link-state-query">Apollo Link State for Local State: Read Data</a></li>
 <li><a href="#apollo-link-state-mutation">Apollo Link State for Local State: Write Data</a></li>
 <li><a href="#apollo-link-state-async-query-resolver">Async Query Resolver and Device Data</a></li>
-</ul>
-
-<h2 class="chapter-header" id="apollo-link-state-resolver-defaults">Setup of Apollo Link State: Resolvers and Defaults</h2>
-
-<p>Before you can start to set up Apollo Link State in your React with Apollo Client application, you have to create a boilerplate project or use an existing project that is out there. In a previous section, you have built a minimal Apollo Client with React application which you will use as your starter project now. You can find it in this <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/react-apollo-client-example">GitHub repository</a> for cloning it.</p>
-
-<p>In this boilerplate application, you have managed a list of identifiers that represent selected repositories in the local state of a React component. In order to manage the list of identifiers in Apollo Client&rsquo;s Cache instead of React&rsquo;s local state, you have to install Apollo Link State on the command line first. In addition, you have to install the Apollo Link package for combining multiple links for your Apollo Client creation.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span> <span style="color: #06b6ef">apollo</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">link</span> <span style="color: #06b6ef">apollo</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">link</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">state</span>
+</ul><h2 class="chapter-header" id="apollo-link-state-resolver-defaults">Setup of Apollo Link State: Resolvers and Defaults</h2><p>Before you can start to set up Apollo Link State in your React with Apollo Client application, you have to create a boilerplate project or use an existing project that is out there. In a previous section, you have built a minimal Apollo Client with React application which you will use as your starter project now. You can find it in this <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/react-apollo-client-example">GitHub repository</a> for cloning it.</p><p>In this boilerplate application, you have managed a list of identifiers that represent selected repositories in the local state of a React component. In order to manage the list of identifiers in Apollo Client&rsquo;s Cache instead of React&rsquo;s local state, you have to install Apollo Link State on the command line first. In addition, you have to install the Apollo Link package for combining multiple links for your Apollo Client creation.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span> <span style="color: #06b6ef">apollo</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">link</span> <span style="color: #06b6ef">apollo</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">link</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">state</span>
 </code></pre></div>
-
-
-<p>Now comes to the Apollo Link State setup, but as you have learned before, Apollo Links can be composed in a straight forward way by using the Apollo Link package. You have already set up the Apollo HTTP Link. Now it is accompanied by the Apollo Link State in the composition. The composed link can then be used by the Apollo Client creation.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<p>Now comes to the Apollo Link State setup, but as you have learned before, Apollo Links can be composed in a straight forward way by using the Apollo Link package. You have already set up the Apollo HTTP Link. Now it is accompanied by the Apollo Link State in the composition. The composed link can then be used by the Apollo Client creation.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">ApolloProvider</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-apollo&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">ApolloClient</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;apollo-client&#39;</span><span style="color: #e7e9db">;</span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">ApolloLink</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;apollo-link&#39;</span><span style="color: #e7e9db">;</span>
 </span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">HttpLink</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;apollo-link-http&#39;</span><span style="color: #e7e9db">;</span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">withClientState</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;apollo-link-state&#39;</span><span style="color: #e7e9db">;</span>
-</span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">InMemoryCache</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;apollo-cache-inmemory&#39;</span><span style="color: #e7e9db">;</span>
-
-<span style="color: #e7e9db">...</span>
-
-<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">stateLink</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">withClientState</span><span style="color: #e7e9db">({</span>
+</span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">InMemoryCache</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;apollo-cache-inmemory&#39;</span><span style="color: #e7e9db">;</span><span style="color: #e7e9db">...</span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">stateLink</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">withClientState</span><span style="color: #e7e9db">({</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">cache</span><span style="color: #e7e9db">,</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">defaults</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{},</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">resolvers</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{},</span>
@@ -466,31 +250,9 @@
 <span style="color: #815ba4">const</span> <span style="color: #06b6ef">client</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">ApolloClient</span><span style="color: #e7e9db">({</span>
 <span style="background-color: #4f424c">  <span style="color: #06b6ef">link</span><span style="color: #e7e9db">,</span>
 </span>  <span style="color: #06b6ef">cache</span><span style="color: #e7e9db">,</span>
-<span style="color: #e7e9db">});</span>
-
-<span style="color: #e7e9db">...</span>
+<span style="color: #e7e9db">});</span><span style="color: #e7e9db">...</span>
 </code></pre></div>
-
-
-<p>It is important to have the <code>stateLink</code> not far away from the end of your link chain, but it shouldn&rsquo;t be the last terminating link (in this case the <code>httpLink</code>) which makes the network requests. If you would add the Apollo Link Error package, the <code>stateLink</code> should come after it, so that the <code>errorLink</code> can deal with the errors on behalf of it.</p>
-
-<p>The <code>withClientState()</code> is a new function from Apollo Link State to create an instance of the link. It takes an object with a Apollo Client Cache instance, defaults and resolvers. You already have the cache, so what&rsquo;s left to explain are the defaults and resolvers.</p>
-
-<p>The <strong>Apollo Link State Defaults</strong> are used to define an initial state for the Apollo Client&rsquo;s Cache. After all, the Apollo Link State is used to manage a state object. So it is mandatory to have an initial state for it. Otherwise your later introduced local queries and mutations may hit an undefined local state which would lead to an error.</p>
-
-<p>The <strong>Apollo Link State Resolvers</strong> is a map of mutation and query functions for implementing the logic of these <strong>local GraphQL operations</strong>. If you have implemented a GraphQL server before, you may be aware of these resolver functions already. For instance, in case of a query, they may be used to retrieve the remote data from a database. On the other side, in case of a mutation, they are used to alter the remote data in the database. That&rsquo;s for the server-side though. On the client-side, you can define those resolver functions when using Apollo Link State too. But they are used to retrieve local data from the local state or to alter local data in the local state. The normal case is that there is no remote data involved at all.</p>
-
-<p>In your setup, the <code>resolvers</code> and <code>defaults</code> are empty objects. You will use both of them in the next sections to read and write local data to your local state with Apollo Link State instead of using React&rsquo;s local state for it. This way, you will have a better understanding of what they are really used for.</p>
-
-<h2 class="chapter-header" id="apollo-link-state-query">Apollo Link State for Local State: Read Data</h2>
-
-<p>So how to read and write data to the local state? You will do it with GraphQL queries and mutations, but this time they will be used for local data instead of remote data. That&rsquo;s why you have set up Apollo Link State to manage this local data for you instead of React&rsquo;s local state.</p>
-
-<p>First, let&rsquo;s give the <code>defaults</code> a filled initial state object when creating the Apollo Link State instance for the sake of querying it afterward. In your application, you have queried a list of repositories before. Since the local state in Apollo Link State should store a list of repository identifiers to keep track of selected repositories, you can insert one of the queried repository identifiers in it. This repository should be pre-selected then when starting the application. In the case of the <code>the-road-to-learn-react</code> organization which you may have queried before, one of the queried repositories has the id <code>MDEwOlJlcG9zaXRvcnk2MzM1MjkwNw==</code>. So you can go with this one in your initial state object and use the object for the defaults configuration.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
-
-<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">initialState</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+<p>It is important to have the <code>stateLink</code> not far away from the end of your link chain, but it shouldn&rsquo;t be the last terminating link (in this case the <code>httpLink</code>) which makes the network requests. If you would add the Apollo Link Error package, the <code>stateLink</code> should come after it, so that the <code>errorLink</code> can deal with the errors on behalf of it.</p><p>The <code>withClientState()</code> is a new function from Apollo Link State to create an instance of the link. It takes an object with a Apollo Client Cache instance, defaults and resolvers. You already have the cache, so what&rsquo;s left to explain are the defaults and resolvers.</p><p>The <strong>Apollo Link State Defaults</strong> are used to define an initial state for the Apollo Client&rsquo;s Cache. After all, the Apollo Link State is used to manage a state object. So it is mandatory to have an initial state for it. Otherwise your later introduced local queries and mutations may hit an undefined local state which would lead to an error.</p><p>The <strong>Apollo Link State Resolvers</strong> is a map of mutation and query functions for implementing the logic of these <strong>local GraphQL operations</strong>. If you have implemented a GraphQL server before, you may be aware of these resolver functions already. For instance, in case of a query, they may be used to retrieve the remote data from a database. On the other side, in case of a mutation, they are used to alter the remote data in the database. That&rsquo;s for the server-side though. On the client-side, you can define those resolver functions when using Apollo Link State too. But they are used to retrieve local data from the local state or to alter local data in the local state. The normal case is that there is no remote data involved at all.</p><p>In your setup, the <code>resolvers</code> and <code>defaults</code> are empty objects. You will use both of them in the next sections to read and write local data to your local state with Apollo Link State instead of using React&rsquo;s local state for it. This way, you will have a better understanding of what they are really used for.</p><h2 class="chapter-header" id="apollo-link-state-query">Apollo Link State for Local State: Read Data</h2><p>So how to read and write data to the local state? You will do it with GraphQL queries and mutations, but this time they will be used for local data instead of remote data. That&rsquo;s why you have set up Apollo Link State to manage this local data for you instead of React&rsquo;s local state.</p><p>First, let&rsquo;s give the <code>defaults</code> a filled initial state object when creating the Apollo Link State instance for the sake of querying it afterward. In your application, you have queried a list of repositories before. Since the local state in Apollo Link State should store a list of repository identifiers to keep track of selected repositories, you can insert one of the queried repository identifiers in it. This repository should be pre-selected then when starting the application. In the case of the <code>the-road-to-learn-react</code> organization which you may have queried before, one of the queried repositories has the id <code>MDEwOlJlcG9zaXRvcnk2MzM1MjkwNw==</code>. So you can go with this one in your initial state object and use the object for the defaults configuration.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">initialState</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[</span><span style="color: #48b685">&#39;MDEwOlJlcG9zaXRvcnk2MzM1MjkwNw==&#39;</span><span style="color: #e7e9db">],</span>
 </span><span style="background-color: #4f424c"><span style="color: #e7e9db">};</span>
 </span>
@@ -498,34 +260,22 @@
   <span style="color: #06b6ef">cache</span><span style="color: #e7e9db">,</span>
 <span style="background-color: #4f424c">  <span style="color: #06b6ef">defaults</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">initialState</span><span style="color: #e7e9db">,</span>
 </span>  <span style="color: #06b6ef">resolvers</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{},</span>
-<span style="color: #e7e9db">});</span>
-
-<span style="color: #e7e9db">...</span>
+<span style="color: #e7e9db">});</span><span style="color: #e7e9db">...</span>
 </code></pre></div>
-
-
-<p>Second, since this state is defined in the local state of Apollo Link State, you can remove React&rsquo;s local state for the list of repository identifiers from the Repository component. In addition, you can remove the handler which toggles the repository selection. After removing all this implementations, the Repositories component becomes a functional stateless component again.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Repositories</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">repositories</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+<p>Second, since this state is defined in the local state of Apollo Link State, you can remove React&rsquo;s local state for the list of repository identifiers from the Repository component. In addition, you can remove the handler which toggles the repository selection. After removing all this implementations, the Repositories component becomes a functional stateless component again.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Repositories</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">repositories</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
 </span><span style="background-color: #4f424c">  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">RepositoryList</span>
 </span><span style="background-color: #4f424c">    <span style="color: #06b6ef">repositories</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">repositories</span><span style="color: #e7e9db">}</span>
 </span><span style="background-color: #4f424c">    <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #e7e9db">}</span>
 </span><span style="background-color: #4f424c">  <span style="color: #5bc4bf">/&gt;</span>
 </span><span style="background-color: #4f424c"><span style="color: #e7e9db">);</span>
 </span></code></pre></div>
-
-
-<p>So where does the list of selected repository identifiers come from? Since they are in Apollo Client&rsquo;s Cache due to Apollo Link State and not in React&rsquo;s local state anymore, you can query them with a normal GraphQL query and the Query component which you have used before for querying remote data. This time they are used for querying local data though.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">gql</span><span style="color: #48b685">`</span>
+<p>So where does the list of selected repository identifiers come from? Since they are in Apollo Client&rsquo;s Cache due to Apollo Link State and not in React&rsquo;s local state anymore, you can query them with a normal GraphQL query and the Query component which you have used before for querying remote data. This time they are used for querying local data though.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">gql</span><span style="color: #48b685">`</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">  query {</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">    selectedRepositoryIds @client</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">  }</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">`</span><span style="color: #e7e9db">;</span>
 </span>
-<span style="color: #e7e9db">...</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">Repositories</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">repositories</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+<span style="color: #e7e9db">...</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Repositories</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">repositories</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
 <span style="background-color: #4f424c">  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Query</span> <span style="color: #06b6ef">query</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
 </span><span style="background-color: #4f424c">    <span style="color: #e7e9db">{({</span> <span style="color: #06b6ef">data</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #e7e9db">}</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
 </span>      <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">RepositoryList</span>
@@ -536,13 +286,7 @@
 </span><span style="background-color: #4f424c">  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Query&gt;</span>
 </span><span style="color: #e7e9db">);</span>
 </code></pre></div>
-
-
-<p>The query for local data works almost identical to the query for remote data. There is only one difference: the @client directive. As you may have learned before, there exist directives such as the @skip or @include directive in the GraphQL specification. Apollo came up with an own directive to annotate objects and fields in a query (or mutation) as local data. Basically the @client directive tells Apollo Client Cache to look up the data in the local state instead of doing a network request.</p>
-
-<p>Just for the sake of demonstration, the @client directive affects all underlying fields too. So when annotating a field which fields itself, all the underlying fields are derived from the local state too.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">gql</span><span style="color: #48b685">`</span>
+<p>The query for local data works almost identical to the query for remote data. There is only one difference: the @client directive. As you may have learned before, there exist directives such as the @skip or @include directive in the GraphQL specification. Apollo came up with an own directive to annotate objects and fields in a query (or mutation) as local data. Basically the @client directive tells Apollo Client Cache to look up the data in the local state instead of doing a network request.</p><p>Just for the sake of demonstration, the @client directive affects all underlying fields too. So when annotating a field which fields itself, all the underlying fields are derived from the local state too.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">gql</span><span style="color: #48b685">`</span>
 <span style="color: #48b685">  query {</span>
 <span style="color: #48b685">    repositoryInformation @client {</span>
 <span style="color: #48b685">      selectedRepositoryIds</span>
@@ -550,11 +294,7 @@
 <span style="color: #48b685">  }</span>
 <span style="color: #48b685">`</span><span style="color: #e7e9db">;</span>
 </code></pre></div>
-
-
-<p>Since a GraphQL operation is fine-tuned of a field level, the @client directive can be used for only a part of the data. All the remaining fields are fetched by using a network request with the Apollo HTTP Link. The following query gives you an example of how one query can be used to fetch local data and remote data.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">gql</span><span style="color: #48b685">`</span>
+<p>Since a GraphQL operation is fine-tuned of a field level, the @client directive can be used for only a part of the data. All the remaining fields are fetched by using a network request with the Apollo HTTP Link. The following query gives you an example of how one query can be used to fetch local data and remote data.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">gql</span><span style="color: #48b685">`</span>
 <span style="color: #48b685">  query {</span>
 <span style="color: #48b685">    repositoryInformation @client {</span>
 <span style="color: #48b685">      selectedRepositoryIds</span>
@@ -566,52 +306,26 @@
 <span style="color: #48b685">  }</span>
 <span style="color: #48b685">`</span><span style="color: #e7e9db">;</span>
 </code></pre></div>
-
-
-<p>Nevertheless, let&rsquo;s stick to the initial implementation of the query for not adding too much noise and keeping the example simple.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">gql</span><span style="color: #48b685">`</span>
+<p>Nevertheless, let&rsquo;s stick to the initial implementation of the query for not adding too much noise and keeping the example simple.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">gql</span><span style="color: #48b685">`</span>
 <span style="color: #48b685">  query {</span>
 <span style="color: #48b685">    selectedRepositoryIds @client</span>
 <span style="color: #48b685">  }</span>
 <span style="color: #48b685">`</span><span style="color: #e7e9db">;</span>
 </code></pre></div>
-
-
-<p>When you start your application again, you should see that one of the repositories is selected, because you have defined the identifier in the <code>defaults</code> of the Apollo Link State initialization. Basically it is pre-selected because of the initial state. It is similar to telling React&rsquo;s local state to have an initial state:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">SomeComponent</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+<p>When you start your application again, you should see that one of the repositories is selected, because you have defined the identifier in the <code>defaults</code> of the Apollo Link State initialization. Basically it is pre-selected because of the initial state. It is similar to telling React&rsquo;s local state to have an initial state:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">SomeComponent</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
     <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[</span><span style="color: #48b685">&#39;MDEwOlJlcG9zaXRvcnk2MzM1MjkwNw==&#39;</span><span style="color: #e7e9db">],</span>
-  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">}</span>  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
     <span style="color: #e7e9db">...</span>
   <span style="color: #e7e9db">}</span>
 <span style="color: #e7e9db">}</span>
 </code></pre></div>
-
-
-<p>The only difference is that Apollo Link State manages a global state and React&rsquo; local state only a component co-located state. After all, by using Apollo Link State, you have made your state globally accessible by using GraphQL queries.</p>
-
-<p>The reading local data part of the equation works. What about the writing local data part then? The Select component is broken as it is now, because in the last implementation the <code>toggleSelectRepository()</code> callback function was removed since it cannot be used anymore to update the identifiers in React&rsquo;s local state. The state lives in Apollo Client Cache now.</p>
-
-<h2 class="chapter-header" id="apollo-link-state-mutation">Apollo Link State for Local State: Write Data</h2>
-
-<p>You have seen how a GraphQL query is used for reading local data from the local state in the previous section. That&rsquo;s half of what GraphQL operations are used for (for the savvy reader: this statement is wrong, because it is only true if you don&rsquo;t include GraphQL subscriptions). The second half is writing local data to the local state. Whereas you have used previously a GraphQL query to read local data, now you will use a GraphQL mutation to write local data to the local state. In the Select component, you can remove the <code>toggleSelectRepository()</code> callback function which was used before to update React&rsquo;s local state that was removed in a previous step. In addition, the function can be removed from the RepositoryList component too.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">RepositoryList</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">repositories</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+<p>The only difference is that Apollo Link State manages a global state and React&rsquo; local state only a component co-located state. After all, by using Apollo Link State, you have made your state globally accessible by using GraphQL queries.</p><p>The reading local data part of the equation works. What about the writing local data part then? The Select component is broken as it is now, because in the last implementation the <code>toggleSelectRepository()</code> callback function was removed since it cannot be used anymore to update the identifiers in React&rsquo;s local state. The state lives in Apollo Client Cache now.</p><h2 class="chapter-header" id="apollo-link-state-mutation">Apollo Link State for Local State: Write Data</h2><p>You have seen how a GraphQL query is used for reading local data from the local state in the previous section. That&rsquo;s half of what GraphQL operations are used for (for the savvy reader: this statement is wrong, because it is only true if you don&rsquo;t include GraphQL subscriptions). The second half is writing local data to the local state. Whereas you have used previously a GraphQL query to read local data, now you will use a GraphQL mutation to write local data to the local state. In the Select component, you can remove the <code>toggleSelectRepository()</code> callback function which was used before to update React&rsquo;s local state that was removed in a previous step. In addition, the function can be removed from the RepositoryList component too.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">RepositoryList</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">repositories</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
 </span>  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ul</span><span style="color: #5bc4bf">&gt;</span>
     <span style="color: #e7e9db">{</span><span style="color: #06b6ef">repositories</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">edges</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(({</span> <span style="color: #06b6ef">node</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
-      <span style="color: #815ba4">const</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">includes</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">node</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">);</span>
-
-      <span style="color: #815ba4">const</span> <span style="color: #06b6ef">rowClassName</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #48b685">&#39;row&#39;</span><span style="color: #e7e9db">];</span>
-
-      <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">isSelected</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #815ba4">const</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">includes</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">node</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">);</span>      <span style="color: #815ba4">const</span> <span style="color: #06b6ef">rowClassName</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[</span><span style="color: #48b685">&#39;row&#39;</span><span style="color: #e7e9db">];</span>      <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">isSelected</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
         <span style="color: #06b6ef">rowClassName</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">push</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;row_selected&#39;</span><span style="color: #e7e9db">);</span>
-      <span style="color: #e7e9db">}</span>
-
-      <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+      <span style="color: #e7e9db">}</span>      <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
         <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">li</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">rowClassName</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">join</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39; &#39;</span><span style="color: #e7e9db">)}</span> <span style="color: #06b6ef">key</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">node</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
 <span style="background-color: #4f424c">          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Select</span> <span style="color: #06b6ef">id</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">node</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">isSelected</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">isSelected</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span><span style="color: #e7e9db">{</span><span style="color: #48b685">&#39; &#39;</span><span style="color: #e7e9db">}</span>
 </span>          <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">a</span> <span style="color: #06b6ef">href</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">node</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">url</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">node</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">name</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/a&gt;{&#39; &#39;}</span>
@@ -620,29 +334,19 @@
       <span style="color: #e7e9db">);</span>
     <span style="color: #e7e9db">})}</span>
   <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ul&gt;</span>
-<span style="color: #e7e9db">);</span>
-
-<span style="color: #e7e9db">...</span>
-
-<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Select</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+<span style="color: #e7e9db">);</span><span style="color: #e7e9db">...</span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Select</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
 </span><span style="background-color: #4f424c">  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;button&quot;</span> <span style="color: #06b6ef">onClick</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{}}</span><span style="color: #5bc4bf">&gt;</span>
 </span>    <span style="color: #e7e9db">{</span><span style="color: #06b6ef">isSelected</span> <span style="color: #5bc4bf">?</span> <span style="color: #48b685">&#39;Unselect&#39;</span> <span style="color: #5bc4bf">:</span> <span style="color: #48b685">&#39;Select&#39;</span><span style="color: #e7e9db">}</span>
   <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
 <span style="color: #e7e9db">);</span>
 </code></pre></div>
-
-
-<p>Since the state managed by Apollo Link State is global now, you don&rsquo;t need to pass any callback functions anymore. Instead, identical to the reading local state part with the GraphQL query and Query component, you can use the Mutation component from React Apollo and a GraphQL mutation to write data to the state.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">SELECT_REPOSITORY</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">gql</span><span style="color: #48b685">`</span>
+<p>Since the state managed by Apollo Link State is global now, you don&rsquo;t need to pass any callback functions anymore. Instead, identical to the reading local state part with the GraphQL query and Query component, you can use the Mutation component from React Apollo and a GraphQL mutation to write data to the state.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">SELECT_REPOSITORY</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">gql</span><span style="color: #48b685">`</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">  mutation($id: ID!, $isSelected: Boolean!) {</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">    toggleSelectRepository(id: $id, isSelected: $isSelected) @client</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">  }</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">`</span><span style="color: #e7e9db">;</span>
 </span>
-<span style="color: #e7e9db">...</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">Select</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+<span style="color: #e7e9db">...</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Select</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
 <span style="background-color: #4f424c">  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Mutation</span>
 </span><span style="background-color: #4f424c">    <span style="color: #06b6ef">mutation</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">SELECT_REPOSITORY</span><span style="color: #e7e9db">}</span>
 </span><span style="background-color: #4f424c">    <span style="color: #06b6ef">variables</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{{</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">}}</span>
@@ -655,19 +359,9 @@
 </span><span style="background-color: #4f424c">  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Mutation&gt;</span>
 </span><span style="color: #e7e9db">);</span>
 </code></pre></div>
-
-
-<p>The GraphQL mutation for local data isn&rsquo;t any different from a mutation used for remote data except for the @client directive. The directive was used for the local query too in order to signalize Apollo Client that it is a local mutation, because there is no remote data involved here.</p>
-
-<p>Almost identical to the <code>toggleSelectRepository()</code> callback function which was used before to update React&rsquo;s local state, the exposed mutation function <code>toggleSelectRepository()</code> gets implicit access to the <code>id</code> and <code>isSelected</code> values via the variables in the Mutation component.</p>
-
-<p>The big question mark: How to define on the client-side what happens after executing this mutation? If you would send this mutation to your GraphQL server, a resolver would take care about it. So that&rsquo;s why you can define those resolvers for your local state on the client-side, only when using Apollo Link State, as well. You can define a resolver function for the actual <code>toggleSelectRepository</code> mutation which you have used in the previously defined GraphQL mutation.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">initialState</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+<p>The GraphQL mutation for local data isn&rsquo;t any different from a mutation used for remote data except for the @client directive. The directive was used for the local query too in order to signalize Apollo Client that it is a local mutation, because there is no remote data involved here.</p><p>Almost identical to the <code>toggleSelectRepository()</code> callback function which was used before to update React&rsquo;s local state, the exposed mutation function <code>toggleSelectRepository()</code> gets implicit access to the <code>id</code> and <code>isSelected</code> values via the variables in the Mutation component.</p><p>The big question mark: How to define on the client-side what happens after executing this mutation? If you would send this mutation to your GraphQL server, a resolver would take care about it. So that&rsquo;s why you can define those resolvers for your local state on the client-side, only when using Apollo Link State, as well. You can define a resolver function for the actual <code>toggleSelectRepository</code> mutation which you have used in the previously defined GraphQL mutation.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">initialState</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[],</span>
-<span style="color: #e7e9db">};</span>
-
-<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">toggleSelectRepository</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">_</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">},</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">cache</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<span style="color: #e7e9db">};</span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">toggleSelectRepository</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">_</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">},</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">cache</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
 </span><span style="background-color: #4f424c">  <span style="color: #e7e9db">...</span>
 </span><span style="background-color: #4f424c"><span style="color: #e7e9db">};</span>
 </span>
@@ -679,37 +373,17 @@
 </span><span style="background-color: #4f424c">      <span style="color: #06b6ef">toggleSelectRepository</span><span style="color: #e7e9db">,</span>
 </span><span style="background-color: #4f424c">    <span style="color: #e7e9db">},</span>
 </span><span style="background-color: #4f424c">  <span style="color: #e7e9db">},</span>
-</span><span style="color: #e7e9db">});</span>
-
-<span style="color: #e7e9db">...</span>
+</span><span style="color: #e7e9db">});</span><span style="color: #e7e9db">...</span>
 </code></pre></div>
-
-
-<p>A client-side resolver function has the same signature as an usually on the server-side used resolver function. The arguments are <code>parent</code>, <code>args</code>, <code>context</code> and <code>info</code>.</p>
-
-<p>In this example, the <code>info</code> argument isn&rsquo;t needed and thus doesn&rsquo;t appear in the function signature. The same applies for the <code>parent</code> argument, but it appears in the signature because it is the first argument of it. It can be named <code>_</code> to keep it out of your sight, because it isn&rsquo;t used for the mutation in this example. You may wonder when you would need the <code>parent</code> argument. You may only need it when your query or mutation becomes deeply nested and fields in the particular operation need to be resolved with their own resolver functions which would naturally lead to multiple resolver functions. Then the <code>parent</code> argument can be used to pass results from one to another resolver function. In our case, you can ignore the <code>parent</code> argument because it is not needed. However, if you are curious,<a target="_blank" rel="noopener noreferrer" href="https://blog.graph.cool/graphql-server-basics-the-schema-ac5e2950214e#9d03">you can read more about it</a>.</p>
-
-<p>After all, you only need the <code>args</code> and <code>context</code> arguments. While the former has all the parameters which where provided as GraphQL arguments to the GraphQL mutation, the latter has access to the Apollo Client&rsquo;s Cache instance. Thus, both can be used to write the local data to the local state.</p>
-
-<p>Before you can write data to the local state, you often need to read data from it in order to update it. In this case, you need to read the list of selected repositories from the local state in order to update it with the new selected or unselected identifier. Therefore, you can use the same query which you have used in your Repositories component. In order to use it in the <em>src/index.js</em> file for the resolver function, you have to export it from the <em>src/App.js</em> file first:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">export</span> <span style="color: #815ba4">const</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">gql</span><span style="color: #48b685">`</span>
+<p>A client-side resolver function has the same signature as an usually on the server-side used resolver function. The arguments are <code>parent</code>, <code>args</code>, <code>context</code> and <code>info</code>.</p><p>In this example, the <code>info</code> argument isn&rsquo;t needed and thus doesn&rsquo;t appear in the function signature. The same applies for the <code>parent</code> argument, but it appears in the signature because it is the first argument of it. It can be named <code>_</code> to keep it out of your sight, because it isn&rsquo;t used for the mutation in this example. You may wonder when you would need the <code>parent</code> argument. You may only need it when your query or mutation becomes deeply nested and fields in the particular operation need to be resolved with their own resolver functions which would naturally lead to multiple resolver functions. Then the <code>parent</code> argument can be used to pass results from one to another resolver function. In our case, you can ignore the <code>parent</code> argument because it is not needed. However, if you are curious,<a target="_blank" rel="noopener noreferrer" href="https://blog.graph.cool/graphql-server-basics-the-schema-ac5e2950214e#9d03">you can read more about it</a>.</p><p>After all, you only need the <code>args</code> and <code>context</code> arguments. While the former has all the parameters which where provided as GraphQL arguments to the GraphQL mutation, the latter has access to the Apollo Client&rsquo;s Cache instance. Thus, both can be used to write the local data to the local state.</p><p>Before you can write data to the local state, you often need to read data from it in order to update it. In this case, you need to read the list of selected repositories from the local state in order to update it with the new selected or unselected identifier. Therefore, you can use the same query which you have used in your Repositories component. In order to use it in the <em>src/index.js</em> file for the resolver function, you have to export it from the <em>src/App.js</em> file first:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">export</span> <span style="color: #815ba4">const</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">gql</span><span style="color: #48b685">`</span>
 </span><span style="color: #48b685">  query {</span>
 <span style="color: #48b685">    selectedRepositoryIds @client</span>
 <span style="color: #48b685">  }</span>
 <span style="color: #48b685">`</span><span style="color: #e7e9db">;</span>
 </code></pre></div>
-
-
-<p>Afterward, you can import it in the <em>src/index.js</em> file for your resolver function:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./App&#39;</span><span style="color: #e7e9db">;</span>
+<p>Afterward, you can import it in the <em>src/index.js</em> file for your resolver function:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #06b6ef">App</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./App&#39;</span><span style="color: #e7e9db">;</span>
 </span></code></pre></div>
-
-
-<p>Finally, as first step, the query can be used in the resolver function to retrieved the list of selected repository identifiers. The cache instance offers methods such as <code>readQuery()</code> or <code>readFragment()</code> to read data from it. That&rsquo;s why you had to import the query.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">toggleSelectRepository</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">_</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">},</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">cache</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<p>Finally, as first step, the query can be used in the resolver function to retrieved the list of selected repository identifiers. The cache instance offers methods such as <code>readQuery()</code> or <code>readFragment()</code> to read data from it. That&rsquo;s why you had to import the query.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">toggleSelectRepository</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">_</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">},</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">cache</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
 <span style="background-color: #4f424c">  <span style="color: #815ba4">let</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">cache</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">readQuery</span><span style="color: #e7e9db">({</span>
 </span><span style="background-color: #4f424c">    <span style="color: #06b6ef">query</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span><span style="color: #e7e9db">,</span>
 </span><span style="background-color: #4f424c">  <span style="color: #e7e9db">});</span>
@@ -717,36 +391,22 @@
   <span style="color: #e7e9db">...</span>
 <span style="color: #e7e9db">};</span>
 </code></pre></div>
-
-
-<p>In the second step, the list of selected repository identifiers can be updated with the provided information in the <code>args</code> argument.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">toggleSelectRepository</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">_</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">},</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">cache</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<p>In the second step, the list of selected repository identifiers can be updated with the provided information in the <code>args</code> argument.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">toggleSelectRepository</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">_</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">},</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">cache</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
   <span style="color: #815ba4">let</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">cache</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">readQuery</span><span style="color: #e7e9db">({</span>
     <span style="color: #06b6ef">query</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span><span style="color: #e7e9db">,</span>
-  <span style="color: #e7e9db">});</span>
-
-<span style="background-color: #4f424c">  <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">isSelected</span>
+  <span style="color: #e7e9db">});</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">isSelected</span>
 </span><span style="background-color: #4f424c">    <span style="color: #5bc4bf">?</span> <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">filter</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">itemId</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">itemId</span> <span style="color: #5bc4bf">!==</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">)</span>
 </span><span style="background-color: #4f424c">    <span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">concat</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">);</span>
 </span>
   <span style="color: #e7e9db">...</span>
 <span style="color: #e7e9db">};</span>
 </code></pre></div>
-
-
-<p>Third, the updated data can be written with one of the <code>writeData()</code>, <code>writeQuery()</code> or <code>writeFragment()</code> methods that are available for the cache instance in order to write data. In this case, since the data was read with the <code>readQuery()</code> method, it makes most sense to write it again with the analogous method <code>writeQuery()</code> because then it matches the identical data structure requirements.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">toggleSelectRepository</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">_</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">},</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">cache</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<p>Third, the updated data can be written with one of the <code>writeData()</code>, <code>writeQuery()</code> or <code>writeFragment()</code> methods that are available for the cache instance in order to write data. In this case, since the data was read with the <code>readQuery()</code> method, it makes most sense to write it again with the analogous method <code>writeQuery()</code> because then it matches the identical data structure requirements.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">toggleSelectRepository</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">_</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">},</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">cache</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
   <span style="color: #815ba4">let</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">cache</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">readQuery</span><span style="color: #e7e9db">({</span>
     <span style="color: #06b6ef">query</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span><span style="color: #e7e9db">,</span>
-  <span style="color: #e7e9db">});</span>
-
-  <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">isSelected</span>
+  <span style="color: #e7e9db">});</span>  <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">isSelected</span>
     <span style="color: #5bc4bf">?</span> <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">filter</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">itemId</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">itemId</span> <span style="color: #5bc4bf">!==</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">)</span>
-    <span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">concat</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">);</span>
-
-<span style="background-color: #4f424c">  <span style="color: #06b6ef">cache</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">writeQuery</span><span style="color: #e7e9db">({</span>
+    <span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">concat</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">);</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">cache</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">writeQuery</span><span style="color: #e7e9db">({</span>
 </span><span style="background-color: #4f424c">    <span style="color: #06b6ef">query</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span><span style="color: #e7e9db">,</span>
 </span><span style="background-color: #4f424c">    <span style="color: #06b6ef">data</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #e7e9db">},</span>
 </span><span style="background-color: #4f424c">  <span style="color: #e7e9db">});</span>
@@ -754,34 +414,18 @@
   <span style="color: #e7e9db">...</span>
 <span style="color: #e7e9db">};</span>
 </code></pre></div>
-
-
-<p>Last but not least, a mutation result should be returned. In this case, no result is needed in the previously used Mutation component, so it can be null.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">toggleSelectRepository</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">_</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">},</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">cache</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<p>Last but not least, a mutation result should be returned. In this case, no result is needed in the previously used Mutation component, so it can be null.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">toggleSelectRepository</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">_</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">},</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">cache</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
   <span style="color: #815ba4">let</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">cache</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">readQuery</span><span style="color: #e7e9db">({</span>
     <span style="color: #06b6ef">query</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span><span style="color: #e7e9db">,</span>
-  <span style="color: #e7e9db">});</span>
-
-  <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">isSelected</span>
+  <span style="color: #e7e9db">});</span>  <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">isSelected</span>
     <span style="color: #5bc4bf">?</span> <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">filter</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">itemId</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">itemId</span> <span style="color: #5bc4bf">!==</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">)</span>
-    <span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">concat</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">);</span>
-
-  <span style="color: #06b6ef">cache</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">writeQuery</span><span style="color: #e7e9db">({</span>
+    <span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">concat</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">);</span>  <span style="color: #06b6ef">cache</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">writeQuery</span><span style="color: #e7e9db">({</span>
     <span style="color: #06b6ef">query</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span><span style="color: #e7e9db">,</span>
     <span style="color: #06b6ef">data</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #e7e9db">},</span>
-  <span style="color: #e7e9db">});</span>
-
-<span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #815ba4">null</span><span style="color: #e7e9db">;</span>
+  <span style="color: #e7e9db">});</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #815ba4">null</span><span style="color: #e7e9db">;</span>
 </span><span style="color: #e7e9db">};</span>
 </code></pre></div>
-
-
-<p>That&rsquo;s it for writing local data in Apollo&rsquo;s local state by using a GraphQL mutation which is only used locally. Once you start your application again, the select interaction should work. But this time, the data is stored and retrieved in/from Apollo Link State by using GraphQL operations instead of React&rsquo;s local state.</p>
-
-<p>Last but not least, for the sake of mentioning it, when you would want to add a result to your mutation, you could start out by adding the wanted fields in the mutation definition:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">SELECT_REPOSITORY</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">gql</span><span style="color: #48b685">`</span>
+<p>That&rsquo;s it for writing local data in Apollo&rsquo;s local state by using a GraphQL mutation which is only used locally. Once you start your application again, the select interaction should work. But this time, the data is stored and retrieved in/from Apollo Link State by using GraphQL operations instead of React&rsquo;s local state.</p><p>Last but not least, for the sake of mentioning it, when you would want to add a result to your mutation, you could start out by adding the wanted fields in the mutation definition:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">SELECT_REPOSITORY</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">gql</span><span style="color: #48b685">`</span>
 <span style="color: #48b685">  mutation($id: ID!, $isSelected: Boolean!) {</span>
 <span style="background-color: #4f424c"><span style="color: #48b685">    toggleSelectRepository(id: $id, isSelected: $isSelected) @client {</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">      id</span>
@@ -790,32 +434,18 @@
 </span><span style="color: #48b685">  }</span>
 <span style="color: #48b685">`</span><span style="color: #e7e9db">;</span>
 </code></pre></div>
-
-
-<p>Next, the resolver function can return the updated result:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">toggleSelectRepository</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">_</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">},</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">cache</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<p>Next, the resolver function can return the updated result:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">toggleSelectRepository</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">_</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">},</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">cache</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
   <span style="color: #815ba4">let</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">cache</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">readQuery</span><span style="color: #e7e9db">({</span>
     <span style="color: #06b6ef">query</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span><span style="color: #e7e9db">,</span>
-  <span style="color: #e7e9db">});</span>
-
-  <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">isSelected</span>
+  <span style="color: #e7e9db">});</span>  <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">isSelected</span>
     <span style="color: #5bc4bf">?</span> <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">filter</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">itemId</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">itemId</span> <span style="color: #5bc4bf">!==</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">)</span>
-    <span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">concat</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">);</span>
-
-  <span style="color: #06b6ef">cache</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">writeQuery</span><span style="color: #e7e9db">({</span>
+    <span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">selectedRepositoryIds</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">concat</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">);</span>  <span style="color: #06b6ef">cache</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">writeQuery</span><span style="color: #e7e9db">({</span>
     <span style="color: #06b6ef">query</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">GET_SELECTED_REPOSITORIES</span><span style="color: #e7e9db">,</span>
     <span style="color: #06b6ef">data</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">selectedRepositoryIds</span> <span style="color: #e7e9db">},</span>
-  <span style="color: #e7e9db">});</span>
-
-<span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span><span style="color: #5bc4bf">:</span> <span style="color: #5bc4bf">!</span><span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">};</span>
+  <span style="color: #e7e9db">});</span><span style="background-color: #4f424c">  <span style="color: #815ba4">return</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span><span style="color: #5bc4bf">:</span> <span style="color: #5bc4bf">!</span><span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">};</span>
 </span><span style="color: #e7e9db">};</span>
 </code></pre></div>
-
-
-<p>And finally you would be able to access it in the Mutation&rsquo;s render prop child function as second argument.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Select</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
+<p>And finally you would be able to access it in the Mutation&rsquo;s render prop child function as second argument.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">Select</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">({</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span>
   <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Mutation</span>
     <span style="color: #06b6ef">mutation</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">SELECT_REPOSITORY</span><span style="color: #e7e9db">}</span>
     <span style="color: #06b6ef">variables</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{{</span> <span style="color: #06b6ef">id</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isSelected</span> <span style="color: #e7e9db">}}</span>
@@ -828,32 +458,14 @@
   <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/Mutation&gt;</span>
 <span style="color: #e7e9db">);</span>
 </code></pre></div>
-
-
-<p>In the end, you should be able to access the result with the previous implementations. However, in the case of this mutation it is not really needed. In case you need it in the future, you have the necessary knowledge to do it. The application which you have implemented in the previous sections can be found <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/react-apollo-link-state-example">here as GitHub repository</a>.</p>
-
-<h3 id="exercises">Exercises:</h3>
-
-<ul>
+<p>In the end, you should be able to access the result with the previous implementations. However, in the case of this mutation it is not really needed. In case you need it in the future, you have the necessary knowledge to do it. The application which you have implemented in the previous sections can be found <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/react-apollo-link-state-example">here as GitHub repository</a>.</p><h3 id="exercises">Exercises:</h3><ul>
 <li>Implement select and unselect all repositories in the list mutations</li>
 <li>Implement a batch star and unstar mutation for all selected repositories</li>
-</ul>
-
-<h2 class="chapter-header" id="apollo-link-state-async-query-resolver">Async Query Resolver and Device Data</h2>
-
-<p>You will not go any deeper implementation wise for this application. Instead, this last paragraph should only give you an outline what&rsquo;s possible with Apollo Link State. Foremost, Apollo Link State is used for <strong>local data</strong> which is created in the client application by having user interactions while having Apollo Client itself for <strong>remote data</strong>. You have used both kinds of data in the previous application. But what about other data? For instance, there could be <strong>device data</strong> which can be queried from a mobile phone when using Apollo Client there. Then you can use Apollo Link State as well. You can define a <strong>async query resolver</strong> in your Apollo Link State resolvers when setting up Apollo Client with Apollo Link State. In this resolver you can define your query (as you have done with your mutation before) and its implementation: how it accessed the device API (with optionally given arguments) and how it returns the result. In case you are interested in this topics, you have to dig deeper into the <a target="_blank" rel="noopener noreferrer" href="https://www.apollographql.com/docs/link/links/state.html">Apollo Link State documentation</a>. One could argue that every other side-effect can be done in Apollo Link State too. For instance, you can perform requests to other API endpoints in a query resolver too. However, you should be cautious when mixing different use cases into Apollo Link State. It&rsquo;s main focus is local data after all.</p>
-
-<hr class="section-divider">
-
-<p>The last application has shown you how to use Apollo Link State instead of React&rsquo;s local state to establish state management in your application for local and remote data. As mentioned, the use case isn&rsquo;t the best choice to demonstrate Apollo Link State, because the local data which is manage as state is only needed in one component. It would be the best choice to keep this data in React&rsquo;s local state to have it co-located to your component. However, if you imagine a scenario where this local data is needed and thus shared across the whole application, it might be a valid step to manage it in Apollo Link State (instead of Redux or another state management solution). Then the Apollo Client&rsquo;s Cache becomes the single source of truth for remote data and local data.</p>
-
-<div class="read-before">
+</ul><h2 class="chapter-header" id="apollo-link-state-async-query-resolver">Async Query Resolver and Device Data</h2><p>You will not go any deeper implementation wise for this application. Instead, this last paragraph should only give you an outline what&rsquo;s possible with Apollo Link State. Foremost, Apollo Link State is used for <strong>local data</strong> which is created in the client application by having user interactions while having Apollo Client itself for <strong>remote data</strong>. You have used both kinds of data in the previous application. But what about other data? For instance, there could be <strong>device data</strong> which can be queried from a mobile phone when using Apollo Client there. Then you can use Apollo Link State as well. You can define a <strong>async query resolver</strong> in your Apollo Link State resolvers when setting up Apollo Client with Apollo Link State. In this resolver you can define your query (as you have done with your mutation before) and its implementation: how it accessed the device API (with optionally given arguments) and how it returns the result. In case you are interested in this topics, you have to dig deeper into the <a target="_blank" rel="noopener noreferrer" href="https://www.apollographql.com/docs/link/links/state.html">Apollo Link State documentation</a>. One could argue that every other side-effect can be done in Apollo Link State too. For instance, you can perform requests to other API endpoints in a query resolver too. However, you should be cautious when mixing different use cases into Apollo Link State. It&rsquo;s main focus is local data after all.</p><hr class="section-divider"><p>The last application has shown you how to use Apollo Link State instead of React&rsquo;s local state to establish state management in your application for local and remote data. As mentioned, the use case isn&rsquo;t the best choice to demonstrate Apollo Link State, because the local data which is manage as state is only needed in one component. It would be the best choice to keep this data in React&rsquo;s local state to have it co-located to your component. However, if you imagine a scenario where this local data is needed and thus shared across the whole application, it might be a valid step to manage it in Apollo Link State (instead of Redux or another state management solution). Then the Apollo Client&rsquo;s Cache becomes the single source of truth for remote data and local data.</p><div class="read-before">
     <p>This tutorial is part 2 of 3 in this series.</p>
     <div>Part 1: <a href="../react-apollo-client-example/index.html" itemprop="url">A minimal Apollo Client in React Application</a></div>
     <div>Part 3: <a href="../react-redux-apollo-client-state-management-tutorial/index.html" itemprop="url">How to use Redux with Apollo Client and GraphQL in React</a></div>
 </div>
-
-
                             
 <div class="feedback-and-share text-center">
     <hr>
@@ -868,8 +480,6 @@
         </p>
     
 </div>
-
-
                             
                                 <div class="box-inline col-md-12">
     <div class="col-md-12 text-center">
@@ -904,21 +514,15 @@
     </div>
 </div>
                             
-                        </div>
-
-                        
+                        </div>                        
                         
                         <div id="comments">
                             <div id="disqus_thread"></div>
-<script type="text/javascript">
-
-(function() {
+<script type="text/javascript">(function() {
     
     
     if (window.location.hostname == "localhost")
-        return;
-
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        return;    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
     var disqus_shortname = 'rwieruch';
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
@@ -927,31 +531,19 @@
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                         </div>
-                        
-
-                    </article>
-                    
-
-                </div>
-                
-
-            </div>
+                                            </article>
+                                    </div>
+                            </div>
             
         </div>
-        
-
-        
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
+                <section class="bar background-image-fixed-2 no-mb color-white text-center">
     <div class="dark-mask"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
                 <h2 class="text-uppercase">Take Part</h2>
-            </div>
-
-            <div class="col-md-12 text-center">
+            </div>            <div class="col-md-12 text-center">
                 
                     <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
                 
@@ -966,11 +558,7 @@
             </div>
             <div class="col-md-12">
                 <p class="text-center">
-                    
-
-
-
-<div id="mc_embed_signup">
+                    <div id="mc_embed_signup">
     <form
         action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
         method="post"
@@ -998,25 +586,13 @@
             </div>
         </div>
     </form>
-</div>
-
-                </p>
+</div>                </p>
             </div>
         </div>
     </div>
 </section>
-
-
-
-
         <footer id="subfooter">
-    <div class="container">
-
-        <div class="col-md-5 col-sm-6">
-
-            <h4>Recent posts</h4>
-
-            <div class="blog-entries">
+    <div class="container">        <div class="col-md-5 col-sm-6">            <h4>Recent posts</h4>            <div class="blog-entries">
                 
                 <div class="item same-height-row clearfix">
                     <div class="article same-height-always">
@@ -1072,19 +648,9 @@
                     </div>
                 </div>
                 
-            </div>
-
-            <hr class="hidden-md hidden-lg hidden-sm">
-
-        </div>
-        
-
-        
-        <div class="col-md-5 col-md-offset-2 col-sm-6">
-
-            <h4>About Me</h4>
-
-            <div class="blog-entries">
+            </div>            <hr class="hidden-md hidden-lg hidden-sm">        </div>
+                
+        <div class="col-md-5 col-md-offset-2 col-sm-6">            <h4>About Me</h4>            <div class="blog-entries">
                 <div class="item same-height-row clearfix">
                     <div class="profile same-height-always">
                         <img
@@ -1095,25 +661,15 @@
                     </div>
                     <div class="name same-height-always">
                         <p>
-                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                            Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
                         </p>
                     </div>
                 </div>
+            </div>        </div>
+        
             </div>
-
-        </div>
-        
-        
-
-    </div>
     
 </footer>
-
-
-
-
-
-
         <footer id="copyright">
   <div class="container">
     <div class="row">
@@ -1155,27 +711,7 @@
     </div>
   </div>
 </footer>
-
-
     </div>
-    
-
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-
-
-
-
-
-
-
-
-<script src="../js/script.js"></script>
-
-
-
-  </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script><script src="../js/script.js"></script>  </body>
 </html>

@@ -1,136 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
+<html lang="en">  <head>
   <meta charset="utf-8">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-
-  <title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">    <title>
     A Firestore in React Tutorial for Beginners [2019] - CPaul
-  </title>
-
-  <meta name="author" content="" />
-
-  
-    <meta name="description" content="A beginners tutorial to learn Firestore in React for business application with authentication, authorization and a real-time database. The tutorial gives you the perfect React Firestore boilerplate project ...">
-  
-
-  <meta name="theme-color" content="#38bb6c"/>
-
-  <meta name="generator" content="Hugo 0.41" />
-
-  
-  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
-
-  
-  
-
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </title>  <meta name="author" content="" />
+  <meta name="description" content="A beginners tutorial to learn Firestore in React for business application with authentication, authorization and a real-time database. The tutorial gives you the perfect React Firestore boilerplate project ...">
+    <meta name="theme-color" content="#38bb6c"/>  <meta name="generator" content="Hugo 0.41" />
+<link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-  
-  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
-  <link href="../css/customizations.css" rel="stylesheet">
-
-  
-  
-    <!--[if lt IE 9]>
+<link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">    <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   
-
-  
-  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="../img/favicon/manifest.json">
-  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-
-  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
-
-  
-  
-<meta itemprop="name" content="A Firestore in React Tutorial for Beginners [2019]">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul"><meta itemprop="name" content="A Firestore in React Tutorial for Beginners [2019]">
 <meta itemprop="description" content="A beginners tutorial to learn Firestore in React for business application with authentication, authorization and a real-time database. The tutorial gives you the perfect React Firestore boilerplate project ...">
-
-
-
     <meta itemprop="image" content="https://chrispaul.dev/img/posts/react-firestore-tutorial/banner_640.jpg">
-
-
-
-<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
-
-
-<meta itemprop="wordCount" content="2205">
-
-
-  
-  <meta name="keywords" content="react firestore, react firestore tutorial, react authentication, react firestore authentication tutorial, react session, react authorization, react protected routes">
-
-  <meta property="og:title" content="A Firestore in React Tutorial for Beginners [2019] - CPaul">
-
-
-  <meta property="og:description" content="A beginners tutorial to learn Firestore in React for business application with authentication, authorization and a real-time database. The tutorial gives you the perfect React Firestore boilerplate project ..." />
-
-
-<meta property="og:type" content="website" />
+<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," /><meta itemprop="wordCount" content="2205">  
+  <meta name="keywords" content="react firestore, react firestore tutorial, react authentication, react firestore authentication tutorial, react session, react authorization, react protected routes">  <meta property="og:title" content="A Firestore in React Tutorial for Beginners [2019] - CPaul">  <meta property="og:description" content="A beginners tutorial to learn Firestore in React for business application with authentication, authorization and a real-time database. The tutorial gives you the perfect React Firestore boilerplate project ..." /><meta property="og:type" content="website" />
 <meta property="og:url" content="https://chrispaul.dev/react-firestore-tutorial/" />
-<meta property="og:image" content="https://chrispaul.dev/img/posts/react-firestore-tutorial/banner_640.jpg" />
-
-  
-
-    <meta name="news_keywords" content="react firestore,react firestore tutorial,react authentication,react firestore authentication tutorial,react session,react authorization,react protected routes" />
-
-  
-
-    <meta name="twitter:card" content="summary_large_image"/>
+<meta property="og:image" content="https://chrispaul.dev/img/posts/react-firestore-tutorial/banner_640.jpg" />      <meta name="news_keywords" content="react firestore,react firestore tutorial,react authentication,react firestore authentication tutorial,react session,react authorization,react protected routes" />      <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/react-firestore-tutorial/banner_640.jpg"/>
-
-
-
 <meta name="twitter:title" content="A Firestore in React Tutorial for Beginners [2019]"/>
 <meta name="twitter:description" content="A beginners tutorial to learn Firestore in React for business application with authentication, authorization and a real-time database. The tutorial gives you the perfect React Firestore boilerplate project ..."/>
 <meta name="twitter:site" content="@cpaul"/>
-<meta name="twitter:domain" content="cpaul"/>
-
-  
-
-</head>
-
-
-  <body>
-
-    <div id="all">
-
-        <header>
-
-          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
-
-    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
-
-        <div class="container">
+<meta name="twitter:domain" content="cpaul"/>  </head>  <body>    <div id="all">        <header>          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">    <div class="navbar navbar-default yamm" role="navigation" id="navbar">        <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="../index.html">
                     <img src="../img/page/logo.svg" alt="A Firestore in React Tutorial for Beginners [2019] logo" class="img-lazy">
                     <span class="sr-only">A Firestore in React Tutorial for Beginners [2019] - go to homepage</span>
-                </a>
-
-                <div class="navbar-buttons">
+                </a>                <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
                         <span class="sr-only">Toggle navigation</span>
                         <i class="fa fa-align-justify"></i>
                     </button>
                 </div>
             </div>
-            
-
-            <div class="navbar-collapse collapse" id="navigation">
+                        <div class="navbar-collapse collapse" id="navigation">
                 <ul class="nav navbar-nav navbar-right">
                     
                     <li class="dropdown">
@@ -159,123 +71,63 @@
                     
                 </ul>
             </div>
-            
-
-            <div class="collapse clearfix" id="search">
-
-                <form class="navbar-form" role="search">
+                        <div class="collapse clearfix" id="search">                <form class="navbar-form" role="search">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
-
-                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
-
-                </span>
+                        <span class="input-group-btn">                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>                </span>
                     </div>
-                </form>
-
-            </div>
-            
-
-        </div>
+                </form>            </div>
+                    </div>
     </div>
-    
-
-</div>
-
-
-
-
-        </header>
-
-        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
-    
-
-<a
+    </div>        </header>        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    <a
     aria-label="icon-facebook"
     class="icon-facebook"
     href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freact-firestore-tutorial%2f"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
     <i class="fa fa-facebook"></i>
-</a>
-
-
-<a
+</a><a
     aria-label="icon-twitter"
     class="icon-twitter"
     href="https://twitter.com/share?text=A%20Firestore%20in%20React%20Tutorial%20for%20Beginners%20%5b2019%5d%20by%20%40cpaul%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2freact-firestore-tutorial%2f"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
     <i class="fa fa-twitter"></i>
-</a>
-
-
-
-
-
-<a
+</a><a
     aria-label="icon-linkedin"
     class="icon-linkedin"
     href="https://www.linkedin.com/shareArticle?mini=true&amp;title=A%20Firestore%20in%20React%20Tutorial%20for%20Beginners%20%5b2019%5d&amp;url=https%3a%2f%2fchrispaul.dev%2freact-firestore-tutorial%2f">
     <i class="fa fa-linkedin"></i>
-</a>
-
-</div>
-
-<div class="visible-xs visible-sm text-center">
+</a></div><div class="visible-xs visible-sm text-center">
     <div class="post-share post-share-fixed post-share-mobile">
-        
-
-<a
+        <a
     aria-label="icon-facebook"
     class="icon-facebook"
     href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freact-firestore-tutorial%2f"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
     <i class="fa fa-facebook"></i>
-</a>
-
-
-<a
+</a><a
     aria-label="icon-twitter"
     class="icon-twitter"
     href="https://twitter.com/share?text=A%20Firestore%20in%20React%20Tutorial%20for%20Beginners%20%5b2019%5d%20by%20%40cpaul%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2freact-firestore-tutorial%2f"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
     <i class="fa fa-twitter"></i>
-</a>
-
-
-
-
-
-<a
+</a><a
     aria-label="icon-linkedin"
     class="icon-linkedin"
     href="https://www.linkedin.com/shareArticle?mini=true&amp;title=A%20Firestore%20in%20React%20Tutorial%20for%20Beginners%20%5b2019%5d&amp;url=https%3a%2f%2fchrispaul.dev%2freact-firestore-tutorial%2f">
     <i class="fa fa-linkedin"></i>
-</a>
-
-    </div>
-</div>
-
-        
-
-        <div class="hidden-xs">
-            
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
+</a>    </div>
+</div>                <div class="hidden-xs">
+            <section class="bar background-image-fixed-2 no-mb color-white text-center">
     <div class="dark-mask"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
                 <h2 class="text-uppercase newsletter">Take Part</h2>
-            </div>
-
-            <div class="col-md-12">
+            </div>            <div class="col-md-12">
                 <p class="text-center">
                     
-
-
-
 <div id="mc_embed_signup">
     <form
         action="https://www.getrevue.co/profile/cpaul/add_subscriber"
@@ -304,68 +156,37 @@
             </div>
         </div>
     </form>
-</div>
-
-                </p>
+</div>                </p>
             </div>
         </div>
     </div>
 </section>
-
-
-
-        </div>
-
-        <div id="content">
-            <div class="container">
-
-                <div class="row">
-
-                    <article
+        </div>        <div id="content">
+            <div class="container">                <div class="row">                    <article
                         class="col-md-8 col-md-offset-2"
                         id="blog-post"
                         itemprop="blogPosts"
-                        itemscope itemtype="http://schema.org/BlogPosting">
-
-                        <div id="post-content" itemprop="articleBody">
-
-                            <header>
+                        itemscope itemtype="http://schema.org/BlogPosting">                        <div id="post-content" itemprop="articleBody">                            <header>
                                 <h1 itemprop="name headline">A Firestore in React Tutorial for Beginners [2019]</h1>
-                            </header>
-
-                            <div class="text-center">
+                            </header>                            <div class="text-center">
                                 
     <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/cpaul" class="facebook-button-follow">
          <i class="fa fa-facebook"></i>Follow
-    </a>
-
-
-                                &nbsp;
-                                
-
-                                &nbsp;
+    </a>                                &nbsp;
+                                                                &nbsp;
                                 
   <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=cpaul" class="generic-button-follow">
     <img src="https://img.shields.io/twitter/follow/cpaul.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
-  </a>
-
-
-                                &nbsp;
+  </a>                                &nbsp;
                                 
-                            </div>
-
-                            <p class="text-muted text-uppercase mb-small text-center">
+                            </div>                            <p class="text-muted text-uppercase mb-small text-center">
     <span itemprop="author publisher">
         
-    </span>
-
-    
+    </span>    
         <time datetime="2019-01-26" itemprop="datePublished">
             January 26, 2019
         </time>
-    
-
-    
+        
         <span class="hidden-xs hidden-sm"> - <a
             target="_blank"
             rel="noopener noreferrer"
@@ -374,14 +195,8 @@
             </a>
         </span>
     
-</p>
-
-                            <div>
-  
-
-</div>
-
-<div class="post-image-primary">
+</p>                            <div>
+  </div><div class="post-image-primary">
     <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
         <div class="pinterest-pinner">
             <a
@@ -390,9 +205,7 @@
                 data-pin-tall="true"
                 href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2freact-firestore-tutorial%2f&amp;media=https://chrispaul.dev/img%2fposts%2freact-firestore-tutorial%2fbanner.jpg&amp;description=">
             </a>
-        </div>
-
-        <img
+        </div>        <img
             class="img-lazy img-responsive"
             data-lazy-src="/src="/img/posts/react-firestore-tutorial/banner.jpg"
             data-is-src-set="is-src-set"
@@ -400,40 +213,19 @@
             itemprop="image"
         />
     </div>
-</div>
-
-
-<p>
+</div><p>
   <em>
     Interested in reading this tutorial as one of many chapters in my advanced React with Firebase book? Checkout the entire <a href="https://roadtoreact.com">The Road to React with Firebase</a> book that teaches you to create business web applications without the need to create a backend application with a database yourself.
   </em>
-</p>
-
-<p>Those who follow my content know that I always use the good old Firebase Realtime Database in React applications. I am saying good old here, because there is this new cool kid on the block: <strong>Firebase&rsquo;s Cloud Firestore</strong>. It can be used as <strong>alternative to Firebase&rsquo;s Realtime Database</strong>. According to Google&rsquo;s documentation, there are four major advantages of using Cloud Firestore over Firebase&rsquo;s Realtime Database:</p>
-
-<ul>
+</p><p>Those who follow my content know that I always use the good old Firebase Realtime Database in React applications. I am saying good old here, because there is this new cool kid on the block: <strong>Firebase&rsquo;s Cloud Firestore</strong>. It can be used as <strong>alternative to Firebase&rsquo;s Realtime Database</strong>. According to Google&rsquo;s documentation, there are four major advantages of using Cloud Firestore over Firebase&rsquo;s Realtime Database:</p><ul>
 <li>more intuitive data model</li>
 <li>more features</li>
 <li>faster queries</li>
 <li>scales better for larger applications</li>
-</ul>
-
-<p>I experienced the first argument from a code perspective, but also when inspecting the database entries on my Firebase project&rsquo;s dashboard, because it shifts the focus from JSON to document-oriented database. You can read more about which database to choose in <a target="_blank" rel="noopener noreferrer" href="https://firebase.google.com/docs/database/rtdb-vs-firestore">this comprehensive article that pivots Firebase&rsquo;s Cloud Firestore vs. Realtime Database</a>.</p>
-
-<p>Before I migrate my React tutorials and books from the older Realtime Database to Cloud Firestore, I&rsquo;d like to show you a <strong>straight forward migration path</strong> regarding the source code. That&rsquo;s how you can still use all the educational content I have written about Firebase and Firebase&rsquo;s Realtime Database, but exchange the database with Firebase&rsquo;s Cloud Firestore. As a result, I am not building a React application with Cloud Firestore from scratch, but migrating a <a href="../complete-firebase-authentication-react-tutorial/index.html">feature-rich React with Firebase application</a> that uses Firebase&rsquo;s Realtime Database over to Firebase&rsquo;s Cloud Firestore. Both versions are accessible as source code on GitHub:</p>
-
-<ul>
+</ul><p>I experienced the first argument from a code perspective, but also when inspecting the database entries on my Firebase project&rsquo;s dashboard, because it shifts the focus from JSON to document-oriented database. You can read more about which database to choose in <a target="_blank" rel="noopener noreferrer" href="https://firebase.google.com/docs/database/rtdb-vs-firestore">this comprehensive article that pivots Firebase&rsquo;s Cloud Firestore vs. Realtime Database</a>.</p><p>Before I migrate my React tutorials and books from the older Realtime Database to Cloud Firestore, I&rsquo;d like to show you a <strong>straight forward migration path</strong> regarding the source code. That&rsquo;s how you can still use all the educational content I have written about Firebase and Firebase&rsquo;s Realtime Database, but exchange the database with Firebase&rsquo;s Cloud Firestore. As a result, I am not building a React application with Cloud Firestore from scratch, but migrating a <a href="../complete-firebase-authentication-react-tutorial/index.html">feature-rich React with Firebase application</a> that uses Firebase&rsquo;s Realtime Database over to Firebase&rsquo;s Cloud Firestore. Both versions are accessible as source code on GitHub:</p><ul>
 <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/the-road-to-react-with-firebase/react-firebase-authentication">React with Firebase Realtime Database</a>.</li>
 <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/the-road-to-react-with-firebase/react-firestore-authentication">React with Firebase Cloud Firestore</a>.</li>
-</ul>
-
-<p>Except for the database, everything else stays the same; thus, everything else you learned from my previous React Firebase tutorials is still up-to-date. Before we start with migration, consider reading through this <a href="../firebase-tutorial/index.html">visual Firebase tutorial</a> to set up your Firebase project with Cloud Firestore.</p>
-
-<h2 class="chapter-header" id="firebase-cloud-firestore-migration">Migration from Realtime Database to Cloud Firestore</h2>
-
-<p>First, our project has a Firebase class that connects our React application with the Firebase API (e.g. authentication API, database API). It currently uses Firebase&rsquo;s Realtime Database:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">app</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;firebase/app&#39;</span><span style="color: #e7e9db">;</span>
+</ul><p>Except for the database, everything else stays the same; thus, everything else you learned from my previous React Firebase tutorials is still up-to-date. Before we start with migration, consider reading through this <a href="../firebase-tutorial/index.html">visual Firebase tutorial</a> to set up your Firebase project with Cloud Firestore.</p><h2 class="chapter-header" id="firebase-cloud-firestore-migration">Migration from Realtime Database to Cloud Firestore</h2><p>First, our project has a Firebase class that connects our React application with the Firebase API (e.g. authentication API, database API). It currently uses Firebase&rsquo;s Realtime Database:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">app</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;firebase/app&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;firebase/auth&#39;</span><span style="color: #e7e9db">;</span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;firebase/database&#39;</span><span style="color: #e7e9db">;</span>
 </span>
@@ -444,61 +236,25 @@
   <span style="color: #06b6ef">projectId</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">REACT_APP_PROJECT_ID</span><span style="color: #e7e9db">,</span>
   <span style="color: #06b6ef">storageBucket</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">REACT_APP_STORAGE_BUCKET</span><span style="color: #e7e9db">,</span>
   <span style="color: #06b6ef">messagingSenderId</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">REACT_APP_MESSAGING_SENDER_ID</span><span style="color: #e7e9db">,</span>
-<span style="color: #e7e9db">};</span>
-
-<span style="color: #815ba4">class</span> <span style="color: #06b6ef">Firebase</span> <span style="color: #e7e9db">{</span>
+<span style="color: #e7e9db">};</span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">Firebase</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
-    <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">initializeApp</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">config</span><span style="color: #e7e9db">);</span>
-
-    <span style="color: #776e71">/* Helper */</span>
-
-<span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">serverValue</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">database</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">ServerValue</span><span style="color: #e7e9db">;</span>
-</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">emailAuthProvider</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">EmailAuthProvider</span><span style="color: #e7e9db">;</span>
-
-    <span style="color: #776e71">/* Firebase APIs */</span>
-
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">();</span>
+    <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">initializeApp</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">config</span><span style="color: #e7e9db">);</span>    <span style="color: #776e71">/* Helper */</span><span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">serverValue</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">database</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">ServerValue</span><span style="color: #e7e9db">;</span>
+</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">emailAuthProvider</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">EmailAuthProvider</span><span style="color: #e7e9db">;</span>    <span style="color: #776e71">/* Firebase APIs */</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">();</span>
 <span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">db</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">database</span><span style="color: #e7e9db">();</span>
 </span>
-    <span style="color: #776e71">/* Social Sign In Method Provider */</span>
-
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">googleProvider</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">GoogleAuthProvider</span><span style="color: #e7e9db">();</span>
+    <span style="color: #776e71">/* Social Sign In Method Provider */</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">googleProvider</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">GoogleAuthProvider</span><span style="color: #e7e9db">();</span>
     <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">facebookProvider</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">FacebookAuthProvider</span><span style="color: #e7e9db">();</span>
     <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">twitterProvider</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">TwitterAuthProvider</span><span style="color: #e7e9db">();</span>
-  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #776e71">// *** Auth API ***</span>
-
-  <span style="color: #06b6ef">doCreateUserWithEmailAndPassword</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">email</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">password</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">createUserWithEmailAndPassword</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">email</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">password</span><span style="color: #e7e9db">);</span>
-
-  <span style="color: #06b6ef">doSignInWithEmailAndPassword</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">email</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">password</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">signInWithEmailAndPassword</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">email</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">password</span><span style="color: #e7e9db">);</span>
-
-  <span style="color: #06b6ef">doSignInWithGoogle</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">signInWithPopup</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">googleProvider</span><span style="color: #e7e9db">);</span>
-
-  <span style="color: #06b6ef">doSignInWithFacebook</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">signInWithPopup</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">facebookProvider</span><span style="color: #e7e9db">);</span>
-
-  <span style="color: #06b6ef">doSignInWithTwitter</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">signInWithPopup</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">twitterProvider</span><span style="color: #e7e9db">);</span>
-
-  <span style="color: #06b6ef">doSignOut</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">signOut</span><span style="color: #e7e9db">();</span>
-
-  <span style="color: #06b6ef">doPasswordReset</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">email</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">sendPasswordResetEmail</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">email</span><span style="color: #e7e9db">);</span>
-
-  <span style="color: #06b6ef">doSendEmailVerification</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #e7e9db">}</span>  <span style="color: #776e71">// *** Auth API ***</span>  <span style="color: #06b6ef">doCreateUserWithEmailAndPassword</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">email</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">password</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">createUserWithEmailAndPassword</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">email</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">password</span><span style="color: #e7e9db">);</span>  <span style="color: #06b6ef">doSignInWithEmailAndPassword</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">email</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">password</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">signInWithEmailAndPassword</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">email</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">password</span><span style="color: #e7e9db">);</span>  <span style="color: #06b6ef">doSignInWithGoogle</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">signInWithPopup</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">googleProvider</span><span style="color: #e7e9db">);</span>  <span style="color: #06b6ef">doSignInWithFacebook</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">signInWithPopup</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">facebookProvider</span><span style="color: #e7e9db">);</span>  <span style="color: #06b6ef">doSignInWithTwitter</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">signInWithPopup</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">twitterProvider</span><span style="color: #e7e9db">);</span>  <span style="color: #06b6ef">doSignOut</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">signOut</span><span style="color: #e7e9db">();</span>  <span style="color: #06b6ef">doPasswordReset</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">email</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">sendPasswordResetEmail</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">email</span><span style="color: #e7e9db">);</span>  <span style="color: #06b6ef">doSendEmailVerification</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
     <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">currentUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">sendEmailVerification</span><span style="color: #e7e9db">({</span>
       <span style="color: #06b6ef">url</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">REACT_APP_CONFIRMATION_EMAIL_REDIRECT</span><span style="color: #e7e9db">,</span>
-    <span style="color: #e7e9db">});</span>
-
-  <span style="color: #06b6ef">doPasswordUpdate</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">password</span> <span style="color: #5bc4bf">=&gt;</span>
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">currentUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">updatePassword</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">password</span><span style="color: #e7e9db">);</span>
-
-  <span style="color: #776e71">// *** Merge Auth and DB User API *** //</span>
-
-  <span style="color: #06b6ef">onAuthUserListener</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">next</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">fallback</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
+    <span style="color: #e7e9db">});</span>  <span style="color: #06b6ef">doPasswordUpdate</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">password</span> <span style="color: #5bc4bf">=&gt;</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">currentUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">updatePassword</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">password</span><span style="color: #e7e9db">);</span>  <span style="color: #776e71">// *** Merge Auth and DB User API *** //</span>  <span style="color: #06b6ef">onAuthUserListener</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">next</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">fallback</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
     <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onAuthStateChanged</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
       <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
         <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">uid</span><span style="color: #e7e9db">)</span>
@@ -509,84 +265,43 @@
             <span style="color: #776e71">// default empty roles</span>
             <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #5bc4bf">!</span><span style="color: #06b6ef">dbUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">roles</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
               <span style="color: #06b6ef">dbUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">roles</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{};</span>
-            <span style="color: #e7e9db">}</span>
-
-            <span style="color: #776e71">// merge auth and db user</span>
+            <span style="color: #e7e9db">}</span>            <span style="color: #776e71">// merge auth and db user</span>
             <span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
               <span style="color: #06b6ef">uid</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">uid</span><span style="color: #e7e9db">,</span>
               <span style="color: #06b6ef">email</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">email</span><span style="color: #e7e9db">,</span>
               <span style="color: #06b6ef">emailVerified</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">emailVerified</span><span style="color: #e7e9db">,</span>
               <span style="color: #06b6ef">providerData</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">providerData</span><span style="color: #e7e9db">,</span>
               <span style="color: #e7e9db">...</span><span style="color: #06b6ef">dbUser</span><span style="color: #e7e9db">,</span>
-            <span style="color: #e7e9db">};</span>
-
-            <span style="color: #06b6ef">next</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">);</span>
+            <span style="color: #e7e9db">};</span>            <span style="color: #06b6ef">next</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">);</span>
           <span style="color: #e7e9db">});</span>
       <span style="color: #e7e9db">}</span> <span style="color: #815ba4">else</span> <span style="color: #e7e9db">{</span>
         <span style="color: #06b6ef">fallback</span><span style="color: #e7e9db">();</span>
       <span style="color: #e7e9db">}</span>
-    <span style="color: #e7e9db">});</span>
-
-  <span style="color: #776e71">// *** User API ***</span>
-
-<span style="background-color: #4f424c">  <span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">uid</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">db</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">ref</span><span style="color: #e7e9db">(</span><span style="color: #48b685">`users/</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">uid</span><span style="color: #f99b15">}</span><span style="color: #48b685">`</span><span style="color: #e7e9db">);</span>
+    <span style="color: #e7e9db">});</span>  <span style="color: #776e71">// *** User API ***</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">uid</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">db</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">ref</span><span style="color: #e7e9db">(</span><span style="color: #48b685">`users/</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">uid</span><span style="color: #f99b15">}</span><span style="color: #48b685">`</span><span style="color: #e7e9db">);</span>
 </span>
 <span style="background-color: #4f424c">  <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">db</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">ref</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;users&#39;</span><span style="color: #e7e9db">);</span>
 </span>
-  <span style="color: #776e71">// *** Message API ***</span>
-
-<span style="background-color: #4f424c">  <span style="color: #06b6ef">message</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">uid</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">db</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">ref</span><span style="color: #e7e9db">(</span><span style="color: #48b685">`messages/</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">uid</span><span style="color: #f99b15">}</span><span style="color: #48b685">`</span><span style="color: #e7e9db">);</span>
+  <span style="color: #776e71">// *** Message API ***</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">message</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">uid</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">db</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">ref</span><span style="color: #e7e9db">(</span><span style="color: #48b685">`messages/</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">uid</span><span style="color: #f99b15">}</span><span style="color: #48b685">`</span><span style="color: #e7e9db">);</span>
 </span>
 <span style="background-color: #4f424c">  <span style="color: #06b6ef">messages</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">db</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">ref</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;messages&#39;</span><span style="color: #e7e9db">);</span>
-</span><span style="color: #e7e9db">}</span>
-
-<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">Firebase</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
-
-
-<p>The previous code snippet has all the lines highlighted that need to be changed for the Firestore migration. It&rsquo;s not much, because all the other authentication related code stays the same. Only the database setup changes when using Cloud Firestore and the API to read and write on user and message entities. Let&rsquo;s exchange the setup first. The usual <code>npm install firebase</code> node package comes with the Cloud Firestore and Realtime Database, so we can exchange this one straight forward.</p>
-
-<p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">app</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;firebase/app&#39;</span><span style="color: #e7e9db">;</span>
+</span><span style="color: #e7e9db">}</span><span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">Firebase</span><span style="color: #e7e9db">;</span>
+</code></pre></div><p>The previous code snippet has all the lines highlighted that need to be changed for the Firestore migration. It&rsquo;s not much, because all the other authentication related code stays the same. Only the database setup changes when using Cloud Firestore and the API to read and write on user and message entities. Let&rsquo;s exchange the setup first. The usual <code>npm install firebase</code> node package comes with the Cloud Firestore and Realtime Database, so we can exchange this one straight forward.</p><p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">app</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;firebase/app&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;firebase/auth&#39;</span><span style="color: #e7e9db">;</span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;firebase/firestore&#39;</span><span style="color: #e7e9db">;</span>
 </span>
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">config</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span> <span style="color: #e7e9db">};</span>
-
-<span style="color: #815ba4">class</span> <span style="color: #06b6ef">Firebase</span> <span style="color: #e7e9db">{</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">config</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span> <span style="color: #e7e9db">...</span> <span style="color: #e7e9db">};</span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">Firebase</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
-    <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">initializeApp</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">config</span><span style="color: #e7e9db">);</span>
-
-    <span style="color: #776e71">/* Helper */</span>
-
-<span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">fieldValue</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firestore</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">FieldValue</span><span style="color: #e7e9db">;</span>
-</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">emailAuthProvider</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">EmailAuthProvider</span><span style="color: #e7e9db">;</span>
-
-    <span style="color: #776e71">/* Firebase APIs */</span>
-
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">();</span>
+    <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">initializeApp</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">config</span><span style="color: #e7e9db">);</span>    <span style="color: #776e71">/* Helper */</span><span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">fieldValue</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firestore</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">FieldValue</span><span style="color: #e7e9db">;</span>
+</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">emailAuthProvider</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">EmailAuthProvider</span><span style="color: #e7e9db">;</span>    <span style="color: #776e71">/* Firebase APIs */</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">();</span>
 <span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">db</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firestore</span><span style="color: #e7e9db">();</span>
 </span>
-    <span style="color: #776e71">/* Social Sign In Method Provider */</span>
-
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">googleProvider</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">GoogleAuthProvider</span><span style="color: #e7e9db">();</span>
+    <span style="color: #776e71">/* Social Sign In Method Provider */</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">googleProvider</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">GoogleAuthProvider</span><span style="color: #e7e9db">();</span>
     <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">facebookProvider</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">FacebookAuthProvider</span><span style="color: #e7e9db">();</span>
     <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">twitterProvider</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">TwitterAuthProvider</span><span style="color: #e7e9db">();</span>
-  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #e7e9db">...</span>
-<span style="color: #e7e9db">}</span>
-
-<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">Firebase</span><span style="color: #e7e9db">;</span>
+  <span style="color: #e7e9db">}</span>  <span style="color: #e7e9db">...</span>
+<span style="color: #e7e9db">}</span><span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">Firebase</span><span style="color: #e7e9db">;</span>
 </code></pre></div>
-</p>
-
-<p>The set up for using timestamps, in this case for the <code>createdData</code> property for our message entities, has also changed slightly. Now, only the other previously highlighted sections have to change, to interact with the new Firestore instead of the Realtime Database.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">Firebase</span> <span style="color: #e7e9db">{</span>
-
-  <span style="color: #e7e9db">...</span>
-
-  <span style="color: #06b6ef">onAuthUserListener</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">next</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">fallback</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
+</p><p>The set up for using timestamps, in this case for the <code>createdData</code> property for our message entities, has also changed slightly. Now, only the other previously highlighted sections have to change, to interact with the new Firestore instead of the Realtime Database.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">Firebase</span> <span style="color: #e7e9db">{</span>  <span style="color: #e7e9db">...</span>  <span style="color: #06b6ef">onAuthUserListener</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">next</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">fallback</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
     <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onAuthStateChanged</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
       <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
         <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">uid</span><span style="color: #e7e9db">)</span>
@@ -597,59 +312,32 @@
             <span style="color: #776e71">// default empty roles</span>
             <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #5bc4bf">!</span><span style="color: #06b6ef">dbUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">roles</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
               <span style="color: #06b6ef">dbUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">roles</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{};</span>
-            <span style="color: #e7e9db">}</span>
-
-            <span style="color: #776e71">// merge auth and db user</span>
+            <span style="color: #e7e9db">}</span>            <span style="color: #776e71">// merge auth and db user</span>
             <span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
               <span style="color: #06b6ef">uid</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">uid</span><span style="color: #e7e9db">,</span>
               <span style="color: #06b6ef">email</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">email</span><span style="color: #e7e9db">,</span>
               <span style="color: #06b6ef">emailVerified</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">emailVerified</span><span style="color: #e7e9db">,</span>
               <span style="color: #06b6ef">providerData</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">providerData</span><span style="color: #e7e9db">,</span>
               <span style="color: #e7e9db">...</span><span style="color: #06b6ef">dbUser</span><span style="color: #e7e9db">,</span>
-            <span style="color: #e7e9db">};</span>
-
-            <span style="color: #06b6ef">next</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">);</span>
+            <span style="color: #e7e9db">};</span>            <span style="color: #06b6ef">next</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">);</span>
           <span style="color: #e7e9db">});</span>
       <span style="color: #e7e9db">}</span> <span style="color: #815ba4">else</span> <span style="color: #e7e9db">{</span>
         <span style="color: #06b6ef">fallback</span><span style="color: #e7e9db">();</span>
       <span style="color: #e7e9db">}</span>
-    <span style="color: #e7e9db">});</span>
-
-  <span style="color: #776e71">// *** User API ***</span>
-
-<span style="background-color: #4f424c">  <span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">uid</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">db</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">doc</span><span style="color: #e7e9db">(</span><span style="color: #48b685">`users/</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">uid</span><span style="color: #f99b15">}</span><span style="color: #48b685">`</span><span style="color: #e7e9db">);</span>
+    <span style="color: #e7e9db">});</span>  <span style="color: #776e71">// *** User API ***</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">user</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">uid</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">db</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">doc</span><span style="color: #e7e9db">(</span><span style="color: #48b685">`users/</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">uid</span><span style="color: #f99b15">}</span><span style="color: #48b685">`</span><span style="color: #e7e9db">);</span>
 </span>
 <span style="background-color: #4f424c">  <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">db</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">collection</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;users&#39;</span><span style="color: #e7e9db">);</span>
 </span>
-  <span style="color: #776e71">// *** Message API ***</span>
-
-<span style="background-color: #4f424c">  <span style="color: #06b6ef">message</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">uid</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">db</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">doc</span><span style="color: #e7e9db">(</span><span style="color: #48b685">`messages/</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">uid</span><span style="color: #f99b15">}</span><span style="color: #48b685">`</span><span style="color: #e7e9db">);</span>
+  <span style="color: #776e71">// *** Message API ***</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">message</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">uid</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">db</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">doc</span><span style="color: #e7e9db">(</span><span style="color: #48b685">`messages/</span><span style="color: #f99b15">${</span><span style="color: #06b6ef">uid</span><span style="color: #f99b15">}</span><span style="color: #48b685">`</span><span style="color: #e7e9db">);</span>
 </span>
 <span style="background-color: #4f424c">  <span style="color: #06b6ef">messages</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">db</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">collection</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;messages&#39;</span><span style="color: #e7e9db">);</span>
 </span><span style="color: #e7e9db">}</span>
-</code></pre></div>
-
-
-<p>Instead of working on references that are used to locate the JSON objects in Firebase&rsquo;s Realtime Database, Firestore introduces Collections (Lists, Arrays) and Documents (Item, Entity, Object). With these new concepts, we can use the usual <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD (Create, Read, Update, Delete) Operations</a> on them with with set, get, update, delete methods.</p>
-
-<h2 class="chapter-header" id="firebase-cloud-firestore-write-data">Write Data to Firestore: Set or Update? Merge!</h2>
-
-<p>Cloud Firestore uses set and update methods to create and edit documents in the database. For instance, when you sign up to Firebase authentication, in our application, in the sign up form, we made sure to create a new user in the database.</p>
-
-<p>It works the same as before with Cloud Firestore, because it offers the same method , where the<code>set()</code> method creates a new document in the Firestore database. If the document already exists, its content will be overwritten. If the document doesn&rsquo;t exist, it will be created.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">SignUpFormBase</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
-  <span style="color: #e7e9db">...</span>
-
-  <span style="color: #06b6ef">onSubmit</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</code></pre></div><p>Instead of working on references that are used to locate the JSON objects in Firebase&rsquo;s Realtime Database, Firestore introduces Collections (Lists, Arrays) and Documents (Item, Entity, Object). With these new concepts, we can use the usual <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD (Create, Read, Update, Delete) Operations</a> on them with with set, get, update, delete methods.</p><h2 class="chapter-header" id="firebase-cloud-firestore-write-data">Write Data to Firestore: Set or Update? Merge!</h2><p>Cloud Firestore uses set and update methods to create and edit documents in the database. For instance, when you sign up to Firebase authentication, in our application, in the sign up form, we made sure to create a new user in the database.</p><p>It works the same as before with Cloud Firestore, because it offers the same method , where the<code>set()</code> method creates a new document in the Firestore database. If the document already exists, its content will be overwritten. If the document doesn&rsquo;t exist, it will be created.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">SignUpFormBase</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">...</span>  <span style="color: #06b6ef">onSubmit</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
     <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">username</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">email</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">passwordOne</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">isAdmin</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">;</span>
-    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">roles</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{};</span>
-
-    <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">isAdmin</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #06b6ef">roles</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{};</span>    <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">isAdmin</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
       <span style="color: #06b6ef">roles</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">ROLES</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">ADMIN</span><span style="color: #e7e9db">]</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">ROLES</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">ADMIN</span><span style="color: #e7e9db">;</span>
-    <span style="color: #e7e9db">}</span>
-
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firebase</span>
+    <span style="color: #e7e9db">}</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firebase</span>
       <span style="color: #e7e9db">.</span><span style="color: #06b6ef">doCreateUserWithEmailAndPassword</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">email</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">passwordOne</span><span style="color: #e7e9db">)</span>
       <span style="color: #e7e9db">.</span><span style="color: #06b6ef">then</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
         <span style="color: #776e71">// Create a user in your Firebase realtime database</span>
@@ -672,35 +360,16 @@
       <span style="color: #e7e9db">.</span><span style="color: #815ba4">catch</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">error</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
         <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">error</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">code</span> <span style="color: #5bc4bf">===</span> <span style="color: #06b6ef">ERROR_CODE_ACCOUNT_EXISTS</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
           <span style="color: #06b6ef">error</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">message</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">ERROR_MSG_ACCOUNT_EXISTS</span><span style="color: #e7e9db">;</span>
-        <span style="color: #e7e9db">}</span>
-
-        <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">error</span> <span style="color: #e7e9db">});</span>
-      <span style="color: #e7e9db">});</span>
-
-    <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">preventDefault</span><span style="color: #e7e9db">();</span>
-  <span style="color: #e7e9db">};</span>
-
-  <span style="color: #e7e9db">...</span>
-
-  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+        <span style="color: #e7e9db">}</span>        <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">error</span> <span style="color: #e7e9db">});</span>
+      <span style="color: #e7e9db">});</span>    <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">preventDefault</span><span style="color: #e7e9db">();</span>
+  <span style="color: #e7e9db">};</span>  <span style="color: #e7e9db">...</span>  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
     <span style="color: #e7e9db">...</span>
   <span style="color: #e7e9db">}</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
-
-
-<p>However, as seen in the code snippet, Cloud Firestore comes with a merge option. If you are not sure whether your document already exists, pass the merge option to avoid overwriting the entire document. New content is merged into the entity if the entity is already there. We don&rsquo;t use the <code>update()</code> method because it fails if the document doesn&rsquo;t exist.</p>
-
-<p>In our case, the merge operation makes sense because we can&rsquo;t be sure if a user is signing up for the first time or if they&rsquo;ve signed up with a social login such as Google or Facebook. To handle this, we migrate our user creations for the social logins in the sign in form to use the merge option too.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">SignInGoogleBase</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+</code></pre></div><p>However, as seen in the code snippet, Cloud Firestore comes with a merge option. If you are not sure whether your document already exists, pass the merge option to avoid overwriting the entire document. New content is merged into the entity if the entity is already there. We don&rsquo;t use the <code>update()</code> method because it fails if the document doesn&rsquo;t exist.</p><p>In our case, the merge operation makes sense because we can&rsquo;t be sure if a user is signing up for the first time or if they&rsquo;ve signed up with a social login such as Google or Facebook. To handle this, we migrate our user creations for the social logins in the sign in form to use the merge option too.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">SignInGoogleBase</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
-    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>
-
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">error</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">null</span> <span style="color: #e7e9db">};</span>
-  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #06b6ef">onSubmit</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">error</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">null</span> <span style="color: #e7e9db">};</span>
+  <span style="color: #e7e9db">}</span>  <span style="color: #06b6ef">onSubmit</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
     <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firebase</span>
       <span style="color: #e7e9db">.</span><span style="color: #06b6ef">doSignInWithGoogle</span><span style="color: #e7e9db">()</span>
       <span style="color: #e7e9db">.</span><span style="color: #06b6ef">then</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">socialAuthUser</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
@@ -721,92 +390,46 @@
       <span style="color: #e7e9db">.</span><span style="color: #815ba4">catch</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">error</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
         <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">error</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">code</span> <span style="color: #5bc4bf">===</span> <span style="color: #06b6ef">ERROR_CODE_ACCOUNT_EXISTS</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
           <span style="color: #06b6ef">error</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">message</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">ERROR_MSG_ACCOUNT_EXISTS</span><span style="color: #e7e9db">;</span>
-        <span style="color: #e7e9db">}</span>
-
-        <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">error</span> <span style="color: #e7e9db">});</span>
-      <span style="color: #e7e9db">});</span>
-
-    <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">preventDefault</span><span style="color: #e7e9db">();</span>
-  <span style="color: #e7e9db">};</span>
-
-  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
-    <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">error</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">;</span>
-
-    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
+        <span style="color: #e7e9db">}</span>        <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">error</span> <span style="color: #e7e9db">});</span>
+      <span style="color: #e7e9db">});</span>    <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">preventDefault</span><span style="color: #e7e9db">();</span>
+  <span style="color: #e7e9db">};</span>  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">const</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">error</span> <span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">;</span>    <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
       <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">form</span> <span style="color: #06b6ef">onSubmit</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onSubmit</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
-        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;submit&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Sign</span> <span style="color: #06b6ef">In</span> <span style="color: #815ba4">with</span> <span style="color: #06b6ef">Google</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
-
-        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">error</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">p</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">error</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">message</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/p&gt;}</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;submit&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Sign</span> <span style="color: #06b6ef">In</span> <span style="color: #815ba4">with</span> <span style="color: #06b6ef">Google</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>        <span style="color: #e7e9db">{</span><span style="color: #06b6ef">error</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">p</span><span style="color: #5bc4bf">&gt;</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">error</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">message</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/p&gt;}</span>
       <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/form&gt;</span>
     <span style="color: #e7e9db">);</span>
   <span style="color: #e7e9db">}</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
-
-
-<p>Conduct the same migration for the Facebook and Twitter sign in methods. Then you can be assured that every time a user signs in with one of the available sign in methods, the latest properties from the authenticated user will be merged into the database user.</p>
-
-<p>We have some more set and update methods that were used for the Realtime Database in our application, but they stay the same for the Firestore Database. Only the sign in and sign up methods have changed, because it is more convenient to always merge the latest authenticated user to our database user document.</p>
-
-<h2 class="chapter-header" id="firebase-cloud-firestore-read-data">Read Data from Firestore</h2>
-
-<p>After we have learned how to write data to Firestore with set, update, and merge, we need to know how to read data from Firestore as well. Let&rsquo;s migrate all our React components that are reading data from the Realtime Database to read data from Firebase&rsquo;s Firestore, starting with the UserList component that looks for Firebase&rsquo;s Realtime Database like the following:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">UserList</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+</code></pre></div><p>Conduct the same migration for the Facebook and Twitter sign in methods. Then you can be assured that every time a user signs in with one of the available sign in methods, the latest properties from the authenticated user will be merged into the database user.</p><p>We have some more set and update methods that were used for the Realtime Database in our application, but they stay the same for the Firestore Database. Only the sign in and sign up methods have changed, because it is more convenient to always merge the latest authenticated user to our database user document.</p><h2 class="chapter-header" id="firebase-cloud-firestore-read-data">Read Data from Firestore</h2><p>After we have learned how to write data to Firestore with set, update, and merge, we need to know how to read data from Firestore as well. Let&rsquo;s migrate all our React components that are reading data from the Realtime Database to read data from Firebase&rsquo;s Firestore, starting with the UserList component that looks for Firebase&rsquo;s Realtime Database like the following:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">UserList</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
-    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>
-
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
       <span style="color: #06b6ef">loading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
       <span style="color: #06b6ef">users</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[],</span>
     <span style="color: #e7e9db">};</span>
-  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #06b6ef">componentDidMount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">loading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span> <span style="color: #e7e9db">});</span>
-
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firebase</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">().</span><span style="color: #06b6ef">on</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;value&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">snapshot</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
-      <span style="color: #815ba4">const</span> <span style="color: #06b6ef">usersObject</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">snapshot</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">val</span><span style="color: #e7e9db">();</span>
-
-      <span style="color: #815ba4">const</span> <span style="color: #06b6ef">usersList</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">Object.</span><span style="color: #06b6ef">keys</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">usersObject</span><span style="color: #e7e9db">).</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">key</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span>
+  <span style="color: #e7e9db">}</span>  <span style="color: #06b6ef">componentDidMount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">loading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span> <span style="color: #e7e9db">});</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firebase</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">().</span><span style="color: #06b6ef">on</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;value&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">snapshot</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #815ba4">const</span> <span style="color: #06b6ef">usersObject</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">snapshot</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">val</span><span style="color: #e7e9db">();</span>      <span style="color: #815ba4">const</span> <span style="color: #06b6ef">usersList</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">Object.</span><span style="color: #06b6ef">keys</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">usersObject</span><span style="color: #e7e9db">).</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">key</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span>
         <span style="color: #e7e9db">...</span><span style="color: #06b6ef">usersObject</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">key</span><span style="color: #e7e9db">],</span>
         <span style="color: #06b6ef">uid</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">key</span><span style="color: #e7e9db">,</span>
-      <span style="color: #e7e9db">}));</span>
-
-      <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span>
+      <span style="color: #e7e9db">}));</span>      <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span>
         <span style="color: #06b6ef">users</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">usersList</span><span style="color: #e7e9db">,</span>
         <span style="color: #06b6ef">loading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
       <span style="color: #e7e9db">});</span>
     <span style="color: #e7e9db">});</span>
-  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #06b6ef">componentWillUnmount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">}</span>  <span style="color: #06b6ef">componentWillUnmount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
     <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firebase</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">().</span><span style="color: #06b6ef">off</span><span style="color: #e7e9db">();</span>
-  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">}</span>  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
     <span style="color: #e7e9db">...</span>
   <span style="color: #e7e9db">}</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
-
-
-<p>Firebase&rsquo;s Realtime Database always returns an object that represents your data. It doesn&rsquo;t matter whether you request a single entity or a list of entities. For instance, a list of entities would always be a dictionary of the entities accessible by their identifiers. Now, when using Cloud Firestore instead, transforming the data collection to a list of items is different:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">UserList</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+</code></pre></div><p>Firebase&rsquo;s Realtime Database always returns an object that represents your data. It doesn&rsquo;t matter whether you request a single entity or a list of entities. For instance, a list of entities would always be a dictionary of the entities accessible by their identifiers. Now, when using Cloud Firestore instead, transforming the data collection to a list of items is different:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">UserList</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
-    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>
-
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
       <span style="color: #06b6ef">loading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
       <span style="color: #06b6ef">users</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[],</span>
     <span style="color: #e7e9db">};</span>
-  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #06b6ef">componentDidMount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">loading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span> <span style="color: #e7e9db">});</span>
-
-<span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">unsubscribe</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firebase</span>
+  <span style="color: #e7e9db">}</span>  <span style="color: #06b6ef">componentDidMount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">loading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span> <span style="color: #e7e9db">});</span><span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">unsubscribe</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firebase</span>
 </span>      <span style="color: #e7e9db">.</span><span style="color: #06b6ef">users</span><span style="color: #e7e9db">()</span>
 <span style="background-color: #4f424c">      <span style="color: #e7e9db">.</span><span style="color: #06b6ef">onSnapshot</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">snapshot</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
 </span><span style="background-color: #4f424c">        <span style="color: #815ba4">let</span> <span style="color: #06b6ef">users</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">[];</span>
@@ -820,44 +443,23 @@
 </span>          <span style="color: #06b6ef">loading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
         <span style="color: #e7e9db">});</span>
       <span style="color: #e7e9db">});</span>
-  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #06b6ef">componentWillUnmount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">}</span>  <span style="color: #06b6ef">componentWillUnmount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
 <span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">unsubscribe</span><span style="color: #e7e9db">();</span>
-</span>  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+</span>  <span style="color: #e7e9db">}</span>  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
     <span style="color: #e7e9db">...</span>
   <span style="color: #e7e9db">}</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
-
-
-<p>The snapshot offers a forEach method to iterate through the collection (documents/entities). Unfortunately there are no map, reduce or filter methods. Using the forEach method, you can create your list of items and keep track of the identifier of the document too.</p>
-
-<p>Identical to the Realtime Database, the Cloud Firestore is realtime as well. But it uses more common sense of creating the listener, which is just the return value of the function call that can be used in React&rsquo;s other lifecycle method to remove the listener.</p>
-
-<p>Now we have seen how this works for lists (collection) when using Firebase&rsquo;s Firestore, but not a single item (document)? Let&rsquo;s see how the UserItem component fetches data with the new Firestore:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">UserItem</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+</code></pre></div><p>The snapshot offers a forEach method to iterate through the collection (documents/entities). Unfortunately there are no map, reduce or filter methods. Using the forEach method, you can create your list of items and keep track of the identifier of the document too.</p><p>Identical to the Realtime Database, the Cloud Firestore is realtime as well. But it uses more common sense of creating the listener, which is just the return value of the function call that can be used in React&rsquo;s other lifecycle method to remove the listener.</p><p>Now we have seen how this works for lists (collection) when using Firebase&rsquo;s Firestore, but not a single item (document)? Let&rsquo;s see how the UserItem component fetches data with the new Firestore:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">UserItem</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
-    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>
-
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
       <span style="color: #06b6ef">loading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
       <span style="color: #06b6ef">user</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">null</span><span style="color: #e7e9db">,</span>
       <span style="color: #e7e9db">...</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">location</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">,</span>
     <span style="color: #e7e9db">};</span>
-  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #06b6ef">componentDidMount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">}</span>  <span style="color: #06b6ef">componentDidMount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
     <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
       <span style="color: #815ba4">return</span><span style="color: #e7e9db">;</span>
-    <span style="color: #e7e9db">}</span>
-
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">loading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span> <span style="color: #e7e9db">});</span>
-
-<span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">unsubscribe</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firebase</span>
+    <span style="color: #e7e9db">}</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">loading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span> <span style="color: #e7e9db">});</span><span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">unsubscribe</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firebase</span>
 </span>      <span style="color: #e7e9db">.</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">match</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">params</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">id</span><span style="color: #e7e9db">)</span>
 <span style="background-color: #4f424c">      <span style="color: #e7e9db">.</span><span style="color: #06b6ef">onSnapshot</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">snapshot</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
 </span>        <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span>
@@ -865,32 +467,15 @@
 </span>          <span style="color: #06b6ef">loading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
         <span style="color: #e7e9db">});</span>
       <span style="color: #e7e9db">});</span>
-  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #06b6ef">componentWillUnmount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">}</span>  <span style="color: #06b6ef">componentWillUnmount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
 <span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">unsubscribe</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">unsubscribe</span><span style="color: #e7e9db">();</span>
-</span>  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #e7e9db">...</span>
+</span>  <span style="color: #e7e9db">}</span>  <span style="color: #e7e9db">...</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
-
-
-<p>If there is a user coming from React Router&rsquo;s state, the user is not fetched again. But also not kept up to date with a Firebase realtime listener. That&rsquo;s why unsubscribing the listener is a conditional operation. The data fetching doesn&rsquo;t look much different from the previous version, except the method names changed to <code>onSnapshot()</code> and <code>data()</code>.</p>
-
-<p>Now we have seen how collections and single documents are read from Firestore, so we need to apply the same refactorings to our other React components from the application. For instance, the Messages component fetches our messages collection that we adjusted in the beginning in the Firebase class:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">Messages</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
-  <span style="color: #e7e9db">...</span>
-
-  <span style="color: #06b6ef">componentDidMount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+</code></pre></div><p>If there is a user coming from React Router&rsquo;s state, the user is not fetched again. But also not kept up to date with a Firebase realtime listener. That&rsquo;s why unsubscribing the listener is a conditional operation. The data fetching doesn&rsquo;t look much different from the previous version, except the method names changed to <code>onSnapshot()</code> and <code>data()</code>.</p><p>Now we have seen how collections and single documents are read from Firestore, so we need to apply the same refactorings to our other React components from the application. For instance, the Messages component fetches our messages collection that we adjusted in the beginning in the Firebase class:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">Messages</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">...</span>  <span style="color: #06b6ef">componentDidMount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
     <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onListenForMessages</span><span style="color: #e7e9db">();</span>
-  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #06b6ef">onListenForMessages</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">loading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span> <span style="color: #e7e9db">});</span>
-
-<span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">unsubscribe</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firebase</span>
+  <span style="color: #e7e9db">}</span>  <span style="color: #06b6ef">onListenForMessages</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">loading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span> <span style="color: #e7e9db">});</span><span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">unsubscribe</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firebase</span>
 </span>      <span style="color: #e7e9db">.</span><span style="color: #06b6ef">messages</span><span style="color: #e7e9db">()</span>
 <span style="background-color: #4f424c">      <span style="color: #e7e9db">.</span><span style="color: #06b6ef">orderBy</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;createdAt&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #48b685">&#39;desc&#39;</span><span style="color: #e7e9db">)</span>
 </span><span style="background-color: #4f424c">      <span style="color: #e7e9db">.</span><span style="color: #06b6ef">limit</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">limit</span><span style="color: #e7e9db">)</span>
@@ -909,27 +494,11 @@
           <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">messages</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">null</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">loading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span> <span style="color: #e7e9db">});</span>
         <span style="color: #e7e9db">}</span>
       <span style="color: #e7e9db">});</span>
-  <span style="color: #e7e9db">};</span>
-
-  <span style="color: #06b6ef">componentWillUnmount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">};</span>  <span style="color: #06b6ef">componentWillUnmount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
 <span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">unsubscribe</span><span style="color: #e7e9db">();</span>
-</span>  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #e7e9db">...</span>
+</span>  <span style="color: #e7e9db">}</span>  <span style="color: #e7e9db">...</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
-
-
-<p>As for the other components using Firestore now, the transformation changes, subscribing to and unsubscribing from the listener, and a couple of property and method namings change, too. Everything else stays fairly the same as before.</p>
-
-<hr class="section-divider">
-
-<p>Migrating a larger application from Firebase&rsquo;s Realtime Database to Firebase Cloud Firestore isn&rsquo;t that complex. The database layer with its setup and operations changes, but all the other Firebase features such as authentication, authorization, and hosting stay identical. Reading and writing data with the Firestore isn&rsquo;t much different from the Realtime Database, but it adds more convenience using a more elegant API and data structure with collections and documents. As an exercise, I encourage you to go through my Firebase + React tutorial and migrate it to Firestore to learn more.</p>
-
-<p>Check out the <a target="_blank" rel="noopener noreferrer" href="https://firebase.google.com/docs/firestore/">official Firestore documentation</a> to learn more about how it structures data, how to read and write data, and how to integrate it with more advanced features. You can also check out the Firebase Realtime Database project and the Firebase Cloud Firestore project on GitHub from the beginning of this tutorial.</p>
-
-
-                            
+</code></pre></div><p>As for the other components using Firestore now, the transformation changes, subscribing to and unsubscribing from the listener, and a couple of property and method namings change, too. Everything else stays fairly the same as before.</p><hr class="section-divider"><p>Migrating a larger application from Firebase&rsquo;s Realtime Database to Firebase Cloud Firestore isn&rsquo;t that complex. The database layer with its setup and operations changes, but all the other Firebase features such as authentication, authorization, and hosting stay identical. Reading and writing data with the Firestore isn&rsquo;t much different from the Realtime Database, but it adds more convenience using a more elegant API and data structure with collections and documents. As an exercise, I encourage you to go through my Firebase + React tutorial and migrate it to Firestore to learn more.</p><p>Check out the <a target="_blank" rel="noopener noreferrer" href="https://firebase.google.com/docs/firestore/">official Firestore documentation</a> to learn more about how it structures data, how to read and write data, and how to integrate it with more advanced features. You can also check out the Firebase Realtime Database project and the Firebase Cloud Firestore project on GitHub from the beginning of this tutorial.</p>                            
 <div class="feedback-and-share text-center">
     <hr>
     
@@ -942,10 +511,7 @@
             Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/cpaul"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
         </p>
     
-</div>
-
-
-                            
+</div>                            
                                 <div class="box-inline col-md-12">
     <div class="col-md-12 text-center">
         <h2 class="newsletter">The Road to learn React</h2>
@@ -979,21 +545,15 @@
     </div>
 </div>
                             
-                        </div>
-
-                        
+                        </div>                        
                         
                         <div id="comments">
                             <div id="disqus_thread"></div>
-<script type="text/javascript">
-
-(function() {
+<script type="text/javascript">(function() {
     
     
     if (window.location.hostname == "localhost")
-        return;
-
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        return;    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
     var disqus_shortname = 'cpaul';
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
@@ -1002,31 +562,19 @@
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                         </div>
-                        
-
-                    </article>
-                    
-
-                </div>
-                
-
-            </div>
+                                            </article>
+                                    </div>
+                            </div>
             
         </div>
-        
-
-        
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
+                <section class="bar background-image-fixed-2 no-mb color-white text-center">
     <div class="dark-mask"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
                 <h2 class="text-uppercase">Take Part</h2>
-            </div>
-
-            <div class="col-md-12 text-center">
+            </div>            <div class="col-md-12 text-center">
                 
                     <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
                 
@@ -1042,9 +590,6 @@
             <div class="col-md-12">
                 <p class="text-center">
                     
-
-
-
 <div id="mc_embed_signup">
     <form
         action="https://www.getrevue.co/profile/cpaul/add_subscriber"
@@ -1073,25 +618,12 @@
             </div>
         </div>
     </form>
-</div>
-
-                </p>
+</div>                </p>
             </div>
         </div>
     </div>
-</section>
-
-
-
-
-        <footer id="subfooter">
-    <div class="container">
-
-        <div class="col-md-5 col-sm-6">
-
-            <h4>Recent posts</h4>
-
-            <div class="blog-entries">
+</section>        <footer id="subfooter">
+    <div class="container">        <div class="col-md-5 col-sm-6">            <h4>Recent posts</h4>            <div class="blog-entries">
                 
                 <div class="item same-height-row clearfix">
                     <div class="article same-height-always">
@@ -1147,19 +679,9 @@
                     </div>
                 </div>
                 
-            </div>
-
-            <hr class="hidden-md hidden-lg hidden-sm">
-
-        </div>
-        
-
-        
-        <div class="col-md-5 col-md-offset-2 col-sm-6">
-
-            <h4>About Me</h4>
-
-            <div class="blog-entries">
+            </div>            <hr class="hidden-md hidden-lg hidden-sm">        </div>
+                
+        <div class="col-md-5 col-md-offset-2 col-sm-6">            <h4>About Me</h4>            <div class="blog-entries">
                 <div class="item same-height-row clearfix">
                     <div class="profile same-height-always">
                         <img
@@ -1170,25 +692,15 @@
                     </div>
                     <div class="name same-height-always">
                         <p>
-                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                            Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
                         </p>
                     </div>
                 </div>
+            </div>        </div>
+        
             </div>
-
-        </div>
-        
-        
-
-    </div>
     
 </footer>
-
-
-
-
-
-
         <footer id="copyright">
   <div class="container">
     <div class="row">
@@ -1229,28 +741,10 @@
       </div>
     </div>
   </div>
-</footer>
-
-
-    </div>
+</footer>    </div>
     
-
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-
-
-
-
-
-
-
-
 <script src="../js/script.js"></script>
-
-
-
   </body>
 </html>

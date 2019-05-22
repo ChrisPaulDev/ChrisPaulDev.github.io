@@ -1,136 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
+<html lang="en">  <head>
   <meta charset="utf-8">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-
-  <title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">    <title>
     Mocking a GraphQL Server for Apollo Client - CPaul
-  </title>
-
-  <meta name="author" content="" />
-
-  
-    <meta name="description" content="The tutorial shows you how to mock your GraphQL server for your GraphQL client for testing or other purposes. Either you can reconstruct a GraphQL client-side schema or introspect the GraphQL server schema. Both ways use client-side resolvers to mock the data...">
-  
-
-  <meta name="theme-color" content="#38bb6c"/>
-
-  <meta name="generator" content="Hugo 0.41" />
-
-  
-  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
-
-  
-  
-
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </title>  <meta name="author" content="" />
+  <meta name="description" content="The tutorial shows you how to mock your GraphQL server for your GraphQL client for testing or other purposes. Either you can reconstruct a GraphQL client-side schema or introspect the GraphQL server schema. Both ways use client-side resolvers to mock the data...">
+    <meta name="theme-color" content="#38bb6c"/>  <meta name="generator" content="Hugo 0.41" />
+<link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-  
-  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
-  <link href="../css/customizations.css" rel="stylesheet">
-
-  
-  
-    <!--[if lt IE 9]>
+<link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">    <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   
-
-  
-  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="../img/favicon/manifest.json">
-  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-
-  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
-
-  
-  
-<meta itemprop="name" content="Mocking a GraphQL Server for Apollo Client">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul"><meta itemprop="name" content="Mocking a GraphQL Server for Apollo Client">
 <meta itemprop="description" content="The tutorial shows you how to mock your GraphQL server for your GraphQL client for testing or other purposes. Either you can reconstruct a GraphQL client-side schema or introspect the GraphQL server schema. Both ways use client-side resolvers to mock the data...">
-
-
-
     <meta itemprop="image" content="https://chrispaul.dev/img/posts/graphql-server-mock-apollo-client/banner_640.jpg">
-
-
-
-<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
-
-
-<meta itemprop="wordCount" content="2911">
-
-
-  
-  <meta name="keywords" content="apollo client mocking, apollo server mocking, apollo server mock, apollo client mock, apollo mock link, apollo client mock testing, apollo client mock data, apollo client mock response, apollo mock query">
-
-  <meta property="og:title" content="Mocking a GraphQL Server for Apollo Client - CPaul">
-
-
-  <meta property="og:description" content="The tutorial shows you how to mock your GraphQL server for your GraphQL client for testing or other purposes. Either you can reconstruct a GraphQL client-side schema or introspect the GraphQL server schema. Both ways use client-side resolvers to mock the data..." />
-
-
-<meta property="og:type" content="website" />
+<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," /><meta itemprop="wordCount" content="2911">  
+  <meta name="keywords" content="apollo client mocking, apollo server mocking, apollo server mock, apollo client mock, apollo mock link, apollo client mock testing, apollo client mock data, apollo client mock response, apollo mock query">  <meta property="og:title" content="Mocking a GraphQL Server for Apollo Client - CPaul">  <meta property="og:description" content="The tutorial shows you how to mock your GraphQL server for your GraphQL client for testing or other purposes. Either you can reconstruct a GraphQL client-side schema or introspect the GraphQL server schema. Both ways use client-side resolvers to mock the data..." /><meta property="og:type" content="website" />
 <meta property="og:url" content="https://chrispaul.dev/graphql-server-mock-apollo-client/" />
-<meta property="og:image" content="https://chrispaul.dev/img/posts/graphql-server-mock-apollo-client/banner_640.jpg" />
-
-  
-
-    <meta name="news_keywords" content="apollo client mocking,apollo server mocking,apollo server mock,apollo client mock,apollo mock link,apollo client mock testing,apollo client mock data,apollo client mock response,apollo mock query" />
-
-  
-
-    <meta name="twitter:card" content="summary_large_image"/>
+<meta property="og:image" content="https://chrispaul.dev/img/posts/graphql-server-mock-apollo-client/banner_640.jpg" />      <meta name="news_keywords" content="apollo client mocking,apollo server mocking,apollo server mock,apollo client mock,apollo mock link,apollo client mock testing,apollo client mock data,apollo client mock response,apollo mock query" />      <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/graphql-server-mock-apollo-client/banner_640.jpg"/>
-
-
-
 <meta name="twitter:title" content="Mocking a GraphQL Server for Apollo Client"/>
 <meta name="twitter:description" content="The tutorial shows you how to mock your GraphQL server for your GraphQL client for testing or other purposes. Either you can reconstruct a GraphQL client-side schema or introspect the GraphQL server schema. Both ways use client-side resolvers to mock the data..."/>
 <meta name="twitter:site" content="@cpaul"/>
-<meta name="twitter:domain" content="cpaul"/>
-
-  
-
-</head>
-
-
-  <body>
-
-    <div id="all">
-
-        <header>
-
-          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
-
-    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
-
-        <div class="container">
+<meta name="twitter:domain" content="cpaul"/>  </head>  <body>    <div id="all">        <header>          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">    <div class="navbar navbar-default yamm" role="navigation" id="navbar">        <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="../index.html">
                     <img src="../img/page/logo.svg" alt="Mocking a GraphQL Server for Apollo Client logo" class="img-lazy">
                     <span class="sr-only">Mocking a GraphQL Server for Apollo Client - go to homepage</span>
-                </a>
-
-                <div class="navbar-buttons">
+                </a>                <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
                         <span class="sr-only">Toggle navigation</span>
                         <i class="fa fa-align-justify"></i>
                     </button>
                 </div>
             </div>
-            
-
-            <div class="navbar-collapse collapse" id="navigation">
+                        <div class="navbar-collapse collapse" id="navigation">
                 <ul class="nav navbar-nav navbar-right">
                     
                     <li class="dropdown">
@@ -159,123 +71,63 @@
                     
                 </ul>
             </div>
-            
-
-            <div class="collapse clearfix" id="search">
-
-                <form class="navbar-form" role="search">
+                        <div class="collapse clearfix" id="search">                <form class="navbar-form" role="search">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
-
-                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
-
-                </span>
+                        <span class="input-group-btn">                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>                </span>
                     </div>
-                </form>
-
-            </div>
-            
-
-        </div>
+                </form>            </div>
+                    </div>
     </div>
-    
-
-</div>
-
-
-
-
-        </header>
-
-        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
-    
-
-<a
+    </div>        </header>        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    <a
     aria-label="icon-facebook"
     class="icon-facebook"
     href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fgraphql-server-mock-apollo-client%2f"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
     <i class="fa fa-facebook"></i>
-</a>
-
-
-<a
+</a><a
     aria-label="icon-twitter"
     class="icon-twitter"
     href="https://twitter.com/share?text=Mocking%20a%20GraphQL%20Server%20for%20Apollo%20Client%20by%20%40cpaul%20%23ReactJs%20%23GraphQL&amp;url=https%3a%2f%2fchrispaul.dev%2fgraphql-server-mock-apollo-client%2f"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
     <i class="fa fa-twitter"></i>
-</a>
-
-
-
-
-
-<a
+</a><a
     aria-label="icon-linkedin"
     class="icon-linkedin"
     href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Mocking%20a%20GraphQL%20Server%20for%20Apollo%20Client&amp;url=https%3a%2f%2fchrispaul.dev%2fgraphql-server-mock-apollo-client%2f">
     <i class="fa fa-linkedin"></i>
-</a>
-
-</div>
-
-<div class="visible-xs visible-sm text-center">
+</a></div><div class="visible-xs visible-sm text-center">
     <div class="post-share post-share-fixed post-share-mobile">
-        
-
-<a
+        <a
     aria-label="icon-facebook"
     class="icon-facebook"
     href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fgraphql-server-mock-apollo-client%2f"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
     <i class="fa fa-facebook"></i>
-</a>
-
-
-<a
+</a><a
     aria-label="icon-twitter"
     class="icon-twitter"
     href="https://twitter.com/share?text=Mocking%20a%20GraphQL%20Server%20for%20Apollo%20Client%20by%20%40cpaul%20%23ReactJs%20%23GraphQL&amp;url=https%3a%2f%2fchrispaul.dev%2fgraphql-server-mock-apollo-client%2f"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
     <i class="fa fa-twitter"></i>
-</a>
-
-
-
-
-
-<a
+</a><a
     aria-label="icon-linkedin"
     class="icon-linkedin"
     href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Mocking%20a%20GraphQL%20Server%20for%20Apollo%20Client&amp;url=https%3a%2f%2fchrispaul.dev%2fgraphql-server-mock-apollo-client%2f">
     <i class="fa fa-linkedin"></i>
-</a>
-
-    </div>
-</div>
-
-        
-
-        <div class="hidden-xs">
-            
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
+</a>    </div>
+</div>                <div class="hidden-xs">
+            <section class="bar background-image-fixed-2 no-mb color-white text-center">
     <div class="dark-mask"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
                 <h2 class="text-uppercase newsletter">Take Part</h2>
-            </div>
-
-            <div class="col-md-12">
+            </div>            <div class="col-md-12">
                 <p class="text-center">
                     
-
-
-
 <div id="mc_embed_signup">
     <form
         action="https://www.getrevue.co/profile/cpaul/add_subscriber"
@@ -304,68 +156,37 @@
             </div>
         </div>
     </form>
-</div>
-
-                </p>
+</div>                </p>
             </div>
         </div>
     </div>
 </section>
-
-
-
-        </div>
-
-        <div id="content">
-            <div class="container">
-
-                <div class="row">
-
-                    <article
+        </div>        <div id="content">
+            <div class="container">                <div class="row">                    <article
                         class="col-md-8 col-md-offset-2"
                         id="blog-post"
                         itemprop="blogPosts"
-                        itemscope itemtype="http://schema.org/BlogPosting">
-
-                        <div id="post-content" itemprop="articleBody">
-
-                            <header>
+                        itemscope itemtype="http://schema.org/BlogPosting">                        <div id="post-content" itemprop="articleBody">                            <header>
                                 <h1 itemprop="name headline">Mocking a GraphQL Server for Apollo Client</h1>
-                            </header>
-
-                            <div class="text-center">
+                            </header>                            <div class="text-center">
                                 
     <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/cpaul" class="facebook-button-follow">
          <i class="fa fa-facebook"></i>Follow
-    </a>
-
-
-                                &nbsp;
-                                
-
-                                &nbsp;
+    </a>                                &nbsp;
+                                                                &nbsp;
                                 
   <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=cpaul" class="generic-button-follow">
     <img src="https://img.shields.io/twitter/follow/cpaul.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
-  </a>
-
-
-                                &nbsp;
+  </a>                                &nbsp;
                                 
-                            </div>
-
-                            <p class="text-muted text-uppercase mb-small text-center">
+                            </div>                            <p class="text-muted text-uppercase mb-small text-center">
     <span itemprop="author publisher">
         
-    </span>
-
-    
+    </span>    
         <time datetime="2018-05-28" itemprop="datePublished">
             May 28, 2018
         </time>
-    
-
-    
+        
         <span class="hidden-xs hidden-sm"> - <a
             target="_blank"
             rel="noopener noreferrer"
@@ -374,14 +195,8 @@
             </a>
         </span>
     
-</p>
-
-                            <div>
-  
-
-</div>
-
-<div class="post-image-primary">
+</p>                            <div>
+  </div><div class="post-image-primary">
     <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
         <div class="pinterest-pinner">
             <a
@@ -390,9 +205,7 @@
                 data-pin-tall="true"
                 href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fgraphql-server-mock-apollo-client%2f&amp;media=https://chrispaul.dev/img%2fposts%2fgraphql-server-mock-apollo-client%2fbanner.jpg&amp;description=">
             </a>
-        </div>
-
-        <img
+        </div>        <img
             class="img-lazy img-responsive"
             data-lazy-src="/src="/img/posts/graphql-server-mock-apollo-client/banner.jpg"
             data-is-src-set="is-src-set"
@@ -400,81 +213,40 @@
             itemprop="image"
         />
     </div>
-</div>
-
-
-<p>
+</div><p>
   <em>
     Interested in reading this tutorial as one of many chapters in my GraphQL book? Checkout the entire <a href="https://roadtoreact.com">The Road to GraphQL</a> book that teaches you to become a fullstack developer with JavaScript.
   </em>
-</p>
-
-<div class="read-before">
+</p><div class="read-before">
     <p>This tutorial is part 2 of 3 in this series.</p>
     <div>Part 1: <a href="../react-apollo-client-example/index.html" itemprop="url">A minimal Apollo Client in React Application</a></div>
     <div>Part 3: <a href="../react-apollo-client-testing/index.html" itemprop="url">Writing Tests for Apollo Client in React</a></div>
-</div>
-
-<p>Often you run into the case where you have to mock your GraphQL server for your GraphQL client application. It can be for testing your GraphQL client or when your GraphQL server is not (always) available for development. Then it comes in handy to know how to mock your GraphQL server. The following tutorial will show you how to do it for Apollo Client which is used in a React application.</p>
-
-<p>The following sections are split up into two parts. The first part will show you how to mock a GraphQL server with a client-side implemented GraphQL schema. You may wonder: <em>When would you do it this way?</em> For instance, it happens when you are not able to get a <em>schema.json</em> file from your GraphQL server or when you are not able to run a GraphQL introspection against your GraphQL server. So this approach can be used when the schema from the GraphQL server, which you are trying to mock, is out of your hands. The second part shows you the alternative way, when you are able to access the schema from your GraphQL server, by using a <a target="_blank" rel="noopener noreferrer" href="http://graphql.org/learn/introspection/">GraphQL introspection</a>.</p>
-
-<p>In order to get you started, clone this <a target="_blank" rel="noopener noreferrer" href="https://github.com/cpaul/react-apollo-client-example">minimal React application from GitHub and follow its installation instructions</a> or use the minimal Apollo Client in React boilerplate project from a previous section. Afterward, get to know the source code of the project and run it on the command line with <code>npm start</code>. It is a minimal React application which consumes the official GitHub GraphQL API by using Apollo Client.</p>
-
-<h2 class="chapter-header" id="graphql-server-mock-client-schema">How to mock a GraphQL server from a client-side Schema</h2>
-
-<p>In the following, the <em>src/index.js</em> file is the only part you are going to focus on. That&rsquo;s the place where the Apollo Client instance with its HTTP link and cache is instantiated and where you will hook-in the mocking of your GraphQL server. You will need a Apollo Link called <a target="_blank" rel="noopener noreferrer" href="https://www.apollographql.com/docs/link/links/schema.html">Apollo Link Schema</a> to provide a client-side GraphQL schema to your Apollo Client setup. In addition, you need GraphQL Tools helper functions to create the client-sided schema in the first place. Therefore, install the packages on the command line for your project:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">apollo</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">link</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">schema</span> <span style="color: #06b6ef">graphql</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">tools</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span>
-</code></pre></div>
-
-
-<p>Next, import the SchemaLink along with your other Apollo Client dependencies. Apollo Client&rsquo;s HttpLink is not needed for the first part, because it is replaced entirely by the SchemaLink. In the second part of the sections it is needed though.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
-<span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
-
-<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">ApolloProvider</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-apollo&#39;</span><span style="color: #e7e9db">;</span>
+</div><p>Often you run into the case where you have to mock your GraphQL server for your GraphQL client application. It can be for testing your GraphQL client or when your GraphQL server is not (always) available for development. Then it comes in handy to know how to mock your GraphQL server. The following tutorial will show you how to do it for Apollo Client which is used in a React application.</p><p>The following sections are split up into two parts. The first part will show you how to mock a GraphQL server with a client-side implemented GraphQL schema. You may wonder: <em>When would you do it this way?</em> For instance, it happens when you are not able to get a <em>schema.json</em> file from your GraphQL server or when you are not able to run a GraphQL introspection against your GraphQL server. So this approach can be used when the schema from the GraphQL server, which you are trying to mock, is out of your hands. The second part shows you the alternative way, when you are able to access the schema from your GraphQL server, by using a <a target="_blank" rel="noopener noreferrer" href="http://graphql.org/learn/introspection/">GraphQL introspection</a>.</p><p>In order to get you started, clone this <a target="_blank" rel="noopener noreferrer" href="https://github.com/cpaul/react-apollo-client-example">minimal React application from GitHub and follow its installation instructions</a> or use the minimal Apollo Client in React boilerplate project from a previous section. Afterward, get to know the source code of the project and run it on the command line with <code>npm start</code>. It is a minimal React application which consumes the official GitHub GraphQL API by using Apollo Client.</p><h2 class="chapter-header" id="graphql-server-mock-client-schema">How to mock a GraphQL server from a client-side Schema</h2><p>In the following, the <em>src/index.js</em> file is the only part you are going to focus on. That&rsquo;s the place where the Apollo Client instance with its HTTP link and cache is instantiated and where you will hook-in the mocking of your GraphQL server. You will need a Apollo Link called <a target="_blank" rel="noopener noreferrer" href="https://www.apollographql.com/docs/link/links/schema.html">Apollo Link Schema</a> to provide a client-side GraphQL schema to your Apollo Client setup. In addition, you need GraphQL Tools helper functions to create the client-sided schema in the first place. Therefore, install the packages on the command line for your project:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">apollo</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">link</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">schema</span> <span style="color: #06b6ef">graphql</span><span style="color: #5bc4bf">-</span><span style="color: #06b6ef">tools</span> <span style="color: #5bc4bf">--</span><span style="color: #06b6ef">save</span>
+</code></pre></div><p>Next, import the SchemaLink along with your other Apollo Client dependencies. Apollo Client&rsquo;s HttpLink is not needed for the first part, because it is replaced entirely by the SchemaLink. In the second part of the sections it is needed though.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">ApolloProvider</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-apollo&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">ApolloClient</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;apollo-client&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">InMemoryCache</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;apollo-cache-inmemory&#39;</span><span style="color: #e7e9db">;</span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">SchemaLink</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;apollo-link-schema&#39;</span><span style="color: #e7e9db">;</span>
 </span>
-<span style="color: #815ba4">import</span> <span style="color: #06b6ef">App</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./App&#39;</span><span style="color: #e7e9db">;</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">cache</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">InMemoryCache</span><span style="color: #e7e9db">();</span>
-
-<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">link</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">...</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">App</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./App&#39;</span><span style="color: #e7e9db">;</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">cache</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">InMemoryCache</span><span style="color: #e7e9db">();</span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">link</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">...</span>
 </span>
 <span style="color: #815ba4">const</span> <span style="color: #06b6ef">client</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">ApolloClient</span><span style="color: #e7e9db">({</span>
   <span style="color: #06b6ef">link</span><span style="color: #e7e9db">,</span>
   <span style="color: #06b6ef">cache</span><span style="color: #e7e9db">,</span>
-<span style="color: #e7e9db">});</span>
-
-<span style="color: #06b6ef">ReactDOM</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">render</span><span style="color: #e7e9db">(</span>
+<span style="color: #e7e9db">});</span><span style="color: #06b6ef">ReactDOM</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">render</span><span style="color: #e7e9db">(</span>
   <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ApolloProvider</span> <span style="color: #06b6ef">client</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">client</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
     <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">App</span> <span style="color: #5bc4bf">/&gt;</span>
   <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ApolloProvider&gt;,</span>
   <span style="color: #e7e9db">document.</span><span style="color: #06b6ef">getElementById</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;root&#39;</span><span style="color: #e7e9db">),</span>
 <span style="color: #e7e9db">);</span>
-</code></pre></div>
-
-
-<p>Everything is in place except for the <code>link</code> property which is mandatory for the Apollo Client constructor. Since you have imported the SchemaLink class, you can use it to create a client-sided GraphQL schema by using the <code>makeExecutableSchema()</code> function.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
-<span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
-
-<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">ApolloProvider</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-apollo&#39;</span><span style="color: #e7e9db">;</span>
+</code></pre></div><p>Everything is in place except for the <code>link</code> property which is mandatory for the Apollo Client constructor. Since you have imported the SchemaLink class, you can use it to create a client-sided GraphQL schema by using the <code>makeExecutableSchema()</code> function.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">ApolloProvider</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-apollo&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">ApolloClient</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;apollo-client&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">InMemoryCache</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;apollo-cache-inmemory&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">SchemaLink</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;apollo-link-schema&#39;</span><span style="color: #e7e9db">;</span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">makeExecutableSchema</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;graphql-tools&#39;</span><span style="color: #e7e9db">;</span>
 </span>
-<span style="color: #815ba4">import</span> <span style="color: #06b6ef">App</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./App&#39;</span><span style="color: #e7e9db">;</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">cache</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">InMemoryCache</span><span style="color: #e7e9db">();</span>
-
-<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">typeDefs</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">...</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">App</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./App&#39;</span><span style="color: #e7e9db">;</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">cache</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">InMemoryCache</span><span style="color: #e7e9db">();</span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">typeDefs</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">...</span>
 </span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolvers</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">...</span>
 </span>
@@ -488,37 +260,21 @@
 <span style="color: #815ba4">const</span> <span style="color: #06b6ef">client</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">ApolloClient</span><span style="color: #e7e9db">({</span>
   <span style="color: #06b6ef">link</span><span style="color: #e7e9db">,</span>
   <span style="color: #06b6ef">cache</span><span style="color: #e7e9db">,</span>
-<span style="color: #e7e9db">});</span>
-
-<span style="color: #06b6ef">ReactDOM</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">render</span><span style="color: #e7e9db">(</span>
+<span style="color: #e7e9db">});</span><span style="color: #06b6ef">ReactDOM</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">render</span><span style="color: #e7e9db">(</span>
   <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ApolloProvider</span> <span style="color: #06b6ef">client</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">client</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
     <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">App</span> <span style="color: #5bc4bf">/&gt;</span>
   <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ApolloProvider&gt;,</span>
   <span style="color: #e7e9db">document.</span><span style="color: #06b6ef">getElementById</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;root&#39;</span><span style="color: #e7e9db">),</span>
 <span style="color: #e7e9db">);</span>
-</code></pre></div>
-
-
-<p>Perhaps you are familiar with the function to generate a GraphQL schema, because it is used for Apollo Server on the Node.js server-side to generate your GraphQL schema from GraphQL types and resolvers. You will implement a small GraphQL schema with those types and resolvers in the next part to mimic the small part you are using from the GitHub GraphQL API in your application.</p>
-
-<p>Let&rsquo;s start with the <a target="_blank" rel="noopener noreferrer" href="https://graphql.org/learn/schema/">GraphQL type definitions</a>. The one GraphQL query you are using in your <em>src/App.js</em> is retrieving an organization with its repositories based on a <code>login</code> string type which identifies the organization.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">typeDefs</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">`</span>
+</code></pre></div><p>Perhaps you are familiar with the function to generate a GraphQL schema, because it is used for Apollo Server on the Node.js server-side to generate your GraphQL schema from GraphQL types and resolvers. You will implement a small GraphQL schema with those types and resolvers in the next part to mimic the small part you are using from the GitHub GraphQL API in your application.</p><p>Let&rsquo;s start with the <a target="_blank" rel="noopener noreferrer" href="https://graphql.org/learn/schema/">GraphQL type definitions</a>. The one GraphQL query you are using in your <em>src/App.js</em> is retrieving an organization with its repositories based on a <code>login</code> string type which identifies the organization.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">typeDefs</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">`</span>
 <span style="color: #48b685">  type Query {</span>
 <span style="color: #48b685">    organization(login: String!): Organization!</span>
 <span style="color: #48b685">  }</span>
 <span style="color: #48b685">`</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
-
-
-<p>The query returns an object of the type <code>Organization</code> which has GraphQL scalar types (name and url) but also an object type (RepositoryConnection) for the repositories. Since the repositories are not a plain list of repositories, but follow <a target="_blank" rel="noopener noreferrer" href="http://graphql.org/learn/pagination/">one of the opinionated structures for paginated lists in GraphQL</a>, the type structure is a bit more complex by using a list of RepositoryEdge types. However, in the end there is a <code>Repository</code> type represented as node which has only scalar types and thus is the leaf of query. You can double check the query structure by looking at the query from the <em>src/App.js</em> file to make more sense of it.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">typeDefs</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">`</span>
+</code></pre></div><p>The query returns an object of the type <code>Organization</code> which has GraphQL scalar types (name and url) but also an object type (RepositoryConnection) for the repositories. Since the repositories are not a plain list of repositories, but follow <a target="_blank" rel="noopener noreferrer" href="http://graphql.org/learn/pagination/">one of the opinionated structures for paginated lists in GraphQL</a>, the type structure is a bit more complex by using a list of RepositoryEdge types. However, in the end there is a <code>Repository</code> type represented as node which has only scalar types and thus is the leaf of query. You can double check the query structure by looking at the query from the <em>src/App.js</em> file to make more sense of it.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">typeDefs</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">`</span>
 <span style="color: #48b685">  type Query {</span>
 <span style="color: #48b685">    organization(login: String!): Organization!</span>
-<span style="color: #48b685">  }</span>
-
-<span style="background-color: #4f424c"><span style="color: #48b685">  type Organization {</span>
+<span style="color: #48b685">  }</span><span style="background-color: #4f424c"><span style="color: #48b685">  type Organization {</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">    name: String!</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">    url: String!</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">    repositories: RepositoryConnection!</span>
@@ -539,40 +295,23 @@
 </span><span style="background-color: #4f424c"><span style="color: #48b685">    viewerHasStarred: Boolean!</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">  }</span>
 </span><span style="color: #48b685">`</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
-
-
-<p>At this point you may wonder: How to come up with the type names? In this case, it is only important to reconstruct the correct <strong>type structure</strong> from the query you are performing in your application, but not the <strong>type names</strong>. The latter are not relevant and you could come up with your own. However, in this case the correct type names from the GitHub GraphQL API are reflected. In addition, you don&rsquo;t need to reconstruct the whole GitHub GraphQL schema, but only the part you are using in your application.</p>
-
-<p>In the next step, you have to implement the type definitions for the Mutation which is used in the <em>src/App.js</em> file. The <code>addStar</code> mutation takes an <strong>input type</strong> with the type <code>AddStarInput</code> and returns an object type of <code>AddStarPayload</code>.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">typeDefs</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">`</span>
+</code></pre></div><p>At this point you may wonder: How to come up with the type names? In this case, it is only important to reconstruct the correct <strong>type structure</strong> from the query you are performing in your application, but not the <strong>type names</strong>. The latter are not relevant and you could come up with your own. However, in this case the correct type names from the GitHub GraphQL API are reflected. In addition, you don&rsquo;t need to reconstruct the whole GitHub GraphQL schema, but only the part you are using in your application.</p><p>In the next step, you have to implement the type definitions for the Mutation which is used in the <em>src/App.js</em> file. The <code>addStar</code> mutation takes an <strong>input type</strong> with the type <code>AddStarInput</code> and returns an object type of <code>AddStarPayload</code>.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">typeDefs</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">`</span>
 <span style="color: #48b685">  type Query {</span>
 <span style="color: #48b685">    organization(login: String!): Organization!</span>
-<span style="color: #48b685">  }</span>
-
-<span style="color: #48b685">  type Organization {</span>
+<span style="color: #48b685">  }</span><span style="color: #48b685">  type Organization {</span>
 <span style="color: #48b685">    name: String!</span>
 <span style="color: #48b685">    url: String!</span>
 <span style="color: #48b685">    repositories: RepositoryConnection!</span>
-<span style="color: #48b685">  }</span>
-
-<span style="color: #48b685">  type RepositoryConnection {</span>
+<span style="color: #48b685">  }</span><span style="color: #48b685">  type RepositoryConnection {</span>
 <span style="color: #48b685">    edges: [RepositoryEdge!]!</span>
-<span style="color: #48b685">  }</span>
-
-<span style="color: #48b685">  type RepositoryEdge {</span>
+<span style="color: #48b685">  }</span><span style="color: #48b685">  type RepositoryEdge {</span>
 <span style="color: #48b685">    node: Repository!</span>
-<span style="color: #48b685">  }</span>
-
-<span style="color: #48b685">  type Repository {</span>
+<span style="color: #48b685">  }</span><span style="color: #48b685">  type Repository {</span>
 <span style="color: #48b685">    id: ID!</span>
 <span style="color: #48b685">    name: String!</span>
 <span style="color: #48b685">    url: String!</span>
 <span style="color: #48b685">    viewerHasStarred: Boolean!</span>
-<span style="color: #48b685">  }</span>
-
-<span style="background-color: #4f424c"><span style="color: #48b685">  type Mutation {</span>
+<span style="color: #48b685">  }</span><span style="background-color: #4f424c"><span style="color: #48b685">  type Mutation {</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">    addStar(input: AddStarInput!): AddStarPayload!</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">  }</span>
 </span><span style="background-color: #4f424c">
@@ -584,17 +323,10 @@
 </span><span style="background-color: #4f424c"><span style="color: #48b685">    starrable: Starrable!</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">  }</span>
 </span><span style="color: #48b685">`</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
-
-
-<p>Last but not least, the <code>Starrable</code> type needs to be defined, because it is already used in the <code>AddStarPayload</code> type to return the <code>starrable</code> object. It could be a GraphQL type identical to all the types from before. However, in the following you are going to define it as a <strong>GraphQL interface</strong> instead which is used on the Repository type too. Doing it this way, it is possible to associate the entity, which is mutated by the <code>addStar</code> mutation, with an entity from the result of the query with the list of repositories. After all, that&rsquo;s how Apollo Client is able to update the cache by resolving the relations between those types by using an <code>id</code> and <code>__typename</code> from the returned entities from GraphQL queries and mutations.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">typeDefs</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">`</span>
+</code></pre></div><p>Last but not least, the <code>Starrable</code> type needs to be defined, because it is already used in the <code>AddStarPayload</code> type to return the <code>starrable</code> object. It could be a GraphQL type identical to all the types from before. However, in the following you are going to define it as a <strong>GraphQL interface</strong> instead which is used on the Repository type too. Doing it this way, it is possible to associate the entity, which is mutated by the <code>addStar</code> mutation, with an entity from the result of the query with the list of repositories. After all, that&rsquo;s how Apollo Client is able to update the cache by resolving the relations between those types by using an <code>id</code> and <code>__typename</code> from the returned entities from GraphQL queries and mutations.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">typeDefs</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">`</span>
 <span style="color: #48b685">  type Query {</span>
 <span style="color: #48b685">    organization(login: String!): Organization!</span>
-<span style="color: #48b685">  }</span>
-
-<span style="background-color: #4f424c"><span style="color: #48b685">  interface Starrable {</span>
+<span style="color: #48b685">  }</span><span style="background-color: #4f424c"><span style="color: #48b685">  interface Starrable {</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">    id: ID!</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">    viewerHasStarred: Boolean!</span>
 </span><span style="background-color: #4f424c"><span style="color: #48b685">  }</span>
@@ -603,43 +335,24 @@
 <span style="color: #48b685">    name: String!</span>
 <span style="color: #48b685">    url: String!</span>
 <span style="color: #48b685">    repositories: RepositoryConnection!</span>
-<span style="color: #48b685">  }</span>
-
-<span style="color: #48b685">  type RepositoryConnection {</span>
+<span style="color: #48b685">  }</span><span style="color: #48b685">  type RepositoryConnection {</span>
 <span style="color: #48b685">    edges: [RepositoryEdge!]!</span>
-<span style="color: #48b685">  }</span>
-
-<span style="color: #48b685">  type RepositoryEdge {</span>
+<span style="color: #48b685">  }</span><span style="color: #48b685">  type RepositoryEdge {</span>
 <span style="color: #48b685">    node: Repository!</span>
-<span style="color: #48b685">  }</span>
-
-<span style="background-color: #4f424c"><span style="color: #48b685">  type Repository implements Starrable {</span>
+<span style="color: #48b685">  }</span><span style="background-color: #4f424c"><span style="color: #48b685">  type Repository implements Starrable {</span>
 </span><span style="color: #48b685">    id: ID!</span>
 <span style="color: #48b685">    name: String!</span>
 <span style="color: #48b685">    url: String!</span>
 <span style="color: #48b685">    viewerHasStarred: Boolean!</span>
-<span style="color: #48b685">  }</span>
-
-<span style="color: #48b685">  type Mutation {</span>
+<span style="color: #48b685">  }</span><span style="color: #48b685">  type Mutation {</span>
 <span style="color: #48b685">    addStar(input: AddStarInput!): AddStarPayload!</span>
-<span style="color: #48b685">  }</span>
-
-<span style="color: #48b685">  input AddStarInput {</span>
+<span style="color: #48b685">  }</span><span style="color: #48b685">  input AddStarInput {</span>
 <span style="color: #48b685">    starrableId: ID!</span>
-<span style="color: #48b685">  }</span>
-
-<span style="color: #48b685">  type AddStarPayload {</span>
+<span style="color: #48b685">  }</span><span style="color: #48b685">  type AddStarPayload {</span>
 <span style="background-color: #4f424c"><span style="color: #48b685">    starrable: Starrable!</span>
 </span><span style="color: #48b685">  }</span>
 <span style="color: #48b685">`</span><span style="color: #e7e9db">;</span>
-</code></pre></div>
-
-
-<p>That&rsquo;s it for the type definitions. You should have implemented all the GraphQL types that are needed to create a small GraphQL schema which reflects all necessary parts for the used query and mutation from the App component. The complementary part in order to create an executable schema for the Apollo Client are resolvers. You may have used them before for Apollo Link State or Apollo Server. Basically it is the place to define how every field in your GraphQL operations get resolved. Usually the information for the resolvers is taken from a database (Apollo Server) or local state (Apollo Link State), but in this case, it is the place where you simply return mocked data which reflects the schema structure from before.</p>
-
-<p>First, define the resolver for the organization field in your query. It can return the whole object going all the way down to the repositories as nodes in a list. In order to give the mock data a dynamic touch, you can use the <code>login</code> argument from the second argument of the resolver function to use it for the mock data. These are all the arguments which are passed into your query (or mutation).</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolvers</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+</code></pre></div><p>That&rsquo;s it for the type definitions. You should have implemented all the GraphQL types that are needed to create a small GraphQL schema which reflects all necessary parts for the used query and mutation from the App component. The complementary part in order to create an executable schema for the Apollo Client are resolvers. You may have used them before for Apollo Link State or Apollo Server. Basically it is the place to define how every field in your GraphQL operations get resolved. Usually the information for the resolvers is taken from a database (Apollo Server) or local state (Apollo Link State), but in this case, it is the place where you simply return mocked data which reflects the schema structure from before.</p><p>First, define the resolver for the organization field in your query. It can return the whole object going all the way down to the repositories as nodes in a list. In order to give the mock data a dynamic touch, you can use the <code>login</code> argument from the second argument of the resolver function to use it for the mock data. These are all the arguments which are passed into your query (or mutation).</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolvers</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">Query</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
     <span style="color: #06b6ef">organization</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">parent</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">login</span> <span style="color: #e7e9db">})</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span>
       <span style="color: #06b6ef">name</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">login</span><span style="color: #e7e9db">,</span>
@@ -667,12 +380,7 @@
     <span style="color: #e7e9db">}),</span>
   <span style="color: #e7e9db">},</span>
 <span style="color: #e7e9db">};</span>
-</code></pre></div>
-
-
-<p>Second, you can define the <code>addStar</code> mutation in the Mutation resolver the same way:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolvers</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+</code></pre></div><p>Second, you can define the <code>addStar</code> mutation in the Mutation resolver the same way:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolvers</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">Query</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
     <span style="color: #e7e9db">...</span>
   <span style="color: #e7e9db">},</span>
@@ -685,12 +393,7 @@
 </span><span style="background-color: #4f424c">    <span style="color: #e7e9db">}),</span>
 </span><span style="background-color: #4f424c">  <span style="color: #e7e9db">},</span>
 </span><span style="color: #e7e9db">};</span>
-</code></pre></div>
-
-
-<p>And third, you have to define the resolveType for the GraphQL interface that you have defined and implemented for the Repository type before. Since the GraphQL interface is only implemented by one GraphQL type, it can simply return this one GraphQL type. Otherwise, if the interface would be implemented by many types, the resolveType function would have to handle it.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolvers</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+</code></pre></div><p>And third, you have to define the resolveType for the GraphQL interface that you have defined and implemented for the Repository type before. Since the GraphQL interface is only implemented by one GraphQL type, it can simply return this one GraphQL type. Otherwise, if the interface would be implemented by many types, the resolveType function would have to handle it.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolvers</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">Query</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
     <span style="color: #e7e9db">...</span>
   <span style="color: #e7e9db">},</span>
@@ -701,18 +404,7 @@
 </span><span style="background-color: #4f424c">    <span style="color: #06b6ef">__resolveType</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #48b685">&#39;Repository&#39;</span><span style="color: #e7e9db">,</span>
 </span><span style="background-color: #4f424c">  <span style="color: #e7e9db">},</span>
 </span><span style="color: #e7e9db">};</span>
-</code></pre></div>
-
-
-<p>If you would&rsquo;t implement the resolveType, you would get the following error when having the interface implemented as before and when executing the <code>addStar</code> mutation: <em>&ldquo;Abstract type Starrable must resolve to an Object type at runtime for field AddStarPayload.starrable with value &ldquo;[object Object]&ldquo;, received &ldquo;undefined&rdquo;. Either the Starrable type should provide a &ldquo;resolveType&rdquo; function or each possible types should provide an &ldquo;isTypeOf&rdquo; function.&rdquo;</em></p>
-
-<p>That&rsquo;s it for defining your GraphQL type definitions and schema. Both are used in the <code>makeExecutableSchema()</code> function to produce a schema which is used in the SchemaLink constructor. It is the one part which replaced the HttpLink which would have been used to send the GraphQL operations across the network to a actual GraphQL server. Now it should work with the client-side GraphQL schema instead which resolves with the mocked data. Once you start your application again, you should see the mocked data from the GraphQL query and the mocking of the GraphQL mutation, because the mutation result updates the Apollo Client&rsquo;s Cache.</p>
-
-<h2 class="chapter-header" id="graphql-server-mock-introspection">How to mock a GraphQL server from a Introspection</h2>
-
-<p>The next part of the series shows you the alternative way of creating a mocked GraphQL server by using the GraphQL schema from the actual GraphQL server. Therefore, you don&rsquo;t need to reconstruct the exact schema as you did before. However, the GraphQL schema from the server must be accessible for you in order to pull this off. The common way to retrieve the schema is a GraphQL introspection. In case of GitHub&rsquo;s GraphQL API, you could perform a HTTP GET request against their GraphQL endpoint to retrieve their schema (<a target="_blank" rel="noopener noreferrer" href="https://developer.github.com/v4/guides/intro-to-graphql/#discovering-the-graphql-api">see instructions</a>). However, there exists a convenient helper function to retrieve the schema with one asynchronous function call: introspectSchema.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+</code></pre></div><p>If you would&rsquo;t implement the resolveType, you would get the following error when having the interface implemented as before and when executing the <code>addStar</code> mutation: <em>&ldquo;Abstract type Starrable must resolve to an Object type at runtime for field AddStarPayload.starrable with value &ldquo;[object Object]&ldquo;, received &ldquo;undefined&rdquo;. Either the Starrable type should provide a &ldquo;resolveType&rdquo; function or each possible types should provide an &ldquo;isTypeOf&rdquo; function.&rdquo;</em></p><p>That&rsquo;s it for defining your GraphQL type definitions and schema. Both are used in the <code>makeExecutableSchema()</code> function to produce a schema which is used in the SchemaLink constructor. It is the one part which replaced the HttpLink which would have been used to send the GraphQL operations across the network to a actual GraphQL server. Now it should work with the client-side GraphQL schema instead which resolves with the mocked data. Once you start your application again, you should see the mocked data from the GraphQL query and the mocking of the GraphQL mutation, because the mutation result updates the Apollo Client&rsquo;s Cache.</p><h2 class="chapter-header" id="graphql-server-mock-introspection">How to mock a GraphQL server from a Introspection</h2><p>The next part of the series shows you the alternative way of creating a mocked GraphQL server by using the GraphQL schema from the actual GraphQL server. Therefore, you don&rsquo;t need to reconstruct the exact schema as you did before. However, the GraphQL schema from the server must be accessible for you in order to pull this off. The common way to retrieve the schema is a GraphQL introspection. In case of GitHub&rsquo;s GraphQL API, you could perform a HTTP GET request against their GraphQL endpoint to retrieve their schema (<a target="_blank" rel="noopener noreferrer" href="https://developer.github.com/v4/guides/intro-to-graphql/#discovering-the-graphql-api">see instructions</a>). However, there exists a convenient helper function to retrieve the schema with one asynchronous function call: introspectSchema.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">ReactDOM</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-dom&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">ApolloProvider</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react-apollo&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">ApolloClient</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;apollo-client&#39;</span><span style="color: #e7e9db">;</span>
@@ -725,68 +417,33 @@
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">introspectSchema</span><span style="color: #e7e9db">,</span>
 </span><span style="background-color: #4f424c"><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;graphql-tools&#39;</span><span style="color: #e7e9db">;</span>
 </span>
-<span style="color: #815ba4">import</span> <span style="color: #06b6ef">App</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./App&#39;</span><span style="color: #e7e9db">;</span>
-
-<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolvers</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">...</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">App</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./App&#39;</span><span style="color: #e7e9db">;</span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolvers</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">...</span>
 </span>
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">cache</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">InMemoryCache</span><span style="color: #e7e9db">();</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">GITHUB_BASE_URL</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;https://api.github.com/graphql&#39;</span><span style="color: #e7e9db">;</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">httpLink</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">HttpLink</span><span style="color: #e7e9db">({</span>
+<span style="color: #815ba4">const</span> <span style="color: #06b6ef">cache</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">InMemoryCache</span><span style="color: #e7e9db">();</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">GITHUB_BASE_URL</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;https://api.github.com/graphql&#39;</span><span style="color: #e7e9db">;</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">httpLink</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">HttpLink</span><span style="color: #e7e9db">({</span>
   <span style="color: #06b6ef">uri</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">GITHUB_BASE_URL</span><span style="color: #e7e9db">,</span>
   <span style="color: #06b6ef">headers</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
     <span style="color: #06b6ef">authorization</span><span style="color: #5bc4bf">:</span> <span style="color: #48b685">`Bearer </span><span style="color: #f99b15">${</span>
       <span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN</span>
     <span style="color: #f99b15">}</span><span style="color: #48b685">`</span><span style="color: #e7e9db">,</span>
   <span style="color: #e7e9db">},</span>
-<span style="color: #e7e9db">});</span>
-
-<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">schema</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">introspectSchema</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">httpLink</span><span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">});</span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">schema</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">introspectSchema</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">httpLink</span><span style="color: #e7e9db">);</span>
 </span>
 <span style="color: #815ba4">const</span> <span style="color: #06b6ef">executableSchema</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">makeExecutableSchema</span><span style="color: #e7e9db">({</span>
 <span style="background-color: #4f424c">  <span style="color: #06b6ef">typeDefs</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">printSchema</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">schema</span><span style="color: #e7e9db">),</span>
 </span>  <span style="color: #06b6ef">resolvers</span><span style="color: #e7e9db">,</span>
-<span style="color: #e7e9db">});</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">client</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">ApolloClient</span><span style="color: #e7e9db">({</span>
+<span style="color: #e7e9db">});</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">client</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">ApolloClient</span><span style="color: #e7e9db">({</span>
 <span style="background-color: #4f424c">  <span style="color: #06b6ef">link</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">SchemaLink</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">schema</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">executableSchema</span> <span style="color: #e7e9db">}),</span>
 </span>  <span style="color: #06b6ef">cache</span><span style="color: #e7e9db">,</span>
-<span style="color: #e7e9db">});</span>
-
-<span style="color: #06b6ef">ReactDOM</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">render</span><span style="color: #e7e9db">(</span>
+<span style="color: #e7e9db">});</span><span style="color: #06b6ef">ReactDOM</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">render</span><span style="color: #e7e9db">(</span>
   <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ApolloProvider</span> <span style="color: #06b6ef">client</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">client</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
     <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">App</span> <span style="color: #5bc4bf">/&gt;</span>
   <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ApolloProvider&gt;,</span>
   <span style="color: #e7e9db">document.</span><span style="color: #06b6ef">getElementById</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;root&#39;</span><span style="color: #e7e9db">),</span>
 <span style="color: #e7e9db">);</span>
-</code></pre></div>
-
-
-<p>As you can see, you need to have the working network access to the GraphQL server to retrieve the schema from it. As alternative, the GraphQL schema could be also provided by a <em>schema.json</em> file instead of using the GraphQL introspection. A schema file should be used when you don&rsquo;t have network access to your GraphQL server, but you are able to retrieve the <em>schema.json</em> file in another way. You will see this approach at the end of this section. Furthermore, the <code>printSchema()</code> utility function is used to stringify the schema definitions from the GraphQL server, because the schema is returned as a JavaScript object from the GraphQL server when performing the introspection.</p>
-
-<p>You may have noticed that only the <code>typeDefs</code> property has changed for the <code>makeExecutableSchema()</code> object argument, because it is the GraphQL schema which comes from your GraphQL server. Thus you don&rsquo;t have to reconstruct the type definitions anymore on your client-side as you did before. You can be assured to have the exact schema on the client-side for mocking your GraphQL server now. However, the second property in the configuration object, the resolvers, are still defined by you on the client-side. It is not possible to retrieve the resolvers from the GraphQL server and it wouldn&rsquo;t make any sense whatsoever, because they are most likely connected to your database on the GraphQL server. That&rsquo;s why you can use the resolver from the previous section to return your mocked data from them for the query and mutation you are using in your application.</p>
-
-<p>Last but not least, since the introspection is an asynchronous request, you need to resolve a promise or use async/await for it:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolvers</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">...</span>
-
-<span style="background-color: #4f424c"><span style="color: #06b6ef">async</span> <span style="color: #815ba4">function</span> <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
-</span>  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">cache</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">InMemoryCache</span><span style="color: #e7e9db">();</span>
-
-  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">GITHUB_BASE_URL</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;https://api.github.com/graphql&#39;</span><span style="color: #e7e9db">;</span>
-
-  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">httpLink</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">...</span>
-
-<span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">schema</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">await</span> <span style="color: #06b6ef">introspectSchema</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">httpLink</span><span style="color: #e7e9db">);</span>
+</code></pre></div><p>As you can see, you need to have the working network access to the GraphQL server to retrieve the schema from it. As alternative, the GraphQL schema could be also provided by a <em>schema.json</em> file instead of using the GraphQL introspection. A schema file should be used when you don&rsquo;t have network access to your GraphQL server, but you are able to retrieve the <em>schema.json</em> file in another way. You will see this approach at the end of this section. Furthermore, the <code>printSchema()</code> utility function is used to stringify the schema definitions from the GraphQL server, because the schema is returned as a JavaScript object from the GraphQL server when performing the introspection.</p><p>You may have noticed that only the <code>typeDefs</code> property has changed for the <code>makeExecutableSchema()</code> object argument, because it is the GraphQL schema which comes from your GraphQL server. Thus you don&rsquo;t have to reconstruct the type definitions anymore on your client-side as you did before. You can be assured to have the exact schema on the client-side for mocking your GraphQL server now. However, the second property in the configuration object, the resolvers, are still defined by you on the client-side. It is not possible to retrieve the resolvers from the GraphQL server and it wouldn&rsquo;t make any sense whatsoever, because they are most likely connected to your database on the GraphQL server. That&rsquo;s why you can use the resolver from the previous section to return your mocked data from them for the query and mutation you are using in your application.</p><p>Last but not least, since the introspection is an asynchronous request, you need to resolve a promise or use async/await for it:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolvers</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">...</span><span style="background-color: #4f424c"><span style="color: #06b6ef">async</span> <span style="color: #815ba4">function</span> <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+</span>  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">cache</span> <span style="color: #5bc4bf">=</span> <span style="color: #815ba4">new</span> <span style="color: #06b6ef">InMemoryCache</span><span style="color: #e7e9db">();</span>  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">GITHUB_BASE_URL</span> <span style="color: #5bc4bf">=</span> <span style="color: #48b685">&#39;https://api.github.com/graphql&#39;</span><span style="color: #e7e9db">;</span>  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">httpLink</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">...</span><span style="background-color: #4f424c">  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">schema</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">await</span> <span style="color: #06b6ef">introspectSchema</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">httpLink</span><span style="color: #e7e9db">);</span>
 </span>
-  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">executableSchema</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">...</span>
-
-  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">client</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">...</span>
-
-  <span style="color: #06b6ef">ReactDOM</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">render</span><span style="color: #e7e9db">(</span>
+  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">executableSchema</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">...</span>  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">client</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">...</span>  <span style="color: #06b6ef">ReactDOM</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">render</span><span style="color: #e7e9db">(</span>
     <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">ApolloProvider</span> <span style="color: #06b6ef">client</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">client</span><span style="color: #e7e9db">}</span><span style="color: #5bc4bf">&gt;</span>
       <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">App</span> <span style="color: #5bc4bf">/&gt;</span>
     <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/ApolloProvider&gt;,</span>
@@ -795,12 +452,7 @@
 <span style="background-color: #4f424c"><span style="color: #e7e9db">}</span>
 </span>
 <span style="background-color: #4f424c"><span style="color: #06b6ef">render</span><span style="color: #e7e9db">();</span>
-</span></code></pre></div>
-
-
-<p>Notice how you may receive several similar warnings in your console logs in the browser once you start your application: <em>&ldquo;Type &ldquo;Starrable&rdquo; is missing a &ldquo;resolveType&rdquo; resolver. Pass false into &ldquo;resolverValidationOptions.requireResolversForResolveType&rdquo; to disable this warning.&rdquo;</em>. You should receive similar warnings, but not the warning shown for the <code>Starrable</code> type. It is because you have already defined its resolveType function in your resolvers:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolvers</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+</span></code></pre></div><p>Notice how you may receive several similar warnings in your console logs in the browser once you start your application: <em>&ldquo;Type &ldquo;Starrable&rdquo; is missing a &ldquo;resolveType&rdquo; resolver. Pass false into &ldquo;resolverValidationOptions.requireResolversForResolveType&rdquo; to disable this warning.&rdquo;</em>. You should receive similar warnings, but not the warning shown for the <code>Starrable</code> type. It is because you have already defined its resolveType function in your resolvers:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolvers</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">Query</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
     <span style="color: #e7e9db">...</span>
   <span style="color: #e7e9db">},</span>
@@ -811,61 +463,25 @@
     <span style="color: #06b6ef">__resolveType</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #48b685">&#39;Repository&#39;</span><span style="color: #e7e9db">,</span>
   <span style="color: #e7e9db">},</span>
 <span style="color: #e7e9db">};</span>
-</code></pre></div>
-
-
-<p>All the other GraphQL interfaces from the GraphQL server schema (which is the entire schema and not only a part of it as before) are not resolved. But you don&rsquo;t need to resolve them, because they are not used in your actual GraphQL queries and mutations in your application. Thus, you can deactivate these warnings:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">async</span> <span style="color: #815ba4">function</span> <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
-  <span style="color: #e7e9db">...</span>
-
-  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">executableSchema</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">makeExecutableSchema</span><span style="color: #e7e9db">({</span>
+</code></pre></div><p>All the other GraphQL interfaces from the GraphQL server schema (which is the entire schema and not only a part of it as before) are not resolved. But you don&rsquo;t need to resolve them, because they are not used in your actual GraphQL queries and mutations in your application. Thus, you can deactivate these warnings:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">async</span> <span style="color: #815ba4">function</span> <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">...</span>  <span style="color: #815ba4">const</span> <span style="color: #06b6ef">executableSchema</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">makeExecutableSchema</span><span style="color: #e7e9db">({</span>
     <span style="color: #06b6ef">typeDefs</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">printSchema</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">schema</span><span style="color: #e7e9db">),</span>
     <span style="color: #06b6ef">resolvers</span><span style="color: #e7e9db">,</span>
 <span style="background-color: #4f424c">    <span style="color: #06b6ef">resolverValidationOptions</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">{</span>
 </span><span style="background-color: #4f424c">      <span style="color: #06b6ef">requireResolversForResolveType</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
 </span><span style="background-color: #4f424c">    <span style="color: #e7e9db">},</span>
-</span>  <span style="color: #e7e9db">});</span>
-
-  <span style="color: #e7e9db">...</span>
+</span>  <span style="color: #e7e9db">});</span>  <span style="color: #e7e9db">...</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
-
-
-<p>Now, start your application to verify that your GraphQL operations are still working. The mocking of your GraphQL server should work identical to the mocking from the previous section with the client-sided GraphQL schema. In the previous section, you have defined your client-side schema which mimics/reconstructs the necessary parts used in your application of the GraphQL server schema. It was only important to reconstruct the type definition structure but not necessarily the type names. In the last section though, you have used the actual GraphQL schema from the GraphQL server by using a GraphQL introspection. For both approaches, the resolvers have been the same to mock your data. <a target="_blank" rel="noopener noreferrer" href="https://github.com/cpaul/apollo-client-mocking-example">The final repository can be found on GitHub.</a></p>
-
-<p>If you cannot use an introspection for your GraphQL server, but need to rely on a <em>schema.json</em> file which you have retrieved at another point in time, the following example shows you how to create a client-side schema with a <em>schema.json</em> file.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">addResolveFunctionsToSchema</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;graphql-tools&#39;</span><span style="color: #e7e9db">;</span>
-<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">buildClientSchema</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;graphql/utilities&#39;</span><span style="color: #e7e9db">;</span>
-
-<span style="color: #815ba4">import</span> <span style="color: #06b6ef">schema</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./schema.json&#39;</span><span style="color: #e7e9db">;</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolvers</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">...</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">executableSchema</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">buildClientSchema</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">schema</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">);</span>
-
-<span style="color: #06b6ef">addResolveFunctionsToSchema</span><span style="color: #e7e9db">({</span>
+</code></pre></div><p>Now, start your application to verify that your GraphQL operations are still working. The mocking of your GraphQL server should work identical to the mocking from the previous section with the client-sided GraphQL schema. In the previous section, you have defined your client-side schema which mimics/reconstructs the necessary parts used in your application of the GraphQL server schema. It was only important to reconstruct the type definition structure but not necessarily the type names. In the last section though, you have used the actual GraphQL schema from the GraphQL server by using a GraphQL introspection. For both approaches, the resolvers have been the same to mock your data. <a target="_blank" rel="noopener noreferrer" href="https://github.com/cpaul/apollo-client-mocking-example">The final repository can be found on GitHub.</a></p><p>If you cannot use an introspection for your GraphQL server, but need to rely on a <em>schema.json</em> file which you have retrieved at another point in time, the following example shows you how to create a client-side schema with a <em>schema.json</em> file.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">addResolveFunctionsToSchema</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;graphql-tools&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">buildClientSchema</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;graphql/utilities&#39;</span><span style="color: #e7e9db">;</span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">schema</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./schema.json&#39;</span><span style="color: #e7e9db">;</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">resolvers</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">...</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">executableSchema</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">buildClientSchema</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">schema</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">data</span><span style="color: #e7e9db">);</span><span style="color: #06b6ef">addResolveFunctionsToSchema</span><span style="color: #e7e9db">({</span>
   <span style="color: #06b6ef">schema</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">executableSchema</span><span style="color: #e7e9db">,</span>
   <span style="color: #06b6ef">resolvers</span><span style="color: #e7e9db">,</span>
 <span style="color: #e7e9db">});</span>
-</code></pre></div>
-
-
-<p>The last function adds your resolver functions to the schema by mutating it directly. This way, you can use the <em>schema.json</em> file instead of an introspection for mocking your GraphQL server.</p>
-
-<hr class="section-divider">
-
-<p>The last sections have shown you two approaches to create a GraphQL schema which matches (partly) your GraphQL server schema. The reconstructed/fetched schema can be used with client-sided resolvers to mock your data for the Apollo Client. Once the executable schema is created, it is used for the Apollo Client instantiation. It may be also possible to consider one or the other approach for mocking the GraphQL data for testing your React components which depend on a query or mutation. After all, hopefully the last sections have helped you to mock your GraphQL server data for your GraphQL client-side application.</p>
-
-<div class="read-before">
+</code></pre></div><p>The last function adds your resolver functions to the schema by mutating it directly. This way, you can use the <em>schema.json</em> file instead of an introspection for mocking your GraphQL server.</p><hr class="section-divider"><p>The last sections have shown you two approaches to create a GraphQL schema which matches (partly) your GraphQL server schema. The reconstructed/fetched schema can be used with client-sided resolvers to mock your data for the Apollo Client. Once the executable schema is created, it is used for the Apollo Client instantiation. It may be also possible to consider one or the other approach for mocking the GraphQL data for testing your React components which depend on a query or mutation. After all, hopefully the last sections have helped you to mock your GraphQL server data for your GraphQL client-side application.</p><div class="read-before">
     <p>This tutorial is part 2 of 3 in this series.</p>
     <div>Part 1: <a href="../react-apollo-client-example/index.html" itemprop="url">A minimal Apollo Client in React Application</a></div>
     <div>Part 3: <a href="../react-apollo-client-testing/index.html" itemprop="url">Writing Tests for Apollo Client in React</a></div>
-</div>
-
-
-                            
+</div>                            
 <div class="feedback-and-share text-center">
     <hr>
     
@@ -878,10 +494,7 @@
             Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/cpaul"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
         </p>
     
-</div>
-
-
-                            
+</div>                            
                                 <div class="box-inline col-md-12">
     <div class="col-md-12 text-center">
         <h2 class="newsletter">The Road to learn React</h2>
@@ -915,21 +528,15 @@
     </div>
 </div>
                             
-                        </div>
-
-                        
+                        </div>                        
                         
                         <div id="comments">
                             <div id="disqus_thread"></div>
-<script type="text/javascript">
-
-(function() {
+<script type="text/javascript">(function() {
     
     
     if (window.location.hostname == "localhost")
-        return;
-
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        return;    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
     var disqus_shortname = 'cpaul';
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
@@ -938,31 +545,19 @@
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                         </div>
-                        
-
-                    </article>
-                    
-
-                </div>
-                
-
-            </div>
+                                            </article>
+                                    </div>
+                            </div>
             
         </div>
-        
-
-        
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
+                <section class="bar background-image-fixed-2 no-mb color-white text-center">
     <div class="dark-mask"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
                 <h2 class="text-uppercase">Take Part</h2>
-            </div>
-
-            <div class="col-md-12 text-center">
+            </div>            <div class="col-md-12 text-center">
                 
                     <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
                 
@@ -978,9 +573,6 @@
             <div class="col-md-12">
                 <p class="text-center">
                     
-
-
-
 <div id="mc_embed_signup">
     <form
         action="https://www.getrevue.co/profile/cpaul/add_subscriber"
@@ -1009,25 +601,12 @@
             </div>
         </div>
     </form>
-</div>
-
-                </p>
+</div>                </p>
             </div>
         </div>
     </div>
-</section>
-
-
-
-
-        <footer id="subfooter">
-    <div class="container">
-
-        <div class="col-md-5 col-sm-6">
-
-            <h4>Recent posts</h4>
-
-            <div class="blog-entries">
+</section>        <footer id="subfooter">
+    <div class="container">        <div class="col-md-5 col-sm-6">            <h4>Recent posts</h4>            <div class="blog-entries">
                 
                 <div class="item same-height-row clearfix">
                     <div class="article same-height-always">
@@ -1083,19 +662,9 @@
                     </div>
                 </div>
                 
-            </div>
-
-            <hr class="hidden-md hidden-lg hidden-sm">
-
-        </div>
-        
-
-        
-        <div class="col-md-5 col-md-offset-2 col-sm-6">
-
-            <h4>About Me</h4>
-
-            <div class="blog-entries">
+            </div>            <hr class="hidden-md hidden-lg hidden-sm">        </div>
+                
+        <div class="col-md-5 col-md-offset-2 col-sm-6">            <h4>About Me</h4>            <div class="blog-entries">
                 <div class="item same-height-row clearfix">
                     <div class="profile same-height-always">
                         <img
@@ -1106,25 +675,15 @@
                     </div>
                     <div class="name same-height-always">
                         <p>
-                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                            Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
                         </p>
                     </div>
                 </div>
+            </div>        </div>
+        
             </div>
-
-        </div>
-        
-        
-
-    </div>
     
 </footer>
-
-
-
-
-
-
         <footer id="copyright">
   <div class="container">
     <div class="row">
@@ -1165,28 +724,10 @@
       </div>
     </div>
   </div>
-</footer>
-
-
-    </div>
+</footer>    </div>
     
-
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-
-
-
-
-
-
-
-
 <script src="../js/script.js"></script>
-
-
-
   </body>
 </html>

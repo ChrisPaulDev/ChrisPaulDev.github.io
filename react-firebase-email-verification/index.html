@@ -1,136 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
+<html lang="en">  <head>
   <meta charset="utf-8">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-
-  <title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">    <title>
     Email Verification with Firebase in React - CPaul
-  </title>
-
-  <meta name="author" content="" />
-
-  
-    <meta name="description" content="A Firebase React tutorial on how to enable email verification. Only users that confirmed their email address with a email confirmation have access to your application. Every other user who is using a fake email is not authorized ...">
-  
-
-  <meta name="theme-color" content="#38bb6c"/>
-
-  <meta name="generator" content="Hugo 0.41" />
-
-  
-  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
-
-  
-  
-
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </title>  <meta name="author" content="" />
+  <meta name="description" content="A Firebase React tutorial on how to enable email verification. Only users that confirmed their email address with a email confirmation have access to your application. Every other user who is using a fake email is not authorized ...">
+    <meta name="theme-color" content="#38bb6c"/>  <meta name="generator" content="Hugo 0.41" />
+<link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-  
-  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
-  <link href="../css/customizations.css" rel="stylesheet">
-
-  
-  
-    <!--[if lt IE 9]>
+<link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">    <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   
-
-  
-  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="../img/favicon/manifest.json">
-  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-
-  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
-
-  
-  
-<meta itemprop="name" content="Email Verification with Firebase in React">
-<meta itemprop="description" content="A Firebase React tutorial on how to enable email verification. Only users that confirmed their email address with a email confirmation have access to your application. Every other user who is using a fake email is not authorized ...">
-
-
-
-    <meta itemprop="image" content="https://chrispaul.dev/img/posts/react-firebase-email-verification/banner_640.jpg">
-
-
-
-<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
-
-
-<meta itemprop="wordCount" content="1376">
-
-
-  
-  <meta name="keywords" content="react firebase email verification, react firebase email confirmation, react firebase double opt in">
-
-  <meta property="og:title" content="Email Verification with Firebase in React - CPaul">
-
-
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul"><meta itemprop="name" content="Email Verification with Firebase in React">
+<meta itemprop="description" content="A Firebase React tutorial on how to enable email verification. Only users that confirmed their email address with a email confirmation have access to your application. Every other user who is using a fake email is not authorized ...">    <meta itemprop="image" content="https://chrispaul.dev/img/posts/react-firebase-email-verification/banner_640.jpg"><meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
+<meta itemprop="wordCount" content="1376"><meta name="keywords" content="react firebase email verification, react firebase email confirmation, react firebase double opt in">  <meta property="og:title" content="Email Verification with Firebase in React - CPaul">
   <meta property="og:description" content="A Firebase React tutorial on how to enable email verification. Only users that confirmed their email address with a email confirmation have access to your application. Every other user who is using a fake email is not authorized ..." />
-
-
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://chrispaul.dev/react-firebase-email-verification/" />
-<meta property="og:image" content="https://chrispaul.dev/img/posts/react-firebase-email-verification/banner_640.jpg" />
-
-  
-
-    <meta name="news_keywords" content="react firebase email verification,react firebase email confirmation,react firebase double opt in" />
-
-  
-
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/react-firebase-email-verification/banner_640.jpg"/>
-
-
-
-<meta name="twitter:title" content="Email Verification with Firebase in React"/>
+<meta property="og:image" content="https://chrispaul.dev/img/posts/react-firebase-email-verification/banner_640.jpg" />      <meta name="news_keywords" content="react firebase email verification,react firebase email confirmation,react firebase double opt in" />      <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/react-firebase-email-verification/banner_640.jpg"/><meta name="twitter:title" content="Email Verification with Firebase in React"/>
 <meta name="twitter:description" content="A Firebase React tutorial on how to enable email verification. Only users that confirmed their email address with a email confirmation have access to your application. Every other user who is using a fake email is not authorized ..."/>
 <meta name="twitter:site" content="@rwieruch"/>
-<meta name="twitter:domain" content="rwieruch"/>
-
-  
-
-</head>
-
-
-  <body>
-
-    <div id="all">
-
-        <header>
-
-          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
-
-    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
-
-        <div class="container">
+<meta name="twitter:domain" content="rwieruch"/>  </head>
+  <body>    <div id="all">        <header>          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">    <div class="navbar navbar-default yamm" role="navigation" id="navbar">        <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="../index.html">
                     <img src="../img/page/logo.svg" alt="Email Verification with Firebase in React logo" class="img-lazy">
                     <span class="sr-only">Email Verification with Firebase in React - go to homepage</span>
-                </a>
-
-                <div class="navbar-buttons">
+                </a>                <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
                         <span class="sr-only">Toggle navigation</span>
                         <i class="fa fa-align-justify"></i>
                     </button>
                 </div>
             </div>
-            
-
-            <div class="navbar-collapse collapse" id="navigation">
+                        <div class="navbar-collapse collapse" id="navigation">
                 <ul class="nav navbar-nav navbar-right">
                     
                     <li class="dropdown">
@@ -159,124 +71,66 @@
                     
                 </ul>
             </div>
-            
-
-            <div class="collapse clearfix" id="search">
-
-                <form class="navbar-form" role="search">
+                        <div class="collapse clearfix" id="search">                <form class="navbar-form" role="search">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
-
-                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
-
-                </span>
+                        <span class="input-group-btn">                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>                </span>
                     </div>
-                </form>
-
-            </div>
-            
-
-        </div>
+                </form>            </div>
+                    </div>
     </div>
-    
-
-</div>
-
-
-
-
-        </header>
-
-        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
-    
-
-<a
+    </div>
+        </header>        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    <a
     aria-label="icon-facebook"
     class="icon-facebook"
     href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freact-firebase-email-verification%2f"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
     <i class="fa fa-facebook"></i>
 </a>
-
-
 <a
     aria-label="icon-twitter"
     class="icon-twitter"
     href="https://twitter.com/share?text=Email%20Verification%20with%20Firebase%20in%20React%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2freact-firebase-email-verification%2f"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
     <i class="fa fa-twitter"></i>
-</a>
-
-
-
-
-
-<a
+</a><a
     aria-label="icon-linkedin"
     class="icon-linkedin"
     href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Email%20Verification%20with%20Firebase%20in%20React&amp;url=https%3a%2f%2fchrispaul.dev%2freact-firebase-email-verification%2f">
     <i class="fa fa-linkedin"></i>
-</a>
-
-</div>
-
-<div class="visible-xs visible-sm text-center">
+</a></div><div class="visible-xs visible-sm text-center">
     <div class="post-share post-share-fixed post-share-mobile">
-        
-
-<a
+        <a
     aria-label="icon-facebook"
     class="icon-facebook"
     href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freact-firebase-email-verification%2f"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
     <i class="fa fa-facebook"></i>
 </a>
-
-
 <a
     aria-label="icon-twitter"
     class="icon-twitter"
     href="https://twitter.com/share?text=Email%20Verification%20with%20Firebase%20in%20React%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2freact-firebase-email-verification%2f"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
     <i class="fa fa-twitter"></i>
-</a>
-
-
-
-
-
-<a
+</a><a
     aria-label="icon-linkedin"
     class="icon-linkedin"
     href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Email%20Verification%20with%20Firebase%20in%20React&amp;url=https%3a%2f%2fchrispaul.dev%2freact-firebase-email-verification%2f">
     <i class="fa fa-linkedin"></i>
-</a>
-
-    </div>
-</div>
-
-        
-
-        <div class="hidden-xs">
-            
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
+</a>    </div>
+</div>                <div class="hidden-xs">
+            <section class="bar background-image-fixed-2 no-mb color-white text-center">
     <div class="dark-mask"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
                 <h2 class="text-uppercase newsletter">Take Part</h2>
-            </div>
-
-            <div class="col-md-12">
+            </div>            <div class="col-md-12">
                 <p class="text-center">
-                    
-
-
-
-<div id="mc_embed_signup">
+                    <div id="mc_embed_signup">
     <form
         action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
         method="post"
@@ -304,68 +158,38 @@
             </div>
         </div>
     </form>
-</div>
-
-                </p>
+</div>                </p>
             </div>
         </div>
     </div>
-</section>
-
-
-
-        </div>
-
-        <div id="content">
-            <div class="container">
-
-                <div class="row">
-
-                    <article
+</section>        </div>        <div id="content">
+            <div class="container">                <div class="row">                    <article
                         class="col-md-8 col-md-offset-2"
                         id="blog-post"
                         itemprop="blogPosts"
-                        itemscope itemtype="http://schema.org/BlogPosting">
-
-                        <div id="post-content" itemprop="articleBody">
-
-                            <header>
+                        itemscope itemtype="http://schema.org/BlogPosting">                        <div id="post-content" itemprop="articleBody">                            <header>
                                 <h1 itemprop="name headline">Email Verification with Firebase in React</h1>
-                            </header>
-
-                            <div class="text-center">
+                            </header>                            <div class="text-center">
                                 
     <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
          <i class="fa fa-facebook"></i>Follow
     </a>
-
-
                                 &nbsp;
-                                
-
-                                &nbsp;
+                                                                &nbsp;
                                 
   <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
     <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
   </a>
-
-
                                 &nbsp;
                                 
-                            </div>
-
-                            <p class="text-muted text-uppercase mb-small text-center">
+                            </div>                            <p class="text-muted text-uppercase mb-small text-center">
     <span itemprop="author publisher">
         
-    </span>
-
-    
+    </span>    
         <time datetime="2018-12-20" itemprop="datePublished">
             December 20, 2018
         </time>
-    
-
-    
+        
         <span class="hidden-xs hidden-sm"> - <a
             target="_blank"
             rel="noopener noreferrer"
@@ -374,16 +198,8 @@
             </a>
         </span>
     
-</p>
-
-                            
-
-<div>
-  
-
-</div>
-
-<div class="post-image-primary">
+</p>                            <div>
+  </div><div class="post-image-primary">
     <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
         <div class="pinterest-pinner">
             <a
@@ -392,9 +208,7 @@
                 data-pin-tall="true"
                 href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2freact-firebase-email-verification%2f&amp;media=https://chrispaul.dev/img%2fposts%2freact-firebase-email-verification%2fbanner.jpg&amp;description=">
             </a>
-        </div>
-
-        <img
+        </div>        <img
             class="img-lazy img-responsive"
             data-lazy-src="/src="/img/posts/react-firebase-email-verification/banner.jpg"
             data-is-src-set="is-src-set"
@@ -403,75 +217,33 @@
         />
     </div>
 </div>
-
-
 <p>
   <em>
     Interested in reading this tutorial as one of many chapters in my advanced React with Firebase book? Checkout the entire <a href="https://roadtoreact.com">The Road to React with Firebase</a> book that teaches you to create business web applications without the need to create a backend application with a database yourself.
   </em>
-</p>
-
-<div class="read-before">
+</p><div class="read-before">
     <p>This tutorial is part 6 of 6 in this series.</p>
     <div>Part 1: <a href="../complete-firebase-authentication-react-tutorial/index.html" itemprop="url">A Firebase in React Tutorial for Beginners</a></div>
     <div>Part 2: <a href="../react-firebase-authorization-roles-permissions/index.html" itemprop="url">React Firebase Authorization with Roles</a></div>
     <div>Part 3: <a href="../react-firebase-auth-persistence/index.html" itemprop="url">React Firebase Auth Persistence with Local Storage</a></div>
     <div>Part 4: <a href="../react-firebase-social-login/index.html" itemprop="url">React Firebase Social Login: Google, Facebook, Twitter</a></div>
     <div>Part 5: <a href="../react-firebase-link-social-logins/index.html" itemprop="url">React Firebase: Link Social Logins</a></div>
-</div>
-
-<p>In your application, users can employ an email/password combination, but also social logins to get access to your service or product. Often, the email address associated with the social logins is confirmed by the social platform (Google, Facebook, Twitter) and you know this email address really exists. But what about the email address used with the password? Because users are sometimes unwilling to provide real email addresses, they&rsquo;ll simply make one up, so you can&rsquo;t provide them with further information via email or to integrate them with third-parties where a valid email address is required. In this section, I will show you how to confirm user email addresses before they can access your application. After an email verification with a double opt-in send by email, users are authorized to use your application.</p>
-
-<p>Because the Firebase API already provides this functionality, we can add it to our Firebase class to make it available for our React application. Provide an optional redirect URL that is used to navigate to the application after email confirmation:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
-
-<span style="color: #815ba4">class</span> <span style="color: #06b6ef">Firebase</span> <span style="color: #e7e9db">{</span>
-  <span style="color: #e7e9db">...</span>
-
-  <span style="color: #776e71">// *** Auth API ***</span>
-
-  <span style="color: #e7e9db">...</span>
-
-<span style="background-color: #4f424c">  <span style="color: #06b6ef">doSendEmailVerification</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+</div><p>In your application, users can employ an email/password combination, but also social logins to get access to your service or product. Often, the email address associated with the social logins is confirmed by the social platform (Google, Facebook, Twitter) and you know this email address really exists. But what about the email address used with the password? Because users are sometimes unwilling to provide real email addresses, they&rsquo;ll simply make one up, so you can&rsquo;t provide them with further information via email or to integrate them with third-parties where a valid email address is required. In this section, I will show you how to confirm user email addresses before they can access your application. After an email verification with a double opt-in send by email, users are authorized to use your application.</p><p>Because the Firebase API already provides this functionality, we can add it to our Firebase class to make it available for our React application. Provide an optional redirect URL that is used to navigate to the application after email confirmation:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">Firebase</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">...</span>  <span style="color: #776e71">// *** Auth API ***</span>  <span style="color: #e7e9db">...</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">doSendEmailVerification</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
 </span><span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">currentUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">sendEmailVerification</span><span style="color: #e7e9db">({</span>
 </span><span style="background-color: #4f424c">      <span style="color: #06b6ef">url</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">REACT_APP_CONFIRMATION_EMAIL_REDIRECT</span><span style="color: #e7e9db">,</span>
 </span><span style="background-color: #4f424c">    <span style="color: #e7e9db">});</span>
 </span>
   <span style="color: #e7e9db">...</span>
-<span style="color: #e7e9db">}</span>
-
-<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">Firebase</span><span style="color: #e7e9db">;</span>
+<span style="color: #e7e9db">}</span><span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">Firebase</span><span style="color: #e7e9db">;</span>
 </code></pre></div>
-
-
-<p>You can inline this URL, but also put it into your <em>.env</em> file(s). I prefer environment variables for development (<em>.env.development</em>) and production (<em>.env.production</em>). The development environment receives the localhost URL:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
-
-<span style="background-color: #4f424c"><span style="color: #06b6ef">REACT_APP_CONFIRMATION_EMAIL_REDIRECT</span><span style="color: #5bc4bf">=</span><span style="color: #06b6ef">http</span><span style="color: #5bc4bf">:</span><span style="color: #776e71">//localhost:3000</span>
+<p>You can inline this URL, but also put it into your <em>.env</em> file(s). I prefer environment variables for development (<em>.env.development</em>) and production (<em>.env.production</em>). The development environment receives the localhost URL:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span><span style="background-color: #4f424c"><span style="color: #06b6ef">REACT_APP_CONFIRMATION_EMAIL_REDIRECT</span><span style="color: #5bc4bf">=</span><span style="color: #06b6ef">http</span><span style="color: #5bc4bf">:</span><span style="color: #776e71">//localhost:3000</span>
 </span></code></pre></div>
-
-
-<p>And the production environment receives an actual domain:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
-
-<span style="background-color: #4f424c"><span style="color: #06b6ef">REACT_APP_CONFIRMATION_EMAIL_REDIRECT</span><span style="color: #5bc4bf">=</span><span style="color: #06b6ef">https</span><span style="color: #5bc4bf">:</span><span style="color: #776e71">//mydomain.com</span>
+<p>And the production environment receives an actual domain:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span><span style="background-color: #4f424c"><span style="color: #06b6ef">REACT_APP_CONFIRMATION_EMAIL_REDIRECT</span><span style="color: #5bc4bf">=</span><span style="color: #06b6ef">https</span><span style="color: #5bc4bf">:</span><span style="color: #776e71">//mydomain.com</span>
 </span></code></pre></div>
-
-
-<p>That&rsquo;s all we need to do for the API. The best place to guide users through the email verification is during email and password sign-up:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
-
-<span style="color: #815ba4">class</span> <span style="color: #06b6ef">SignUpFormBase</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
-  <span style="color: #e7e9db">...</span>
-
-  <span style="color: #06b6ef">onSubmit</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
-    <span style="color: #e7e9db">...</span>
-
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firebase</span>
+<p>That&rsquo;s all we need to do for the API. The best place to guide users through the email verification is during email and password sign-up:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">SignUpFormBase</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">...</span>  <span style="color: #06b6ef">onSubmit</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">event</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #e7e9db">...</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firebase</span>
       <span style="color: #e7e9db">.</span><span style="color: #06b6ef">doCreateUserWithEmailAndPassword</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">email</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">passwordOne</span><span style="color: #e7e9db">)</span>
       <span style="color: #e7e9db">.</span><span style="color: #06b6ef">then</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
         <span style="color: #776e71">// Create a user in your Firebase realtime database</span>
@@ -490,71 +262,37 @@
       <span style="color: #e7e9db">})</span>
       <span style="color: #e7e9db">.</span><span style="color: #815ba4">catch</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">error</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
         <span style="color: #e7e9db">...</span>
-      <span style="color: #e7e9db">});</span>
-
-    <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">preventDefault</span><span style="color: #e7e9db">();</span>
-  <span style="color: #e7e9db">};</span>
-
-  <span style="color: #e7e9db">...</span>
-<span style="color: #e7e9db">}</span>
-
-<span style="color: #e7e9db">...</span>
+      <span style="color: #e7e9db">});</span>    <span style="color: #06b6ef">event</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">preventDefault</span><span style="color: #e7e9db">();</span>
+  <span style="color: #e7e9db">};</span>  <span style="color: #e7e9db">...</span>
+<span style="color: #e7e9db">}</span><span style="color: #e7e9db">...</span>
 </code></pre></div>
-
-
-<p>Users will receive a verification email when they register for your application. To find out if a user has a verified email, you can retrieve this information from the authenticated user in your Firebase class:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
-
-<span style="color: #815ba4">class</span> <span style="color: #06b6ef">Firebase</span> <span style="color: #e7e9db">{</span>
-  <span style="color: #e7e9db">...</span>
-
-  <span style="color: #776e71">// *** Merge Auth and DB User API *** //</span>
-
-  <span style="color: #06b6ef">onAuthUserListener</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">next</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">fallback</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
+<p>Users will receive a verification email when they register for your application. To find out if a user has a verified email, you can retrieve this information from the authenticated user in your Firebase class:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">Firebase</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">...</span>  <span style="color: #776e71">// *** Merge Auth and DB User API *** //</span>  <span style="color: #06b6ef">onAuthUserListener</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">next</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">fallback</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
     <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">auth</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onAuthStateChanged</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
       <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
         <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">user</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">uid</span><span style="color: #e7e9db">)</span>
           <span style="color: #e7e9db">.</span><span style="color: #06b6ef">once</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;value&#39;</span><span style="color: #e7e9db">)</span>
           <span style="color: #e7e9db">.</span><span style="color: #06b6ef">then</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">snapshot</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
-            <span style="color: #815ba4">const</span> <span style="color: #06b6ef">dbUser</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">snapshot</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">val</span><span style="color: #e7e9db">();</span>
-
-            <span style="color: #776e71">// default empty roles</span>
+            <span style="color: #815ba4">const</span> <span style="color: #06b6ef">dbUser</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">snapshot</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">val</span><span style="color: #e7e9db">();</span>            <span style="color: #776e71">// default empty roles</span>
             <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span><span style="color: #5bc4bf">!</span><span style="color: #06b6ef">dbUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">roles</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
               <span style="color: #06b6ef">dbUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">roles</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{};</span>
-            <span style="color: #e7e9db">}</span>
-
-            <span style="color: #776e71">// merge auth and db user</span>
+            <span style="color: #e7e9db">}</span>            <span style="color: #776e71">// merge auth and db user</span>
             <span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
               <span style="color: #06b6ef">uid</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">uid</span><span style="color: #e7e9db">,</span>
               <span style="color: #06b6ef">email</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">email</span><span style="color: #e7e9db">,</span>
 <span style="background-color: #4f424c">              <span style="color: #06b6ef">emailVerified</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">emailVerified</span><span style="color: #e7e9db">,</span>
 </span><span style="background-color: #4f424c">              <span style="color: #06b6ef">providerData</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">providerData</span><span style="color: #e7e9db">,</span>
 </span>              <span style="color: #e7e9db">...</span><span style="color: #06b6ef">dbUser</span><span style="color: #e7e9db">,</span>
-            <span style="color: #e7e9db">};</span>
-
-            <span style="color: #06b6ef">next</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">);</span>
+            <span style="color: #e7e9db">};</span>            <span style="color: #06b6ef">next</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">);</span>
           <span style="color: #e7e9db">});</span>
       <span style="color: #e7e9db">}</span> <span style="color: #815ba4">else</span> <span style="color: #e7e9db">{</span>
         <span style="color: #06b6ef">fallback</span><span style="color: #e7e9db">();</span>
       <span style="color: #e7e9db">}</span>
-    <span style="color: #e7e9db">});</span>
-
-    <span style="color: #e7e9db">...</span>
-<span style="color: #e7e9db">}</span>
-
-<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">Firebase</span><span style="color: #e7e9db">;</span>
+    <span style="color: #e7e9db">});</span>    <span style="color: #e7e9db">...</span>
+<span style="color: #e7e9db">}</span><span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">Firebase</span><span style="color: #e7e9db">;</span>
 </code></pre></div>
-
-
-<p>To protect your routes from users who have no verified email address, we will do it with a new higher-order component in <em>src/components/Session/withEmailVerification.js</em> that has access to Firebase and the authenticated user:</p>
-
-<p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
-
-<span style="color: #815ba4">import</span> <span style="color: #06b6ef">AuthUserContext</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./context&#39;</span><span style="color: #e7e9db">;</span>
-<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">withFirebase</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../Firebase&#39;</span><span style="color: #e7e9db">;</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">withEmailVerification</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">Component</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<p>To protect your routes from users who have no verified email address, we will do it with a new higher-order component in <em>src/components/Session/withEmailVerification.js</em> that has access to Firebase and the authenticated user:</p><p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">AuthUserContext</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./context&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">withFirebase</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../Firebase&#39;</span><span style="color: #e7e9db">;</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">withEmailVerification</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">Component</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
   <span style="color: #815ba4">class</span> <span style="color: #06b6ef">WithEmailVerification</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
     <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
       <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
@@ -563,31 +301,17 @@
         <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/AuthUserContext.Consumer&gt;</span>
       <span style="color: #e7e9db">);</span>
     <span style="color: #e7e9db">}</span>
-  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">withFirebase</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">WithEmailVerification</span><span style="color: #e7e9db">);</span>
-<span style="color: #e7e9db">};</span>
-
-<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">withEmailVerification</span><span style="color: #e7e9db">;</span>
+  <span style="color: #e7e9db">}</span>  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">withFirebase</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">WithEmailVerification</span><span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">};</span><span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">withEmailVerification</span><span style="color: #e7e9db">;</span>
 </code></pre></div>
-</p>
-
-<p>Add a function in this file that checks if the authenticated user has a verified email and an email/password sign in on associated with it. If the user has only social logins, it doesn&rsquo;t matter if the email is not verified.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">needsEmailVerification</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">=&gt;</span>
+</p><p>Add a function in this file that checks if the authenticated user has a verified email and an email/password sign in on associated with it. If the user has only social logins, it doesn&rsquo;t matter if the email is not verified.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">needsEmailVerification</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">=&gt;</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">&amp;&amp;</span>
 </span><span style="background-color: #4f424c">  <span style="color: #5bc4bf">!</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">emailVerified</span> <span style="color: #5bc4bf">&amp;&amp;</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">providerData</span>
 </span><span style="background-color: #4f424c">    <span style="color: #e7e9db">.</span><span style="color: #06b6ef">map</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">provider</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">provider</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">providerId</span><span style="color: #e7e9db">)</span>
 </span><span style="background-color: #4f424c">    <span style="color: #e7e9db">.</span><span style="color: #06b6ef">includes</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;password&#39;</span><span style="color: #e7e9db">);</span>
 </span></code></pre></div>
-
-
-<p>If this is true, don&rsquo;t render the component passed to this higher-order component, but a message that reminds users to verify their email addresses.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">withEmailVerification</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">Component</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<p>If this is true, don&rsquo;t render the component passed to this higher-order component, but a message that reminds users to verify their email addresses.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">withEmailVerification</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">Component</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
   <span style="color: #815ba4">class</span> <span style="color: #06b6ef">WithEmailVerification</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
 <span style="background-color: #4f424c">    <span style="color: #06b6ef">onSendEmailVerification</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
 </span><span style="background-color: #4f424c">      <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firebase</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">doSendEmailVerification</span><span style="color: #e7e9db">();</span>
@@ -619,20 +343,10 @@
         <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/AuthUserContext.Consumer&gt;</span>
       <span style="color: #e7e9db">);</span>
     <span style="color: #e7e9db">}</span>
-  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">withFirebase</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">WithEmailVerification</span><span style="color: #e7e9db">);</span>
-<span style="color: #e7e9db">};</span>
-
-<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">withEmailVerification</span><span style="color: #e7e9db">;</span>
+  <span style="color: #e7e9db">}</span>  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">withFirebase</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">WithEmailVerification</span><span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">};</span><span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">withEmailVerification</span><span style="color: #e7e9db">;</span>
 </code></pre></div>
-
-
-<p>Optionally, we can provide a button to resend a verification email to the user. Let&rsquo;s improve the user experience. After the button is clicked to resend the verification email, users should receive feedback, and be prohibited from sending another email. First, add a local state to the higher-order component that tracks whether the button was clicked:</p>
-
-<p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">withEmailVerification</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">Component</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<p>Optionally, we can provide a button to resend a verification email to the user. Let&rsquo;s improve the user experience. After the button is clicked to resend the verification email, users should receive feedback, and be prohibited from sending another email. First, add a local state to the higher-order component that tracks whether the button was clicked:</p><p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">withEmailVerification</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">Component</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
   <span style="color: #815ba4">class</span> <span style="color: #06b6ef">WithEmailVerification</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
 <span style="background-color: #4f424c">    <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
 </span><span style="background-color: #4f424c">      <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>
@@ -644,28 +358,12 @@
       <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">firebase</span>
         <span style="color: #e7e9db">.</span><span style="color: #06b6ef">doSendEmailVerification</span><span style="color: #e7e9db">()</span>
 <span style="background-color: #4f424c">        <span style="color: #e7e9db">.</span><span style="color: #06b6ef">then</span><span style="color: #e7e9db">(()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">isSent</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span> <span style="color: #e7e9db">}));</span>
-</span>    <span style="color: #e7e9db">};</span>
-
-    <span style="color: #e7e9db">...</span>
-  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">withFirebase</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">WithEmailVerification</span><span style="color: #e7e9db">);</span>
-<span style="color: #e7e9db">};</span>
-
-<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">withEmailVerification</span><span style="color: #e7e9db">;</span>
+</span>    <span style="color: #e7e9db">};</span>    <span style="color: #e7e9db">...</span>
+  <span style="color: #e7e9db">}</span>  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">withFirebase</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">WithEmailVerification</span><span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">};</span><span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">withEmailVerification</span><span style="color: #e7e9db">;</span>
 </code></pre></div>
-</p>
-
-<p>Second, show another message with a conditional rendering if a user has sent another verification email:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">withEmailVerification</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">Component</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
-  <span style="color: #815ba4">class</span> <span style="color: #06b6ef">WithEmailVerification</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
-
-    <span style="color: #e7e9db">...</span>
-
-    <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+</p><p>Second, show another message with a conditional rendering if a user has sent another verification email:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #e7e9db">...</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">withEmailVerification</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">Component</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #815ba4">class</span> <span style="color: #06b6ef">WithEmailVerification</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>    <span style="color: #e7e9db">...</span>    <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
       <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
         <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">AuthUserContext</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Consumer</span><span style="color: #5bc4bf">&gt;</span>
           <span style="color: #e7e9db">{</span><span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">=&gt;</span>
@@ -700,18 +398,10 @@
         <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/AuthUserContext.Consumer&gt;</span>
       <span style="color: #e7e9db">);</span>
     <span style="color: #e7e9db">}</span>
-  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">withFirebase</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">WithEmailVerification</span><span style="color: #e7e9db">);</span>
-<span style="color: #e7e9db">};</span>
-
-<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">withEmailVerification</span><span style="color: #e7e9db">;</span>
+  <span style="color: #e7e9db">}</span>  <span style="color: #815ba4">return</span> <span style="color: #06b6ef">withFirebase</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">WithEmailVerification</span><span style="color: #e7e9db">);</span>
+<span style="color: #e7e9db">};</span><span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">withEmailVerification</span><span style="color: #e7e9db">;</span>
 </code></pre></div>
-
-
-<p>Lastly, make the new higher-order component available in your Session folder&rsquo;s <em>index.js</em> file:</p>
-
-<p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">AuthUserContext</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./context&#39;</span><span style="color: #e7e9db">;</span>
+<p>Lastly, make the new higher-order component available in your Session folder&rsquo;s <em>index.js</em> file:</p><p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">AuthUserContext</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./context&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">withAuthentication</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./withAuthentication&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #06b6ef">withAuthorization</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./withAuthorization&#39;</span><span style="color: #e7e9db">;</span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #06b6ef">withEmailVerification</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;./withEmailVerification&#39;</span><span style="color: #e7e9db">;</span>
@@ -723,11 +413,7 @@
 <span style="background-color: #4f424c">  <span style="color: #06b6ef">withEmailVerification</span><span style="color: #e7e9db">,</span>
 </span><span style="color: #e7e9db">};</span>
 </code></pre></div>
-</p>
-
-<p>Send a confirmation email once a user signs up with a email/password combination. You also have a higher-order component used for authorization and optionally resending a confirmation email. Next, secure all pages/routes that should be only accessible with a confirmed email. Let&rsquo;s begin with the home page:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+</p><p>Send a confirmation email once a user signs up with a email/password combination. You also have a higher-order component used for authorization and optionally resending a confirmation email. Next, secure all pages/routes that should be only accessible with a confirmed email. Let&rsquo;s begin with the home page:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">compose</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;recompose&#39;</span><span style="color: #e7e9db">;</span>
 </span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">withAuthorization</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">withEmailVerification</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../Session&#39;</span><span style="color: #e7e9db">;</span>
@@ -737,42 +423,22 @@
     <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">h1</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Home</span> <span style="color: #06b6ef">Page</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/h1&gt;</span>
     <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">p</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">The</span> <span style="color: #06b6ef">Home</span> <span style="color: #06b6ef">Page</span> <span style="color: #06b6ef">is</span> <span style="color: #06b6ef">accessible</span> <span style="color: #06b6ef">by</span> <span style="color: #06b6ef">every</span> <span style="color: #06b6ef">signed</span> <span style="color: #815ba4">in</span> <span style="color: #06b6ef">user</span><span style="color: #e7e9db">.</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/p&gt;</span>
   <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
-<span style="color: #e7e9db">);</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">condition</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #5bc4bf">!!</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">;</span>
-
-<span style="background-color: #4f424c"><span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">compose</span><span style="color: #e7e9db">(</span>
+<span style="color: #e7e9db">);</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">condition</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #5bc4bf">!!</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">;</span><span style="background-color: #4f424c"><span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">compose</span><span style="color: #e7e9db">(</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">withEmailVerification</span><span style="color: #e7e9db">,</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">withAuthorization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">condition</span><span style="color: #e7e9db">),</span>
 </span><span style="background-color: #4f424c"><span style="color: #e7e9db">)(</span><span style="color: #06b6ef">HomePage</span><span style="color: #e7e9db">);</span>
 </span></code></pre></div>
-
-
-<p>Next the admin page:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
-<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">compose</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;recompose&#39;</span><span style="color: #e7e9db">;</span>
-
-<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">withFirebase</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../Firebase&#39;</span><span style="color: #e7e9db">;</span>
+<p>Next the admin page:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">compose</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;recompose&#39;</span><span style="color: #e7e9db">;</span><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">withFirebase</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../Firebase&#39;</span><span style="color: #e7e9db">;</span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">withAuthorization</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">withEmailVerification</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../Session&#39;</span><span style="color: #e7e9db">;</span>
-</span><span style="color: #815ba4">import</span> <span style="color: #5bc4bf">*</span> <span style="color: #06b6ef">as</span> <span style="color: #06b6ef">ROLES</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../../constants/roles&#39;</span><span style="color: #e7e9db">;</span>
-
-<span style="color: #e7e9db">...</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">condition</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">=&gt;</span>
-  <span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #5bc4bf">!!</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">roles</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">ROLES</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">ADMIN</span><span style="color: #e7e9db">];</span>
-
-<span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">compose</span><span style="color: #e7e9db">(</span>
+</span><span style="color: #815ba4">import</span> <span style="color: #5bc4bf">*</span> <span style="color: #06b6ef">as</span> <span style="color: #06b6ef">ROLES</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../../constants/roles&#39;</span><span style="color: #e7e9db">;</span><span style="color: #e7e9db">...</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">condition</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #5bc4bf">!!</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">roles</span><span style="color: #e7e9db">[</span><span style="color: #06b6ef">ROLES</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">ADMIN</span><span style="color: #e7e9db">];</span><span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">compose</span><span style="color: #e7e9db">(</span>
 <span style="background-color: #4f424c">  <span style="color: #06b6ef">withEmailVerification</span><span style="color: #e7e9db">,</span>
 </span>  <span style="color: #06b6ef">withAuthorization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">condition</span><span style="color: #e7e9db">),</span>
   <span style="color: #06b6ef">withFirebase</span><span style="color: #e7e9db">,</span>
 <span style="color: #e7e9db">)(</span><span style="color: #06b6ef">AdminPage</span><span style="color: #e7e9db">);</span>
 </code></pre></div>
-
-
-<p>And the account page:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
+<p>And the account page:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;react&#39;</span><span style="color: #e7e9db">;</span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">compose</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;recompose&#39;</span><span style="color: #e7e9db">;</span>
 </span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span>
@@ -782,27 +448,13 @@
 </span><span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../Session&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">withFirebase</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../Firebase&#39;</span><span style="color: #e7e9db">;</span>
 <span style="color: #815ba4">import</span> <span style="color: #e7e9db">{</span> <span style="color: #06b6ef">PasswordForgetForm</span> <span style="color: #e7e9db">}</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../PasswordForget&#39;</span><span style="color: #e7e9db">;</span>
-<span style="color: #815ba4">import</span> <span style="color: #06b6ef">PasswordChangeForm</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../PasswordChange&#39;</span><span style="color: #e7e9db">;</span>
-
-<span style="color: #e7e9db">...</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">condition</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #5bc4bf">!!</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">;</span>
-
-<span style="background-color: #4f424c"><span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">compose</span><span style="color: #e7e9db">(</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">PasswordChangeForm</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;../PasswordChange&#39;</span><span style="color: #e7e9db">;</span><span style="color: #e7e9db">...</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">condition</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">authUser</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #5bc4bf">!!</span><span style="color: #06b6ef">authUser</span><span style="color: #e7e9db">;</span><span style="background-color: #4f424c"><span style="color: #815ba4">export</span> <span style="color: #815ba4">default</span> <span style="color: #06b6ef">compose</span><span style="color: #e7e9db">(</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">withEmailVerification</span><span style="color: #e7e9db">,</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">withAuthorization</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">condition</span><span style="color: #e7e9db">),</span>
 </span><span style="background-color: #4f424c"><span style="color: #e7e9db">)(</span><span style="color: #06b6ef">AccountPage</span><span style="color: #e7e9db">);</span>
 </span></code></pre></div>
-
-
-<p>All the sensible routes for authenticated users now require a confirmed email. Finally, your application can be only used by users with real email addresses.</p>
-
-<h3 id="exercises">Exercises:</h3>
-
-<ul>
-<li>Familiarize yourself with the new flow by deleting your user from the Authentication and Realtime Databases and sign up again.
-
-<ul>
+<p>All the sensible routes for authenticated users now require a confirmed email. Finally, your application can be only used by users with real email addresses.</p><h3 id="exercises">Exercises:</h3><ul>
+<li>Familiarize yourself with the new flow by deleting your user from the Authentication and Realtime Databases and sign up again.<ul>
 <li>For example, sign up with a social login instead of the email/password combination, but activate the email/password sign in method later on the account page.</li>
 <li>This is in general a good way to purge the database to start from a clean slate if anything feels buggy.</li>
 </ul></li>
@@ -811,8 +463,6 @@
 <li>Read more about <a target="_blank" rel="noopener noreferrer" href="https://firebase.google.com/docs/auth/web/passing-state-in-email-actions">additional configuration for the verification E-Mail</a></li>
 <li>Confirm your <a target="_blank" rel="noopener noreferrer" href="http://bit.ly/2Vqtfxt">source code for the last section</a></li>
 </ul>
-
-
                             
 <div class="feedback-and-share text-center">
     <hr>
@@ -827,8 +477,6 @@
         </p>
     
 </div>
-
-
                             
                                 <div class="box-inline col-md-12">
     <div class="col-md-12 text-center">
@@ -863,21 +511,15 @@
     </div>
 </div>
                             
-                        </div>
-
-                        
+                        </div>                        
                         
                         <div id="comments">
                             <div id="disqus_thread"></div>
-<script type="text/javascript">
-
-(function() {
+<script type="text/javascript">(function() {
     
     
     if (window.location.hostname == "localhost")
-        return;
-
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        return;    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
     var disqus_shortname = 'rwieruch';
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
@@ -886,31 +528,19 @@
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                         </div>
-                        
-
-                    </article>
-                    
-
-                </div>
-                
-
-            </div>
+                                            </article>
+                                    </div>
+                            </div>
             
         </div>
-        
-
-        
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
+                <section class="bar background-image-fixed-2 no-mb color-white text-center">
     <div class="dark-mask"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
                 <h2 class="text-uppercase">Take Part</h2>
-            </div>
-
-            <div class="col-md-12 text-center">
+            </div>            <div class="col-md-12 text-center">
                 
                     <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
                 
@@ -925,11 +555,7 @@
             </div>
             <div class="col-md-12">
                 <p class="text-center">
-                    
-
-
-
-<div id="mc_embed_signup">
+                    <div id="mc_embed_signup">
     <form
         action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
         method="post"
@@ -957,25 +583,13 @@
             </div>
         </div>
     </form>
-</div>
-
-                </p>
+</div>                </p>
             </div>
         </div>
     </div>
 </section>
-
-
-
-
         <footer id="subfooter">
-    <div class="container">
-
-        <div class="col-md-5 col-sm-6">
-
-            <h4>Recent posts</h4>
-
-            <div class="blog-entries">
+    <div class="container">        <div class="col-md-5 col-sm-6">            <h4>Recent posts</h4>            <div class="blog-entries">
                 
                 <div class="item same-height-row clearfix">
                     <div class="article same-height-always">
@@ -1031,19 +645,9 @@
                     </div>
                 </div>
                 
-            </div>
-
-            <hr class="hidden-md hidden-lg hidden-sm">
-
-        </div>
-        
-
-        
-        <div class="col-md-5 col-md-offset-2 col-sm-6">
-
-            <h4>About Me</h4>
-
-            <div class="blog-entries">
+            </div>            <hr class="hidden-md hidden-lg hidden-sm">        </div>
+                
+        <div class="col-md-5 col-md-offset-2 col-sm-6">            <h4>About Me</h4>            <div class="blog-entries">
                 <div class="item same-height-row clearfix">
                     <div class="profile same-height-always">
                         <img
@@ -1054,25 +658,15 @@
                     </div>
                     <div class="name same-height-always">
                         <p>
-                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                            Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
                         </p>
                     </div>
                 </div>
+            </div>        </div>
+        
             </div>
-
-        </div>
-        
-        
-
-    </div>
     
 </footer>
-
-
-
-
-
-
         <footer id="copyright">
   <div class="container">
     <div class="row">
@@ -1114,27 +708,7 @@
     </div>
   </div>
 </footer>
-
-
     </div>
-    
-
-    
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-
-
-
-
-
-
-
-
-<script src="../js/script.js"></script>
-
-
-
-  </body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script><script src="../js/script.js"></script>  </body>
 </html>

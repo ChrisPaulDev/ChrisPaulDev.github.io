@@ -1,136 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
+<html lang="en">  <head>
   <meta charset="utf-8">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-
-  <title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">    <title>
     Advanced List in React - Build a powerful Component (Part III) - CPaul
-  </title>
-
-  <meta name="author" content="" />
-
-  
-    <meta name="description" content="The series of React tutorials focuses on building a complex yet elegant and powerful React component. It attempts to go beyond the fundamentals in React.js. This part introduces an advanced list in React that will enable you to opt-in infinite scrolling and pagination ...">
-  
-
-  <meta name="theme-color" content="#38bb6c"/>
-
-  <meta name="generator" content="Hugo 0.41" />
-
-  
-  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
-
-  
-  
-
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </title>  <meta name="author" content="" />
+  <meta name="description" content="The series of React tutorials focuses on building a complex yet elegant and powerful React component. It attempts to go beyond the fundamentals in React.js. This part introduces an advanced list in React that will enable you to opt-in infinite scrolling and pagination ...">
+    <meta name="theme-color" content="#38bb6c"/>  <meta name="generator" content="Hugo 0.41" />
+<link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-  
-  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
-  <link href="../css/customizations.css" rel="stylesheet">
-
-  
-  
-    <!--[if lt IE 9]>
+<link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">    <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   
-
-  
-  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="../img/favicon/manifest.json">
-  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-
-  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
-
-  
-  
-<meta itemprop="name" content="Advanced List in React - Build a powerful Component (Part III)">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul"><meta itemprop="name" content="Advanced List in React - Build a powerful Component (Part III)">
 <meta itemprop="description" content="The series of React tutorials focuses on building a complex yet elegant and powerful React component. It attempts to go beyond the fundamentals in React.js. This part introduces an advanced list in React that will enable you to opt-in infinite scrolling and pagination ...">
-
-
-
     <meta itemprop="image" content="https://chrispaul.dev/img/posts/react-advanced-list-component/banner_640.jpg">
-
-
-
-<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
-
-
-<meta itemprop="wordCount" content="1287">
-
-
-  
-  <meta name="keywords" content="react advanced list component">
-
-  <meta property="og:title" content="Advanced List in React - Build a powerful Component (Part III) - CPaul">
-
-
-  <meta property="og:description" content="The series of React tutorials focuses on building a complex yet elegant and powerful React component. It attempts to go beyond the fundamentals in React.js. This part introduces an advanced list in React that will enable you to opt-in infinite scrolling and pagination ..." />
-
-
-<meta property="og:type" content="website" />
+<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," /><meta itemprop="wordCount" content="1287">  
+  <meta name="keywords" content="react advanced list component">  <meta property="og:title" content="Advanced List in React - Build a powerful Component (Part III) - CPaul">  <meta property="og:description" content="The series of React tutorials focuses on building a complex yet elegant and powerful React component. It attempts to go beyond the fundamentals in React.js. This part introduces an advanced list in React that will enable you to opt-in infinite scrolling and pagination ..." /><meta property="og:type" content="website" />
 <meta property="og:url" content="https://chrispaul.dev/react-advanced-list-component/" />
-<meta property="og:image" content="https://chrispaul.dev/img/posts/react-advanced-list-component/banner_640.jpg" />
-
-  
-
-    <meta name="news_keywords" content="react advanced list component" />
-
-  
-
-    <meta name="twitter:card" content="summary_large_image"/>
+<meta property="og:image" content="https://chrispaul.dev/img/posts/react-advanced-list-component/banner_640.jpg" />      <meta name="news_keywords" content="react advanced list component" />      <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/react-advanced-list-component/banner_640.jpg"/>
-
-
-
 <meta name="twitter:title" content="Advanced List in React - Build a powerful Component (Part III)"/>
 <meta name="twitter:description" content="The series of React tutorials focuses on building a complex yet elegant and powerful React component. It attempts to go beyond the fundamentals in React.js. This part introduces an advanced list in React that will enable you to opt-in infinite scrolling and pagination ..."/>
 <meta name="twitter:site" content="@rwieruch"/>
-<meta name="twitter:domain" content="rwieruch"/>
-
-  
-
-</head>
-
-
-  <body>
-
-    <div id="all">
-
-        <header>
-
-          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
-
-    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
-
-        <div class="container">
+<meta name="twitter:domain" content="rwieruch"/>  </head>  <body>    <div id="all">        <header>          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">    <div class="navbar navbar-default yamm" role="navigation" id="navbar">        <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="../index.html">
                     <img src="../img/page/logo.svg" alt="Advanced List in React - Build a powerful Component (Part III) logo" class="img-lazy">
                     <span class="sr-only">Advanced List in React - Build a powerful Component (Part III) - go to homepage</span>
-                </a>
-
-                <div class="navbar-buttons">
+                </a>                <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
                         <span class="sr-only">Toggle navigation</span>
                         <i class="fa fa-align-justify"></i>
                     </button>
                 </div>
             </div>
-            
-
-            <div class="navbar-collapse collapse" id="navigation">
+                        <div class="navbar-collapse collapse" id="navigation">
                 <ul class="nav navbar-nav navbar-right">
                     
                     <li class="dropdown">
@@ -159,123 +71,63 @@
                     
                 </ul>
             </div>
-            
-
-            <div class="collapse clearfix" id="search">
-
-                <form class="navbar-form" role="search">
+                        <div class="collapse clearfix" id="search">                <form class="navbar-form" role="search">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
-
-                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
-
-                </span>
+                        <span class="input-group-btn">                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>                </span>
                     </div>
-                </form>
-
-            </div>
-            
-
-        </div>
+                </form>            </div>
+                    </div>
     </div>
-    
-
-</div>
-
-
-
-
-        </header>
-
-        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
-    
-
-<a
+    </div>        </header>        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    <a
     aria-label="icon-facebook"
     class="icon-facebook"
     href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freact-advanced-list-component%2f"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
     <i class="fa fa-facebook"></i>
-</a>
-
-
-<a
+</a><a
     aria-label="icon-twitter"
     class="icon-twitter"
     href="https://twitter.com/share?text=Advanced%20List%20in%20React%20-%20Build%20a%20powerful%20Component%20%28Part%20III%29%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2freact-advanced-list-component%2f"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
     <i class="fa fa-twitter"></i>
-</a>
-
-
-
-
-
-<a
+</a><a
     aria-label="icon-linkedin"
     class="icon-linkedin"
     href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Advanced%20List%20in%20React%20-%20Build%20a%20powerful%20Component%20%28Part%20III%29&amp;url=https%3a%2f%2fchrispaul.dev%2freact-advanced-list-component%2f">
     <i class="fa fa-linkedin"></i>
-</a>
-
-</div>
-
-<div class="visible-xs visible-sm text-center">
+</a></div><div class="visible-xs visible-sm text-center">
     <div class="post-share post-share-fixed post-share-mobile">
-        
-
-<a
+        <a
     aria-label="icon-facebook"
     class="icon-facebook"
     href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2freact-advanced-list-component%2f"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
     <i class="fa fa-facebook"></i>
-</a>
-
-
-<a
+</a><a
     aria-label="icon-twitter"
     class="icon-twitter"
     href="https://twitter.com/share?text=Advanced%20List%20in%20React%20-%20Build%20a%20powerful%20Component%20%28Part%20III%29%20by%20%40rwieruch%20%23ReactJs&amp;url=https%3a%2f%2fchrispaul.dev%2freact-advanced-list-component%2f"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
     <i class="fa fa-twitter"></i>
-</a>
-
-
-
-
-
-<a
+</a><a
     aria-label="icon-linkedin"
     class="icon-linkedin"
     href="https://www.linkedin.com/shareArticle?mini=true&amp;title=Advanced%20List%20in%20React%20-%20Build%20a%20powerful%20Component%20%28Part%20III%29&amp;url=https%3a%2f%2fchrispaul.dev%2freact-advanced-list-component%2f">
     <i class="fa fa-linkedin"></i>
-</a>
-
-    </div>
-</div>
-
-        
-
-        <div class="hidden-xs">
-            
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
+</a>    </div>
+</div>                <div class="hidden-xs">
+            <section class="bar background-image-fixed-2 no-mb color-white text-center">
     <div class="dark-mask"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
                 <h2 class="text-uppercase newsletter">Take Part</h2>
-            </div>
-
-            <div class="col-md-12">
+            </div>            <div class="col-md-12">
                 <p class="text-center">
                     
-
-
-
 <div id="mc_embed_signup">
     <form
         action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
@@ -304,68 +156,37 @@
             </div>
         </div>
     </form>
-</div>
-
-                </p>
+</div>                </p>
             </div>
         </div>
     </div>
 </section>
-
-
-
-        </div>
-
-        <div id="content">
-            <div class="container">
-
-                <div class="row">
-
-                    <article
+        </div>        <div id="content">
+            <div class="container">                <div class="row">                    <article
                         class="col-md-8 col-md-offset-2"
                         id="blog-post"
                         itemprop="blogPosts"
-                        itemscope itemtype="http://schema.org/BlogPosting">
-
-                        <div id="post-content" itemprop="articleBody">
-
-                            <header>
+                        itemscope itemtype="http://schema.org/BlogPosting">                        <div id="post-content" itemprop="articleBody">                            <header>
                                 <h1 itemprop="name headline">Advanced List in React - Build a powerful Component (Part III)</h1>
-                            </header>
-
-                            <div class="text-center">
+                            </header>                            <div class="text-center">
                                 
     <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
          <i class="fa fa-facebook"></i>Follow
-    </a>
-
-
-                                &nbsp;
-                                
-
-                                &nbsp;
+    </a>                                &nbsp;
+                                                                &nbsp;
                                 
   <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
     <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
-  </a>
-
-
-                                &nbsp;
+  </a>                                &nbsp;
                                 
-                            </div>
-
-                            <p class="text-muted text-uppercase mb-small text-center">
+                            </div>                            <p class="text-muted text-uppercase mb-small text-center">
     <span itemprop="author publisher">
         
-    </span>
-
-    
+    </span>    
         <time datetime="2017-06-13" itemprop="datePublished">
             June 13, 2017
         </time>
-    
-
-    
+        
         <span class="hidden-xs hidden-sm"> - <a
             target="_blank"
             rel="noopener noreferrer"
@@ -374,14 +195,8 @@
             </a>
         </span>
     
-</p>
-
-                            <div>
-  
-
-</div>
-
-<div class="post-image-primary">
+</p>                            <div>
+  </div><div class="post-image-primary">
     <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
         <div class="pinterest-pinner">
             <a
@@ -390,9 +205,7 @@
                 data-pin-tall="true"
                 href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2freact-advanced-list-component%2f&amp;media=https://chrispaul.dev/img%2fposts%2freact-advanced-list-component%2fbanner.jpg&amp;description=">
             </a>
-        </div>
-
-        <img
+        </div>        <img
             class="img-lazy img-responsive"
             data-lazy-src="/src="/img/posts/react-advanced-list-component/banner.jpg"
             data-is-src-set="is-src-set"
@@ -400,83 +213,51 @@
             itemprop="image"
         />
     </div>
-</div>
-
-
-<p>The last two parts of the tutorial series in React introduced two functionalities, <a href="../react-paginated-list/index.html">a paginated list</a> and an <a href="../react-infinite-scroll/index.html">infinite scroll</a>, by using higher order components. However, these functionalities were used exclusively. In one scenario you used a paginated list, where you manually fetched the data, then again in another scenario you used an infinite scroll, where the data was fetched automatically for you.</p>
-
-<p>Now you could use both features exclusively. But what about using them in combination to give your user an improved user experience? You could use the infinite scroll as default behavior for your list. Your users will thank you, because they don&rsquo;t have to fetch more list items by using the More button. Then, when your request runs into an error, you could use the More button as fallback. The user can manually try again to fetch data. That&rsquo;s a great user experience and done already by applications like Twitter and Pocket.</p>
-
-<ul>
+</div><p>The last two parts of the tutorial series in React introduced two functionalities, <a href="../react-paginated-list/index.html">a paginated list</a> and an <a href="../react-infinite-scroll/index.html">infinite scroll</a>, by using higher order components. However, these functionalities were used exclusively. In one scenario you used a paginated list, where you manually fetched the data, then again in another scenario you used an infinite scroll, where the data was fetched automatically for you.</p><p>Now you could use both features exclusively. But what about using them in combination to give your user an improved user experience? You could use the infinite scroll as default behavior for your list. Your users will thank you, because they don&rsquo;t have to fetch more list items by using the More button. Then, when your request runs into an error, you could use the More button as fallback. The user can manually try again to fetch data. That&rsquo;s a great user experience and done already by applications like Twitter and Pocket.</p><ul>
 <li><a href="../react-paginated-list/index.html">Paginated List in React - Build a powerful Component (Part I)</a></li>
 <li><a href="../react-infinite-scroll/index.html">Infinite Scroll in React - Build a powerful Component (Part II)</a></li>
 <li><strong>Advanced List in React - Build a powerful Component (Part III)</strong></li>
-</ul>
-
-<h2 class="chapter-header" id="catch-error-react-local-state">Catching the Error in Local State</h2>
-
-<p>The goal is to give the user of your list component a possibility to jump in when an error occurs. First, you would have to track the error when a request fails. You will have to implement error handling in your React local state:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">applyUpdateResult</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">result</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">prevState</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span>
+</ul><h2 class="chapter-header" id="catch-error-react-local-state">Catching the Error in Local State</h2><p>The goal is to give the user of your list component a possibility to jump in when an error occurs. First, you would have to track the error when a request fails. You will have to implement error handling in your React local state:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">applyUpdateResult</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">result</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">prevState</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span>
   <span style="color: #06b6ef">hits</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[...</span><span style="color: #06b6ef">prevState</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">hits</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">result</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">hits</span><span style="color: #e7e9db">],</span>
   <span style="color: #06b6ef">page</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">result</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">page</span><span style="color: #e7e9db">,</span>
 <span style="background-color: #4f424c">  <span style="color: #06b6ef">isError</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
 </span>  <span style="color: #06b6ef">isLoading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
-<span style="color: #e7e9db">});</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">applySetResult</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">result</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">prevState</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span>
+<span style="color: #e7e9db">});</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">applySetResult</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">result</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">prevState</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span>
   <span style="color: #06b6ef">hits</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[...</span><span style="color: #06b6ef">prevState</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">hits</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">...</span><span style="color: #06b6ef">result</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">hits</span><span style="color: #e7e9db">],</span>
   <span style="color: #06b6ef">page</span><span style="color: #5bc4bf">:</span> <span style="color: #06b6ef">result</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">page</span><span style="color: #e7e9db">,</span>
 <span style="background-color: #4f424c">  <span style="color: #06b6ef">isError</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
 </span>  <span style="color: #06b6ef">isLoading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
-<span style="color: #e7e9db">});</span>
-
-<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">applySetError</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">prevState</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span>
+<span style="color: #e7e9db">});</span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">applySetError</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">prevState</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">({</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">isError</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span><span style="color: #e7e9db">,</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">isLoading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
 </span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
 </span>
 <span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">constructor</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
-    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>
-
-    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #815ba4">super</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">);</span>    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">{</span>
       <span style="color: #06b6ef">hits</span><span style="color: #5bc4bf">:</span> <span style="color: #e7e9db">[],</span>
       <span style="color: #06b6ef">page</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">null</span><span style="color: #e7e9db">,</span>
       <span style="color: #06b6ef">isLoading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
 <span style="background-color: #4f424c">      <span style="color: #06b6ef">isError</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">,</span>
 </span>    <span style="color: #e7e9db">};</span>
-  <span style="color: #e7e9db">}</span>
-
-  <span style="color: #06b6ef">fetchStories</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">page</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">}</span>  <span style="color: #06b6ef">fetchStories</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">page</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
     <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">({</span> <span style="color: #06b6ef">isLoading</span><span style="color: #5bc4bf">:</span> <span style="color: #815ba4">true</span> <span style="color: #e7e9db">});</span>
     <span style="color: #06b6ef">fetch</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">getHackerNewsUrl</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">value</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">page</span><span style="color: #e7e9db">))</span>
 <span style="background-color: #4f424c">      <span style="color: #e7e9db">.</span><span style="color: #06b6ef">then</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">response</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #06b6ef">response</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">json</span><span style="color: #e7e9db">())</span>
 </span>      <span style="color: #e7e9db">.</span><span style="color: #06b6ef">then</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">result</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onSetResult</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">result</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">page</span><span style="color: #e7e9db">))</span>
       <span style="color: #e7e9db">.</span><span style="color: #815ba4">catch</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onSetError</span><span style="color: #e7e9db">);</span>
-  <span style="color: #e7e9db">}</span>
-
-<span style="background-color: #4f424c">  <span style="color: #06b6ef">onSetError</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #e7e9db">}</span><span style="background-color: #4f424c">  <span style="color: #06b6ef">onSetError</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
 </span><span style="background-color: #4f424c">    <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">applySetError</span><span style="color: #e7e9db">);</span>
 </span>
   <span style="color: #06b6ef">onSetResult</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">result</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">page</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
     <span style="color: #06b6ef">page</span> <span style="color: #5bc4bf">===</span> <span style="color: #f99b15">0</span>
       <span style="color: #5bc4bf">?</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">applySetResult</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">result</span><span style="color: #e7e9db">))</span>
-      <span style="color: #5bc4bf">:</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">applyUpdateResult</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">result</span><span style="color: #e7e9db">));</span>
-
-  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+      <span style="color: #5bc4bf">:</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">setState</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">applyUpdateResult</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">result</span><span style="color: #e7e9db">));</span>  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
     <span style="color: #e7e9db">...</span>
   <span style="color: #e7e9db">}</span>
 <span style="color: #e7e9db">}</span>
-</code></pre></div>
-
-
-<p>Basically when a request fails and you run into the catch block of your fetch function, you will store a simple boolean in your local state that indicates an error. When the request succeeds, you will keep set the <code>isError</code> property to false. You can use the introduced property in your components now.</p>
-
-<p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
-  <span style="color: #e7e9db">...</span>
-
-  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+</code></pre></div><p>Basically when a request fails and you run into the catch block of your fetch function, you will store a simple boolean in your local state that indicates an error. When the request succeeds, you will keep set the <code>isError</code> property to false. You can use the introduced property in your components now.</p><p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">class</span> <span style="color: #06b6ef">App</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
+  <span style="color: #e7e9db">...</span>  <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
     <span style="color: #815ba4">return</span> <span style="color: #e7e9db">(</span>
       <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;page&quot;</span><span style="color: #5bc4bf">&gt;</span>
         <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;interactions&quot;</span><span style="color: #5bc4bf">&gt;</span>
@@ -484,9 +265,7 @@
             <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">input</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;text&quot;</span> <span style="color: #06b6ef">ref</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #06b6ef">node</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">input</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">node</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>
             <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">button</span> <span style="color: #06b6ef">type</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;submit&quot;</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Search</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/button&gt;</span>
           <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/form&gt;</span>
-        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
-
-<span style="background-color: #4f424c">        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">AdvancedList</span>
+        <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span><span style="background-color: #4f424c">        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">AdvancedList</span>
 </span>          <span style="color: #06b6ef">list</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">hits</span><span style="color: #e7e9db">}</span>
 <span style="background-color: #4f424c">          <span style="color: #06b6ef">isError</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">isError</span><span style="color: #e7e9db">}</span>
 </span>          <span style="color: #06b6ef">isLoading</span><span style="color: #5bc4bf">=</span><span style="color: #e7e9db">{</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">state</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">isLoading</span><span style="color: #e7e9db">}</span>
@@ -498,31 +277,14 @@
   <span style="color: #e7e9db">}</span>
 <span style="color: #e7e9db">}</span>
 </code></pre></div>
-</p>
-
-<p>As you might have noticed, the enhanced List component got renamed to <code>AdvancedList</code>. How will it be composed? Basically it uses both functionalities, the manual fetch with the More button and automatic fetch with the infinite scroll, combined instead of exclusively.</p>
-
-<h2 class="chapter-header" id="combine-higher-order-components">Combine Higher Order Components</h2>
-
-<p>The composition of these functionalities would look like the following:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">AdvancedList</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">compose</span><span style="color: #e7e9db">(</span>
+</p><p>As you might have noticed, the enhanced List component got renamed to <code>AdvancedList</code>. How will it be composed? Basically it uses both functionalities, the manual fetch with the More button and automatic fetch with the infinite scroll, combined instead of exclusively.</p><h2 class="chapter-header" id="combine-higher-order-components">Combine Higher Order Components</h2><p>The composition of these functionalities would look like the following:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">AdvancedList</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">compose</span><span style="color: #e7e9db">(</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">withPaginated</span><span style="color: #e7e9db">,</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">withInfiniteScroll</span><span style="color: #e7e9db">,</span>
 </span>  <span style="color: #06b6ef">withLoading</span><span style="color: #e7e9db">,</span>
 <span style="color: #e7e9db">)(</span><span style="color: #06b6ef">List</span><span style="color: #e7e9db">);</span>
-</code></pre></div>
-
-
-<p>However, now both features would be used together without any prioritization. The goal would be to use the infinite scroll on default, but opt-in the More button when an error occurs. In addition, the More button should indicate the user that an error occurred and he or she can try again to fetch the sublist. The manual paginated fetch is the fallback when an error happens.</p>
-
-<p>Let&rsquo;s adjust the <code>withPaginate</code> higher order component to make it clear for the user that an error happened and that he or she can try it  again manually by clicking the button.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">withPaginated</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">Component</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
+</code></pre></div><p>However, now both features would be used together without any prioritization. The goal would be to use the infinite scroll on default, but opt-in the More button when an error occurs. In addition, the More button should indicate the user that an error occurred and he or she can try again to fetch the sublist. The manual paginated fetch is the fallback when an error happens.</p><p>Let&rsquo;s adjust the <code>withPaginate</code> higher order component to make it clear for the user that an error happened and that he or she can try it  again manually by clicking the button.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">withPaginated</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">Component</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
   <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
-    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{...</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>
-
-    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;interactions&quot;</span><span style="color: #5bc4bf">&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{...</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;interactions&quot;</span><span style="color: #5bc4bf">&gt;</span>
       <span style="color: #e7e9db">{</span>
 <span style="background-color: #4f424c">        <span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">page</span> <span style="color: #5bc4bf">!==</span> <span style="color: #815ba4">null</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #5bc4bf">!</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">isLoading</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">isError</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">&amp;&amp;</span>
 </span><span style="background-color: #4f424c">        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
@@ -539,16 +301,9 @@
 </span>      <span style="color: #e7e9db">}</span>
     <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
   <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
-</code></pre></div>
-
-
-<p>In addition, the infinite scroll higher order component should be inactive when there is an error.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">withInfiniteScroll</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">Component</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
+</code></pre></div><p>In addition, the infinite scroll higher order component should be inactive when there is an error.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">withInfiniteScroll</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">Component</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
   <span style="color: #815ba4">class</span> <span style="color: #06b6ef">WithInfiniteScroll</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
-    <span style="color: #e7e9db">...</span>
-
-    <span style="color: #06b6ef">onScroll</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #e7e9db">...</span>    <span style="color: #06b6ef">onScroll</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
       <span style="color: #815ba4">if</span> <span style="color: #e7e9db">(</span>
         <span style="color: #e7e9db">(window.</span><span style="color: #06b6ef">innerHeight</span> <span style="color: #5bc4bf">+</span> <span style="color: #e7e9db">window.</span><span style="color: #06b6ef">scrollY</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">&gt;=</span> <span style="color: #e7e9db">(document.</span><span style="color: #06b6ef">body</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">offsetHeight</span> <span style="color: #5bc4bf">-</span> <span style="color: #f99b15">500</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">&amp;&amp;</span>
         <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">list</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">length</span> <span style="color: #5bc4bf">&amp;&amp;</span>
@@ -557,37 +312,18 @@
 </span>      <span style="color: #e7e9db">)</span> <span style="color: #e7e9db">{</span>
         <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onPaginatedSearch</span><span style="color: #e7e9db">();</span>
       <span style="color: #e7e9db">}</span>
-    <span style="color: #e7e9db">}</span>
-
-    <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #e7e9db">}</span>    <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
       <span style="color: #815ba4">return</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{...</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span><span style="color: #e7e9db">;</span>
     <span style="color: #e7e9db">}</span>
   <span style="color: #e7e9db">}</span>
-</code></pre></div>
-
-
-<p>Now you can try the functionality in the browser. First, you make an initial search to trigger a request to the Hacker News API. Afterward you can scroll down several times to verify the working infinite scroll functionality. In the network tab of your developer console, you can simulate that your browser tab is offline. When you toggle it to offline and scroll again, you will see that the More button appears. That&rsquo;s your fallback because the request to the Hacker News API failed. The user of your application gets a great user experience, because he or she knows what happened and can try it again. You can click the More button, but it will fails as long as your toggled the browser tab as offline. Once you toggle it to online again, the manual fetch by using the More button should work. The next time you scroll down the default behavior, the infinite scroll, should work again.</p>
-
-<h2 class="chapter-header" id="configure-higher-order-components">Configure Higher Order Components</h2>
-
-<p>There is one last optimization left. Unfortunately both HOCs that provide the infinite scroll and paginated list behavior are dependent on each other. Both use props that are not really used in the higher order component itself. These props are unnecessary dependencies. For instance, the infinite scroll shouldn&rsquo;t know about the <code>isError</code> property. It would be good to make the components unaware of their conditions. These conditions could be extracted as configurations for the higher order components. Once again, if you are not sure about a configuration in a higher order component, you can read <a href="../gentle-introduction-higher-order-components/index.html">the gentle introduction to higher order components article</a>.</p>
-
-<p>Let&rsquo;s extract the conditions as configuration for each higher order components. First, give your higher order components a <code>conditionFn</code> function as configuration.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">withLoading</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">conditionFn</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">Component</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
+</code></pre></div><p>Now you can try the functionality in the browser. First, you make an initial search to trigger a request to the Hacker News API. Afterward you can scroll down several times to verify the working infinite scroll functionality. In the network tab of your developer console, you can simulate that your browser tab is offline. When you toggle it to offline and scroll again, you will see that the More button appears. That&rsquo;s your fallback because the request to the Hacker News API failed. The user of your application gets a great user experience, because he or she knows what happened and can try it again. You can click the More button, but it will fails as long as your toggled the browser tab as offline. Once you toggle it to online again, the manual fetch by using the More button should work. The next time you scroll down the default behavior, the infinite scroll, should work again.</p><h2 class="chapter-header" id="configure-higher-order-components">Configure Higher Order Components</h2><p>There is one last optimization left. Unfortunately both HOCs that provide the infinite scroll and paginated list behavior are dependent on each other. Both use props that are not really used in the higher order component itself. These props are unnecessary dependencies. For instance, the infinite scroll shouldn&rsquo;t know about the <code>isError</code> property. It would be good to make the components unaware of their conditions. These conditions could be extracted as configurations for the higher order components. Once again, if you are not sure about a configuration in a higher order component, you can read <a href="../gentle-introduction-higher-order-components/index.html">the gentle introduction to higher order components article</a>.</p><p>Let&rsquo;s extract the conditions as configuration for each higher order components. First, give your higher order components a <code>conditionFn</code> function as configuration.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">withLoading</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">conditionFn</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">Component</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
 </span>  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
-    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{...</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>
-
-    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;interactions&quot;</span><span style="color: #5bc4bf">&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{...</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;interactions&quot;</span><span style="color: #5bc4bf">&gt;</span>
 <span style="background-color: #4f424c">      <span style="color: #e7e9db">{</span><span style="color: #06b6ef">conditionFn</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">span</span><span style="color: #5bc4bf">&gt;</span><span style="color: #06b6ef">Loading</span><span style="color: #e7e9db">...</span><span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/span&gt;}</span>
 </span>    <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
-  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
-
-<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">withPaginated</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">conditionFn</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">Component</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">withPaginated</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">conditionFn</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">Component</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
 </span>  <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
-    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{...</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>
-
-    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;interactions&quot;</span><span style="color: #5bc4bf">&gt;</span>
+    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{...</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span>    <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span> <span style="color: #06b6ef">className</span><span style="color: #5bc4bf">=</span><span style="color: #48b685">&quot;interactions&quot;</span><span style="color: #5bc4bf">&gt;</span>
       <span style="color: #e7e9db">{</span>
 <span style="background-color: #4f424c">        <span style="color: #06b6ef">conditionFn</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">&amp;&amp;</span>
 </span>        <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">div</span><span style="color: #5bc4bf">&gt;</span>
@@ -603,31 +339,20 @@
         <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
       <span style="color: #e7e9db">}</span>
     <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
-  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span>
-
-<span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">withInfiniteScroll</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">conditionFn</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">Component</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
+  <span style="color: #5bc4bf">&lt;</span><span style="color: #ef6155">/div&gt;</span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">withInfiniteScroll</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">conditionFn</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">Component</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span>
 </span>  <span style="color: #815ba4">class</span> <span style="color: #06b6ef">WithInfiniteScroll</span> <span style="color: #815ba4">extends</span> <span style="color: #06b6ef">React</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{</span>
     <span style="color: #06b6ef">componentDidMount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
       <span style="color: #e7e9db">window.</span><span style="color: #06b6ef">addEventListener</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;scroll&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onScroll</span><span style="color: #e7e9db">,</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">);</span>
-    <span style="color: #e7e9db">}</span>
-
-    <span style="color: #06b6ef">componentWillUnmount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
+    <span style="color: #e7e9db">}</span>    <span style="color: #06b6ef">componentWillUnmount</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
       <span style="color: #e7e9db">window.</span><span style="color: #06b6ef">removeEventListener</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;scroll&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onScroll</span><span style="color: #e7e9db">,</span> <span style="color: #815ba4">false</span><span style="color: #e7e9db">);</span>
-    <span style="color: #e7e9db">}</span>
-
-    <span style="color: #06b6ef">onScroll</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+    <span style="color: #e7e9db">}</span>    <span style="color: #06b6ef">onScroll</span> <span style="color: #5bc4bf">=</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
 <span style="background-color: #4f424c">      <span style="color: #06b6ef">conditionFn</span><span style="color: #e7e9db">(</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">onPaginatedSearch</span><span style="color: #e7e9db">();</span>
 </span>
     <span style="color: #06b6ef">render</span><span style="color: #e7e9db">()</span> <span style="color: #e7e9db">{</span>
       <span style="color: #815ba4">return</span> <span style="color: #5bc4bf">&lt;</span><span style="color: #06b6ef">Component</span> <span style="color: #e7e9db">{...</span><span style="color: #815ba4">this</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">}</span> <span style="color: #5bc4bf">/&gt;</span><span style="color: #e7e9db">;</span>
     <span style="color: #e7e9db">}</span>
   <span style="color: #e7e9db">}</span>
-</code></pre></div>
-
-
-<p>Second, define these <code>conditionFn</code> functions outside of your higher order components. Thus, each higher order component can define flexible conditions.</p>
-
-<p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">paginatedCondition</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">props</span> <span style="color: #5bc4bf">=&gt;</span>
+</code></pre></div><p>Second, define these <code>conditionFn</code> functions outside of your higher order components. Thus, each higher order component can define flexible conditions.</p><p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">paginatedCondition</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">props</span> <span style="color: #5bc4bf">=&gt;</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">page</span> <span style="color: #5bc4bf">!==</span> <span style="color: #815ba4">null</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #5bc4bf">!</span><span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">isLoading</span> <span style="color: #5bc4bf">&amp;&amp;</span> <span style="color: #06b6ef">props</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">isError</span><span style="color: #e7e9db">;</span>
 </span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">const</span> <span style="color: #06b6ef">infiniteScrollCondition</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">props</span> <span style="color: #5bc4bf">=&gt;</span>
@@ -645,16 +370,7 @@
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">withLoading</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">loadingCondition</span><span style="color: #e7e9db">),</span>
 </span><span style="color: #e7e9db">)(</span><span style="color: #06b6ef">List</span><span style="color: #e7e9db">);</span>
 </code></pre></div>
-</p>
-
-<p>The condiditions will get evaluated in the higher order components themselves. That&rsquo;s it.</p>
-
-<hr class="section-divider">
-
-<p>In the last three parts of this React tutorial series you have learned to build a complex list component by using React&rsquo;s higher order components. The list component itself stays simple. It only displays a list. But it can be composed into useful higher order components to opt-in functionalities. By extracting the conditions from the higher order components and using them as configuration, you have the control about which component is used first as default and which should be used as opt-in feature. The full example application can be found in <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/react-example-paginated-list-infinite-scroll">this repository</a>. If you are keen to explore more about these functionalities when working with lists in the local state of React, you can read <a href="../the-road-to-learn-react/index.html">the Road to learn React</a> to learn about caching in React.</p>
-
-
-                            
+</p><p>The condiditions will get evaluated in the higher order components themselves. That&rsquo;s it.</p><hr class="section-divider"><p>In the last three parts of this React tutorial series you have learned to build a complex list component by using React&rsquo;s higher order components. The list component itself stays simple. It only displays a list. But it can be composed into useful higher order components to opt-in functionalities. By extracting the conditions from the higher order components and using them as configuration, you have the control about which component is used first as default and which should be used as opt-in feature. The full example application can be found in <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/react-example-paginated-list-infinite-scroll">this repository</a>. If you are keen to explore more about these functionalities when working with lists in the local state of React, you can read <a href="../the-road-to-learn-react/index.html">the Road to learn React</a> to learn about caching in React.</p>                            
 <div class="feedback-and-share text-center">
     <hr>
     
@@ -667,10 +383,7 @@
             Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
         </p>
     
-</div>
-
-
-                            
+</div>                            
                                 <div class="box-inline col-md-12">
     <div class="col-md-12 text-center">
         <h2 class="newsletter">The Road to learn React</h2>
@@ -704,21 +417,15 @@
     </div>
 </div>
                             
-                        </div>
-
-                        
+                        </div>                        
                         
                         <div id="comments">
                             <div id="disqus_thread"></div>
-<script type="text/javascript">
-
-(function() {
+<script type="text/javascript">(function() {
     
     
     if (window.location.hostname == "localhost")
-        return;
-
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        return;    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
     var disqus_shortname = 'rwieruch';
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
@@ -727,31 +434,19 @@
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                         </div>
-                        
-
-                    </article>
-                    
-
-                </div>
-                
-
-            </div>
+                                            </article>
+                                    </div>
+                            </div>
             
         </div>
-        
-
-        
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
+                <section class="bar background-image-fixed-2 no-mb color-white text-center">
     <div class="dark-mask"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
                 <h2 class="text-uppercase">Take Part</h2>
-            </div>
-
-            <div class="col-md-12 text-center">
+            </div>            <div class="col-md-12 text-center">
                 
                     <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
                 
@@ -767,9 +462,6 @@
             <div class="col-md-12">
                 <p class="text-center">
                     
-
-
-
 <div id="mc_embed_signup">
     <form
         action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
@@ -798,25 +490,12 @@
             </div>
         </div>
     </form>
-</div>
-
-                </p>
+</div>                </p>
             </div>
         </div>
     </div>
-</section>
-
-
-
-
-        <footer id="subfooter">
-    <div class="container">
-
-        <div class="col-md-5 col-sm-6">
-
-            <h4>Recent posts</h4>
-
-            <div class="blog-entries">
+</section>        <footer id="subfooter">
+    <div class="container">        <div class="col-md-5 col-sm-6">            <h4>Recent posts</h4>            <div class="blog-entries">
                 
                 <div class="item same-height-row clearfix">
                     <div class="article same-height-always">
@@ -872,19 +551,9 @@
                     </div>
                 </div>
                 
-            </div>
-
-            <hr class="hidden-md hidden-lg hidden-sm">
-
-        </div>
-        
-
-        
-        <div class="col-md-5 col-md-offset-2 col-sm-6">
-
-            <h4>About Me</h4>
-
-            <div class="blog-entries">
+            </div>            <hr class="hidden-md hidden-lg hidden-sm">        </div>
+                
+        <div class="col-md-5 col-md-offset-2 col-sm-6">            <h4>About Me</h4>            <div class="blog-entries">
                 <div class="item same-height-row clearfix">
                     <div class="profile same-height-always">
                         <img
@@ -895,25 +564,15 @@
                     </div>
                     <div class="name same-height-always">
                         <p>
-                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                            Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
                         </p>
                     </div>
                 </div>
+            </div>        </div>
+        
             </div>
-
-        </div>
-        
-        
-
-    </div>
     
 </footer>
-
-
-
-
-
-
         <footer id="copyright">
   <div class="container">
     <div class="row">
@@ -954,28 +613,10 @@
       </div>
     </div>
   </div>
-</footer>
-
-
-    </div>
+</footer>    </div>
     
-
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-
-
-
-
-
-
-
-
 <script src="../js/script.js"></script>
-
-
-
   </body>
 </html>

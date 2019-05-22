@@ -1,136 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
+<html lang="en">  <head>
   <meta charset="utf-8">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-
-  <title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">    <title>
     How to setup Express.js in Node.js - CPaul
-  </title>
-
-  <meta name="author" content="" />
-
-  
-    <meta name="description" content="A Node.js with Express tutorial to learn how to setup a Node.js application step by step from scratch ...">
-  
-
-  <meta name="theme-color" content="#38bb6c"/>
-
-  <meta name="generator" content="Hugo 0.41" />
-
-  
-  <link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
-
-  
-  
-
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </title>  <meta name="author" content="" />
+  <meta name="description" content="A Node.js with Express tutorial to learn how to setup a Node.js application step by step from scratch ...">
+    <meta name="theme-color" content="#38bb6c"/>  <meta name="generator" content="Hugo 0.41" />
+<link href="https://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-  
-  <link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
-  <link href="../css/customizations.css" rel="stylesheet">
-
-  
-  
-    <!--[if lt IE 9]>
+<link href="../css/bootstrap.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="../css/customizations.css" rel="stylesheet">    <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   
-
-  
-  <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="../img/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="../img/favicon/manifest.json">
-  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">
-
-  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul">
-
-  
-  
-<meta itemprop="name" content="How to setup Express.js in Node.js">
+  <link rel="mask-icon" href="../img/favicon/safari-pinned-tab.svg" color="#5bbad5">  <link rel="alternate" href="../index.xml" type="application/rss+xml" title="CPaul"><meta itemprop="name" content="How to setup Express.js in Node.js">
 <meta itemprop="description" content="A Node.js with Express tutorial to learn how to setup a Node.js application step by step from scratch ...">
-
-
-
     <meta itemprop="image" content="https://chrispaul.dev/img/posts/node-js-express-tutorial/banner_640.jpg">
-
-
-
-<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," />
-
-
-<meta itemprop="wordCount" content="1431">
-
-
-  
-  <meta name="keywords" content="node express tutorial, express tutorial">
-
-  <meta property="og:title" content="How to setup Express.js in Node.js - CPaul">
-
-
-  <meta property="og:description" content="A Node.js with Express tutorial to learn how to setup a Node.js application step by step from scratch ..." />
-
-
-<meta property="og:type" content="website" />
+<meta itemprop="keywords" content="angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,vue,web-development,angular,apollo,d3,graphql,growth,javascript,machine-learning,mobx,node,react,reason,redux,tooling,web-development," /><meta itemprop="wordCount" content="1431">  
+  <meta name="keywords" content="node express tutorial, express tutorial">  <meta property="og:title" content="How to setup Express.js in Node.js - CPaul">  <meta property="og:description" content="A Node.js with Express tutorial to learn how to setup a Node.js application step by step from scratch ..." /><meta property="og:type" content="website" />
 <meta property="og:url" content="https://chrispaul.dev/node-js-express-tutorial/" />
-<meta property="og:image" content="https://chrispaul.dev/img/posts/node-js-express-tutorial/banner_640.jpg" />
-
-  
-
-    <meta name="news_keywords" content="node express tutorial,express tutorial" />
-
-  
-
-    <meta name="twitter:card" content="summary_large_image"/>
+<meta property="og:image" content="https://chrispaul.dev/img/posts/node-js-express-tutorial/banner_640.jpg" />      <meta name="news_keywords" content="node express tutorial,express tutorial" />      <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:image:src" content="https://chrispaul.dev/img/posts/node-js-express-tutorial/banner_640.jpg"/>
-
-
-
 <meta name="twitter:title" content="How to setup Express.js in Node.js"/>
 <meta name="twitter:description" content="A Node.js with Express tutorial to learn how to setup a Node.js application step by step from scratch ..."/>
 <meta name="twitter:site" content="@rwieruch"/>
-<meta name="twitter:domain" content="rwieruch"/>
-
-  
-
-</head>
-
-
-  <body>
-
-    <div id="all">
-
-        <header>
-
-          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
-
-    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
-
-        <div class="container">
+<meta name="twitter:domain" content="rwieruch"/>  </head>  <body>    <div id="all">        <header>          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">    <div class="navbar navbar-default yamm" role="navigation" id="navbar">        <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="../index.html">
                     <img src="../img/page/logo.svg" alt="How to setup Express.js in Node.js logo" class="img-lazy">
                     <span class="sr-only">How to setup Express.js in Node.js - go to homepage</span>
-                </a>
-
-                <div class="navbar-buttons">
+                </a>                <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
                         <span class="sr-only">Toggle navigation</span>
                         <i class="fa fa-align-justify"></i>
                     </button>
                 </div>
             </div>
-            
-
-            <div class="navbar-collapse collapse" id="navigation">
+                        <div class="navbar-collapse collapse" id="navigation">
                 <ul class="nav navbar-nav navbar-right">
                     
                     <li class="dropdown">
@@ -159,123 +71,63 @@
                     
                 </ul>
             </div>
-            
-
-            <div class="collapse clearfix" id="search">
-
-                <form class="navbar-form" role="search">
+                        <div class="collapse clearfix" id="search">                <form class="navbar-form" role="search">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
-
-                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
-
-                </span>
+                        <span class="input-group-btn">                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>                </span>
                     </div>
-                </form>
-
-            </div>
-            
-
-        </div>
+                </form>            </div>
+                    </div>
     </div>
-    
-
-</div>
-
-
-
-
-        </header>
-
-        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
-    
-
-<a
+    </div>        </header>        <div class="post-share post-share-fixed post-share-desktop hidden-xs hidden-sm">
+    <a
     aria-label="icon-facebook"
     class="icon-facebook"
     href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fnode-js-express-tutorial%2f"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
     <i class="fa fa-facebook"></i>
-</a>
-
-
-<a
+</a><a
     aria-label="icon-twitter"
     class="icon-twitter"
     href="https://twitter.com/share?text=How%20to%20setup%20Express.js%20in%20Node.js%20by%20%40rwieruch%20%23NodeJs&amp;url=https%3a%2f%2fchrispaul.dev%2fnode-js-express-tutorial%2f"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
     <i class="fa fa-twitter"></i>
-</a>
-
-
-
-
-
-<a
+</a><a
     aria-label="icon-linkedin"
     class="icon-linkedin"
     href="https://www.linkedin.com/shareArticle?mini=true&amp;title=How%20to%20setup%20Express.js%20in%20Node.js&amp;url=https%3a%2f%2fchrispaul.dev%2fnode-js-express-tutorial%2f">
     <i class="fa fa-linkedin"></i>
-</a>
-
-</div>
-
-<div class="visible-xs visible-sm text-center">
+</a></div><div class="visible-xs visible-sm text-center">
     <div class="post-share post-share-fixed post-share-mobile">
-        
-
-<a
+        <a
     aria-label="icon-facebook"
     class="icon-facebook"
     href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fchrispaul.dev%2fnode-js-express-tutorial%2f"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
     <i class="fa fa-facebook"></i>
-</a>
-
-
-<a
+</a><a
     aria-label="icon-twitter"
     class="icon-twitter"
     href="https://twitter.com/share?text=How%20to%20setup%20Express.js%20in%20Node.js%20by%20%40rwieruch%20%23NodeJs&amp;url=https%3a%2f%2fchrispaul.dev%2fnode-js-express-tutorial%2f"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
     <i class="fa fa-twitter"></i>
-</a>
-
-
-
-
-
-<a
+</a><a
     aria-label="icon-linkedin"
     class="icon-linkedin"
     href="https://www.linkedin.com/shareArticle?mini=true&amp;title=How%20to%20setup%20Express.js%20in%20Node.js&amp;url=https%3a%2f%2fchrispaul.dev%2fnode-js-express-tutorial%2f">
     <i class="fa fa-linkedin"></i>
-</a>
-
-    </div>
-</div>
-
-        
-
-        <div class="hidden-xs">
-            
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
+</a>    </div>
+</div>                <div class="hidden-xs">
+            <section class="bar background-image-fixed-2 no-mb color-white text-center">
     <div class="dark-mask"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
                 <h2 class="text-uppercase newsletter">Take Part</h2>
-            </div>
-
-            <div class="col-md-12">
+            </div>            <div class="col-md-12">
                 <p class="text-center">
                     
-
-
-
 <div id="mc_embed_signup">
     <form
         action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
@@ -304,68 +156,37 @@
             </div>
         </div>
     </form>
-</div>
-
-                </p>
+</div>                </p>
             </div>
         </div>
     </div>
 </section>
-
-
-
-        </div>
-
-        <div id="content">
-            <div class="container">
-
-                <div class="row">
-
-                    <article
+        </div>        <div id="content">
+            <div class="container">                <div class="row">                    <article
                         class="col-md-8 col-md-offset-2"
                         id="blog-post"
                         itemprop="blogPosts"
-                        itemscope itemtype="http://schema.org/BlogPosting">
-
-                        <div id="post-content" itemprop="articleBody">
-
-                            <header>
+                        itemscope itemtype="http://schema.org/BlogPosting">                        <div id="post-content" itemprop="articleBody">                            <header>
                                 <h1 itemprop="name headline">How to setup Express.js in Node.js</h1>
-                            </header>
-
-                            <div class="text-center">
+                            </header>                            <div class="text-center">
                                 
     <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/rwieruch" class="facebook-button-follow">
          <i class="fa fa-facebook"></i>Follow
-    </a>
-
-
-                                &nbsp;
-                                
-
-                                &nbsp;
+    </a>                                &nbsp;
+                                                                &nbsp;
                                 
   <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/follow?screen_name=rwieruch" class="generic-button-follow">
     <img src="https://img.shields.io/twitter/follow/rwieruch.svg?style=social&amp;logo=twitter&amp;label=Follow" alt="Follow on Twitter">
-  </a>
-
-
-                                &nbsp;
+  </a>                                &nbsp;
                                 
-                            </div>
-
-                            <p class="text-muted text-uppercase mb-small text-center">
+                            </div>                            <p class="text-muted text-uppercase mb-small text-center">
     <span itemprop="author publisher">
         
-    </span>
-
-    
+    </span>    
         <time datetime="2019-01-13" itemprop="datePublished">
             January 13, 2019
         </time>
-    
-
-    
+        
         <span class="hidden-xs hidden-sm"> - <a
             target="_blank"
             rel="noopener noreferrer"
@@ -374,16 +195,8 @@
             </a>
         </span>
     
-</p>
-
-                            
-
-<div>
-  
-
-</div>
-
-<div class="post-image-primary">
+</p>                            <div>
+  </div><div class="post-image-primary">
     <div class="pinterest-pinner-wrapper" itemscope itemtype="http://schema.org/ImageObject">
         <div class="pinterest-pinner">
             <a
@@ -392,9 +205,7 @@
                 data-pin-tall="true"
                 href="https://www.pinterest.com/pin/create/button/?url=https%3a%2f%2fchrispaul.dev%2fnode-js-express-tutorial%2f&amp;media=https://chrispaul.dev/img%2fposts%2fnode-js-express-tutorial%2fbanner.jpg&amp;description=">
             </a>
-        </div>
-
-        <img
+        </div>        <img
             class="img-lazy img-responsive"
             data-lazy-src="/src="/img/posts/node-js-express-tutorial/banner.jpg"
             data-is-src-set="is-src-set"
@@ -402,160 +213,56 @@
             itemprop="image"
         />
     </div>
-</div>
-
-
-<div class="read-before">
+</div><div class="read-before">
     <p>This tutorial is part 2 of 2 in this series.</p>
     <div>Part 1: <a href="../minimal-node-js-babel-setup/index.html" itemprop="url">The minimal Node.js with Babel Setup</a></div>
-</div>
-
-<p>Express.js is the most popular choice when it comes to building web applications with Node.js. However, when saying web applications, it&rsquo;s often not for anything visible in the browser (excluding server-side rendering). Instead, Express.js, a web application framework for Node.js, enables you to build server applications in Node.js. As a backend application, it is the glue between your frontend application and a potential database or other data sources (REST APIs, GraphQL APIs, &hellip;). Just to give you an idea, the following is a list of tech stacks to build client-server architectures:</p>
-
-<ul>
+</div><p>Express.js is the most popular choice when it comes to building web applications with Node.js. However, when saying web applications, it&rsquo;s often not for anything visible in the browser (excluding server-side rendering). Instead, Express.js, a web application framework for Node.js, enables you to build server applications in Node.js. As a backend application, it is the glue between your frontend application and a potential database or other data sources (REST APIs, GraphQL APIs, &hellip;). Just to give you an idea, the following is a list of tech stacks to build client-server architectures:</p><ul>
 <li>React.js (Frontend) + Express.js (Backend) + PostgreSQL (Database)</li>
 <li>Vue.js (Frontend) + Koa.js (Backend) + MongoDB (Database)</li>
 <li>Angular.js (Frontend) + Hapi.js (Backend) + Neo4j (Database)</li>
-</ul>
-
-<p>Express.js is exchangeable with other web application frameworks for the backend the same way as React.js is exchangeable with Vue.js and Angular.js when it comes to frontend applications. The Node.js ecosystem doesn&rsquo;t offer only one solution, but various solutions that come with their strengths and weaknesses. However, for this application we will use a Express server, because it is the most popular choice when it comes to building JavaScript backend applications with Node.js.</p>
-
-<p>The Node.js application from before comes with a watcher script to restart your application once your source code has changed, Babel to enable JavaScript features that are not supported in Node.js yet, and environment variables for your application&rsquo;s sensible information. That&rsquo;s a great foundation to get you started with Express.js in Node.js. Let&rsquo;s continue by installing Express.js in your Node.js application from before on the command line:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">express</span>
-</code></pre></div>
-
-
-<p>Now, in your <em>src/index.js</em> file, use the following code to import Express.js, to create an instance of an Express application, and to start it as Express server:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">express</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;express&#39;</span><span style="color: #e7e9db">;</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">app</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">express</span><span style="color: #e7e9db">();</span>
-
-<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">listen</span><span style="color: #e7e9db">(</span><span style="color: #f99b15">3000</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+</ul><p>Express.js is exchangeable with other web application frameworks for the backend the same way as React.js is exchangeable with Vue.js and Angular.js when it comes to frontend applications. The Node.js ecosystem doesn&rsquo;t offer only one solution, but various solutions that come with their strengths and weaknesses. However, for this application we will use a Express server, because it is the most popular choice when it comes to building JavaScript backend applications with Node.js.</p><p>The Node.js application from before comes with a watcher script to restart your application once your source code has changed, Babel to enable JavaScript features that are not supported in Node.js yet, and environment variables for your application&rsquo;s sensible information. That&rsquo;s a great foundation to get you started with Express.js in Node.js. Let&rsquo;s continue by installing Express.js in your Node.js application from before on the command line:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">express</span>
+</code></pre></div><p>Now, in your <em>src/index.js</em> file, use the following code to import Express.js, to create an instance of an Express application, and to start it as Express server:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">express</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;express&#39;</span><span style="color: #e7e9db">;</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">app</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">express</span><span style="color: #e7e9db">();</span><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">listen</span><span style="color: #e7e9db">(</span><span style="color: #f99b15">3000</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
   <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Example app listening on port 3000!&#39;</span><span style="color: #e7e9db">),</span>
 <span style="color: #e7e9db">);</span>
-</code></pre></div>
-
-
-<p>Once you start your application on the command line with <code>npm start</code>, you should be able to see the output in the command line:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">Example</span> <span style="color: #06b6ef">app</span> <span style="color: #06b6ef">listening</span> <span style="color: #06b6ef">on</span> <span style="color: #06b6ef">port</span> <span style="color: #f99b15">3000</span><span style="color: #5bc4bf">!</span>
-</code></pre></div>
-
-
-<p>Your Express server is up and running. Everything that should happen after your Express application has started goes into the callback function. The method itself takes another parameter as first parameter which is the <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Port_%28computer_networking%29">port</a> of the running application. That&rsquo;s why after starting it, the application is available via <code>http://localhost:3000</code>. Nothing should be available at this URL yet when you visit it in your browser though. We will get a sneak peak about this URL next before diving deeper into it later.</p>
-
-<h3 id="express-js-routes">Routes in Express.js</h3>
-
-<p>In web applications frameworks like Express.js, you can create routes once you have created your application&rsquo;s instance. All routes make up your application&rsquo;s entire routing. Let&rsquo;s set up such a single route:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">express</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;express&#39;</span><span style="color: #e7e9db">;</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">app</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">express</span><span style="color: #e7e9db">();</span>
-
-<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+</code></pre></div><p>Once you start your application on the command line with <code>npm start</code>, you should be able to see the output in the command line:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">Example</span> <span style="color: #06b6ef">app</span> <span style="color: #06b6ef">listening</span> <span style="color: #06b6ef">on</span> <span style="color: #06b6ef">port</span> <span style="color: #f99b15">3000</span><span style="color: #5bc4bf">!</span>
+</code></pre></div><p>Your Express server is up and running. Everything that should happen after your Express application has started goes into the callback function. The method itself takes another parameter as first parameter which is the <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Port_%28computer_networking%29">port</a> of the running application. That&rsquo;s why after starting it, the application is available via <code>http://localhost:3000</code>. Nothing should be available at this URL yet when you visit it in your browser though. We will get a sneak peak about this URL next before diving deeper into it later.</p><h3 id="express-js-routes">Routes in Express.js</h3><p>In web applications frameworks like Express.js, you can create routes once you have created your application&rsquo;s instance. All routes make up your application&rsquo;s entire routing. Let&rsquo;s set up such a single route:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">express</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;express&#39;</span><span style="color: #e7e9db">;</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">app</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">express</span><span style="color: #e7e9db">();</span><span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Hello World!&#39;</span><span style="color: #e7e9db">);</span>
 </span><span style="background-color: #4f424c"><span style="color: #e7e9db">});</span>
 </span>
 <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">listen</span><span style="color: #e7e9db">(</span><span style="color: #f99b15">3000</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
   <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Example app listening on port 3000!&#39;</span><span style="color: #e7e9db">),</span>
 <span style="color: #e7e9db">);</span>
-</code></pre></div>
-
-
-<p>The route points to the root of your domain: <code>http://localhost:3000/</code> which can also be used as <code>http://localhost:3000</code> as you know from browsing online from website to website. Once you save the file, the application should restart automatically. You can verify it on the command line. Afterward, visit the browser at <code>http://localhost:3000</code> to see what it outputs for you. You should see the printed <em>&ldquo;Hello World!&rdquo;</em> there. That&rsquo;s it for your first route in Express.js. We will learn more about routes and how to interact with them later.</p>
-
-<p>Essentially every Express application is a just <strong>a series of routing and middleware function calls</strong>. You have seen the former, the routing with a single route, previously for the <code>http://localhost:3000</code> URL or <code>/</code> route. You can extend the application with additional URIs (e.g. <code>http://localhost:3000/test</code>) by using routes in Express.js (e.g. <code>/test</code>) as shown before. Try it yourself!</p>
-
-<h3 id="express-js-middleware">Middleware in Express.js</h3>
-
-<p>If an Express application consists of routing and middleware function calls, what about the middleware function calls then? There are two kinds of middleware in Express.js: application-level middleware and router-level middleware. Let&rsquo;s explore an application-level middleware in this section with a neat use case and dive deeper into the other aspects of both application-level and router-level middleware later.</p>
-
-<p>When using Express.js, people often run into the following error in the browser when accessing their Express application: <em>&ldquo;Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at <a href="http://localhost:3000/">http://localhost:3000/</a>. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing).&rdquo;</em> It most likely happens because we are accessing a domain from a foreign domain. <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">Cross-origin resource sharing (CORS)</a> was invented to secure web applications on a domain level. The idea: It shouldn&rsquo;t be possible to access data from other domains. For instance, a web application with the domain <code>https://example.com</code> shouldn&rsquo;t be allowed to access another web application with <code>https://website.com</code> by default. It&rsquo;s used to restrict access between web applications.</p>
-
-<p>Now, we can allow CORS by adding this missing CORS header, because we will run eventually into this error ourselves when implementing a consuming client application for our Express server. However, since we don&rsquo;t want to do this manually for every route, we can use an application-level middleware to add the CORS HTTP header to every request by default. Therefore, we could write a middleware ourselves &ndash; we will see how this works later &ndash; or use a Express.js middleware library which is doing the job for us.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">cors</span>
-</code></pre></div>
-
-
-<p>Next use it as a application-wide middleware:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;dotenv/config&#39;</span><span style="color: #e7e9db">;</span>
+</code></pre></div><p>The route points to the root of your domain: <code>http://localhost:3000/</code> which can also be used as <code>http://localhost:3000</code> as you know from browsing online from website to website. Once you save the file, the application should restart automatically. You can verify it on the command line. Afterward, visit the browser at <code>http://localhost:3000</code> to see what it outputs for you. You should see the printed <em>&ldquo;Hello World!&rdquo;</em> there. That&rsquo;s it for your first route in Express.js. We will learn more about routes and how to interact with them later.</p><p>Essentially every Express application is a just <strong>a series of routing and middleware function calls</strong>. You have seen the former, the routing with a single route, previously for the <code>http://localhost:3000</code> URL or <code>/</code> route. You can extend the application with additional URIs (e.g. <code>http://localhost:3000/test</code>) by using routes in Express.js (e.g. <code>/test</code>) as shown before. Try it yourself!</p><h3 id="express-js-middleware">Middleware in Express.js</h3><p>If an Express application consists of routing and middleware function calls, what about the middleware function calls then? There are two kinds of middleware in Express.js: application-level middleware and router-level middleware. Let&rsquo;s explore an application-level middleware in this section with a neat use case and dive deeper into the other aspects of both application-level and router-level middleware later.</p><p>When using Express.js, people often run into the following error in the browser when accessing their Express application: <em>&ldquo;Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at <a href="http://localhost:3000/">http://localhost:3000/</a>. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing).&rdquo;</em> It most likely happens because we are accessing a domain from a foreign domain. <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">Cross-origin resource sharing (CORS)</a> was invented to secure web applications on a domain level. The idea: It shouldn&rsquo;t be possible to access data from other domains. For instance, a web application with the domain <code>https://example.com</code> shouldn&rsquo;t be allowed to access another web application with <code>https://website.com</code> by default. It&rsquo;s used to restrict access between web applications.</p><p>Now, we can allow CORS by adding this missing CORS header, because we will run eventually into this error ourselves when implementing a consuming client application for our Express server. However, since we don&rsquo;t want to do this manually for every route, we can use an application-level middleware to add the CORS HTTP header to every request by default. Therefore, we could write a middleware ourselves &ndash; we will see how this works later &ndash; or use a Express.js middleware library which is doing the job for us.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">npm</span> <span style="color: #06b6ef">install</span> <span style="color: #06b6ef">cors</span>
+</code></pre></div><p>Next use it as a application-wide middleware:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;dotenv/config&#39;</span><span style="color: #e7e9db">;</span>
 <span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #06b6ef">cors</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;cors&#39;</span><span style="color: #e7e9db">;</span>
-</span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">express</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;express&#39;</span><span style="color: #e7e9db">;</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">app</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">express</span><span style="color: #e7e9db">();</span>
-
-<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">use</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">cors</span><span style="color: #e7e9db">());</span>
+</span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">express</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;express&#39;</span><span style="color: #e7e9db">;</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">app</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">express</span><span style="color: #e7e9db">();</span><span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">use</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">cors</span><span style="color: #e7e9db">());</span>
 </span>
 <span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Hello World!&#39;</span><span style="color: #e7e9db">);</span>
-<span style="color: #e7e9db">});</span>
-
-<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">listen</span><span style="color: #e7e9db">(</span><span style="color: #f99b15">3000</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+<span style="color: #e7e9db">});</span><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">listen</span><span style="color: #e7e9db">(</span><span style="color: #f99b15">3000</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
   <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #48b685">`Example app listening on port 3000!`</span><span style="color: #e7e9db">),</span>
 <span style="color: #e7e9db">);</span>
-</code></pre></div>
-
-
-<p>The Express application can literally <em>use</em> a middleware, coming from an external library or built by yourself, to extend all its routes (application-level middleware). In this case, all routes are extended with CORS HTTP headers. By default all routes are accessible for all domains now. This includes later our development domains from our consuming client application too. After all, this was only a sneak peak into an Express middleware. We will learn more about application-level and router-level middleware, and how to write a middleware yourself, later.</p>
-
-<p>Note: Don&rsquo;t worry too much about the CORS configuration if you didn&rsquo;t fully grasp it yet. It&rsquo;s one of the things many first time Express users run into, have to deal with by installing this neat library, and often never look back why they had to install and use it. If you didn&rsquo;t understand it yet, no worries, but at the time you deploy your application to production, you should set up a <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Whitelisting">whitelist</a> of domains which are allowed to access your Express server application. The <a target="_blank" rel="noopener noreferrer" href="https://github.com/expressjs/cors">CORS library</a> offers this kind of configuration. Take some time to look into it yourself.</p>
-
-<h3 id="express-js-environment-variables">Environment Variables in Express.js</h3>
-
-<p>Before you have set up environment variables for your Node.js application. Let&rsquo;s use one environment variable to set up your port instead of hardcoding it in the source code. If there isn&rsquo;t such file, create a new <em>.env</em> file in your project. Otherwise use the <em>.env</em> file that&rsquo;s already there. Give it a new key value pair to define your port:</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">PORT</span><span style="color: #5bc4bf">=</span><span style="color: #f99b15">3000</span>
-</code></pre></div>
-
-
-<p>Now in your <em>src/index.js</em> file, import the node package which makes the environment variables available in your source code and use the <code>PORT</code> environment variable for starting your Express application.</p>
-
-<div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;dotenv/config&#39;</span><span style="color: #e7e9db">;</span>
+</code></pre></div><p>The Express application can literally <em>use</em> a middleware, coming from an external library or built by yourself, to extend all its routes (application-level middleware). In this case, all routes are extended with CORS HTTP headers. By default all routes are accessible for all domains now. This includes later our development domains from our consuming client application too. After all, this was only a sneak peak into an Express middleware. We will learn more about application-level and router-level middleware, and how to write a middleware yourself, later.</p><p>Note: Don&rsquo;t worry too much about the CORS configuration if you didn&rsquo;t fully grasp it yet. It&rsquo;s one of the things many first time Express users run into, have to deal with by installing this neat library, and often never look back why they had to install and use it. If you didn&rsquo;t understand it yet, no worries, but at the time you deploy your application to production, you should set up a <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Whitelisting">whitelist</a> of domains which are allowed to access your Express server application. The <a target="_blank" rel="noopener noreferrer" href="https://github.com/expressjs/cors">CORS library</a> offers this kind of configuration. Take some time to look into it yourself.</p><h3 id="express-js-environment-variables">Environment Variables in Express.js</h3><p>Before you have set up environment variables for your Node.js application. Let&rsquo;s use one environment variable to set up your port instead of hardcoding it in the source code. If there isn&rsquo;t such file, create a new <em>.env</em> file in your project. Otherwise use the <em>.env</em> file that&rsquo;s already there. Give it a new key value pair to define your port:</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="color: #06b6ef">PORT</span><span style="color: #5bc4bf">=</span><span style="color: #f99b15">3000</span>
+</code></pre></div><p>Now in your <em>src/index.js</em> file, import the node package which makes the environment variables available in your source code and use the <code>PORT</code> environment variable for starting your Express application.</p><div class="highlight" style="background: #2f1e2e"><pre style="line-height: 125%"><code class="language-javascript" data-lang="javascript"><span></span><span style="background-color: #4f424c"><span style="color: #815ba4">import</span> <span style="color: #48b685">&#39;dotenv/config&#39;</span><span style="color: #e7e9db">;</span>
 </span><span style="color: #815ba4">import</span> <span style="color: #06b6ef">cors</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;cors&#39;</span><span style="color: #e7e9db">;</span>
-<span style="color: #815ba4">import</span> <span style="color: #06b6ef">express</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;express&#39;</span><span style="color: #e7e9db">;</span>
-
-<span style="color: #815ba4">const</span> <span style="color: #06b6ef">app</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">express</span><span style="color: #e7e9db">();</span>
-
-<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">use</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">cors</span><span style="color: #e7e9db">());</span>
-
-<span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
+<span style="color: #815ba4">import</span> <span style="color: #06b6ef">express</span> <span style="color: #06b6ef">from</span> <span style="color: #48b685">&#39;express&#39;</span><span style="color: #e7e9db">;</span><span style="color: #815ba4">const</span> <span style="color: #06b6ef">app</span> <span style="color: #5bc4bf">=</span> <span style="color: #06b6ef">express</span><span style="color: #e7e9db">();</span><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">use</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">cors</span><span style="color: #e7e9db">());</span><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">get</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;/&#39;</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">(</span><span style="color: #06b6ef">req</span><span style="color: #e7e9db">,</span> <span style="color: #06b6ef">res</span><span style="color: #e7e9db">)</span> <span style="color: #5bc4bf">=&gt;</span> <span style="color: #e7e9db">{</span>
   <span style="color: #06b6ef">res</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">send</span><span style="color: #e7e9db">(</span><span style="color: #48b685">&#39;Hello World!&#39;</span><span style="color: #e7e9db">);</span>
-<span style="color: #e7e9db">});</span>
-
-<span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">listen</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">PORT</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
+<span style="color: #e7e9db">});</span><span style="background-color: #4f424c"><span style="color: #06b6ef">app</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">listen</span><span style="color: #e7e9db">(</span><span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">PORT</span><span style="color: #e7e9db">,</span> <span style="color: #e7e9db">()</span> <span style="color: #5bc4bf">=&gt;</span>
 </span><span style="background-color: #4f424c">  <span style="color: #06b6ef">console</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">log</span><span style="color: #e7e9db">(</span><span style="color: #48b685">`Example app listening on port </span><span style="color: #f99b15">${</span><span style="color: #06b6ef">process</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">env</span><span style="color: #e7e9db">.</span><span style="color: #06b6ef">PORT</span><span style="color: #f99b15">}</span><span style="color: #48b685">!`</span><span style="color: #e7e9db">),</span>
 </span><span style="background-color: #4f424c"><span style="color: #e7e9db">);</span>
-</span></code></pre></div>
-
-
-<p>Instead of exposing the port that is used in the source code, you have stored it at a more sensible place in your environment variables. If you are using Git with something like GitHub, you can exclude the <em>.env</em> from being uploaded to the GitHub repository by adding it to your <em>.gitignore</em> file. That&rsquo;s how sensible data is kept away from public Git repositories like GitHub. If you deploy your application to production eventually, you can add the environment variables as <em>.env</em> file on your web server which is serving your application.</p>
-
-<h3 id="exercises">Exercises:</h3>
-
-<ul>
+</span></code></pre></div><p>Instead of exposing the port that is used in the source code, you have stored it at a more sensible place in your environment variables. If you are using Git with something like GitHub, you can exclude the <em>.env</em> from being uploaded to the GitHub repository by adding it to your <em>.gitignore</em> file. That&rsquo;s how sensible data is kept away from public Git repositories like GitHub. If you deploy your application to production eventually, you can add the environment variables as <em>.env</em> file on your web server which is serving your application.</p><h3 id="exercises">Exercises:</h3><ul>
 <li>Confirm your <a target="_blank" rel="noopener noreferrer" href="https://github.com/rwieruch/node-express-server">source code</a></li>
 <li>Define for yourself: What&rsquo;s a frontend and a backend application?</li>
 <li>Ask yourself: How do frontend and backend application communicate with each other?</li>
 <li>Optional: Checkout the configuration that can be used with the CORS library</li>
-<li>Optional: Upload your project to <a href="../git-essential-commands/index.html">GitHub with Git</a>
-
-<ul>
+<li>Optional: Upload your project to <a href="../git-essential-commands/index.html">GitHub with Git</a><ul>
 <li>Exclude the <em>.env</em> file from Git with a <em>.gitignore</em> file</li>
 </ul></li>
-</ul>
-
-<div class="read-before">
+</ul><div class="read-before">
     <p>This tutorial is part 2 of 3 in this series.</p>
     <div>Part 1: <a href="../minimal-node-js-babel-setup/index.html" itemprop="url">The minimal Node.js with Babel Setup</a></div>
     <div>Part 3: <a href="../node-express-server-rest-api/index.html" itemprop="url">How to create a REST API with Express.js in Node.js</a></div>
-</div>
-
-
-                            
+</div>                            
 <div class="feedback-and-share text-center">
     <hr>
     
@@ -568,10 +275,7 @@
             Did the article help you? Share it with your friends on social media <i class="fa fa-arrow-left"></i>, support me as my <a target="_blank" rel="noopener noreferrer" aria-label="patreon" href="https://www.patreon.com/rwieruch"><i class="fa fa-paw"></i>Patron</a>, and become a full-stack developer with my books <i class="fa fa-arrow-down"></i>
         </p>
     
-</div>
-
-
-                            
+</div>                            
                                 <div class="box-inline col-md-12">
     <div class="col-md-12 text-center">
         <h2 class="newsletter">The Road to learn React</h2>
@@ -605,21 +309,15 @@
     </div>
 </div>
                             
-                        </div>
-
-                        
+                        </div>                        
                         
                         <div id="comments">
                             <div id="disqus_thread"></div>
-<script type="text/javascript">
-
-(function() {
+<script type="text/javascript">(function() {
     
     
     if (window.location.hostname == "localhost")
-        return;
-
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        return;    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
     var disqus_shortname = 'rwieruch';
     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
@@ -628,31 +326,19 @@
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                         </div>
-                        
-
-                    </article>
-                    
-
-                </div>
-                
-
-            </div>
+                                            </article>
+                                    </div>
+                            </div>
             
         </div>
-        
-
-        
-
-<section class="bar background-image-fixed-2 no-mb color-white text-center">
+                <section class="bar background-image-fixed-2 no-mb color-white text-center">
     <div class="dark-mask"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h3 class="lead">Never miss an article about web development, JavaScript and self-growth.</h3>
                 <h2 class="text-uppercase">Take Part</h2>
-            </div>
-
-            <div class="col-md-12 text-center">
+            </div>            <div class="col-md-12 text-center">
                 
                     <h3 class="lead"><i class="fa fa-check"></i> Join 30.000&#43; Developers</h3>
                 
@@ -668,9 +354,6 @@
             <div class="col-md-12">
                 <p class="text-center">
                     
-
-
-
 <div id="mc_embed_signup">
     <form
         action="https://www.getrevue.co/profile/rwieruch/add_subscriber"
@@ -699,25 +382,12 @@
             </div>
         </div>
     </form>
-</div>
-
-                </p>
+</div>                </p>
             </div>
         </div>
     </div>
-</section>
-
-
-
-
-        <footer id="subfooter">
-    <div class="container">
-
-        <div class="col-md-5 col-sm-6">
-
-            <h4>Recent posts</h4>
-
-            <div class="blog-entries">
+</section>        <footer id="subfooter">
+    <div class="container">        <div class="col-md-5 col-sm-6">            <h4>Recent posts</h4>            <div class="blog-entries">
                 
                 <div class="item same-height-row clearfix">
                     <div class="article same-height-always">
@@ -773,19 +443,9 @@
                     </div>
                 </div>
                 
-            </div>
-
-            <hr class="hidden-md hidden-lg hidden-sm">
-
-        </div>
-        
-
-        
-        <div class="col-md-5 col-md-offset-2 col-sm-6">
-
-            <h4>About Me</h4>
-
-            <div class="blog-entries">
+            </div>            <hr class="hidden-md hidden-lg hidden-sm">        </div>
+                
+        <div class="col-md-5 col-md-offset-2 col-sm-6">            <h4>About Me</h4>            <div class="blog-entries">
                 <div class="item same-height-row clearfix">
                     <div class="profile same-height-always">
                         <img
@@ -796,25 +456,15 @@
                     </div>
                     <div class="name same-height-always">
                         <p>
-                            Hi, I'm Chris - a German and Remote/Berlin based consulting software engineer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
+                            Hi, I'm Chris - a Midvale, Utah-based consulting software developer. Find out more <a href="../about/index.html">about me</a>, <a href="../work-with-me/index.html">work with me</a>, or have a look at my social media profiles below.
                         </p>
                     </div>
                 </div>
+            </div>        </div>
+        
             </div>
-
-        </div>
-        
-        
-
-    </div>
     
 </footer>
-
-
-
-
-
-
         <footer id="copyright">
   <div class="container">
     <div class="row">
@@ -855,28 +505,10 @@
       </div>
     </div>
   </div>
-</footer>
-
-
-    </div>
+</footer>    </div>
     
-
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-
-
-
-
-
-
-
-
 <script src="../js/script.js"></script>
-
-
-
   </body>
 </html>
